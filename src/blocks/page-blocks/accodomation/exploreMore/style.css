@@ -1,0 +1,95 @@
+
+  /* ----------Explore More Section----------- */
+  
+  .exploreMoreSectionContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .exploreMoreSectionContent h4 {
+    font-family: NewAmsterdam;
+    font-size: 120px;
+    color: #995098;
+    line-height: 94px;
+  }
+  
+  .exploreMoreSectionContent p {
+    font-family: "29LT Bukra Regular";
+    font-size: 18px;
+    color: #3d3d3d;
+    line-height: 26px;
+    width: 63%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .exploreSldierBg {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background: #efefef;
+  }
+  .exploreSldierSection {
+    margin-top: 65px;
+    margin-bottom: 15px;
+  }
+  
+  /* Slider */
+  
+  .ExplorePageRightButton {
+    position: absolute;
+    top: 50%;
+    right: -6%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    background-image: url("../../../../public/images/icons/RightArrow-Bg.svg");
+    background-size: contain;
+  }
+  .ExplorePageRightButton:hover {
+    background-image: url("../../../../public/images/icons/RightArrow.svg");
+  }
+  
+  .ExplorePageLeftButton {
+    position: absolute;
+    top: 50%;
+    left: -6%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    background-image: url("../../../../public/images/icons/LeftArrow-Bg.svg");
+    background-size: contain;
+  }
+  
+  .ExplorePageLeftButton:hover {
+    background-image: url("../../../../public/images/icons/LeftArrow.svg");
+  }
+  
+  .ExplorePageSliderImage {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  
+  .titleTextExploreChennai {
+    /* display: none; */
+    font-family: "29LT Bukra SmBd";
+    font-size: 20px;
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    color: #fff;
+    z-index: 2;
+  }
+  
+  /* ----------Explore More Section----------- */
+  
+  .AccomodationInstaReel {
+    padding-top: 100px;
+  }

@@ -1,0 +1,64 @@
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+.ExploreChennaiContainer .slick-track{
+    padding-top: 1%;
+}
+.ExploreChennaiContainer .space-y-4{
+    margin-bottom: 20px;
+}
+.exploreSectionContainer{
+    display: flex;
+    column-gap: 25px;
+    flex-wrap: wrap;
+    row-gap: 25px;
+}
+.exploreSectionFlex{
+    display: flex !important;
+    align-items: center;
+    border: 1px solid #e7e7ea;
+    width: 277px !important;
+    column-gap: 15px;
+    padding: 20px 15px;
+    border-radius: 10px;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exploreSectionFlex:hover {
+    cursor: pointer;
+    transform: translateY(-10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+    border: 1px solid #995098;
+}
+
+.exploreSectionFlex img:first-child{
+    width: 65px;
+    height: 65px;
+}
+
+.exploreSectionFlex h3{
+    font-family: '29LT Bukra SmBd';
+    color: #a44294;
+    font-size: 20px;
+    line-height: 25px;
+}
+.exploreSectionFlex h5{
+    font-family: '29LT Bukra SmBd';
+    color: #818181;
+    font-size: 15px;
+}
+.arrowIcons{
+    width: 42px;
+    height: 30px;
+    position: absolute;
+    bottom: 9%;
+    right: 4%;
+}
+.arrowIcons:hover{
+ 
+}

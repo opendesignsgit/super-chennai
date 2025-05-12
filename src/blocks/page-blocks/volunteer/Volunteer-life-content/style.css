@@ -1,0 +1,116 @@
+
+.volunteeerMainContent {
+}
+
+/* style.css */
+.volunteerParaSection {
+  overflow-x: hidden;
+  position: relative;
+  overflow-y: hidden;
+
+}
+
+
+.volunteerRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5%;
+}
+
+.volunteerRow img {
+  width: 50%;
+  object-fit: cover;
+  z-index: 100;
+}
+
+.volunteerRow .volunteeerMainContent {
+  width: 50%;
+}
+
+.volunteeerMainContent h3 {
+  font-family: NewAmsterdam;
+  font-size: 120px;
+  color: #995098;
+  line-height: 94px;
+}
+
+.volunteeerMainContent .paraZeroVolunteerSection {
+  font-family: "29LT Bukra Regular";
+  font-size: 16px;
+  line-height: 26px;
+  color: #000;
+  margin-top: 20px;
+  width: fit-content;
+}
+.volunteeerMainContent .paraoneVolunteerSection {
+  font-family: "29LT Bukra Regular";
+  font-size: 16px;
+  line-height: 26px;
+  color: #000;
+  margin-top: 20px;
+  width: fit-content;
+}
+.volunteeerMainContent .paraTwoVolunteerSection {
+  font-family: "29LT Bukra Regular";
+  font-size: 16px;
+  line-height: 26px;
+  color: #000;
+  margin-top: 20px;
+  width: fit-content;
+}
+
+.volunteerParaSection {
+    margin-top: 35px;
+    position: relative;
+    padding-bottom: 140px;
+    padding-top: 60px;
+
+}
+
+.VolunteeerTextBackground {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  white-space: nowrap;
+  width: 200%;
+  /* animation: scrollText 20s linear infinite; */
+  z-index: 0;
+  opacity: 0.05;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation: scrollText 10s linear infinite;
+}
+
+.VolunteeerTextBackground p {
+  font-size: 280px;
+  font-family: "29LT Bukra SmBd";
+  text-transform: uppercase;
+  line-height: 150px;
+}
+.scroll-left {
+  animation-name: scrollLeftVolunteer;
+}
+
+.scroll-right {
+  animation-name: scrollRightVolunteer;
+}
+
+@keyframes scrollLeftVolunteer {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRightVolunteer {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

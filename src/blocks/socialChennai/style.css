@@ -1,0 +1,33 @@
+.socialChennaiContent h4{
+    font-family: 'NewAmsterdam';
+    font-size: 100px;
+    line-height: 79px;
+    color: #a44294;
+}
+.socialChennaiContent p{
+    font-family: '29LT Bukra Regular';
+    font-size: 18px;
+    line-height: 28px;
+    color: #000000;
+    text-align: center;
+    margin-top: 9px;
+}
+
+.socialChennaiContent{
+    display: flex;
+    justify-content: center;
+
+}
+
+.socialChennaiContainer{
+    width: 53%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.socialChnennaiMaincontainer{
+    /* padding-bottom: 50px; */
+    margin-bottom: 100px;
+}

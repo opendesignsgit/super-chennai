@@ -1,0 +1,211 @@
+/* Accomodation-Banner */
+
+.accodoamationBannerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+  }
+  .accaodomationBannerSection {
+    position: relative;
+  }
+  
+  .accodoamationBannerText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .accodoamationBannerText h3 {
+    color: #000;
+  }
+  
+  .accodoamationBannerText h3 {
+    font-family: "NewAmsterdam";
+    font-size: 100px;
+    line-height: 77px;
+    color: #fff;
+  }
+  .accodoamationBannerText .breadCrum {
+    font-family: "29LT Bukra SmBd";
+    letter-spacing: 3px;
+    font-size: 15px;
+    margin-top: 10px;
+    color: #b9a8cc;
+  }
+  
+  .breadCrum a:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+  /* Accomodation-Banner */
+  
+  /* Second Section  */
+  
+  .AccodomationTextBackground {
+    position: absolute;
+    bottom: 8%;
+    left: 0;
+    white-space: nowrap;
+    width: 200%;
+    /* animation: scrollText 20s linear infinite; */
+    z-index: 0;
+    opacity: 0.05;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation: scrollText 10s linear infinite;
+  }
+  
+  .AccodomationTextBackground p {
+    font-size: 280px;
+    font-family: "29LT Bukra SmBd";
+    text-transform: uppercase;
+    line-height: 150px;
+  }
+  .scroll-leftAccomodation {
+    animation-name: scrollLeftVolunteer;
+  }
+  
+  .scroll-rightAccomodation {
+    animation-name: scrollRightVolunteer;
+  }
+  
+  @keyframes scrollLeftVolunteer {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  @keyframes scrollRightVolunteer {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  
+  .AccodomationPageBecameVolunteerBg {
+    background-color: #fff;
+    padding-top: 125px;
+    margin-bottom: 100px;
+    padding-bottom: 50px;
+  }
+  
+  .AccodContentsSection h3 {
+    font-family: NewAmsterdam;
+    font-size: 90px;
+    color: #7c15a0;
+    line-height: 73px;
+  }
+  
+  .AccodContentsSection p {
+    font-family: "29LT Bukra Regular";
+    font-size: 23px;
+    line-height: 34px;
+    color: #434343;
+    text-align: left;
+    margin-top: 12px;
+    font-weight: lighter;
+  }
+  .AccodoSectionFLex {
+    display: flex;
+    align-items: center;
+    column-gap: 4%;
+    margin-top: 7%;
+  }
+  
+  .AccodoSectionFLex img {
+    width: 49%;
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2),
+      0 22px 10px 0 rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    z-index: 1000;
+  }
+  
+  .AccodContentsSection {
+    width: 49%;
+    z-index: 1000;
+  }
+  .AccomoddationPage {
+    height: 48px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 35px;
+  }
+  .AccomoddationPage a {
+    width: 175px;
+    text-align: center;
+    font-family: "29LT Bukra SmBd";
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #e2ccf2;
+    background: #fff;
+    border-radius: 50px;
+    font-size: 13px;
+    line-height: 29px;
+    color: #7c15a0;
+  }
+  
+  .AccodContentsSection1 h3 {
+    font-family: NewAmsterdam;
+    font-size: 90px;
+    color: #7c15a0;
+    line-height: 73px;
+    text-align: end;
+  }
+  .AccodContentsSection1 p {
+    font-family: "29LT Bukra Regular";
+    font-size: 23px;
+    line-height: 34px;
+    color: #434343;
+    text-align: right;
+    margin-top: 12px;
+    font-weight: lighter;
+  }
+  
+  .AccomoddationPage1 {
+    height: 48px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 35px;
+  }
+  
+  .AccomoddationPage1 a {
+    width: 175px;
+    text-align: center;
+    font-family: "29LT Bukra SmBd";
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #e2ccf2;
+    background: #fff;
+    border-radius: 50px;
+    font-size: 13px;
+    line-height: 29px;
+    color: #7c15a0;
+  }
+  
+  .AccomoddationPage1 a:hover {
+    background-color: #995098;
+    color: #fff;
+  }
+  
+  .AccomoddationPage a:hover {
+    background-color: #995098;
+    color: #fff;
+  }
+  
+  /* Second Section  */
+  

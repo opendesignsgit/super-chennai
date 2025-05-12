@@ -1,0 +1,356 @@
+
+  
+  
+  .volunteeerMainContent {
+  }
+  
+  .workIntro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 0 12%;
+    
+  }
+  
+   
+  
+  .workIntro h3 {
+    font-family: NewAmsterdam;
+    font-size: 120px;
+    color: #100f9a;
+    line-height: 94px;
+  }
+  
+  .workIntro p {
+    font-family: "29LT Bukra Regular";
+    font-size: 16px;
+    line-height: 26px;
+    color: #000;
+    margin-top: 20px;
+    width: fit-content;
+  }
+   
+  
+  .visitIntroParaSection {
+      margin-top: 35px;
+      position: relative;
+      padding-bottom: 140px;
+      padding-top: 60px;
+  
+  }
+  
+  .VolunteeerTextBackground {
+    position: absolute;
+    bottom: 8%;
+    left: 0;
+    white-space: nowrap;
+    width: 200%;
+    /* animation: scrollText 20s linear infinite; */
+    z-index: 0;
+    opacity: 0.05;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation: scrollText 10s linear infinite;
+  }
+  
+  .VolunteeerTextBackground p {
+    font-size: 280px;
+    font-family: "29LT Bukra SmBd";
+    text-transform: uppercase;
+    line-height: 150px;
+  }
+  .scroll-left {
+    animation-name: scrollLeftVolunteer;
+  }
+  
+  .scroll-right {
+    animation-name: scrollRightVolunteer;
+  }
+  
+  @keyframes scrollLeftVolunteer {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  @keyframes scrollRightVolunteer {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  
+  /* Became a Volunteer  */
+   
+  .workImageSection  {
+        background: #2A7B9B;
+    background: linear-gradient(90deg, rgba(19, 50, 132, 1) 10%, rgba(90, 66, 161, 1) 50%, rgba(57, 8, 121, 1) 90%); padding-top: 125px;
+    margin-bottom: 100px;
+    padding-bottom: 100px;
+    position: relative;
+  }
+  .workImageSection h4{position: absolute;
+    top: 30%;
+    font-size: 230px;
+    color: #0e1633;
+    pointer-events: none;
+    text-transform: uppercase;
+    opacity: 0.1;
+    line-height: 1;
+    font-family: '29LT Bukra SmBd';
+  }
+  
+  .workimgIn {
+    display: flex;
+    align-items: stretch;
+    padding: 0;
+     margin: 0 auto;
+    gap: 0;
+    min-height:650px;
+  }
+  
+  .hoverRightimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .workimgIn li{margin: 0 0 25px;}
+  .workimgIn li a{font-size: 40px; display: block; font-weight: 400; transition: all .2s ease-in-out; position: relative; line-height: 1;}
+  .workimgIn li a:hover{   font-size: 80px;  letter-spacing: -1px; font-weight: 600;  line-height: 1;}  
+  .workimgIn li.active a{   font-size: 80px;  letter-spacing: -1px; font-weight: 600;  line-height: 1;} 
+  .workimgIn li.active a::before{  width: 10%;   transition: all 0.5s ease;}
+     .workimgIn li a::before{  content:''; position: absolute; transition: all 0.5s ease;
+      letter-spacing: -1px; background: #fff; opacity: 0.2; width: 0%; height: 1px; right: 0; top: 50%; }
+     .workimgIn li a:hover::before{    width: 10%;   transition: all 0.5s ease;}
+     .workimgIn li a::after {
+      content: 'Explore More';
+      position: absolute;
+      letter-spacing: -1px;
+      background: rgba(64, 47, 127, 0.5);
+      /* opacity: 0.2; */
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      right: 55px;
+      bottom: -90px;
+      font-size: 14px;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      line-height: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.5s ease;
+      opacity: 0;
+  }
+      .workimgIn li a:hover::after {
+        opacity: 1;
+    }
+  .visitslideOut{  background-image: linear-gradient(to right, rgb(25 28 129) 0%, rgb(118 60 167) 50%, rgb(73 14 117) 90%);
+    padding: 80px 0; margin: 0 0 60px;}
+  
+    .visitslideTop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 0 8%;
+      margin-bottom: 40px;
+      
+  }
+  .visitslideTop h3 {
+    font-family: NewAmsterdam;
+    font-size: 120px;
+    color: #fff;
+    line-height: 94px;
+  }
+  .visitslideTop p {
+    font-family: "29LT Bukra Regular";
+    font-size: 16px;
+    line-height: 26px;
+    color: #fff;
+    
+    }
+  
+    .sliderSection{ 
+      display: flex;
+      margin: 0 -12px;
+      position: relative;
+    }
+    .visitslideImg .slick-slider {
+      position: static;
+  }
+    .visitslideImg {
+      width: 45%;
+  }
+  .visitslideImg .slick-slide{position: relative;}
+  .visitslideImg .slick-slide:after{content: ''; position: absolute; right: 0; height: 100%; width: 200px;background-image: linear-gradient(to right, transparent, #000 70%);
+    top: 0;
+    opacity: 0.5;}
+  
+    .visitslideImg .slick-slide .titleOut{
+      position: absolute;
+    right: 0;
+    font-size: 100px;
+    color: #ffffff;
+    opacity:0.5;
+    z-index: 100;
+    top: 0;
+     display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100vh;
+  
+    }
+  .visitslideImg .slick-slide h4{
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    position: absolute;
+    /* left: 0; */
+    width: 100vh;
+    /* top: 26%; */
+    display: flex;
+    font-weight: 600;
+    justify-content: center;
+    position: absolute;
+    right: -430px;
+    text-transform: uppercase;
+   }
+  .visitContSlide {
+    margin-bottom: 15px;
+    padding-left: 65px;
+    padding-top: 40px;
+    position: relative;
+    width: 45%;
+  }
+  
+   .visitContSlide .slick-slide img{display: none;}
+  
+   .visitContSlide .slick-track {
+    height: auto !important;
+  }
+  
+  
+  
+  
+  .visitContSlide .slick-slide h3 {
+    color: #fff;
+    cursor: pointer;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1;
+    margin: 0 0 10px;
+    padding:5px 0;
+    position: relative;
+    opacity: 0.3;
+    font-family: "29LT Bukra SmBd";
+    text-transform: uppercase;
+  }
+  .visitContSlide .slick-slide p{display: none; color: #fff;
+    cursor: pointer; font-size: 17px;
+     line-height: 24px;
+    margin: 0; padding: 0;}
+  
+    .visitContSlide .slick-slide{padding: 0 35px;     position: relative;}
+  .visitContSlide .slick-slide.slick-current p{display: block; }
+  .visitContSlide .slick-slide.slick-current {padding: 25px 35px; max-width: 80%; margin-bottom: 30px;  position: relative;}
+  .visitContSlide .slick-slide.slick-current h3   {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    opacity: 1;
+  }
+  .visitContSlide .slick-slide:before {
+    background: #e910ff;
+    content: "";
+    height: 70%;
+    left: -1px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    transition: all .5s ease;
+    visibility: hidden;
+    width: 6px;
+  }
+  .visitContSlide .slick-slide.slick-current:before {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .visitContSlide .slick-slide.slick-current h3:after {
+    content: "";
+    height: 50px;
+    right: -1px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    transition: all .5s ease;
+    visibility: hidden;
+    width: 50px;
+    /* background-image: url(../../../../public/images/arrow.svg) ; */
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: right 0;
+    filter: brightness(0) invert(1);
+  }
+  .visitContSlide .slick-slide.slick-current h3:after {
+    opacity: 1;
+    visibility: visible;
+  }
+  .visitContSlide .slick-slide.slick-current:after {
+    content: '';
+    position: absolute;
+    opacity: 1;
+    visibility: visible;
+    background: #b78ee2;
+    width: 100%;
+    height: 1px;
+    left: 35px;
+    bottom: 0;
+    opacity: 0.5;
+  }
+  .visitContSlide .slick-list{
+  height: 100vh;
+  border-left: solid 1px #e910ff;
+  }
+  .visitslideImg .slick-arrow{top: auto;bottom: 14%; z-index: 99;width: 40px;height: 40px;opacity: 0.5; -webkit-transition: all 0.5s ease;-o-transition: all 0.5s ease;transition: all 0.5s ease;-webkit-transform: scale(1);-ms-transform: scale(1);transform: scale(1);}
+  
+  .visitslideImg .slick-arrow:hover{ opacity: 1;}
+  
+  .visitslideImg .slick-prev {
+    /* background-image: url(../../../../public/images/icons/LeftArrow-Bg.svg) !important; */
+    background-size:contain !important;
+    left: auto;
+    right: calc(5% + 50px);
+  }
+  
+  .visitslideImg .slick-next {
+    /* background-image: url(../../../../public/images/icons/RightArrow-Bg.svg) !important; */
+    background-size: contain !important;
+    right: 5%;
+  }
+  .visitslideImg .slick-prev:before, .visitslideImg .slick-next:before{display: none;}
+  /* Became a Volunteer  */ 
+  
