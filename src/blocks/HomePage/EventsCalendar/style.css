@@ -1,0 +1,119 @@
+.EventsCalendarMainSection{
+    /* background-color: #f7f7f7; */
+}
+
+.EventsCalendarTitleMain h2{
+    font-family: 'NewAmsterdam';
+    font-size: 100px;
+    line-height: 79px;
+    color: #da644a;
+}
+
+.EventsCalendarTitleMain p{
+    font-family: '29LT Bukra Regular';
+    font-size: 18px;
+    line-height: 28px;
+    color: #000;
+    width: 80%;
+    margin-top: 15px;
+}
+
+.EventsCalenderButtons {
+    display: flex;
+    column-gap: 120px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.EventsCalenderLeftButton {
+  width: 40px;
+  height: 40px;
+  background-image: url("../../../public/images/icons/LeftArrow-Bg.svg");
+  background-size: cover;
+  position: relative;
+}
+
+.EventsCalenderLeftButton:hover {
+  background-image: url("../../../public/images/icons/LeftArrow.svg");
+  cursor: pointer;
+}
+
+.EventsCalenderRightButton {
+  width: 40px;
+  height: 40px;
+  background-image: url("../../../public/images/icons/RightArrow-Bg.svg");
+  background-size: cover;
+}
+
+.EventsCalenderRightButton:hover {
+  background-image: url("../../../public/images/icons/RightArrow.svg");
+  cursor: pointer;
+}
+
+.EventsCalenderLeftButton::before {
+  content: "";
+  width: 90px;
+  height: 1px;
+  background-color: #e1e1e1;
+  position: absolute;
+  top: 48%;
+  left: 54px;
+}
+
+.EventsCalendarImageSection {
+  width: 330px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.EventsCalendarCardSection {
+  min-width: 330px;
+}
+.CalenderCategoryOverlay {
+    font-family: "29LT Bukra SmBd";
+    font-size: 12px;
+    line-height: 16px;
+    color: #f5dbe1;
+    background-color: #cf5772;
+    padding: 6px 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.EventsCalendarMonthtime{
+    display: flex;
+    column-gap: 5px;
+    background: #da644a;
+    width: fit-content;
+    padding-left: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin-top: 20px;
+    padding: 3px 9px;
+    padding-top: 6px;
+    margin-left: 5px;
+}
+
+.EventsCalendarMonthStyle{
+    font-family: '29LT Bukra SmBd';
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+}
+.EventsCalendarTitlecss{
+    font-family: '29LT Bukra SmBd';
+    width: 80%;
+    max-width: fit-content;
+    margin-top: 14px;
+}
+.EventsCalendarContentcss{
+    font-family: '29LT Bukra Regular';
+    width: 90%;
+    max-width: fit-content;
+    margin-top: 5px;
+}

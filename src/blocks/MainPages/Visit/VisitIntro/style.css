@@ -1,0 +1,90 @@
+
+  
+  
+  .volunteeerMainContent {
+}
+
+.workIntro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 0 12%;
+  
+}
+
+ 
+
+.workIntro h3 {
+  font-family: NewAmsterdam;
+  font-size: 120px;
+  color: #100f9a;
+  line-height: 94px;
+}
+
+.workIntro p {
+  font-family: "29LT Bukra Regular";
+  font-size: 16px;
+  line-height: 26px;
+  color: #000;
+  margin-top: 20px;
+  width: fit-content;
+}
+ 
+
+.visitIntroParaSection {
+    margin-top: 35px;
+    position: relative;
+    padding-bottom: 140px;
+    padding-top: 60px;
+
+}
+
+.VolunteeerTextBackground {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  white-space: nowrap;
+  width: 200%;
+  /* animation: scrollText 20s linear infinite; */
+  z-index: 0;
+  opacity: 0.05;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation: scrollText 10s linear infinite;
+}
+
+.VolunteeerTextBackground p {
+  font-size: 280px;
+  font-family: "29LT Bukra SmBd";
+  text-transform: uppercase;
+  line-height: 150px;
+}
+.scroll-left {
+  animation-name: scrollLeftVolunteer;
+}
+
+.scroll-right {
+  animation-name: scrollRightVolunteer;
+}
+
+@keyframes scrollLeftVolunteer {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRightVolunteer {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+

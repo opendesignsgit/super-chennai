@@ -1,137 +1,124 @@
+// storage-adapter-import-placeholder
 import { postgresAdapter } from '@payloadcms/db-postgres'
-import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import path from 'path'
-import { buildConfig } from 'payload'
-import { fileURLToPath } from 'url'
-import sharp from 'sharp'
 
-// Collections
-import { Users } from './collections/Users'
+import sharp from 'sharp' // sharp-import
+import path from 'path'
+import { buildConfig, PayloadRequest } from 'payload'
+import { fileURLToPath } from 'url'
+
+import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
+import { Posts } from './collections/Posts'
+import { Visits } from './collections/Visits'
 
-// Globals
-import { Header } from './global/header'
-import BecameAVolunteer from './blocks/becameAVolunteer/schema'
-import { ExploreBlock } from './blocks/explore/shema'
-import { StartupChennaiBlock } from './blocks/startupChennai/schema'
-import { FunChennaiBlock } from './blocks/funChennai/schema'
-import { SocialChennaiBlock } from './blocks/socialChennai/schema'
-import { GlobalSearchBlock } from './blocks/Globalsearch/schema'
-import VolunteerSliders from './collections/realations-shemas/Volunteer-Section/Volunteer'
-import footer from './global/footer'
-import InvestmentCategories from './collections/realations-shemas/Investments/Investments'
-import ChennaiInvestmentsBlock from './blocks/ChennaiInvestments/schema'
-import EventsCalendarBlock from './blocks/eventsCalendar/schema'
-import EventsCalendar from './collections/realations-shemas/EventsCalendar/event-calendar'
-import volunteerBannerBlock from './blocks/page-blocks/volunteer/banner/schema'
-import volunteerContentBlock from './blocks/page-blocks/volunteer/Volunteer-life-content/schema'
-import volunteerBecameListBlock from './blocks/page-blocks/volunteer/became-a-volunteer/schema'
-import workBannerBlock from './blocks/page-blocks/work/banner/schema'
-import workInChennaiBlock from './blocks/page-blocks/work/work-in-chennai/schema'
-import SocialReelsCollection from './collections/realations-shemas/socialReels/socialReels'
-import investBannerBlock from './blocks/page-blocks/invest/banner/schema'
-import investChennaiBlock from './blocks/page-blocks/invest/InvestChennai/schema'
-import investmentCategoryListBlock from './blocks/page-blocks/invest/invest-category/schema'
-import liveBannerBlock from './blocks/page-blocks/live/banner/schema'
-import liveInfoBlock from './blocks/page-blocks/live/living-in-chennai/schema'
-import chennaiLifeEssentialsBlock from './blocks/page-blocks/live/chennaiLifeEssentials/schema'
-import accodomationBannerBlock from './blocks/page-blocks/accodomation/banner/schema'
-import HotelsInChennaiBlock from './blocks/page-blocks/accodomation/hotelsInChennai/schema'
-import ExploreMoreChennaiBlock from './blocks/page-blocks/accodomation/exploreMore/schema'
-import VisitCategories from './collections/realations-shemas/main-pages/visit-page/visit-catogory/schema'
-import VisitIntroTextBlock from './blocks/page-blocks/visit/visit-intro/schema'
-import VisitBannerBlock from './blocks/page-blocks/visit/visit-banner/schema'
-// import CustomDashboardBanner from './components/admin-dashboard/DashboardBanner'
+import { Users } from './collections/Users'
+import { plugins } from './plugins'
+import { defaultLexical } from '@/fields/defaultLexical'
+import { getServerSideURL } from './utilities/getURL'
+import SocialReelsCollection from './collections/RelationSchema/SocialReels/SocialReels'
+import VolunteerSlidesCollection from './collections/RelationSchema/Volunteer/Volunteer'
+import Footer from './Footer/config'
+import Header from './Header/config'
+import EventsCalendar from './collections/RelationSchema/EventsCalendar/event-calendar'
+import InvestmentCategoriesCollection from './collections/RelationSchema/Investments/Investments'
+import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config'
+import VisitCategoryCollection from './collections/RelationSchema/main-pages/visit-page/visit-catogory/schema'
+import { work } from './collections/Work'
+import { searchPlugin } from '@payloadcms/plugin-search'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
-    user: Users.slug,
-    meta: {
-      titleSuffix: '- Super Chennai',
-    },
-    // branding: {
-    //   logo: './public/images/icons/LeftArrow-Bg.svg',
-    //   favicon: '/favicon.ico',
-    //   css: './admin-custom.css',
-    // },
     components: {
-      // beforeDashboard: [CustomDashboardBanner],
+      // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
+      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
+      beforeLogin: ['@/components/BeforeLogin'],
+      // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
+      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
+      beforeDashboard: ['@/components/BeforeDashboard'],
+    },
+    importMap: {
+      baseDir: path.resolve(dirname),
+    },
+    user: Users.slug,
+    livePreview: {
+      breakpoints: [
+        {
+          label: 'Mobile',
+          name: 'mobile',
+          width: 375,
+          height: 667,
+        },
+        {
+          label: 'Tablet',
+          name: 'tablet',
+          width: 768,
+          height: 1024,
+        },
+        {
+          label: 'Desktop',
+          name: 'desktop',
+          width: 1440,
+          height: 900,
+        },
+      ],
     },
   },
-  collections: [
-    Users,
-    Media,
-    Pages,
-    VolunteerSliders,
-    InvestmentCategories,
-    EventsCalendar,
-    SocialReelsCollection,
-    //########### MAINPAGES COLLECTION #######
-    VisitCategories,
-  ],
+  // This config helps us configure global or default features that the other editors can inherit
+  editor: defaultLexical,
 
-  globals: [Header, footer],
-
-  blocks: [
-    // #########  HOME PAGE BLOCKS GROPUS ########
-    BecameAVolunteer,
-    ExploreBlock,
-    StartupChennaiBlock,
-    FunChennaiBlock,
-    SocialChennaiBlock,
-    GlobalSearchBlock,
-    ChennaiInvestmentsBlock,
-    EventsCalendarBlock,
-
-    //####### VOLUEENTER PAGE  ####################
-    volunteerBannerBlock,
-    volunteerContentBlock,
-    volunteerBecameListBlock,
-
-    //############# WORK PAGE  #####################
-    workBannerBlock,
-    workInChennaiBlock,
-
-    //############# INVEST PAGE  ###################
-    investBannerBlock,
-    investChennaiBlock,
-    investmentCategoryListBlock,
-
-    //############# INVEST PAGE  ###################
-    liveBannerBlock,
-    liveInfoBlock,
-    chennaiLifeEssentialsBlock,
-
-    //############# ACCOMODATION PAGE  ##############
-    accodomationBannerBlock,
-    HotelsInChennaiBlock,
-    ExploreMoreChennaiBlock,
-
-    VisitIntroTextBlock,
-    VisitBannerBlock,
-  ],
-
-  editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
-  typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
-  },
   db: postgresAdapter({
     pool: {
       connectionString:
-        process.env.DATABASE_URL || 'postgresql://postgres:admin@123@localhost:5432/super-chennai',
+        process.env.DATABASE_URL || 'postgresql://postgres:root@localhost:5432/superchennai',
       ssl: false,
       connectionTimeoutMillis: 5000,
       idleTimeoutMillis: 30000,
     },
   }),
+
+  collections: [
+    Pages,
+    Posts,
+    Media,
+    Categories,
+    Users,
+    Visits,
+    work,
+    VolunteerSlidesCollection,
+    SocialReelsCollection,
+    EventsCalendar,
+    InvestmentCategoriesCollection,
+    VisitCategoryCollection,
+  ],
+  cors: [getServerSideURL()].filter(Boolean),
+  globals: [Header, Footer],
+  blocks: [ChennaiInvestmentsBlock],
+  plugins: [
+    ...plugins,
+    // storage-adapter-placeholder
+  ],
+  secret: process.env.PAYLOAD_SECRET,
   sharp,
-  plugins: [payloadCloudPlugin()],
-  // Enable debug logging in development
-  debug: process.env.NODE_ENV === 'development',
+  typescript: {
+    outputFile: path.resolve(dirname, 'payload-types.ts'),
+  },
+  jobs: {
+    access: {
+      run: ({ req }: { req: PayloadRequest }): boolean => {
+        // Allow logged in users to execute this endpoint (default)
+        if (req.user) return true
+
+        // If there is no logged in user, then check
+        // for the Vercel Cron secret to be present as an
+        // Authorization header:
+        const authHeader = req.headers.get('authorization')
+        return authHeader === `Bearer ${process.env.CRON_SECRET}`
+      },
+    },
+    tasks: [],
+  },
 })
