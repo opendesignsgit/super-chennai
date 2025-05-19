@@ -1,0 +1,404 @@
+/* FullWidthHeaderMegaMenu.css */
+
+.Megamanuheader {
+    width: 100%;
+    background-color: transparent;
+    position: relative;
+    z-index: 50;
+  }
+  
+  .Megamenunav {
+    width: 100%;
+  }
+  
+  .Megamenutop-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    overflow: hidden;
+  }
+  
+  .Megamenutop-bar-desktop {
+    padding: 1rem 2rem;
+  }
+  
+  .Megamenulogo {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .Megamenumenuicon {
+    display: block;
+  }
+  
+  .Megamenumenudesktop {
+    display: none;
+  }
+  
+  .Megamenumenuitem {
+    cursor: pointer;
+    position: relative;
+    background: none;
+    border: none;
+    font-weight: 500;
+    font-size: 13px;
+    color: #fff;
+    font-family: "29LT Bukra SmBd";
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .Megamenumenuitem:hover {
+    color: #a44294; /* Tailwind's blue-600 */
+  }
+  
+  .Newmegamenu {
+    position: absolute;
+    top: 92%;
+    left: 0;
+    width: 100%;
+    background-color: #f3f4f6;
+    padding: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    border-bottom: 8px solid #a44294;
+  }
+  
+  .Newmegamenu {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .Newmegamenu.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  .Newmegamenu.hide {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+  }
+  
+  .Newmegamenuinner {
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    width: 65%;
+    padding: 2.5rem 0;
+    height: 80%;
+  }
+  
+  .Megamenumenuitem::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 4.5px solid transparent;
+    border-right: 4.5px solid transparent;
+    border-top: 4.5px solid #aaaaaa;
+    display: block;
+    position: absolute;
+    top: 38%;
+    right: 5px;
+  }
+  .mega-block-title {
+    font-family: "29LT Bukra SmBd";
+    color: #a44294;
+    /* font-size: 17px; */
+    line-height: 20px;
+    font-size: clamp(13px, 1vw, 17px);
+  }
+  
+  .mega-block-desc {
+    width: 75%;
+    margin-top: 3px;
+    font-family: "29LT Bukra Regular";
+    font-size: clamp(11px, 1.2vw, 14px);
+    line-height: clamp(16px, 2vw, 22px);
+    color: #000000;
+    font-weight: 500;
+  }
+  
+  .mobile-menu {
+    padding: 0 1.5rem 1rem;
+  }
+  
+  .mobile-section {
+    margin-bottom: 1rem;
+  }
+  
+  .mobile-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  
+  .mobile-content {
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .mobile-subtitle {
+    font-weight: 500;
+  }
+  
+  .mobile-subdesc {
+    font-size: 0.875rem;
+    color: #4b5563;
+  }
+  
+  @media (min-width: 768px) {
+    /* .activeStateMegamenu .Megamenumenudesktop {
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    } */
+  
+    .Megamenumenudesktop {
+      display: flex;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 10px 9px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      column-gap: 30px;
+    }
+  
+    .activeStateMegamenu .Megamenumenudesktop {
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  
+    .scrolled .Megamenumenudesktop {
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  
+    .Megamenumenuicon {
+      display: none;
+    }
+  
+    .Megamenutop-bar {
+      padding: 1rem 6rem;
+      padding-bottom: 0;
+      /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    }
+  
+    .mobile-menu {
+      display: none;
+    }
+  }
+  
+  /* Styles */
+  
+  .Megamenulogo {
+    width: 156px;
+    height: 115px;
+    background-image: url("./super-chennai-logo-final.png");
+    background-size: contain;
+    z-index: 10;
+  }
+  
+  .megamenuMainContainer {
+    display: flex;
+    justify-content: center;
+    max-width: 1130px;
+    column-gap: 30px;
+    height: 600px;
+  }
+  
+  .megamenuMainImage {
+    width: 35%;
+    object-fit: cover;
+  }
+  
+  .Megamenulogo1 {
+    font-weight: 600;
+    font-size: 15px;
+    font-family: "29LT Bukra SmBd";
+    letter-spacing: 1px;
+    line-height: 20px;
+    color: #fff;
+  }
+  .Megamenumenuitem {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 19px;
+    cursor: pointer;
+  }
+  
+  .menu-arrow {
+    display: inline-block;
+    margin-left: 6px;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Rotate the arrow on hover */
+  /* .Megamenumenuitem:hover .menu-arrow {
+    transform: rotate(240deg);
+    margin-top: -10px;
+  } */
+  
+  .mainMegamenuContainer {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: transparent;
+  }
+  
+  .mainMegamenuContainer.scrolled {
+    background-color: white; /* Change to your preferred color */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+  }
+  
+  .activeStateMegamenu {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .activeStateMegamenu .Megamenumenuitem {
+    color: #a44294;
+  }
+  
+  .activeStateMegamenu .Megamenumenuitem:hover {
+    text-decoration: underline;
+  }
+  .activeStateMegamenu .Megamenumenuitem:hover {
+    text-decoration: none;
+  }
+  
+  .activeStateMegamenu .Megamenulogo1 {
+    color: #a44294;
+  }
+  
+  .scrolled .Megamenumenuitem {
+    color: #000;
+  }
+  
+  .scrolled .Megamenulogo1 {
+    color: #000;
+  }
+  .scrolled .Megamenulogo1:hover {
+    color: #a44294;
+  }
+  
+  .scrolled .Megamenumenuitem:hover {
+    color: #a44294;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+  }
+  
+  .activeStateMegamenu .Megamenumenuitem {
+    color: #000;
+  }
+  .activeStateMegamenu .Megamenumenuitem:hover {
+    border: #a44294;
+  }
+  
+  .scrolled .Megamenutop-bar {
+    padding-bottom: 10px;
+  }
+  
+  .scrolled .Megamenulogo {
+    width: 116px;
+    height: 86px;
+    background-image: url(./super-chennai-logo-final-header-color.png);
+    background-size: contain;
+    z-index: 10;
+  }
+  
+  .mega-link-wrapper h4:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1600px) {
+    .megamenuMainContainer {
+      height: auto;
+    }
+  
+    .Newmegamenuinner {
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+  }
+  /* Responsive */
+
+
+
+
+  .menuBarFullContainer {
+  display: flex;
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 100000;
+}
+
+.menuBarFullFirstSection {
+  width: 60.5%;
+  background: #6268a6;
+}
+
+.closeButtonMenubar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.closeButtonMenubar img:first-child {
+  width: auto;
+  object-fit: none;
+}
+
+.closeButtonMenubar img:nth-child(2) {
+  width: auto;
+  object-fit: none;
+  cursor: pointer;
+}
+
+.menuBarFullSecondSection {
+  width: 40%;
+  padding-left: 4%;
+  padding-top: 2%;
+  background: #fff;
+}
+
+.menuBarLinksContent li {
+  font-family: "Poppinsthin";
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #808080;
+  width: 75%;
+  border-bottom: 1px solid #dddddd;
+  letter-spacing: 2px;
+  font-size: clamp(22px, 4vw, 44px);
+  line-height: clamp(36px, 6vw, 74px);
+}
+
+.menuBarLinksContent li:hover {
+  color: #995098;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+.menuBarLinksContent {
+  margin-top: 50px;
+}
+
+@media (max-width: 1600px) {
+  .menuBarLinksContent li {
+    font-size: 29px;
+    line-height: 52px;
+  }
+
+  .menuBarLinksContent {
+    margin-top: 22px;
+  }
+}

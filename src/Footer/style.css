@@ -1,0 +1,153 @@
+
+
+.FooterBackground{
+    /* background-color: #3b1d48; */
+    background-image: url('../public/images/footer-background.png'), url('../public/images/footer-background-image.png');
+  }
+  
+  
+  .FooterHeading{
+    font-family: '29LT Bukra';
+    font-family: '29LT Bukra SmBd';
+    color: #e4c9f0;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    line-height: 30px;
+  }
+  
+  .FooterSectionDiv{
+    display: flex;
+    column-gap: 45px;
+  }
+  
+  
+  .FooterSectionDiv h5{
+    font-family: '29LT Bukra';
+    font-family: '29LT-Bukra-Light';
+    color: #ae95bb;
+    font-size: 14px;
+    line-height: 27px;
+    text-transform: uppercase;
+    font-weight: 200;
+  }
+  .SectionLeft{
+    padding-left: 20px;
+    border-left: 1px solid #705e78;
+  }
+  
+  .firstsectionwidth{
+    width: 25%;
+  }
+  
+  .containerSection{
+    display: flex;
+    column-gap: 25px;
+  }
+  
+  .footerthirdSection{
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    border-left: 1px solid #705e78;
+    width: 20%;
+  }
+  .footerthirdSection .SectionLeft{
+    border: none ;
+  }
+  
+  .SectionConatinerSecond{
+    margin-top: 100px;
+  }
+  .SectionConatinerSecond1{
+    margin-top: 100px;
+    border-top: 1px solid #705e78;
+  }
+  
+  .SectionLeft1{
+    width: 25%;
+    padding-left: 20px;
+    border-left: 1px solid #705e78;
+  }
+  .iconsFlex{
+    display: flex;
+    column-gap: 15px;
+  }
+  
+  .followUs{
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+  }
+  
+  .followUs h3{
+    font-family: 'Poppinsbold';
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 22px;
+    color: #d5d5d5;
+    line-height: 29px;
+    padding-left: 10px;
+  }
+  
+  .LogoandFollow{
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+  }
+  
+  .iconsFlex img{
+    width: 45px;
+  }
+  
+  .designBy{
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    margin-top: 11px;
+  }
+  
+  .footermainsection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 50px;
+  }
+  
+  .copyrights{
+  
+  }
+  
+  .copyrights h5{
+    font-family: '29LT Bukra';
+    text-transform: uppercase;
+    color: #a4a4a4;
+  }
+  
+  .designBy img{
+    width: 45px;
+  }
+  
+  .FooterBackground h5{
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .FooterBackground h5::after{
+    background: #705e78;
+    bottom: 0;
+    color: #0000;
+    content: ".";
+    height: 1px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    width: 0;
+    transition: all 0.5s ease;
+  }
+  .FooterBackground h5:hover:after {
+    height: 0.5px;
+    width: 100%;
+  }
+  

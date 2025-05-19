@@ -1,0 +1,106 @@
+'use client'
+
+import React, { useEffect, useRef, useState } from 'react'
+import Slider from 'react-slick'
+import './style.css'
+
+type VisitItem = {
+  id: string
+  label: string
+  description?: string
+  image: {
+    url: string
+  }
+}
+
+type VisitGroupRef = {
+  title: string
+  description?: string
+  items: VisitItem[]
+}
+
+
+
+export const VisitCategory = ({ title, description, items }: VisitGroupRef) => {
+  const mainSlider = useRef(null)
+  const thumbSlider = useRef(null)
+
+  const [nav1, setNav1] = useState(null)
+  const [nav2, setNav2] = useState(null)
+
+  useEffect(() => {
+    setNav1(mainSlider.current)
+    setNav2(thumbSlider.current)
+  }, [])
+
+  // const items = items || []
+
+  const mainSettings = {
+    asNavFor: nav2,
+    arrows: true,
+    fade: true,
+  }
+
+  const thumbSettings = {
+    asNavFor: nav1,
+    slidesToShow: 8,
+    focusOnSelect: true,
+    infinite: false,
+    vertical: true,
+    arrows: false,
+    verticalSwiping: false,
+  }
+
+  return (
+    <div className="visitslideOut">
+      <div className="visitslideTop container max-w-7xl mx-auto px-4">
+        <h3>{title}</h3>
+        <p>{description}</p>
+      </div>
+
+      <div className="sliderSection">
+        {/* Main Image */}
+        <div className="visitslideImg">
+          <Slider {...mainSettings} ref={mainSlider}>
+            {items.map((item) => (
+              <div key={item.id} style={{ textAlign: 'center' }}>
+                <img src={item.image?.url} alt={item.label} />
+                <div className="titleOut">
+                  <h4>{item.label}</h4>
+                </div>
+              </div>
+            ))}
+          </Slider>
+        </div>
+
+        {/* Thumbnail */}
+        <div className="visitContSlide">
+          <Slider {...thumbSettings} ref={thumbSlider}>
+            {items.map((item) => (
+              <div key={item.id}>
+                <a href={`/visit/${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <img
+                    src={item.image?.url}
+                    alt={item.label}
+                    style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
+                  />
+                </a>
+                <h3>
+                  <a href={`/category/${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                    {item.label}
+                  </a>
+                </h3>
+                <p>
+                  {item.description}{' '}
+                  <a href={`/details/${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                    Learn more
+                  </a>
+                </p>
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </div>
+    </div>
+  )
+}

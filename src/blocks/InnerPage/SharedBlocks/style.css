@@ -1,0 +1,38 @@
+  /* ----------Running Text Section----------- */
+
+  .Secpadblock {
+    padding-block: 12vh;
+}
+
+.SecTitletb {}
+
+.SecTitletb h2 {
+    font-family: "NewAmsterdam";
+    font-size: 4.5vw;
+    line-height: 1;
+    margin-bottom: 10px;
+    color: #995098; 
+}
+
+.SecTitletb p {
+    font-family: "29LT Bukra";
+    line-height: 1.8;
+    font-size: 1vw;
+}
+
+.marqueetag {
+    margin-bottom: -45px;
+}
+
+.marqueetag .rfm-marquee-container {
+    overflow: hidden;
+}
+
+.marqueetag .rfm-child {
+    font-family: "29LT Bukra SmBd";
+    font-size: 12vw;
+    line-height: 1;
+    color: #f7f7f7;
+    text-transform: uppercase;
+    padding-top: 10px;
+}

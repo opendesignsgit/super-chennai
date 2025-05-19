@@ -1,0 +1,144 @@
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+.Becameavolunteerbg {
+  background-image: url("../../../public/images/becameavolunteerbg.png");
+  padding-bottom: 100px;
+}
+
+.BecameavolunteerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.BecameavolunteerContent h4 {
+  font-family: "NewAmsterdam";
+  font-size: 34px;
+  line-height: 40px;
+  color: #f7f7f7;
+  letter-spacing: 2px;
+}
+
+.volunteerContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 4%;
+}
+.BecameavolunteerContent h2 {
+  font-family: "NewAmsterdam";
+  font-size: 180px;
+  color: #f7f7f7;
+  line-height: 125px;
+  margin-top: 20px;
+}
+.BecameavolunteerContent h6 {
+  font-family: "29LT Bukra Regular";
+  font-size: 18px;
+  color: #f7f7f7;
+  line-height: 28px;
+  margin-top: 20px;
+}
+
+.volunteerSectionImage {
+  width: 50%;
+}
+
+.volunteerSectionContent {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  /* min-height: 400px; */
+}
+
+.volunteerSectionContent h3 {
+  font-family: "29LT Bukra SmBd";
+  font-size: 70px;
+  line-height: 44px;
+  text-transform: uppercase;
+  color: #f7f7f7;
+}
+.volunteerSectionContent h4 {
+  font-family: "29LT Bukra SmBd";
+  font-size: 26px;
+  line-height: 30px;
+  color: #f7f7f7;
+  margin-top: 35px;
+}
+.volunteerSectionContent p {
+  font-family: "29LT Bukra Regular";
+  font-size: 20px;
+  line-height: 24px;
+  color: #f7f7f7;
+  margin-top: 15px;
+}
+.volunteerSectionContent a {
+  font-family: "29LT Bukra SmBd";
+  font-size: 16px;
+  line-height: 24px;
+  color: #390f7f;
+  background: #fff;
+  border-radius: 50px;
+  padding: 7px 25px;
+ 
+  position: relative;
+  cursor: pointer;
+}
+
+.linksContainer {
+    margin-top: 70px;
+}
+
+.volunteerSlider {
+  margin-top: 50px;
+}
+
+.volunteerSectionContent a::after {
+  content: "";
+  display: block;
+  background-color: #84548f;
+  height: 1px;
+  width: 200%;
+  position: absolute;
+  left: 106%;
+  top: 42%;
+}
+
+.sliderControlsVolunteer {
+  display: flex;
+  column-gap: 20px;
+  position: absolute;
+  bottom: 0;
+  right: -50px;
+}
+
+.sliderControlsVolunteer .leftarrowVolunteer,
+.rightarrowVolunteer {
+  width: 40px;
+  height: 40px;
+}
+
+.leftarrowVolunteer {
+  background-image: url("../../../public/images/icons/LeftArrow-Bg.svg");
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+}
+.rightarrowVolunteer {
+    background-image: url("../../../public/images/icons/rightArrowsvg.svg");
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+}
+
+.leftarrowVolunteer:hover {
+  background-image: url("../../../public/images/icons/LeftArrow.svg");
+}
+.rightarrowVolunteer:hover {
+    background-image: url("../../../public/images/icons/RightArrow.svg");
+}

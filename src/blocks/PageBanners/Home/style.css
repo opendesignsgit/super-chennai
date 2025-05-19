@@ -1,0 +1,8 @@
+.herobannerSection{
+    position: relative;
+    z-index: 0;
+}
+
+.herobannerSection .relative{
+    z-index: 0;
+}

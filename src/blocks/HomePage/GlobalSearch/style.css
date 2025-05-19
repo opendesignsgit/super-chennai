@@ -1,0 +1,44 @@
+.formsSection {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    transform: translateY(-25px); 
+    z-index: 10; 
+    position: relative; 
+  }
+  
+
+.searchInputForm{
+    width: 650px;
+    position: relative;
+}
+
+.formssection{
+
+}
+.searchInputForm input{
+    border: 2px solid #c9abcd;
+    width: 650px;
+    height: 51px;
+    border-radius: 50px;
+    padding-left: 30px;
+    font-size: 19px;
+}
+
+.searchInputForm input::placeholder{
+    color: #4f4f4f;
+    font-family: '29LT Bukra Medium';
+}
+
+.searchInputForm button{
+    font-family: '29LT Bukra SmBd';
+    background-color: #995098;
+    color: #fff;
+    width: 120px;
+    height: 43px;
+    border-radius: 50px;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    cursor: pointer;
+}

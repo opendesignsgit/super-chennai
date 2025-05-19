@@ -1,0 +1,51 @@
+.starupchennaiSection{
+    background-image: url("../../../public/images/Background-New-Section.jpg");
+    padding-top: 100px;
+    height: 730px;
+}
+.startupChennaiMainContainer h3{
+    font-family: 'NewAmsterdam';
+    font-size: 120px;
+    color: #fff;
+    line-height: 94px;
+}
+
+.startupChennaiMainContainer p{
+    font-family: '29LT Bukra';
+    font-size: 18px;
+    line-height: 30px;
+    color: #fff;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.startupChennaiImageSection{
+    display: flex;
+    column-gap: 0px;
+    margin-top: 50px;
+}
+
+.firstStarupSection{
+    width: 45%;
+    border: 10px solid #fff;
+}
+
+.STarupChennaiSections{
+    display: flex;
+    width: 45%;
+    flex-wrap: wrap;
+}
+
+.rightSideSectionSTarup{
+    display: flex;
+    column-gap: 0px;
+}
+
+.rightSideSectionSTarup div{
+    border: 10px solid #fff;
+    border-left: 0;
+}
+.StarupForBorder{
+    border-top: 0 !important;
+}
+
