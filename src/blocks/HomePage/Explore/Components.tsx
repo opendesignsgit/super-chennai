@@ -3,7 +3,7 @@ import React from 'react'
 import Slider from 'react-slick'
 import { Media } from '@/payload-types'
 import './style.css'
-import ArrowImage from '../../../public/images/icons/rightArrowsvg.svg'
+import ArrowImage from '../../../assets/images/icons/rightArrowsvg.svg'
 
 type Props = {
   cards: {

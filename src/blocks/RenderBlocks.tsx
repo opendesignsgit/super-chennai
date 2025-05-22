@@ -10,15 +10,23 @@ import { ExploreBlockServer } from './HomePage/Explore/Components'
 import { FunChennaiBlockServer } from './HomePage/funChennai/Component'
 import { StartupChennaiBlockServer } from './HomePage/StartupChennai/Component'
 import ChennaiInvestments from './HomePage/Investments/Components'
-import SocialChennai from './HomePage/SocialChennai/Component'
 import BecameAVolunteer from './HomePage/Volunteer/Component'
 import EventsCalendarBlock from './HomePage/EventsCalendar/Component'
 import GlobalSearch from './HomePage/GlobalSearch/Component'
 import HeroSliderBlock from './PageBanners/Home/Component'
-import { VisitIntroText } from './MainPages/Visit/VisitIntro/Component'
 import { VisitCategory } from './MainPages/Visit/VisitCategory/Component'
 import HotelsInChennaiSection from './InnerPage/SharedBlocks/Hotels/Component'
 import mainPageBanner from './MainPages/SharedBlocks/Banner/Component'
+import { FormPopupComponent } from './MainPages/SharedBlocks/FormPopup/Components'
+import VolunteerBecameSection from './MainPages/Volunteer/Volunteers/Components'
+import { PageIntroText } from './MainPages/SharedBlocks/IntroText/Component'
+import socialReelSlider from './HomePage/SocialChennai/Component'
+import InfographySection from './HomePage/infography/Component'
+import TwoColumnFeatureBlock from './HomePage/TwoColumnFeatureBlock/Components'
+import Utilities from './HomePage/Utilities/Component'
+import { ContentZoneCarousel } from './HomePage/ContentZoneCarousel/Component'
+import SpotlightGallerySection from './HomePage/leftContentRightSlider/Components'
+import EventDetailsBlock from './InnerPage/SharedBlocks/EventDetails/Components'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -33,18 +41,26 @@ const blockComponents: {
   funChennai: FunChennaiBlockServer,
   startupChennai: StartupChennaiBlockServer,
   chennaiInvestments: ChennaiInvestments,
-  socialChennai: SocialChennai,
+  socialReelSlider: socialReelSlider,
   becameAVolunteer: BecameAVolunteer,
   eventsCalendar: EventsCalendarBlock,
   globalSearch: GlobalSearch,
   heroSliderBlock: HeroSliderBlock,
-  visitIntroText: VisitIntroText,
+  infography: InfographySection,
+  twoColumnFeatureBlock: TwoColumnFeatureBlock,
+  utilities: Utilities,
+  spotlightGallery: SpotlightGallerySection,
+  eventDetails:EventDetailsBlock,
 
+  //##################### REUSABLE BLOCKS IN MAINPAGE ################
+
+  introTextBlock: PageIntroText,
   visitcategory: VisitCategory,
-
   ZigZagContent: HotelsInChennaiSection,
-
   mainPageBanner: mainPageBanner,
+  formPopup: FormPopupComponent,
+  volunteerBecameSection: VolunteerBecameSection,
+  contentZoneCarousel: ContentZoneCarousel,
 }
 
 export const RenderBlocks: React.FC<{

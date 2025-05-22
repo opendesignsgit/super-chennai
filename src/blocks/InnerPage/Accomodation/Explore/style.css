@@ -47,11 +47,11 @@
     z-index: 1;
     width: 40px;
     height: 40px;
-    background-image: url("../../../../public/images/icons/RightArrow-Bg.svg");
+    background-image: url("../../../../assets/images/icons/RightArrow-Bg.svg");
     background-size: contain;
   }
   .ExplorePageRightButton:hover {
-    background-image: url("../../../../public/images/icons/RightArrow.svg");
+    background-image: url("../../../../assets/images/icons/RightArrow.svg");
   }
   
   .ExplorePageLeftButton {
@@ -64,12 +64,12 @@
     z-index: 1;
     width: 40px;
     height: 40px;
-    background-image: url("../../../../public/images/icons/LeftArrow-Bg.svg");
+    background-image: url("../../../../assets/images/icons/LeftArrow-Bg.svg");
     background-size: contain;
   }
   
   .ExplorePageLeftButton:hover {
-    background-image: url("../../../../public/images/icons/LeftArrow.svg");
+    background-image: url("../../../../assets/images/icons/LeftArrow.svg");
   }
   
   .ExplorePageSliderImage {

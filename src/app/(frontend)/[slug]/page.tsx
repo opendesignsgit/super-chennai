@@ -12,7 +12,6 @@ import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
-import { Search } from '@/search/Component'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })

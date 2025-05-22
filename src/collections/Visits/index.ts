@@ -27,8 +27,8 @@ import { slugField } from '@/fields/slug'
 
 import HotelsInChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Hotels/config'
 import ExploreMoreChennaiBlock from '@/blocks/InnerPage/Accomodation/Explore/config'
-import { SocialChennaiBlock } from '@/blocks/HomePage/SocialChennai/config'
 import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
+import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
 
 // const createVisitCategoryBlock = (slug: string, singular: string, plural: string): Block => ({
 //   slug,
@@ -189,7 +189,7 @@ export const Visits: CollectionConfig<'visits'> = {
                         // Content,
                         HotelsInChennaiBlock,
                         ExploreMoreChennaiBlock,
-                        SocialChennaiBlock,
+                        socialReelSlider,
                         InnerPageBanner,
 
                         // createVisitCategoryBlock('food', 'Food', 'Food Sections'),

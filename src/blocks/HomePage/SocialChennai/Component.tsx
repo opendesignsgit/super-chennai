@@ -15,7 +15,7 @@ type Props = {
     }[]
   }
 }
-export default function SocialChennai({ heading, description, reelsRef }: Props) {
+export default function socialReelSlider({ heading, description, reelsRef }: Props) {
   const reels = reelsRef.reels
   return (
     <div className="socialChnennaiMaincontainer">

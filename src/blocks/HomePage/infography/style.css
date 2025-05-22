@@ -1,0 +1,332 @@
+.DiverseDelightsText {
+  color: #2b3889;
+  font-family: "NewAmsterdam";
+  font-size: 130px;
+  line-height: clamp(48px, 8.5vw, 150px);
+}
+
+.DiverseDelightsSectionContainer {
+  background-image: url("../../../assets/images/Food-Bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-bottom: 80px;
+  overflow: hidden;
+  position: relative;
+}
+
+.DiverseDelightsTextDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.DiverseDelightsTextDiv img {
+  height: 150px;
+}
+.FoodSectionDesignContainer {
+  background-image: url("../../../assets/images/FoodImageSectionBg.png");
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 900px;
+  margin-top: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 55%;
+  z-index: 1;
+}
+
+.foodSectionThird,
+.foodSectionFirst {
+  width: 40%;
+}
+
+.paragarphTextDiverseFood {
+  display: flex;
+  justify-content: center;
+}
+
+.paragarphTextDiverseFood p {
+  font-family: "29LT Bukra Regular";
+  width: 57%;
+
+  color: #000000;
+  font-size: clamp(14px, 2vw, 18px);
+  line-height: clamp(22px, 4vw, 30px);
+}
+
+.foodSectionSecond {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/assets/images/FoodImageSectionBg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.foodSectionFirst .foodSectionConatiner {
+  width: 400px;
+}
+.foodSectionThird .foodSectionConatiner {
+  width: 400px;
+}
+
+.foodSectionSecond .dishImage {
+  width: 70%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.dishImage.fade-out {
+  opacity: 0;
+}
+
+.foodSectionConatiner {
+  margin-top: 30px;
+  cursor: pointer;
+}
+.foodSectionConatiner h4 {
+  font-family: "NewAmsterdam";
+  color: #7e7e7e;
+  font-size: clamp(24px, 5vw, 75px);
+  line-height: clamp(28px, 5vw, 70px);
+}
+
+.activeDiverseSection h4 {
+  color: #2b3889 !important;
+}
+
+.activeDiverseSection p {
+  color: #000000 !important;
+}
+
+.foodSectionConatiner p {
+  font-family: "29LT Bukra Regular";
+  font-size: 17px;
+  color: #7e7e7e;
+  width: 100%;
+  line-height: 25px;
+  width: 85%;
+}
+
+.foodSectionFirst .foodSectionConatiner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.foodSectionFirst .foodSectionConatiner:first-child {
+  text-align: end;
+  margin-right: 0;
+  position: absolute;
+  top: 0px;
+  left: 10%;
+}
+.foodSectionFirst .foodSectionConatiner:nth-child(2) {
+  text-align: end;
+  margin-right: 0;
+  position: absolute;
+  top: 20%;
+  left: 0%;
+}
+.foodSectionFirst .foodSectionConatiner:nth-child(3) {
+  text-align: end;
+  margin-right: 0;
+  position: absolute;
+  top: 40%;
+  left: -5%;
+}
+.foodSectionFirst .foodSectionConatiner:nth-child(4) {
+  text-align: end;
+  margin-right: 0;
+  position: absolute;
+  top: 60%;
+  left: 0%;
+}
+.foodSectionFirst .foodSectionConatiner:nth-child(5) {
+  text-align: end;
+  margin-right: 0;
+  position: absolute;
+  top: 80%;
+  left: 10%;
+}
+
+/* ////////////// */
+
+.foodSectionThird .foodSectionConatiner:first-child {
+  text-align: left;
+  margin-right: 0;
+  position: absolute;
+  top: 0px;
+  right: 10%;
+}
+.foodSectionThird .foodSectionConatiner:nth-child(2) {
+  text-align: left;
+  margin-right: 0;
+  position: absolute;
+  top: 20%;
+  right: 0%;
+}
+.foodSectionThird .foodSectionConatiner:nth-child(3) {
+  text-align: left;
+  margin-right: 0;
+  position: absolute;
+  top: 40%;
+  right: -5%;
+}
+.foodSectionThird .foodSectionConatiner:nth-child(4) {
+  text-align: left;
+  margin-right: 0;
+  position: absolute;
+  top: 60%;
+  right: 0%;
+}
+.foodSectionThird .foodSectionConatiner:nth-child(5) {
+  text-align: left;
+  margin-right: 0;
+  position: absolute;
+  top: 80%;
+  right: 10%;
+}
+
+.DelightPageText {
+  position: absolute;
+  top: 55%;
+  left: 0;
+  white-space: nowrap;
+  width: 200%;
+  z-index: 0;
+  opacity: 0.025;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation: scrollText 50s linear infinite;
+}
+
+.DelightPageText p {
+  font-family: "29LT Bukra SmBd";
+  font-size: clamp(80px, 10vw, 280px);
+  line-height: clamp(100px, 12vw, 150px);
+  text-transform: uppercase;
+}
+.DelightPageTextscroll-left {
+  animation-name: scrollLeftVolunteer;
+}
+
+.DelightPageTextscroll-right {
+  animation-name: scrollRightVolunteer;
+}
+
+@keyframes scrollLeftVolunteer {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRightVolunteer {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@media (max-width: 768px) {
+  .accordionItem {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+
+  .accordionTitle {
+  }
+
+  .accordionTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    background-color: transparent;
+  }
+
+  .accordionIcon {
+    font-size: 33px;
+    color: #7e7e7e;
+    transition: transform 0.3s ease;
+    font-weight: 600;
+  }
+
+  .accordionContent {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease-in-out;
+  }
+
+  .accordionContent.open {
+    /* max-height is set inline in React based on state */
+  }
+
+  .accordionInnerContent {
+    padding: 16px;
+    background-color: white;
+  }
+
+  .accordionInnerContent img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .accordionTitle h4 {
+    font-family: "NewAmsterdam";
+    font-size: 36px;
+    color: #7e7e7e;
+    line-height: 40px;
+    font-weight: 500;
+  }
+
+  .DiverseDelightsTextDiv img {
+    height: 48px;
+  }
+  .paragarphTextDiverseFood p {
+    width: 90%;
+    text-align: center;
+  }
+
+  .accordionContainer {
+    margin-top: 20px;
+  }
+
+  .accordionInnerContent p {
+    font-family: "29LT Bukra Regular";
+    font-size: 17px;
+    color: #7e7e7e;
+    width: 100%;
+    line-height: 25px;
+  }
+
+  /* .activeAccordion .accordionInnerContent p {
+    color: #2b3889;
+  } */
+
+  .activeAccordion .accordionTitle h4 {
+    color: #2b3889;
+  }
+
+  .activeAccordion .accordionIcon {
+    color: #2b3889;
+  }
+  .DiverseDelightsSectionContainer {
+    padding-bottom: 30px;
+  }
+}

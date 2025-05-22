@@ -20,12 +20,11 @@ import SocialReelsCollection from './collections/RelationSchema/SocialReels/Soci
 import VolunteerSlidesCollection from './collections/RelationSchema/Volunteer/Volunteer'
 import Footer from './Footer/config'
 import Header from './Header/config'
-import EventsCalendar from './collections/RelationSchema/EventsCalendar/event-calendar'
 import InvestmentCategoriesCollection from './collections/RelationSchema/Investments/Investments'
 import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config'
 import VisitCategoryCollection from './collections/RelationSchema/main-pages/visit-page/visit-catogory/schema'
 import { work } from './collections/Work'
-import { searchPlugin } from '@payloadcms/plugin-search'
+import { Events } from './collections/Events'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -88,15 +87,19 @@ export default buildConfig({
     Users,
     Visits,
     work,
+    Events,
+
+
+
     VolunteerSlidesCollection,
     SocialReelsCollection,
-    EventsCalendar,
     InvestmentCategoriesCollection,
     VisitCategoryCollection,
+    
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
-  blocks: [ChennaiInvestmentsBlock],
+  blocks: [ChennaiInvestmentsBlock,],
   plugins: [
     ...plugins,
     // storage-adapter-placeholder

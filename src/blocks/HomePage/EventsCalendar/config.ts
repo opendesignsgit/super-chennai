@@ -7,6 +7,10 @@ const EventsCalendarBlock: Block = {
     singular: 'Event Calendar Block',
     plural: 'Event Calendar Blocks',
   },
+    admin: {
+   
+    group: 'Common Block Contents',
+  },
   fields: [
     {
       name: 'heading',
@@ -22,10 +26,10 @@ const EventsCalendarBlock: Block = {
     {
       name: 'eventGroupRef',
       type: 'relationship',
-      relationTo: 'eventGroups',
+      relationTo: 'events',
       label: 'Select Event Group',
       required: true,
-    },
+    }, 
   ],
 }
 

@@ -20,22 +20,27 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import VisitBannerBlock from '@/blocks/PageBanners/VisitBanner/config'
 import { ExploreBlock } from '@/blocks/HomePage/Explore/config'
 import { FunChennaiBlock } from '@/blocks/HomePage/funChennai/config'
 import { StartupChennaiBlock } from '@/blocks/HomePage/StartupChennai/config'
 import ChennaiInvestmentsBlock from '@/blocks/HomePage/Investments/config'
-import { SocialChennaiBlock } from '@/blocks/HomePage/SocialChennai/config'
 import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
 import EventsCalendarBlock from '@/blocks/HomePage/EventsCalendar/config'
 import { GlobalSearchBlock } from '@/blocks/HomePage/GlobalSearch/config'
 import HeroSlider from '@/blocks/PageBanners/Home/config'
 import VisitCategory from '@/blocks/MainPages/Visit/VisitCategory/config'
-import VisitIntroTextBlock from '@/blocks/MainPages/Visit/VisitIntro/config'
 import HotelsInChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Hotels/config'
 import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
-import { careerIntroBlock } from '@/blocks/InnerPage/SharedBlocks/careerIntro/config'
 import mainPageBannerBlock from '@/blocks/MainPages/SharedBlocks/Banner/config'
+import { FormPopup } from '@/blocks/MainPages/SharedBlocks/FormPopup/config'
+import volunteerBecameListBlock from '@/blocks/MainPages/Volunteer/Volunteers/config'
+import IntroTextBlock from '@/blocks/MainPages/SharedBlocks/IntroText/config'
+import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
+import Infography from '@/blocks/HomePage/infography/config'
+import TwoColumnFeatureBlock from '@/blocks/HomePage/TwoColumnFeatureBlock/config'
+import Utilities from '@/blocks/HomePage/Utilities/config'
+import ContentZoneCarousel from '@/blocks/HomePage/ContentZoneCarousel/config'
+import SpotlightGallery from '@/blocks/HomePage/leftContentRightSlider/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -92,34 +97,45 @@ export const Pages: CollectionConfig<'pages'> = {
               name: 'layout',
               type: 'blocks',
               blocks: [
-                CallToAction,
-                Content,
-                MediaBlock,
-                Archive,
-                FormBlock,
-                VisitBannerBlock,
+                // CallToAction,
+                // Content,
+                // MediaBlock,
+                // Archive,
+                // FormBlock,
+                // VisitBannerBlock,
                 ExploreBlock,
                 FunChennaiBlock,
                 StartupChennaiBlock,
                 ChennaiInvestmentsBlock,
-                SocialChennaiBlock,
+                socialReelSlider,
                 BecameAVolunteerBlock,
                 EventsCalendarBlock,
-                GlobalSearchBlock,
+
                 HeroSlider,
 
                 //###### INNER BLOCKS #############
                 VisitCategory,
-                VisitIntroTextBlock,
                 HotelsInChennaiBlock,
 
-                careerIntroBlock,
+                volunteerBecameListBlock,
+
+                // careerIntroBlock,
 
                 // REUSABLE BLOCK
+
                 InnerPageBanner,
+                // RESUSABLE BLOCK NEW #####################
+                mainPageBannerBlock,
+                IntroTextBlock,
+                GlobalSearchBlock,
+                FormPopup,
 
 
-                mainPageBannerBlock
+                Infography,
+                TwoColumnFeatureBlock,
+                Utilities,
+                ContentZoneCarousel,
+                SpotlightGallery
               ],
               required: true,
               admin: {

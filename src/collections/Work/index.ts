@@ -25,7 +25,7 @@ import {
 import { slugField } from '@/fields/slug'
 import HotelsInChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Hotels/config'
 import ExploreMoreChennaiBlock from '@/blocks/InnerPage/Accomodation/Explore/config'
-import { SocialChennaiBlock } from '@/blocks/HomePage/SocialChennai/config'
+import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
 import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
 import { careerIntroBlock } from '@/blocks/InnerPage/SharedBlocks/careerIntro/config'
 import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
@@ -35,14 +35,13 @@ import futureUnicorns from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/co
 
 export const work: CollectionConfig<'work'> = {
   slug: 'work',
-  
+
   access: {
     create: authenticated,
     delete: authenticated,
     read: authenticatedOrPublished,
     update: authenticated,
   },
-  
 
   defaultPopulate: {
     title: true,
@@ -54,7 +53,6 @@ export const work: CollectionConfig<'work'> = {
     },
   },
   admin: {
-    
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) => {
@@ -66,7 +64,6 @@ export const work: CollectionConfig<'work'> = {
 
         return path
       },
-      
     },
     preview: (data, { req }) =>
       generatePreviewPath({
@@ -104,7 +101,7 @@ export const work: CollectionConfig<'work'> = {
                       blocks: [
                         HotelsInChennaiBlock,
                         ExploreMoreChennaiBlock,
-                        SocialChennaiBlock,
+                        socialReelSlider,
                         InnerPageBanner,
                         careerIntroBlock,
                         FeatureSectionsBlock,

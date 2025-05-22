@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import './style.css'
 import Link from 'next/link'
-import NoData from '@/components/NoData/Index'
+import NoData from '@/components/NoData'
 
 type Slide = {
   title: string
@@ -36,8 +36,7 @@ export default function BecameAVolunteer({
   const [currentSlide, setCurrentSlide] = useState(0)
 
   useEffect(() => {
-    console.log('Heading:', heading)
-    console.log('Slides:', volunteerSlidesRef)
+
   }, [heading, volunteerSlidesRef])
 
   const slides = volunteerSlidesRef?.slides || []
@@ -54,25 +53,32 @@ export default function BecameAVolunteer({
     }
   }
 
-  if (!slides.length) {
-    return (
-      <div className="Becameavolunteerbg">
-        <div className="BecameavolunteerContent">
-          <h4>{heading}</h4>
-          <h2>{title}</h2>
-          <h6>{description}</h6>
-          <NoData message="No reels available" />
-        </div>
-      </div>
-    )
-  }
+    const current = slides[currentSlide]
+    const imageUrl = current?.image?.url || '/placeholder.jpg'
+    const imageAlt = current?.image?.alt || current?.title || 'Volunteer Slide'
 
-  const current = slides[currentSlide]
-  const imageUrl = current?.image?.url || '/placeholder.jpg'
-  const imageAlt = current?.image?.alt || current?.title || 'Volunteer Slide'
+    if (!slides.length) {
+      return (
+        <div className="Becameavolunteerbg">
+          <div className="BecameavolunteerContent">
+            <h4>{heading}</h4>
+            <h2>{title}</h2>
+            <h6>{description}</h6>
+            <NoData message="No reels available" />
+          </div>
+        </div>
+      )
+    }
+
+
 
   return (
     <div className="Becameavolunteerbg">
+      <div className="runningTextContainer">
+            <p className="runningText">
+              BECOME A <br /> VOLUNTEER{' '}
+            </p>
+          </div>
       <div className="BecameavolunteerContent">
         <h4>{heading}</h4>
         <h2>{title}</h2>

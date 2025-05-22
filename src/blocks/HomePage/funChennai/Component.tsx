@@ -1,10 +1,9 @@
-
 'use client'
 import React from 'react'
 import Slider from 'react-slick'
 import { Media } from '@/payload-types'
 import './style.css'
-import parachuteImg from '../../../public/images/parachute.png'
+import parachuteImg from '../../../assets//images/HomePage-Images/parachute.png'
 
 type Props = {
   heading: string
@@ -58,7 +57,7 @@ export const FunChennaiBlockServer: React.FC<Props> = ({ heading, subheading, ca
     <div className="funchennaiBg">
       <div className="funchennaimainSection">
         <div className="container">
-          <div className="funchennaiContainer">
+          <div className="funchennaiContainer max-w-6xl mx-auto px-4 space-y-10 funchennaiMainConatiner">
             <div className="funchennaiText">
               <h3>{heading}</h3>
               <h4 dangerouslySetInnerHTML={{ __html: subheading }} />

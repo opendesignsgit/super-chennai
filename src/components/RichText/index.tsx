@@ -31,6 +31,7 @@ import FeatureSections from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/
 import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 import IntroText from '@/blocks/InnerPage/SharedBlocks/IntroText/Components'
 import FutureUnicorns from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/Component'
+import EventDetailsBlock from '@/blocks/InnerPage/SharedBlocks/EventDetails/Components'
 
 type NodeTypes =
   | DefaultNodeTypes
@@ -112,6 +113,11 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     futureUnicorns: ({ node }: { node: SerializedBlockNode<any> }) => (
       <FutureUnicorns {...node.fields} />
     ),
+
+       eventDetails: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <EventDetailsBlock {...node.fields} />
+    ),
+
   },
 })
 

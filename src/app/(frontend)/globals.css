@@ -4,51 +4,51 @@
 
 @font-face {
   font-family: 'Poppinsthin';
-  src: url('../../public/Fonts/Poppins-Thin.woff') format('woff');
+  src: url('../../assets/Fonts/Poppins-Thin.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Poppinsbold';
-  src: url('../../public/Fonts/Poppins-Bold.woff') format('woff');
+  src: url('../../assets/Fonts/Poppins-Bold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: '29LT Bukra';
-  src: url('../../public/Fonts/29lt-bukra.ttf') format('truetype');
+  src: url('../../assets/Fonts/29lt-bukra.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: '29LT-Bukra-Light';
-  src: url('../../public/Fonts/29lt-bukra-light.ttf') format('truetype');
+  src: url('../../assets/Fonts/29lt-bukra-light.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: '29LT Bukra SmBd';
-  src: url('../../public/Fonts/29LT Bukra SmBd.ttf') format('truetype');
+  src: url('../../assets/Fonts/29LT Bukra SmBd.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: '29LT Bukra Medium';
-  src: url('../../public/Fonts/29LT Bukra Md.ttf') format('truetype');
+  src: url('../../assets/Fonts/29LT Bukra Md.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: '29LT Bukra Regular';
-  src: url('../../public/Fonts/29LT Bukra Regular.ttf') format('truetype');
+  src: url('../../assets/Fonts/29LT Bukra Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'NewAmsterdam';
-  src: url('../../public/Fonts/NewAmsterdam.ttf') format('truetype');
+  src: url('../../assets/Fonts/NewAmsterdam.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

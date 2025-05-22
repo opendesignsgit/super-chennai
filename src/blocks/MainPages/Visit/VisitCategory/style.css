@@ -399,7 +399,7 @@
   transition: all .5s ease;
   visibility: hidden;
   width: 50px;
-  /* background-image: url(../../../../public/images/arrow.svg) ; */
+  /* background-image: url(../../../../assets/images/arrow.svg) ; */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right 0;
@@ -449,14 +449,14 @@
 }
 
 .visitslideImg .slick-prev {
-  background-image: url(../../../../public/images/icons/LeftArrow-Bg.svg) !important;
+  background-image: url(../../../../assets/images/icons/LeftArrow-Bg.svg) !important;
   background-size: contain !important;
   left: auto;
   right: calc(5% + 50px);
 }
 
 .visitslideImg .slick-next {
-  background-image: url(../../../../public/images/icons/RightArrow-Bg.svg) !important;
+  background-image: url(../../../../assets/images/icons/RightArrow-Bg.svg) !important;
   background-size: contain !important;
   right: 5%;
 }

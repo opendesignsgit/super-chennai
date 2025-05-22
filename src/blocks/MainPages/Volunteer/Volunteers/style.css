@@ -87,7 +87,25 @@
     border-radius: 50px;
     font-size: 13px;
     line-height: 29px;
+    color: #000;
   }
+    .exploreVolunteerPage button {
+    width: 175px;
+    text-align: center;
+    font-family: "29LT Bukra SmBd";
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #5b7c9b;
+    background: #fff;
+    border-radius: 50px;
+    font-size: 13px;
+    line-height: 29px;
+        color: #000;
+
+  }
+  
   
   .BecamaAVolunterContentsSection1 h3 {
     font-family: NewAmsterdam;

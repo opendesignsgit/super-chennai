@@ -2,6 +2,7 @@
 
 import React from 'react'
 import './style.css'
+import { FormPopupComponent } from '../../SharedBlocks/FormPopup/Components'
 
 type VolunteerSection = {
   title: string
@@ -57,7 +58,11 @@ export default function VolunteerBecameSection({
                     <h3>{section.title}</h3>
                     <p>{section.description}</p>
                     <div className="exploreVolunteerPage">
-                      <a href={section.linkUrl}>{section.linkText}</a>
+                      <FormPopupComponent
+                        heading="Contact Us"
+                        description="Please fill out the form and we'll get back to you."
+                        buttonText="Enquire Now"
+                      />
                     </div>
                   </div>
                 </>
@@ -67,10 +72,14 @@ export default function VolunteerBecameSection({
                     <h3>{section.title}</h3>
                     <p>{section.description}</p>
                     <div className="exploreVolunteerPage1">
-                      <a href={section.linkUrl}>{section.linkText}</a>
+                      <FormPopupComponent
+                        heading="Contact Us"
+                        description="Please fill out the form and we'll get back to you."
+                        buttonText="Enquire Now"
+                      />
                     </div>
                   </div>
-                   <img
+                  <img
                     src={section.image.url}
                     alt={section.image.alt || section.title}
                     onError={(e) => {

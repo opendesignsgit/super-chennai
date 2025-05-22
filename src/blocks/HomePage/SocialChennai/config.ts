@@ -1,21 +1,19 @@
 import { Block } from 'payload'
 
-export const SocialChennaiBlock: Block = {
-  slug: 'socialChennai',
+export const socialReelSlider: Block = {
+  slug: 'socialReelSlider',
   labels: {
-    singular: 'Social Chennai',
-    plural: 'Social Chennai Sections',
+    singular: 'SocialReelSlider',
+    plural: 'SocialReelSlider',
   },
   fields: [
     {
       name: 'heading',
       type: 'text',
-      required: true,
     },
     {
       name: 'description',
       type: 'textarea',
-      required: true,
     },
     {
       name: 'reelsRef',

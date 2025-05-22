@@ -1,10 +1,10 @@
-import { Block } from "payload";
+import { Block } from 'payload'
 
 export const ExploreBlock: Block = {
   slug: 'explore',
   labels: {
-    singular: 'Explore',
-    plural: 'Explore Blocks',
+    singular: 'Explore Cards',
+    plural: 'Explore Cards',
   },
   fields: [
     {
@@ -26,10 +26,10 @@ export const ExploreBlock: Block = {
         {
           name: 'image',
           type: 'upload',
-          relationTo: 'media', // Ensure you have a media collection
+          relationTo: 'media', 
           required: true,
         },
       ],
     },
   ],
-};
+}
