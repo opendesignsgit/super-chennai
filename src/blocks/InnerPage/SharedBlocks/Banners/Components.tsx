@@ -18,11 +18,7 @@ type BannerProps = {
   }[]
 }
 
-export default function Banner({
-  heading,
-  image,
-  breadcrumb = [],
-}: BannerProps) {
+export default function Banner({ heading, image, breadcrumb = [] }: BannerProps) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const [fullUrl, setFullUrl] = useState('')
@@ -57,7 +53,6 @@ export default function Banner({
         <div className="accodoamationBannerText">
           <h3>{heading}</h3>
           <div className="breadCrum">
-
             {breadcrumbLinks.map((crumb, index) => (
               <React.Fragment key={crumb.href}>
                 <Link href={crumb.href} legacyBehavior>

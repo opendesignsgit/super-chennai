@@ -46,7 +46,7 @@ export default async function Footer() {
     const footerSections = response?.footerSections || {}
     const { socialLinks = [], ...linkSections } = footerSections
 
-    console.log('------------', footerSections)
+    // console.log('------------', footerSections)
 
     const digitalChennaiLinks = footerSections.digitalChennaiLinks || []
     const socialChennaiLinks = footerSections.socialChennaiLinks || []

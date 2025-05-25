@@ -26,12 +26,11 @@ import ExploreMoreChennai from '@/blocks/InnerPage/Accomodation/Explore/Componen
 import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
 import Banner from '@/blocks/InnerPage/SharedBlocks/Banners/Components'
 import CareerIntro from '@/blocks/InnerPage/SharedBlocks/careerIntro/Component'
-import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
 import FeatureSections from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
 import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 import IntroText from '@/blocks/InnerPage/SharedBlocks/IntroText/Components'
 import FutureUnicorns from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/Component'
-import EventDetailsBlock from '@/blocks/InnerPage/SharedBlocks/EventDetails/Components'
+// import EventDetailsBlock from '@/blocks/InnerPage/SharedBlocks/EventDetails/Components'
 
 type NodeTypes =
   | DefaultNodeTypes
@@ -114,9 +113,9 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
       <FutureUnicorns {...node.fields} />
     ),
 
-       eventDetails: ({ node }: { node: SerializedBlockNode<any> }) => (
-      <EventDetailsBlock {...node.fields} />
-    ),
+    //    eventDetails: ({ node }: { node: SerializedBlockNode<any> }) => (
+    //   <EventDetailsBlock {...node.fields} />
+    // ),
 
   },
 })

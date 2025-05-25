@@ -13,6 +13,8 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { RelatedVisits } from '@/blocks/Relatedvisits/Component'
+import EventDetailsBlock from '@/blocks/InnerPage/SharedBlocks/EventDetails/Components'
+import EventDetails from '@/components/EventsDetails/EventDetails'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -47,27 +49,24 @@ export default async function Post({ params: paramsPromise }: Args) {
   const post = await queryPostBySlug({ slug })
 
   if (!post) return <PayloadRedirects url={url} />
+  console.log(post)
 
   return (
-    <div >
+    <div>
       <PageClient />
-
-      {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
-
       {draft && <LivePreviewListener />}
-
       {/* <PostHero post={post} /> */}
-
-        <div >
-          <RichText  data={post.content} enableGutter={false} />
-          {post.relatedevents && post.relatedevents.length > 0 && (
-            <RelatedVisits
-              className=""
-              docs={post.relatedevents.filter((post) => typeof post === 'object')}
-            />
-          )}
-        </div>
+      <div>
+        {/* <RichText data={post.content} enableGutter={false} /> */}
+        {post.relatedevents && post.relatedevents.length > 0 && (
+          <RelatedVisits
+            className=""
+            docs={post.relatedevents.filter((post) => typeof post === 'object')}
+          />
+        )}
+        <EventDetails data={post} />
+      </div>
     </div>
   )
 }

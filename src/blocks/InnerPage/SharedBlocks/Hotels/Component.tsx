@@ -53,11 +53,7 @@ const HotelsInChennaiSection: React.FC<Props> = ({ sections }) => {
                   <div className="AccomoddationPage">
                     <a href={section.linkUrl}>{section.linkText}</a>
                   </div>
-                  {/* <FormPopupComponent
-                    heading="Contact Us"
-                    description="Please fill out the form and we'll get back to you."
-                    buttonText="Open Contact Form"
-                  /> */}
+                
                 </div>
               </>
             ) : (

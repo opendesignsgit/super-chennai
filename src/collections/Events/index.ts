@@ -24,11 +24,9 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from '@/fields/slug'
-import introTextBlock from '@/blocks/InnerPage/SharedBlocks/IntroText/config'
 import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
-import EventDetailsBlock from '@/blocks/InnerPage/SharedBlocks/EventDetails/Components'
 import EventDetails from '@/blocks/InnerPage/SharedBlocks/EventDetails/config'
-
+import { Content } from '@/blocks/Content/config'
 export const EventsContent = (slug: string, singular: string, plural: string): Block => ({
   slug,
   labels: {
@@ -180,6 +178,16 @@ export const Events: CollectionConfig<'events'> = {
       required: true,
     },
     {
+      name: 'isFeatured',
+      type: 'checkbox',
+      label: 'Feature Event',
+      defaultValue: false,
+      admin: {
+        position: 'sidebar',
+        description: 'Mark this event as a featured event',
+      },
+    },
+    {
       type: 'tabs',
       tabs: [
         {
@@ -196,7 +204,8 @@ export const Events: CollectionConfig<'events'> = {
                       blocks: [
                         // ############3  INSER WA WAITING DETAIL PGE BLOCKS ##################
                         InnerPageBanner,
-                        EventDetails
+                        EventDetails,
+                        Content,
                       ],
                     }),
                     FixedToolbarFeature(),
@@ -211,60 +220,6 @@ export const Events: CollectionConfig<'events'> = {
           ],
           label: 'Content',
         },
-        {
-          fields: [
-            {
-              name: 'relatedevents',
-              type: 'relationship',
-              admin: {
-                position: 'sidebar',
-              },
-              filterOptions: ({ id }) => {
-                return {
-                  id: {
-                    not_in: [id],
-                  },
-                }
-              },
-              hasMany: true,
-              relationTo: 'events',
-            },
-            {
-              name: 'categories',
-              type: 'relationship',
-              admin: {
-                position: 'sidebar',
-              },
-              hasMany: true,
-              relationTo: 'categories',
-            },
-          ],
-          label: 'Meta',
-        },
-        {
-          name: 'meta',
-          label: 'SEO',
-          fields: [
-            OverviewField({
-              titlePath: 'meta.title',
-              descriptionPath: 'meta.description',
-              imagePath: 'meta.image',
-            }),
-            MetaTitleField({
-              hasGenerateFn: true,
-            }),
-            MetaImageField({
-              relationTo: 'media',
-            }),
-
-            MetaDescriptionField({}),
-            PreviewField({
-              hasGenerateFn: true,
-              titlePath: 'meta.title',
-              descriptionPath: 'meta.description',
-            }),
-          ],
-        },
 
         //######### FIELD CONTENTS #################
         {
@@ -277,6 +232,33 @@ export const Events: CollectionConfig<'events'> = {
               relationTo: 'media',
               required: true,
             },
+
+            {
+              name: 'artistImage',
+              label: 'Artist Image',
+              type: 'upload',
+              relationTo: 'media',
+              required: false,
+              admin: {
+                description: 'Upload an image of the performing artist',
+              },
+            },
+            {
+              name: 'singerName',
+              label: 'Singer Name',
+              type: 'text',
+            },
+            {
+              name: 'artistDesignation',
+              label: 'Artist Designation',
+              type: 'text',
+              required: false,
+              admin: {
+                placeholder: 'e.g., Singer, Guitarist, Director, etc.',
+                description: 'Specify the role/designation of the artist in the event',
+              },
+            },
+
             {
               name: 'title',
               type: 'text',
@@ -286,12 +268,9 @@ export const Events: CollectionConfig<'events'> = {
               name: 'description',
               type: 'textarea',
             },
+
             {
-              name: 'time',
-              type: 'text',
-            },
-            {
-              name: 'eventDate', 
+              name: 'eventDate',
               type: 'date',
               required: true,
               admin: {
@@ -302,7 +281,24 @@ export const Events: CollectionConfig<'events'> = {
                 description: 'Choose full date (day, month, year)',
               },
             },
-             {
+            {
+              name: 'performerRole',
+              type: 'text',
+            },
+
+            {
+              name: 'details',
+              type: 'group',
+              fields: [
+                { name: 'duration', type: 'text' },
+                { name: 'ageLimit', type: 'text' },
+                { name: 'language', type: 'text' },
+                { name: 'genre', type: 'text' },
+                { name: 'location', type: 'text' },
+              ],
+            },
+
+            {
               name: 'category',
               type: 'select',
               required: true,
@@ -417,7 +413,6 @@ export const Events: CollectionConfig<'events'> = {
                 { label: 'Quiz Competition', value: 'quiz_competition' },
               ],
               admin: {
-               
                 description: 'Choose the category of the event',
                 isClearable: true,
                 isSortable: true,
@@ -436,20 +431,62 @@ export const Events: CollectionConfig<'events'> = {
                 description: 'Full address or venue location for the event',
               },
             },
-            // {
-            //   name: 'eventType',
-            //   type: 'text',
-            //   label: 'Event Type',
-            //   required: true,
-            //   admin: {
-            //     placeholder: 'e.g. Music, Workshop, Festival...',
-            //     description: 'Type the event type manually',
-            //   },
-            // },
           ],
         },
+        {
+          fields: [
+            {
+              name: 'relatedevents',
+              type: 'relationship',
+              admin: {
+                position: 'sidebar',
+              },
+              filterOptions: ({ id }) => {
+                return {
+                  id: {
+                    not_in: [id],
+                  },
+                }
+              },
+              hasMany: true,
+              relationTo: 'events',
+            },
+            {
+              name: 'categories',
+              type: 'relationship',
+              admin: {
+                position: 'sidebar',
+              },
+              hasMany: true,
+              relationTo: 'categories',
+            },
+          ],
+          label: 'Meta',
+        },
+        {
+          name: 'meta',
+          label: 'SEO',
+          fields: [
+            OverviewField({
+              titlePath: 'meta.title',
+              descriptionPath: 'meta.description',
+              imagePath: 'meta.image',
+            }),
+            MetaTitleField({
+              hasGenerateFn: true,
+            }),
+            MetaImageField({
+              relationTo: 'media',
+            }),
 
-        
+            MetaDescriptionField({}),
+            PreviewField({
+              hasGenerateFn: true,
+              titlePath: 'meta.title',
+              descriptionPath: 'meta.description',
+            }),
+          ],
+        },
       ],
     },
     {
@@ -502,6 +539,7 @@ export const Events: CollectionConfig<'events'> = {
         },
       ],
     },
+
     ...slugField(),
   ],
   hooks: {

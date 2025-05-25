@@ -7,8 +7,7 @@ const EventsCalendarBlock: Block = {
     singular: 'Event Calendar Block',
     plural: 'Event Calendar Blocks',
   },
-    admin: {
-   
+  admin: {
     group: 'Common Block Contents',
   },
   fields: [
@@ -16,7 +15,6 @@ const EventsCalendarBlock: Block = {
       name: 'heading',
       type: 'text',
       label: 'Top Heading',
-      required: true,
     },
     {
       name: 'description',
@@ -28,8 +26,7 @@ const EventsCalendarBlock: Block = {
       type: 'relationship',
       relationTo: 'events',
       label: 'Select Event Group',
-      required: true,
-    }, 
+    },
   ],
 }
 

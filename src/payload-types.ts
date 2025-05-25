@@ -393,9 +393,9 @@ export interface Page {
         blockType: 'becameAVolunteer';
       }
     | {
-        heading: string;
+        heading?: string | null;
         description?: string | null;
-        eventGroupRef: number | Event;
+        eventGroupRef?: (number | null) | Event;
         id?: string | null;
         blockName?: string | null;
         blockType: 'eventsCalendar';
@@ -759,6 +759,10 @@ export interface VolunteerSlide {
 export interface Event {
   id: number;
   title: string;
+  /**
+   * Mark this event as a featured event
+   */
+  isFeatured?: boolean | null;
   content: {
     root: {
       type: string;
@@ -774,25 +778,31 @@ export interface Event {
     };
     [k: string]: unknown;
   };
-  relatedevents?: (number | Event)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
   event: {
     image: number | Media;
+    /**
+     * Upload an image of the performing artist
+     */
+    artistImage?: (number | null) | Media;
+    singerName?: string | null;
+    /**
+     * Specify the role/designation of the artist in the event
+     */
+    artistDesignation?: string | null;
     title: string;
     description?: string | null;
-    time?: string | null;
     /**
      * Choose full date (day, month, year)
      */
     eventDate: string;
+    performerRole?: string | null;
+    details?: {
+      duration?: string | null;
+      ageLimit?: string | null;
+      language?: string | null;
+      genre?: string | null;
+      location?: string | null;
+    };
     /**
      * Choose the category of the event
      */
@@ -910,6 +920,16 @@ export interface Event {
      * Full address or venue location for the event
      */
     address?: string | null;
+  };
+  relatedevents?: (number | Event)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
   };
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
@@ -2059,7 +2079,32 @@ export interface WorkSelect<T extends boolean = true> {
  */
 export interface EventsSelect<T extends boolean = true> {
   title?: T;
+  isFeatured?: T;
   content?: T;
+  event?:
+    | T
+    | {
+        image?: T;
+        artistImage?: T;
+        singerName?: T;
+        artistDesignation?: T;
+        title?: T;
+        description?: T;
+        eventDate?: T;
+        performerRole?: T;
+        details?:
+          | T
+          | {
+              duration?: T;
+              ageLimit?: T;
+              language?: T;
+              genre?: T;
+              location?: T;
+            };
+        category?: T;
+        link?: T;
+        address?: T;
+      };
   relatedevents?: T;
   categories?: T;
   meta?:
@@ -2068,18 +2113,6 @@ export interface EventsSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
-      };
-  event?:
-    | T
-    | {
-        image?: T;
-        title?: T;
-        description?: T;
-        time?: T;
-        eventDate?: T;
-        category?: T;
-        link?: T;
-        address?: T;
       };
   publishedAt?: T;
   authors?: T;
@@ -2750,6 +2783,56 @@ export interface MediaBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentBlock".
+ */
+export interface ContentBlock {
+  columns?:
+    | {
+        size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
+        richText?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        enableLink?: boolean | null;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'content';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

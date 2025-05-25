@@ -11,7 +11,6 @@ import { FunChennaiBlockServer } from './HomePage/funChennai/Component'
 import { StartupChennaiBlockServer } from './HomePage/StartupChennai/Component'
 import ChennaiInvestments from './HomePage/Investments/Components'
 import BecameAVolunteer from './HomePage/Volunteer/Component'
-import EventsCalendarBlock from './HomePage/EventsCalendar/Component'
 import GlobalSearch from './HomePage/GlobalSearch/Component'
 import HeroSliderBlock from './PageBanners/Home/Component'
 import { VisitCategory } from './MainPages/Visit/VisitCategory/Component'
@@ -26,7 +25,7 @@ import TwoColumnFeatureBlock from './HomePage/TwoColumnFeatureBlock/Components'
 import Utilities from './HomePage/Utilities/Component'
 import { ContentZoneCarousel } from './HomePage/ContentZoneCarousel/Component'
 import SpotlightGallerySection from './HomePage/leftContentRightSlider/Components'
-import EventDetailsBlock from './InnerPage/SharedBlocks/EventDetails/Components'
+import { EventsCalendarBlock } from './HomePage/EventsCalendar/Component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -50,7 +49,6 @@ const blockComponents: {
   twoColumnFeatureBlock: TwoColumnFeatureBlock,
   utilities: Utilities,
   spotlightGallery: SpotlightGallerySection,
-  eventDetails:EventDetailsBlock,
 
   //##################### REUSABLE BLOCKS IN MAINPAGE ################
 
