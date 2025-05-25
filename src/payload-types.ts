@@ -760,7 +760,7 @@ export interface Event {
   id: number;
   title: string;
   /**
-   * Mark this event as a featured event
+   * Only one event can be featured at a time.
    */
   isFeatured?: boolean | null;
   content: {

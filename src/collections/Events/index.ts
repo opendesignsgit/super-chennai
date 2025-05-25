@@ -177,16 +177,78 @@ export const Events: CollectionConfig<'events'> = {
       type: 'text',
       required: true,
     },
+
+    // {
+    //   name: 'isFeatured',
+    //   type: 'checkbox',
+    //   label: 'Featured Event',
+    //   admin: {
+    //     description: 'Only one event can be featured at a time.',
+    //   },
+    //   validate: async (value, { data, operation, req }) => {
+    //     if (!value) return true // if unchecked, always valid
+
+    //     // On create or update, check if other featured event exists
+    //     const id = (data as { id?: string })?.id
+
+    //     const existingFeatured = await req.payload.find({
+    //       collection: 'events',
+    //       where: {
+    //         isFeatured: {
+    //           equals: true,
+    //         },
+    //         id: {
+    //           not_equals: id || '',
+    //         },
+    //       },
+    //       limit: 1,
+    //     })
+
+    //     if (existingFeatured?.docs?.length > 0) {
+    //       return 'There is already another featured event. Only one event can be featured.'
+    //     }
+
+    //     return true
+    //   },
+    // },
+// #################IS FEATRE CHECK BOX SCHEM ########################
     {
       name: 'isFeatured',
       type: 'checkbox',
-      label: 'Feature Event',
-      defaultValue: false,
+      label: 'Featured Event',
       admin: {
-        position: 'sidebar',
-        description: 'Mark this event as a featured event',
+        description: 'Only one event can be featured at a time.',
+      },
+      validate: async (value, { data, operation, req }) => {
+        if (!value) return true // unchecked is always valid
+
+        const id = (data as { id?: string })?.id
+
+        const existingFeatured = await req.payload.find({
+          collection: 'events',
+          where: {
+            isFeatured: {
+              equals: true,
+            },
+            id: {
+              not_equals: id || '',
+            },
+          },
+          limit: 1,
+        })
+
+        if (existingFeatured?.docs?.length > 0) {
+          const existing = existingFeatured.docs[0]
+          const existingTitle = existing?.title || 'Untitled Event'
+          const existingId = existing?.id
+
+          return ` "${existingTitle}" (ID: ${existingId}) is already marked as featured. Only one event can be featured at a time.`
+        }
+
+        return true
       },
     },
+
     {
       type: 'tabs',
       tabs: [
