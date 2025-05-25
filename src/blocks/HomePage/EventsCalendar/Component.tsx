@@ -26,7 +26,7 @@ type EventType = {
   description?: string
   category?: string
   address?: string
-  image?: string
+  image?: string | { url?: string }
   eventDate?: string
   isFeatured?: boolean | string | number
   year?: number
@@ -157,9 +157,12 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
         {isFeaturedEvent ? (
           <div className="CalendarEventsFirst">
             {isFeaturedEvent.event?.image?.url && (
-              <img
+              <Image
                 src={isFeaturedEvent.event.image.url}
                 alt={isFeaturedEvent.title || 'Featured event'}
+                width={600}
+                height={300}
+                style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
               />
             )}
 
