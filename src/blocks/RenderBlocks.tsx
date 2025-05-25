@@ -26,6 +26,7 @@ import Utilities from './HomePage/Utilities/Component'
 import { ContentZoneCarousel } from './HomePage/ContentZoneCarousel/Component'
 import SpotlightGallerySection from './HomePage/leftContentRightSlider/Components'
 import { EventsCalendarBlock } from './HomePage/EventsCalendar/Component'
+import { EventsHomeBlock } from './MainPages/Events/AllEvents'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -59,6 +60,8 @@ const blockComponents: {
   formPopup: FormPopupComponent,
   volunteerBecameSection: VolunteerBecameSection,
   contentZoneCarousel: ContentZoneCarousel,
+
+  allevents: EventsHomeBlock,
 }
 
 export const RenderBlocks: React.FC<{

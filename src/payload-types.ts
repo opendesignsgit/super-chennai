@@ -577,6 +577,13 @@ export interface Page {
         blockName?: string | null;
         blockType: 'spotlightGallery';
       }
+    | {
+        title: string;
+        description?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'allevents';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1833,6 +1840,14 @@ export interface PagesSelect<T extends boolean = true> {
                     image?: T;
                     id?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        allevents?:
+          | T
+          | {
+              title?: T;
+              description?: T;
               id?: T;
               blockName?: T;
             };

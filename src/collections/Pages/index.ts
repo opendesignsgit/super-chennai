@@ -41,6 +41,7 @@ import TwoColumnFeatureBlock from '@/blocks/HomePage/TwoColumnFeatureBlock/confi
 import Utilities from '@/blocks/HomePage/Utilities/config'
 import ContentZoneCarousel from '@/blocks/HomePage/ContentZoneCarousel/config'
 import SpotlightGallery from '@/blocks/HomePage/leftContentRightSlider/config'
+import AllEvents from '@/blocks/MainPages/Events/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -135,7 +136,13 @@ export const Pages: CollectionConfig<'pages'> = {
                 TwoColumnFeatureBlock,
                 Utilities,
                 ContentZoneCarousel,
-                SpotlightGallery
+                SpotlightGallery,
+
+
+
+
+
+                AllEvents
               ],
               required: true,
               admin: {

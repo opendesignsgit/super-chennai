@@ -1,0 +1,61 @@
+.SecPadblock12{padding-block: 12vh;}
+
+.Eventitlesec{padding-inline: 10vw;}
+.Eventitlesec h2 {font-family: "NewAmsterdam";font-size: 5vw;line-height: 79px;color: #a44294;}
+.EventsItems{width: calc(25% - 16px);margin:10px 8px;}
+.evntechnolg {font-family: "29LT Bukra SmBd";font-size: 12px;line-height: 16px;color: #f5dbe1;background-color: #cf5772;padding: 6px 10px;border-radius: 5px;}
+.EventsItemImg{border-top-left-radius: 20px;overflow: hidden;}
+.EventsItemImg img{aspect-ratio: 2 / 1.5;}
+.EventsIteCont{padding-top: 20px;}
+.EventsIteCont h3{font-family: "29LT Bukra SmBd";width: 80%;max-width: fit-content;margin-top: 14px;}
+.EventsIteCont h3:hover{text-decoration: underline;text-decoration-thickness: 2px;text-decoration-color: #995098;}
+.datimeContbox {display: flex;column-gap: 5px;background: #da644a;border-radius: 5px;padding: 5px 10px;color: #ffffff;font-weight: 600;line-height: 1;font-size: 14px;
+text-transform: uppercase;}
+
+.EventContBox{}
+.EventLeft{width: 70%;padding-right: 2vw;}
+.EventLeft h2{font-family: "NewAmsterdam";font-size: 2.5vw;line-height: 1;color: #a44294;}
+.EventLeft h3{font-family: "NewAmsterdam";font-size: 1.6vw;line-height: 1;color: #000000;margin-bottom: 10px;}
+.EventLeft p {margin-bottom: 15px;}
+.EventLeft p:last-child{margin-bottom: 0px;}
+.EventLeft .EventBanImg{overflow: hidden;border-radius: 20px;margin-block: 20px 10px;}
+.EventLeft .EventBanImg img{width: 100%;}
+.ebbmgiL h5{background: #a44294;padding: 5px 15px;border-radius: 5px;margin-right: 15px;line-height: 1;letter-spacing: -0.5px;color: #ffffff;font-weight: 500;}
+.ebbmgiR h5{font-weight: 500;}
+.ebbmgiR button{padding: 5px 15px;margin-left: 10px;border: 1px solid #d43b33;border-radius: 5px;line-height: 1;cursor: pointer;}
+.ArtistsImg{width: 10vw;aspect-ratio: 1 / 1.5;overflow: hidden;border-radius: 10px;margin-bottom: 5px;}
+.ArtistsImg img{width: 100%;height: 100%;object-fit: cover;}
+.ArtistsImg h4{}
+.ArtistsImg h4 strong{}
+.ArtistsImg h4 small{}
+
+.EventRight{width: 30%;position: relative;}
+.evderibox{position: sticky;top: 14vh;border: 1px solid #d0d5e6;border-radius: 15px;}
+.evderListbox{padding: 20px;}
+.evdPricbox {padding: 20px;border-top: 1px solid #d0d5e6;}
+.iconsssec {width: 30px;aspect-ratio: 1;padding: 5px;}
+.evderlinks{margin-bottom: 5px;}
+.evderlinks p{padding-left: 10px;}
+.evdPricbox h4{font-weight: 700;font-size: 1.1vw;letter-spacing: -0.5px;}
+.evdPricbox h6{color: #2b3889;font-weight: 700;}
+.evdPricbox button{background: #a44294;color: #ffffff;padding: 0 20px;line-height: 40px;border-radius: 4px;border: 1px solid #a44294;font-weight: 600;cursor: pointer;}
+.evdPricbox button:hover{background: #ffffff;color: #a44294;}
+
+@media screen and (max-width:600px){
+    .Eventitlesec h2{font-size: 42px;line-height: 1;}
+
+    .SecPadblock12 {padding-block: 40px;}
+    .EventsBanSec {padding-inline: 20px;}
+    .EventContBox {flex-direction: column;}
+    .ebanimgbtn {flex-direction: column;align-items: flex-start;margin-bottom: 20px;}
+    .EventLeft{width: 100%;padding-right: 0;padding-bottom: 20px;}
+    .EventRight{width: 100%;padding-top: 20px;}
+    .evdPricbox h4{font-size: 22px;}
+    .EventLeft h2{font-size: 32px;}
+    .ebbmgiL {margin-bottom: 10px;}
+    .EventLeft h3{font-size: 24px;}
+    .ArtistsImg {width: 60%;}
+    .EventsListSec {padding-inline: 20px;}
+    .EventsListboxs {}
+    .EventsItems{width: 100%;margin: 10px 0;}
+}
