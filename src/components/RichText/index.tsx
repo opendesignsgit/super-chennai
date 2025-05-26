@@ -30,6 +30,8 @@ import FeatureSections from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/
 import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 import IntroText from '@/blocks/InnerPage/SharedBlocks/IntroText/Components'
 import FutureUnicorns from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/Component'
+import { PageIntroText } from '@/blocks/MainPages/SharedBlocks/IntroText/Component'
+import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
 // import EventDetailsBlock from '@/blocks/InnerPage/SharedBlocks/EventDetails/Components'
 
 type NodeTypes =
@@ -116,6 +118,17 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     //    eventDetails: ({ node }: { node: SerializedBlockNode<any> }) => (
     //   <EventDetailsBlock {...node.fields} />
     // ),
+
+    introTextBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <PageIntroText {...node.fields} />
+    ),
+
+        // InvestCategory
+
+      InvestCategoryBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <InvestCategory {...node.fields} />
+    ),
+
 
   },
 })

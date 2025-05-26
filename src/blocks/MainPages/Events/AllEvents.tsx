@@ -1,6 +1,3 @@
-
-
-
 'use client'
 
 import React, { useEffect, useState } from 'react'
@@ -42,7 +39,7 @@ type Props = {
 export const EventsHomeBlock = ({ title, description }: Props) => {
   const [events, setAllEvents] = useState<EventType[]>([])
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const itemsPerPage = 1
+  const itemsPerPage = 10
 
   const totalPages = Math.ceil(events.length / itemsPerPage)
   const currentEvents = events.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
@@ -205,4 +202,3 @@ export const EventsHomeBlock = ({ title, description }: Props) => {
     </section>
   )
 }
-

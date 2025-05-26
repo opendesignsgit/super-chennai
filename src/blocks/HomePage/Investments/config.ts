@@ -12,13 +12,7 @@ const ChennaiInvestmentsBlock: Block = {
       name: 'subheading',
       type: 'textarea',
     },
-    {
-      name: 'categorySource',
-      type: 'relationship',
-      relationTo: 'investment-categories',
-      hasMany: true,
-      required: false,
-    },
+   
   ],
 }
 

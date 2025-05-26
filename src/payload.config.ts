@@ -25,6 +25,7 @@ import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config'
 import VisitCategoryCollection from './collections/RelationSchema/main-pages/visit-page/visit-catogory/schema'
 import { work } from './collections/Work'
 import { Events } from './collections/Events'
+import { Investments } from './collections/Investments'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -88,6 +89,7 @@ export default buildConfig({
     Visits,
     work,
     Events,
+    Investments,
 
 
 

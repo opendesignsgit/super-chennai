@@ -2,7 +2,7 @@
 @import "slick-carousel/slick/slick-theme.css";
 
 .chennaiInvestmentBg {
-  background-image: url("../../../assets/images/chennaiInvestmentBg.jpg");
+  background-image: url("../../../../assets/images/chennaiInvestmentBg.jpg");
   padding-top: 90px;
   padding-bottom: 50px;
   background-repeat: no-repeat;

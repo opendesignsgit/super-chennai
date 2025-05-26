@@ -1,10 +1,14 @@
-import { formatDateTime } from 'src/utilities/formatDateTime'
-import React from 'react'
+
+'use client'
+
+import Link from 'next/link'
+import './style.css'
 
 import type { Post } from '@/payload-types'
-
+import { usePathname, useSearchParams } from 'next/navigation'
 import { Media } from '@/components/Media'
 import { formatAuthors } from '@/utilities/formatAuthors'
+import React from 'react'
 
 export const PostHero: React.FC<{
   post: Post
@@ -14,59 +18,51 @@ export const PostHero: React.FC<{
   const hasAuthors =
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
 
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  const pathSegments = pathname.split('/').filter(Boolean)
+
+  const breadcrumbLinks = pathSegments.map((segment, index) => {
+    const href = '/' + pathSegments.slice(0, index + 1).join('/')
+    return { name: segment.toUpperCase(), href }
+  })
+
   return (
-    <div className="relative -mt-[10.4rem] flex items-end">
-      <div className="container z-10 relative lg:grid lg:grid-cols-[1fr_48rem_1fr] text-white pb-8">
-        <div className="col-start-1 col-span-1 md:col-start-2 md:col-span-2">
-          <div className="uppercase text-sm mb-6">
-            {categories?.map((category, index) => {
-              if (typeof category === 'object' && category !== null) {
-                const { title: categoryTitle } = category
+    <div className="accaodomationBannerSection relative  min-h-[50vh]">
+      {heroImage && typeof heroImage !== 'string' && (
+        <Media fill priority imgClassName="-z-10 object-cover" resource={heroImage} />
+      )}
 
-                const titleToUse = categoryTitle || 'Untitled category'
+      <div className="accodoamationBannerContainer relative z-10">
+        <div className="accodoamationBannerText">
+          <h3>{title}</h3>
 
-                const isLast = index === categories.length - 1
-
-                return (
-                  <React.Fragment key={index}>
-                    {titleToUse}
-                    {!isLast && <React.Fragment>, &nbsp;</React.Fragment>}
-                  </React.Fragment>
-                )
-              }
-              return null
-            })}
+          <div className="breadCrum">
+            {breadcrumbLinks.map((crumb, index) => (
+              <React.Fragment key={crumb.href}>
+                <Link href={crumb.href}>{crumb.name}</Link>
+                {index < breadcrumbLinks.length - 1 && ' - '}
+              </React.Fragment>
+            ))}
           </div>
 
-          <div className="">
-            <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl">{title}</h1>
-          </div>
-
-          <div className="flex flex-col md:flex-row gap-4 md:gap-16">
+          <div className="authorDetails">
             {hasAuthors && (
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-col gap-1">
-                  <p className="text-sm">Author</p>
-
-                  <p>{formatAuthors(populatedAuthors)}</p>
-                </div>
+              <div>
+                <p className="text-sm">Author</p>
+                <p>{formatAuthors(populatedAuthors)}</p>
               </div>
             )}
             {publishedAt && (
-              <div className="flex flex-col gap-1">
+              <div>
                 <p className="text-sm">Date Published</p>
-
-                <time dateTime={publishedAt}>{formatDateTime(publishedAt)}</time>
+                <time dateTime={publishedAt}>{new Date(publishedAt).toLocaleDateString()}</time>
               </div>
             )}
           </div>
+
         </div>
-      </div>
-      <div className="min-h-[80vh] select-none">
-        {heroImage && typeof heroImage !== 'string' && (
-          <Media fill priority imgClassName="-z-10 object-cover" resource={heroImage} />
-        )}
-        <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-black to-transparent" />
       </div>
     </div>
   )

@@ -27,6 +27,7 @@ import { ContentZoneCarousel } from './HomePage/ContentZoneCarousel/Component'
 import SpotlightGallerySection from './HomePage/leftContentRightSlider/Components'
 import { EventsCalendarBlock } from './HomePage/EventsCalendar/Component'
 import { EventsHomeBlock } from './MainPages/Events/AllEvents'
+import InvestCategory from './InnerPage/SharedBlocks/InvestCategory/Components'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -62,6 +63,8 @@ const blockComponents: {
   contentZoneCarousel: ContentZoneCarousel,
 
   allevents: EventsHomeBlock,
+
+  InvestCategoryBlock:InvestCategory
 }
 
 export const RenderBlocks: React.FC<{

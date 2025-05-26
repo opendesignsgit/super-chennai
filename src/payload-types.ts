@@ -77,6 +77,7 @@ export interface Config {
     visits: Visit;
     work: Work;
     events: Event;
+    investments: Investment;
     volunteerSlides: VolunteerSlide;
     'social-reels': SocialReel;
     'investment-categories': InvestmentCategory;
@@ -100,6 +101,7 @@ export interface Config {
     visits: VisitsSelect<false> | VisitsSelect<true>;
     work: WorkSelect<false> | WorkSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
+    investments: InvestmentsSelect<false> | InvestmentsSelect<true>;
     volunteerSlides: VolunteerSlidesSelect<false> | VolunteerSlidesSelect<true>;
     'social-reels': SocialReelsSelect<false> | SocialReelsSelect<true>;
     'investment-categories': InvestmentCategoriesSelect<false> | InvestmentCategoriesSelect<true>;
@@ -164,120 +166,9 @@ export interface UserAuthOperations {
 export interface ChennaiInvestments {
   heading: string;
   subheading?: string | null;
-  categorySource?: (number | InvestmentCategory)[] | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'chennaiInvestments';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "investment-categories".
- */
-export interface InvestmentCategory {
-  id: number;
-  name: string;
-  items?:
-    | {
-        title: string;
-        description?: string | null;
-        image?: (number | null) | Media;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: number;
-  alt?: string | null;
-  caption?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    square?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    small?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    medium?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    large?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    xlarge?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    og?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -370,7 +261,6 @@ export interface Page {
     | {
         heading: string;
         subheading?: string | null;
-        categorySource?: (number | InvestmentCategory)[] | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'chennaiInvestments';
@@ -646,6 +536,98 @@ export interface Post {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  alt?: string | null;
+  caption?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    square?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    small?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    medium?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    large?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    xlarge?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    og?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1045,6 +1027,87 @@ export interface Work {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "investments".
+ */
+export interface Investment {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedinvestments?: (number | Investment)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  investments?:
+    | {
+        sectionTitle: string;
+        sectionDescription?: string | null;
+        sectionImage?: (number | null) | Media;
+        investmentItems?:
+          | {
+              title: string;
+              description?: string | null;
+              image?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "investment-categories".
+ */
+export interface InvestmentCategory {
+  id: number;
+  name: string;
+  items?:
+    | {
+        title: string;
+        description?: string | null;
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1453,6 +1516,10 @@ export interface PayloadLockedDocument {
         value: number | Event;
       } | null)
     | ({
+        relationTo: 'investments';
+        value: number | Investment;
+      } | null)
+    | ({
         relationTo: 'volunteerSlides';
         value: number | VolunteerSlide;
       } | null)
@@ -1610,7 +1677,6 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               heading?: T;
               subheading?: T;
-              categorySource?: T;
               id?: T;
               blockName?: T;
             };
@@ -2128,6 +2194,53 @@ export interface EventsSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "investments_select".
+ */
+export interface InvestmentsSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  relatedinvestments?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  investments?:
+    | T
+    | {
+        sectionTitle?: T;
+        sectionDescription?: T;
+        sectionImage?: T;
+        investmentItems?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              image?: T;
+              id?: T;
+            };
+        id?: T;
       };
   publishedAt?: T;
   authors?: T;
@@ -2747,6 +2860,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'events';
           value: number | Event;
+        } | null)
+      | ({
+          relationTo: 'investments';
+          value: number | Investment;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
@@ -2848,6 +2965,15 @@ export interface ContentBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'content';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "InvestCategoryBlock".
+ */
+export interface InvestCategoryBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'InvestCategoryBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

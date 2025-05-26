@@ -42,6 +42,7 @@ import Utilities from '@/blocks/HomePage/Utilities/config'
 import ContentZoneCarousel from '@/blocks/HomePage/ContentZoneCarousel/config'
 import SpotlightGallery from '@/blocks/HomePage/leftContentRightSlider/config'
 import AllEvents from '@/blocks/MainPages/Events/config'
+import InvestCategoryBlock from '@/blocks/InnerPage/SharedBlocks/InvestCategory/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -131,18 +132,16 @@ export const Pages: CollectionConfig<'pages'> = {
                 GlobalSearchBlock,
                 FormPopup,
 
-
                 Infography,
                 TwoColumnFeatureBlock,
                 Utilities,
                 ContentZoneCarousel,
                 SpotlightGallery,
 
+                AllEvents,
 
+                // InvestCategoryBlock,
 
-
-
-                AllEvents
               ],
               required: true,
               admin: {
