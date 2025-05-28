@@ -8,6 +8,7 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import { Media } from '@/components/Media'
 import { formatAuthors } from '@/utilities/formatAuthors'
 import React from 'react'
+import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 
 export const PostHero: React.FC<{
   post: Post
@@ -62,6 +63,8 @@ export const PostHero: React.FC<{
           </div> */}
         </div>
       </div>
+
+   
     </div>
   )
 }

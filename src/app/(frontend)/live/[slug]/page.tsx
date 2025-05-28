@@ -1,24 +1,23 @@
 import type { Metadata } from 'next'
 
 import { PayloadRedirects } from '@/components/PayloadRedirects'
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
-import { draftMode } from 'next/headers'
-import React, { cache } from 'react'
 import RichText from '@/components/RichText'
+import configPromise from '@payload-config'
+import { draftMode } from 'next/headers'
+import { getPayload } from 'payload'
+import { cache } from 'react'
 
-import type { Post } from '@/payload-types'
 
+import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { PostHero } from '@/heros/PostHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
-import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { RelatedLive } from '@/blocks/RelatedLive/Component'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
-  const visits = await payload.find({
-    collection: 'visits',
+  const live = await payload.find({
+    collection: 'live',
     draft: false,
     limit: 1000,
     overrideAccess: false,
@@ -28,7 +27,7 @@ export async function generateStaticParams() {
     },
   })
 
-  const params = visits.docs.map(({ slug }) => {
+  const params = live.docs.map(({ slug }) => {
     return { slug }
   })
 
@@ -44,7 +43,7 @@ type Args = {
 export default async function Post({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
-  const url = '/visits/' + slug
+  const url = '/live/' + slug
   const post = await queryPostBySlug({ slug })
 
   if (!post) return <PayloadRedirects url={url} />
@@ -53,7 +52,6 @@ export default async function Post({ params: paramsPromise }: Args) {
     <div>
       <PageClient />
 
-      {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
@@ -86,7 +84,7 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
-    collection: 'visits',
+    collection: 'live',
     draft,
     limit: 1,
     overrideAccess: draft,

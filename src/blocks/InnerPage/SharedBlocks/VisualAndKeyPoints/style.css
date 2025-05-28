@@ -93,7 +93,7 @@
     height: 100%;
     top: 0;
     right: 0;
-    background: url(/images/doted-bg.png) no-repeat top right;
+    background: url(../../../../assets/images/doted-bg.png) no-repeat top right;
     background-size: 100%;
     pointer-events: none;
   }

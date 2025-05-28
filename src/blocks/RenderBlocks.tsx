@@ -31,6 +31,9 @@ import LiveIntroTextSection from './MainPages/Live/Introtext/Component'
 import ChennaiLifeEssentials from './MainPages/Live/ChennaiLifeEssentials/Components'
 import FeatureSections from './InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
 import ZigZagContentSection from './InnerPage/SharedBlocks/ZigZagContent/Component'
+import StickyImageScroll from './InnerPage/SharedBlocks/StickyImageScroll/Component'
+import IntroText from './InnerPage/SharedBlocks/IntroText/Components'
+import { HighlightedFeatureListSection } from './InnerPage/SharedBlocks/featureSectionSplitLayout/Component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -54,9 +57,6 @@ const blockComponents: {
   twoColumnFeatureBlock: TwoColumnFeatureBlock,
   utilities: Utilities,
   spotlightGallery: SpotlightGallerySection,
-
-  //##################### REUSABLE BLOCKS IN MAINPAGE ################
-
   introTextBlock: PageIntroText,
   visitcategory: VisitCategory,
   ZigZagContent: ZigZagContentSection,
@@ -66,11 +66,12 @@ const blockComponents: {
   contentZoneCarousel: ContentZoneCarousel,
   allevents: EventsHomeBlock,
   InvestCategoryBlock: InvestCategory,
-
-  // LIVE PAGE COMPONENTS ##############################################
   liveIntrorSection: LiveIntroTextSection,
   chennaiLifeEssentials: ChennaiLifeEssentials,
   featureSections: FeatureSections,
+  StickyImageScroll: StickyImageScroll,
+  introText: IntroText,
+  highlightedFeatureList: HighlightedFeatureListSection,
 }
 
 export const RenderBlocks: React.FC<{

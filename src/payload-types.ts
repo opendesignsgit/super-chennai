@@ -3104,6 +3104,37 @@ export interface MediaBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HighlightedFeatureList".
+ */
+export interface HighlightedFeatureList {
+  featureGroups?:
+    | {
+        image?: (number | null) | Media;
+        headline?: string | null;
+        description?: string | null;
+        featureColumns?:
+          | {
+              features?:
+                | {
+                    icon?: (number | null) | Media;
+                    title?: string | null;
+                    text?: string | null;
+                    ctaLink?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'highlightedFeatureList';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "InvestCategoryBlock".
  */
 export interface InvestCategoryBlock {

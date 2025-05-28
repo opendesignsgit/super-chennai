@@ -1,6 +1,8 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
+import arrowImage from '@/assets/icons/LinkArrowRightIcon.svg'
+import './style.css'
 
 type Card = {
   image: {
@@ -14,7 +16,7 @@ type Card = {
   link?: string
 }
 
-type FutureUnicornsProps = {
+type StickyImageScrollProps = {
   backgroundType: 'color' | 'image'
   backgroundColor?: string
   leftImage: {
@@ -29,20 +31,20 @@ type FutureUnicornsProps = {
   cards: Card[]
 }
 
-export default function FutureUnicorns({
+export default function StickyImageScroll({
   backgroundType,
-  backgroundColor = '#7d377d',
+  backgroundColor = '#7d377c',
   smallText,
   leftImage,
   title,
   description,
   cards,
-}: FutureUnicornsProps) {
+}: StickyImageScrollProps) {
   const sectionStyle =
     backgroundType === 'color'
       ? { backgroundColor: backgroundColor }
       : {
-          backgroundImage: `url('./doted.png')`,
+          backgroundImage: arrowImage,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }
@@ -63,6 +65,7 @@ export default function FutureUnicorns({
               <small>{smallText}</small> {title}
             </h2>
             <p>{description}</p>
+            <div className="boxttlsec">{title}</div>
           </div>
         </div>
       </div>
@@ -84,12 +87,7 @@ export default function FutureUnicorns({
                 {card.link && (
                   <p className="linkpara">
                     <a href={card.link}>
-                      {/* <Image
-                        src="/images/Work-Images/SubPages/LinkArrowRightIcon.svg"
-                        alt="Link arrow"
-                        width={24}
-                        height={24}
-                      /> */}
+                      <Image src={arrowImage.src} alt="Link arrow" width={24} height={24} />
                     </a>
                   </p>
                 )}

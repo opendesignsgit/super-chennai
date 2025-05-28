@@ -24,7 +24,7 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from '@/fields/slug'
 import HotelsInChennaiBlock from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
-import ExploreMoreChennaiBlock from '@/blocks/InnerPage/Accomodation/Explore/config'
+import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
 import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
 import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
 import { careerIntroBlock } from '@/blocks/InnerPage/SharedBlocks/careerIntro/config'

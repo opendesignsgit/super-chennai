@@ -1,4 +1,4 @@
-import type { Block, CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload'
 
 import {
   BlocksFeature,
@@ -16,6 +16,7 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
+import { slugField } from '@/fields/slug'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -23,11 +24,12 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { slugField } from '@/fields/slug'
 
-import ExploreMoreChennaiBlock from '@/blocks/InnerPage/Accomodation/Explore/config'
-import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
 import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
+import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
+import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
+import StickyImageScroll from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
+import introTextBlock from '@/blocks/InnerPage/SharedBlocks/IntroText/config'
 
 export const Live: CollectionConfig<'live'> = {
   slug: 'live',
@@ -94,10 +96,10 @@ export const Live: CollectionConfig<'live'> = {
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({
                       blocks: [
-                        // Banner,
                         ExploreMoreChennaiBlock,
                         socialReelSlider,
-                        InnerPageBanner,
+                        StickyImageScroll,
+                        introTextBlock,
                       ],
                     }),
                     FixedToolbarFeature(),
@@ -168,7 +170,7 @@ export const Live: CollectionConfig<'live'> = {
               descriptionPath: 'meta.description',
             }),
           ],
-        },    
+        },
       ],
     },
     {
@@ -200,9 +202,7 @@ export const Live: CollectionConfig<'live'> = {
       hasMany: true,
       relationTo: 'users',
     },
-    // This field is only used to populate the user data via the `populateAuthors` hook
-    // This is because the `user` collection has access control locked to protect user privacy
-    // GraphQL will also not return mutated user data that differs from the underlying schema
+
     {
       name: 'populatedAuthors',
       type: 'array',
@@ -234,7 +234,7 @@ export const Live: CollectionConfig<'live'> = {
   versions: {
     drafts: {
       autosave: {
-        interval: 100, 
+        interval: 100,
       },
       schedulePublish: true,
     },

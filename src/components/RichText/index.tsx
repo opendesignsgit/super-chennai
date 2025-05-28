@@ -1,4 +1,3 @@
-import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import {
   DefaultNodeTypes,
   SerializedBlockNode,
@@ -6,32 +5,36 @@ import {
   type DefaultTypedEditorState,
 } from '@payloadcms/richtext-lexical'
 import {
+  RichText as ConvertRichText,
   JSXConvertersFunction,
   LinkJSXConverter,
-  RichText as ConvertRichText,
 } from '@payloadcms/richtext-lexical/react'
 
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
 
+import { CallToActionBlock } from '@/blocks/CallToAction/Component'
+import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
+import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
+import ExploreMoreChennai from '@/blocks/InnerPage/SharedBlocks/Explore/Component'
+import Banner from '@/blocks/InnerPage/SharedBlocks/Banners/Components'
+import CareerIntro from '@/blocks/InnerPage/SharedBlocks/careerIntro/Component'
+import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
+import {
+  default as FutureUnicorns,
+  default as StickyImageScroll,
+} from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/Component'
+import FeatureSections from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
+import HotelsInChennaiSection from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/Component'
+import { PageIntroText } from '@/blocks/MainPages/SharedBlocks/IntroText/Component'
+import { VisitBanner } from '@/blocks/PageBanners/VisitBanner/Component'
 import type {
   BannerBlock as BannerBlockProps,
   CallToActionBlock as CTABlockProps,
   MediaBlock as MediaBlockProps,
 } from '@/payload-types'
-import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { cn } from '@/utilities/ui'
-import { VisitBanner } from '@/blocks/PageBanners/VisitBanner/Component'
-import HotelsInChennaiSection from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/Component'
-import ExploreMoreChennai from '@/blocks/InnerPage/Accomodation/Explore/Component'
-import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
-import Banner from '@/blocks/InnerPage/SharedBlocks/Banners/Components'
-import CareerIntro from '@/blocks/InnerPage/SharedBlocks/careerIntro/Component'
-import FeatureSections from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
-import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 import IntroText from '@/blocks/InnerPage/SharedBlocks/IntroText/Components'
-import FutureUnicorns from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/Component'
-import { PageIntroText } from '@/blocks/MainPages/SharedBlocks/IntroText/Component'
-import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
+import { HighlightedFeatureListSection } from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/Component'
 
 type NodeTypes =
   | DefaultNodeTypes
@@ -109,26 +112,20 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
       <FeatureSections {...node.fields} />
     ),
 
-    // WORK PAGE #####
-    futureUnicorns: ({ node }: { node: SerializedBlockNode<any> }) => (
-      <FutureUnicorns {...node.fields} />
-    ),
-
-    //    eventDetails: ({ node }: { node: SerializedBlockNode<any> }) => (
-    //   <EventDetailsBlock {...node.fields} />
-    // ),
-
     introTextBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
       <PageIntroText {...node.fields} />
     ),
-
-    // InvestCategory
 
     InvestCategoryBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
       <InvestCategory {...node.fields} />
     ),
 
-    // FeatureSections
+    StickyImageScroll: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <StickyImageScroll {...node.fields} />
+    ),
+    highlightedFeatureList: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <HighlightedFeatureListSection {...node.fields} />
+    ),
   },
 })
 

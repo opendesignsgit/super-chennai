@@ -27,7 +27,7 @@
 //   id: string
 //   title: string
 //   investments?: Investment[]
-//     investmentItems?: InvestmentItem[] 
+//     investmentItems?: InvestmentItem[]
 
 // }
 
@@ -55,7 +55,6 @@
 //   error?: string
 // }
 
-
 // export type SectionInvestment = {
 //   id: string
 //   title: string
@@ -78,6 +77,8 @@ interface InvestmentImage {
 }
 
 interface InvestmentItem {
+  link: string
+  slug: string
   id: string
   title: string
   description?: string
@@ -95,6 +96,7 @@ interface Investment {
 }
 
 interface InvestmentAPIItem {
+  slug: string
   sectionImage: any
   sectionDescription: any
   sectionTitle: any
@@ -102,6 +104,7 @@ interface InvestmentAPIItem {
   title: string
   investments?: Investment[]
   investmentItems?: InvestmentItem[]
+  link: string
 }
 
 interface InvestmentAPIResponse {

@@ -19,7 +19,6 @@ type Props = {
   slides: Slide[]
 }
 
-// Custom Arrow Components
 const PrevArrow = ({ onClick }: { onClick?: () => void }) => (
   <div onClick={onClick} className="ExplorePageLeftButton"></div>
 )

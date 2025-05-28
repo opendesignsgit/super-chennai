@@ -1,4 +1,4 @@
-import { Block } from "payload";
+import { Block } from 'payload'
 
 export const introTextBlock: Block = {
   slug: 'introText',
@@ -21,9 +21,8 @@ export const introTextBlock: Block = {
       name: 'marqueeText',
       type: 'text',
       required: true,
-      defaultValue: 'Employment in chennai',
     },
   ],
-};
+}
 
-export default introTextBlock;
+export default introTextBlock

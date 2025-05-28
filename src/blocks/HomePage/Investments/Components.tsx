@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import './style.css'
 import { ChennaiInvestmentsProps, ExtractedCategory, InvestmentAPIItem } from '@/models/investment'
+import Link from 'next/link'
 export default function ChennaiInvestments({ heading, subheading }: ChennaiInvestmentsProps) {
   const [extracted, setCategories] = useState<ExtractedCategory[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string>('')
@@ -33,10 +34,11 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
                   url: item.image?.url || '',
                   alt: item.image?.alt || '',
                 },
+                link: `/investments/${doc.slug}`,
               })),
             ),
           }))
-
+          console.log('extracted', data)
           setCategories(extracted)
           setSelectedCategory(extracted[0]?.title || '')
         }
@@ -51,7 +53,6 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
   return (
     <div className="chennaiInvestmentBg">
       <div className="container max-w-7xl mx-auto px-4 ChennaiInvestContainerdiv">
-        
         <div className="ChennaiInvestMents">
           <h4>{heading}</h4>
           <h6>{subheading}</h6>
@@ -71,7 +72,7 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
 
         <div className="buildingSectionFlex">
           {activeData.slice(0, 3).map((item, index) => (
-            <div className="bulidingSection" key={index}>
+            <Link href={item.link || '#'} key={index} className="bulidingSection">
               {index % 2 === 0 ? (
                 <>
                   <div className="builidngContent">
@@ -105,7 +106,7 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
                   </div>
                 </>
               )}
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { Block } from 'payload'
 
-export const futureUnicorns: Block = {
-  slug: 'futureUnicorns',
+export const StickyImageScroll: Block = {
+  slug: 'StickyImageScroll',
   labels: {
     singular: 'StickyImageScroll',
     plural: 'StickyImageScroll',
@@ -84,4 +84,4 @@ export const futureUnicorns: Block = {
   ],
 }
 
-export default futureUnicorns
+export default StickyImageScroll
