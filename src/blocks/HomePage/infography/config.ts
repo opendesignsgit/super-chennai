@@ -3,8 +3,11 @@ import { Block } from 'payload'
 const Infography: Block = {
   slug: 'infography',
   labels: {
-    singular: 'Infography Section',
+    singular: 'Infography Section Food',
     plural: 'Infography Sections',
+  },
+  admin: {
+    group: 'Homepage Sections',
   },
   fields: [
     {

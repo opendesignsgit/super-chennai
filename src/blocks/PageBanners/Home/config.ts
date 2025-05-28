@@ -6,6 +6,9 @@ const HeroSlider: Block = {
     singular: "Hero Slider",
     plural: "Hero Sliders",
   },
+  admin: {
+    group: "Homepage Sections",
+  },
   fields: [
     {
       name: "slides",

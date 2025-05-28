@@ -78,8 +78,8 @@ export default function SpotlightGallerySection({ heading, description, link, it
   }, [maxIndex])
 
   return (
-    <div className="trendingMainContainer">
-      <div className="trendingChennaiRow">
+    <div className="tredingMainContainer">
+      <div className="tredingChennaiRow">
         <div
           className={`TrendingTextBackground ${
             scrollDir === 'right' ? 'Trendingscroll-right' : 'Trendingscroll-left'

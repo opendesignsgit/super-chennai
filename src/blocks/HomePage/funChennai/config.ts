@@ -1,10 +1,13 @@
-import { Block } from "payload";
+import { Block } from 'payload'
 
 export const FunChennaiBlock: Block = {
   slug: 'funChennai',
   labels: {
     singular: 'Fun Chennai',
-    plural: 'Fun Chennai Blocks',
+    plural: 'Fun Chennai',
+  },
+  admin: {
+    group: 'Homepage Sections',
   },
   fields: [
     {
@@ -41,4 +44,4 @@ export const FunChennaiBlock: Block = {
       ],
     },
   ],
-};
+}

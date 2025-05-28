@@ -2,19 +2,16 @@ import type { Metadata } from 'next'
 
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
-import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
-import React, { cache } from 'react'
-import RichText from '@/components/RichText'
+import { getPayload } from 'payload'
+import { cache } from 'react'
 
-import type { Post } from '@/payload-types'
-
+import { RelatedVisits } from '@/blocks/Relatedvisits/Component'
+import EventDetails from '@/components/EventsDetails/EventDetails'
+import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { PostHero } from '@/heros/PostHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
-import { LivePreviewListener } from '@/components/LivePreviewListener'
-import { RelatedVisits } from '@/blocks/Relatedvisits/Component'
-import EventDetailsBlock from '@/blocks/InnerPage/SharedBlocks/EventDetails/Components'
-import EventDetails from '@/components/EventsDetails/EventDetails'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -56,7 +53,7 @@ export default async function Post({ params: paramsPromise }: Args) {
       <PageClient />
       <PayloadRedirects disableNotFound url={url} />
       {draft && <LivePreviewListener />}
-      {/* <PostHero post={post} /> */}
+      <PostHero post={post} />
       <div>
         {/* <RichText data={post.content} enableGutter={false} /> */}
         {post.relatedevents && post.relatedevents.length > 0 && (

@@ -1,10 +1,13 @@
-import { Block } from "payload";
+import { Block } from 'payload'
 
 const ContentZoneCarousel: Block = {
   slug: 'contentZoneCarousel',
   labels: {
     singular: 'ContentZoneCarousel',
     plural: 'ContentZoneCarousel',
+  },
+  admin: {
+    group: 'Homepage Sections',
   },
   fields: [
     {
@@ -51,6 +54,6 @@ const ContentZoneCarousel: Block = {
       ],
     },
   ],
-};
+}
 
-export default ContentZoneCarousel;
+export default ContentZoneCarousel

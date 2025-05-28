@@ -8,6 +8,7 @@ import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
+import Banner from '@/blocks/InnerPage/SharedBlocks/Banners/Components'
 
 export const revalidate = 600
 

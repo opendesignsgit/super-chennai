@@ -6,6 +6,9 @@ export const socialReelSlider: Block = {
     singular: 'SocialReelSlider',
     plural: 'SocialReelSlider',
   },
+  admin: {
+    group: 'Homepage Sections',
+  },
   fields: [
     {
       name: 'heading',

@@ -1,10 +1,10 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import { Media } from '@/payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import './style.css'
-import { Media } from '@/payload-types'
 
 type EventType = {
   id?: string | number

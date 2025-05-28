@@ -3,8 +3,11 @@ import { Block } from 'payload'
 const Utilities: Block = {
   slug: 'utilities',
   labels: {
-    singular: 'Utilities',
+    singular: 'Chennai Utilities',
     plural: 'Utilities',
+  },
+  admin: {
+    group: 'Homepage Sections',
   },
   fields: [
     {

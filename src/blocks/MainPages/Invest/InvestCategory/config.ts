@@ -1,48 +1,55 @@
-import { Block } from "payload";
+import { Block } from 'payload'
 
 const investmentCategoryListBlock: Block = {
-  slug: "investmentCategoryList",
+  slug: 'investmentCategoryList',
+  labels: {
+    singular: 'Investment Category',
+    plural: 'Investment Category',
+  },
+  admin: {
+    group: 'Main Page Sections',
+  },
   fields: [
     {
-      name: "items",
-      label: "Investment Categories",
-      type: "array",
+      name: 'items',
+      label: 'Investment Categories',
+      type: 'array',
       required: true,
       fields: [
         {
-          name: "title",
-          type: "text",
+          name: 'title',
+          type: 'text',
           required: true,
         },
         {
-          name: "subtitle",
-          type: "text",
+          name: 'subtitle',
+          type: 'text',
         },
         {
-          name: "description",
-          type: "textarea",
+          name: 'description',
+          type: 'textarea',
         },
         {
-          name: "image",
-          type: "upload",
-          relationTo: "media",
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
           required: false,
         },
         {
-          name: "link",
-          type: "text",
-          label: "Explore Link",
+          name: 'link',
+          type: 'text',
+          label: 'Explore Link',
         },
       ],
     },
     {
-      name: "backgroundImage",
-      label: "Bottom Background Image",
-      type: "upload",
-      relationTo: "media",
+      name: 'backgroundImage',
+      label: 'Bottom Background Image',
+      type: 'upload',
+      relationTo: 'media',
       required: false,
     },
   ],
-};
+}
 
-export default investmentCategoryListBlock;
+export default investmentCategoryListBlock

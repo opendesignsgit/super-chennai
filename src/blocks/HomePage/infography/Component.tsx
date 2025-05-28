@@ -6,19 +6,6 @@ import { Media } from '@/payload-types'
 import './style.css'
 import DelightImage from '../../../assets/images/DeliciousFood.png'
 
-type FoodItem = {
-  title: string
-  description: string
-  image: Media
-  link?: string
-}
-
-type Props = {
-  heading: string
-  description: string
-  foodItems: FoodItem[]
-}
-
 export default function InfographySection({ heading, description, foodItems }: Props) {
   const [activeImage, setActiveImage] = useState<string>(
     (foodItems?.[0]?.image as Media)?.url || '',
@@ -28,7 +15,7 @@ export default function InfographySection({ heading, description, foodItems }: P
   const [fade, setFade] = useState(false)
   const [scrollDir, setScrollDir] = useState<'left' | 'right'>('left')
   const lastScrollY = useRef(0)
-  const bgTextRef = useRef(null)
+  const bgTextRef = useRef<HTMLDivElement | null>(null)
 
   const handleHover = (newImage: string, index: number) => {
     if (newImage === activeImage && index === activeIndex) return
@@ -108,7 +95,7 @@ export default function InfographySection({ heading, description, foodItems }: P
                   className={`foodSectionConatiner ${
                     activeIndex === index ? 'activeDiverseSection' : ''
                   }`}
-                  onMouseEnter={() => handleHover((item.image as Media).url, index)}
+                  onMouseEnter={() => handleHover((item.image as Media)?.url || '', index)}
                 >
                   <h4>{item.title}</h4>
                   <p>{item.description}</p>
@@ -135,7 +122,7 @@ export default function InfographySection({ heading, description, foodItems }: P
                     className={`foodSectionConatiner ${
                       activeIndex === actualIndex ? 'activeDiverseSection' : ''
                     }`}
-                    onMouseEnter={() => handleHover((item.image as Media).url, actualIndex)}
+                    onMouseEnter={() => handleHover((item.image as Media)?.url || '', actualIndex)}
                   >
                     <h4>{item.title}</h4>
                     <p>{item.description}</p>

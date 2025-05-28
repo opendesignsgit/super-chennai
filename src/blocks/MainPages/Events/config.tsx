@@ -1,13 +1,15 @@
-import { Block } from "payload"
+import { Block } from 'payload'
 
 const AllEvents: Block = {
   slug: 'allevents',
   labels: {
-    singular: 'Events Home',
-    plural: 'Events Homes',
+    singular: 'Events List',
+    plural: 'Events List',
+  },
+  admin: {
+    group: 'Main Page Sections',
   },
   fields: [
- 
     {
       name: 'title',
       label: 'Section Title',
@@ -19,7 +21,6 @@ const AllEvents: Block = {
       label: 'Section Description',
       type: 'textarea',
     },
-  
   ],
 }
 

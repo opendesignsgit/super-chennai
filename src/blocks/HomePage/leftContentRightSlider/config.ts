@@ -5,6 +5,9 @@ const SpotlightGallery: Block = {
     singular: 'leftContentRightSlider',
     plural: ' leftContentRightSlider',
   },
+  admin: {
+    group: 'Homepage Sections',
+  },
   fields: [
     {
       name: 'heading',

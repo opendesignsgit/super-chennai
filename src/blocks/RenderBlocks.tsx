@@ -14,7 +14,6 @@ import BecameAVolunteer from './HomePage/Volunteer/Component'
 import GlobalSearch from './HomePage/GlobalSearch/Component'
 import HeroSliderBlock from './PageBanners/Home/Component'
 import { VisitCategory } from './MainPages/Visit/VisitCategory/Component'
-import HotelsInChennaiSection from './InnerPage/SharedBlocks/Hotels/Component'
 import mainPageBanner from './MainPages/SharedBlocks/Banner/Component'
 import { FormPopupComponent } from './MainPages/SharedBlocks/FormPopup/Components'
 import VolunteerBecameSection from './MainPages/Volunteer/Volunteers/Components'
@@ -28,6 +27,10 @@ import SpotlightGallerySection from './HomePage/leftContentRightSlider/Component
 import { EventsCalendarBlock } from './HomePage/EventsCalendar/Component'
 import { EventsHomeBlock } from './MainPages/Events/AllEvents'
 import InvestCategory from './InnerPage/SharedBlocks/InvestCategory/Components'
+import LiveIntroTextSection from './MainPages/Live/Introtext/Component'
+import ChennaiLifeEssentials from './MainPages/Live/ChennaiLifeEssentials/Components'
+import FeatureSections from './InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
+import ZigZagContentSection from './InnerPage/SharedBlocks/ZigZagContent/Component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -56,15 +59,18 @@ const blockComponents: {
 
   introTextBlock: PageIntroText,
   visitcategory: VisitCategory,
-  ZigZagContent: HotelsInChennaiSection,
+  ZigZagContent: ZigZagContentSection,
   mainPageBanner: mainPageBanner,
   formPopup: FormPopupComponent,
   volunteerBecameSection: VolunteerBecameSection,
   contentZoneCarousel: ContentZoneCarousel,
-
   allevents: EventsHomeBlock,
+  InvestCategoryBlock: InvestCategory,
 
-  InvestCategoryBlock:InvestCategory
+  // LIVE PAGE COMPONENTS ##############################################
+  liveIntrorSection: LiveIntroTextSection,
+  chennaiLifeEssentials: ChennaiLifeEssentials,
+  featureSections: FeatureSections,
 }
 
 export const RenderBlocks: React.FC<{

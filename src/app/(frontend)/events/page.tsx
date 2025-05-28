@@ -14,8 +14,8 @@ export const revalidate = 600
 export default async function Page() {
   const payload = await getPayload({ config: configPromise })
 
-  const posts = await payload.find({
-    collection: 'visits',
+  const events = await payload.find({
+    collection: 'events',
     depth: 1,
     limit: 12,
     overrideAccess: false,
@@ -32,24 +32,24 @@ export default async function Page() {
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+          <h1>Events</h1>
         </div>
       </div>
 
       <div className="container mb-8">
         <PageRange
-          collection="posts"
-          currentPage={posts.page}
+          collection="events"
+          currentPage={events.page}
           limit={12}
-          totalDocs={posts.totalDocs}
+          totalDocs={events.totalDocs}
         />
       </div>
 
-      <CollectionArchive posts={posts.docs} />
+      <CollectionArchive posts={events.docs} />
 
       <div className="container">
-        {posts.totalPages > 1 && posts.page && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
+        {events.totalPages > 1 && events.page && (
+          <Pagination page={events.page} totalPages={events.totalPages} />
         )}
       </div>
     </div>

@@ -1,4 +1,3 @@
-
 'use client'
 
 import Link from 'next/link'
@@ -13,7 +12,7 @@ import React from 'react'
 export const PostHero: React.FC<{
   post: Post
 }> = ({ post }) => {
-  const { categories, heroImage, populatedAuthors, publishedAt, title } = post
+  const { heroImage, populatedAuthors, publishedAt, title } = post
 
   const hasAuthors =
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
@@ -29,7 +28,7 @@ export const PostHero: React.FC<{
   })
 
   return (
-    <div className="accaodomationBannerSection relative  min-h-[50vh]">
+    <div className="accaodomationBannerSection relative  min-h-[60vh]">
       {heroImage && typeof heroImage !== 'string' && (
         <Media fill priority imgClassName="-z-10 object-cover" resource={heroImage} />
       )}
@@ -47,7 +46,7 @@ export const PostHero: React.FC<{
             ))}
           </div>
 
-          <div className="authorDetails">
+          {/* <div className="authorDetails">
             {hasAuthors && (
               <div>
                 <p className="text-sm">Author</p>
@@ -60,8 +59,7 @@ export const PostHero: React.FC<{
                 <time dateTime={publishedAt}>{new Date(publishedAt).toLocaleDateString()}</time>
               </div>
             )}
-          </div>
-
+          </div> */}
         </div>
       </div>
     </div>

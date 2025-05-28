@@ -1,5 +1,5 @@
-// storage-adapter-import-placeholder
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import 'dotenv/config'
 
 import sharp from 'sharp' // sharp-import
 import path from 'path'
@@ -26,6 +26,7 @@ import VisitCategoryCollection from './collections/RelationSchema/main-pages/vis
 import { work } from './collections/Work'
 import { Events } from './collections/Events'
 import { Investments } from './collections/Investments'
+import { Live } from './collections/live'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -72,10 +73,9 @@ export default buildConfig({
 
   db: postgresAdapter({
     pool: {
-      connectionString:
-        process.env.DATABASE_URL || 'postgresql://postgres:root@localhost:5432/superchennai',
+      connectionString: process.env.DATABASE_URI,
       ssl: false,
-      connectionTimeoutMillis: 5000,
+      connectionTimeoutMillis: 10000,
       idleTimeoutMillis: 30000,
     },
   }),
@@ -90,18 +90,16 @@ export default buildConfig({
     work,
     Events,
     Investments,
-
-
+    Live,
 
     VolunteerSlidesCollection,
     SocialReelsCollection,
     InvestmentCategoriesCollection,
     VisitCategoryCollection,
-    
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
-  blocks: [ChennaiInvestmentsBlock,],
+  blocks: [ChennaiInvestmentsBlock],
   plugins: [
     ...plugins,
     // storage-adapter-placeholder

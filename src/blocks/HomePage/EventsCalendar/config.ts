@@ -4,11 +4,11 @@ const EventsCalendarBlock: Block = {
   slug: 'eventsCalendar',
 
   labels: {
-    singular: 'Event Calendar Block',
-    plural: 'Event Calendar Blocks',
+    singular: 'Events Calendar',
+    plural: 'Events Calendar',
   },
   admin: {
-    group: 'Common Block Contents',
+    group: 'Homepage Sections',
   },
   fields: [
     {

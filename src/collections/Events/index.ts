@@ -16,6 +16,8 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
+import EventDetails from '@/blocks/InnerPage/SharedBlocks/EventDetails/config'
+import { slugField } from '@/fields/slug'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -23,10 +25,6 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { slugField } from '@/fields/slug'
-import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
-import EventDetails from '@/blocks/InnerPage/SharedBlocks/EventDetails/config'
-import { Content } from '@/blocks/Content/config'
 export const EventsContent = (slug: string, singular: string, plural: string): Block => ({
   slug,
   labels: {
@@ -178,40 +176,7 @@ export const Events: CollectionConfig<'events'> = {
       required: true,
     },
 
-    // {
-    //   name: 'isFeatured',
-    //   type: 'checkbox',
-    //   label: 'Featured Event',
-    //   admin: {
-    //     description: 'Only one event can be featured at a time.',
-    //   },
-    //   validate: async (value, { data, operation, req }) => {
-    //     if (!value) return true // if unchecked, always valid
-
-    //     // On create or update, check if other featured event exists
-    //     const id = (data as { id?: string })?.id
-
-    //     const existingFeatured = await req.payload.find({
-    //       collection: 'events',
-    //       where: {
-    //         isFeatured: {
-    //           equals: true,
-    //         },
-    //         id: {
-    //           not_equals: id || '',
-    //         },
-    //       },
-    //       limit: 1,
-    //     })
-
-    //     if (existingFeatured?.docs?.length > 0) {
-    //       return 'There is already another featured event. Only one event can be featured.'
-    //     }
-
-    //     return true
-    //   },
-    // },
-// #################IS FEATRE CHECK BOX SCHEM ########################
+    // ################# IS FEATRE CHECK BOX  #############################################
     {
       name: 'isFeatured',
       type: 'checkbox',
@@ -254,6 +219,12 @@ export const Events: CollectionConfig<'events'> = {
       tabs: [
         {
           fields: [
+            //####################### BANNER CONTENT  ############################################
+            {
+              name: 'heroImage',
+              type: 'upload',
+              relationTo: 'media',
+            },
             {
               name: 'content',
               type: 'richText',
@@ -264,10 +235,8 @@ export const Events: CollectionConfig<'events'> = {
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({
                       blocks: [
-                        // ############3  INSER WA WAITING DETAIL PGE BLOCKS ##################
-                        InnerPageBanner,
+                        // ############################ INSER WA WAITING DETAIL PGE BLOCKS ##################
                         EventDetails,
-                        Content,
                       ],
                     }),
                     FixedToolbarFeature(),

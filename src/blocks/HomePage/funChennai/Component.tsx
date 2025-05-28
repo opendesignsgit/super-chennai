@@ -71,6 +71,9 @@ export const FunChennaiBlockServer: React.FC<Props> = ({ heading, subheading, ca
               <div key={index}>
                 <div className="cardImageSection">
                   <img src={getImageUrl(card.image)} alt={card.title} />
+                  <div className="titleFunChennaiDiv">
+                    <p className="titleFunChennai">{card.title}</p>
+                  </div>
                 </div>
               </div>
             ))}

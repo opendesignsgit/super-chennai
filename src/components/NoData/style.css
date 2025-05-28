@@ -1,38 +1,35 @@
-.no-data-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    padding: 40px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 20px auto;
-    transition: all 0.3s ease;
-  }
-  
-  .no-data-container:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .no-data-icon {
-    font-size: 60px;
-    margin-bottom: 20px;
-  }
-  
-  .no-data-message h3 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-  
-  .no-data-submessage p {
-    font-size: 16px;
-    opacity: 0.8;
-  }
-  
-  .no-data-container p {
-    margin: 10px 0;
-  }
-  
+/* style.css */
+
+.no-data-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+  width: 100%;
+  min-height: 250px;
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.no-data-box {
+  max-width: 600px;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.no-data-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.no-data-description {
+  font-size: 1rem;
+  color: #6b7280;
+}

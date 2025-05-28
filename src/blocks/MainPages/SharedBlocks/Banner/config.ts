@@ -6,6 +6,9 @@ const mainPageBannerBlock: Block = {
     singular: 'Main Page Banner',
     plural: 'Main Page Banners',
   },
+  admin: {
+    group: 'Main Page Sections',
+  },
   fields: [
     {
       name: 'heading',

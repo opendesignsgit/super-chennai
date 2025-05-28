@@ -26,7 +26,7 @@ const response = {
   header: [
     {
       label: 'LIVE',
-      link: '/visits-chennai',
+      link: '/live-chennai',
       content: [
         {
           title: 'Cost of living',
@@ -87,7 +87,7 @@ const response = {
     },
     {
       label: 'VISIT',
-      link: '/visit',
+      link: '/visit-chennai',
       content: [
         {
           title: 'Accomodation',
@@ -143,7 +143,7 @@ const response = {
     },
     {
       label: 'WORK',
-      link: '/menu3',
+      link: '/work-chennai',
       content: [
         {
           title: 'Employment - Job market (Tech,Automobile,Hospitals, etc.,.)',
@@ -194,7 +194,7 @@ const response = {
     },
     {
       label: 'INVEST',
-      link: '/menu3',
+      link: '/invest-chennai',
       content: [
         {
           title: 'Realestate - both residential & commercial',
@@ -255,7 +255,7 @@ const response = {
     },
     {
       label: 'INNOVATE',
-      link: '/menu3',
+      link: '/innovate-chennai',
       content: [
         {
           title: 'IT and Software Development',
@@ -321,7 +321,7 @@ const response = {
     },
     {
       label: 'VOLUNTEER',
-      link: '/menu3',
+      link: '/volunteer-chennai',
       content: [
         {
           title: 'Web Development',
@@ -380,6 +380,10 @@ const Header = () => {
   const [menuVisible, setMenuVisible] = useState(false)
   const [menuBar, setMenuBar] = useState(false)
 
+  // const isHome = location.pathname === '/'
+    const isHome = ''
+
+
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
@@ -420,17 +424,12 @@ const Header = () => {
   return (
     <header className={`mainMegamenuContainer ${scrolled ? 'scrolled' : ''}`}>
       <nav
-        className="Megamenunav"
+        className={`Megamenunav ${isHome ? 'HomePageStyle' : ''}`}
         onMouseLeave={() => {
           setMenuVisible(false)
           setTimeout(() => setActiveMenu(null), 300)
         }}
       >
-
-
-
-
-        
         <div className={`Megamenutop-bar ${activeMenu ? 'activeStateMegamenu' : ''}`}>
           <Link href="/" className="Megamenulogo"></Link>
 
@@ -461,8 +460,7 @@ const Header = () => {
             className="Megamenulogo1 hidden md:block"
             onClick={() => setMenuBar(true)}
           >
-            ||| MENU
-
+            MENU
           </div>
           {activeMenu && (
             <div className={`Newmegamenu hidden md:block ${menuVisible ? 'show' : ''}`}>

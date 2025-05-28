@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import './style.css'
 import NoData from '@/components/NoData'
@@ -16,6 +17,7 @@ type RichContent = {
 type EventType = {
   id?: string | number
   event?: {
+    link: string
     description?: string
     category?: string
     address?: string
@@ -33,6 +35,7 @@ type EventType = {
   month?: string
   date?: number
   time?: string
+  link: string
 }
 
 type Props = {
@@ -129,6 +132,7 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
             content: item.content,
             ...dateParts,
             event: item.event, // keep original event object for detailed access
+            link: item.slug ? `/events/${item.slug}` : '#',
           }
         })
 
@@ -157,13 +161,15 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
         {isFeaturedEvent ? (
           <div className="CalendarEventsFirst">
             {isFeaturedEvent.event?.image?.url && (
-              <Image
-                src={isFeaturedEvent.event.image.url}
-                alt={isFeaturedEvent.title || 'Featured event'}
-                width={600}
-                height={300}
-                style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
-              />
+              <Link href={isFeaturedEvent.link || '#'}>
+                <Image
+                  src={isFeaturedEvent.event.image.url}
+                  alt={isFeaturedEvent.title || 'Featured event'}
+                  width={600}
+                  height={300}
+                  style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
+                />
+              </Link>
             )}
 
             <div className="MainCalendarSectionEvent">
@@ -186,7 +192,9 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
                 </div>
 
                 <div>
-                  <p className="eventsNAME">{isFeaturedEvent.title}</p>
+                  <Link href={isFeaturedEvent.link || '#'}>
+                    <p className="eventsNAME">{isFeaturedEvent.title}</p>
+                  </Link>
                   <p className="eventspLACE">{isFeaturedEvent.category || 'General'}</p>
                 </div>
               </div>
@@ -241,37 +249,42 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
                   whileHover={{ scale: 1.05 }}
                 >
                   <div className="relative w-full h-[250px]">
-                    <Image
-                      src={
-                        typeof event.image === 'string'
-                          ? event.image
-                          : event.image?.url || '/fallback.jpg'
-                      }
-                      alt={event.title || 'Event image'}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-t-md"
-                    />
+                    <Link href={event.link || '#'}>
+                      <Image
+                        src={
+                          typeof event.image === 'string'
+                            ? event.image
+                            : event.image?.url || '/fallback.jpg'
+                        }
+                        alt={event.title || 'Event image'}
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-t-md"
+                      />
+                    </Link>
+
                     <div className="absolute top-3 right-3 CalenderCategoryOverlay">
                       {event.category}
                     </div>
                   </div>
-                  <div className="EventsCalendarMonthtime">
-                    <div className="EventsCalendarMonthStyle">{event.month}</div>
-                    <div className="EventsCalendarMonthStyle">|</div>
-                    <div className="EventsCalendarMonthStyle">{event.time}</div>
-                  </div>
-                  <h3 className="EventsCalendarTitlecss">{event.title}</h3>
+                  <Link href={event.link || '#'}>
+                    <div className="EventsCalendarMonthtime">
+                      <div className="EventsCalendarMonthStyle">{event.month}</div>
+                      <div className="EventsCalendarMonthStyle">|</div>
+                      <div className="EventsCalendarMonthStyle">{event.time}</div>
+                    </div>
+                    <h3 className="EventsCalendarTitlecss">{event.title}</h3>
 
-                  <h4 className="EventsCalendarContent">
-                    {typeof event.content === 'string' ? (
-                      <p>{event.content}</p>
-                    ) : event.content?.fields?.about ? (
-                      <RichText data={event.content.fields.about} />
-                    ) : (
-                      <p>{event.description || 'No details available.'}</p>
-                    )}
-                  </h4>
+                    <h4 className="EventsCalendarContent">
+                      {typeof event.content === 'string' ? (
+                        <p>{event.content}</p>
+                      ) : event.content?.fields?.about ? (
+                        <RichText data={event.content.fields.about} />
+                      ) : (
+                        <p>{event.description || 'No details available.'}</p>
+                      )}
+                    </h4>
+                  </Link>
                 </motion.div>
               ))}
             </motion.div>

@@ -21,7 +21,7 @@ import type {
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { cn } from '@/utilities/ui'
 import { VisitBanner } from '@/blocks/PageBanners/VisitBanner/Component'
-import HotelsInChennaiSection from '@/blocks/InnerPage/SharedBlocks/Hotels/Component'
+import HotelsInChennaiSection from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/Component'
 import ExploreMoreChennai from '@/blocks/InnerPage/Accomodation/Explore/Component'
 import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
 import Banner from '@/blocks/InnerPage/SharedBlocks/Banners/Components'
@@ -32,7 +32,6 @@ import IntroText from '@/blocks/InnerPage/SharedBlocks/IntroText/Components'
 import FutureUnicorns from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/Component'
 import { PageIntroText } from '@/blocks/MainPages/SharedBlocks/IntroText/Component'
 import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
-// import EventDetailsBlock from '@/blocks/InnerPage/SharedBlocks/EventDetails/Components'
 
 type NodeTypes =
   | DefaultNodeTypes
@@ -123,13 +122,13 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
       <PageIntroText {...node.fields} />
     ),
 
-        // InvestCategory
+    // InvestCategory
 
-      InvestCategoryBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
+    InvestCategoryBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
       <InvestCategory {...node.fields} />
     ),
 
-
+    // FeatureSections
   },
 })
 

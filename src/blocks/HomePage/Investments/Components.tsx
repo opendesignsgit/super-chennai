@@ -51,6 +51,7 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
   return (
     <div className="chennaiInvestmentBg">
       <div className="container max-w-7xl mx-auto px-4 ChennaiInvestContainerdiv">
+        
         <div className="ChennaiInvestMents">
           <h4>{heading}</h4>
           <h6>{subheading}</h6>
@@ -69,7 +70,7 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
         </div>
 
         <div className="buildingSectionFlex">
-          {activeData.slice(0, 4).map((item, index) => (
+          {activeData.slice(0, 3).map((item, index) => (
             <div className="bulidingSection" key={index}>
               {index % 2 === 0 ? (
                 <>

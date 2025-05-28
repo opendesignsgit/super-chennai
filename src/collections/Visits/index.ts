@@ -1,5 +1,4 @@
-import type { Block, CollectionConfig } from 'payload'
-
+import type { CollectionConfig } from 'payload'
 import {
   BlocksFeature,
   FixedToolbarFeature,
@@ -16,6 +15,7 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
+import { slugField } from '@/fields/slug'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -23,99 +23,12 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { slugField } from '@/fields/slug'
 
-import HotelsInChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Hotels/config'
+import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
 import ExploreMoreChennaiBlock from '@/blocks/InnerPage/Accomodation/Explore/config'
 import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
-import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
-
-// const createVisitCategoryBlock = (slug: string, singular: string, plural: string): Block => ({
-//   slug,
-//   labels: {
-//     singular,
-//     plural,
-//   },
-//   fields: [
-//     {
-//       name: 'items',
-//       type: 'array',
-//       label: 'Hotels',
-//       required: true,
-//       fields: [
-//         {
-//           name: 'image',
-//           type: 'upload',
-//           relationTo: 'media',
-//           required: true,
-//         },
-//         {
-//           name: 'heading',
-//           type: 'text',
-//           required: true,
-//         },
-//         {
-//           name: 'description',
-//           type: 'richText',
-//         },
-//         {
-//           name: 'buttonLink',
-//           type: 'text',
-//           label: 'Button Link (URL)',
-//         },
-//       ],
-//     },
-//   ],
-// })
-
-// // HOTELS ##########
-// const TravelsCategoryBlock = (slug: string, singular: string, plural: string): Block => ({
-//   slug,
-//   labels: {
-//     singular,
-//     plural,
-//   },
-//   fields: [
-//     // {
-//     //   name: 'heading',
-//     //   type: 'text',
-//     //   required: true,
-//     // },
-//     // {
-//     //   name: 'description',
-//     //   type: 'richText',
-//     // },
-//     {
-//       name: 'items',
-//       type: 'array',
-//       label: 'Cards',
-//       required: true,
-//       fields: [
-//         {
-//           name: 'image',
-//           type: 'upload',
-//           relationTo: 'media',
-//           required: true,
-//         },
-//         {
-//           name: 'heading',
-//           type: 'text',
-//           required: true,
-//         },
-//         {
-//           name: 'description',
-//           type: 'richText',
-//         },
-//         {
-//           name: 'buttonLink',
-//           type: 'text',
-//           label: 'Button Link (URL)',
-//         },
-//       ],
-//     },
-//   ],
-// })
-
+import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
+import ZigZagContentBlock from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
 export const Visits: CollectionConfig<'visits'> = {
   slug: 'visits',
   access: {
@@ -124,9 +37,7 @@ export const Visits: CollectionConfig<'visits'> = {
     read: authenticatedOrPublished,
     update: authenticated,
   },
-  // This config controls what's populated by default when a post is referenced
-  // https://payloadcms.com/docs/queries/select#defaultpopulate-collection-config-property
-  // Type safe if the collection slug generic is passed to `CollectionConfig` - `CollectionConfig<'visits'>
+
   defaultPopulate: {
     title: true,
     slug: true,
@@ -168,6 +79,7 @@ export const Visits: CollectionConfig<'visits'> = {
       tabs: [
         {
           fields: [
+            //####################### BANNER CONTENT  ############################################
             {
               name: 'heroImage',
               type: 'upload',
@@ -182,35 +94,7 @@ export const Visits: CollectionConfig<'visits'> = {
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({
-                      blocks: [
-                        // Banner,
-                        // Code,
-                        // MediaBlock,
-                        // Content,
-                        HotelsInChennaiBlock,
-                        ExploreMoreChennaiBlock,
-                        socialReelSlider,
-                        InnerPageBanner,
-
-                        // createVisitCategoryBlock('food', 'Food', 'Food Sections'),
-                        // createVisitCategoryBlock(
-                        //   'placesToVisit',
-                        //   'Place to Visit',
-                        //   'Places to Visit',
-                        // ),
-                        //   createVisitCategoryBlock(
-                        //     'accommodation',
-                        //     'Accommodation',
-                        //     'Accommodations',
-                        //   ),
-                        //   createVisitCategoryBlock('thingsToDo', 'Thing to Do', 'Things to Do'),
-                        //   createVisitCategoryBlock('hiddenGems', 'Hidden Gem', 'Hidden Gems'),
-                        //   createVisitCategoryBlock('shopping', 'Shopping', 'Shopping Sections'),
-                        //   TravelsCategoryBlock('travelTips', 'Travel Tip', 'Travel Tips'),
-                        //   createVisitCategoryBlock('wellness', 'Wellness', 'Wellness Tips'),
-                        //   createVisitCategoryBlock('events', 'Event', 'Events'),
-                        //   createVisitCategoryBlock('conference', 'Conference', 'Conferences'),
-                      ],
+                      blocks: [ZigZagContentBlock, ExploreMoreChennaiBlock, socialReelSlider],
                     }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),
@@ -281,28 +165,63 @@ export const Visits: CollectionConfig<'visits'> = {
             }),
           ],
         },
-        // LAYOUT TAB  #########
 
-        // {
-        //   label: 'Layout',
-        //   fields: [
-        //     {
-        //       name: 'layout',
-        //       type: 'blocks',
-        //       blocks: [
-        //         Content,
-        //         MediaBlock,
-        //         VisitBannerBlock,
-        //         VisitCategory,
-        //         VisitIntroTextBlock,
-        //       ],
-        //       required: true,
-        //       admin: {
-        //         initCollapsed: true,
-        //       },
-        //     },
-        //   ],
-        // },
+        // SUBPAGE SCHAME #########
+        {
+          label: 'Sub Pages',
+          fields: [
+            {
+              name: 'subPages',
+              type: 'array',
+              label: 'Sub Pages',
+              fields: [
+                {
+                  name: 'title',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'slug',
+                  type: 'text',
+                  required: true,
+                  admin: {
+                    description: 'Slug for this sub-page. Final URL: /visits/parent-slug/this-slug',
+                  },
+                },
+                {
+                  name: 'content',
+                  type: 'richText',
+                  editor: lexicalEditor({
+                    features: ({ rootFeatures }) => {
+                      return [
+                        ...rootFeatures,
+                        HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                        BlocksFeature({
+                          blocks: [
+                            ZigZagContentBlock,
+                            ExploreMoreChennaiBlock,
+                            socialReelSlider,
+                            InnerPageBanner,
+                            FeatureSectionsBlock,
+                          ],
+                        }),
+                        FixedToolbarFeature(),
+                        InlineToolbarFeature(),
+                        HorizontalRuleFeature(),
+                      ]
+                    },
+                  }),
+                },
+                {
+                  name: 'meta',
+                  label: 'SEO (Optional)',
+                  type: 'group',
+                  fields: [MetaImageField({ relationTo: 'media' })],
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
     {

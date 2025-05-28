@@ -78,6 +78,7 @@ export interface Config {
     work: Work;
     events: Event;
     investments: Investment;
+    live: Live;
     volunteerSlides: VolunteerSlide;
     'social-reels': SocialReel;
     'investment-categories': InvestmentCategory;
@@ -102,6 +103,7 @@ export interface Config {
     work: WorkSelect<false> | WorkSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
     investments: InvestmentsSelect<false> | InvestmentsSelect<true>;
+    live: LiveSelect<false> | LiveSelect<true>;
     volunteerSlides: VolunteerSlidesSelect<false> | VolunteerSlidesSelect<true>;
     'social-reels': SocialReelsSelect<false> | SocialReelsSelect<true>;
     'investment-categories': InvestmentCategoriesSelect<false> | InvestmentCategoriesSelect<true>;
@@ -474,6 +476,31 @@ export interface Page {
         blockName?: string | null;
         blockType: 'allevents';
       }
+    | {
+        heading: string;
+        image: number | Media;
+        paraZeroLiveSection: string;
+        paraoneLiveSection: string;
+        paraTwoLiveSection: string;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'liveIntrorSection';
+      }
+    | {
+        heading: string;
+        description: string;
+        essentials?:
+          | {
+              text: string;
+              link: string;
+              image: number | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'chennaiLifeEssentials';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -752,6 +779,7 @@ export interface Event {
    * Only one event can be featured at a time.
    */
   isFeatured?: boolean | null;
+  heroImage?: (number | null) | Media;
   content: {
     root: {
       type: string;
@@ -967,6 +995,37 @@ export interface Visit {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  subPages?:
+    | {
+        title: string;
+        /**
+         * Slug for this sub-page. Final URL: /visits/parent-slug/this-slug
+         */
+        slug: string;
+        content?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        meta?: {
+          /**
+           * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+           */
+          image?: (number | null) | Media;
+        };
+        id?: string | null;
+      }[]
+    | null;
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
   populatedAuthors?:
@@ -1077,6 +1136,53 @@ export interface Investment {
         id?: string | null;
       }[]
     | null;
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "live".
+ */
+export interface Live {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedlive?: (number | Live)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
   populatedAuthors?:
@@ -1520,6 +1626,10 @@ export interface PayloadLockedDocument {
         value: number | Investment;
       } | null)
     | ({
+        relationTo: 'live';
+        value: number | Live;
+      } | null)
+    | ({
         relationTo: 'volunteerSlides';
         value: number | VolunteerSlide;
       } | null)
@@ -1917,6 +2027,33 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        liveIntrorSection?:
+          | T
+          | {
+              heading?: T;
+              image?: T;
+              paraZeroLiveSection?: T;
+              paraoneLiveSection?: T;
+              paraTwoLiveSection?: T;
+              id?: T;
+              blockName?: T;
+            };
+        chennaiLifeEssentials?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              essentials?:
+                | T
+                | {
+                    text?: T;
+                    link?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -2109,6 +2246,19 @@ export interface VisitsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  subPages?:
+    | T
+    | {
+        title?: T;
+        slug?: T;
+        content?: T;
+        meta?:
+          | T
+          | {
+              image?: T;
+            };
+        id?: T;
+      };
   publishedAt?: T;
   authors?: T;
   populatedAuthors?:
@@ -2161,6 +2311,7 @@ export interface WorkSelect<T extends boolean = true> {
 export interface EventsSelect<T extends boolean = true> {
   title?: T;
   isFeatured?: T;
+  heroImage?: T;
   content?: T;
   event?:
     | T
@@ -2241,6 +2392,37 @@ export interface InvestmentsSelect<T extends boolean = true> {
               id?: T;
             };
         id?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "live_select".
+ */
+export interface LiveSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  relatedlive?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
       };
   publishedAt?: T;
   authors?: T;
@@ -2864,6 +3046,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'investments';
           value: number | Investment;
+        } | null)
+      | ({
+          relationTo: 'live';
+          value: number | Live;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
@@ -2915,56 +3101,6 @@ export interface MediaBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ContentBlock".
- */
-export interface ContentBlock {
-  columns?:
-    | {
-        size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
-        richText?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        enableLink?: boolean | null;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'content';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

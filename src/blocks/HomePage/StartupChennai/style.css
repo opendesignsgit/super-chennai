@@ -1,51 +1,179 @@
-.starupchennaiSection{
-    background-image: url("../../../assets/images/Background-New-Section.jpg");
-    padding-top: 100px;
-    height: 730px;
+.starupchennaiSection {
+  background-image: url("../../../assets/images/Background-New-Section.jpg");
+  padding-top: 100px;
+  height: 730px;
+  margin-bottom: 250px;
 }
-.startupChennaiMainContainer h3{
-    font-family: 'NewAmsterdam';
-    font-size: 120px;
-    color: #fff;
-    line-height: 94px;
-}
-
-.startupChennaiMainContainer p{
-    font-family: '29LT Bukra';
-    font-size: 18px;
-    line-height: 30px;
-    color: #fff;
-    text-align: left;
-    margin-top: 10px;
+.startupChennaiMainContainer h3 {
+  font-family: "NewAmsterdam";
+  color: #fff;
+  font-size: clamp(36px, 17vw, 100px);
+  line-height: clamp(58px, 9vw, 94px);
 }
 
-.startupChennaiImageSection{
+.startupChennaiMainContainer p {
+  font-family: "29LT Bukra";
+  color: #fff;
+  text-align: left;
+  margin-top: 10px;
+  font-size: clamp(15px, 1.5vw, 16px);
+  line-height: clamp(24px, 2vw, 26px);
+}
+
+.startupChennaiImageSection {
+  display: flex;
+  column-gap: 0px;
+  margin-top: 50px;
+}
+
+.firstStarupSection {
+  width: 50%;
+  border: 10px solid #fff;
+  overflow: hidden;
+}
+
+.firstStarupSection img {
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  will-change: transform;
+}
+
+.firstStarupSection img:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+.STarupChennaiSections {
+  display: flex;
+  width: 50%;
+  flex-wrap: wrap;
+}
+
+.rightSideSectionSTarup {
+  display: flex;
+  column-gap: 0px;
+}
+
+.rightSideSectionSTarup div {
+  border: 10px solid #fff;
+  border-left: 0;
+  overflow: hidden;
+}
+.StarupForBorder {
+  border-top: 0 !important;
+}
+
+.rightSideSectionSTarup img {
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+.rightSideSectionSTarup img:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.firstStarupSection {
+  position: relative;
+}
+
+.itsectorSection {
+    position: absolute;
+    bottom: 0%;
+    padding-left: 40px;
+    width: 100%;
+    height: 150px;
     display: flex;
-    column-gap: 0px;
-    margin-top: 50px;
+    flex-direction: column;
+    justify-content: center;
+    background-image: linear-gradient(transparent, #2a3787);
 }
 
-.firstStarupSection{
-    width: 45%;
-    border: 10px solid #fff;
+.itsectorSection h4 {
+  font-family: "29LT Bukra SmBd";
+  font-size: 40px;
+  color: #fff;
 }
 
-.STarupChennaiSections{
-    display: flex;
-    width: 45%;
-    flex-wrap: wrap;
+.itsectorSection p {
+  font-family: "29LT Bukra Medium";
+  font-size: 16px;
+  line-height: 26px;
+  color: #fff;
+  word-spacing: 3px;
 }
 
-.rightSideSectionSTarup{
-    display: flex;
-    column-gap: 0px;
+.StartUpChennaiTextLayer {
+  position: relative;
 }
 
-.rightSideSectionSTarup div{
-    border: 10px solid #fff;
-    border-left: 0;
-}
-.StarupForBorder{
-    border-top: 0 !important;
+.itsectorSectionOne {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(38, 42, 91, 0.4);
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
 }
 
+.itsectorSectionOne h4 {
+  font-family: "29LT Bukra SmBd";
+  font-size: 20px;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .startupChennaiImageSection {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .firstStarupSection {
+    width: 100%;
+  }
+
+  .STarupChennaiSections {
+    width: 100%;
+  }
+
+  .starupchennaiSection {
+    height: 550px;
+  }
+
+  .itsectorSection h4 {
+    font-size: 25px;
+  }
+
+  .itsectorSection p {
+    font-size: 14px;
+  }
+
+  .itsectorSection {
+    padding-left: 20px;
+    height: 100px;
+  }
+
+  .itsectorSectionOne h4 {
+    font-size: 16px;
+  }
+
+  .itsectorSectionOne {
+    height: 40px;
+  }
+}

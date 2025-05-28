@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import './style.css'
 import { usePathname, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type BannerProps = {
   heading?: string
@@ -47,7 +48,14 @@ export default function Banner({ heading, image, breadcrumb = [] }: BannerProps)
   return (
     <div className="accaodomationBannerSection">
       <div>
-        <img src={image.url} alt={image.alt || 'Accodomation Banner'} />
+        <Image
+          src={image.url}
+          alt={image.alt || 'Accodomation Banner'}
+          width={0}
+          height={0}
+          style={{ width: '100%', height: 'auto' }}
+          priority
+        />
       </div>
       <div className="accodoamationBannerContainer">
         <div className="accodoamationBannerText">

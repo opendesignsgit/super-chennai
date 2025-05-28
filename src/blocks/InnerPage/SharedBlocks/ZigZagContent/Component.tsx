@@ -1,7 +1,6 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react'
 import './style.css'
-import { FormPopupComponent } from '@/blocks/MainPages/SharedBlocks/FormPopup/Components'
 
 type Section = {
   title: string
@@ -15,7 +14,7 @@ type Props = {
   sections: Section[]
 }
 
-const HotelsInChennaiSection: React.FC<Props> = ({ sections }) => {
+const ZigZagContentSection: React.FC<Props> = ({ sections }) => {
   const bgTextRef = useRef<HTMLDivElement>(null)
   const [scrollDir, setScrollDir] = useState<'left' | 'right'>('left')
 
@@ -75,9 +74,9 @@ const HotelsInChennaiSection: React.FC<Props> = ({ sections }) => {
   )
 }
 
-export default HotelsInChennaiSection
+export default ZigZagContentSection
 
-// CuSTOME API RENDER WORKING VERSION ################
+// CuSTOME API RENDER WORKING VERSION ################TEMPRORRY BLOCK U CAN USE REFRENCE 
 
 // 'use client'
 // import React, { useRef, useEffect, useState } from 'react'

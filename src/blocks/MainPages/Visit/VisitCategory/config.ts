@@ -37,6 +37,9 @@ const VisitCategory: Block = {
     singular: 'Visit Category',
     plural: 'Visit Categories',
   },
+  admin: {
+    group: 'Main Page Sections',
+  },
   fields: [
     {
       name: 'title',

@@ -3,7 +3,7 @@ import { Block } from 'payload'
 export const FeatureSectionsBlock: Block = {
   slug: 'featureSections',
   labels: {
-    singular: 'VisualAndKeyPoints',
+    singular: 'VisualAndKeyPoints (Education)',
     plural: 'VisualAndKeyPoints',
   },
   fields: [

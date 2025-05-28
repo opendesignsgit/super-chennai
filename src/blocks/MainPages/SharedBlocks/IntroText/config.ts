@@ -1,10 +1,13 @@
-import { Block } from 'payload';
+import { Block } from 'payload'
 
 const IntroTextBlock: Block = {
   slug: 'introTextBlock',
   labels: {
     singular: 'Intro Text Block',
     plural: 'Intro Text Blocks',
+  },
+  admin: {
+    group: 'Main Page Sections',
   },
   fields: [
     {
@@ -31,9 +34,7 @@ const IntroTextBlock: Block = {
       label: 'Supporting Description',
       required: true,
     },
-   
   ],
-};
+}
 
-export default IntroTextBlock;
-
+export default IntroTextBlock

@@ -3,8 +3,11 @@ import { Block } from 'payload'
 const volunteerBecameListBlock: Block = {
   slug: 'volunteerBecameSection',
   labels: {
-    singular: 'Volunteer Became Section',
+    singular: 'ZigZag Volunteer',
     plural: 'Volunteer Became Sections',
+  },
+  admin: {
+    group: 'Main Page Sections',
   },
   fields: [
     {

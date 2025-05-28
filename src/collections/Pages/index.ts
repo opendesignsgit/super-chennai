@@ -29,7 +29,7 @@ import EventsCalendarBlock from '@/blocks/HomePage/EventsCalendar/config'
 import { GlobalSearchBlock } from '@/blocks/HomePage/GlobalSearch/config'
 import HeroSlider from '@/blocks/PageBanners/Home/config'
 import VisitCategory from '@/blocks/MainPages/Visit/VisitCategory/config'
-import HotelsInChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Hotels/config'
+import HotelsInChennaiBlock from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
 import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
 import mainPageBannerBlock from '@/blocks/MainPages/SharedBlocks/Banner/config'
 import { FormPopup } from '@/blocks/MainPages/SharedBlocks/FormPopup/config'
@@ -42,7 +42,8 @@ import Utilities from '@/blocks/HomePage/Utilities/config'
 import ContentZoneCarousel from '@/blocks/HomePage/ContentZoneCarousel/config'
 import SpotlightGallery from '@/blocks/HomePage/leftContentRightSlider/config'
 import AllEvents from '@/blocks/MainPages/Events/config'
-import InvestCategoryBlock from '@/blocks/InnerPage/SharedBlocks/InvestCategory/config'
+import liveIntrorSection from '@/blocks/MainPages/Live/Introtext/config'
+import ChennaiLifeEssentialSection from '@/blocks/MainPages/Live/ChennaiLifeEssentials/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -118,10 +119,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 //###### INNER BLOCKS #############
                 VisitCategory,
                 HotelsInChennaiBlock,
-
                 volunteerBecameListBlock,
-
-                // careerIntroBlock,
 
                 // REUSABLE BLOCK
 
@@ -140,8 +138,8 @@ export const Pages: CollectionConfig<'pages'> = {
 
                 AllEvents,
 
-                // InvestCategoryBlock,
-
+                liveIntrorSection,
+                ChennaiLifeEssentialSection,
               ],
               required: true,
               admin: {

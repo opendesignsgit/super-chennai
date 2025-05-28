@@ -6,6 +6,9 @@ const TwoColumnFeatureBlock: Block = {
     singular: 'TwoColumnFeatureBlock',
     plural: 'TwoColumnFeatureBlock',
   },
+  admin: {
+    group: 'Homepage Sections',
+  },
   fields: [
     {
       name: 'techImage',

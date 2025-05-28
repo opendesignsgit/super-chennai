@@ -6,6 +6,9 @@ export const ExploreBlock: Block = {
     singular: 'Explore Cards',
     plural: 'Explore Cards',
   },
+  admin: {
+    group: 'Homepage Sections',
+  },
   fields: [
     {
       name: 'cards',
@@ -26,7 +29,7 @@ export const ExploreBlock: Block = {
         {
           name: 'image',
           type: 'upload',
-          relationTo: 'media', 
+          relationTo: 'media',
           required: true,
         },
       ],

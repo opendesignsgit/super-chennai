@@ -6,11 +6,10 @@ export const StartupChennaiBlock: Block = {
     singular: 'Startup Chennai',
     plural: 'Startup Chennai Blocks',
   },
-  // admin: {
-  //   components: {
-  //     Label: ChennaiLifeLabel,
-  //   },
-  // },
+  admin: {
+    group: 'Homepage Sections',
+  },
+
   fields: [
     {
       name: 'heading',

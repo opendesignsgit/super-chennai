@@ -2,6 +2,10 @@ import { Block } from 'payload'
 
 export const FormPopup: Block = {
   slug: 'formPopup',
+  labels: {
+    singular: 'Form Popup',
+    plural: 'Form Popups',
+  },
   fields: [
     {
       name: 'heading',

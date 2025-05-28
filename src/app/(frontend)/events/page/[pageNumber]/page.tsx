@@ -8,6 +8,7 @@ import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
+import Banner from '@/blocks/InnerPage/SharedBlocks/Banners/Components'
 
 export const revalidate = 600
 
@@ -41,6 +42,7 @@ export default async function Page({ params: paramsPromise }: Args) {
           <h1>events</h1>
         </div>
       </div>
+      <Banner />
 
       <div className="container mb-8">
         <PageRange
