@@ -1,7 +1,7 @@
 import { Media } from '@/payload-types'
 
-export type FoodListSectionType = {
-  imageSections: {
+export type featureSectionSplitLayoutType = {
+  imgSec: {
     image: Media
     sectionTitle: string
     sectionDesc?: string

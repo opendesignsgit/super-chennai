@@ -217,7 +217,6 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
-    media?: (number | null) | Media;
   };
   layout: (
     | {
@@ -951,37 +950,6 @@ export interface Visit {
     image?: (number | null) | Media;
     description?: string | null;
   };
-  subPages?:
-    | {
-        title: string;
-        /**
-         * Slug for this sub-page. Final URL: /visits/parent-slug/this-slug
-         */
-        slug: string;
-        content?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        meta?: {
-          /**
-           * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-           */
-          image?: (number | null) | Media;
-        };
-        id?: string | null;
-      }[]
-    | null;
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
   populatedAuthors?:
@@ -1856,7 +1824,6 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               id?: T;
             };
-        media?: T;
       };
   layout?:
     | T
@@ -2387,19 +2354,6 @@ export interface VisitsSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
-      };
-  subPages?:
-    | T
-    | {
-        title?: T;
-        slug?: T;
-        content?: T;
-        meta?:
-          | T
-          | {
-              image?: T;
-            };
-        id?: T;
       };
   publishedAt?: T;
   authors?: T;

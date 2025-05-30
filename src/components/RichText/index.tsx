@@ -12,12 +12,13 @@ import {
 
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
 
-import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
 import Banner from '@/blocks/InnerPage/SharedBlocks/Banners/Components'
 import CareerIntro from '@/blocks/InnerPage/SharedBlocks/careerIntro/Component'
 import ExploreMoreChennai from '@/blocks/InnerPage/SharedBlocks/Explore/Component'
+import FeatureSectionList from '@/blocks/InnerPage/SharedBlocks/featureSectionListLayout/Component'
+import FeatureSectionSplit from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/Component'
 import IntroText from '@/blocks/InnerPage/SharedBlocks/IntroText/Components'
 import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
 import { default as StickyImageScroll } from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/Component'
@@ -27,16 +28,15 @@ import { PageIntroText } from '@/blocks/MainPages/SharedBlocks/IntroText/Compone
 import { VisitBanner } from '@/blocks/PageBanners/VisitBanner/Component'
 import type {
   BannerBlock as BannerBlockProps,
-  CallToActionBlock as CTABlockProps,
+  // CallToActionBlock as CTABlockProps, // Removed because it does not exist in '@/payload-types'
   MediaBlock as MediaBlockProps,
 } from '@/payload-types'
 import { cn } from '@/utilities/ui'
-import FoodListSection from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/Component'
 
 type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
-      CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps | VisitBannerProps
+      CodeBlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps | VisitBannerProps
     >
 export type VisitBannerProps = {
   title: string
@@ -84,7 +84,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
 
     code: ({ node }) => <CodeBlock className="" {...node.fields} />,
 
-    cta: ({ node }) => <CallToActionBlock {...node.fields} />,
+    // cta: ({ node }) => <CallToActionBlock {...node.fields} />,
     globalSearch: ({ node }: { node: SerializedBlockNode<any> }) => (
       <GlobalSearch {...node.fields} />
     ),
@@ -119,6 +119,14 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
 
     StickyImageScroll: ({ node }: { node: SerializedBlockNode<any> }) => (
       <StickyImageScroll {...node.fields} />
+    ),
+
+    featureSectionSplit: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <FeatureSectionSplit {...node.fields} />
+    ),
+
+    featureSectionList: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <FeatureSectionList {...node.fields} />
     ),
   },
 })

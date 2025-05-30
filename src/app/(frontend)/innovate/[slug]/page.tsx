@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 
-import { Relatedinnovate } from '@/blocks/Relatedinnovate/Component'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import RichText from '@/components/RichText'
 import configPromise from '@payload-config'

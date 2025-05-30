@@ -1,9 +1,17 @@
 import React from 'react'
-import Image from 'next/image'
 import type { Page } from '@/payload-types'
 import './style.css'
+import defaultImage from '../../assets/images/AccodomationBannerr.jpg'
+console.log(defaultImage)
+interface ImageObject {
+  url: string
+}
 
-type Props = Page['hero']
+interface Props {
+  image?: string | ImageObject | null
+  heading?: string | null
+  backgroundColor?: string
+}
 
 export const DefaultHeroBanner: React.FC<Props> = ({ heading, image, backgroundColor }) => {
   const imageUrl =
@@ -19,15 +27,9 @@ export const DefaultHeroBanner: React.FC<Props> = ({ heading, image, backgroundC
       <div className="InvestMainContainer">
         <div className="InvestSectionBanner">
           <div className="InvestBannerImage">
-            <img src={imageUrl} alt={imageUrl || 'Banner'} />
-             {/* <Image
-                src={imageUrl}
-                alt={heading || 'Banner'}
-                fill
-                sizes="100vw"
-              /> */}
+            <img src={imageUrl || defaultImage.src} alt="Banner" />
           </div>
-          {heading && <h1 className="InvestContent">{heading}</h1>}
+          <h3 className="InvestContent">{heading || 'Chennai'}</h3>
         </div>
       </div>
     </div>

@@ -1,10 +1,10 @@
 import { Block } from 'payload'
 
-const featureSectionSplitLayoutBlock: Block = {
-  slug: 'featureSectionSplit',
+const featureSectionListLayoutBlock: Block = {
+  slug: 'featureSectionList',
   labels: {
-    singular: 'featureSectionSplit',
-    plural: 'featureSectionSplit',
+    singular: 'featureSectionList',
+    plural: 'featureSectionList',
   },
   fields: [
     {
@@ -69,4 +69,4 @@ const featureSectionSplitLayoutBlock: Block = {
     },
   ],
 }
-export default featureSectionSplitLayoutBlock
+export default featureSectionListLayoutBlock

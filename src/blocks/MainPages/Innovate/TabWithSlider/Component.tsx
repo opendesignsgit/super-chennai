@@ -53,7 +53,7 @@ export const InnovateSliderBlock = () => {
 
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: slides.length > 1,
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,

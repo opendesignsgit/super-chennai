@@ -25,11 +25,11 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 
 import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
-import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
 import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
+import introTextBlock from '@/blocks/InnerPage/SharedBlocks/IntroText/config'
 import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
 import ZigZagContentBlock from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
-import { FoodListSectionBlock } from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/config'
+import featureSectionSplitLayoutBlock from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/config'
 export const Visits: CollectionConfig<'visits'> = {
   slug: 'visits',
   access: {
@@ -99,7 +99,8 @@ export const Visits: CollectionConfig<'visits'> = {
                         ZigZagContentBlock,
                         ExploreMoreChennaiBlock,
                         socialReelSlider,
-                        FoodListSectionBlock,
+                        introTextBlock,
+                        featureSectionSplitLayoutBlock,
                       ],
                     }),
                     FixedToolbarFeature(),
@@ -173,61 +174,61 @@ export const Visits: CollectionConfig<'visits'> = {
         },
 
         // SUBPAGE SCHAME #########
-        {
-          label: 'Sub Pages',
-          fields: [
-            {
-              name: 'subPages',
-              type: 'array',
-              label: 'Sub Pages',
-              fields: [
-                {
-                  name: 'title',
-                  type: 'text',
-                  required: true,
-                },
-                {
-                  name: 'slug',
-                  type: 'text',
-                  required: true,
-                  admin: {
-                    description: 'Slug for this sub-page. Final URL: /visits/parent-slug/this-slug',
-                  },
-                },
-                {
-                  name: 'content',
-                  type: 'richText',
-                  editor: lexicalEditor({
-                    features: ({ rootFeatures }) => {
-                      return [
-                        ...rootFeatures,
-                        HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                        BlocksFeature({
-                          blocks: [
-                            ZigZagContentBlock,
-                            ExploreMoreChennaiBlock,
-                            socialReelSlider,
-                            InnerPageBanner,
-                            FeatureSectionsBlock,
-                          ],
-                        }),
-                        FixedToolbarFeature(),
-                        InlineToolbarFeature(),
-                        HorizontalRuleFeature(),
-                      ]
-                    },
-                  }),
-                },
-                {
-                  name: 'meta',
-                  label: 'SEO (Optional)',
-                  type: 'group',
-                  fields: [MetaImageField({ relationTo: 'media' })],
-                },
-              ],
-            },
-          ],
-        },
+        // {
+        //   label: 'Sub Pages',
+        //   fields: [
+        //     {
+        //       name: 'subPages',
+        //       type: 'array',
+        //       label: 'Sub Pages',
+        //       fields: [
+        //         {
+        //           name: 'title',
+        //           type: 'text',
+        //           required: true,
+        //         },
+        //         {
+        //           name: 'slug',
+        //           type: 'text',
+        //           required: true,
+        //           admin: {
+        //             description: 'Slug for this sub-page. Final URL: /visits/parent-slug/this-slug',
+        //           },
+        //         },
+        //         {
+        //           name: 'content',
+        //           type: 'richText',
+        //           editor: lexicalEditor({
+        //             features: ({ rootFeatures }) => {
+        //               return [
+        //                 ...rootFeatures,
+        //                 HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+        //                 BlocksFeature({
+        //                   blocks: [
+        //                     // ZigZagContentBlock,
+        //                     // ExploreMoreChennaiBlock,
+        //                     // socialReelSlider,
+        //                     // FeatureSectionsBlock,
+        //                     // featureSectionSplitLayoutBlock,
+        //                   ],
+        //                 }),
+        //                 FixedToolbarFeature(),
+        //                 InlineToolbarFeature(),
+        //                 HorizontalRuleFeature(),
+        //               ]
+        //             },
+        //           }),
+        //         },
+        //         {
+        //           name: 'meta',
+        //           label: 'SEO (Optional)',
+        //           type: 'group',
+        //           fields: [MetaImageField({ relationTo: 'media' })],
+        //         },
+        //       ],
+        //     },
+        //   ],
+        // },
       ],
     },
     {
@@ -293,7 +294,7 @@ export const Visits: CollectionConfig<'visits'> = {
   versions: {
     drafts: {
       autosave: {
-        interval: 100, // We set this interval for optimal live preview
+        interval: 100,
       },
       schedulePublish: true,
     },

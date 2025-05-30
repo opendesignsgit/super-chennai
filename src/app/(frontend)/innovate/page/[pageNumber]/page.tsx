@@ -52,7 +52,7 @@ export default async function Page({ params: paramsPromise }: Args) {
         />
       </div>
 
-      <CollectionArchive innovate={innovate.docs} />
+      {/* <CollectionArchive posts={innovate.docs} /> */}
 
       <div className="container">
         {innovate?.page && innovate?.totalPages > 1 && (

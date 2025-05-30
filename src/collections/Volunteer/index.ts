@@ -25,11 +25,8 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 
 import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
-import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
 import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
-import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
 import ZigZagContentBlock from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
-import { FoodListSectionBlock } from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/config'
 export const Volunteer: CollectionConfig<'volunteer'> = {
   slug: 'volunteer',
   access: {
@@ -115,12 +112,7 @@ export const Volunteer: CollectionConfig<'volunteer'> = {
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({
-                      blocks: [
-                        ZigZagContentBlock,
-                        ExploreMoreChennaiBlock,
-                        socialReelSlider,
-                        FoodListSectionBlock,
-                      ],
+                      blocks: [ZigZagContentBlock, ExploreMoreChennaiBlock, socialReelSlider],
                     }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),

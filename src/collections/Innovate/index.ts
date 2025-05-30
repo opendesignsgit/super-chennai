@@ -26,6 +26,8 @@ import {
 
 import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
 import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
+import featureSectionListLayoutBlock from '@/blocks/InnerPage/SharedBlocks/featureSectionListLayout/config'
+import introTextBlock from '@/blocks/InnerPage/SharedBlocks/IntroText/config'
 export const Innovate: CollectionConfig<'innovate'> = {
   slug: 'innovate',
   access: {
@@ -91,7 +93,12 @@ export const Innovate: CollectionConfig<'innovate'> = {
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({
-                      blocks: [ExploreMoreChennaiBlock, socialReelSlider],
+                      blocks: [
+                        ExploreMoreChennaiBlock,
+                        socialReelSlider,
+                        featureSectionListLayoutBlock,
+                        introTextBlock,
+                      ],
                     }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),

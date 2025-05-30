@@ -22,12 +22,10 @@ export interface ImageSection {
   tenantInfo: TenantInfo[]
 }
 
-export default function FeatureSectionSplit({ imgSec }: { imgSec: ImageSection[] }) {
+export default function FeatureSectionList({ imgSec }: { imgSec: ImageSection[] }) {
   return (
     <div className="foodlistsec">
       {imgSec.map((section, index: number) => {
-        const tenantCount = section.tenantInfo?.length ?? 0
-        const parentClass = tenantCount % 1 === 0 ? 'even-count' : 'odd-count'
         return (
           <div className="detailIconSec" key={index}>
             <div className="detailIconSections">
@@ -56,9 +54,7 @@ export default function FeatureSectionSplit({ imgSec }: { imgSec: ImageSection[]
                   </div>
                 </div>
 
-                <div
-                  className={`space-y-4 p-4 mt-[50px] foodListIcon w-full flex flex-wrap even-count  ${parentClass}`}
-                >
+                <div className="space-y-6 bg-white p-4 mt-[50px] rounded bottomListIcon w-full">
                   {section.tenantInfo?.map((tenant, i) => (
                     <div key={i}>
                       {tenant.pts?.map((item, j) => (
@@ -91,7 +87,7 @@ export default function FeatureSectionSplit({ imgSec }: { imgSec: ImageSection[]
                       ))}
                     </div>
                   ))}
-                </div>
+                </div>             
               </section>
             </div>
           </div>

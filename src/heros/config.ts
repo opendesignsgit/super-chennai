@@ -69,16 +69,5 @@ export const hero: Field = {
         },
       },
     }),
-
-    {
-      name: 'media',
-      type: 'upload',
-      label: 'Additional Media',
-      relationTo: 'media',
-      required: true,
-      admin: {
-        condition: isNotNone,
-      },
-    },
   ],
 }

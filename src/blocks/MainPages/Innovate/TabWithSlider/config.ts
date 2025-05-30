@@ -1,4 +1,4 @@
-import { Block } from "payload";
+import { Block } from 'payload'
 
 export const innovateSlider: Block = {
   slug: 'innovateSlider',
@@ -6,7 +6,9 @@ export const innovateSlider: Block = {
     singular: 'Innovate Slider',
     plural: 'Innovate Sliders',
   },
-  fields: [
-   
-  ],
-};
+  admin: {
+    group: 'Main Page Sections',
+  },
+
+  fields: [],
+}
