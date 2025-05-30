@@ -1,0 +1,230 @@
+.InvestBgSection {
+  height: 95vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* animated background layer */
+.InvestBgSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 65%;
+  width: 100%;
+  z-index: -1;
+  background-size: 200% 100%;
+  animation: animateGradient 6s ease-in-out infinite alternate;
+  border-bottom: 0px solid #fff;
+}
+
+/* Gradient themes */
+.gradient-1::before {
+  background: linear-gradient(to right, #191c81, #763ca7, #490e75);
+}
+
+.gradient-2::before {
+  background: linear-gradient(90deg, #133284 10%, #5a42a1 40%, #390879 90%);
+}
+
+.gradient-3::before {
+  background: linear-gradient(90deg, #1e6e49, #308486, #013753);
+}
+
+.gradient-4::before {
+  background: linear-gradient(to right, #191c81, #763ca7, #490e75);
+}
+
+.gradient-5::before {
+  background: linear-gradient(90deg, #4d1e8f, #a635ad, #7d066e);
+}
+
+.gradient-6::before {
+  background: linear-gradient(90deg, #256f87, #3d63ae, #02027d);
+}
+
+.gradient-7::before{
+    background: linear-gradient( 90deg,rgb(130 18 70) 0%, rgb(174 64 56) 50%, rgb(130 42 8) 100%);
+    
+}
+
+@keyframes animateGradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+/* Banner Layout */
+.InvestMainContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 15%;
+}
+
+.InvestSectionBanner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.InvestBannerImage {
+  display: flex;
+  justify-content: center;
+}
+
+.InvestBannerImage img {
+  width: 85%;
+  object-fit: cover;
+  border-bottom-right-radius: 150px;
+}
+
+.InvestContent {
+  position: absolute;
+  top: -11%;
+  font-family: "NewAmsterdam";
+  color: #fff;
+  font-size: clamp(80px, 11vw, 218px);
+  line-height: 150px;
+  letter-spacing: 39px;
+  width: 85%;
+  text-align: center;
+}
+
+
+/* Responsive  */
+
+.notHomePageSearch .formsSection {
+  position: absolute;
+  width: 100%;
+}
+
+/* @media (max-width: 1300px); */
+
+/* Media-Query */
+
+@media (max-width: 1600px) and (min-width: 1300px) {
+  .VolunteerBgSection {
+    height: auto;
+  }
+  .voluntterContent {
+    font-size: clamp(80px, 9vw, 218px);
+  }
+
+  .volunteeerMainContent h3 {
+    font-size: clamp(42px, 6vw, 100px);
+  }
+
+  .VolunteerBecameavolunteer h3 {
+    font-size: clamp(48px, 6vw, 100px);
+    line-height: clamp(48px, 6vw, 94px);
+  }
+
+  .BecamaAVolunterContentsSection h3 {
+    font-size: clamp(40px, 5vw, 90px);
+  }
+
+  .BecamaAVolunterContentsSection p {
+    font-size: clamp(18px, 2vw, 20px);
+    line-height: clamp(28px, 3vw, 30px);
+  }
+
+  .BecamaAVolunterContentsSection1 p {
+    font-size: clamp(18px, 2vw, 20px);
+    line-height: clamp(28px, 3vw, 30px);
+  }
+
+  .BecamaAVolunterContentsSection1 h3 {
+    font-size: clamp(40px, 5vw, 90px);
+  }
+  .container {
+    max-width: 1050px;
+  }
+}
+
+@media (max-width: 768px) {
+  .VolunteerBecameavolunteer p {
+    width: 90%;
+  }
+  .DigitalSectionFLex {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  .BecamaAVolunterContentsSection {
+    width: 90%;
+  }
+
+  .DigitalSectionFLex img {
+    width: 90%;
+  }
+
+  .BecamaAVolunterContentsSection1 h3 {
+    text-align: left;
+  }
+
+  .BecamaAVolunterContentsSection1 p {
+    text-align: left;
+  }
+
+  .BecamaAVolunterContentsSection1 {
+    width: 90%;
+  }
+
+  .exploreVolunteerPage1 {
+    justify-content: flex-start;
+  }
+  .DigitalSectionFLex:nth-child(even) {
+    flex-direction: column-reverse;
+  }
+
+  .volunteerRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5%;
+  }
+
+  .volunteerRow img {
+    width: 90%;
+  }
+  .volunteerRow .volunteeerMainContent {
+    width: 90%;
+  }
+
+  .volunteerParaSection {
+    padding-bottom: 50px;
+  }
+
+  .VolunteerBannerImage img {
+    width: 90%;
+    object-fit: cover;
+    border-bottom-right-radius: 50px;
+  }
+
+  .voluntterContent {
+    position: absolute;
+    top: -11%;
+    font-family: "NewAmsterdam";
+    color: #fff;
+    font-size: clamp(30px, 11vw, 218px);
+    line-height: 11vw;
+    letter-spacing: 11px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .VolunteerBgSection {
+    height: auto;
+    margin-top: 65px;
+  }
+
+  .DootedBannerSectionVolunteer {
+    margin-top: 10%;
+  }
+}
+
+/* Media-Query */

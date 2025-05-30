@@ -15,14 +15,12 @@ import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
-import ExploreMoreChennai from '@/blocks/InnerPage/SharedBlocks/Explore/Component'
 import Banner from '@/blocks/InnerPage/SharedBlocks/Banners/Components'
 import CareerIntro from '@/blocks/InnerPage/SharedBlocks/careerIntro/Component'
+import ExploreMoreChennai from '@/blocks/InnerPage/SharedBlocks/Explore/Component'
+import IntroText from '@/blocks/InnerPage/SharedBlocks/IntroText/Components'
 import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
-import {
-  default as FutureUnicorns,
-  default as StickyImageScroll,
-} from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/Component'
+import { default as StickyImageScroll } from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/Component'
 import FeatureSections from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
 import HotelsInChennaiSection from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/Component'
 import { PageIntroText } from '@/blocks/MainPages/SharedBlocks/IntroText/Component'
@@ -33,8 +31,7 @@ import type {
   MediaBlock as MediaBlockProps,
 } from '@/payload-types'
 import { cn } from '@/utilities/ui'
-import IntroText from '@/blocks/InnerPage/SharedBlocks/IntroText/Components'
-import { HighlightedFeatureListSection } from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/Component'
+import FoodListSection from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/Component'
 
 type NodeTypes =
   | DefaultNodeTypes
@@ -122,9 +119,6 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
 
     StickyImageScroll: ({ node }: { node: SerializedBlockNode<any> }) => (
       <StickyImageScroll {...node.fields} />
-    ),
-    highlightedFeatureList: ({ node }: { node: SerializedBlockNode<any> }) => (
-      <HighlightedFeatureListSection {...node.fields} />
     ),
   },
 })

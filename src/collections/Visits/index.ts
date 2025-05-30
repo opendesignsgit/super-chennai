@@ -1,4 +1,3 @@
-import type { CollectionConfig } from 'payload'
 import {
   BlocksFeature,
   FixedToolbarFeature,
@@ -7,6 +6,7 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
+import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
@@ -25,11 +25,11 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 
 import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
-import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
 import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
+import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
 import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
 import ZigZagContentBlock from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
-import { HighlightedFeatureListSection } from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/config'
+import { FoodListSectionBlock } from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/config'
 export const Visits: CollectionConfig<'visits'> = {
   slug: 'visits',
   access: {
@@ -96,10 +96,10 @@ export const Visits: CollectionConfig<'visits'> = {
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({
                       blocks: [
-                        HighlightedFeatureListSection,
                         ZigZagContentBlock,
                         ExploreMoreChennaiBlock,
                         socialReelSlider,
+                        FoodListSectionBlock,
                       ],
                     }),
                     FixedToolbarFeature(),

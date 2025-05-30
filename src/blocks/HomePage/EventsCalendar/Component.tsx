@@ -7,6 +7,7 @@ import Link from 'next/link'
 import './style.css'
 import NoData from '@/components/NoData'
 import { RichText } from '@payloadcms/richtext-lexical/react'
+import SectionLoader from '@/components/SectionLoader/component'
 
 type RichContent = {
   fields?: {
@@ -49,6 +50,7 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
 
   const [allEvents, setAllEvents] = useState<EventType[]>([])
   const [isFeaturedEvent, setIsFeaturedEvent] = useState<EventType | null>(null)
+  const [loading, setLoading] = useState(true)
 
   const slide = (direction: 'left' | 'right') => {
     const cardWidth = 300
@@ -145,10 +147,15 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
       } catch (error) {
         console.error('Failed to fetch events:', error)
       }
+      finally{
+        setLoading(false)
+      }
     }
 
     fetchEvents()
   }, [])
+
+  if (loading) return <SectionLoader message="Loading volunteer events..." />
 
   return (
     <div className="EventsCalendarMainSection">

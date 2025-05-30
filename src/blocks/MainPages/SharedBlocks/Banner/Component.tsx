@@ -1,15 +1,16 @@
-import React from 'react';
-import './style.css';
+import React from 'react'
+import './style.css'
+import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 
 type InvestBannerProps = {
-  heading?: string;
+  heading?: string
   image?: {
-    url?: string;
-    alt?: string;
-    filename?: string;
-  };
-  backgroundColor?: string;
-};
+    url?: string
+    alt?: string
+    filename?: string
+  }
+  backgroundColor?: string
+}
 
 export default function MainPageBanner({
   heading,
@@ -26,6 +27,7 @@ export default function MainPageBanner({
           <h3 className="InvestContent">{heading}</h3>
         </div>
       </div>
+      {/* <GlobalSearch placeholderText={''} buttonText={'Search'} /> */}
     </div>
-  );
+  )
 }

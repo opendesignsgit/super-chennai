@@ -1,43 +1,44 @@
 import { Block } from "payload";
 
-export const HighlightedFeatureListSection: Block = {
-  slug: 'highlightedFeatureList',
-  interfaceName: 'HighlightedFeatureList',
+export const FoodListSectionBlock: Block = {
+  slug: 'foodList', 
   labels: {
-    singular: 'FeatureSectionSplitLayout Column Splite',
-    plural: 'Highlighted Feature List Sections',
+    singular: 'Food List Section',
+    plural: 'Food List Sections',
   },
   fields: [
     {
-      name: 'featureGroups',
+      name: 'imgSec',
       type: 'array',
-      label: 'Feature Groups',
+      label: 'Image Sections',
       fields: [
         {
-          name: 'image',
+          name: 'img',
           type: 'upload',
           relationTo: 'media',
           label: 'Main Image',
+          required: true,
         },
         {
-          name: 'headline',
+          name: 'title',
           type: 'text',
-          label: 'Headline',
+          label: 'Section Title',
+          required: true,
         },
         {
-          name: 'description',
+          name: 'desc',
           type: 'textarea',
-          label: 'Description',
+          label: 'Section Description',
         },
         {
-          name: 'featureColumns',
+          name: 'tenantInfo', 
           type: 'array',
-          label: 'Feature Columns',
+          label: 'Tenant Info Sections',
           fields: [
             {
-              name: 'features',
+              name: 'pts',
               type: 'array',
-              label: 'Features',
+              label: 'Points',
               fields: [
                 {
                   name: 'icon',
@@ -46,20 +47,19 @@ export const HighlightedFeatureListSection: Block = {
                   label: 'Icon Image',
                 },
                 {
-                  name: 'title',
+                  name: 'heading',
                   type: 'text',
-                  label: 'Feature Title',
+                  label: 'Title',
                 },
                 {
-                  name: 'text',
+                  name: 'body',
                   type: 'textarea',
-                  label: 'Feature Description',
+                  label: 'Description',
                 },
                 {
-                  name: 'ctaLink',
+                  name: 'url',
                   type: 'text',
                   label: 'Explore More Link',
-                  required: false,
                 },
               ],
             },

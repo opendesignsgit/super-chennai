@@ -1,31 +1,20 @@
 'use client'
-import { Media } from '@/components/Media'
 import React from 'react'
+import Image from 'next/image'
+import { Media } from '@/payload-types'
+import './style.css'
+import { FoodListSectionType } from '@/models/visitModels'
 
-type MediaType = {
-  url: string
-  alt?: string
+type Props = {
+  block: FoodListSectionType
 }
 
-export interface ImageTextPatternListType {
-  imageSections?: {
-    image?: MediaType | string
-    sectionTitle?: string
-    sectionDesc?: string
-    tenantInfoSections?: {
-      points?: {
-        imgs?: MediaType | string
-        title?: string
-        para?: string
-        link?: string
-      }[]
-    }[]
-  }[]
-}
+export default function FoodListSection({ block }: Props) {
 
-export const HighlightedFeatureListSection: React.FC<ImageTextPatternListType> = ({
-  imageSections,
-}) => {
+const imageSections = block?.imageSections || []
+  console.log(imageSections)
+  
+
   return (
     <div className="foodlistsec">
       {imageSections?.map((section, index) => {
@@ -35,20 +24,19 @@ export const HighlightedFeatureListSection: React.FC<ImageTextPatternListType> =
         return (
           <section
             key={index}
-            className={`imgcontent flex flex-wrap justify-center transition-colors duration-300 
-              ${index % 2 === 0 ? 'bg-white whitebgsec' : 'bg-[#f7f7f7] colorbgsec'} 
+            className={`imgcontent flex flex-wrap justify-center transition-colors duration-300
+              ${index % 2 === 0 ? 'bg-white whitebgsec' : 'bg-[#f7f7f7] colorbgsec'}
               ${index % 3 === 0 ? 'pattern-a' : index % 3 === 1 ? 'pattern-b' : 'pattern-c'}`}
           >
             <div className="imgLeft">
-              <Media
-                resource={
-                  typeof section.image === 'string'
-                    ? section.image
-                    : section.image && 'url' in section.image
-                      ? section.image.url
-                      : undefined
-                }
-              />
+              {section.image && (
+                <Image
+                  src={(section.image as Media)?.url || ''}
+                  alt={section.sectionTitle || ''}
+                  width={500}
+                  height={300}
+                />
+              )}
             </div>
 
             <div className="imgText flex items-center">
@@ -68,15 +56,14 @@ export const HighlightedFeatureListSection: React.FC<ImageTextPatternListType> =
                   {tenant.points?.map((item, j) => (
                     <div key={j} className="clcboxItemss flex mb-4">
                       <div className="clcboxIImg">
-                        <Media
-                          resource={
-                            typeof item.imgs === 'string'
-                              ? item.imgs
-                              : item.imgs && 'url' in item.imgs
-                                ? item.imgs.url
-                                : undefined
-                          }
-                        />
+                        {item.imgs && (
+                          <Image
+                            src={(item.imgs as Media)?.url || ''}
+                            alt={item.title || ''}
+                            width={60}
+                            height={60}
+                          />
+                        )}
                       </div>
                       <div className="clcboxICont">
                         <h3>{item.title}</h3>

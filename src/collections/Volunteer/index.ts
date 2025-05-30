@@ -1,5 +1,3 @@
-import type { CollectionConfig } from 'payload'
-
 import {
   BlocksFeature,
   FixedToolbarFeature,
@@ -8,6 +6,7 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
+import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
@@ -16,9 +15,6 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
-import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
-import introTextBlock from '@/blocks/InnerPage/SharedBlocks/IntroText/config'
-import InvestCategoryBlock from '@/blocks/InnerPage/SharedBlocks/InvestCategory/config'
 import { slugField } from '@/fields/slug'
 import {
   MetaDescriptionField,
@@ -27,8 +23,15 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-export const Investments: CollectionConfig<'investments'> = {
-  slug: 'investments',
+
+import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
+import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
+import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
+import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
+import ZigZagContentBlock from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
+import { FoodListSectionBlock } from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/config'
+export const Volunteer: CollectionConfig<'volunteer'> = {
+  slug: 'volunteer',
   access: {
     create: authenticated,
     delete: authenticated,
@@ -51,7 +54,7 @@ export const Investments: CollectionConfig<'investments'> = {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
           slug: typeof data?.slug === 'string' ? data.slug : '',
-          collection: 'investments',
+          collection: 'volunteer',
           req,
         })
 
@@ -61,7 +64,7 @@ export const Investments: CollectionConfig<'investments'> = {
     preview: (data, { req }) =>
       generatePreviewPath({
         slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'investments',
+        collection: 'volunteer',
         req,
       }),
     useAsTitle: 'title',
@@ -77,10 +80,31 @@ export const Investments: CollectionConfig<'investments'> = {
       tabs: [
         {
           fields: [
+            //####################### BANNER CONTENT  ############################################
             {
               name: 'heroImage',
               type: 'upload',
               relationTo: 'media',
+            },
+            //####################### FILED CONTENT CONTENT  ############################################
+            {
+              name: 'image',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
+            },
+            {
+              name: 'Voluenteer title',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'subtitle',
+              type: 'text',
+            },
+            {
+              name: 'description',
+              type: 'textarea',
             },
             {
               name: 'content',
@@ -91,7 +115,12 @@ export const Investments: CollectionConfig<'investments'> = {
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({
-                      blocks: [InnerPageBanner, introTextBlock, InvestCategoryBlock],
+                      blocks: [
+                        ZigZagContentBlock,
+                        ExploreMoreChennaiBlock,
+                        socialReelSlider,
+                        FoodListSectionBlock,
+                      ],
                     }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),
@@ -100,7 +129,7 @@ export const Investments: CollectionConfig<'investments'> = {
                 },
               }),
               label: false,
-              required: true,
+              // required: true,
             },
           ],
           label: 'Content',
@@ -108,7 +137,7 @@ export const Investments: CollectionConfig<'investments'> = {
         {
           fields: [
             {
-              name: 'relatedinvestments',
+              name: 'relatedvolunteer',
               type: 'relationship',
               admin: {
                 position: 'sidebar',
@@ -121,7 +150,7 @@ export const Investments: CollectionConfig<'investments'> = {
                 }
               },
               hasMany: true,
-              relationTo: 'investments',
+              relationTo: 'volunteer',
             },
             {
               name: 'categories',
@@ -163,62 +192,7 @@ export const Investments: CollectionConfig<'investments'> = {
           ],
         },
 
-
-
-        //######### CORECTED FILED WITH ARRAY  ##########
-        {
-          label: 'Investments',
-          fields: [
-            {
-              name: 'investments',
-              label: 'Investments',
-              type: 'array',
-              fields: [
-                {
-                  name: 'sectionTitle',
-                  label: 'Category Title',
-                  type: 'text',
-                  required: true,
-                },
-                {
-                  name: 'sectionDescription',
-                  label: 'Category Description',
-                  type: 'textarea',
-                },
-                {
-                  name: 'sectionImage',
-                  label: 'Section Image',
-                  type: 'upload',
-                  relationTo: 'media',
-                },
-                {
-                  name: 'investmentItems',
-                  label: 'Investments',
-                  type: 'array',
-                  fields: [
-                    {
-                      name: 'title',
-                      label: 'Investment Title',
-                      type: 'text',
-                      required: true,
-                    },
-                    {
-                      name: 'description',
-                      label: 'Description',
-                      type: 'textarea',
-                    },
-                    {
-                      name: 'image',
-                      label: 'Investment Image',
-                      type: 'upload',
-                      relationTo: 'media',
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
+        //############ FILEDS CONTENTS ##########################
       ],
     },
     {

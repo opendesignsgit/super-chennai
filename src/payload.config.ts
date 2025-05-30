@@ -27,6 +27,8 @@ import { work } from './collections/Work'
 import { Events } from './collections/Events'
 import { Investments } from './collections/Investments'
 import { Live } from './collections/live'
+import { Volunteer } from './collections/Volunteer'
+import { Innovate } from './collections/Innovate'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -91,6 +93,8 @@ export default buildConfig({
     Events,
     Investments,
     Live,
+    Volunteer,
+    Innovate,
 
     VolunteerSlidesCollection,
     SocialReelsCollection,

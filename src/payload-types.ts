@@ -79,6 +79,8 @@ export interface Config {
     events: Event;
     investments: Investment;
     live: Live;
+    volunteer: Volunteer;
+    innovate: Innovate;
     volunteerSlides: VolunteerSlide;
     'social-reels': SocialReel;
     'investment-categories': InvestmentCategory;
@@ -104,6 +106,8 @@ export interface Config {
     events: EventsSelect<false> | EventsSelect<true>;
     investments: InvestmentsSelect<false> | InvestmentsSelect<true>;
     live: LiveSelect<false> | LiveSelect<true>;
+    volunteer: VolunteerSelect<false> | VolunteerSelect<true>;
+    innovate: InnovateSelect<false> | InnovateSelect<true>;
     volunteerSlides: VolunteerSlidesSelect<false> | VolunteerSlidesSelect<true>;
     'social-reels': SocialReelsSelect<false> | SocialReelsSelect<true>;
     'investment-categories': InvestmentCategoriesSelect<false> | InvestmentCategoriesSelect<true>;
@@ -180,22 +184,15 @@ export interface Page {
   id: number;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
-    richText?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
+    /**
+     * Choose the type of hero banner to display. Select "None" to hide the banner.
+     */
+    type: 'none' | 'Defult';
+    heading?: string | null;
+    image?: (number | null) | Media;
+    backgroundColor?:
+      | ('gradient-1' | 'gradient-2' | 'gradient-3' | 'gradient-4' | 'gradient-5' | 'gradient-6' | 'gradient-7')
+      | null;
     links?:
       | {
           link: {
@@ -276,10 +273,6 @@ export interface Page {
         blockType: 'socialReelSlider';
       }
     | {
-        heading: string;
-        title: string;
-        description?: string | null;
-        volunteerSlidesRef: number | VolunteerSlide;
         id?: string | null;
         blockName?: string | null;
         blockType: 'becameAVolunteer';
@@ -501,6 +494,25 @@ export interface Page {
         blockName?: string | null;
         blockType: 'chennaiLifeEssentials';
       }
+    | {
+        items: {
+          title: string;
+          subtitle?: string | null;
+          description?: string | null;
+          image?: (number | null) | Media;
+          link?: string | null;
+          id?: string | null;
+        }[];
+        backgroundImage?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'investmentCategoryList';
+      }
+    | {
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'innovateSlider';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -511,53 +523,6 @@ export interface Page {
     description?: string | null;
   };
   publishedAt?: string | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
-export interface Post {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedPosts?: (number | Post)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
   slug?: string | null;
   slugLock?: boolean | null;
   updatedAt: string;
@@ -658,6 +623,53 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedPosts?: (number | Post)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
@@ -709,62 +721,6 @@ export interface SocialReel {
         id?: string | null;
       }[]
     | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "volunteerSlides".
- */
-export interface VolunteerSlide {
-  id: number;
-  title: string;
-  slides?:
-    | {
-        slug: string;
-        image: number | Media;
-        title: string;
-        subtitle?: string | null;
-        description?: string | null;
-        detailedContent?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        video?: string | null;
-        faq?:
-          | {
-              question?: string | null;
-              answer?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Add custom content for this volunteer slide.
-   */
-  content?: string | null;
-  /**
-   * SEO metadata for the volunteer slide.
-   */
-  seo?: {
-    metaTitle?: string | null;
-    metaDescription?: string | null;
-    metaKeywords?: string | null;
-    canonicalUrl?: string | null;
-  };
   updatedAt: string;
   createdAt: string;
 }
@@ -1199,6 +1155,163 @@ export interface Live {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteer".
+ */
+export interface Volunteer {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  image: number | Media;
+  'Voluenteer title': string;
+  subtitle?: string | null;
+  description?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  relatedvolunteer?: (number | Volunteer)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "innovate".
+ */
+export interface Innovate {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  innovationTitle: string;
+  innovationDescription?: string | null;
+  innovationImage?: (number | null) | Media;
+  relatedinnovate?: (number | Innovate)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteerSlides".
+ */
+export interface VolunteerSlide {
+  id: number;
+  title: string;
+  slides?:
+    | {
+        slug: string;
+        image: number | Media;
+        title: string;
+        subtitle?: string | null;
+        description?: string | null;
+        detailedContent?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        video?: string | null;
+        faq?:
+          | {
+              question?: string | null;
+              answer?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Add custom content for this volunteer slide.
+   */
+  content?: string | null;
+  /**
+   * SEO metadata for the volunteer slide.
+   */
+  seo?: {
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    metaKeywords?: string | null;
+    canonicalUrl?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "investment-categories".
  */
 export interface InvestmentCategory {
@@ -1630,6 +1743,14 @@ export interface PayloadLockedDocument {
         value: number | Live;
       } | null)
     | ({
+        relationTo: 'volunteer';
+        value: number | Volunteer;
+      } | null)
+    | ({
+        relationTo: 'innovate';
+        value: number | Innovate;
+      } | null)
+    | ({
         relationTo: 'volunteerSlides';
         value: number | VolunteerSlide;
       } | null)
@@ -1717,7 +1838,9 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         type?: T;
-        richText?: T;
+        heading?: T;
+        image?: T;
+        backgroundColor?: T;
         links?:
           | T
           | {
@@ -1802,10 +1925,6 @@ export interface PagesSelect<T extends boolean = true> {
         becameAVolunteer?:
           | T
           | {
-              heading?: T;
-              title?: T;
-              description?: T;
-              volunteerSlidesRef?: T;
               id?: T;
               blockName?: T;
             };
@@ -2051,6 +2170,29 @@ export interface PagesSelect<T extends boolean = true> {
                     image?: T;
                     id?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        investmentCategoryList?:
+          | T
+          | {
+              items?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                    image?: T;
+                    link?: T;
+                    id?: T;
+                  };
+              backgroundImage?: T;
+              id?: T;
+              blockName?: T;
+            };
+        innovateSlider?:
+          | T
+          | {
               id?: T;
               blockName?: T;
             };
@@ -2416,6 +2558,75 @@ export interface LiveSelect<T extends boolean = true> {
   heroImage?: T;
   content?: T;
   relatedlive?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteer_select".
+ */
+export interface VolunteerSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  image?: T;
+  'Voluenteer title'?: T;
+  subtitle?: T;
+  description?: T;
+  content?: T;
+  relatedvolunteer?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "innovate_select".
+ */
+export interface InnovateSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  innovationTitle?: T;
+  innovationDescription?: T;
+  innovationImage?: T;
+  relatedinnovate?: T;
   categories?: T;
   meta?:
     | T
@@ -3050,6 +3261,14 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'live';
           value: number | Live;
+        } | null)
+      | ({
+          relationTo: 'volunteer';
+          value: number | Volunteer;
+        } | null)
+      | ({
+          relationTo: 'innovate';
+          value: number | Innovate;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
@@ -3101,37 +3320,6 @@ export interface MediaBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "HighlightedFeatureList".
- */
-export interface HighlightedFeatureList {
-  featureGroups?:
-    | {
-        image?: (number | null) | Media;
-        headline?: string | null;
-        description?: string | null;
-        featureColumns?:
-          | {
-              features?:
-                | {
-                    icon?: (number | null) | Media;
-                    title?: string | null;
-                    text?: string | null;
-                    ctaLink?: string | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'highlightedFeatureList';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

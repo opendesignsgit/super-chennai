@@ -1,39 +1,41 @@
-import React, { Fragment } from 'react'
-import type { Page } from '@/payload-types'
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
-import { VisitBanner } from './PageBanners/VisitBanner/Component'
+import type { Page } from '@/payload-types'
+import React, { Fragment } from 'react'
+import { ContentZoneCarousel } from './HomePage/ContentZoneCarousel/Component'
+import { EventsCalendarBlock } from './HomePage/EventsCalendar/Component'
 import { ExploreBlockServer } from './HomePage/Explore/Components'
 import { FunChennaiBlockServer } from './HomePage/funChennai/Component'
-import { StartupChennaiBlockServer } from './HomePage/StartupChennai/Component'
-import ChennaiInvestments from './HomePage/Investments/Components'
-import BecameAVolunteer from './HomePage/Volunteer/Component'
 import GlobalSearch from './HomePage/GlobalSearch/Component'
-import HeroSliderBlock from './PageBanners/Home/Component'
-import { VisitCategory } from './MainPages/Visit/VisitCategory/Component'
-import mainPageBanner from './MainPages/SharedBlocks/Banner/Component'
-import { FormPopupComponent } from './MainPages/SharedBlocks/FormPopup/Components'
-import VolunteerBecameSection from './MainPages/Volunteer/Volunteers/Components'
-import { PageIntroText } from './MainPages/SharedBlocks/IntroText/Component'
-import socialReelSlider from './HomePage/SocialChennai/Component'
 import InfographySection from './HomePage/infography/Component'
+import ChennaiInvestments from './HomePage/Investments/Components'
+import SpotlightGallerySection from './HomePage/leftContentRightSlider/Components'
+import socialReelSlider from './HomePage/SocialChennai/Component'
+import { StartupChennaiBlockServer } from './HomePage/StartupChennai/Component'
 import TwoColumnFeatureBlock from './HomePage/TwoColumnFeatureBlock/Components'
 import Utilities from './HomePage/Utilities/Component'
-import { ContentZoneCarousel } from './HomePage/ContentZoneCarousel/Component'
-import SpotlightGallerySection from './HomePage/leftContentRightSlider/Components'
-import { EventsCalendarBlock } from './HomePage/EventsCalendar/Component'
-import { EventsHomeBlock } from './MainPages/Events/AllEvents'
+import BecameAVolunteer from './HomePage/Volunteer/Component'
+import IntroText from './InnerPage/SharedBlocks/IntroText/Components'
 import InvestCategory from './InnerPage/SharedBlocks/InvestCategory/Components'
-import LiveIntroTextSection from './MainPages/Live/Introtext/Component'
-import ChennaiLifeEssentials from './MainPages/Live/ChennaiLifeEssentials/Components'
+import StickyImageScroll from './InnerPage/SharedBlocks/StickyImageScroll/Component'
 import FeatureSections from './InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
 import ZigZagContentSection from './InnerPage/SharedBlocks/ZigZagContent/Component'
-import StickyImageScroll from './InnerPage/SharedBlocks/StickyImageScroll/Component'
-import IntroText from './InnerPage/SharedBlocks/IntroText/Components'
-import { HighlightedFeatureListSection } from './InnerPage/SharedBlocks/featureSectionSplitLayout/Component'
+import { EventsHomeBlock } from './MainPages/Events/AllEvents'
+import ChennaiLifeEssentials from './MainPages/Live/ChennaiLifeEssentials/Components'
+import LiveIntroTextSection from './MainPages/Live/Introtext/Component'
+import mainPageBanner from './MainPages/SharedBlocks/Banner/Component'
+import { FormPopupComponent } from './MainPages/SharedBlocks/FormPopup/Components'
+import { PageIntroText } from './MainPages/SharedBlocks/IntroText/Component'
+import { VisitCategory } from './MainPages/Visit/VisitCategory/Component'
+import VolunteerBecameSection from './MainPages/Volunteer/Volunteers/Components'
+import HeroSliderBlock from './PageBanners/Home/Component'
+import { VisitBanner } from './PageBanners/VisitBanner/Component'
+import FoodListSection from './InnerPage/SharedBlocks/featureSectionSplitLayout/Component'
+import InvestmentCategoryListSection from './MainPages/Invest/InvestCategory/Component'
+import { InnovateSliderBlock } from './MainPages/Innovate/TabWithSlider/Component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -71,7 +73,8 @@ const blockComponents: {
   featureSections: FeatureSections,
   StickyImageScroll: StickyImageScroll,
   introText: IntroText,
-  highlightedFeatureList: HighlightedFeatureListSection,
+  investmentCategoryList: InvestmentCategoryListSection,
+  innovateSlider: InnovateSliderBlock,
 }
 
 export const RenderBlocks: React.FC<{
