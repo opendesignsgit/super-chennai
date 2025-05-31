@@ -32,7 +32,7 @@ const IntroTextBlock: Block = {
         { label: 'Small', value: 'sm' },
         { label: 'Large', value: 'lg' },
       ],
-      defaultValue: 'md',
+      defaultValue: 'sm',
       admin: {
         condition: (_, siblingData) => siblingData.showMarquee === true,
       },

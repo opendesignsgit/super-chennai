@@ -13,12 +13,11 @@ export const StickyImageScroll: Block = {
       type: 'select',
       options: [
         { label: 'Color', value: 'color' },
-        { label: 'Image', value: 'image' },
+        { label: 'None', value: 'image' },
       ],
       defaultValue: 'color',
       required: true,
     },
-    // Optional: if you want
     {
       name: 'backgroundColor',
       type: 'text',
