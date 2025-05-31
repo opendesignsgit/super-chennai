@@ -29,11 +29,23 @@ const investmentCategoryListBlock: Block = {
           name: 'description',
           type: 'textarea',
         },
+        // {
+        //   name: 'image',
+        //   type: 'upload',
+        //   relationTo: 'media',
+        //   required: false,
+        // },
         {
           name: 'image',
+          label: 'SVG Icon',
           type: 'upload',
           relationTo: 'media',
-          required: false,
+          filterOptions: () => ({
+            mimeType: { equals: 'image/svg+xml' },
+          }),
+          admin: {
+            description: 'Upload an SVG file only.',
+          },
         },
         {
           name: 'link',

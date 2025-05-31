@@ -356,10 +356,13 @@ export interface Page {
         blockType: 'mainPageBanner';
       }
     | {
+        showMarquee?: boolean | null;
         marqueeText?: string | null;
+        marqueeTextSize?: ('sm' | 'lg') | null;
         title: string;
         highlightedText: string;
         description: string;
+        backgroundType: 'none' | 'background';
         id?: string | null;
         blockName?: string | null;
         blockType: 'introTextBlock';
@@ -498,6 +501,9 @@ export interface Page {
           title: string;
           subtitle?: string | null;
           description?: string | null;
+          /**
+           * Upload an SVG file only.
+           */
           image?: (number | null) | Media;
           link?: string | null;
           id?: string | null;
@@ -1988,10 +1994,13 @@ export interface PagesSelect<T extends boolean = true> {
         introTextBlock?:
           | T
           | {
+              showMarquee?: T;
               marqueeText?: T;
+              marqueeTextSize?: T;
               title?: T;
               highlightedText?: T;
               description?: T;
+              backgroundType?: T;
               id?: T;
               blockName?: T;
             };

@@ -23,13 +23,13 @@ export const DefaultHeroBanner: React.FC<Props> = ({ heading, image, backgroundC
   const bgClass = [backgroundColor || 'gradient-1']
 
   return (
-    <div className={`InvestBgSection ${bgClass}`}>
+    <div className={` VolunteerBgSection InvestBgSection notHome ${bgClass}`}>
       <div className="InvestMainContainer">
         <div className="InvestSectionBanner">
           <div className="InvestBannerImage">
             <img src={imageUrl || defaultImage.src} alt="Banner" />
           </div>
-          <h3 className="InvestContent">{heading || 'Chennai'}</h3>
+          <h3 className="InvestContent">{heading || 'Welcome'}</h3>
         </div>
       </div>
     </div>

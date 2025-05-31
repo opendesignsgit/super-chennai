@@ -19,21 +19,17 @@ type VisitGroupRef = {
   items: VisitItem[]
 }
 
-
-
 export const VisitCategory = ({ title, description, items }: VisitGroupRef) => {
-  const mainSlider = useRef(null)
-  const thumbSlider = useRef(null)
+  const mainSlider = useRef<Slider | null>(null)
+  const thumbSlider = useRef<Slider | null>(null)
 
-  const [nav1, setNav1] = useState(null)
-  const [nav2, setNav2] = useState(null)
+  const [nav1, setNav1] = useState<Slider | undefined>(undefined)
+  const [nav2, setNav2] = useState<Slider | undefined>(undefined)
 
   useEffect(() => {
-    setNav1(mainSlider.current)
-    setNav2(thumbSlider.current)
+    setNav1(mainSlider.current ?? undefined)
+    setNav2(thumbSlider.current ?? undefined)
   }, [])
-
-  // const items = items || []
 
   const mainSettings = {
     asNavFor: nav2,

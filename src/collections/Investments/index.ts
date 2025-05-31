@@ -163,12 +163,16 @@ export const Investments: CollectionConfig<'investments'> = {
           ],
         },
 
-
-
         //######### CORECTED FILED WITH ARRAY  ##########
         {
           label: 'Investments',
           fields: [
+            // {
+            //   name: 'backgroundImage',
+            //   label: 'Top Image for Investment Category Section',
+            //   type: 'upload',
+            //   relationTo: 'media',
+            // },
             {
               name: 'investments',
               label: 'Investments',
@@ -202,6 +206,10 @@ export const Investments: CollectionConfig<'investments'> = {
                       type: 'text',
                       required: true,
                     },
+                    // {
+                    //   name: 'subtitle',
+                    //   type: 'text',
+                    // },
                     {
                       name: 'description',
                       label: 'Description',
@@ -213,6 +221,18 @@ export const Investments: CollectionConfig<'investments'> = {
                       type: 'upload',
                       relationTo: 'media',
                     },
+                    // {
+                    //   name: 'svgIcon',
+                    //   label: 'SVG Icon',
+                    //   type: 'upload',
+                    //   relationTo: 'media',
+                    //   filterOptions: () => ({
+                    //     mimeType: { equals: 'image/svg+xml' },
+                    //   }),
+                    //   admin: {
+                    //     description: 'Upload an SVG file only.',
+                    //   },
+                    // },
                   ],
                 },
               ],

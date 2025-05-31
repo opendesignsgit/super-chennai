@@ -1,76 +1,108 @@
 
-  
-  
-  .volunteeerMainContent {
-}
-
-.workIntro {
+.InvestChennaiContent {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   flex-direction: column;
-  padding: 0 12%;
-  
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 65px;
 }
 
- 
-
-.workIntro h3 {
+.InvestChennaiContent h3 {
   font-family: NewAmsterdam;
-  font-size: 120px;
+  font-size: 100px;
   color: #100f9a;
   line-height: 94px;
 }
 
-.workIntro p {
+.InvestChennaiContent h6 {
+  font-family: "29LT Bukra Medium";
+  font-size: 16px;
+  line-height: 26px;
+  color: #000;
+  text-align: center;
+  margin-top: 20px;
+  width: 50%;
+  word-spacing: 3px;
+}
+
+.InvestChennaiContent p {
   font-family: "29LT Bukra Regular";
   font-size: 16px;
   line-height: 26px;
   color: #000;
+  text-align: center;
   margin-top: 20px;
-  width: fit-content;
-}
- 
-
-.visitIntroParaSection {
-    margin-top: 35px;
-    position: relative;
-    padding-bottom: 140px;
-    padding-top: 60px;
-
+  width: 58%;
 }
 
-.VolunteeerTextBackground {
+
+.InvestChennaiContainerFlex {
+  margin-top: 100px;
+  position: relative;
+  padding-bottom: 250px;
+  overflow: hidden;
+}
+.InvestChennaiContent p {
+  font-family: "29LT Bukra Regular";
+  font-size: 16px;
+  line-height: 26px;
+  color: #000;
+  text-align: center;
+  margin-top: 20px;
+  width: 58%;
+}
+
+
+
+
+/* TEXT ANIMATE  */
+
+
+.InvestTextBackground {
   position: absolute;
   bottom: 8%;
   left: 0;
   white-space: nowrap;
   width: 200%;
-  /* animation: scrollText 20s linear infinite; */
   z-index: 0;
-  opacity: 0.05;
+  opacity: 0.025;
   animation-duration: 15s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  -webkit-animation: scrollText 10s linear infinite;
+  -webkit-animation: scrollText 50s linear infinite;
 }
 
-.VolunteeerTextBackground p {
+/* .InvestTextBackground p {
+  font-size: 280px;
+  font-family: "29LT Bukra SmBd";
+  text-transform: uppercase;
+  line-height: 150px;
+} */
+
+.IntroTextBig {
   font-size: 280px;
   font-family: "29LT Bukra SmBd";
   text-transform: uppercase;
   line-height: 150px;
 }
-.scroll-left {
-  animation-name: scrollLeftVolunteer;
+
+.IntroTextSmall {
+    font-family: "29LT Bukra SmBd";
+    font-size: clamp(80px, 10vw, 280px);
+    line-height: clamp(100px, 12vw, 150px);
+    text-transform: uppercase;
 }
 
-.scroll-right {
+
+.scroll-leftInvestPage {
+  animation-name: scrollLeftInvestPage;
+}
+
+.scroll-rightInvestPage {
   animation-name: scrollRightVolunteer;
 }
 
-@keyframes scrollLeftVolunteer {
+@keyframes scrollLeftInvestPage {
   0% {
     transform: translateX(0%);
   }
@@ -88,3 +120,128 @@
   }
 }
 
+/* RESPONSIVE  */
+
+
+@media (max-width: 768px) {
+  .InvestChennaiContent h3 {
+    font-size: clamp(36px, 14vw, 100px);
+    line-height: clamp(44px, 9vw, 94px);
+  }
+  .InvestChennaiContent h6 {
+    width: 90%;
+    font-size: clamp(15px, 1.5vw, 16px);
+    line-height: clamp(24px, 2vw, 26px);
+  }
+
+  .InvestChennaiContent p {
+    width: 90%;
+    font-size: clamp(14px, 1.5vw, 16px);
+    line-height: clamp(22px, 2vw, 26px);
+  }
+  .InvestFlexContainer {
+    flex-direction: column;
+  }
+
+  .InvestMainDivFlexSection {
+    flex-direction: column;
+  }
+
+  .InvestMainDivFirstSection {
+    width: 100%;
+    border-right: none;
+    padding: 50px 1%;
+    border-bottom: 1px solid #7f8fad;
+    padding-right: 0;
+    background-image: linear-gradient(
+      202deg,
+      transparent 0%,
+      transparent,
+      #060606 140%
+    );
+  }
+
+  .InvestPagesection-even:last-child {
+    background-image: linear-gradient(
+      202deg,
+      transparent 0%,
+      transparent,
+      #060606 140%
+    );
+  }
+  .InvestPagesection-odd:first-child {
+    background-image: linear-gradient(
+      202deg,
+      transparent 0%,
+      transparent,
+      #060606 140%
+    );
+  }
+  .InvestMainDivFirstSection:nth-child(odd) {
+    border-right: none;
+    padding-left: 6%;
+  }
+  .InvestMainDivFirstSection:first-child {
+    margin-top: 16%;
+  }
+
+  .BgInvestSections {
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .InvestMainDivFirstSection {
+    padding-top: 10px;
+    padding-bottom: 30px;
+    border: none;
+    margin-bottom: 20px;
+  }
+
+  .InvestMainDivSection h3 {
+    font-size: clamp(28px, 6vw, 66px);
+    line-height: clamp(36px, 5vw, 53px);
+  }
+
+  .InvestMainDivSection p {
+    font-size: clamp(14px, 1.5vw, 16px);
+    line-height: clamp(22px, 2vw, 26px);
+  }
+
+  .InvestMainDivSection h5 {
+    font-size: clamp(15px, 1.5vw, 16px);
+  }
+
+  .InvestMainDivFlexSection img:first-child {
+    width: 85px;
+    height: 85px;
+    filter: invert(1);
+  }
+
+  .BgImageInvesetSection img {
+    height: fit-content;
+    width: 90%;
+    object-fit: cover;
+    border-radius: 500px;
+  }
+
+  .BgImageInvesetSection {
+    position: absolute;
+    top: -1.5%;
+    width: 100%;
+  }
+  .InvestTextBackground p {
+    font-size: clamp(60px, 22vw, 280px);
+    line-height: clamp(80px, 12vw, 150px);
+  }
+
+  .InvestChennaiContainerFlex {
+    margin-top: 30px;
+    position: relative;
+    padding-bottom: 50px;
+    background: none;
+  }
+  .BackgrounInvestImage {
+    position: relative;
+    margin-top: 30px;
+  }
+}

@@ -11,10 +11,31 @@ const IntroTextBlock: Block = {
   },
   fields: [
     {
+      name: 'showMarquee',
+      type: 'checkbox',
+      label: 'Show Marquee Text?',
+      defaultValue: true,
+    },
+    {
       name: 'marqueeText',
       type: 'text',
       label: 'Scrolling Marquee Text',
-      required: false,
+      admin: {
+        condition: (_, siblingData) => siblingData.showMarquee === true,
+      },
+    },
+    {
+      name: 'marqueeTextSize',
+      type: 'select',
+      label: 'Marquee Text Size',
+      options: [
+        { label: 'Small', value: 'sm' },
+        { label: 'Large', value: 'lg' },
+      ],
+      defaultValue: 'md',
+      admin: {
+        condition: (_, siblingData) => siblingData.showMarquee === true,
+      },
     },
     {
       name: 'title',
@@ -32,6 +53,17 @@ const IntroTextBlock: Block = {
       name: 'description',
       type: 'textarea',
       label: 'Supporting Description',
+      required: true,
+    },
+    {
+      name: 'backgroundType',
+      type: 'select',
+      label: 'Background Type Dotted',
+      options: [
+        { label: 'None', value: 'none' },
+        { label: 'Background Image', value: 'background' },
+      ],
+      defaultValue: 'none',
       required: true,
     },
   ],

@@ -1,76 +1,33 @@
-
-.InvestChennaiContainerFlex {
-    margin-top: 100px;
+.BackgrounInvestImage {
     position: relative;
-    padding-bottom: 250px;
-    background-image: url("../../../../assets/images/doted.png");
-  }
-  
-  .InvestMainDivSection h3 {
-    font-family: "NewAmsterdam";
-    font-size: 66px;
-    line-height: 53px;
-    color: #fff;
-  }
-  .InvestMainDivSection h5 {
-    font-family: "MYRIADPRO-REGULAR";
-    font-size: 18px;
-    line-height: 18px;
-    color: #fff;
-    text-transform: uppercase;
-  }
-  
-  .InvestMainDivSection p {
-    font-family: "29LT Bukra Regular";
-    font-size: 18px;
-    line-height: 28px;
-    color: #fff;
-    width: 90%;
-    margin-top: 16px;
-  }
-  
-  .InvestMainDivSection .odd-paragraph {
-    width: 80%;
-  }
-  
-  .InvestMainDivFlexSection {
+    margin-top: 160px;
+}
+
+.BgImageInvesetSection {
+    position: absolute;
+    top: -12%;
+    width: 100%;
+}
+
+.BgImageInvesetSection img {
+    height: 500px;
+    width: auto;
+    object-fit: cover;
+    border-radius: 500px;
+}
+
+.BgImageInvestRowImage {
     display: flex;
-    column-gap: 25px;
-  }
-  
-  .InvestMainDivFlexSection img:first-child {
-    width: 100px;
-    height: 100px;
-    filter: invert(1);
-  }
-  
-  .InvestFlexContainer {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    column-gap: 0;
-    row-gap: 0px;
-  }
-  
-  .InvestMainDivFirstSection {
-    width: 50%;
-    border-right: 1px solid #7f8fad;
-    padding: 50px 1%;
-    border-bottom: 1px solid #7f8fad;
-    padding-right: 0;
-  }
-  
-  .InvestMainDivFirstSection:nth-child(even) {
-    border-right: none;
-    padding-left: 6%;
-  }
-  
-  .BgInvestSections {
+}
+
+.BgInvestSections {
     position: relative;
     padding-top: 350px;
     padding-bottom: 130px;
-  }
-  .BgInvestSections::before {
+}
+
+.BgInvestSections::before {
     content: "";
     position: absolute;
     top: 0;
@@ -78,22 +35,20 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(
-      90deg,
-      rgb(37 111 135) 0%,
-      rgb(61 99 174) 50%,
-      rgb(2 2 125) 100%
-    );
+    background: linear-gradient(90deg,
+            rgb(37 111 135) 0%,
+            rgb(61 99 174) 50%,
+            rgb(2 2 125) 100%);
     background-size: 200% 100%;
     background-position: 0% 0%;
     animation: animateGradient 6s ease infinite alternate;
-  }
-  
-  .exploreMorebuttonInvestChennai {
+}
+
+.exploreMorebuttonInvestChennai {
     margin-top: 30px;
-  }
-  
-  .exploreMorebuttonInvestChennai a {
+}
+
+.exploreMorebuttonInvestChennai a {
     width: 175px;
     text-align: center;
     font-family: "29LT Bukra SmBd";
@@ -106,113 +61,113 @@
     border-radius: 50px;
     font-size: 15px;
     line-height: 37px;
-  }
-  
-  .InvestMainDivSection:nth-child(odd) p {
-    width: 90%;
-  }
-  
-  .BackgrounInvestImage {
-    position: relative;
-    margin-top: 160px;
-  }
-  
-  .BgImageInvesetSection {
-    position: absolute;
-    top: -12%;
-    width: 100%;
-  }
-  .BgImageInvesetSection img {
-    height: 500px;
-    width: auto;
-    object-fit: cover;
-    border-radius: 500px;
-  }
-  
-  .BgImageInvestRowImage {
+}
+
+
+.InvestFlexContainer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-  }
-  
-  .InvestTextBackground {
-    position: absolute;
-    bottom: 8%;
-    left: 0;
-    white-space: nowrap;
-    width: 200%;
-    /* animation: scrollText 20s linear infinite; */
-    z-index: 0;
-    opacity: 0.05;
-    animation-duration: 15s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    -webkit-animation: scrollText 10s linear infinite;
-  }
-  
-  .InvestTextBackground p {
-    font-size: 280px;
-    font-family: "29LT Bukra SmBd";
-    text-transform: uppercase;
-    line-height: 150px;
-  }
-  .scroll-leftInvestPage {
-    animation-name: scrollLeftInvestPage;
-  }
-  
-  .scroll-rightInvestPage {
-    animation-name: scrollRightVolunteer;
-  }
-  
-  @keyframes scrollLeftInvestPage {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-  
-  @keyframes scrollRightVolunteer {
-    0% {
-      transform: translateX(-50%);
-    }
-    100% {
-      transform: translateX(0%);
-    }
-  }
-  
-  .InvestPagesection-odd:first-child {
+    column-gap: 0;
+    row-gap: 0px;
+}
+
+.InvestMainDivFirstSection {
+    width: 50%;
+    border-right: 1px solid #7f8fad;
+    padding: 50px 1%;
+    border-bottom: 1px solid #7f8fad;
+    padding-right: 0;
+}
+
+.InvestMainDivFirstSection:nth-child(even) {
+    border-right: none;
+    padding-left: 6%;
+}
+
+
+
+.InvestPagesection-odd:first-child {
     background-image: none;
-  }
-  .InvestPagesection-even:last-child {
+}
+
+.InvestPagesection-even:last-child {
     background-image: none;
     border-bottom: none;
-  }
-  
-  .InvestPagesection-odd {
-    background-image: linear-gradient(
-      37deg,
-      transparent 0%,
-      transparent,
-      #060606 140%
-    );
-  }
-  .InvestPagesection-even {
-    background-image: linear-gradient(
-      202deg,
-      transparent 0%,
-      transparent,
-      #060606 140%
-    );
-  }
-  
-  
-  .InvestPagesection-odd:nth-child(9) {
-  border-bottom: none;
-  }
-  
-  
-  .InvestPageId .socialChnennaiMaincontainer {
-    margin-top: 100px;
-  }
+}
 
+.InvestPagesection-odd {
+    background-image: linear-gradient(37deg,
+            transparent 0%,
+            transparent,
+            #060606 140%);
+}
+
+.InvestPagesection-even {
+    background-image: linear-gradient(202deg,
+            transparent 0%,
+            transparent,
+            #060606 140%);
+}
+
+.InvestPagesection-odd:nth-child(9) {
+    border-bottom: none;
+}
+
+.InvestMainDivFlexSection {
+    display: flex;
+    column-gap: 25px;
+}
+
+.InvestMainDivFlexSection img:first-child {
+    width: 100px;
+    height: 100px;
+    filter: invert(1);
+}
+
+.InvestMainDivSection h3 {
+    font-family: "NewAmsterdam";
+    font-size: 66px;
+    line-height: 53px;
+    color: #fff;
+}
+
+.InvestMainDivSection h5 {
+    font-family: "MYRIADPRO-REGULAR";
+    font-size: 16px;
+    line-height: 26px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.InvestMainDivSection p {
+    font-family: "29LT Bukra Regular";
+    font-size: 16px;
+    line-height: 26px;
+    color: #fff;
+    width: 90%;
+    margin-top: 16px;
+}
+
+.InvestMainDivSection .odd-paragraph {
+    width: 80%;
+}
+
+.exploreMorebuttonInvestChennai {
+    margin-top: 30px;
+}
+
+.exploreMorebuttonInvestChennai a {
+    width: 175px;
+    text-align: center;
+    font-family: "29LT Bukra SmBd";
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #5b7c9b;
+    background: #fff;
+    border-radius: 50px;
+    font-size: 15px;
+    line-height: 37px;
+}

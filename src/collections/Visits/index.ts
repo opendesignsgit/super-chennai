@@ -27,7 +27,6 @@ import {
 import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
 import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
 import introTextBlock from '@/blocks/InnerPage/SharedBlocks/IntroText/config'
-import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
 import ZigZagContentBlock from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
 import featureSectionSplitLayoutBlock from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/config'
 export const Visits: CollectionConfig<'visits'> = {
