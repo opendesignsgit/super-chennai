@@ -495,7 +495,7 @@ export interface Page {
         essentials?:
           | {
               text: string;
-              link: string;
+              page?: (number | null) | Visit;
               image: number | Media;
               id?: string | null;
             }[]
@@ -976,6 +976,7 @@ export interface Visit {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  page?: (number | null) | Page;
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
   populatedAuthors?:
@@ -2170,7 +2171,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     text?: T;
-                    link?: T;
+                    page?: T;
                     image?: T;
                     id?: T;
                   };
@@ -2407,6 +2408,7 @@ export interface VisitsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  page?: T;
   publishedAt?: T;
   authors?: T;
   populatedAuthors?:

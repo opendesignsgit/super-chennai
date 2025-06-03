@@ -1,11 +1,15 @@
 'use client'
-
 import React from 'react'
+import Link from 'next/link'
 import './style.css'
+
+type PageReference = {
+  slug?: string
+}
 
 type EssentialItem = {
   text: string
-  link: string
+  page?: PageReference | string 
   image?: {
     url?: string
     alt?: string
@@ -33,20 +37,23 @@ export default function ChennaiLifeEssentials({
 
         <div className="ChennaiContainerLiveEssential">
           <div className="ImageConatinerLiveEssential">
-            {essentials.map((item, index) => (
-              <a
-                href={item.link}
-                key={index}
-                className="ChennaiEssentialimagecontainer"
-              >
-                {item.image?.url && (
-                  <img src={item.image.url} alt={item.image.alt || item.text} />
-                )}
-                <div className="ChennaiEssentialOverlay">
-                  <div className="ChennaiEssentialImageText">{item.text}</div>
-                </div>
-              </a>
-            ))}
+            {essentials.map((item, index) => {
+              let href = '#'
+              if (typeof item.page === 'object' && item.page?.slug) {
+                href = `/visits/${item.page.slug}`
+              }
+
+              return (
+                <Link href={href} key={index} className="ChennaiEssentialimagecontainer">
+                  {item.image?.url && (
+                    <img src={item.image.url} alt={item.image.alt || item.text} />
+                  )}
+                  <div className="ChennaiEssentialOverlay">
+                    <div className="ChennaiEssentialImageText">{item.text}</div>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </div>

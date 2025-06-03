@@ -37,11 +37,19 @@ const ChennaiLifeEssentialSection: Block = {
           required: true,
           label: 'Text Label',
         },
+        // {
+        //   name: 'link',
+        //   type: 'text',
+        //   required: true,
+        //   label: 'Link',
+        // },
+
         {
-          name: 'link',
-          type: 'text',
-          required: true,
-          label: 'Link',
+          name: 'page',
+          type: 'relationship',
+          relationTo: 'visits',
+          required: false,
+          label: 'Select Page Link',
         },
 
         {

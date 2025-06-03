@@ -172,62 +172,22 @@ export const Visits: CollectionConfig<'visits'> = {
           ],
         },
 
-        // SUBPAGE SCHAME #########
-        // {
-        //   label: 'Sub Pages',
-        //   fields: [
-        //     {
-        //       name: 'subPages',
-        //       type: 'array',
-        //       label: 'Sub Pages',
-        //       fields: [
-        //         {
-        //           name: 'title',
-        //           type: 'text',
-        //           required: true,
-        //         },
-        //         {
-        //           name: 'slug',
-        //           type: 'text',
-        //           required: true,
-        //           admin: {
-        //             description: 'Slug for this sub-page. Final URL: /visits/parent-slug/this-slug',
-        //           },
-        //         },
-        //         {
-        //           name: 'content',
-        //           type: 'richText',
-        //           editor: lexicalEditor({
-        //             features: ({ rootFeatures }) => {
-        //               return [
-        //                 ...rootFeatures,
-        //                 HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-        //                 BlocksFeature({
-        //                   blocks: [
-        //                     // ZigZagContentBlock,
-        //                     // ExploreMoreChennaiBlock,
-        //                     // socialReelSlider,
-        //                     // FeatureSectionsBlock,
-        //                     // featureSectionSplitLayoutBlock,
-        //                   ],
-        //                 }),
-        //                 FixedToolbarFeature(),
-        //                 InlineToolbarFeature(),
-        //                 HorizontalRuleFeature(),
-        //               ]
-        //             },
-        //           }),
-        //         },
-        //         {
-        //           name: 'meta',
-        //           label: 'SEO (Optional)',
-        //           type: 'group',
-        //           fields: [MetaImageField({ relationTo: 'media' })],
-        //         },
-        //       ],
-        //     },
-        //   ],
-        // },
+        //  SUBPAGE
+
+        {
+          label: 'Subpage',
+          fields: [
+            {
+              name: 'page',
+              type: 'relationship',
+              relationTo: 'pages',
+              required: false,
+              admin: {
+                position: 'sidebar',
+              },
+            },
+          ],
+        },
       ],
     },
     {
