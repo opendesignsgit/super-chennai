@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { Media } from '@/payload-types'
+import { Media } from 'src/payload-types'
 import './style.css'
 
 type Props = {

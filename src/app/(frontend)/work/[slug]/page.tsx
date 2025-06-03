@@ -1,17 +1,16 @@
 import type { Metadata } from 'next'
 
-import { RelatedWork } from '@/blocks/RelatedWork/Component'
-import { PayloadRedirects } from '@/components/PayloadRedirects'
-import configPromise from '@payload-config'
+import { PayloadRedirects } from 'src/components/PayloadRedirects'
+import configPromise from 'src/payload.config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
-import React, { cache } from 'react'
-import RichText from '@/components/RichText'
+import React, { cache, Suspense } from 'react'
+import RichText from 'src/components/RichText'
 
-
-import { generateMeta } from '@/utilities/generateMeta'
+import { generateMeta } from 'src/utilities/generateMeta'
 import PageClient from './page.client'
-import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { LivePreviewListener } from 'src/components/LivePreviewListener'
+import { PostHero } from '@/heros/PostHero'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -48,7 +47,7 @@ export default async function Work({ params: paramsPromise }: Args) {
   if (!work) return <PayloadRedirects url={url} />
 
   return (
-    <div >
+    <div>
       <PageClient />
 
       {/* Allows redirects for valid pages too */}
@@ -57,16 +56,19 @@ export default async function Work({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
 
       {/* <workHero work={work} /> */}
+          <Suspense fallback={null}>
+              <PostHero post={work} />
+            </Suspense>
 
-        <div >
-          <RichText  data={work.content} enableGutter={false} />
-          {work.relatedwork && work.relatedwork.length > 0 && (
-            <RelatedWork
-              className=""
-              docs={work.relatedwork.filter((work) => typeof work === 'object')}
-            />
-          )}
-        </div>
+      <div>
+        <RichText data={work.content} enableGutter={false} />
+        {/* {work.relatedwork && work.relatedwork.length > 0 && (
+          <RelatedWork
+            className=""
+            docs={work.relatedwork.filter((work) => typeof work === 'object')}
+          />
+        )} */}
+      </div>
     </div>
   )
 }

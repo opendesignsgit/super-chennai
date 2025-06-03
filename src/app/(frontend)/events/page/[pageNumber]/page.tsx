@@ -1,14 +1,11 @@
 import type { Metadata } from 'next/types'
 
-import { CollectionArchive } from '@/components/CollectionArchive'
-import { PageRange } from '@/components/PageRange'
-import { Pagination } from '@/components/Pagination'
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
-import React from 'react'
-import PageClient from './page.client'
 import { notFound } from 'next/navigation'
-import Banner from '@/blocks/InnerPage/SharedBlocks/Banners/Components'
+import { getPayload } from 'payload'
+import Banner from 'src/blocks/InnerPage/SharedBlocks/Banners/Components'
+import { Pagination } from 'src/components/Pagination'
+import configPromise from 'src/payload.config'
+import PageClient from './page.client'
 
 export const revalidate = 600
 
@@ -44,16 +41,16 @@ export default async function Page({ params: paramsPromise }: Args) {
       </div>
       <Banner />
 
-      <div className="container mb-8">
+      {/* <div className="container mb-8">
         <PageRange
           collection="posts"
           currentPage={events.page}
           limit={12}
           totalDocs={events.totalDocs}
         />
-      </div>
+      </div> */}
 
-      <CollectionArchive events={events.docs} />
+      {/* <CollectionArchive posts={events.docs} /> */}
 
       <div className="container">
         {events?.page && events?.totalPages > 1 && (

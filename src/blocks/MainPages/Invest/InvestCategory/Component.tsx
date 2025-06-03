@@ -72,7 +72,7 @@
 
 import React, { useEffect } from 'react'
 import './style.css'
-import { InvestmentAPIItem } from '@/models/investment'
+import { InvestmentAPIItem } from 'src/models/investment'
 
 type CategoryItem = {
   title: string
@@ -128,7 +128,6 @@ export default function InvestmentCategoryListSection({
             ),
           }))
           console.log('extracted', data)
-
         }
       } catch (error) {
         console.error('Failed to fetch events:', error)

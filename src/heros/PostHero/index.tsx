@@ -3,11 +3,11 @@
 import Link from 'next/link'
 import './style.css'
 
-import type { Post } from '@/payload-types'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { Media } from '@/components/Media'
-import { formatAuthors } from '@/utilities/formatAuthors'
 import React from 'react'
+import { Media } from 'src/components/Media'
+import type { Post } from 'src/payload-types'
+import { formatAuthors } from 'src/utilities/formatAuthors'
 import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 
 export const PostHero: React.FC<{
@@ -63,8 +63,7 @@ export const PostHero: React.FC<{
           </div> */}
         </div>
       </div>
-
-   
+      <GlobalSearch placeholderText={'Experience Chennai'} buttonText={'Search'} />
     </div>
   )
 }

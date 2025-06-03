@@ -1,28 +1,41 @@
+
+
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
-.ExploreChennaiContainer .slick-track{
+.ExploreChennaiContainer {
+    padding-top: 80px;
+}
+
+.ExploreChennaiContainer .slick-track {
     padding-top: 1%;
 }
-.ExploreChennaiContainer .space-y-4{
+
+.ExploreChennaiContainer .space-y-4 {
     margin-bottom: 20px;
 }
-.exploreSectionContainer{
+
+.exploreSectionContainer {
     display: flex;
     column-gap: 25px;
     flex-wrap: wrap;
     row-gap: 25px;
 }
-.exploreSectionFlex{
+
+.exploreSectionFlex {
     display: flex !important;
     align-items: center;
     border: 1px solid #e7e7ea;
     width: 277px !important;
     column-gap: 15px;
-    padding: 20px 15px;
+    padding: 19px 15px;
     border-radius: 10px;
     position: relative;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.6s ease, box-shadow 1.5s ease;
+    -webkit-transition: transform 0.6s ease, box-shadow 1.5s ease;
+    -moz-transition: transform 0.6s ease, box-shadow 1.5s ease;
+    -ms-transition: transform 0.6s ease, box-shadow 1.5s ease;
+    -o-transition: transform 0.6s ease, box-shadow 1.5s ease;
 }
 
 .exploreSectionFlex:hover {
@@ -36,29 +49,142 @@
     border: 1px solid #995098;
 }
 
-.exploreSectionFlex img:first-child{
-    width: 65px;
-    height: 65px;
+.exploreSectionFlex img:first-child {
+    width: 70px;
+    height: 70px;
 }
 
-.exploreSectionFlex h3{
-    font-family: '29LT Bukra SmBd';
+.exploreSectionFlex h3 {
+    font-family: "29LT Bukra SmBd";
     color: #a44294;
     font-size: 20px;
     line-height: 25px;
 }
-.exploreSectionFlex h5{
-    font-family: '29LT Bukra SmBd';
+
+.exploreSectionFlex h5 {
+    font-family: "29LT Bukra SmBd";
     color: #818181;
     font-size: 15px;
 }
-.arrowIcons{
-    width: 42px;
+
+.arrowIcons {
+    width: 30px;
     height: 30px;
     position: absolute;
     bottom: 9%;
     right: 4%;
+    background-image: url("../../../assets/images/icons/rightArrowsvg.svg");
+    background-repeat: repeat;
+    background-size: contain;
+    transition: opacity 0.3s ease-in-out;
 }
-.arrowIcons:hover{
- 
+
+.exploreSectionFlex:hover .arrowIcons {
+    background-image: url("../../../assets/images/icons/RightArrow.svg");
+}
+
+.exploreSectionFlex:hover .arrowIcons {
+    background-image: url("../../../assets/images/icons/RightArrow.svg");
+}
+
+@media (max-width: 1600px) and (min-width: 1300px) {
+    .exploreSectionFlex {
+        width: 235px !important;
+        padding: 12px 10px;
+    }
+
+    .exploreSectionFlex h3 {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .exploreSectionFlex h5 {
+        font-size: 13px;
+    }
+
+    .exploreSectionFlex img:first-child {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 1300px) and (min-width: 1024px) {
+    .exploreSectionFlex {
+        width: 218px !important;
+        padding: 12px 10px;
+    }
+
+    .exploreSectionFlex h3 {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .exploreSectionFlex h5 {
+        font-size: 13px;
+    }
+
+    .exploreSectionFlex img:first-child {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 686px) {
+    .exploreChennaiContiner {
+        width: 787px;
+    }
+
+    .exploreSectionFlex {
+        width: 218px !important;
+        padding: 12px 10px;
+    }
+
+    .exploreSectionFlex h3 {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .exploreSectionFlex h5 {
+        font-size: 13px;
+    }
+
+    .exploreSectionFlex img:first-child {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ExploreChennaiContainer {
+        padding-top: 45px;
+    }
+
+    .ExploreChennaiContainer {
+        padding-bottom: 0;
+    }
+
+    .exploreSectionFlex {
+        width: 85% !important;
+        padding: 15px 15px;
+    }
+
+    .ExploreChennaiContainer .slick-track {
+        padding-top: 5%;
+    }
+
+    .exploreSectionFlex h3 {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .exploreSectionFlex h5 {
+        font-family: "29LT Bukra SmBd";
+        color: #818181;
+        font-size: 13px;
+    }
+
+    .exploreSectionFlex img:first-child {
+        width: 60px;
+        height: 60px;
+    }
 }

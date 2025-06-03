@@ -1,37 +1,37 @@
 import type { CollectionConfig } from 'payload'
 
-import { slugField } from '@/fields/slug'
-import { hero } from '@/heros/config'
+import { slugField } from 'src/fields/slug'
+import { hero } from 'src/heros/config'
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 
-import ContentZoneCarousel from '@/blocks/HomePage/ContentZoneCarousel/config'
-import EventsCalendarBlock from '@/blocks/HomePage/EventsCalendar/config'
-import { ExploreBlock } from '@/blocks/HomePage/Explore/config'
-import { FunChennaiBlock } from '@/blocks/HomePage/funChennai/config'
-import { GlobalSearchBlock } from '@/blocks/HomePage/GlobalSearch/config'
-import Infography from '@/blocks/HomePage/infography/config'
-import ChennaiInvestmentsBlock from '@/blocks/HomePage/Investments/config'
-import SpotlightGallery from '@/blocks/HomePage/leftContentRightSlider/config'
-import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
-import { StartupChennaiBlock } from '@/blocks/HomePage/StartupChennai/config'
-import TwoColumnFeatureBlock from '@/blocks/HomePage/TwoColumnFeatureBlock/config'
-import Utilities from '@/blocks/HomePage/Utilities/config'
-import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
-import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
-import HotelsInChennaiBlock from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
-import AllEvents from '@/blocks/MainPages/Events/config'
-import ChennaiLifeEssentialSection from '@/blocks/MainPages/Live/ChennaiLifeEssentials/config'
-import liveIntrorSection from '@/blocks/MainPages/Live/Introtext/config'
-import mainPageBannerBlock from '@/blocks/MainPages/SharedBlocks/Banner/config'
-import { FormPopup } from '@/blocks/MainPages/SharedBlocks/FormPopup/config'
-import IntroTextBlock from '@/blocks/MainPages/SharedBlocks/IntroText/config'
-import VisitCategory from '@/blocks/MainPages/Visit/VisitCategory/config'
-import volunteerBecameListBlock from '@/blocks/MainPages/Volunteer/Volunteers/config'
-import HeroSlider from '@/blocks/PageBanners/Home/config'
+import ContentZoneCarousel from 'src/blocks/HomePage/ContentZoneCarousel/config'
+import EventsCalendarBlock from 'src/blocks/HomePage/EventsCalendar/config'
+import { ExploreBlock } from 'src/blocks/HomePage/Explore/config'
+import { FunChennaiBlock } from 'src/blocks/HomePage/funChennai/config'
+import { GlobalSearchBlock } from 'src/blocks/HomePage/GlobalSearch/config'
+import Infography from 'src/blocks/HomePage/infography/config'
+import ChennaiInvestmentsBlock from 'src/blocks/HomePage/Investments/config'
+import SpotlightGallery from 'src/blocks/HomePage/leftContentRightSlider/config'
+import { socialReelSlider } from 'src/blocks/HomePage/SocialChennai/config'
+import { StartupChennaiBlock } from 'src/blocks/HomePage/StartupChennai/config'
+import TwoColumnFeatureBlock from 'src/blocks/HomePage/TwoColumnFeatureBlock/config'
+import Utilities from 'src/blocks/HomePage/Utilities/config'
+import BecameAVolunteerBlock from 'src/blocks/HomePage/Volunteer/config'
+import InnerPageBanner from 'src/blocks/InnerPage/SharedBlocks/Banners/config'
+import HotelsInChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
+import AllEvents from 'src/blocks/MainPages/Events/config'
+import ChennaiLifeEssentialSection from 'src/blocks/MainPages/Live/ChennaiLifeEssentials/config'
+import liveIntrorSection from 'src/blocks/MainPages/Live/Introtext/config'
+import mainPageBannerBlock from 'src/blocks/MainPages/SharedBlocks/Banner/config'
+import { FormPopup } from 'src/blocks/MainPages/SharedBlocks/FormPopup/config'
+import IntroTextBlock from 'src/blocks/MainPages/SharedBlocks/IntroText/config'
+import VisitCategory from 'src/blocks/MainPages/Visit/VisitCategory/config'
+import volunteerBecameListBlock from 'src/blocks/MainPages/Volunteer/Volunteers/config'
+import HeroSlider from 'src/blocks/PageBanners/Home/config'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -39,8 +39,9 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import investmentCategoryListBlock from '@/blocks/MainPages/Invest/InvestCategory/config'
-import { innovateSlider } from '@/blocks/MainPages/Innovate/TabWithSlider/config'
+import investmentCategoryListBlock from 'src/blocks/MainPages/Invest/InvestCategory/config'
+import { innovateSlider } from 'src/blocks/MainPages/Innovate/TabWithSlider/config'
+import TextHoverImageSection from '@/blocks/MainPages/Work/Works/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -131,7 +132,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 liveIntrorSection,
                 ChennaiLifeEssentialSection,
                 investmentCategoryListBlock,
-                innovateSlider
+                innovateSlider,
+                TextHoverImageSection
               ],
               required: true,
               admin: {

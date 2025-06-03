@@ -1,74 +1,56 @@
-"use client";
+'use client'
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useRef, useEffect } from 'react'
+import Link from 'next/link'
+import './style.css'
+export type Media = {
+  id: string
+  url: string
+  alt?: string
+  mimeType?: string
+  filename?: string
+}
 
-type WorkItem = {
-  label: string;
-  link: string;
-  image: {
-    url: string;
-    alt?: string;
-  };
-};
+export type WorkHoverCardItem = {
+  label: string
+  link: string
+  image: Media
+}
 
-type WorkInChennaiBlockProps = {
-  heading: string;
-  intro: string;
-  description: string;
-  items: WorkItem[];
-};
+export type WorkHoverCardsBlock = {
+  blockType: 'workHoverCards'
+  blockName?: string
+  title: string
+  items: WorkHoverCardItem[]
+}
 
-export default function WorkInChennaiBlock({
-  heading,
-  intro,
-  description,
-  items = [],
-}: WorkInChennaiBlockProps) {
-  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
-  const [previewSrc, setPreviewSrc] = useState<string | undefined>(
-    items[0]?.image?.url
-  );
-  const [fade, setFade] = useState(true);
-  const [scrollDir, setScrollDir] = useState<"left" | "right">("left");
-  const bgTextRef = useRef<HTMLDivElement>(null);
+type Item = {
+  label: string
+  link: string
+  image:
+    | {
+        url: string
+      }
+    | Media
+}
+
+export const TextHoverImageSection = ({ title, items }: { title: string; items: Item[] }) => {
+  const [previewSrc, setPreviewSrc] = useState(items?.[0]?.image?.url || '')
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null)
+  const tooltipRef = useRef<HTMLSpanElement>(null)
+  const [fade, setFade] = useState(true)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setScrollDir((prev) => (prev === "left" ? "right" : "left"));
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    setFade(false);
-    const timeout = setTimeout(() => setFade(true), 300);
-    return () => clearTimeout(timeout);
-  }, [previewSrc]);
+    setFade(false)
+    const timeout = setTimeout(() => setFade(true), 50)
+    return () => clearTimeout(timeout)
+  }, [previewSrc])
 
   return (
-    <div>
-          <div className="workIntroParaSection container max-w-7xl mx-auto px-4">
-          <div
-          className={`VolunteeerTextBackground ${
-            scrollDir === "right" ? "scroll-right" : "scroll-left"
-          }`}
-          ref={bgTextRef}
-        >
-          <p>Work &nbsp; Work &nbsp; Work &nbsp; Work</p>
-        </div>
-        <div className="workIntro">
-          <h3>{heading}</h3>
-          <p>
-            <strong>{intro}</strong>
-          </p>
-          <p>{description}</p>
-        </div>
-      </div>
-
-      <div className="workImageSection">
-        <h4>
-          Work <br /> Chennai
-        </h4>
+    <>
+      {/* Desktop Hover Version */}
+      <div className="hidden md:block workImageSection">
+        <h4 dangerouslySetInnerHTML={{ __html: title.replace(' ', '<br />') }} />
         <div className="container max-w-7xl mx-auto px-4">
           <div className="workimgIn flex">
             <div className="flex-4">
@@ -77,46 +59,82 @@ export default function WorkInChennaiBlock({
                   <li
                     key={index}
                     onMouseEnter={() => {
-                      setPreviewSrc(item.image.url);
-                      setHoverIndex(index);
+                      setPreviewSrc(item.image.url)
+                      setHoverIndex(index)
+                      tooltipRef.current!.style.display = 'block'
                     }}
-                    onMouseLeave={() => setHoverIndex(null)}
+                    onMouseLeave={() => {
+                      setHoverIndex(null)
+                      tooltipRef.current!.style.display = 'none'
+                    }}
                     className={
-                      hoverIndex === index ||
-                      (hoverIndex === null && index === 0)
-                        ? "active"
-                        : ""
+                      hoverIndex === index || (hoverIndex === null && index === 0) ? 'active' : ''
                     }
                   >
-                    <a
+                    <Link
                       href={item.link}
                       className={`text-white font-bold text-lg transition-opacity ${
-                        hoverIndex === index ||
-                        (hoverIndex === null && index === 0)
-                          ? "opacity-100"
-                          : "opacity-20"
+                        hoverIndex === index || (hoverIndex === null && index === 0)
+                          ? 'opacity-100'
+                          : 'opacity-20'
                       }`}
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
+
+              <span
+                ref={tooltipRef}
+                id="tooltip"
+                className="fixed z-50 bg-black text-white text-xs px-2 py-1 rounded hidden md:block pointer-events-none"
+                style={{ transition: 'opacity 0.2s ease' }}
+              >
+                <button>Explore More</button>
+              </span>
             </div>
 
             <div className="flex-2 flex items-center justify-center hoverRightimg">
-              {previewSrc && (
-                <img
-                  src={previewSrc}
-                  alt="Preview"
-                  className="hoverRightimg"
-                  style={{ opacity: fade ? 1 : 0 }}
-                />
-              )}
+              <img
+                src={previewSrc}
+                alt="Category preview"
+                className="hoverRightimg"
+                style={{ opacity: fade ? 1 : 0, transition: 'opacity 0.3s' }}
+              />
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+
+      {/* Mobile Cards Version */}
+      <div className="block md:hidden my-8 px-4 mobileCardsWorkMainContainer">
+        <div className="overflow-x-auto flex space-x-4 pb-4">
+          {items.map((item, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 w-64 bg-white rounded-lg shadow-md cursor-pointer transition-transform transform hover:scale-105 mobileCardsWork"
+            >
+              <img
+                src={item.image.url}
+                alt={item.label}
+                className="w-full h-40 object-cover rounded-t-lg"
+              />
+              <div className="p-4">
+                <h5 className="text-lg font-semibold text-gray-800 mb-2 CardTitleWork">
+                  {item.label}
+                </h5>
+                <Link
+                  href={item.link}
+                  className="text-blue-500 hover:underline text-sm CardLinkWork"
+                >
+                  Explore →
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  )
 }

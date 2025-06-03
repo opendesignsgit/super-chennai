@@ -1,20 +1,21 @@
 import type { Metadata } from 'next'
 
-import { cn } from '@/utilities/ui'
+import { cn } from 'src/utilities/ui'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import React from 'react'
 
-import { AdminBar } from '@/components/AdminBar'
-import { Providers } from '@/providers'
-import { InitTheme } from '@/providers/Theme/InitTheme'
-import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { AdminBar } from 'src/components/AdminBar'
+import { Providers } from 'src/providers'
+import { InitTheme } from 'src/providers/Theme/InitTheme'
+import { mergeOpenGraph } from 'src/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
 import './globals.css'
-import { getServerSideURL } from '@/utilities/getURL'
-import Footer from '@/Footer/Component'
-import Header from '@/Header/Component'
+import { getServerSideURL } from 'src/utilities/getURL'
+import Footer from 'src/Footer/Component'
+import { Header } from '@/Header/Component'
+// import Header from '@/Header----/Component'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()

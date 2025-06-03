@@ -1,9 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Media } from '@/payload-types'
+import { Media } from 'src/payload-types'
 import Image from 'next/image'
 import './style.css'
+import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 
 type Slide = {
   image: string | Media
@@ -69,6 +70,9 @@ export default function HeroSliderBlock({ slides = [] }: { slides: Slide[] }) {
               style={{ border: 'none' }}
             />
           ))}
+        </div>
+        <div className="notHomePageSearch">
+          <GlobalSearch placeholderText={'Explore Chennai'} buttonText={'Search'} />
         </div>
       </div>
     </div>

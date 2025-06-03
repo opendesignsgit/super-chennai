@@ -23,10 +23,10 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { slugField } from '@/fields/slug'
-import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
-import EventDetails from '@/blocks/InnerPage/SharedBlocks/EventDetails/config'
-import { Content } from '@/blocks/Content/config'
+import { slugField } from 'src/fields/slug'
+import InnerPageBanner from 'src/blocks/InnerPage/SharedBlocks/Banners/config'
+import EventDetails from 'src/blocks/InnerPage/SharedBlocks/EventDetails/config'
+// import { Content } from 'src/blocks/Content/config'
 export const EventsContent = (slug: string, singular: string, plural: string): Block => ({
   slug,
   labels: {
@@ -178,7 +178,7 @@ export const Events: CollectionConfig<'events'> = {
       required: true,
     },
 
-// #################IS FEATRE CHECK BOX SCHEM ########################
+    // #################IS FEATRE CHECK BOX SCHEM ########################
     {
       name: 'isFeatured',
       type: 'checkbox',
@@ -234,7 +234,7 @@ export const Events: CollectionConfig<'events'> = {
                         // ############3  INSER WA WAITING DETAIL PGE BLOCKS ##################
                         InnerPageBanner,
                         EventDetails,
-                        Content,
+                        // Content,
                       ],
                     }),
                     FixedToolbarFeature(),

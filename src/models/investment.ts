@@ -1,91 +1,17 @@
-// export type InvestmentImage = {
-//   url: string
-//   alt?: string
-// }
-
-// export type InvestmentItem = {
-//   id: string
-//   title: string
-//   description?: string
-//   image?: InvestmentImage
-// }
-
-// export type Investment = {
-//   sectionTitle?: string
-//   sectionDescription?: string
-//   sectionImage?: {
-//     url?: string
-//     alt?: string
-//   }
-//   investmentItems?: InvestmentItem[]
-// }
-
-// export type InvestmentAPIItem = {
-//   sectionImage: any
-//   sectionDescription: any
-//   sectionTitle: any
-//   id: string
-//   title: string
-//   investments?: Investment[]
-//     investmentItems?: InvestmentItem[]
-
-// }
-
-// export type InvestmentAPIResponse = {
-//   docs: InvestmentAPIItem[]
-// }
-
-// export type ExtractedCategory = {
-//   id: string
-//   title: string
-//   sectionTitle: string
-//   sectionDescription: string
-//   sectionImage: string
-//   investmentItems: InvestmentItem[]
-// }
-
-// export type ChennaiInvestmentsProps = {
-//   heading: string
-//   subheading?: string
-// }
-// export type ChennaiInvestmentsState = {
-//   extracted: ExtractedCategory[]
-//   selectedCategory: string
-//   loading: boolean
-//   error?: string
-// }
-
-// export type SectionInvestment = {
-//   id: string
-//   title: string
-//   sectionTitle?: string
-//   sectionDescription?: string
-//   sectionImage?: string
-//   investmentItems: InvestmentItem[]
-// }
-// export type InvestDetailsProps = {
-//   data: {
-//     id: string
-//     title: string
-//     investments: InvestmentAPIItem[]
-//   }
-// }
-
-interface InvestmentImage {
+export type InvestmentImage = {
   url: string
   alt?: string
 }
 
-interface InvestmentItem {
+export type InvestmentItem = {
   link: string
-  slug: string
   id: string
   title: string
   description?: string
   image?: InvestmentImage
 }
 
-interface Investment {
+export type Investment = {
   sectionTitle?: string
   sectionDescription?: string
   sectionImage?: {
@@ -95,23 +21,23 @@ interface Investment {
   investmentItems?: InvestmentItem[]
 }
 
-interface InvestmentAPIItem {
-  slug: string
+export type InvestmentAPIItem = {
+  slug: any
   sectionImage: any
   sectionDescription: any
   sectionTitle: any
   id: string
   title: string
   investments?: Investment[]
-  investmentItems?: InvestmentItem[]
-  link: string
+    investmentItems?: InvestmentItem[]
+
 }
 
-interface InvestmentAPIResponse {
+export type InvestmentAPIResponse = {
   docs: InvestmentAPIItem[]
 }
 
-interface ExtractedCategory {
+export type ExtractedCategory = {
   id: string
   title: string
   sectionTitle: string
@@ -120,19 +46,18 @@ interface ExtractedCategory {
   investmentItems: InvestmentItem[]
 }
 
-interface ChennaiInvestmentsProps {
+export type ChennaiInvestmentsProps = {
   heading: string
   subheading?: string
 }
-
-interface ChennaiInvestmentsState {
+export type ChennaiInvestmentsState = {
   extracted: ExtractedCategory[]
   selectedCategory: string
   loading: boolean
   error?: string
 }
 
-interface SectionInvestment {
+export type SectionInvestment = {
   id: string
   title: string
   sectionTitle?: string
@@ -140,24 +65,11 @@ interface SectionInvestment {
   sectionImage?: string
   investmentItems: InvestmentItem[]
 }
-
-interface InvestDetailsProps {
+export type InvestDetailsProps = {
   data: {
-    id: string
+    id: string 
     title: string
     investments: InvestmentAPIItem[]
   }
 }
 
-export type {
-  InvestmentImage,
-  InvestmentItem,
-  Investment,
-  InvestmentAPIItem,
-  InvestmentAPIResponse,
-  ExtractedCategory,
-  ChennaiInvestmentsProps,
-  ChennaiInvestmentsState,
-  SectionInvestment,
-  InvestDetailsProps,
-}

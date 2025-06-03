@@ -1,20 +1,17 @@
 import type { Metadata } from 'next'
 
-import { Relatedinvestments } from '@/blocks/Relatedinvestments/Component'
-import { PayloadRedirects } from '@/components/PayloadRedirects'
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
-import React, { cache } from 'react'
-import RichText from '@/components/RichText'
+import { getPayload } from 'payload'
+import { cache, Suspense } from 'react'
+import { PayloadRedirects } from 'src/components/PayloadRedirects'
+import RichText from 'src/components/RichText'
+import configPromise from 'src/payload.config'
 
-import type { Post } from '@/payload-types'
-
-import { PostHero } from '@/heros/PostHero'
-import { generateMeta } from '@/utilities/generateMeta'
+import InvestCategory from 'src/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
+import { LivePreviewListener } from 'src/components/LivePreviewListener'
+import { PostHero } from 'src/heros/PostHero'
+import { generateMeta } from 'src/utilities/generateMeta'
 import PageClient from './page.client'
-import { LivePreviewListener } from '@/components/LivePreviewListener'
-import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -54,23 +51,42 @@ export default async function Post({ params: paramsPromise }: Args) {
     <div>
       <PageClient />
 
-      {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
 
-      <PostHero post={post} />
+      <Suspense fallback={null}>
+        <PostHero post={post} />
+      </Suspense>
 
       <div>
         <RichText data={post.content} enableGutter={false} />
-        {post.relatedinvestments && post.relatedinvestments.length > 0 && (
+        {/* {post.relatedinvestments && post.relatedinvestments.length > 0 && (
           <Relatedinvestments
             className=""
             docs={post.relatedinvestments.filter((post) => typeof post === 'object')}
           />
-        )}
+        )} */}
       </div>
-      <InvestCategory data={post} />
+      {/* <InvestCategory data={post} /> */}
+      {post && (
+        <InvestCategory
+          data={{
+            id: post.id?.toString() ?? '',
+            title: post.title ?? '',
+            investments: (post.investments ?? []).map((inv: any) => ({
+              id: inv.id?.toString() ?? '',
+              slug: inv.slug ?? '',
+              title: inv.title ?? inv.sectionTitle ?? 'Untitled',
+              sectionTitle: inv.sectionTitle,
+              sectionDescription: inv.sectionDescription,
+              sectionImage: inv.sectionImage,
+              investments: inv.investments,
+              investmentItems: inv.investmentItems,
+            })),
+          }}
+        />
+      )}
     </div>
   )
 }

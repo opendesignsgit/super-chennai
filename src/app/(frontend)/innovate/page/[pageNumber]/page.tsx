@@ -1,14 +1,11 @@
 import type { Metadata } from 'next/types'
 
-import { CollectionArchive } from '@/components/CollectionArchive'
-import { PageRange } from '@/components/PageRange'
-import { Pagination } from '@/components/Pagination'
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
-import React from 'react'
-import PageClient from './page.client'
 import { notFound } from 'next/navigation'
-import Banner from '@/blocks/InnerPage/SharedBlocks/Banners/Components'
+import { getPayload } from 'payload'
+import { PageRange } from 'src/components/PageRange'
+import { Pagination } from 'src/components/Pagination'
+import configPromise from 'src/payload.config'
+import PageClient from './page.client'
 
 export const revalidate = 600
 

@@ -213,6 +213,14 @@ export interface Page {
              * Choose how the link should be rendered.
              */
             appearance?: ('default' | 'outline') | null;
+            content?:
+              | {
+                  title?: string | null;
+                  desc?: string | null;
+                  link?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
           };
           id?: string | null;
         }[]
@@ -517,6 +525,18 @@ export interface Page {
         id?: string | null;
         blockName?: string | null;
         blockType: 'innovateSlider';
+      }
+    | {
+        title: string;
+        items: {
+          label: string;
+          link: string;
+          image: number | Media;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'textHoverImageSection';
       }
   )[];
   meta?: {
@@ -1827,6 +1847,14 @@ export interface PagesSelect<T extends boolean = true> {
                     url?: T;
                     label?: T;
                     appearance?: T;
+                    content?:
+                      | T
+                      | {
+                          title?: T;
+                          desc?: T;
+                          link?: T;
+                          id?: T;
+                        };
                   };
               id?: T;
             };
@@ -2169,6 +2197,21 @@ export interface PagesSelect<T extends boolean = true> {
         innovateSlider?:
           | T
           | {
+              id?: T;
+              blockName?: T;
+            };
+        textHoverImageSection?:
+          | T
+          | {
+              title?: T;
+              items?:
+                | T
+                | {
+                    label?: T;
+                    link?: T;
+                    image?: T;
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };
@@ -2960,18 +3003,31 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: number;
-  header?:
+  navItems?:
     | {
-        label: string;
-        link: string;
-        content?:
-          | {
-              title?: string | null;
-              desc?: string | null;
-              link?: string | null;
-              id?: string | null;
-            }[]
-          | null;
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          content?:
+            | {
+                title?: string | null;
+                desc?: string | null;
+                link?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+        };
         id?: string | null;
       }[]
     | null;
@@ -3075,18 +3131,25 @@ export interface Footer {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
-  header?:
+  navItems?:
     | T
     | {
-        label?: T;
-        link?: T;
-        content?:
+        link?:
           | T
           | {
-              title?: T;
-              desc?: T;
-              link?: T;
-              id?: T;
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              content?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    link?: T;
+                    id?: T;
+                  };
             };
         id?: T;
       };

@@ -22,16 +22,16 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { slugField } from '@/fields/slug'
-import HotelsInChennaiBlock from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
-import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
-import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
-import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
-import { careerIntroBlock } from '@/blocks/InnerPage/SharedBlocks/careerIntro/config'
-import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
-import { GlobalSearchBlock } from '@/blocks/HomePage/GlobalSearch/config'
-import introTextBlock from '@/blocks/InnerPage/SharedBlocks/IntroText/config'
-import futureUnicorns from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
+import { slugField } from 'src/fields/slug'
+import HotelsInChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
+import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/config'
+import { socialReelSlider } from 'src/blocks/HomePage/SocialChennai/config'
+import InnerPageBanner from 'src/blocks/InnerPage/SharedBlocks/Banners/config'
+import { careerIntroBlock } from 'src/blocks/InnerPage/SharedBlocks/careerIntro/config'
+import FeatureSectionsBlock from 'src/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
+import { GlobalSearchBlock } from 'src/blocks/HomePage/GlobalSearch/config'
+import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
+import futureUnicorns from 'src/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
 
 export const work: CollectionConfig<'work'> = {
   slug: 'work',

@@ -1,5 +1,5 @@
 import type { Field } from 'payload'
-import { linkGroup } from '@/fields/linkGroup'
+import { linkGroup } from 'src/fields/linkGroup'
 
 const isNotNone = (_: unknown, { siblingData }: any) => siblingData?.type !== 'none'
 

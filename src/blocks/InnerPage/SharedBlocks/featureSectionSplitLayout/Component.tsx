@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import './style.css'
-import { Media } from '@/payload-types'
+import { Media } from 'src/payload-types'
 
 export interface IconItem {
   icon: Media

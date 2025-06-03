@@ -1,16 +1,15 @@
 import type { Metadata } from 'next'
 
-import { PayloadRedirects } from '@/components/PayloadRedirects'
-import RichText from '@/components/RichText'
-import configPromise from '@payload-config'
+import { PayloadRedirects } from 'src/components/PayloadRedirects'
+import RichText from 'src/components/RichText'
+import configPromise from 'src/payload.config'
 import { draftMode } from 'next/headers'
 import { getPayload } from 'payload'
-import { cache } from 'react'
+import { cache, Suspense } from 'react'
 
-
-import { LivePreviewListener } from '@/components/LivePreviewListener'
-import { PostHero } from '@/heros/PostHero'
-import { generateMeta } from '@/utilities/generateMeta'
+import { LivePreviewListener } from 'src/components/LivePreviewListener'
+import { PostHero } from 'src/heros/PostHero'
+import { generateMeta } from 'src/utilities/generateMeta'
 import PageClient from './page.client'
 
 export async function generateStaticParams() {
@@ -55,10 +54,42 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <PostHero post={post} />
+    <Suspense fallback={null}>
+      <PostHero
+        post={{
+          ...post,
+          content: post.content ?? {
+            root: {
+              type: 'root',
+              children: [],
+              direction: null,
+              format: '',
+              indent: 0,
+              version: 1,
+            },
+          },
+        }}
+      />
+      </Suspense>
 
       <div>
-        <RichText data={post.content} enableGutter={false} />
+        {/* <RichText data={post.content} enableGutter={false} /> */}
+
+        <RichText
+          data={
+            post.content ?? {
+              root: {
+                type: 'root',
+                children: [],
+                direction: null,
+                format: '',
+                indent: 0,
+                version: 1,
+              },
+            }
+          }
+          enableGutter={false}
+        />
         {/* {post.relatedvolunteer && post.relatedvolunteer.length > 0 && (
           <Relatedvolunteer
             className=""

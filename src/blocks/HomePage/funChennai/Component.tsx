@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import Slider from 'react-slick'
-import { Media } from '@/payload-types'
+import { Media } from 'src/payload-types'
 import './style.css'
 import parachuteImg from '../../../assets//images/HomePage-Images/parachute.png'
 

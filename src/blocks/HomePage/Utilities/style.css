@@ -1,3 +1,56 @@
+
+
+.utilitiesMainRow{
+  overflow: hidden;
+  position: relative;
+}
+
+.UtilitiesBackground {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  white-space: nowrap;
+  width: 200%;
+  /* animation: scrollText 20s linear infinite; */
+  z-index: 0;
+  opacity: 0.04;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation: scrollText 50s linear infinite;
+}
+
+.UtilitiesBackground p {
+  font-family: "29LT Bukra SmBd";
+  font-size: clamp(80px, 10vw, 280px);
+  line-height: clamp(100px, 12vw, 150px);
+  text-transform: uppercase;
+}
+.Utilitiesscroll-left {
+  animation-name: scrollLeftVolunteer;
+}
+
+.Utilitiesscroll-right {
+  animation-name: scrollRightVolunteer;
+}
+
+@keyframes scrollLeftVolunteer {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRightVolunteer {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
 .utilitiCTabSec{background: url(../../../assets/images/utilitiCTabsbg.jpg) no-repeat center center;background-size: cover;}
 .utilitiCTabs {margin-top: -10vh;}
 .utilitiTitle {}

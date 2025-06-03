@@ -16,10 +16,10 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
-import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
-import introTextBlock from '@/blocks/InnerPage/SharedBlocks/IntroText/config'
-import InvestCategoryBlock from '@/blocks/InnerPage/SharedBlocks/InvestCategory/config'
-import { slugField } from '@/fields/slug'
+import InnerPageBanner from 'src/blocks/InnerPage/SharedBlocks/Banners/config'
+import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
+import InvestCategoryBlock from 'src/blocks/InnerPage/SharedBlocks/InvestCategory/config'
+import { slugField } from 'src/fields/slug'
 import {
   MetaDescriptionField,
   MetaImageField,

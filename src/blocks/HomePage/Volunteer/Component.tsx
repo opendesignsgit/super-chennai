@@ -1,8 +1,7 @@
-
 'use client'
 
-import NoData from '@/components/NoData'
-import SectionLoader from '@/components/SectionLoader/component'
+import NoData from 'src/components/NoData'
+import SectionLoader from 'src/components/SectionLoader/component'
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'

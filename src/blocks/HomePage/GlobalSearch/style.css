@@ -1,4 +1,4 @@
-.formsSection {
+/* .formsSection {
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
@@ -41,4 +41,278 @@
     right: 4px;
     top: 4px;
     cursor: pointer;
+} */
+
+
+
+.formsSection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.searchInputForm {
+  width: 810px;
+  position: relative;
+}
+
+.formssection {
+}
+.searchInputForm input {
+  font-family: "29LT Bukra Medium";
+  border: 2px solid #c9abcd;
+  width: 810px;
+  height: 70px;
+  border-radius: 50px;
+  padding-left: 50px;
+  font-size: 19px;
+  background: white;
+}
+
+.searchInputForm input::placeholder {
+  color: #4f4f4f;
+  font-family: "29LT Bukra Medium";
+  word-spacing: 3px;
+}
+
+.searchInputForm button {
+  font-family: "29LT Bukra SmBd";
+  background-color: #995098;
+  color: #fff;
+  width: 159px;
+  height: 59px;
+  border-radius: 50px;
+  position: absolute;
+  right: 6px;
+  top: 5px;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.searchInputFormbanner {
+  position: absolute;
+  bottom: -35px;
+  z-index: 0;
+}
+
+.searchInputFor input:focus,
+.searchInputFor input:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none;
+}
+
+/* SUGEST CSS  */
+.suggestionsList {
+  position: absolute;
+  width: 100%;
+  max-height: 250px;
+  overflow-y: auto;
+  margin-top: 5px;
+  padding: 0;
+  list-style: none;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  scrollbar-color: #995098 #f5f5f5;
+}
+
+.suggestionsList li {
+  font-family: "29LT Bukra Regular";
+  padding: 12px 30px;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.suggestionsList li:hover {
+  background-color: #f0f4f8;
+  color: #995098;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-top: 2px solid #555;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1600px) and (min-width: 1300px) {
+  .searchInputForm input {
+    width: 600px;
+    height: 54px;
+  }
+  .searchInputForm {
+    width: 610px;
+    position: relative;
+  }
+  .searchInputForm button {
+    width: 132px;
+    height: 44px;
+    right: 14px;
+    top: 5px;
+    font-size: 17px;
+  }
+
+  .searchInputFormbanner {
+    bottom: -26px;
+  }
+}
+@media (max-width: 1300px) and (min-width: 1000px) {
+  .searchInputForm input {
+    width: 500px;
+    height: 49px;
+    padding-left: 39px;
+  }
+  .searchInputForm {
+    width: 510px;
+    position: relative;
+  }
+  .searchInputForm button {
+    width: 125px;
+    height: 39px;
+    right: 15px;
+    top: 5px;
+    font-size: 17px;
+  }
+
+  .searchInputFormbanner {
+    bottom: -26px;
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 800px) {
+  .searchInputForm input {
+    width: 500px;
+    height: 49px;
+    padding-left: 39px;
+  }
+  .searchInputForm {
+    width: 510px;
+    position: relative;
+  }
+  .searchInputForm button {
+    width: 125px;
+    height: 39px;
+    right: 15px;
+    top: 5px;
+    font-size: 17px;
+  }
+
+  .searchInputFormbanner {
+    bottom: -26px;
+  }
+}
+@media (max-width: 800px) {
+  .mobileCloseButtoniMAGE img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .mobileCloseButtoniMAGE {
+    position: absolute;
+    top: 11%;
+    right: 6%;
+    border: 1px solid black;
+    border-radius: 50%;
+  }
+
+  .searchInputForm {
+    width: 90%;
+    position: relative;
+    height: 45px;
+  }
+
+  .searchInputForm input {
+    width: 100%;
+    height: 43px;
+    padding-left: 13px;
+    font-size: 15px;
+  }
+
+  .searchInputForm button {
+    width: 26%;
+    height: 33px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  /* Search Layout */
+
+  .SearchMobileSection {
+  }
+
+  .SearchMobileBg {
+    background-color: #fff;
+    height: 100vh;
+  }
+
+  /* Search Layout */
+
+  .mobileSearchSectionsRow {
+    width: 100%;
+    padding-left: 4%;
+    padding-top: 9%;
+    background: #fff;
+    padding-right: 4%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+  }
+
+  /* Mobile Search */
+
+  .mobileSearchContainer {
+    display: none;
+  }
+
+  .mobileSearchSectionsRow .searchInputFormbanner {
+    position: absolute;
+    top: 19%;
+    width: 100%;
+    left: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .Neww {
+    position: absolute;
+    top: 9%;
+    z-index: 10000;
+    width: 100%;
+  }
+
+  .suggestionsList {
+    margin-top: 45px;
+    width: 89%;
+    max-height: 60vh;
+    padding-top: 15px;
+  }
+  .suggestionsList li {
+    padding: 10px;
+    padding-left: 16px;
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 800px) {
+  .mobileCloseButtoniMAGE {
+    display: none;
+  }
 }

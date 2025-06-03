@@ -16,8 +16,8 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
-import EventDetails from '@/blocks/InnerPage/SharedBlocks/EventDetails/config'
-import { slugField } from '@/fields/slug'
+import EventDetails from 'src/blocks/InnerPage/SharedBlocks/EventDetails/config'
+import { slugField } from 'src/fields/slug'
 import {
   MetaDescriptionField,
   MetaImageField,

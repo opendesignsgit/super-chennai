@@ -2,7 +2,7 @@
 import './style.css'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Loader from '@/components/Loader/loader'
+import Loader from 'src/components/Loader/loader'
 
 type Props = {
   placeholderText: string
@@ -27,7 +27,6 @@ export default function GlobalSearch({
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedFilters, setSelectedFilters] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
-
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchTerm(e.target.value)

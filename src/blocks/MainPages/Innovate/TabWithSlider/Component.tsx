@@ -7,7 +7,7 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
 import './style.css'
-import SectionLoader from '@/components/SectionLoader/component'
+import SectionLoader from 'src/components/SectionLoader/component'
 
 type Slide = {
   image: { url?: string } | string

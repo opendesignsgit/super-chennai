@@ -1,13 +1,35 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import './style.css'
-import { ChennaiInvestmentsProps, ExtractedCategory, InvestmentAPIItem } from '@/models/investment'
+import {
+  ChennaiInvestmentsProps,
+  ExtractedCategory,
+  InvestmentAPIItem,
+} from 'src/models/investment'
 import Link from 'next/link'
 export default function ChennaiInvestments({ heading, subheading }: ChennaiInvestmentsProps) {
   const [extracted, setCategories] = useState<ExtractedCategory[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string>('')
+  const [scrollDir, setScrollDir] = useState('left')
+  const lastScrollY = useRef(0)
+  const bgTextRef = useRef(null)
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
 
+      if (currentScrollY > lastScrollY.current) {
+        setScrollDir('left')
+      } else {
+        setScrollDir('right')
+      }
+
+      lastScrollY.current = currentScrollY
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -109,6 +131,15 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
             </Link>
           ))}
         </div>
+      </div>
+      <div
+        className={`ChennaiInvestBackground ${
+          scrollDir === 'right' ? 'ChennaiInvestScrollright' : 'ChennaiInvestScrolLeft'
+        }`}
+        ref={bgTextRef}
+      >
+        <p>Events &nbsp; Events &nbsp; Events &nbsp; Events </p>
+        <p>Calendar &nbsp; Calendar &nbsp; Calendar &nbsp; Calendar</p>
       </div>
     </div>
   )

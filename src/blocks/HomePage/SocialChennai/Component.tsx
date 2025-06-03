@@ -1,11 +1,11 @@
 'use client'
 
 import Marquee from 'react-fast-marquee'
-import { Media } from '@/payload-types'
+import { Media } from 'src/payload-types'
 import './style.css'
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import NoData from '@/components/NoData'
+import NoData from 'src/components/NoData'
 
 type Props = {
   heading: string
@@ -64,7 +64,7 @@ export default function SocialReelSlider({ heading, description, reelsRef }: Pro
                 typeof reel.thumbnail === 'string' ? reel.thumbnail : reel.thumbnail?.url || ''
 
               return (
-                <div key={index} className={`mx-4 ${index % 2 !== 0 ? "mt-18" : "mt-0"}`}>
+                <div key={index} className={`mx-4 ${index % 2 !== 0 ? 'mt-18' : 'mt-0'}`}>
                   <Image
                     src={thumbnailURL}
                     alt="Instagram Reel"

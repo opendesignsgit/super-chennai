@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css'
-import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
+import GlobalSearch from 'src/blocks/HomePage/GlobalSearch/Component'
 
 type InvestBannerProps = {
   heading?: string

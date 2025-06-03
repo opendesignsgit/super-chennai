@@ -1,16 +1,15 @@
 import type { Metadata } from 'next'
 
-import { PayloadRedirects } from '@/components/PayloadRedirects'
-import RichText from '@/components/RichText'
-import configPromise from '@payload-config'
+import { PayloadRedirects } from 'src/components/PayloadRedirects'
+import RichText from 'src/components/RichText'
+import configPromise from 'src/payload.config'
 import { draftMode } from 'next/headers'
 import { getPayload } from 'payload'
-import { cache } from 'react'
+import { cache, Suspense } from 'react'
 
-
-import { LivePreviewListener } from '@/components/LivePreviewListener'
-import { PostHero } from '@/heros/PostHero'
-import { generateMeta } from '@/utilities/generateMeta'
+import { LivePreviewListener } from 'src/components/LivePreviewListener'
+import { PostHero } from 'src/heros/PostHero'
+import { generateMeta } from 'src/utilities/generateMeta'
 import PageClient from './page.client'
 
 export async function generateStaticParams() {
@@ -55,16 +54,12 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <PostHero post={post} />
+      <Suspense fallback={null}>
+        <PostHero post={post} />
+      </Suspense>
 
       <div>
-        <RichText data={post.content} enableGutter={false} />
-        {/* {post.relatedinnovate && post.relatedinnovate.length > 0 && (
-          <Relatedinnovate
-            className=""
-            docs={post.relatedinnovate.filter((post) => typeof post === 'object')}
-          />
-        )} */}
+        <RichText data={post.content} enableGutter={false} />     
       </div>
     </div>
   )

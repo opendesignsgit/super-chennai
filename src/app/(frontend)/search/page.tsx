@@ -1,9 +1,8 @@
-
 import React from 'react'
 import { getPayload } from 'payload'
-import configPromise from '@payload-config'
-import { Card } from '@/components/Card'
-import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
+import configPromise from 'src/payload.config'
+import { Card, CardPostData } from 'src/components/Card'
+import GlobalSearch from 'src/blocks/HomePage/GlobalSearch/Component'
 
 type Args = {
   searchParams: Promise<{ q?: string }>
@@ -28,7 +27,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
 
   const collectionsToSearch = ['pages', 'posts', 'visits', 'work']
   const results = await Promise.all(
-    collectionsToSearch.map(async (collection) => {
+    collectionsToSearch.map(async (collection: any) => {
       const res = await payload.find({
         collection,
         limit: 12,
@@ -54,7 +53,24 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
           : {}),
       })
 
-      return res.docs.map((doc) => ({ ...doc, collection }))
+      // return res.docs.map((doc) => ({
+      //   ...doc,
+      //   collection,
+      //   className: '',
+      //   slug: String(doc.slug ?? ''),
+      //   title: String(doc.title ?? ''),
+      //   categories: Array.isArray(doc.categories) ? doc.categories : [],
+      // }))
+      return res.docs.map(
+        (doc): CardPostData => ({
+          collection,
+          className: '',
+          slug: String(doc.slug ?? ''),
+          title: String(doc.title ?? ''),
+          categories: Array.isArray(doc.categories) ? doc.categories : [],
+          meta: doc.meta ?? {},
+        }),
+      )
     }),
   )
   const allDocs = results.flat()

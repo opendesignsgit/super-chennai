@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { sendFormEmail } from '@/utilities/sendFormEmail'
+import { sendFormEmail } from 'src/utilities/sendFormEmail'
 import './style.css'
 
 export const FormPopupComponent = ({ heading, description, buttonText }: any) => {

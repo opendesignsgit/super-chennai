@@ -1,13 +1,10 @@
 import type { Metadata } from 'next/types'
 
-import { CollectionArchive } from '@/components/CollectionArchive'
-import { PageRange } from '@/components/PageRange'
-import { Pagination } from '@/components/Pagination'
-import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
+import { PageRange } from 'src/components/PageRange'
+import { Pagination } from 'src/components/Pagination'
+import configPromise from 'src/payload.config'
 import PageClient from './page.client'
-import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -46,7 +43,7 @@ export default async function Page() {
         />
       </div>
 
-      <CollectionArchive posts={posts.docs} />
+      {/* <CollectionArchive posts={posts.docs} /> */}
 
       <div className="container">
         {posts.totalPages > 1 && posts.page && (

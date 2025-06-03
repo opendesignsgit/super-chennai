@@ -1,4 +1,4 @@
-import { Media } from '@/payload-types'
+import { Media } from 'src/payload-types'
 
 export type featureSectionSplitLayoutType = {
   imgSec: {

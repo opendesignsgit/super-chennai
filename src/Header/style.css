@@ -82,8 +82,13 @@
   box-shadow: inset 0px 12px 12px -9px #ccc;
 }
 
+.RightArowwHeaderMegamenu{
+  width: 15px;
+  height: 15px;
+}
+
 .mega-block-title::after {
-  content: "";
+  /* content: "";
   background-image: url("../assets/images/icons/hamburger-right-arrow.svg");
   position: absolute;
   width: 15px;
@@ -92,7 +97,7 @@
   background-size: contain;
   top: 50%;
   right: 0;
-  transform: translateY(-50%);
+  transform: translateY(-50%); */
 }
 
 /* .mega-link-wrapper::after {
@@ -162,6 +167,9 @@
   position: relative;
   display: inline-block; /* Ensures pseudo-element stays aligned with the text */
   padding-right: 15px; /* Creates space for the pseudo-element */
+  display: flex;
+  column-gap: 0px;
+  justify-content: space-between;
 }
 
 .mega-block-desc {
@@ -404,8 +412,8 @@
 }
 
 .HomePageStyle .Megamenumenudesktop {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .HomePageStyle .Megamenulogo {
@@ -414,6 +422,71 @@
 
 .HomePageStyle .Megamenulogo1 {
   color: #000;
+}
+/* .activeStateMegamenu .Megamenumenudesktop {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  } */
+
+.Megamenumenudesktop {
+  /* display: flex;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 9px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    column-gap: 30px;
+    padding-bottom: 5px; */
+  display: flex;
+  /* border-top: 2px solid rgba(255, 255, 255, 0.1); */
+  border-top: 0;
+  padding: 10px 9px;
+  border-bottom: 0;
+  column-gap: 30px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.Megamenumenudesktop::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.Megamenumenudesktop::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.activeStateMegamenu .Megamenumenudesktop {
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.scrolled .Megamenumenudesktop {
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.Megamenutop-bar {
+  padding: 3rem 5rem;
+  padding-bottom: 0;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.mobile-menu {
+  display: none;
+}
+
+.scrolled .Megamenutop-bar {
+  padding: 1rem 6rem;
 }
 
 @media (max-width: 1600px) and (min-width: 1300px) {
@@ -447,125 +520,235 @@
   }
 
   .scrolled .Megamenutop-bar {
-    padding: 0.5rem 8px 6rem;
+    padding: 1rem 5rem;
   }
 
   .megamenuMainContainer {
     max-width: 900px;
   }
 }
-/* Responsive */
 
-@media (min-width: 768px) {
-
-
-  .Megamenumenudesktop {
-
-    display: flex;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 10px 9px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    column-gap: 30px;
-    padding-bottom: 5px;
-  }
-
-  .activeStateMegamenu .Megamenumenudesktop {
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  }
-
-  .scrolled .Megamenumenudesktop {
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  }
-
-  .Megamenumenuicon {
-    display: none;
-  }
-
+@media (max-width: 1300px) and (min-width: 1150px) {
   .Megamenutop-bar {
-    padding: 3rem 6rem;
-    padding-bottom: 0;
+    padding: 4rem 2rem;
   }
 
-  .mobile-menu {
-    display: none;
+  .Megamenulogo {
+    width: 120px;
+    height: 88px;
   }
 
   .scrolled .Megamenutop-bar {
-    padding: 1rem 6rem;
+    padding: 1rem 2rem;
   }
 }
 
-
-/* MENUBAR I THINK MEGA MENU  */
-
-.menuBarFullContainer {
-  display: flex;
-  height: 100vh;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  z-index: 100000;
-}
-
-.menuBarFullFirstSection {
-    width: 60.5%;
-    background: rgba(98, 104, 166, 0.8);
-}
-
-.closeButtonMenubar {
-  display: flex;
-  justify-content: space-between;
-}
-
-.closeButtonMenubar img:first-child {
-  width: auto;
-  object-fit: none;
-}
-
-.closeButtonMenubar img:nth-child(2) {
-  width: auto;
-  object-fit: none;
-  cursor: pointer;
-}
-
-.menuBarFullSecondSection {
-  width: 37%;
-  padding-left: 4%;
-  padding-top: 2%;
-  background: #fff;
-}
-
-.menuBarLinksContent li {
-  font-family: "Poppinsthin";
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #808080;
-  width: 75%;
-  border-bottom: 1px solid #dddddd;
-  letter-spacing: 2px;
-  font-size: clamp(22px, 4vw, 44px);
-  line-height: clamp(36px, 6vw, 74px);
-}
-
-.menuBarLinksContent li:hover {
-  color: #995098;
-  cursor: pointer;
-  font-weight: bolder;
-}
-
-.menuBarLinksContent {
-  margin-top: 50px;
-}
-
-@media (max-width: 1600px) {
-  .menuBarLinksContent li {
-    font-size: 29px;
-    line-height: 52px;
+@media (max-width: 1150px) and (min-width: 1100px) {
+  .megamenuMainImage {
+    display: none;
+  }
+  .Megamenumenudesktop {
+    column-gap: 20px;
+  }
+  .Megamenutop-bar {
+    padding: 3rem;
+  }
+  .Megamenulogo {
+    width: 100px;
+    height: 73px;
   }
 
-  .menuBarLinksContent {
-    margin-top: 22px;
+  .Megamenumenuitem {
+    font-size: 11px;
+  }
+
+  .Megamenulogo1 {
+    font-size: 11px;
+  }
+  .scrolled .Megamenutop-bar {
+    padding: 0.8rem 2rem;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 950px) {
+  .scrolled .Megamenulogo {
+    width: 100px;
+    height: 73px;
+  }
+  .Megamenumenudesktop {
+    column-gap: 20px;
+  }
+  .Megamenutop-bar {
+    padding: 3rem 1rem;
+  }
+  .Megamenulogo {
+    width: 100px;
+    height: 73px;
+  }
+
+  .Megamenumenuitem {
+    font-size: 11px;
+    padding: 5px 14px;
+  }
+
+  .Megamenulogo1 {
+    font-size: 11px;
+  }
+  .scrolled .Megamenutop-bar {
+    padding: 0.8rem 1rem;
+  }
+  .megamenuMainImage {
+    display: none;
+  }
+
+  .megamenuMainContainer {
+    height: auto;
+  }
+  .Newmegamenuinner {
+    width: 100%;
+    padding: 2.5rem 0;
+    height: auto;
+    column-gap: 1rem;
+    row-gap: 1rem;
+  }
+}
+
+@media (max-width: 950px) and (min-width: 800px) {
+  .HomePageStyle .Megamenulogo1::after {
+    top: -3px;
+    width: 27px;
+    height: 25px;
+    left: -27px;
+  }
+  .Megamenumenudesktop {
+    column-gap: 5px;
+    padding-top: 5px;
+  }
+  .Megamenutop-bar {
+    padding: 3rem 1rem;
+  }
+  .Megamenulogo {
+    width: 80px;
+    height: 59px;
+  }
+
+  .Megamenumenuitem {
+    font-size: 9px;
+    padding: 5px 15px;
+  }
+
+  .Megamenulogo1 {
+    font-size: 9px;
+  }
+  .scrolled .Megamenutop-bar {
+    padding: 0.8rem 1rem;
+  }
+
+  .scrolled .Megamenulogo {
+    width: 80px;
+    height: 59px;
+  }
+
+  .megamenuMainImage {
+    display: none;
+  }
+
+  .Newmegamenuinner {
+    width: 100%;
+    padding: 2.5rem 0;
+    height: 80%;
+    column-gap: 2rem;
+    row-gap: 1rem;
+  }
+
+  .megamenuMainContainer {
+    height: auto;
+    width: 65%;
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+  .Megamenutop-bar {
+    display: none;
+  }
+}
+
+@media (min-width: 800px) {
+  .Mobileheader {
+    display: none;
+  }
+  .Megamenumenuicon {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .Mobileheader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 65px;
+    background: white;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    margin-top: 15px;
+  }
+
+  .scrolled .Mobileheader {
+    margin-top: 0px;
+  }
+
+  .mobilesvgSize {
+    width: 30px;
+    height: 30px;
+  }
+
+  .mobilesvgSize:nth-child(3) {
+    width: 106px;
+    margin-top: -3%;
+  }
+
+  .mobilesvgSize:nth-child(3) img {
+    /* background-color: white; */
+  }
+
+  .mainMegamenuContainer {
+    /* top: 10px; */
+  }
+
+  /* .mobilesvgSize:first-child {
+    position: relative;
+  }
+  .mobilesvgSize:first-child::after {
+    content: "";
+    position: absolute;
+    right: -70%;
+    width: 1px;
+    height: 65px;
+    background: black;
+    top: 0px;
+  } */
+
+  .Mobileheader::after {
+    content: "";
+    position: absolute;
+    right: 15.5%;
+    width: 1px;
+    height: 55px;
+    background: #e9e6e6;
+    top: 0px;
+  }
+
+  .Mobileheader::before {
+    content: "";
+    position: absolute;
+    left: 15.5%;
+    width: 1px;
+    height: 55px;
+    background: #e9e6e6;
+    top: 0px;
   }
 }

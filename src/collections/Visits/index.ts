@@ -15,7 +15,7 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
-import { slugField } from '@/fields/slug'
+import { slugField } from 'src/fields/slug'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -24,11 +24,11 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 
-import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
-import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
-import introTextBlock from '@/blocks/InnerPage/SharedBlocks/IntroText/config'
-import ZigZagContentBlock from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
-import featureSectionSplitLayoutBlock from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/config'
+import { socialReelSlider } from 'src/blocks/HomePage/SocialChennai/config'
+import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/config'
+import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
+import ZigZagContentBlock from 'src/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
+import featureSectionSplitLayoutBlock from 'src/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/config'
 export const Visits: CollectionConfig<'visits'> = {
   slug: 'visits',
   access: {

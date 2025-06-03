@@ -1,16 +1,15 @@
 import type { Metadata } from 'next'
 
-import { PayloadRedirects } from '@/components/PayloadRedirects'
-import configPromise from '@payload-config'
 import { draftMode } from 'next/headers'
 import { getPayload } from 'payload'
-import { cache } from 'react'
+import { cache, Suspense } from 'react'
+import { PayloadRedirects } from 'src/components/PayloadRedirects'
+import configPromise from 'src/payload.config'
 
-import { RelatedVisits } from '@/blocks/Relatedvisits/Component'
-import EventDetails from '@/components/EventsDetails/EventDetails'
-import { LivePreviewListener } from '@/components/LivePreviewListener'
-import { PostHero } from '@/heros/PostHero'
-import { generateMeta } from '@/utilities/generateMeta'
+import EventDetails from 'src/components/EventsDetails/EventDetails'
+import { LivePreviewListener } from 'src/components/LivePreviewListener'
+import { PostHero } from 'src/heros/PostHero'
+import { generateMeta } from 'src/utilities/generateMeta'
 import PageClient from './page.client'
 
 export async function generateStaticParams() {
@@ -53,15 +52,10 @@ export default async function Post({ params: paramsPromise }: Args) {
       <PageClient />
       <PayloadRedirects disableNotFound url={url} />
       {draft && <LivePreviewListener />}
-      <PostHero post={post} />
+      <Suspense fallback={null}>
+        <PostHero post={post} />
+      </Suspense>
       <div>
-        {/* <RichText data={post.content} enableGutter={false} /> */}
-        {post.relatedevents && post.relatedevents.length > 0 && (
-          <RelatedVisits
-            className=""
-            docs={post.relatedevents.filter((post) => typeof post === 'object')}
-          />
-        )}
         <EventDetails data={post} />
       </div>
     </div>

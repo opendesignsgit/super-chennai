@@ -1,11 +1,8 @@
 import type { Metadata } from 'next/types'
 
-import { CollectionArchive } from '@/components/CollectionArchive'
-import { PageRange } from '@/components/PageRange'
-import { Pagination } from '@/components/Pagination'
-import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
+import { Pagination } from 'src/components/Pagination'
+import configPromise from 'src/payload.config'
 import PageClient from './page.client'
 
 export const dynamic = 'force-static'
@@ -36,7 +33,7 @@ export default async function Page() {
         </div>
       </div>
 
-      <div className="container mb-8">
+      {/* <div className="container mb-8">
         <PageRange
           collection="events"
           currentPage={events.page}
@@ -45,7 +42,7 @@ export default async function Page() {
         />
       </div>
 
-      <CollectionArchive posts={events.docs} />
+      <CollectionArchive posts={events.docs} /> */}
 
       <div className="container">
         {events.totalPages > 1 && events.page && (

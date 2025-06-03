@@ -5,9 +5,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import './style.css'
-import NoData from '@/components/NoData'
+import NoData from 'src/components/NoData'
 import { RichText } from '@payloadcms/richtext-lexical/react'
-import SectionLoader from '@/components/SectionLoader/component'
+import SectionLoader from 'src/components/SectionLoader/component'
 
 type RichContent = {
   fields?: {
@@ -146,8 +146,7 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
         setIsFeaturedEvent(featured || null)
       } catch (error) {
         console.error('Failed to fetch events:', error)
-      }
-      finally{
+      } finally {
         setLoading(false)
       }
     }

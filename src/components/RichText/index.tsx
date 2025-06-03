@@ -10,28 +10,28 @@ import {
   LinkJSXConverter,
 } from '@payloadcms/richtext-lexical/react'
 
-import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
+import { CodeBlock, CodeBlockProps } from 'src/blocks/Code/Component'
 
-import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
-import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
-import Banner from '@/blocks/InnerPage/SharedBlocks/Banners/Components'
-import CareerIntro from '@/blocks/InnerPage/SharedBlocks/careerIntro/Component'
-import ExploreMoreChennai from '@/blocks/InnerPage/SharedBlocks/Explore/Component'
-import FeatureSectionList from '@/blocks/InnerPage/SharedBlocks/featureSectionListLayout/Component'
-import FeatureSectionSplit from '@/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/Component'
-import IntroText from '@/blocks/InnerPage/SharedBlocks/IntroText/Components'
-import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
-import { default as StickyImageScroll } from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/Component'
-import FeatureSections from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
-import HotelsInChennaiSection from '@/blocks/InnerPage/SharedBlocks/ZigZagContent/Component'
-import { PageIntroText } from '@/blocks/MainPages/SharedBlocks/IntroText/Component'
-import { VisitBanner } from '@/blocks/PageBanners/VisitBanner/Component'
+import GlobalSearch from 'src/blocks/HomePage/GlobalSearch/Component'
+import SocialChennai from 'src/blocks/HomePage/SocialChennai/Component'
+import Banner from 'src/blocks/InnerPage/SharedBlocks/Banners/Components'
+import CareerIntro from 'src/blocks/InnerPage/SharedBlocks/careerIntro/Component'
+import ExploreMoreChennai from 'src/blocks/InnerPage/SharedBlocks/Explore/Component'
+import FeatureSectionList from 'src/blocks/InnerPage/SharedBlocks/featureSectionListLayout/Component'
+import FeatureSectionSplit from 'src/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/Component'
+import IntroText from 'src/blocks/InnerPage/SharedBlocks/IntroText/Components'
+import InvestCategory from 'src/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
+import { default as StickyImageScroll } from 'src/blocks/InnerPage/SharedBlocks/StickyImageScroll/Component'
+import FeatureSections from 'src/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
+import HotelsInChennaiSection from 'src/blocks/InnerPage/SharedBlocks/ZigZagContent/Component'
+import { PageIntroText } from 'src/blocks/MainPages/SharedBlocks/IntroText/Component'
+import { VisitBanner } from 'src/blocks/PageBanners/VisitBanner/Component'
 import type {
   BannerBlock as BannerBlockProps,
   // CallToActionBlock as CTABlockProps, // Removed because it does not exist in '@/payload-types'
   MediaBlock as MediaBlockProps,
-} from '@/payload-types'
-import { cn } from '@/utilities/ui'
+} from 'src/payload-types'
+import { cn } from 'src/utilities/ui'
 
 type NodeTypes =
   | DefaultNodeTypes

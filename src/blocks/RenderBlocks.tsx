@@ -1,9 +1,9 @@
-import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
-import { CallToActionBlock } from '@/blocks/CallToAction/Component'
-import { ContentBlock } from '@/blocks/Content/Component'
-import { FormBlock } from '@/blocks/Form/Component'
-import { MediaBlock } from '@/blocks/MediaBlock/Component'
-import type { Page } from '@/payload-types'
+// import { ArchiveBlock } from 'src/blocks/ArchiveBlock/Component'
+// import { CallToActionBlock } from 'src/blocks/CallToAction/Component'
+// import { ContentBlock } from 'src/blocks/Content/Component'
+import { FormBlock } from 'src/blocks/Form/Component'
+import { MediaBlock } from 'src/blocks/MediaBlock/Component'
+import type { Page } from 'src/payload-types'
 import React, { Fragment } from 'react'
 import { ContentZoneCarousel } from './HomePage/ContentZoneCarousel/Component'
 import { EventsCalendarBlock } from './HomePage/EventsCalendar/Component'
@@ -36,13 +36,14 @@ import { VisitCategory } from './MainPages/Visit/VisitCategory/Component'
 import VolunteerBecameSection from './MainPages/Volunteer/Volunteers/Components'
 import HeroSliderBlock from './PageBanners/Home/Component'
 import { VisitBanner } from './PageBanners/VisitBanner/Component'
+import { TextHoverImageSection } from './MainPages/Work/Works/Components'
 
 const blockComponents: {
   [key: string]: React.FC<any>
 } = {
-  archive: ArchiveBlock,
-  content: ContentBlock,
-  cta: CallToActionBlock,
+  // archive: ArchiveBlock,
+  // content: ContentBlock,
+  // cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   visitBanner: VisitBanner,
@@ -75,6 +76,7 @@ const blockComponents: {
   introText: IntroText,
   investmentCategoryList: InvestmentCategoryListSection,
   innovateSlider: InnovateSliderBlock,
+  textHoverImageSection: TextHoverImageSection,
 }
 
 export const RenderBlocks: React.FC<{

@@ -33,7 +33,7 @@
 //   )
 // }
 
-import config from '@payload-config'
+import config from 'src/payload.config'
 import React from 'react'
 import { getPayload } from 'payload'
 import Link from 'next/link'
@@ -226,12 +226,14 @@ export default async function Footer() {
           <div className="footermainsection flex justify-between items-center">
             <div className="LogoandFollow flex items-center">
               <div>
-                <img
+                {/* <img
                   src={
                     footerSections?.mainFooterLogo?.url || '/images/super-chennai-logo-final.png'
                   }
                   alt={footerSections?.mainFooterLogo?.alt || 'Super Chennai Logo'}
-                />
+                /> */}
+
+                
               </div>
               <div className="followUs ml-6">
                 <h3>Follow Us</h3>
@@ -244,10 +246,10 @@ export default async function Footer() {
                       rel="noopener noreferrer"
                       aria-label={social.platform}
                     >
-                      <img
+                      {/* <img
                         src={social?.icon?.url || '/images/default-icon.png'}
                         alt={social?.icon?.alt || social.platform}
-                      />
+                      /> */}
                     </a>
                   ))}
                 </div>
@@ -262,10 +264,10 @@ export default async function Footer() {
               <h5>All Rights Reserved.</h5>
               <div className="designBy mt-4">
                 <h5>Design By</h5>
-                <img
+                {/* <img
                   src={footerSections?.designByLogo?.url || '../../images/threads.png'}
                   alt="Designer Logo"
-                />
+                /> */}
               </div>
             </div>
           </div>

@@ -14,12 +14,11 @@ import { Visits } from './collections/Visits'
 
 import { Users } from './collections/Users'
 import { plugins } from './plugins'
-import { defaultLexical } from '@/fields/defaultLexical'
+import { defaultLexical } from 'src/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import SocialReelsCollection from './collections/RelationSchema/SocialReels/SocialReels'
 import VolunteerSlidesCollection from './collections/RelationSchema/Volunteer/Volunteer'
 import Footer from './Footer/config'
-import Header from './Header/config'
 import InvestmentCategoriesCollection from './collections/RelationSchema/Investments/Investments'
 import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config'
 import VisitCategoryCollection from './collections/RelationSchema/main-pages/visit-page/visit-catogory/schema'
@@ -29,6 +28,7 @@ import { Investments } from './collections/Investments'
 import { Live } from './collections/live'
 import { Volunteer } from './collections/Volunteer'
 import { Innovate } from './collections/Innovate'
+import { Header } from './Header/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)

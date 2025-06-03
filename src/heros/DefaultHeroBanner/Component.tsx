@@ -1,7 +1,8 @@
 import React from 'react'
-import type { Page } from '@/payload-types'
+import type { Page } from 'src/payload-types'
 import './style.css'
 import defaultImage from '../../assets/images/AccodomationBannerr.jpg'
+import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 console.log(defaultImage)
 interface ImageObject {
   url: string
@@ -32,6 +33,7 @@ export const DefaultHeroBanner: React.FC<Props> = ({ heading, image, backgroundC
           <h3 className="InvestContent">{heading || 'Welcome'}</h3>
         </div>
       </div>
+      <GlobalSearch placeholderText={'Experience Chennai'} buttonText={'Search'} />
     </div>
   )
 }

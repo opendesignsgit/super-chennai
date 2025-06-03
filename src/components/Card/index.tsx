@@ -2,16 +2,21 @@
 
 import Link from 'next/link'
 import React from 'react'
-import { Media } from '@/components/Media'
-import { cn } from '@/utilities/ui'
-import useClickableCard from '@/utilities/useClickableCard'
+import { Media } from 'src/components/Media'
+import { cn } from 'src/utilities/ui'
+import useClickableCard from 'src/utilities/useClickableCard'
 
 export type CardPostData = {
-  slug: string
   collection: string
+  className: string
+  slug: string
   title?: string
   categories?: any[]
-  meta?: { description?: string; image?: any }
+  meta?: {
+    title?: string
+    description?: string
+    image?: any
+  }
 }
 
 export const Card: React.FC<{ doc?: CardPostData }> = ({ doc }) => {
