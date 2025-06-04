@@ -15,6 +15,7 @@ import PageClient from './page.client'
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const visits = await payload.find({
+    // depth: 2,
     collection: 'visits',
     draft: false,
     limit: 1000,

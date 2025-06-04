@@ -81,6 +81,7 @@ export interface Config {
     live: Live;
     volunteer: Volunteer;
     innovate: Innovate;
+    hotels: Hotel;
     volunteerSlides: VolunteerSlide;
     'social-reels': SocialReel;
     'investment-categories': InvestmentCategory;
@@ -108,6 +109,7 @@ export interface Config {
     live: LiveSelect<false> | LiveSelect<true>;
     volunteer: VolunteerSelect<false> | VolunteerSelect<true>;
     innovate: InnovateSelect<false> | InnovateSelect<true>;
+    hotels: HotelsSelect<false> | HotelsSelect<true>;
     volunteerSlides: VolunteerSlidesSelect<false> | VolunteerSlidesSelect<true>;
     'social-reels': SocialReelsSelect<false> | SocialReelsSelect<true>;
     'investment-categories': InvestmentCategoriesSelect<false> | InvestmentCategoriesSelect<true>;
@@ -976,7 +978,6 @@ export interface Visit {
     image?: (number | null) | Media;
     description?: string | null;
   };
-  page?: (number | null) | Page;
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
   populatedAuthors?:
@@ -987,6 +988,61 @@ export interface Visit {
     | null;
   slug?: string | null;
   slugLock?: boolean | null;
+  /**
+   * Select subpages for this visit. Accessible at /visits/[slug]/[subpageSlug]
+   */
+  subpages?: (number | null) | Hotel;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hotels".
+ */
+export interface Hotel {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedhotels?: (number | Hotel)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  /**
+   * Select subpages for this visit. Accessible at /hotels/[slug]/[subpageSlug]
+   */
+  subpages?: (number | null) | Hotel;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -1746,6 +1802,10 @@ export interface PayloadLockedDocument {
         value: number | Innovate;
       } | null)
     | ({
+        relationTo: 'hotels';
+        value: number | Hotel;
+      } | null)
+    | ({
         relationTo: 'volunteerSlides';
         value: number | VolunteerSlide;
       } | null)
@@ -2408,7 +2468,6 @@ export interface VisitsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
-  page?: T;
   publishedAt?: T;
   authors?: T;
   populatedAuthors?:
@@ -2419,6 +2478,7 @@ export interface VisitsSelect<T extends boolean = true> {
       };
   slug?: T;
   slugLock?: T;
+  subpages?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -2653,6 +2713,38 @@ export interface InnovateSelect<T extends boolean = true> {
       };
   slug?: T;
   slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hotels_select".
+ */
+export interface HotelsSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  relatedhotels?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  subpages?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -3297,6 +3389,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'innovate';
           value: number | Innovate;
+        } | null)
+      | ({
+          relationTo: 'hotels';
+          value: number | Hotel;
         } | null);
     global?: string | null;
     user?: (number | null) | User;

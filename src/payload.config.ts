@@ -29,6 +29,7 @@ import { Live } from './collections/live'
 import { Volunteer } from './collections/Volunteer'
 import { Innovate } from './collections/Innovate'
 import { Header } from './Header/config'
+import { hotels } from './collections/Visits/Hotels'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -95,6 +96,8 @@ export default buildConfig({
     Live,
     Volunteer,
     Innovate,
+
+    hotels,
 
     VolunteerSlidesCollection,
     SocialReelsCollection,

@@ -9,7 +9,7 @@ type PageReference = {
 
 type EssentialItem = {
   text: string
-  page?: PageReference | string 
+  page?: PageReference | string
   image?: {
     url?: string
     alt?: string

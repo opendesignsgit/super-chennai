@@ -56,7 +56,7 @@ interface MenuContentBlock {
   id: string
   title: string
   desc: string
-  link: string // The URL slug or link string
+  link: string 
 }
 
 interface MenuLinkReferenceValue {

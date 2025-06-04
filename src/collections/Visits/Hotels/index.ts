@@ -8,13 +8,6 @@ import {
 } from '@payloadcms/richtext-lexical'
 import type { CollectionConfig } from 'payload'
 
-import { authenticated } from '../../access/authenticated'
-import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-
-import { generatePreviewPath } from '../../utilities/generatePreviewPath'
-import { populateAuthors } from './hooks/populateAuthors'
-import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
-
 import { slugField } from 'src/fields/slug'
 import {
   MetaDescriptionField,
@@ -29,8 +22,14 @@ import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/c
 import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
 import ZigZagContentBlock from 'src/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
 import featureSectionSplitLayoutBlock from 'src/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/config'
-export const Visits: CollectionConfig<'visits'> = {
-  slug: 'visits',
+import { authenticated } from '@/access/authenticated'
+import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
+import { generatePreviewPath } from '@/utilities/generatePreviewPath'
+import { revalidatePost } from '@/collections/Posts/hooks/revalidatePost'
+import { populateAuthors } from '@/collections/Posts/hooks/populateAuthors'
+import { revalidateDelete } from '@/collections/Pages/hooks/revalidatePage'
+export const hotels: CollectionConfig<'hotels'> = {
+  slug: 'hotels',
   access: {
     create: authenticated,
     delete: authenticated,
@@ -53,7 +52,7 @@ export const Visits: CollectionConfig<'visits'> = {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
           slug: typeof data?.slug === 'string' ? data.slug : '',
-          collection: 'visits',
+          collection: 'hotels',
           req,
         })
 
@@ -63,7 +62,7 @@ export const Visits: CollectionConfig<'visits'> = {
     preview: (data, { req }) =>
       generatePreviewPath({
         slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'visits',
+        collection: 'hotels',
         req,
       }),
     useAsTitle: 'title',
@@ -79,7 +78,6 @@ export const Visits: CollectionConfig<'visits'> = {
       tabs: [
         {
           fields: [
-            //####################### BANNER CONTENT  ############################################
             {
               name: 'heroImage',
               type: 'upload',
@@ -117,7 +115,7 @@ export const Visits: CollectionConfig<'visits'> = {
         {
           fields: [
             {
-              name: 'relatedvisits',
+              name: 'relatedhotels',
               type: 'relationship',
               admin: {
                 position: 'sidebar',
@@ -130,7 +128,7 @@ export const Visits: CollectionConfig<'visits'> = {
                 }
               },
               hasMany: true,
-              relationTo: 'visits',
+              relationTo: 'hotels',
             },
             {
               name: 'categories',
@@ -162,10 +160,7 @@ export const Visits: CollectionConfig<'visits'> = {
 
             MetaDescriptionField({}),
             PreviewField({
-              // if the `generateUrl` function is configured
               hasGenerateFn: true,
-
-              // field paths to match the target field for data
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
@@ -204,9 +199,6 @@ export const Visits: CollectionConfig<'visits'> = {
       hasMany: true,
       relationTo: 'users',
     },
-    // This field is only used to populate the user data via the `populateAuthors` hook
-    // This is because the `user` collection has access control locked to protect user privacy
-    // GraphQL will also not return mutated user data that differs from the underlying schema
     {
       name: 'populatedAuthors',
       type: 'array',
@@ -234,10 +226,9 @@ export const Visits: CollectionConfig<'visits'> = {
       name: 'subpages',
       type: 'relationship',
       relationTo: 'hotels',
-      // relationTo: ['hotels'],
       admin: {
         position: 'sidebar',
-        description: 'Select subpages for this visit. Accessible at /visits/[slug]/[subpageSlug]',
+        description: 'Select subpages for this visit. Accessible at /hotels/[slug]/[subpageSlug]',
       },
     },
   ],
