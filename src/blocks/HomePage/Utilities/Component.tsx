@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import { Media } from 'src/payload-types'
 import './style.css'
 
@@ -37,7 +37,7 @@ const Utilities: React.FC<Props> = ({ title, description, tabs }) => {
   return (
     <div className="utilitiesMainRow">
       <section className="py-[10vh] utilitiCTabSec">
-        <div className="max-w-7xl mx-auto flex flex-col">
+        <div className="flex flex-col container max-w-7xl mx-auto px-4">
           <div className="utilitiTitle mb-[5vh]">
             {title && <h2>{title}</h2>}
             {description && (
@@ -45,7 +45,7 @@ const Utilities: React.FC<Props> = ({ title, description, tabs }) => {
             )}
           </div>
 
-          <div className="utilitiCheCol">
+          <div className="utilitiCheCol ">
             <div className="utilitiCTabs flex">
               <ul className="tabs flex flex-col items-start">
                 {tabs.map((tab, i) => (
@@ -61,7 +61,7 @@ const Utilities: React.FC<Props> = ({ title, description, tabs }) => {
                 ))}
               </ul>
 
-              <div className="tab_container">
+              <div className="Utilitiestab_container">
                 {tabs.map((tab) => (
                   <React.Fragment key={tab.tabTitle}>
                     <h3
@@ -76,11 +76,9 @@ const Utilities: React.FC<Props> = ({ title, description, tabs }) => {
                     >
                       {tab.image && typeof tab.image === 'object' && (
                         <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
-                          <Image
+                          <img
                             src={tab.image.url || '/placeholder.png'}
                             alt={tab.image.alt || tab.tabTitle}
-                            fill
-                            style={{ objectFit: 'cover' }}
                           />
                         </div>
                       )}

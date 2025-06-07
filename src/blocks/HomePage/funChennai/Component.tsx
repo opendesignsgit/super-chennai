@@ -1,18 +1,26 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import React from 'react'
 import Slider from 'react-slick'
+import Link from 'next/link'
 import { Media } from 'src/payload-types'
 import './style.css'
-import parachuteImg from '../../../assets//images/HomePage-Images/parachute.png'
+import parachuteImg from '@/assets/images/HomePage-Images/parachute.png'
+
+type Card = {
+  title: string
+  place: string
+  image: Media | string
+  customLink?: string
+  page?: {
+    slug?: string
+  }
+}
 
 type Props = {
   heading: string
   subheading: string
-  cards: {
-    title: string
-    place: string
-    image: Media | string
-  }[]
+  cards: Card[]
 }
 
 const CustomNextArrow = ({ onClick }: { onClick?: () => void }) => (
@@ -35,14 +43,8 @@ export const FunChennaiBlockServer: React.FC<Props> = ({ heading, subheading, ca
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: 2 },
-      },
-      {
-        breakpoint: 640,
-        settings: { slidesToShow: 1 },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 640, settings: { slidesToShow: 1 } },
     ],
   }
 
@@ -52,6 +54,15 @@ export const FunChennaiBlockServer: React.FC<Props> = ({ heading, subheading, ca
       : typeof img === 'string'
         ? img
         : '/images/placeholder.png'
+
+  const getCardLink = (card: Card): string | null => {
+    if (card.customLink) {
+      return card.customLink.startsWith('http') ? card.customLink : `${card.customLink}`
+    } else if (card.page?.slug) {
+      return `/visits/${card.page.slug}`
+    }
+    return null
+  }
 
   return (
     <div className="funchennaiBg">
@@ -67,16 +78,35 @@ export const FunChennaiBlockServer: React.FC<Props> = ({ heading, subheading, ca
 
         <div className="relative px-4 py-10 max-w-6xl mx-auto FunchennaiSliderSection">
           <Slider {...settings}>
-            {cards.map((card, index) => (
-              <div key={index}>
+            {cards.map((card, index) => {
+              const imageUrl = getImageUrl(card.image)
+              const href = getCardLink(card)
+
+              const cardContent = (
                 <div className="cardImageSection">
-                  <img src={getImageUrl(card.image)} alt={card.title} />
+                  <img src={imageUrl} alt={card.title} />
                   <div className="titleFunChennaiDiv">
                     <p className="titleFunChennai">{card.title}</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+
+              return (
+                <div key={index}>
+                  {href ? (
+                    href.startsWith('http') ? (
+                      <a href={href} target="_blank" rel="noopener noreferrer">
+                        {cardContent}
+                      </a>
+                    ) : (
+                      <Link href={href}>{cardContent}</Link>
+                    )
+                  ) : (
+                    cardContent
+                  )}
+                </div>
+              )
+            })}
           </Slider>
         </div>
 

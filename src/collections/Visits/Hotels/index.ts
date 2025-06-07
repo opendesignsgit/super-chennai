@@ -28,6 +28,7 @@ import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { revalidatePost } from '@/collections/Posts/hooks/revalidatePost'
 import { populateAuthors } from '@/collections/Posts/hooks/populateAuthors'
 import { revalidateDelete } from '@/collections/Pages/hooks/revalidatePage'
+import HotelsDetailSection from '@/blocks/InnerPage/SharedBlocks/hotels/config'
 export const hotels: CollectionConfig<'hotels'> = {
   slug: 'hotels',
   access: {
@@ -93,11 +94,10 @@ export const hotels: CollectionConfig<'hotels'> = {
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({
                       blocks: [
-                        ZigZagContentBlock,
                         ExploreMoreChennaiBlock,
                         socialReelSlider,
                         introTextBlock,
-                        featureSectionSplitLayoutBlock,
+                        HotelsDetailSection,
                       ],
                     }),
                     FixedToolbarFeature(),
@@ -222,15 +222,15 @@ export const hotels: CollectionConfig<'hotels'> = {
     },
     ...slugField(),
 
-    {
-      name: 'subpages',
-      type: 'relationship',
-      relationTo: 'hotels',
-      admin: {
-        position: 'sidebar',
-        description: 'Select subpages for this visit. Accessible at /hotels/[slug]/[subpageSlug]',
-      },
-    },
+    // {
+    //   name: 'subpages',
+    //   type: 'relationship',
+    //   relationTo: 'hotels',
+    //   admin: {
+    //     position: 'sidebar',
+    //     description: 'Select subpages for this visit. Accessible at /hotels/[slug]/[subpageSlug]',
+    //   },
+    // },
   ],
   hooks: {
     afterChange: [revalidatePost],

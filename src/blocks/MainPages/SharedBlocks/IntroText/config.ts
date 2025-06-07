@@ -3,8 +3,8 @@ import { Block } from 'payload'
 const IntroTextBlock: Block = {
   slug: 'introTextBlock',
   labels: {
-    singular: 'Intro Text Block',
-    plural: 'Intro Text Blocks',
+    singular: 'Intro Text',
+    plural: 'Intro Text',
   },
   admin: {
     group: 'Main Page Sections',
@@ -22,7 +22,9 @@ const IntroTextBlock: Block = {
       label: 'Scrolling Marquee Text',
       admin: {
         condition: (_, siblingData) => siblingData.showMarquee === true,
+        description: 'Maximum 50 characters allowed',
       },
+      maxLength: 50,
     },
     {
       name: 'marqueeTextSize',
@@ -42,18 +44,30 @@ const IntroTextBlock: Block = {
       type: 'text',
       label: 'Main Title',
       required: true,
+      maxLength: 50,
+      admin: {
+        description: 'Maximum 50 characters allowed',
+      },
     },
     {
       name: 'highlightedText',
       type: 'textarea',
       label: 'Highlighted Text (Bold)',
       required: true,
+      maxLength: 400,
+      admin: {
+        description: 'Maximum 400 characters allowed',
+      },
     },
     {
       name: 'description',
       type: 'textarea',
       label: 'Supporting Description',
       required: true,
+      maxLength: 800,
+      admin: {
+        description: 'Maximum 800 characters allowed',
+      },
     },
     {
       name: 'backgroundType',

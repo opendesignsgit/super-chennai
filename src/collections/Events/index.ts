@@ -278,12 +278,18 @@ export const Events: CollectionConfig<'events'> = {
               name: 'singerName',
               label: 'Singer Name',
               type: 'text',
+              maxLength: 100,
+              admin: {
+                description: 'Maximum 100 characters',
+                placeholder: 'Enter artist name',
+              },
             },
             {
               name: 'artistDesignation',
               label: 'Artist Designation',
               type: 'text',
               required: false,
+              maxLength: 300,
               admin: {
                 placeholder: 'e.g., Singer, Guitarist, Director, etc.',
                 description: 'Specify the role/designation of the artist in the event',
@@ -294,10 +300,18 @@ export const Events: CollectionConfig<'events'> = {
               name: 'title',
               type: 'text',
               required: true,
+              maxLength: 200,
+              admin: {
+                description: 'Maximum 200 characters allowed',
+              },
             },
             {
               name: 'description',
               type: 'textarea',
+              maxLength: 200,
+              admin: {
+                description: 'Maximum 200 characters allowed',
+              },
             },
 
             {
@@ -315,6 +329,10 @@ export const Events: CollectionConfig<'events'> = {
             {
               name: 'performerRole',
               type: 'text',
+              maxLength: 30,
+              admin: {
+                description: 'Maximum 30 characters allowed',
+              },
             },
 
             {
@@ -458,8 +476,10 @@ export const Events: CollectionConfig<'events'> = {
               name: 'address',
               type: 'textarea',
               label: 'Address',
+              maxLength: 30,
               admin: {
-                description: 'Full address or venue location for the event',
+                description:
+                  'Full address or venue location for the event(Maximum 30 characters allowed)',
               },
             },
           ],

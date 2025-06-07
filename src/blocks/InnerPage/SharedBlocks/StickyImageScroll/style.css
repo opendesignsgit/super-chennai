@@ -1,8 +1,8 @@
-
 .clcSecscrl {
   padding-bottom: 12vh;
   position: relative;
 }
+
 .clcSecscrl::before {
   content: "";
   position: absolute;
@@ -14,36 +14,43 @@
   background-size: 100%;
   pointer-events: none;
 }
+
 .clcSecscrl .clcscrlCol {
   width: 50%;
   position: relative;
 }
-.clcscrlinLBox {
-}
+
+.clcscrlinLBox {}
+
 .clcscrlRight {
   position: relative;
 }
+
 .clcscrLtitle {
   width: 65%;
   margin-left: auto;
   padding: 3vw;
   margin-top: -4vw;
 }
+
 .clcscrLtitle h2 {
   font-family: "29LT Bukra SmBd";
   color: #ffffff;
   font-size: 3.5vw;
   line-height: 1;
 }
+
 .clcscrLtitle h2 small {
   text-transform: uppercase;
   font-size: 1.6vw;
   margin-bottom: 10px;
 }
+
 .clcscrLtitle p {
   color: #f7f5f7;
   font-size: 1vw;
 }
+
 .clcscrLtitle .boxttlsec {
   position: absolute;
   bottom: -18px;
@@ -54,10 +61,12 @@
   line-height: 1;
   opacity: 0.03;
 }
+
 .clcscrlinRBox {
   padding-inline: 3vw 15vw;
   position: relative;
 }
+
 .clcboxItemss {
   padding: 40px;
   border: 2px solid #e0cae0;
@@ -67,9 +76,11 @@
   border-bottom-right-radius: 4vw;
   background: #ffffff;
 }
+
 .clcscrlinRBox .clcboxItemss:last-child {
   margin-bottom: 0;
 }
+
 .clcboxItemss .clcboxIImg {
   width: 6vw;
   aspect-ratio: 1;
@@ -88,16 +99,19 @@
   margin-left: -1vw;
   border: 1px solid transparent;
 }
+
 .clcboxItemss .clcboxIImg img {
   width: 100%;
   -webkit-filter: brightness(1) invert(0);
   filter: brightness(1) invert(0);
   opacity: 1;
 }
+
 .clcboxItemss .clcboxICont {
   padding-left: 2vw;
   width: calc(100% - 6vw);
 }
+
 .clcboxItemss .clcboxICont h3 {
   font-family: "29LT Bukra SmBd";
   color: #7f397e;
@@ -106,6 +120,7 @@
   font-size: clamp(18px, 1.6vw, 32px);
   line-height: 1;
 }
+
 .clcboxItemss .clcboxICont p {
   /* font-size: 18px; */
   font-family: "29LT Bukra Regular";
@@ -114,6 +129,7 @@
   font-size: clamp(15px, 1.5vw, 16px);
   line-height: clamp(24px, 2vw, 26px);
 }
+
 .clcboxItemss .clcboxICont p.linkpara {
   position: absolute;
   width: 2.5vw;
@@ -122,20 +138,25 @@
   right: 30px;
   opacity: 0.5;
 }
+
 .clcboxItemss .clcboxICont p.linkpara a {
   display: block;
 }
+
 .clcboxItemss .clcboxICont p.linkpara a img {
   display: block;
   width: 100%;
 }
+
 .clcboxItemss:hover .clcboxICont p.linkpara {
   opacity: 1;
 }
+
 .clcboxItemss:hover .clcboxIImg {
   background: #7f397e;
   border-color: #995098;
 }
+
 .clcboxItemss:hover .clcboxIImg img {
   -webkit-filter: brightness(0) invert(1);
   filter: brightness(0) invert(1);
@@ -154,10 +175,12 @@
   background-size: 100%;
   pointer-events: none;
 }
+
 .clcSecscrl.clcSecscrlTwo::before {
   -webkit-filter: brightness(0) invert(1);
   filter: brightness(0) invert(1);
 }
+
 .clcSecscrlTwo .clcscrlinRBox {
   padding-top: 40px;
 }
@@ -174,18 +197,23 @@
   background-size: 100%;
   pointer-events: none;
 }
+
 .clcSecscrlThree .clcscrlinRBox {
   padding-top: 40px;
 }
+
 .clcscrlCol.clcscrlLft .clcscrlinLBox {
   padding-right: 50px;
 }
+
 .colorbgsec .clcscrlinRBox {
   padding-top: 50px;
 }
+
 .pattern-c .clcscrlinRBox {
   padding-top: 50px;
 }
+
 .colorbgsec.clcSecscrl::before {
   background: url(/images/doted-bg-w.png) no-repeat top right;
   background-size: 100%;
@@ -201,6 +229,7 @@
   background: #ffffff;
   width: 56%;
 }
+
 .bottomList h4 {
   font-family: "29LT Bukra SmBd";
   color: #7f397e;
@@ -209,16 +238,19 @@
   letter-spacing: -0.5px;
   margin-bottom: 6px;
 }
+
 .bottomList ul {
   padding: 0;
   margin: 0;
 }
+
 .bottomList ul li {
   padding: 0 0 5px 15px;
   margin: 0;
   list-style: none;
   position: relative;
 }
+
 .bottomList ul li::before {
   content: "";
   background: #83357a;
@@ -232,35 +264,43 @@
 .imgcontent {
   padding: 140px 10% 0;
 }
+
 .imgLeft {
   width: 50%;
 }
+
 .imgText {
   width: 30%;
 }
+
 .imgcolTitle {
   margin-left: -4vw;
   padding: 3vw;
   color: #fff;
   font-size: 18px;
 }
+
 .imgcolTitle h2 {
   font-family: "29LT Bukra SmBd";
   color: #ffffff;
   font-size: 3.5vw;
   line-height: 1;
 }
+
 .imgcolTitle h2 small {
   text-transform: uppercase;
   font-size: 1.6vw;
   margin-bottom: 10px;
 }
+
 .bottomListIcon {
   width: 70%;
 }
+
 .bottomListIcon .clcboxItemss {
   border: none;
 }
+
 .bottomListIcon ul li {
   padding: 0 0 10px 15px;
   margin: 0;
@@ -269,6 +309,7 @@
   color: #000;
   font-size: 18px;
 }
+
 .bottomListIcon ul li::before {
   content: "";
   background: #83357a;
@@ -283,12 +324,15 @@
 .foodlistsec .imgcontent {
   padding: 140px 10%;
 }
+
 .foodlistsec .imgcontent.pattern-a {
   padding-top: 0;
 }
+
 .foodListIcon {
   width: 80%;
 }
+
 .foodListIcon .clcboxItemss {
   border: none;
   border-right: none;
@@ -299,6 +343,7 @@
   width: 100%;
   margin: 0;
 }
+
 .foodListIcon .clcboxItemss::after {
   content: "";
   position: absolute;
@@ -307,6 +352,7 @@
   height: 90%;
   background: #ccc;
 }
+
 .foodListIcon div:nth-child(even) .clcboxItemss::after {
   background: none;
 }
@@ -317,12 +363,15 @@
   padding: 0;
   margin: 0;
 }
+
 .foodListIcon div .clcboxItemss .clcboxICont {
   margin: 0;
 }
+
 .foodListIcon.odd-count div:last-child .clcboxItemss::after {
   background: none;
 }
+
 .foodListIcon.odd-count div:last-child .clcboxItemss .clcboxICont p {
   min-height: auto;
 }
@@ -331,17 +380,20 @@
   width: 50%;
   margin: 0 0 40px;
 }
+
 .foodListIcon.odd-count div:last-child {
   width: 100%;
   border-top: solid 1px #ccc;
   padding-top: 40px;
 }
+
 .foodListIcon ul li {
   padding: 0 0 5px 15px;
   margin: 0;
   list-style: none;
   position: relative;
 }
+
 .foodListIcon ul li::before {
   content: "";
   background: #83357a;
@@ -351,6 +403,7 @@
   left: 0;
   top: 11px;
 }
+
 .foodListIcon .clcboxItemss .clcboxICont p {
   margin-bottom: 30px;
   min-height: 100px;
@@ -363,14 +416,17 @@
   height: 100px;
   filter: inherit;
 }
+
 .foodListIcon .clcboxItemss:hover .clcboxIImg {
   background: transparent;
   border-color: transparent;
 }
+
 .foodListIcon .clcboxItemss:hover .clcboxIImg img {
   filter: inherit;
   opacity: 1;
 }
+
 .exploreMorebuttonVisitChennai a {
   width: 175px;
   text-align: center;
@@ -389,6 +445,7 @@
   border-radius: 50px;
   color: #000;
 }
+
 .exploreMorebuttonVisitChennai a:hover {
   background: rgb(127 57 126);
   color: #fff;
@@ -397,15 +454,19 @@
 .bottomListIcon .clcboxItemss .clcboxICont p {
   margin: 0 0 25px;
 }
+
 .imgcontent.pattern-a {
   padding-top: 0;
 }
+
 .bottomListIcon {
   background: transparent;
 }
+
 .bottomListIcon .clcboxItemss {
   background: transparent;
 }
+
 .bottomListIcon h5 {
   font-size: 22px;
   margin: 0px 0 15px;
@@ -416,18 +477,22 @@
   margin: 0 0 0 20px;
   font-size: 15px;
 }
+
 /* Today */
 .bottomListIcon .clcboxItemss {
   border-bottom: solid 1px #ccc;
   border-radius: 0;
 }
+
 .bottomListIcon div:last-child .clcboxItemss {
   border-bottom: none;
   border-radius: 0;
 }
+
 .pt0 {
   padding-top: 0 !important;
 }
+
 .iconImgdev .clcboxItemss .clcboxIImg {
   background: transparent;
   width: 10vw;
@@ -435,10 +500,12 @@
   margin-left: -4vw;
   padding: 0;
 }
+
 .iconImgdev .clcboxItemss:hover .clcboxIImg {
   background: transparent;
   border-color: transparent;
 }
+
 .iconImgdev .clcboxItemss .clcboxIImg img {
   filter: inherit;
   opacity: 1;
@@ -452,35 +519,51 @@
   display: none;
 }
 
-.detailapiSec{padding: 0; margin: 0 0 60px;     border: solid 1px #f1f1f1;}
+.detailapiSec {
+  padding: 0;
+  margin: 0 0 60px;
+  border: solid 1px #f1f1f1;
+}
+
 .detailapiSec ul li a {
-    width: 175px;
-    text-align: center;
-    font-family: "29LT Bukra SmBd";
-    height: 100%;
-    display: flex
-;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    line-height: 37px;
-    border-width: 3px;
-    border-style: solid;
-    border-color: rgb(127 57 126);
-    border-image: initial;
-    background: rgb(255, 255, 255);
-    border-radius: 50px;
-    color: #000;
+  width: 175px;
+  text-align: center;
+  font-family: "29LT Bukra SmBd";
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  line-height: 37px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: rgb(127 57 126);
+  border-image: initial;
+  background: rgb(255, 255, 255);
+  border-radius: 50px;
+  color: #000;
 }
+
 .detailapiSec ul li a:hover {
-    background: rgb(127 57 126);
-    color: #fff;
+  background: rgb(127 57 126);
+  color: #fff;
 }
-.detailapiSec h2{font-size:40px; padding: 30px;}
-    .detailapiSec h3{ font-size:25px;  }
-    .detailtextbox{padding: 30px;}
-    .foodListIcon.odd-count div:last-child div {
-   margin: 0 10px;
+
+.detailapiSec h2 {
+  font-size: 40px;
+  padding: 30px;
+}
+
+.detailapiSec h3 {
+  font-size: 25px;
+}
+
+.detailtextbox {
+  padding: 30px;
+}
+
+.foodListIcon.odd-count div:last-child div {
+  margin: 0 10px;
 }
 
 /* New Style */
@@ -496,13 +579,13 @@
   .imgcontent {
     padding: 140px 5% 0;
   }
-  
+
 }
 
 @media (max-width: 1500px) {
   .foodlistsec .imgcontent {
     padding: 140px 0% 80px;
-}
+  }
 }
 
 
@@ -510,19 +593,21 @@
   .clcboxItemss .clcboxIImg {
     width: 100px;
     height: 98px;
-}
+  }
 
   .accordion-wrapper {
-  display: block;
-}
+    display: block;
+  }
 
-.Tabs-wrapper{
-  display: none;
-}
+  .Tabs-wrapper {
+    display: none;
+  }
+
   /* After Banner Section */
   .visitIntroParaSection.detailIntro .workIntro h3 {
     font-size: clamp(30px, 4vw, 80px);
   }
+
   .workIntro {
     padding: 0 2%;
   }
@@ -530,16 +615,17 @@
   .CostOflivingBackground {
     bottom: 0%;
   }
-  /* After Banner Section */
 
-  /* Moving Section  */
+
 
   .clcSecscrl {
     flex-direction: column;
   }
+
   .clcSecscrl .clcscrlCol {
     width: 100%;
   }
+
   .clcscrlCol.clcscrlLft .clcscrlinLBox {
     padding: 0px;
   }
@@ -547,11 +633,13 @@
   .clcboxItemss .clcboxIImg img {
     width: 70%;
   }
+
   .clcboxItemss .clcboxIImg {
     width: 60px;
     height: 60px;
     padding: 0;
   }
+
   .clcboxItemss {
     padding: 20px;
     border: 2px solid #e0cae0;
@@ -577,6 +665,7 @@
   .clcscrLtitle h2 small {
     font-size: clamp(14px, 1.6vw, 32px);
   }
+
   .clcscrLtitle h2 {
     font-size: clamp(24px, 3.5vw, 64px);
   }
@@ -590,6 +679,7 @@
     width: 7.5vw;
     top: 9px;
   }
+
   .visitIntroParaSection.detailIntro {
     padding-bottom: 30px;
     margin: 0px;
@@ -599,9 +689,11 @@
   .MainSectionHovered {
     margin-top: 50px;
   }
+
   .workIntro p {
     margin-top: 20px;
   }
+
   .workMainContainer {
     background-image: none;
   }
@@ -613,9 +705,11 @@
     flex-direction: column;
     padding: 24px 0;
   }
+
   .imgText {
     width: 100%;
   }
+
   .imgLeft {
     width: 100%;
   }
@@ -625,10 +719,11 @@
     flex-direction: column;
     margin-top: 10px;
   }
-   
+
   .foodListIcon div {
     width: 100%;
   }
+
   .foodListIcon .clcboxItemss {
     padding-right: 0;
     margin: 0;
@@ -639,6 +734,7 @@
     width: 75px;
     height: 75px;
   }
+
   .foodListIcon .clcboxItemss::after {
     content: none;
   }
@@ -648,6 +744,7 @@
     font-size: 13px;
     line-height: 31px;
   }
+
   .foodListIcon .clcboxItemss .clcboxICont p {
     margin-bottom: 15px;
     min-height: auto;
@@ -677,39 +774,35 @@
     padding-top: 5px;
   }
 
-    .clcboxItemss .clcboxIImg {
-        width: 85px;
-        height: 85px;
-        padding: 1px;
-        margin: 12px 12px 27px;
-    }
-        .clcboxItemss {
-         padding-left: 20px;
-        position: relative;
-         padding-right: 16px;
-        display: block;
-        padding-bottom: 30px;
-    }
-        .foodListIcon .clcboxItemss .clcboxIImg {
-            background: #fcebfc;
-        }
-        .bottomListIcon {
+  .clcboxItemss .clcboxIImg {
+    width: 85px;
+    height: 85px;
+    padding: 1px;
+    margin: 12px 12px 27px;
+  }
+
+  .clcboxItemss {
+    padding-left: 20px;
+    position: relative;
+    padding-right: 16px;
+    display: block;
+    padding-bottom: 30px;
+  }
+
+  .foodListIcon .clcboxItemss .clcboxIImg {
+    background: #fcebfc;
+  }
+
+  .bottomListIcon {
     width: 100%;
-}
-.bottomListIcon .clcboxItemss {
+  }
+
+  .bottomListIcon .clcboxItemss {
     padding: 0 0 30px;
     margin-bottom: 46px;
-}
-.imgcontent {
+  }
+
+  .imgcontent {
     padding: 0;
+  }
 }
-
-
-
-
-  /* New Style */
-}
-
-/* Moving Section  */
-
-/* ------------Resposive----------  */

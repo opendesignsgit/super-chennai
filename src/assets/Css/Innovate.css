@@ -1,0 +1,133 @@
+/* / Banner Innovate / */
+
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+.InnovateSectionBanner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.InnovateContent {
+  position: absolute;
+  top: -11%;
+  font-family: "NewAmsterdam";
+  color: #fff;
+  font-size: 218px;
+  line-height: 150px;
+  letter-spacing: 39px;
+  width: 85%;
+  text-align: center;
+}
+
+.InnovateMainContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 15%;
+}
+
+.InnovateBgSection::before {
+  background: linear-gradient(
+    90deg,
+    rgb(130 18 70) 0%,
+    rgb(174 64 56) 50%,
+    rgb(130 42 8) 100%
+  );
+}
+
+@keyframes animateGradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+.InnnovateBannerImage {
+  display: flex;
+  justify-content: center;
+}
+.InnnovateBannerImage img {
+  width: 85%;
+  object-fit: cover;
+  border-bottom-right-radius: 150px;
+}
+
+.nav-item button {
+  color: #fff;
+}
+
+.navbarContents {
+  border-top: 1px solid #679a91;
+  border-bottom: 1px solid #679a91;
+}
+
+/* / Banner Innovate / */
+
+.InnovateChennaiContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 65px;
+}
+
+.InnovateChennaiContent h3 {
+  font-family: NewAmsterdam;
+  color: #995098;
+  font-size: clamp(36px, 14vw, 100px);
+  line-height: clamp(44px, 9vw, 94px);
+}
+
+.InnovateChennaiContent h6 {
+  font-family: "29LT Bukra Medium";
+  font-size: clamp(15px, 1.5vw, 16px);
+  line-height: clamp(24px, 2vw, 26px);
+  color: #000;
+  text-align: center;
+  margin-top: 20px;
+  width: 50%;
+  word-spacing: 3px;
+}
+
+.InnovateChennaiContent p {
+  font-family: "29LT Bukra Regular";
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: clamp(22px, 2vw, 26px);
+  color: #000;
+  text-align: center;
+  margin-top: 20px;
+  width: 58%;
+}
+
+.InnovateChennaiContainerFlex {
+  margin-top: 80px;
+  position: relative;
+  padding-bottom: 35px;
+  background-image: url("/public/images/doted.png");
+}
+
+/* innovate-Slider */
+
+/* innovate-Slider */
+
+@media (max-width: 768px) {
+  .InnovateChennaiContent h6 {
+    width: 90%;
+  }
+
+  .InnovateChennaiContent p {
+    width: 90%;
+  }
+
+  .InnovateChennaiContainerFlex {
+    background-image: none;
+    margin-top: 40px;
+    padding-bottom: 0;
+  }
+
+  .InnovateChennaiContent {
+    padding-bottom: 45px;
+  }
+}

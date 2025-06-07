@@ -33,7 +33,9 @@ export const DefaultHeroBanner: React.FC<Props> = ({ heading, image, backgroundC
           <h3 className="InvestContent">{heading || 'Welcome'}</h3>
         </div>
       </div>
-      <GlobalSearch placeholderText={'Experience Chennai'} buttonText={'Search'} />
+      <div className="notHomePageSearch">
+        <GlobalSearch placeholderText={'Experience Chennai'} buttonText={'Search'} />
+      </div>
     </div>
   )
 }

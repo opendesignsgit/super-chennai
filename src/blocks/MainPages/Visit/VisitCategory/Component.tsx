@@ -1,8 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
 import Slider from 'react-slick'
-import './style.css'
+// import './style.css'
 
 type VisitItem = {
   id: string
@@ -35,11 +36,12 @@ export const VisitCategory = ({ title, description, items }: VisitGroupRef) => {
     asNavFor: nav2,
     arrows: true,
     fade: true,
+    infinite: false,
   }
 
   const thumbSettings = {
     asNavFor: nav1,
-    slidesToShow: 8,
+    slidesToShow: 11,
     focusOnSelect: true,
     infinite: false,
     vertical: true,
@@ -69,7 +71,6 @@ export const VisitCategory = ({ title, description, items }: VisitGroupRef) => {
           </Slider>
         </div>
 
-        {/* Thumbnail */}
         <div className="visitContSlide">
           <Slider {...thumbSettings} ref={thumbSlider}>
             {items.map((item) => (
@@ -78,7 +79,12 @@ export const VisitCategory = ({ title, description, items }: VisitGroupRef) => {
                   <img
                     src={item.image?.url}
                     alt={item.label}
-                    style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      cursor: 'pointer',
+                      borderRadius: '4px',
+                    }}
                   />
                 </a>
                 <h3>

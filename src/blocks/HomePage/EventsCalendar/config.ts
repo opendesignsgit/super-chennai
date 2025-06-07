@@ -15,17 +15,21 @@ const EventsCalendarBlock: Block = {
       name: 'heading',
       type: 'text',
       label: 'Top Heading',
+      maxLength: 50,
+      admin: {
+        description: 'Maximum 50 characters allowed',
+        placeholder: 'Enter a concise heading',
+      },
     },
     {
       name: 'description',
       type: 'textarea',
       label: 'Description',
-    },
-    {
-      name: 'eventGroupRef',
-      type: 'relationship',
-      relationTo: 'events',
-      label: 'Select Event Group',
+      maxLength: 200,
+      admin: {
+        description: 'Maximum 200 characters allowed',
+        placeholder: 'Enter a description',
+      },
     },
   ],
 }

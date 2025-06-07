@@ -14,11 +14,28 @@ const Infography: Block = {
       name: 'heading',
       type: 'text',
       required: true,
+      maxLength: 20,
+      admin: {
+        description: 'Maximum 20 characters allowed',
+      },
+    },
+    {
+      name: 'headingSpan',
+      type: 'text',
+      required: true,
+      maxLength: 20,
+      admin: {
+        description: 'Maximum 20 characters allowed',
+      },
     },
     {
       name: 'description',
       type: 'textarea',
       required: true,
+      maxLength: 200,
+      admin: {
+        description: 'Maximum 200 characters allowed',
+      },
     },
     {
       name: 'foodItems',
@@ -29,11 +46,20 @@ const Infography: Block = {
           name: 'title',
           type: 'text',
           required: true,
+          maxLength: 20,
+          admin: {
+            description: 'Maximum 20 characters allowed',
+          },
         },
+
         {
           name: 'description',
           type: 'textarea',
           required: true,
+          maxLength: 200,
+          admin: {
+            description: 'Maximum 200 characters allowed',
+          },
         },
         {
           name: 'image',
@@ -42,8 +68,20 @@ const Infography: Block = {
           required: true,
         },
         {
-          name: 'link',
+          name: 'page',
+          type: 'relationship',
+          relationTo: 'visits',
+          required: false,
+          label: 'Select Page Link',
+        },
+        {
+          name: 'customLink',
           type: 'text',
+          label: 'Or Custom URL',
+          admin: {
+            description: 'This will override the selected page link if provided.',
+            placeholder: ' /some-path',
+          },
         },
       ],
     },

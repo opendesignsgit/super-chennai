@@ -1,11 +1,7 @@
-
-
-
+/* eslint-disable @next/next/no-img-element */
+// /* eslint-disable @next/next/no-img-element */
 'use client'
-
 import React, { useEffect, useRef, useState } from 'react'
-import './style.css'
-
 type LivingInChennaiBannerProps = {
   heading?: string
   image?: {
@@ -16,6 +12,10 @@ type LivingInChennaiBannerProps = {
   paraZeroLiveSection?: string
   paraoneLiveSection?: string
   paraTwoLiveSection?: string
+  imagePosition?: 'left' | 'right'
+  marqueeText?: string
+  marqueeTextSize?: 'sm' | 'lg'
+  showMarquee?: boolean
 }
 
 export default function LiveIntroTextSection({
@@ -24,6 +24,10 @@ export default function LiveIntroTextSection({
   paraZeroLiveSection,
   paraoneLiveSection,
   paraTwoLiveSection,
+  imagePosition = 'right',
+  marqueeTextSize,
+  showMarquee = true,
+  marqueeText,
 }: LivingInChennaiBannerProps) {
   const [scrollDir, setScrollDir] = useState<'left' | 'right'>('right')
   const lastScrollY = useRef(0)
@@ -44,6 +48,11 @@ export default function LiveIntroTextSection({
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const getTextSizeClass = (size?: 'sm' | 'lg'): string => {
+    if (size === 'lg') return 'LiveTextBackground scroll-right '
+    return 'VolunteeerTextBackground scroll-right'
+  }
+
   if (!heading || !image?.url) {
     return (
       <div className="LivingInChennaiBanner">
@@ -58,29 +67,40 @@ export default function LiveIntroTextSection({
     <div className="DootedBannerSectionLive">
       <div className="LivingInChennaiBanner">
         <div className="LiveParaSection container max-w-7xl mx-auto px-4">
-          <div
-            className={`LiveTextBackground ${
-              scrollDir === 'right' ? 'scroll-right' : 'scroll-left'
-            }`}
-            ref={bgTextRef}
-          >
-            <p>
-              Living in &nbsp; &nbsp; Living in <br /> Chennai &nbsp; &nbsp; Chennai
-            </p>
-          </div>
-          <div className="LiveRow">
+          {showMarquee && marqueeText && (
+            <div className={getTextSizeClass(marqueeTextSize)} ref={bgTextRef}>
+              <p>
+                {marqueeTextSize === 'lg' && marqueeText
+                  ? marqueeText.split(' ').map((word, index, arr) =>
+                      index === Math.floor(arr.length / 2) ? (
+                        <React.Fragment key={index}>
+                          <br />
+                          {word + ' '}
+                        </React.Fragment>
+                      ) : (
+                        word + ' '
+                      ),
+                    )
+                  : marqueeText}
+              </p>
+            </div>
+          )}
+          <div className={`LiveRow ${imagePosition === 'left' ? 'image-left' : 'image-right'}`}>
+            {imagePosition === 'left' && (
+              <img src={image.url} alt={image.alt || 'Living in Chennai Banner'} />
+            )}
             <div className="LiveMainContent">
               <h3>{heading}</h3>
               <p className="paraZeroLiveSection">{paraZeroLiveSection}</p>
               <p className="paraoneLiveSection">{paraoneLiveSection}</p>
               <p className="paraTwoLiveSection">{paraTwoLiveSection}</p>
             </div>
-            <img src={image.url} alt={image.alt || 'Living in Chennai Banner'} />
+            {imagePosition === 'right' && (
+              <img src={image.url} alt={image.alt || 'Living in Chennai Banner'} />
+            )}
           </div>
         </div>
       </div>
     </div>
   )
 }
-
-

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
@@ -63,7 +64,7 @@ export const ContentZoneCarousel = ({
           <h2>{heading}</h2>
           <h3>{subheading}</h3>
           <p>{description}</p>
-          <div className="chillZonecarousel-buttons">
+          <div className="chillZonecarousel-buttons DesktopButtons">
             <button className="chilloutZoneButtonsleft" onClick={() => slide('left')} />
             <button className="chilloutZoneButtonsRight" onClick={() => slide('right')} />
           </div>
@@ -80,7 +81,7 @@ export const ContentZoneCarousel = ({
           >
             {cards.map((card, idx) => (
               <motion.div
-                className="chillZoneImageCard"
+                className="chillZoneImageCard cursor-pointer"
                 key={idx}
                 style={{ width: `${cardWidth}px` }}
               >

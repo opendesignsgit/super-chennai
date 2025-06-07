@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import './style.css'
 export type Media = {
   id: string
   url: string

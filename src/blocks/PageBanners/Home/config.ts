@@ -22,6 +22,7 @@ const HeroSlider: Block = {
           relationTo: "media",
           required: true,
         },
+        
         {
           name: "title",
           type: "text",

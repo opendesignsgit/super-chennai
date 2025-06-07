@@ -139,12 +139,12 @@
     transform: translateX(-50%);
   }
   100% {
-    transform: translateX(0%);  
+    transform: translateX(0%);
   }
 }
 
 .DootedBannerSectionLive {
-  background-image: url("../../../../assets/images/doted.png");
+  background-image: url("../images/doted.png");
   overflow: hidden;
 }
 
@@ -242,6 +242,16 @@
 /* ChennaiLifeEssential */
 
 /* Became a Volunteer  */
+
+@media (max-width: 1600px) and (min-width: 1200px) {
+  .LiveMainContent h3 {
+    font-size: 80px;
+  }
+
+  .chennaiLifeEssentialHeading h3 {
+    font-size: 80px;
+  }
+}
 
 @media (max-width: 768px) {
   .LiveMainContent h3 {

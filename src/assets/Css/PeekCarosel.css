@@ -1,0 +1,46 @@
+.accordion-container {
+    max-width: 66%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .accordion-track {
+    display: flex;
+    transition: transform 0.8s cubic-bezier(.48, 0, .11, 1);
+    will-change: transform;
+  }
+  
+  .pane {
+    flex-shrink: 0;
+    height: 400px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.8s cubic-bezier(.47, 0, 0, 1);
+  }
+  
+  .pane img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+  }
+  
+  .pane.active {
+    border: 3px solid #333;
+  }
+  
+  .accordion-controls {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    gap: 1rem;
+  }
+  
+  .accordion-controls button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  

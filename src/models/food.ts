@@ -5,11 +5,15 @@ type FoodItem = {
     url: string
     alt?: string
   }
-  link?: string
+  page?: {
+    slug?: string
+  }
+  customLink?: string
 }
 
 type Props = {
   heading: string
+  headingSpan?: string
   description: string
   foodItems: FoodItem[]
 }

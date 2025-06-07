@@ -234,7 +234,6 @@ export const Visits: CollectionConfig<'visits'> = {
       name: 'subpages',
       type: 'relationship',
       relationTo: 'hotels',
-      // relationTo: ['hotels'],
       admin: {
         position: 'sidebar',
         description: 'Select subpages for this visit. Accessible at /visits/[slug]/[subpageSlug]',

@@ -14,10 +14,18 @@ const Utilities: Block = {
       name: 'title',
       type: 'text',
       required: true,
+      maxLength: 50,
+      admin: {
+        description: 'Maximum 50 characters allowed',
+      },
     },
     {
       name: 'description',
       type: 'textarea',
+      maxLength: 200,
+      admin: {
+        description: 'Maximum 200 characters allowed',
+      },
     },
     {
       name: 'tabs',
@@ -30,6 +38,10 @@ const Utilities: Block = {
           name: 'tabTitle',
           type: 'text',
           required: true,
+          maxLength: 20,
+          admin: {
+            description: 'Maximum 20 characters allowed',
+          },
         },
         {
           name: 'image',

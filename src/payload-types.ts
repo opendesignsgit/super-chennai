@@ -172,7 +172,13 @@ export interface UserAuthOperations {
  * via the `definition` "chennaiInvestments".
  */
 export interface ChennaiInvestments {
+  /**
+   * Maximum 30 characters allowed
+   */
   heading: string;
+  /**
+   * Maximum 400 characters allowed
+   */
   subheading?: string | null;
   id?: string | null;
   blockName?: string | null;
@@ -231,9 +237,20 @@ export interface Page {
   layout: (
     | {
         cards: {
+          /**
+           * Maximum 15 characters allowed
+           */
           title: string;
+          /**
+           * Maximum 15 characters allowed
+           */
           place: string;
           image: number | Media;
+          page?: (number | null) | Visit;
+          /**
+           * This will override the selected page link if provided.
+           */
+          customLink?: string | null;
           id?: string | null;
         }[];
         id?: string | null;
@@ -241,12 +258,29 @@ export interface Page {
         blockType: 'explore';
       }
     | {
+        /**
+         * Maximum 25 characters allowed
+         */
         heading: string;
+        /**
+         * Maximum 200 characters allowed
+         */
         subheading: string;
         cards: {
+          /**
+           * Maximum 15 characters allowed
+           */
           title: string;
-          place: string;
+          /**
+           * Maximum 15 characters allowed
+           */
+          place?: string | null;
           image: number | Media;
+          page?: (number | null) | Visit;
+          /**
+           * This will override the selected page link if provided.
+           */
+          customLink?: string | null;
           id?: string | null;
         }[];
         id?: string | null;
@@ -254,11 +288,30 @@ export interface Page {
         blockType: 'funChennai';
       }
     | {
+        /**
+         * Maximum 30 characters allowed
+         */
         heading?: string | null;
+        /**
+         * Maximum 400 characters allowed
+         */
         description?: string | null;
         images?:
           | {
               image?: (number | null) | Media;
+              /**
+               * Maximum 20 characters allowed
+               */
+              title: string;
+              /**
+               * Maximum 50 characters allowed
+               */
+              description?: string | null;
+              page?: (number | null) | Investment;
+              /**
+               * This will override the selected page link if provided.
+               */
+              customLink?: string | null;
               id?: string | null;
             }[]
           | null;
@@ -267,16 +320,28 @@ export interface Page {
         blockType: 'startupChennai';
       }
     | {
+        /**
+         * Maximum 30 characters allowed
+         */
         heading: string;
+        /**
+         * Maximum 400 characters allowed
+         */
         subheading?: string | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'chennaiInvestments';
       }
     | {
+        /**
+         * Maximum 100 characters allowed
+         */
         heading?: string | null;
+        /**
+         * Maximum 400 characters allowed
+         */
         description?: string | null;
-        reelsRef: number | SocialReel;
+        reelsRef?: (number | null) | SocialReel;
         id?: string | null;
         blockName?: string | null;
         blockType: 'socialReelSlider';
@@ -287,9 +352,14 @@ export interface Page {
         blockType: 'becameAVolunteer';
       }
     | {
+        /**
+         * Maximum 50 characters allowed
+         */
         heading?: string | null;
+        /**
+         * Maximum 200 characters allowed
+         */
         description?: string | null;
-        eventGroupRef?: (number | null) | Event;
         id?: string | null;
         blockName?: string | null;
         blockType: 'eventsCalendar';
@@ -367,10 +437,22 @@ export interface Page {
       }
     | {
         showMarquee?: boolean | null;
+        /**
+         * Maximum 50 characters allowed
+         */
         marqueeText?: string | null;
         marqueeTextSize?: ('sm' | 'lg') | null;
+        /**
+         * Maximum 50 characters allowed
+         */
         title: string;
+        /**
+         * Maximum 400 characters allowed
+         */
         highlightedText: string;
+        /**
+         * Maximum 800 characters allowed
+         */
         description: string;
         backgroundType: 'none' | 'background';
         id?: string | null;
@@ -407,13 +489,33 @@ export interface Page {
         blockType: 'formPopup';
       }
     | {
+        /**
+         * Maximum 20 characters allowed
+         */
         heading: string;
+        /**
+         * Maximum 20 characters allowed
+         */
+        headingSpan: string;
+        /**
+         * Maximum 200 characters allowed
+         */
         description: string;
         foodItems: {
+          /**
+           * Maximum 20 characters allowed
+           */
           title: string;
+          /**
+           * Maximum 200 characters allowed
+           */
           description: string;
           image: number | Media;
-          link?: string | null;
+          page?: (number | null) | Visit;
+          /**
+           * This will override the selected page link if provided.
+           */
+          customLink?: string | null;
           id?: string | null;
         }[];
         id?: string | null;
@@ -422,19 +524,40 @@ export interface Page {
       }
     | {
         techImage: number | Media;
+        /**
+         * Maximum 30 characters allowed
+         */
         techTitle: string;
+        /**
+         * Maximum 200 characters allowed
+         */
         techDescription: string;
         eduImage: number | Media;
+        /**
+         * Maximum 30 characters allowed
+         */
         eduTitle: string;
+        /**
+         * Maximum 200 characters allowed
+         */
         eduDescription: string;
         id?: string | null;
         blockName?: string | null;
         blockType: 'twoColumnFeatureBlock';
       }
     | {
+        /**
+         * Maximum 50 characters allowed
+         */
         title: string;
+        /**
+         * Maximum 200 characters allowed
+         */
         description?: string | null;
         tabs: {
+          /**
+           * Maximum 20 characters allowed
+           */
           tabTitle: string;
           image: number | Media;
           id?: string | null;
@@ -444,11 +567,23 @@ export interface Page {
         blockType: 'utilities';
       }
     | {
+        /**
+         * Maximum 15 characters allowed
+         */
         heading: string;
+        /**
+         * Maximum 15 characters allowed
+         */
         subheading?: string | null;
+        /**
+         * Maximum 200 characters allowed
+         */
         description?: string | null;
         cards: {
           title: string;
+          /**
+           * Maximum 200 characters allowed
+           */
           description?: string | null;
           image: number | Media;
           id?: string | null;
@@ -458,15 +593,35 @@ export interface Page {
         blockType: 'contentZoneCarousel';
       }
     | {
+        /**
+         * Maximum 20 characters allowed
+         */
         heading: string;
+        /**
+         * Maximum 500 characters allowed
+         */
         description: string;
         link?: string | null;
         items?:
           | {
+              /**
+               * Maximum 15 characters allowed
+               */
               name: string;
+              /**
+               * Maximum 15 characters allowed
+               */
               subtitle?: string | null;
+              /**
+               * Maximum 200 characters allowed
+               */
               para?: string | null;
               image: number | Media;
+              page?: (number | null) | Event;
+              /**
+               * This will override the selected page link if provided.
+               */
+              customLink?: string | null;
               id?: string | null;
             }[]
           | null;
@@ -482,11 +637,27 @@ export interface Page {
         blockType: 'allevents';
       }
     | {
+        /**
+         * Maximum 50 characters allowed
+         */
         heading: string;
+        imagePosition: 'left' | 'right';
         image: number | Media;
+        /**
+         * Maximum 500 characters allowed
+         */
         paraZeroLiveSection: string;
+        /**
+         * Maximum 500 characters allowed
+         */
         paraoneLiveSection: string;
+        /**
+         * Maximum 500 characters allowed
+         */
         paraTwoLiveSection: string;
+        showMarquee?: boolean | null;
+        marqueeText?: string | null;
+        marqueeTextSize?: ('sm' | 'lg') | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'liveIntrorSection';
@@ -736,6 +907,179 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "visits".
+ */
+export interface Visit {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedvisits?: (number | Visit)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  /**
+   * Select subpages for this visit. Accessible at /visits/[slug]/[subpageSlug]
+   */
+  subpages?: (number | null) | Hotel;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hotels".
+ */
+export interface Hotel {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedhotels?: (number | Hotel)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "investments".
+ */
+export interface Investment {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedinvestments?: (number | Investment)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  investments?:
+    | {
+        /**
+         * Maximum 40 characters allowed
+         */
+        sectionTitle: string;
+        /**
+         * Maximum 200 characters allowed
+         */
+        sectionDescription?: string | null;
+        sectionImage?: (number | null) | Media;
+        investmentItems?:
+          | {
+              /**
+               * Maximum 100 characters allowed
+               */
+              title: string;
+              /**
+               * Maximum 200 characters allowed
+               */
+              description?: string | null;
+              image?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "social-reels".
  */
 export interface SocialReel {
@@ -784,17 +1128,29 @@ export interface Event {
      * Upload an image of the performing artist
      */
     artistImage?: (number | null) | Media;
+    /**
+     * Maximum 100 characters
+     */
     singerName?: string | null;
     /**
      * Specify the role/designation of the artist in the event
      */
     artistDesignation?: string | null;
+    /**
+     * Maximum 200 characters allowed
+     */
     title: string;
+    /**
+     * Maximum 200 characters allowed
+     */
     description?: string | null;
     /**
      * Choose full date (day, month, year)
      */
     eventDate: string;
+    /**
+     * Maximum 30 characters allowed
+     */
     performerRole?: string | null;
     details?: {
       duration?: string | null;
@@ -917,7 +1273,7 @@ export interface Event {
       | 'quiz_competition';
     link?: string | null;
     /**
-     * Full address or venue location for the event
+     * Full address or venue location for the event(Maximum 30 characters allowed)
      */
     address?: string | null;
   };
@@ -941,108 +1297,6 @@ export interface Event {
     | null;
   slug?: string | null;
   slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "visits".
- */
-export interface Visit {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedvisits?: (number | Visit)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  /**
-   * Select subpages for this visit. Accessible at /visits/[slug]/[subpageSlug]
-   */
-  subpages?: (number | null) | Hotel;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "hotels".
- */
-export interface Hotel {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedhotels?: (number | Hotel)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  /**
-   * Select subpages for this visit. Accessible at /hotels/[slug]/[subpageSlug]
-   */
-  subpages?: (number | null) | Hotel;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -1080,69 +1334,6 @@ export interface Work {
     image?: (number | null) | Media;
     description?: string | null;
   };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "investments".
- */
-export interface Investment {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedinvestments?: (number | Investment)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  investments?:
-    | {
-        sectionTitle: string;
-        sectionDescription?: string | null;
-        sectionImage?: (number | null) | Media;
-        investmentItems?:
-          | {
-              title: string;
-              description?: string | null;
-              image?: (number | null) | Media;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
   populatedAuthors?:
@@ -1213,8 +1404,17 @@ export interface Volunteer {
   title: string;
   heroImage?: (number | null) | Media;
   image: number | Media;
+  /**
+   * Maximum 100 characters allowed
+   */
   'Voluenteer title': string;
+  /**
+   * Maximum 400 characters allowed
+   */
   subtitle?: string | null;
+  /**
+   * Maximum 400 characters allowed
+   */
   description?: string | null;
   content?: {
     root: {
@@ -1932,6 +2132,8 @@ export interface PagesSelect<T extends boolean = true> {
                     title?: T;
                     place?: T;
                     image?: T;
+                    page?: T;
+                    customLink?: T;
                     id?: T;
                   };
               id?: T;
@@ -1948,6 +2150,8 @@ export interface PagesSelect<T extends boolean = true> {
                     title?: T;
                     place?: T;
                     image?: T;
+                    page?: T;
+                    customLink?: T;
                     id?: T;
                   };
               id?: T;
@@ -1962,6 +2166,10 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     image?: T;
+                    title?: T;
+                    description?: T;
+                    page?: T;
+                    customLink?: T;
                     id?: T;
                   };
               id?: T;
@@ -1995,7 +2203,6 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               heading?: T;
               description?: T;
-              eventGroupRef?: T;
               id?: T;
               blockName?: T;
             };
@@ -2128,6 +2335,7 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               heading?: T;
+              headingSpan?: T;
               description?: T;
               foodItems?:
                 | T
@@ -2135,7 +2343,8 @@ export interface PagesSelect<T extends boolean = true> {
                     title?: T;
                     description?: T;
                     image?: T;
-                    link?: T;
+                    page?: T;
+                    customLink?: T;
                     id?: T;
                   };
               id?: T;
@@ -2198,6 +2407,8 @@ export interface PagesSelect<T extends boolean = true> {
                     subtitle?: T;
                     para?: T;
                     image?: T;
+                    page?: T;
+                    customLink?: T;
                     id?: T;
                   };
               id?: T;
@@ -2215,10 +2426,14 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               heading?: T;
+              imagePosition?: T;
               image?: T;
               paraZeroLiveSection?: T;
               paraoneLiveSection?: T;
               paraTwoLiveSection?: T;
+              showMarquee?: T;
+              marqueeText?: T;
+              marqueeTextSize?: T;
               id?: T;
               blockName?: T;
             };
@@ -2744,7 +2959,6 @@ export interface HotelsSelect<T extends boolean = true> {
       };
   slug?: T;
   slugLock?: T;
-  subpages?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;

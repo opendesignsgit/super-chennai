@@ -1,4 +1,4 @@
-import { Block } from "payload";
+import { Block } from 'payload'
 
 export const StartupChennaiBlock: Block = {
   slug: 'startupChennai',
@@ -14,17 +14,23 @@ export const StartupChennaiBlock: Block = {
     {
       name: 'heading',
       type: 'text',
-      // required: true,
+      maxLength: 30,
+      admin: {
+        description: 'Maximum 30 characters allowed',
+      },
     },
     {
       name: 'description',
       type: 'textarea',
-      // required: true,
+      maxLength: 400,
+      admin: {
+        description: 'Maximum 400 characters allowed',
+        placeholder: 'Enter a description',
+      },
     },
     {
       name: 'images',
       type: 'array',
-      // required: true,
       minRows: 5,
       maxRows: 5,
       fields: [
@@ -32,9 +38,42 @@ export const StartupChennaiBlock: Block = {
           name: 'image',
           type: 'upload',
           relationTo: 'media',
-          // required: true,
+        },
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+          maxLength: 20,
+          admin: {
+            description: 'Maximum 20 characters allowed',
+          },
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+          maxLength: 50,
+          admin: {
+            description: 'Maximum 50 characters allowed',
+            placeholder: 'Enter a description',
+          },
+        },
+        {
+          name: 'page',
+          type: 'relationship',
+          relationTo: 'investments',
+          required: false,
+          label: 'Select Page Link',
+        },
+        {
+          name: 'customLink',
+          type: 'text',
+          label: 'Or Custom URL',
+          admin: {
+            description: 'This will override the selected page link if provided.',
+            placeholder: ' /some-path',
+          },
         },
       ],
     },
   ],
-};
+}

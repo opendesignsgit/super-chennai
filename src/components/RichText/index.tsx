@@ -1,3 +1,4 @@
+import { HotelDetailSectionBlock } from '@/blocks/InnerPage/SharedBlocks/hotels/component'
 import {
   DefaultNodeTypes,
   SerializedBlockNode,
@@ -15,7 +16,6 @@ import { CodeBlock, CodeBlockProps } from 'src/blocks/Code/Component'
 import GlobalSearch from 'src/blocks/HomePage/GlobalSearch/Component'
 import SocialChennai from 'src/blocks/HomePage/SocialChennai/Component'
 import Banner from 'src/blocks/InnerPage/SharedBlocks/Banners/Components'
-import CareerIntro from 'src/blocks/InnerPage/SharedBlocks/careerIntro/Component'
 import ExploreMoreChennai from 'src/blocks/InnerPage/SharedBlocks/Explore/Component'
 import FeatureSectionList from 'src/blocks/InnerPage/SharedBlocks/featureSectionListLayout/Component'
 import FeatureSectionSplit from 'src/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/Component'
@@ -84,7 +84,6 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
 
     code: ({ node }) => <CodeBlock className="" {...node.fields} />,
 
-    // cta: ({ node }) => <CallToActionBlock {...node.fields} />,
     globalSearch: ({ node }: { node: SerializedBlockNode<any> }) => (
       <GlobalSearch {...node.fields} />
     ),
@@ -103,7 +102,6 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
       <SocialChennai {...node.fields} />
     ),
     Banner: ({ node }: { node: SerializedBlockNode<any> }) => <Banner {...node.fields} />,
-    careerIntro: ({ node }: { node: SerializedBlockNode<any> }) => <CareerIntro {...node.fields} />,
     introText: ({ node }: { node: SerializedBlockNode<any> }) => <IntroText {...node.fields} />,
     featureSections: ({ node }: { node: SerializedBlockNode<any> }) => (
       <FeatureSections {...node.fields} />
@@ -127,6 +125,10 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
 
     featureSectionList: ({ node }: { node: SerializedBlockNode<any> }) => (
       <FeatureSectionList {...node.fields} />
+    ),
+
+    hoteldetailSection: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <HotelDetailSectionBlock {...node.fields} />
     ),
   },
 })

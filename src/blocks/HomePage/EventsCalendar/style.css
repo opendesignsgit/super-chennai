@@ -1,6 +1,60 @@
+.EventsCalenderBackground {
+  position: absolute;
+  top: 18%;
+  left: 0;
+  white-space: nowrap;
+  width: 200%;
+  /* animation: scrollText 20s linear infinite; */
+  z-index: 0;
+  opacity: 0.024;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation: scrollText 50s linear infinite;
+}
+
+.EventsCalenderBackground p {
+    font-family: "29LT Bukra SmBd";
+    font-size: clamp(80px, 14vw, 280px);
+    line-height: clamp(100px, 14vw, 230px);
+    text-transform: uppercase;
+}
+.Utilitiesscroll-left {
+  animation-name: scrollLeftVolunteer;
+}
+
+.Utilitiesscroll-right {
+  animation-name: scrollRightVolunteer;
+}
+
+@keyframes scrollLeftVolunteer {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRightVolunteer {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+
+.eventsCalenderMainRow{
+  overflow: hidden;
+  position: relative;
+}
 .EventsCalendarMainSection {
   /* background-color: #f7f7f7; */
   padding-top: 100px;
+  position: relative;
+  overflow: hidden;
 }
 
 .EventsCalendarTitleMain h2 {
@@ -145,7 +199,7 @@
   content: "";
   width: 100%;
   height: 1px;
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   position: absolute;
   bottom: -10px;
 }
@@ -243,6 +297,23 @@
 }
 
 @media (max-width: 768px) {
+  .EventsCalendarTitleMain h2 {
+    font-size: 65px;
+    line-height: 50px;
+    width: 50%;
+  }
+
+  .EventsCalendarMainSection {
+    padding-top: 50px;
+  }
+
+  .eventsCalendarLinks {
+    margin-top: 12px;
+  }
+
+  .EventsCalenderButtons {
+    margin-top: 25px;
+  }
   .CalendarEventsFirst {
     flex-direction: column;
     align-items: center;
@@ -266,8 +337,8 @@
   }
 
   .secondSectionEventsCalendar {
-    column-gap: 22px;
-    justify-content: center;
+    column-gap: 18px;
+    justify-content: flex-start;
   }
 
   .EventsCalendarDateandTime .dateEvents {
@@ -276,8 +347,8 @@
   }
 
   .EventsCalendarDateandTime {
-    width: 85px;
-    height: 85px;
+    width: 78px;
+    height: 78px;
     border-radius: 8px;
   }
 
@@ -314,7 +385,7 @@
   }
 
   .cardMobileSection {
-    padding-top: 10px;
+    padding-top: 30px;
     padding-bottom: 10px;
   }
 

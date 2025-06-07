@@ -183,11 +183,20 @@ export const Investments: CollectionConfig<'investments'> = {
                   label: 'Category Title',
                   type: 'text',
                   required: true,
+                  maxLength: 40,
+                  admin: {
+                    description: 'Maximum 40 characters allowed',
+                  },
                 },
                 {
                   name: 'sectionDescription',
                   label: 'Category Description',
                   type: 'textarea',
+                  maxLength: 200,
+                  admin: {
+                    description: 'Maximum 200 characters allowed',
+                    placeholder: 'Enter a description',
+                  },
                 },
                 {
                   name: 'sectionImage',
@@ -205,6 +214,10 @@ export const Investments: CollectionConfig<'investments'> = {
                       label: 'Investment Title',
                       type: 'text',
                       required: true,
+                      maxLength: 100,
+                      admin: {
+                        description: 'Maximum 100 characters allowed',
+                      },
                     },
                     // {
                     //   name: 'subtitle',
@@ -214,6 +227,10 @@ export const Investments: CollectionConfig<'investments'> = {
                       name: 'description',
                       label: 'Description',
                       type: 'textarea',
+                      maxLength: 200,
+                      admin: {
+                        description: 'Maximum 200 characters allowed',
+                      },
                     },
                     {
                       name: 'image',

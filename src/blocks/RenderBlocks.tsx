@@ -18,7 +18,6 @@ import { StartupChennaiBlockServer } from './HomePage/StartupChennai/Component'
 import TwoColumnFeatureBlock from './HomePage/TwoColumnFeatureBlock/Components'
 import Utilities from './HomePage/Utilities/Component'
 import BecameAVolunteer from './HomePage/Volunteer/Component'
-import FeatureSectionList from './InnerPage/SharedBlocks/featureSectionListLayout/Component'
 import IntroText from './InnerPage/SharedBlocks/IntroText/Components'
 import InvestCategory from './InnerPage/SharedBlocks/InvestCategory/Components'
 import StickyImageScroll from './InnerPage/SharedBlocks/StickyImageScroll/Component'
@@ -28,7 +27,7 @@ import { EventsHomeBlock } from './MainPages/Events/AllEvents'
 import { InnovateSliderBlock } from './MainPages/Innovate/TabWithSlider/Component'
 import InvestmentCategoryListSection from './MainPages/Invest/InvestCategory/Component'
 import ChennaiLifeEssentials from './MainPages/Live/ChennaiLifeEssentials/Components'
-import LiveIntroTextSection from './MainPages/Live/Introtext/Component'
+import LiveIntroTextSection from './MainPages/SharedBlocks/IntroTextWithImage/Component'
 import mainPageBanner from './MainPages/SharedBlocks/Banner/Component'
 import { FormPopupComponent } from './MainPages/SharedBlocks/FormPopup/Components'
 import { PageIntroText } from './MainPages/SharedBlocks/IntroText/Component'
@@ -41,9 +40,6 @@ import { TextHoverImageSection } from './MainPages/Work/Works/Components'
 const blockComponents: {
   [key: string]: React.FC<any>
 } = {
-  // archive: ArchiveBlock,
-  // content: ContentBlock,
-  // cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   visitBanner: VisitBanner,

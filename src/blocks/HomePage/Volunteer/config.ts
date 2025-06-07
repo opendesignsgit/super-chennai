@@ -10,7 +10,9 @@ const BecameAVolunteerBlock: Block = {
     group: 'Homepage Sections',
   },
 
-  fields: [],
+  fields: [
+    
+  ],
 }
 
 export default BecameAVolunteerBlock

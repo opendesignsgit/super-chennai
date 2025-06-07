@@ -20,17 +20,42 @@ export const ExploreBlock: Block = {
           name: 'title',
           type: 'text',
           required: true,
+          maxLength: 15,
+          admin: {
+            description: 'Maximum 15 characters allowed',
+            placeholder: 'Enter a title ',
+          },
         },
         {
           name: 'place',
           type: 'text',
           required: true,
+          maxLength: 15,
+          admin: {
+            description: 'Maximum 15 characters allowed',
+          },
         },
         {
           name: 'image',
           type: 'upload',
           relationTo: 'media',
           required: true,
+        },
+        {
+          name: 'page',
+          type: 'relationship',
+          relationTo: 'visits',
+          required: false,
+          label: 'Select Page Link',
+        },
+        {
+          name: 'customLink',
+          type: 'text',
+          label: 'Or Custom URL',
+          admin: {
+            description: 'This will override the selected page link if provided.',
+            placeholder: ' /some-path',
+          },
         },
       ],
     },

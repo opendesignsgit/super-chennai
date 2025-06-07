@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Media } from 'src/payload-types'
 import Image from 'next/image'
-import './style.css'
+// import './style.css'
 import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 
 type Slide = {
@@ -32,7 +32,7 @@ export default function HeroSliderBlock({ slides = [] }: { slides: Slide[] }) {
 
   return (
     <div className="herobannerSection">
-      <div className="relative w-full h-[90vh] overflow-hidden">
+      <div className="relative w-full h-[105vh] overflow-hidden mobileBanneerHeroSlider ">
         {slides.map((slide, index) => {
           const imageUrl =
             typeof slide.image === 'string' ? slide.image : slide.image?.url || '/fallback.jpg'
@@ -44,7 +44,7 @@ export default function HeroSliderBlock({ slides = [] }: { slides: Slide[] }) {
           return (
             <div
               key={uniqueKey}
-              className={`absolute w-full h-full transition-opacity duration-1000 ease-in-out ${
+              className={`bsolute w-full h-full transition-opacity duration-1000 ease-in-out  ${
                 index === current ? 'opacity-100 z-10' : 'opacity-0 z-0'
               }`}
             >
@@ -52,14 +52,23 @@ export default function HeroSliderBlock({ slides = [] }: { slides: Slide[] }) {
                 src={imageUrl}
                 alt={slide.title || ''}
                 fill
-                className="object-cover"
+                className="w-full h-full object-cover DesktopBanner"
                 priority
               />
+
+              <Image
+                src={imageUrl}
+                alt={slide.title || ''}
+                fill
+                className="w-full h-full object-cover MobileBanner"
+                priority
+              />
+              <div className="absolute inset-0  flex flex-col justify-center items-center text-white text-center p-4"></div>
             </div>
           )
         })}
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+        <div className="absolute bottom-19 left-1/2 -translate-x-1/2 flex gap-3 z-20 heroSliderDots">
           {slides.map((_, i) => (
             <button
               key={`dot-${i}`}
@@ -71,9 +80,9 @@ export default function HeroSliderBlock({ slides = [] }: { slides: Slide[] }) {
             />
           ))}
         </div>
-        <div className="notHomePageSearch">
-          <GlobalSearch placeholderText={'Explore Chennai'} buttonText={'Search'} />
-        </div>
+      </div>
+      <div className="notHomePageSearch">
+        <GlobalSearch placeholderText={'Explore Chennai'} buttonText={'Search'} />
       </div>
     </div>
   )

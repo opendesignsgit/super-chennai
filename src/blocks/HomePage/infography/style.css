@@ -53,8 +53,8 @@
   width: 57%;
 
   color: #000000;
-  font-size: clamp(14px, 2vw, 18px);
-  line-height: clamp(22px, 4vw, 30px);
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: clamp(22px, 4vw, 26px);
 }
 
 .foodSectionSecond {
@@ -62,7 +62,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("/assets/images/FoodImageSectionBg.png");
+  /* background-image: url("../../../assets/images/FoodImageSectionBg.png"); */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -93,7 +93,7 @@
 }
 .foodSectionConatiner h4 {
   font-family: "NewAmsterdam";
-  color: #7e7e7e;
+  color: #a1a1a1;
   font-size: clamp(24px, 5vw, 75px);
   line-height: clamp(28px, 5vw, 70px);
 }
@@ -197,7 +197,7 @@
 
 .DelightPageText {
   position: absolute;
-  top: 55%;
+  top: 43%;
   left: 0;
   white-space: nowrap;
   width: 200%;
@@ -210,9 +210,13 @@
 }
 
 .DelightPageText p {
-  font-family: "29LT Bukra SmBd";
+  /* font-family: "29LT Bukra SmBd";
   font-size: clamp(80px, 10vw, 280px);
   line-height: clamp(100px, 12vw, 150px);
+  text-transform: uppercase; */
+  font-family: "29LT Bukra SmBd";
+  font-size: clamp(80px, 14vw, 280px);
+  line-height: clamp(100px, 14vw, 230px);
   text-transform: uppercase;
 }
 .DelightPageTextscroll-left {
@@ -241,7 +245,119 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1600px) and (min-width: 1000px) {
+  .foodSectionFirst .foodSectionConatiner:first-child {
+    left: 6%;
+  }
+  .foodSectionThird .foodSectionConatiner:first-child {
+    right: 6%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(2) {
+    left: -4%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(2) {
+    right: -4%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(3) {
+    left: -11%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(3) {
+    right: -11%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(4) {
+    left: -4%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(4) {
+    right: -4%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(5) {
+    left: 6%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(5) {
+    right: 6%;
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 800px) {
+
+  .foodSectionConatiner p {
+  
+    font-size: 13px;
+    line-height: 17px;
+    width: 52%;
+    margin-top: 6px;
+}
+
+  .foodSectionConatiner h4 {
+    font-size: 30px;
+    line-height: 30px;
+}
+  .foodSectionFirst .foodSectionConatiner:first-child {
+    left: -1%;
+  }
+  .foodSectionThird .foodSectionConatiner:first-child {
+    right: -1%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(2) {
+    left: -9%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(2) {
+    right: -9%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(3) {
+    left: -13%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(3) {
+    right: -13%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(4) {
+    left: -9%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(4) {
+    right: -9%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(5) {
+    left: -1%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(5) {
+    right: -1%;
+  }
+
+  .FoodSectionDesignContainer {
+    height: 590px;
+  }
+}
+
+@media (max-width: 800px) {
+
+  .DelightPageText {
+    top: 3%;
+}
+  .paragarphTextDiverseFood {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 45px;
+  }
+  .DiverseDelightsText {
+    font-size: 14vw;
+  }
+
   .accordionItem {
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     overflow: hidden;
@@ -301,6 +417,12 @@
   .paragarphTextDiverseFood p {
     width: 90%;
     text-align: center;
+    font-family: "29LT Bukra Regular";
+    font-size: clamp(14px, 1.5vw, 16px);
+    line-height: clamp(22px, 2vw, 26px);
+    color: #000;
+    width: 100%;
+    margin-top: 10px;
   }
 
   .accordionContainer {

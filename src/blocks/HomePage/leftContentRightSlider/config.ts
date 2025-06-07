@@ -1,4 +1,4 @@
-import { Block } from "payload"
+import { Block } from 'payload'
 const SpotlightGallery: Block = {
   slug: 'spotlightGallery',
   labels: {
@@ -13,15 +13,25 @@ const SpotlightGallery: Block = {
       name: 'heading',
       type: 'text',
       required: true,
+      maxLength: 20,
+      admin: {
+        description: 'Maximum 20 characters allowed',
+        placeholder: 'Enter a heading',
+      },
     },
     {
       name: 'description',
       type: 'textarea',
       required: true,
+      maxLength: 500,
+      admin: {
+        description: 'Maximum 500 characters allowed',
+        placeholder: 'Enter a description',
+      },
     },
     {
       name: 'link',
-      type: 'text', // url string
+      type: 'text',
     },
     {
       name: 'items',
@@ -31,14 +41,26 @@ const SpotlightGallery: Block = {
           name: 'name',
           type: 'text',
           required: true,
+          maxLength: 15,
+          admin: {
+            description: 'Maximum 15 characters allowed',
+          },
         },
         {
           name: 'subtitle',
           type: 'text',
+          maxLength: 15,
+          admin: {
+            description: 'Maximum 15 characters allowed',
+          },
         },
         {
           name: 'para',
           type: 'text',
+          maxLength: 200,
+          admin: {
+            description: 'Maximum 200 characters allowed',
+          },
         },
         {
           name: 'image',
@@ -46,10 +68,25 @@ const SpotlightGallery: Block = {
           relationTo: 'media',
           required: true,
         },
+        {
+          name: 'page',
+          type: 'relationship',
+          relationTo: 'events',
+          required: false,
+          label: 'Select Page Link',
+        },
+        {
+          name: 'customLink',
+          type: 'text',
+          label: 'Or Custom URL',
+          admin: {
+            description: 'This will override the selected page link if provided.',
+            placeholder: ' /some-path',
+          },
+        },
       ],
     },
   ],
 }
 
 export default SpotlightGallery
-

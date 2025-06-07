@@ -1,13 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import { motion } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
 
-import './style.css'
-import NoData from 'src/components/NoData'
 import { RichText } from '@payloadcms/richtext-lexical/react'
-import SectionLoader from 'src/components/SectionLoader/component'
+import NoData from 'src/components/NoData'
+import './style.css'
 
 type RichContent = {
   fields?: {
@@ -54,7 +53,7 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
 
   const slide = (direction: 'left' | 'right') => {
     const cardWidth = 300
-    const visibleWidth = 1200
+    const visibleWidth = 40
     const maxSlide = -(allEvents.length * cardWidth - visibleWidth)
 
     setX((prevX) =>
@@ -153,11 +152,38 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
 
     fetchEvents()
   }, [])
+  const lastScrollY = useRef(0)
+  const bgTextRef = useRef(null)
+  const [scrollDir, setScrollDir] = useState('left')
 
-  if (loading) return <SectionLoader message="Loading volunteer events..." />
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
 
+      if (currentScrollY > lastScrollY.current) {
+        setScrollDir('left')
+      } else {
+        setScrollDir('right')
+      }
+
+      lastScrollY.current = currentScrollY
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+  // if (loading) return <SectionLoader message="Loading volunteer events..." />
   return (
     <div className="EventsCalendarMainSection">
+      <div
+        className={`EventsCalenderBackground ${
+          scrollDir === 'right' ? 'Utilitiesscroll-right' : 'Utilitiesscroll-left'
+        }`}
+        ref={bgTextRef}
+      >
+        <p>Events &nbsp; Events &nbsp; Events &nbsp; Events </p>
+        <p>Calendar &nbsp; Calendar &nbsp; Calendar &nbsp; Calendar</p>
+      </div>
       <div className="container max-w-7xl mx-auto px-4 EventsCalendarTitleMain">
         <h2>{heading}</h2>
         <p>{description}</p>
@@ -168,12 +194,10 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
           <div className="CalendarEventsFirst">
             {isFeaturedEvent.event?.image?.url && (
               <Link href={isFeaturedEvent.link || '#'}>
-                <Image
+                <img
+                  // className="eventsCalenderIamge"
                   src={isFeaturedEvent.event.image.url}
                   alt={isFeaturedEvent.title || 'Featured event'}
-                  width={600}
-                  height={300}
-                  style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
                 />
               </Link>
             )}
@@ -221,7 +245,7 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
 
               <p
                 onClick={() => {
-                  window.location.href = '/eventsmain'
+                  window.location.href = '/events'
                   window.scrollTo({ top: 0 })
                 }}
                 className="FindOutMore"
@@ -236,14 +260,14 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
       </div>
 
       {allEvents.length > 0 ? (
-        <div className="overflow-hidden py-17 p-10 cardMobileSection">
+        <div className="overflow-hidden py-17 cardMobileSection">
           <div className="relative">
             <div className="absolute top-0 left-0 h-full w-16 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
             <div className="absolute top-0 right-0 h-full w-16 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
 
             <motion.div
               ref={carouselRef}
-              className="flex gap-10 cursor-grab active:cursor-grabbing"
+              className="flex gap-10 cursor-grab active:cursor-grabbing cardsMobileSection"
               drag="x"
               dragConstraints={{ right: 0, left: -1200 }}
               animate={{ x }}
@@ -256,16 +280,14 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
                 >
                   <div className="relative w-full h-[250px]">
                     <Link href={event.link || '#'}>
-                      <Image
+                      <img
+                        className="w-full h-full object-cover rounded-t-md"
                         src={
                           typeof event.image === 'string'
                             ? event.image
                             : event.image?.url || '/fallback.jpg'
                         }
                         alt={event.title || 'Event image'}
-                        layout="fill"
-                        objectFit="cover"
-                        className="rounded-t-md"
                       />
                     </Link>
 
@@ -281,7 +303,7 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
                     </div>
                     <h3 className="EventsCalendarTitlecss">{event.title}</h3>
 
-                    <h4 className="EventsCalendarContent">
+                    <h4 className="EventsCalendarContentcss">
                       {typeof event.content === 'string' ? (
                         <p>{event.content}</p>
                       ) : event.content?.fields?.about ? (

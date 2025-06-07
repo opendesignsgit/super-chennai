@@ -17,9 +17,9 @@ type VisitIntroTextProps = {
 const getTextSizeClass = (size: string) => {
   switch (size) {
     case 'sm':
-      return 'IntroTextSmall'
+      return 'VolunteeerTextBackground scroll-left'
     case 'lg':
-      return 'IntroTextBig'
+      return 'InvestTextBackground scroll-rightInvestPage'
   }
 }
 
@@ -59,13 +59,8 @@ export const PageIntroText = ({
         </div>
 
         {showMarquee && marqueeText && (
-          <div
-            className={`InvestTextBackground ${
-              scrollDir === 'right' ? 'scroll-right' : 'scroll-left'
-            }`}
-            ref={bgTextRef}
-          >
-            <p className={getTextSizeClass(marqueeTextSize ?? '')}>{marqueeText}</p>
+          <div className={getTextSizeClass(marqueeTextSize ?? '')} ref={bgTextRef}>
+            <p>{marqueeText}</p>
           </div>
         )}
       </div>

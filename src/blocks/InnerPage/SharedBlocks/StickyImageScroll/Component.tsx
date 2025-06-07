@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import arrowImage from '@/assets/icons/LinkArrowRightIcon.svg'
-import './style.css'
+// import './style.css'
 
 type Card = {
   image: {

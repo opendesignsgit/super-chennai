@@ -13,6 +13,8 @@ type TrendingItem = {
     url: string
     alt?: string
   }
+  page?: { slug: string }
+  customLink?: string
 }
 
 type Props = {
@@ -28,7 +30,7 @@ export default function SpotlightGallerySection({ heading, description, link, it
   const lastScrollY = useRef(0)
   const bgTextRef = useRef<HTMLDivElement>(null)
 
-  const visibleCount = 3
+  const visibleCount = 0
   const defaultWidth = 100
   const activeWidth = 450
   const margin = 10
@@ -103,7 +105,7 @@ export default function SpotlightGallerySection({ heading, description, link, it
           </div>
 
           <div className="trendccol trendcRight">
-            <div className="relative">
+            <div className="relative w-full">
               <div
                 className="sliders-container h-[60vh]"
                 style={{
@@ -123,12 +125,13 @@ export default function SpotlightGallerySection({ heading, description, link, it
                 >
                   {items.map((item, index) => {
                     const isActive = index === currentIndex
-                    // Optionally hide last two items (comment out if you want all visible)
-                    const isHidden = index >= items.length - 2
+                    const isHidden = index >= items.length - 0
 
-                    return (
+                    const href =
+                      item.customLink || (item.page?.slug ? `/visits/${item.page.slug}` : null)
+
+                    const cardContent = (
                       <div
-                        key={index}
                         className={`panes ${isActive ? 'active' : ''} ${isHidden ? 'hide' : ''}`}
                         style={{
                           flex: '0 0 auto',
@@ -163,6 +166,14 @@ export default function SpotlightGallerySection({ heading, description, link, it
                           </div>
                         </div>
                       </div>
+                    )
+
+                    return href ? (
+                      <Link href={href} key={index}>
+                        {cardContent}
+                      </Link>
+                    ) : (
+                      <div key={index}>{cardContent}</div>
                     )
                   })}
                 </div>

@@ -15,8 +15,32 @@ import './globals.css'
 import { getServerSideURL } from 'src/utilities/getURL'
 import Footer from 'src/Footer/Component'
 import { Header } from '@/Header/Component'
-// import Header from '@/Header----/Component'
 
+import '@/assets/Css/Accomodation.css'
+import '@/assets/Css/Becameavolunteer.css'
+import '@/assets/Css/Carousel.css'
+import '@/assets/Css/ChennaiChillZone.css'
+import '@/assets/Css/ChennaiInvestments.css'
+import '@/assets/Css/CostOfLiving.css'
+import '@/assets/Css/CostOfLiving1.css'
+import '@/assets/Css/EventsCalendar.css'
+import '@/assets/Css/Eventstyle.css'
+import '@/assets/Css/ExampleHeader.css'
+import '@/assets/Css/Explore.css'
+import '@/assets/Css/Footer.css'
+import '@/assets/Css/Funchennai.css'
+import '@/assets/Css/Header.css'
+import '@/assets/Css/HeroSlider.css'
+import '@/assets/Css/Innovate.css'
+import '@/assets/Css/InnovateSlider.css'
+import '@/assets/Css/Volunteer.css'
+
+import '@/assets/Css/Invest.css'
+import '@/assets/Css/Live.css'
+// import '@/assets/Css/MenuBar.css'
+// import '@/assets/Css/Search.css'
+// import '@/assets/Css/SearchResults.css'
+// import '@/assets/Css/SocialChennai.css'
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
@@ -34,7 +58,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               preview: isEnabled,
             }}
           />
-
           <Header />
           {children}
           <Footer />

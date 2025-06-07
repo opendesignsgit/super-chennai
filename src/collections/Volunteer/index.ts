@@ -94,14 +94,26 @@ export const Volunteer: CollectionConfig<'volunteer'> = {
               name: 'Voluenteer title',
               type: 'text',
               required: true,
+              maxLength: 100,
+              admin: {
+                description: 'Maximum 100 characters allowed',
+              },
             },
             {
               name: 'subtitle',
               type: 'text',
+              maxLength: 400,
+              admin: {
+                description: 'Maximum 400 characters allowed',
+              },
             },
             {
               name: 'description',
               type: 'textarea',
+              maxLength: 400,
+              admin: {
+                description: 'Maximum 400 characters allowed',
+              },
             },
             {
               name: 'content',

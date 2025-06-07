@@ -27,7 +27,6 @@ import HotelsInChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/ZigZagConten
 import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/config'
 import { socialReelSlider } from 'src/blocks/HomePage/SocialChennai/config'
 import InnerPageBanner from 'src/blocks/InnerPage/SharedBlocks/Banners/config'
-import { careerIntroBlock } from 'src/blocks/InnerPage/SharedBlocks/careerIntro/config'
 import FeatureSectionsBlock from 'src/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
 import { GlobalSearchBlock } from 'src/blocks/HomePage/GlobalSearch/config'
 import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
@@ -103,7 +102,6 @@ export const work: CollectionConfig<'work'> = {
                         ExploreMoreChennaiBlock,
                         socialReelSlider,
                         InnerPageBanner,
-                        careerIntroBlock,
                         FeatureSectionsBlock,
                         GlobalSearchBlock,
                         introTextBlock,

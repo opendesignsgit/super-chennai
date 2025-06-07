@@ -5,7 +5,6 @@ import { FeatureSectionsProps } from 'src/models/innerpage/businessModels'
 import { Media } from 'src/payload-types'
 
 export default function FeatureSections({ sections }: FeatureSectionsProps) {
-  console.log('sections', sections)
   return (
     <>
       {sections?.map((section, index) => (

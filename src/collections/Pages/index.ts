@@ -25,7 +25,7 @@ import InnerPageBanner from 'src/blocks/InnerPage/SharedBlocks/Banners/config'
 import HotelsInChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
 import AllEvents from 'src/blocks/MainPages/Events/config'
 import ChennaiLifeEssentialSection from 'src/blocks/MainPages/Live/ChennaiLifeEssentials/config'
-import liveIntrorSection from 'src/blocks/MainPages/Live/Introtext/config'
+import liveIntrorSection from '@/blocks/MainPages/SharedBlocks/IntroTextWithImage/config'
 import mainPageBannerBlock from 'src/blocks/MainPages/SharedBlocks/Banner/config'
 import { FormPopup } from 'src/blocks/MainPages/SharedBlocks/FormPopup/config'
 import IntroTextBlock from 'src/blocks/MainPages/SharedBlocks/IntroText/config'
@@ -98,12 +98,6 @@ export const Pages: CollectionConfig<'pages'> = {
               name: 'layout',
               type: 'blocks',
               blocks: [
-                // CallToAction,
-                // Content,
-                // MediaBlock,
-                // Archive,
-                // FormBlock,
-                // VisitBannerBlock,
                 ExploreBlock,
                 FunChennaiBlock,
                 StartupChennaiBlock,
@@ -133,7 +127,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 ChennaiLifeEssentialSection,
                 investmentCategoryListBlock,
                 innovateSlider,
-                TextHoverImageSection
+                TextHoverImageSection,
               ],
               required: true,
               admin: {

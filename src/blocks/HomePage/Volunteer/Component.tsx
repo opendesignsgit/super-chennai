@@ -1,11 +1,10 @@
 'use client'
 
-import NoData from 'src/components/NoData'
-import SectionLoader from 'src/components/SectionLoader/component'
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import NoData from 'src/components/NoData'
 import './style.css'
 
 type Slide = {
@@ -64,7 +63,7 @@ export default function BecameAVolunteer({ heading, title, description }: Props)
     fetchEvents()
   }, [])
 
-  if (loading) return <SectionLoader message="Loading volunteer events..." />
+  // if (loading) return <SectionLoader message="Loading volunteer events..." />
 
   const nextSlide = () => {
     if (slides.length > 0) {

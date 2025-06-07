@@ -8,6 +8,12 @@ export const introTextBlock: Block = {
   },
   fields: [
     {
+      name: 'showMarquee',
+      type: 'checkbox',
+      label: 'Show Marquee Text?',
+      defaultValue: true,
+    },
+    {
       name: 'title',
       type: 'text',
       required: true,
@@ -20,6 +26,17 @@ export const introTextBlock: Block = {
     {
       name: 'marqueeText',
       type: 'text',
+      required: true,
+    },
+    {
+      name: 'backgroundType',
+      type: 'select',
+      label: 'Background Type Dotted',
+      options: [
+        { label: 'None', value: 'none' },
+        { label: 'Background Image', value: 'background' },
+      ],
+      defaultValue: 'none',
       required: true,
     },
   ],
