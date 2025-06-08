@@ -3,7 +3,7 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import Slider from 'react-slick'
-// import './style.css'
+import './style.css'
 
 type VisitItem = {
   id: string

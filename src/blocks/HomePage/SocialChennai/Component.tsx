@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Marquee from 'react-fast-marquee'
 import Image from 'next/image'
 import NoData from 'src/components/NoData'
-import './style.css'
+// import './style.css'
 
 type InstagramReel = {
   id: string
@@ -19,7 +19,7 @@ type Props = {
   description: string
 }
 
-export default function SocialReelSlider({ heading, description }: Props) {
+export default function SocialChennai({ heading, description }: Props) {
   const [reels, setReels] = useState<InstagramReel[]>([])
   const [scrollDir, setScrollDir] = useState<'left' | 'right'>('left')
   const lastScrollY = useRef(0)
@@ -41,8 +41,7 @@ export default function SocialReelSlider({ heading, description }: Props) {
         const data = await res.json()
         if (Array.isArray(data.data)) {
           const filtered = data.data.filter(
-            (item: InstagramReel) =>
-              item.media_type === 'VIDEO' || item.media_type === 'IMAGE'
+            (item: InstagramReel) => item.media_type === 'VIDEO' || item.media_type === 'IMAGE',
           )
           setReels(filtered)
         } else {
@@ -85,7 +84,7 @@ export default function SocialReelSlider({ heading, description }: Props) {
                 key={reel.id}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`mx-4 ${index % 2 !== 0 ? 'mt-18' : 'mt-0'}`}
+                className={`mx-4 pb-4 ${index % 2 !== 0 ? 'mt-[80px]' : 'mt-0'}`}
               >
                 {reel.media_type === 'VIDEO' ? (
                   <video

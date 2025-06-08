@@ -3,12 +3,12 @@
 import Link from 'next/link'
 import './style.css'
 
+import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 import { usePathname, useSearchParams } from 'next/navigation'
 import React from 'react'
 import { Media } from 'src/components/Media'
 import type { Post } from 'src/payload-types'
 import { formatAuthors } from 'src/utilities/formatAuthors'
-import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 
 export const PostHero: React.FC<{
   post: Post

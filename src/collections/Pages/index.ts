@@ -8,6 +8,15 @@ import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 
+import liveIntrorSection from '@/blocks/MainPages/SharedBlocks/IntroTextWithImage/config'
+import TextHoverImageSection from '@/blocks/MainPages/Work/Works/config'
+import {
+  MetaDescriptionField,
+  MetaImageField,
+  MetaTitleField,
+  OverviewField,
+  PreviewField,
+} from '@payloadcms/plugin-seo/fields'
 import ContentZoneCarousel from 'src/blocks/HomePage/ContentZoneCarousel/config'
 import EventsCalendarBlock from 'src/blocks/HomePage/EventsCalendar/config'
 import { ExploreBlock } from 'src/blocks/HomePage/Explore/config'
@@ -24,24 +33,15 @@ import BecameAVolunteerBlock from 'src/blocks/HomePage/Volunteer/config'
 import InnerPageBanner from 'src/blocks/InnerPage/SharedBlocks/Banners/config'
 import HotelsInChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
 import AllEvents from 'src/blocks/MainPages/Events/config'
+import { innovateSlider } from 'src/blocks/MainPages/Innovate/TabWithSlider/config'
+import investmentCategoryListBlock from 'src/blocks/MainPages/Invest/InvestCategory/config'
 import ChennaiLifeEssentialSection from 'src/blocks/MainPages/Live/ChennaiLifeEssentials/config'
-import liveIntrorSection from '@/blocks/MainPages/SharedBlocks/IntroTextWithImage/config'
 import mainPageBannerBlock from 'src/blocks/MainPages/SharedBlocks/Banner/config'
 import { FormPopup } from 'src/blocks/MainPages/SharedBlocks/FormPopup/config'
 import IntroTextBlock from 'src/blocks/MainPages/SharedBlocks/IntroText/config'
 import VisitCategory from 'src/blocks/MainPages/Visit/VisitCategory/config'
 import volunteerBecameListBlock from 'src/blocks/MainPages/Volunteer/Volunteers/config'
 import HeroSlider from 'src/blocks/PageBanners/Home/config'
-import {
-  MetaDescriptionField,
-  MetaImageField,
-  MetaTitleField,
-  OverviewField,
-  PreviewField,
-} from '@payloadcms/plugin-seo/fields'
-import investmentCategoryListBlock from 'src/blocks/MainPages/Invest/InvestCategory/config'
-import { innovateSlider } from 'src/blocks/MainPages/Innovate/TabWithSlider/config'
-import TextHoverImageSection from '@/blocks/MainPages/Work/Works/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -128,6 +128,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 investmentCategoryListBlock,
                 innovateSlider,
                 TextHoverImageSection,
+
+                
               ],
               required: true,
               admin: {

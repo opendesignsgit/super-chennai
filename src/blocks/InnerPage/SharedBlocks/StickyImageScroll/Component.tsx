@@ -1,8 +1,9 @@
 'use client'
+
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import arrowImage from '@/assets/icons/LinkArrowRightIcon.svg'
-// import './style.css'
 
 type Card = {
   image: {
@@ -13,11 +14,14 @@ type Card = {
   }
   title: string
   description: string
-  link?: string
+  customLink?: string
+  page?: {
+    slug: string
+  }
 }
 
 type StickyImageScrollProps = {
-  backgroundType: 'color' | 'image'
+  backgroundType: 'color' | 'none'
   backgroundColor?: string
   leftImage: {
     url: string
@@ -33,21 +37,15 @@ type StickyImageScrollProps = {
 
 export default function StickyImageScroll({
   backgroundType,
-  backgroundColor = '#7d377c',
+  backgroundColor,
   smallText,
   leftImage,
   title,
   description,
   cards,
 }: StickyImageScrollProps) {
-  const sectionStyle =
-    backgroundType === 'color'
-      ? { backgroundColor: backgroundColor }
-      : {
-          backgroundImage: arrowImage,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }
+  const sectionStyle = backgroundType === 'color' ? { backgroundColor: backgroundColor } : {}
+
   return (
     <section className="clcSecscrl flex" style={sectionStyle}>
       <div className="clcscrlCol clcscrlLft relative">
@@ -60,7 +58,7 @@ export default function StickyImageScroll({
             priority={true}
           />
 
-          <div className="clcscrLtitle bg-[#682865] relative">
+          <div className="clcscrLtitle bg-[#672866] relative">
             <h2 className="flex flex-col">
               <small>{smallText}</small> {title}
             </h2>
@@ -69,31 +67,36 @@ export default function StickyImageScroll({
           </div>
         </div>
       </div>
+
       <div className="clcscrlCol clcscrlRight padbtm">
         <div className="clcscrlinRBox MainSectionHovered">
-          {cards?.map((card, index) => (
-            <div key={index} className="clcboxItemss flex">
-              <div className="clcboxIImg">
-                <Image
-                  src={card.image.url}
-                  alt={card.title}
-                  width={card.image.width}
-                  height={card.image.height}
-                />
+          {cards?.map((card, index) => {
+            const link = card.customLink || (card.page?.slug ? `/visits/${card.page.slug}` : null)
+
+            return (
+              <div key={index} className="clcboxItemss flex">
+                <div className="clcboxIImg">
+                  <Image
+                    src={card.image.url}
+                    alt={card.image.alt || card.title}
+                    width={card.image.width}
+                    height={card.image.height}
+                  />
+                </div>
+                <div className="clcboxICont">
+                  <h3>{card.title}</h3>
+                  <p>{card.description}</p>
+                  {link && (
+                    <p className="linkpara">
+                      <Link href={link}>
+                        <Image src={arrowImage.src} alt="Link arrow" width={24} height={24} />
+                      </Link>
+                    </p>
+                  )}
+                </div>
               </div>
-              <div className="clcboxICont">
-                <h3>{card.title}</h3>
-                <p>{card.description}</p>
-                {card.link && (
-                  <p className="linkpara">
-                    <a href={card.link}>
-                      <Image src={arrowImage.src} alt="Link arrow" width={24} height={24} />
-                    </a>
-                  </p>
-                )}
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

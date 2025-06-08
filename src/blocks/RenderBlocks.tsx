@@ -1,10 +1,8 @@
-// import { ArchiveBlock } from 'src/blocks/ArchiveBlock/Component'
-// import { CallToActionBlock } from 'src/blocks/CallToAction/Component'
-// import { ContentBlock } from 'src/blocks/Content/Component'
+
+import React, { Fragment } from 'react'
 import { FormBlock } from 'src/blocks/Form/Component'
 import { MediaBlock } from 'src/blocks/MediaBlock/Component'
 import type { Page } from 'src/payload-types'
-import React, { Fragment } from 'react'
 import { ContentZoneCarousel } from './HomePage/ContentZoneCarousel/Component'
 import { EventsCalendarBlock } from './HomePage/EventsCalendar/Component'
 import { ExploreBlockServer } from './HomePage/Explore/Components'
@@ -27,15 +25,15 @@ import { EventsHomeBlock } from './MainPages/Events/AllEvents'
 import { InnovateSliderBlock } from './MainPages/Innovate/TabWithSlider/Component'
 import InvestmentCategoryListSection from './MainPages/Invest/InvestCategory/Component'
 import ChennaiLifeEssentials from './MainPages/Live/ChennaiLifeEssentials/Components'
-import LiveIntroTextSection from './MainPages/SharedBlocks/IntroTextWithImage/Component'
 import mainPageBanner from './MainPages/SharedBlocks/Banner/Component'
 import { FormPopupComponent } from './MainPages/SharedBlocks/FormPopup/Components'
 import { PageIntroText } from './MainPages/SharedBlocks/IntroText/Component'
+import LiveIntroTextSection from './MainPages/SharedBlocks/IntroTextWithImage/Component'
 import { VisitCategory } from './MainPages/Visit/VisitCategory/Component'
 import VolunteerBecameSection from './MainPages/Volunteer/Volunteers/Components'
+import { TextHoverImageSection } from './MainPages/Work/Works/Components'
 import HeroSliderBlock from './PageBanners/Home/Component'
 import { VisitBanner } from './PageBanners/VisitBanner/Component'
-import { TextHoverImageSection } from './MainPages/Work/Works/Components'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -73,6 +71,10 @@ const blockComponents: {
   investmentCategoryList: InvestmentCategoryListSection,
   innovateSlider: InnovateSliderBlock,
   textHoverImageSection: TextHoverImageSection,
+
+
+  // TESTING 
+
 }
 
 export const RenderBlocks: React.FC<{

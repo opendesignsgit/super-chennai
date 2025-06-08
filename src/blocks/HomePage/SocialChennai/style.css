@@ -79,7 +79,7 @@
   }
 }
 
-@keyframes scrollRight {
+@keyframes scrollRight {  
   0% {
     transform: translateX(-50%);
   }

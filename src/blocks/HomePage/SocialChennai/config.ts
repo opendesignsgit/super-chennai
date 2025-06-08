@@ -14,6 +14,7 @@ export const socialReelSlider: Block = {
       name: 'heading',
       type: 'text',
       maxLength: 100,
+      defaultValue: 'Social Chennai',
       admin: {
         description: 'Maximum 100 characters allowed',
       },
@@ -21,18 +22,12 @@ export const socialReelSlider: Block = {
     {
       name: 'description',
       type: 'textarea',
+      defaultValue:
+        '  Make connections, participate, and add to Chennai s lively social events and community projects',
       maxLength: 400,
       admin: {
         description: 'Maximum 400 characters allowed',
       },
-    },
-    {
-      name: 'reelsRef',
-      type: 'relationship',
-      relationTo: 'social-reels',
-      hasMany: false,
-      label: 'Select Reel Group',
-      // required: true,
     },
   ],
 }

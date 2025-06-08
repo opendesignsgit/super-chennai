@@ -341,7 +341,6 @@ export interface Page {
          * Maximum 400 characters allowed
          */
         description?: string | null;
-        reelsRef?: (number | null) | SocialReel;
         id?: string | null;
         blockName?: string | null;
         blockType: 'socialReelSlider';
@@ -1080,23 +1079,6 @@ export interface Investment {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "social-reels".
- */
-export interface SocialReel {
-  id: number;
-  title: string;
-  reels?:
-    | {
-        thumbnail: number | Media;
-        link: string;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "events".
  */
 export interface Event {
@@ -1558,6 +1540,23 @@ export interface VolunteerSlide {
     metaKeywords?: string | null;
     canonicalUrl?: string | null;
   };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "social-reels".
+ */
+export interface SocialReel {
+  id: number;
+  title: string;
+  reels?:
+    | {
+        thumbnail: number | Media;
+        link: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -2188,7 +2187,6 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               heading?: T;
               description?: T;
-              reelsRef?: T;
               id?: T;
               blockName?: T;
             };

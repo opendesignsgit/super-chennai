@@ -2,8 +2,6 @@
 
 import React, { useRef, useState } from 'react'
 import dotedImage from '@/assets/images/doted.png'
-import '../css/style.css'
-import './style.css'
 
 type IntroTextProps = {
   title?: string
@@ -40,7 +38,7 @@ export default function IntroText({
         </div>
 
         <div className="workIntro">
-          {title && <h2>{title}</h2>}
+          {title && <h3>{title}</h3>}
           {description && (
             <p dangerouslySetInnerHTML={{ __html: description.replace(/\n/g, '<br/>') }} />
           )}

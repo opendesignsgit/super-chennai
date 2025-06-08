@@ -29,6 +29,7 @@ import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/c
 import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
 import ZigZagContentBlock from 'src/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
 import featureSectionSplitLayoutBlock from 'src/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/config'
+import StickyImageScroll from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
 export const Visits: CollectionConfig<'visits'> = {
   slug: 'visits',
   access: {
@@ -100,6 +101,7 @@ export const Visits: CollectionConfig<'visits'> = {
                         socialReelSlider,
                         introTextBlock,
                         featureSectionSplitLayoutBlock,
+                        StickyImageScroll
                       ],
                     }),
                     FixedToolbarFeature(),

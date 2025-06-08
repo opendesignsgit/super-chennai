@@ -78,7 +78,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URI,
       ssl: false,
-      connectionTimeoutMillis: 10000,
+      connectionTimeoutMillis: 20000,
       idleTimeoutMillis: 30000,
     },
   }),

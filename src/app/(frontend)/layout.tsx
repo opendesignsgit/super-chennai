@@ -40,7 +40,7 @@ import '@/assets/Css/Live.css'
 // import '@/assets/Css/MenuBar.css'
 // import '@/assets/Css/Search.css'
 // import '@/assets/Css/SearchResults.css'
-// import '@/assets/Css/SocialChennai.css'
+import '@/assets/Css/SocialChennai.css'
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
