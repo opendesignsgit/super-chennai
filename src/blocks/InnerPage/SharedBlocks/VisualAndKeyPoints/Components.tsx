@@ -34,11 +34,9 @@ export default function FeatureSections({ sections }: FeatureSectionsProps) {
                 {tenant.points?.map((item, j) => (
                   <div key={j} className="clcboxItemss flex mb-4">
                     <div className="clcboxIImg">
-                      <Image
+                      <img
                         src={(item.imgs as Media)?.url ?? '/fallback-image.jpg'}
                         alt={item.title}
-                        width={100}
-                        height={100}
                       />
                     </div>
                     <div className="clcboxICont">
