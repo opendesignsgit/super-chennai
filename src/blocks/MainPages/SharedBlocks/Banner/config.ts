@@ -15,6 +15,11 @@ const mainPageBannerBlock: Block = {
       type: 'text',
       label: 'Heading',
       required: true,
+      maxLength: 50,
+      admin: {
+        description: 'Maximum 50 characters allowed',
+        placeholder: 'Enter a concise heading',
+      },
     },
     {
       name: 'image',

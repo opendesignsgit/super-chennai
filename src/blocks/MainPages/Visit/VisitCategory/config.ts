@@ -1,34 +1,3 @@
-// import { Block } from 'payload'
-
-// const VisitCategory: Block = {
-//   slug: 'visitcategory',
-//   labels: {
-//     singular: 'Visit Category',
-//     plural: 'Visit Categories',
-//   },
-//   fields: [
-//     {
-//       name: 'title',
-//       type: 'text',
-//       required: true,
-//     },
-//     {
-//       name: 'description',
-//       type: 'textarea',
-//     },
-//     {
-//       name: 'visitGroupRef',
-//       type: 'relationship',
-//       relationTo: 'visitGroups',
-//       label: 'Select Visit Group',
-//       required: true,
-//     },
-
-//   ],
-// }
-
-// export default VisitCategory
-
 import { Block } from 'payload'
 
 const VisitCategory: Block = {
@@ -45,10 +14,18 @@ const VisitCategory: Block = {
       name: 'title',
       type: 'text',
       required: true,
+      maxLength: 100,
+      admin: {
+        description: 'Maximum 100 characters allowed',
+      },
     },
     {
       name: 'description',
       type: 'textarea',
+      maxLength: 800,
+      admin: {
+        description: 'Maximum 800 characters allowed',
+      },
     },
     {
       name: 'items',
@@ -64,7 +41,12 @@ const VisitCategory: Block = {
         {
           name: 'description',
           type: 'textarea',
+          maxLength: 800,
+          admin: {
+            description: 'Maximum 800 characters allowed',
+          },
         },
+        
         {
           name: 'image',
           type: 'upload',

@@ -425,6 +425,9 @@ export interface Page {
         blockType: 'Banner';
       }
     | {
+        /**
+         * Maximum 50 characters allowed
+         */
         heading: string;
         image: number | Media;
         backgroundColor?:

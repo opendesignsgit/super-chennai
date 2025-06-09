@@ -38,7 +38,7 @@ export const StickyImageScroll: Block = {
       type: 'text',
       required: false,
       defaultValue: '',
-      maxLength: 20,
+      maxLength: 100,
       admin: {
         description: 'Maximum 20 characters allowed',
       },
@@ -47,7 +47,7 @@ export const StickyImageScroll: Block = {
       name: 'title',
       type: 'text',
       required: false,
-      maxLength: 50,
+      maxLength: 100,
       admin: {
         description: 'Maximum 50 characters allowed',
       },
@@ -56,7 +56,7 @@ export const StickyImageScroll: Block = {
       name: 'description',
       type: 'textarea',
       required: true,
-      maxLength: 400,
+      maxLength: 600,
       admin: {
         description: 'Maximum 400 characters allowed',
       },
@@ -86,7 +86,7 @@ export const StickyImageScroll: Block = {
           name: 'description',
           type: 'textarea',
           required: true,
-          maxLength: 500,
+          maxLength: 600,
           admin: {
             description: 'Maximum 500 characters allowed',
           },
