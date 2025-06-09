@@ -1,0 +1,256 @@
+/* General Header Styles */
+.header {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  background: transparent;
+  transition: transform 0.3s ease;
+  width: 100%;
+}
+
+.header.hide {
+  transform: translateY(-100%);
+}
+
+.header.show {
+  transform: translateY(0);
+}
+
+.header-container {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 32px;
+  width: 100%;
+  box-sizing: border-box;  /* Prevents overflow */
+  position: relative;
+}
+
+/* Logo */
+.logo img {
+  width: 156px;
+  height: auto;
+}
+
+.LogoDynamicSection {
+  width: 156px;
+  height: 115px;
+  background-image: url("../images/super-chennai-logo-final-header.png");
+  background-size: contain;
+}
+
+
+.notHome .LogoDynamicSection {
+  width: 156px;
+  height: 115px;
+  background-image: url("../images/super-chennai-logo-final.png");
+  background-size: contain;
+}
+
+
+/* Hamburger */
+.hamburger {
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+}
+
+/* Navigation */
+.navbarContents {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  padding: 9px 16px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  position: relative;
+  z-index: 1000;
+}
+
+.nav-item-wrapper {
+  position: relative;
+}
+
+.nav-item button {
+  background: none;
+  border: none;
+  font-weight: 500;
+  font-size: 13px;
+  color: #333;
+  font-family: "29LT Bukra SmBd";
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-item button:hover {
+  color: #995098;
+}
+
+/* Mega Menu */
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.mega-menu-full {
+  position: absolute;
+  top: 73%;
+  left: 0;
+  width: 100vw;
+  background: white;
+  z-index: 1000000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  border-bottom: 10px solid #995098;
+}
+
+.megamenuinnerFirstSection{
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 36px;
+  row-gap: 36px;
+  height: max-content;
+  padding: 40px 0;
+}
+.submenu-block{
+  height: max-content;
+  width: 30%;
+}
+.megamenuinnerSecondSection{
+  width: 36%;
+}
+
+.submenu-description{
+  width: 75%;
+  margin-top: 3px;
+  font-family: '29LT Bukra Regular';
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+  font-weight: 500;
+}
+
+/* Center Mega Menu Content */
+.mega-menu-inner {
+  max-width: 1440px;
+  align-items: center;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  padding: 0 32px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+
+
+.mega-menu-inner a:hover {
+
+}
+
+/* Profile */
+.profile {
+  font-weight: 600;
+  font-size: 15px;
+  font-family: "29LT Bukra SmBd";
+  letter-spacing: 1px;
+  line-height: 20px;
+}
+
+.profile:hover{
+  cursor: pointer;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  background: white;
+  border-top: 1px solid #ddd;
+  padding: 12px 16px;
+}
+
+.mobile-section {
+  margin-bottom: 16px;
+}
+
+.mobile-section p {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.submenu a {
+  display: block;
+  color: #555;
+  font-size: 14px;
+  margin-left: 12px;
+  padding: 4px 0;
+  text-decoration: none;
+}
+
+.submenu a:hover {
+  color: #2563eb;
+}
+
+.mobile-profile img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.mega-menu-container.show .mega-menu {
+  display: block;
+}
+
+/* .WorkBgSection .navbarContents {
+  border-top: 1px solid #c070c9;
+  border-bottom: 1px solid #c070c9;
+}
+
+.InvestBgSection .navbarContents{
+  border-top: 1px solid rgba(255,255,255, 0.2);
+  border-bottom: 1px solid rgba(255,255,255, 0.2);
+}
+
+.WorkBgSection .navbarContents{
+  border-top: 1px solid #8272ca;
+  border-bottom: 1px solid #7596ca;
+} */
+
+
+
+
+/* Disable Horizontal Scrolling */
+body {
+  overflow-x: hidden; /* Prevents any horizontal scroll on the body */
+}
+
+.SubtitleHeadingsStyle{
+  font-family: '29LT Bukra SmBd';
+  color: #a44294;
+  font-size: 17px;
+  line-height: 20px;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .profile {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .navbarContents {
+    display: none;
+  }
+}

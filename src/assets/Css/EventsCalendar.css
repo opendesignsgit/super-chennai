@@ -1,0 +1,398 @@
+.EventsCalenderBackground {
+  position: absolute;
+  top: 18%;
+  left: 0;
+  white-space: nowrap;
+  width: 200%;
+  /* animation: scrollText 20s linear infinite; */
+  z-index: 0;
+  opacity: 0.024;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation: scrollText 50s linear infinite;
+}
+
+.EventsCalenderBackground p {
+    font-family: "29LT Bukra SmBd";
+    font-size: clamp(80px, 14vw, 280px);
+    line-height: clamp(100px, 14vw, 230px);
+    text-transform: uppercase;
+}
+.Utilitiesscroll-left {
+  animation-name: scrollLeftVolunteer;
+}
+
+.Utilitiesscroll-right {
+  animation-name: scrollRightVolunteer;
+}
+
+@keyframes scrollLeftVolunteer {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRightVolunteer {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+
+.eventsCalenderMainRow{
+  overflow: hidden;
+  position: relative;
+}
+.EventsCalendarMainSection {
+  /* background-color: #f7f7f7; */
+  padding-top: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.EventsCalendarTitleMain h2 {
+  font-family: "NewAmsterdam";
+  font-size: 100px;
+  line-height: 79px;
+  color: #da644a;
+}
+
+.EventsCalendarTitleMain p {
+  font-family: "29LT Bukra Regular";
+  font-size: 16px;
+  line-height: 26px;
+  color: #000;
+  width: 80%;
+  margin-top: 15px;
+}
+
+.EventsCalenderButtons {
+  display: flex;
+  column-gap: 120px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.EventsCalenderLeftButton {
+  width: 40px;
+  height: 40px;
+  background-image: url("../images/icons/LeftArrow-Bg.svg");
+  background-size: cover;
+  position: relative;
+}
+
+.EventsCalenderLeftButton:hover {
+  background-image: url("../images/icons/LeftArrow.svg");
+  cursor: pointer;
+}
+
+.EventsCalenderRightButton {
+  width: 40px;
+  height: 40px;
+  background-image: url("../images/icons/RightArrow-Bg.svg");
+  background-size: cover;
+}
+
+.CalendarEventsFirst .eventsCalenderIamge {
+  width: 50%;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+}
+.MainCalendarSectionEvent {
+  width: 40%;
+}
+.EventsCalenderRightButton:hover {
+  background-image: url("../images/icons/RightArrow.svg");
+  cursor: pointer;
+}
+
+.EventsCalenderLeftButton::before {
+  content: "";
+  width: 90px;
+  height: 1px;
+  background-color: #e1e1e1;
+  position: absolute;
+  top: 48%;
+  left: 54px;
+}
+
+.EventsCalendarImageSection {
+  width: 330px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.EventsCalendarCardSection {
+  min-width: 330px;
+}
+.CalenderCategoryOverlay {
+  font-family: "29LT Bukra SmBd";
+  font-size: 12px;
+  line-height: 16px;
+  color: #f5dbe1;
+  background-color: #cf5772;
+  padding: 6px 10px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.EventsCalendarMonthtime {
+  display: flex;
+  column-gap: 5px;
+  background: #da644a;
+  width: fit-content;
+  padding-left: 5px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  margin-top: 20px;
+  padding: 3px 9px;
+  padding-top: 6px;
+  margin-left: 5px;
+}
+
+.EventsCalendarMonthStyle {
+  font-family: "29LT Bukra SmBd";
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #fff;
+}
+.EventsCalendarTitlecss {
+  font-family: "29LT Bukra SmBd";
+  width: 80%;
+  max-width: fit-content;
+  margin-top: 14px;
+}
+.EventsCalendarContentcss {
+  font-family: "29LT Bukra Regular";
+  width: 90%;
+  max-width: fit-content;
+  margin-top: 5px;
+}
+
+.MainCalendarSectionEvent h4 span {
+  font-family: "29LT Bukra Medium";
+  font-size: 35px;
+  text-transform: none;
+  margin-right: 13px;
+  word-spacing: 3px;
+}
+
+.MainCalendarSectionEvent h4 {
+  font-family: "29LT Bukra SmBd";
+  font-size: 15px;
+  text-transform: uppercase;
+  position: relative;
+}
+.MainCalendarSectionEvent h4::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: -10px;
+}
+.CalendarEventsFirst {
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 40px;
+}
+
+.secondSectionEventsCalendar {
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+  margin-top: 40px;
+}
+
+.EventsCalendarDateandTime {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  background: #da644a;
+  width: 95px;
+  height: 95px;
+  border-radius: 10px;
+}
+
+.EventsCalendarDateandTime .dateEvents {
+  font-family: "29LT Bukra SmBd";
+  font-size: 40px;
+  line-height: 40px;
+  color: #fff;
+}
+
+.EventsCalendarDateandTime .dayEvents {
+  font-family: "29LT Bukra SmBd";
+  font-size: 15px;
+  line-height: 18px;
+  color: #fff;
+}
+
+.secondSectionEventsCalendar .eventsNAME {
+  font-family: "29LT Bukra SmBd";
+  font-size: 30px;
+  line-height: 40px;
+}
+.secondSectionEventsCalendar .eventspLACE {
+  font-family: "29LT Bukra SmBd";
+  font-size: 30px;
+  line-height: 40px;
+}
+.thirdSectionCalendarContent p {
+  font-family: "29LT Bukra Regular";
+  font-size: 16px;
+  margin-top: 26px;
+}
+
+.eventsCalendarLinks {
+  margin-top: 30px;
+}
+
+.eventsCalendarLinks a {
+  font-family: "29LT Bukra SmBd";
+  background-color: #cf5772;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.FindOutMore {
+  font-family: "29LT Bukra SmBd";
+  font-size: 15px;
+  text-transform: uppercase;
+  line-height: 28px;
+  margin-top: 40px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  position: relative;
+  width: max-content;
+}
+.eventsCalendarMainSectionConatiner {
+  margin-top: 50px;
+}
+
+.FindOutMore::before {
+  content: "";
+  background-image: url("../images/icons/eventsCalendarArrow.svg");
+  position: absolute;
+  width: 30px;
+  height: 20px;
+  background-repeat: no-repeat;
+  right: -40px;
+}
+
+@media (max-width: 768px) {
+  .EventsCalendarTitleMain h2 {
+    font-size: 65px;
+    line-height: 50px;
+    width: 50%;
+  }
+
+  .EventsCalendarMainSection {
+    padding-top: 50px;
+  }
+
+  .eventsCalendarLinks {
+    margin-top: 12px;
+  }
+
+  .EventsCalenderButtons {
+    margin-top: 25px;
+  }
+  .CalendarEventsFirst {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .CalendarEventsFirst .eventsCalenderIamge {
+    width: 100%;
+  }
+  .MainCalendarSectionEvent {
+    width: 100%;
+  }
+
+  .secondSectionEventsCalendar .eventsNAME {
+    font-size: 21px;
+    line-height: 30px;
+  }
+
+  .secondSectionEventsCalendar .eventspLACE {
+    font-size: 21px;
+    line-height: 30px;
+  }
+
+  .secondSectionEventsCalendar {
+    column-gap: 18px;
+    justify-content: flex-start;
+  }
+
+  .EventsCalendarDateandTime .dateEvents {
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  .EventsCalendarDateandTime {
+    width: 78px;
+    height: 78px;
+    border-radius: 8px;
+  }
+
+  .MainCalendarSectionEvent h4 span {
+    font-size: 25px;
+    width: 100%;
+    display: flex;
+    margin-top: 12px;
+  }
+
+  .MainCalendarSectionEvent h4 {
+    font-size: 11px;
+  }
+
+  .EventsCalendarCardSection {
+    min-width: 300px;
+  }
+
+  .cardsMobileSection {
+    margin-left: 10%;
+  }
+
+  .thirdSectionCalendarContent p {
+    font-family: "29LT Bukra Regular";
+    font-size: 14px;
+    margin-top: 26px;
+  }
+
+  .FindOutMore {
+    font-family: "29LT Bukra SmBd";
+    font-size: 13px;
+    line-height: 20px;
+    margin-top: 20px;
+  }
+
+  .cardMobileSection {
+    padding-top: 30px;
+    padding-bottom: 10px;
+  }
+
+  .eventsCalendarLinks a {
+    font-size: 8px;
+  }
+  .eventsCalendarMainSectionConatiner {
+    margin-top: 25px;
+  }
+}

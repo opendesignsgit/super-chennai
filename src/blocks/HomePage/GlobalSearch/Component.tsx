@@ -2,7 +2,7 @@
 import './style.css'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Loader from '@/components/Loader/loader'
+import Loader from 'src/components/Loader/loader'
 
 type Props = {
   placeholderText: string
@@ -27,7 +27,6 @@ export default function GlobalSearch({
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedFilters, setSelectedFilters] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
-
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchTerm(e.target.value)
@@ -61,33 +60,34 @@ export default function GlobalSearch({
 
   return (
     <div className="formsSection">
-      <form className="searchInputForm" onSubmit={handleSubmit}>
-        <input placeholder={placeholderText} value={searchTerm} onChange={handleInputChange} />
-
-        {enableFilters && filters.length > 0 && (
-          <div className="filtersContainer">
-            {filters.map((filter, index) => (
-              <div key={index} className="filterGroup">
-                <label>{filter.label}</label>
-                <select
-                  value={selectedFilters[filter.label] || ''}
-                  onChange={(e) => handleFilterChange(e, filter.label)}
-                >
-                  <option value="">All</option>
-                  {filter.options.map((option, i) => (
-                    <option key={i} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            ))}
-          </div>
-        )}
-        <button type="submit" disabled={loading}>
-          {loading ? <Loader /> : buttonText}
-        </button>
-      </form>
+      <div className="searchInputFormbanner mobileSearchContainer">
+        <form className="searchInputForm" onSubmit={handleSubmit}>
+          <input placeholder={placeholderText} value={searchTerm} onChange={handleInputChange} />
+          {enableFilters && filters.length > 0 && (
+            <div className="filtersContainer">
+              {filters.map((filter, index) => (
+                <div key={index} className="filterGroup">
+                  <label>{filter.label}</label>
+                  <select
+                    value={selectedFilters[filter.label] || ''}
+                    onChange={(e) => handleFilterChange(e, filter.label)}
+                  >
+                    <option value="">All</option>
+                    {filter.options.map((option, i) => (
+                      <option key={i} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              ))}
+            </div>
+          )}
+          <button type="submit" disabled={loading}>
+            {loading ? <Loader /> : buttonText}
+          </button>
+        </form>
+      </div>
     </div>
   )
 }

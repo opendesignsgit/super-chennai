@@ -4,27 +4,32 @@ const EventsCalendarBlock: Block = {
   slug: 'eventsCalendar',
 
   labels: {
-    singular: 'Event Calendar Block',
-    plural: 'Event Calendar Blocks',
+    singular: 'Events Calendar',
+    plural: 'Events Calendar',
+  },
+  admin: {
+    group: 'Homepage Sections',
   },
   fields: [
     {
       name: 'heading',
       type: 'text',
       label: 'Top Heading',
-      required: true,
+      maxLength: 50,
+      admin: {
+        description: 'Maximum 50 characters allowed',
+        placeholder: 'Enter a concise heading',
+      },
     },
     {
       name: 'description',
       type: 'textarea',
       label: 'Description',
-    },
-    {
-      name: 'eventGroupRef',
-      type: 'relationship',
-      relationTo: 'eventGroups',
-      label: 'Select Event Group',
-      required: true,
+      maxLength: 200,
+      admin: {
+        description: 'Maximum 200 characters allowed',
+        placeholder: 'Enter a description',
+      },
     },
   ],
 }

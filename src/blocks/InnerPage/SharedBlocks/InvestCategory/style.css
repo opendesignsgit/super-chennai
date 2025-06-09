@@ -1,0 +1,190 @@
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+.chennaiInvestmentBg {
+  background-image: url("../../../../assets/images/chennaiInvestmentBg.jpg");
+  padding-top: 90px;
+  padding-bottom: 50px;
+  background-repeat: no-repeat;
+}
+
+.ChennaiInvestMents h4 {
+  font-family: "NewAmsterdam";
+  color: #a44294;
+  font-size: clamp(62px, 8vw, 100px);
+  line-height: clamp(48px, 6vw, 77px);
+}
+
+.ChennaiInvestMents h6 {
+  font-family: "29LT Bukra Regular";
+  color: #000;
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: clamp(22px, 2vw, 26px);
+}
+.chennaiInvestmentsButtons {
+  display: flex;
+  column-gap: 17px;
+  flex-wrap: wrap;
+  margin-top: 35px;
+  row-gap: 17px;
+}
+.chennaiInvestmentsButtons button {
+  font-family: "29LT Bukra Medium";
+  font-size: clamp(12px, 1.5vw, 16px);
+  line-height: clamp(22px, 2vw, 26px);
+  display: flex;
+  border: 3px solid #dddddd;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  /* padding: 5px 17px; */
+  padding: 5px 30px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+  word-spacing: 3px;
+}
+.chennaiInvestmentsButtons button:hover {
+  cursor: pointer;
+  background: #a44294;
+  color: #fff;
+}
+.chennaiInvestmentsButtons .active {
+  background: #a44294;
+  color: #fff;
+  border: 3px solid #e1d5df;
+}
+
+.bulidingSection h3 {
+  font-family: "29LT Bukra SmBd";
+  color: #a44294;
+  font-size: clamp(17px, 1.2vw + 0.5rem, 24px);
+  line-height: clamp(19px, 1.5vw + 0.5rem, 29px);
+  text-align: left;
+  width: 100%;
+}
+.bulidingSection h5 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #1d1d1d;
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: clamp(14px, 2vw, 16px);
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: clamp(1.4, 1.5vw, 1.5);
+}
+
+.buildingSectionFlex {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 3%;
+  margin-top: 50px;
+  row-gap: 30px;
+}
+.bulidingSection {
+  width: 31%;
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+  cursor: pointer;
+}
+
+.builidngContent {
+  cursor: pointer;
+  padding: 47px;
+  height: 48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  border-bottom: none;
+  padding-bottom: 30px;
+  background-color: #fff;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2),
+    0 22px 10px 0 rgba(0, 0, 0, 0.05);
+}
+.builidngContent1 {
+  cursor: pointer;
+  padding: 47px;
+  height: 48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-top: none;
+  padding-bottom: 30px;
+  background-color: #fff;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2),
+    0 22px 10px 0 rgba(0, 0, 0, 0.05);
+}
+.buildingImage {
+  height: 50%;
+  width: 100%;
+  object-fit: cover;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2),
+    0 22px 10px 0 rgba(0, 0, 0, 0.05);
+}
+.buildingImage1 {
+  height: 50%;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2),
+    0 22px 10px 0 rgba(0, 0, 0, 0.05);
+}
+
+.ChennaiInvestContainerdiv {
+  margin-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  .bulidingSection {
+    width: 275px;
+    margin-right: 30px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    margin-left: 10px;
+  }
+  .buildingSectionFlex {
+    display: flex;
+    flex-wrap: nowrap;
+    column-gap: 0;
+    margin-top: 50px;
+    row-gap: 20px;
+    overflow: scroll;
+    width: 100%;
+    overflow: scroll;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+  .builidngContent {
+    padding: 20px;
+    height: 190px;
+  }
+
+  .builidngContent1 {
+    padding: 20px;
+    height: 190px;
+  }
+
+  .chennaiInvestmentsButtons button {
+    padding: 5px 10px;
+  }
+  .chennaiInvestmentsButtons {
+    column-gap: 10px;
+    row-gap: 10px;
+  }
+}

@@ -1,4 +1,4 @@
-import { Block } from "payload";
+import { Block } from 'payload'
 
 export const introTextBlock: Block = {
   slug: 'introText',
@@ -7,6 +7,12 @@ export const introTextBlock: Block = {
     plural: 'Intro Text Blocks',
   },
   fields: [
+    {
+      name: 'showMarquee',
+      type: 'checkbox',
+      label: 'Show Marquee Text?',
+      defaultValue: true,
+    },
     {
       name: 'title',
       type: 'text',
@@ -21,9 +27,19 @@ export const introTextBlock: Block = {
       name: 'marqueeText',
       type: 'text',
       required: true,
-      defaultValue: 'Employment in chennai',
+    },
+    {
+      name: 'backgroundType',
+      type: 'select',
+      label: 'Background Type Dotted',
+      options: [
+        { label: 'None', value: 'none' },
+        { label: 'Background Image', value: 'background' },
+      ],
+      defaultValue: 'none',
+      required: true,
     },
   ],
-};
+}
 
-export default introTextBlock;
+export default introTextBlock

@@ -8,13 +8,10 @@ type NoDataProps = {
 
 const NoData: React.FC<NoDataProps> = ({ message, className = '' }) => {
   return (
-    <div className={`no-data-container ${className}`}>
-      <div className="no-data-icon">😞</div>
-      <div className="no-data-message">
-        <h3>{message}</h3>
-      </div>
-      <div className="no-data-submessage">
-        <p>Try again later or check back soon!</p>
+    <div className={`no-data-wrapper ${className}`}>
+      <div className="no-data-box">
+        <h3 className="no-data-title">{message}</h3>
+        <p className="no-data-description">Try again later or check back soon.</p>
       </div>
     </div>
   )

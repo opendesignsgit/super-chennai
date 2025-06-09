@@ -1,0 +1,215 @@
+.utilitiesMainRow{
+  overflow: hidden;
+  position: relative;
+}
+
+.UtilitiesBackground {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  white-space: nowrap;
+  width: 200%;
+  /* animation: scrollText 20s linear infinite; */
+  z-index: 0;
+  opacity: 0.04;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation: scrollText 50s linear infinite;
+}
+
+.UtilitiesBackground p {
+  font-family: "29LT Bukra SmBd";
+  font-size: clamp(80px, 10vw, 280px);
+  line-height: clamp(100px, 12vw, 150px);
+  text-transform: uppercase;
+}
+.Utilitiesscroll-left {
+  animation-name: scrollLeftVolunteer;
+}
+
+.Utilitiesscroll-right {
+  animation-name: scrollRightVolunteer;
+}
+
+@keyframes scrollLeftVolunteer {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRightVolunteer {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.utilitiCTabSec {
+  background: url(/images/utilitiCTabsbg.jpg) no-repeat center center;
+  background-size: cover;
+}
+.utilitiCTabs {
+  margin-top: -10vh;
+}
+.utilitiTitle {
+}
+.utilitiTitle h2 {
+  font-family: "NewAmsterdam";
+  color: #0c242c;
+  text-transform: uppercase;
+  text-transform: uppercase;
+  font-size: 5vw;
+  line-height: 1;
+}
+.utilitiTitle p {
+  font-family: "29LT Bukra Regular";
+  color: #000;
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: clamp(22px, 2vw, 26px);
+}
+
+ul.tabs {
+  margin: 0;
+  padding: 0;
+  float: left;
+  list-style: none;
+  width: 40%;
+  padding-top: 8vh;
+}
+
+ul.tabs li {
+  margin: 0;
+  cursor: pointer;
+  padding: 1vh 0px;
+  line-height: 1.1;
+  color: #0f708f;
+  position: relative;
+  font-family: "29LT Bukra Regular";
+  font-size: 3vw;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+}
+
+ul.tabs li::before {
+  content: "Chennai";
+  position: absolute;
+  color: #1e1e1e;
+  bottom: 25px;
+  right: 0;
+  font-size: 1vw;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: -0.5px;
+  transform: translateX(110%);
+  opacity: 0;
+}
+
+ul.tabs li.active::before {
+  opacity: 1;
+}
+
+ul.tabs li:hover {
+  color: #a34493;
+}
+
+ul.tabs li.active {
+  line-height: 1;
+  font-size: 5vw;
+  color: #a34493;
+  display: block;
+  font-family: "29LT Bukra SmBd";
+}
+
+.Utilitiestab_container {
+  clear: both;
+  width: 60%;
+  overflow: auto;
+}
+
+.tab_content {
+  padding: 20px;
+  display: none;
+}
+
+.tab_drawer_heading {
+  display: none;
+}
+
+/* .Utilitiestab_container{
+  display: none;
+} */
+
+
+
+@media(min-width:768px){
+.tab_drawer_heading{
+  display: none !important;
+}
+}
+
+@media screen and (max-width: 768px) {
+
+  .tab-toggle-icon {
+  font-size: 1.25rem;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+  .tabs {
+    display: none;
+  }
+
+  .utilitiTitle p {
+    width: 90%;
+  }
+
+  .tab_drawer_heading {
+    background-color: #ccc;
+    color: #fff;
+    border-top: 1px solid #333;
+    margin: 0;
+    padding: 5px 20px;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+    font-family: "NewAmsterdam";
+    font-size: 36px;
+    color: #7e7e7e;
+    line-height: 40px;
+    font-weight: 500;
+  }
+
+  .d_active {
+    background-color: #0c242c;
+    color: #fff;
+  }
+
+  .Utilitiestab_container {
+    clear: both;
+    width: 100%;
+    overflow: auto;
+    margin-top: 100px;
+    padding-bottom: 50px;
+  }
+
+  .utilitiTitle h2 {
+    font-size: 65px;
+    line-height: 50px;
+    width: 71%;
+  }
+  .mapsFontSymbols{
+    font-family: "NewAmsterdam";
+    font-size: 36px;
+    color: #7e7e7e;
+    line-height: 40px;
+    font-weight: 500;
+  }
+}

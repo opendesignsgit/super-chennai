@@ -1,106 +1,126 @@
-@import "slick-carousel/slick/slick.css";
-@import "slick-carousel/slick/slick-theme.css";
+.funchennaiBg {
+  background-image: url("../../../assets/images/funchennaibackground.png");
+  background-position: top;
+  background-repeat: no-repeat;
+  padding-bottom: 70px;
+  margin-top: 55px;
+  overflow: hidden;
+  animation: moveBackground 30s linear infinite;
+}
+.funchennaiContainer h3 {
+  font-family: "NewAmsterdam";
+  color: #fff;
+  font-size: clamp(36px, 18vw, 100px);
+  line-height: clamp(44px, 9vw, 94px);
+}
 
-.funchennaiBg{
-    background-image: url("../../../public/images/funchennaibackground.png");
-    background-position: top;
-    background-repeat: no-repeat;
-    padding-bottom: 100px;
-    margin-top: 175px;
-}
-.funchennaiContainer h3{
-    font-family: 'NewAmsterdam';
-    font-size: 120px;
-    color: #fff;
-    line-height: 94px;
+.cardImageSection {
+  position: relative;
 }
 
-.funchennaiContainer  {
-    display: flex;
-    justify-content: center;
-    padding-top: 100px;
+.titleFunChennaiDiv {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  padding-right: 13%;
+  position: absolute;
+  bottom: 4%;
 }
-.funchennaiContainer h4{
-    font-family: '29LT Bukra';
-    font-size: 18px;
-    line-height: 30px;
-    color: #fff;
-    text-align: left;
+.titleFunChennai {
+  color: #fff;
+  font-size: 30px;
+  font-family: "29LT Bukra SmBd";
+  width: auto;
+  text-align: end;
 }
-.funchennaiText{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
- 
+
+.funchennaiContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+.funchennaiContainer h4 {
+  font-family: "29LT Bukra";
+  font-size: clamp(12px, 2vw, 16px);
+  line-height: 26px;
+  color: #fff;
+  text-align: left;
+  width: 74%;
+}
+.funchennaiText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .FunchennaiSliderSection .slick-next {
-    background-image: url("../../../public/images/icons/RightArrow-Bg.svg");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    right: -45px;
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    top: 83%;
+  background-image: url("../../../assets/images/icons/RightArrow-Bg.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  right: -45px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  top: 83%;
 }
-
 
 .FunchennaiSliderSection .slick-prev {
-    left: 1124px;
-    top: 72%;
+  left: 1124px;
+  top: 72%;
 
-
-    background-image: url("../../../public/images/icons/LeftArrow-Bg.svg");
-    background-size: contain; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    right: -25px;
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
+  background-image: url("../../../assets/images/icons/LeftArrow-Bg.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  right: -25px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
 }
 
-.FunchennaiSliderSection{
-    margin-left: 28%;
-
+.FunchennaiSliderSection {
+  margin-left: 28%;
 }
 
-
-.FunchennaiSliderSection .slick-prev:before, .FunchennaiSliderSection .slick-next:before{
-    font-size: 0;
+.FunchennaiSliderSection .slick-prev:before,
+.FunchennaiSliderSection .slick-next:before {
+  font-size: 0;
 }
-.funchennaimainSection{
-    position: relative;
+.funchennaimainSection {
+  position: relative;
 }
 
- .FunchennaiSliderSection .slick-next:hover{
+.FunchennaiSliderSection .slick-next:hover {
   color: #a44294;
-  background-image: url("../../../public/images/icons/RightArrow.svg");
-  background-size: contain; 
-  background-position: center; 
-  background-repeat: no-repeat; 
+  background-image: url("../../../assets/images/icons/RightArrow.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 40px;
   height: 40px;
 }
 
-.FunchennaiSliderSection .slick-prev:hover{
+.FunchennaiSliderSection .slick-prev:hover {
   color: #a44294;
-  background-image: url("../../../public/images/icons/LeftArrow.svg");
-  background-size: contain; 
-  background-position: center; 
-  background-repeat: no-repeat; 
+  background-image: url("../../../assets/images/icons/LeftArrow.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 40px;
   height: 40px;
 }
 
-.parachuteSection{
-    width: 443px;
-    position: absolute;
-    top: 25%;
-    left: 7%;
-    animation: parachuteFloat 6s ease-in-out infinite alternate;
+.parachuteSection {
+  /* width: 443px; */
+  width: 22%;
+  position: absolute;
+  top: 25%;
+  left: 8%;
+  animation: parachuteFloat 6s ease-in-out infinite alternate;
+}
+.funchennaiMainConatiner {
+  margin-left: 28%;
 }
 
 @keyframes parachuteFloat {
@@ -123,12 +143,139 @@
     transform: translate(0, 0) rotate(0deg);
   }
 }
-  
 
-/* .cardImageSection{
-    width: 350px;
-} */
+@keyframes moveBackground {
+  0% {
+    background-position: 0% top;
+  }
+  100% {
+    background-position: 100% top;
+  }
+}
 
-  /* .FunchennaiSliderSection{
-    display: none;
+@keyframes moveBackground {
+  0% {
+    background-position: 100% top;
+  }
+  100% {
+    background-position: 0% top;
+  }
+}
+
+@media (max-width: 1680px) {
+  .FunchennaiSliderSection {
+    margin-left: 24%;
+  }
+  .funchennaiMainConatiner {
+    margin-left: 24%;
+  }
+}
+
+@media (max-width: 1571px) {
+  .FunchennaiSliderSection {
+    margin-left: 19%;
+  }
+  .funchennaiMainConatiner {
+    margin-left: 19%;
+  }
+
+  .FunchennaiSliderSection {
+    width: 70%;
+  }
+
+  .cardImageSection {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+
+  .FunchennaiSliderSection .slick-prev {
+    right: -50px;
+  }
+
+  .FunchennaiSliderSection .slick-next {
+    right: -50px;
+  }
+  .parachuteSection {
+    left: 4%;
+  }
+}
+
+@media (max-width: 1480px) {
+  /* .FunchennaiSliderSection {
+    margin-left: 16%;
+  }
+  .funchennaiMainConatiner {
+    margin-left: 16%;
   } */
+
+  /* .cardImageSection{
+    width: 90%;
+  } */
+}
+@media (max-width: 1480px) {
+  /* .FunchennaiSliderSection {
+    margin-left: 16%;
+  }
+  .funchennaiMainConatiner {
+    margin-left: 16%;
+  } */
+}
+
+/* @media(max-width:1500px){
+  .cardImageSection{
+    width: 100%;
+    margin: 2%;
+  }
+}  */
+
+@media (max-width: 768px) {
+  .FunchennaiSliderSection {
+    width: 100%;
+    margin: 0;
+    padding-right: 0;
+  }
+  .funchennaiMainConatiner {
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 203px;
+  }
+  .funchennaiText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 11%;
+  }
+  .funchennaiContainer h4 {
+    font-size: clamp(14px, 2vw, 16px);
+    line-height: 26px;
+    width: 100%;
+    margin-top: 15px;
+    padding-right: 20px;
+  }
+  .parachuteSection {
+    width: 76%;
+    position: absolute;
+    top: -15%;
+    left: 0;
+    animation: none;
+    -webkit-animation: none;
+  }
+  .funchennaiBg {
+    overflow: visible;
+    margin-top: 150px;
+  }
+
+  .FunchennaiSliderSection .slick-prev {
+    left: 32%;
+    bottom: 8px;
+    position: absolute;
+    top: 118%;
+  }
+  .FunchennaiSliderSection .slick-next {
+    left: 55%;
+    bottom: 8px;
+    position: absolute;
+    top: 118%;
+  }
+}

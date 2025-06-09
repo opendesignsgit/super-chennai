@@ -1,5 +1,3 @@
-import type { Block, CollectionConfig } from 'payload'
-
 import {
   BlocksFeature,
   FixedToolbarFeature,
@@ -8,6 +6,7 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
+import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
@@ -16,6 +15,7 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
+import { slugField } from 'src/fields/slug'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -23,99 +23,13 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { slugField } from '@/fields/slug'
 
-import HotelsInChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Hotels/config'
-import ExploreMoreChennaiBlock from '@/blocks/InnerPage/Accomodation/Explore/config'
-import { SocialChennaiBlock } from '@/blocks/HomePage/SocialChennai/config'
-import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
-
-// const createVisitCategoryBlock = (slug: string, singular: string, plural: string): Block => ({
-//   slug,
-//   labels: {
-//     singular,
-//     plural,
-//   },
-//   fields: [
-//     {
-//       name: 'items',
-//       type: 'array',
-//       label: 'Hotels',
-//       required: true,
-//       fields: [
-//         {
-//           name: 'image',
-//           type: 'upload',
-//           relationTo: 'media',
-//           required: true,
-//         },
-//         {
-//           name: 'heading',
-//           type: 'text',
-//           required: true,
-//         },
-//         {
-//           name: 'description',
-//           type: 'richText',
-//         },
-//         {
-//           name: 'buttonLink',
-//           type: 'text',
-//           label: 'Button Link (URL)',
-//         },
-//       ],
-//     },
-//   ],
-// })
-
-// // HOTELS ##########
-// const TravelsCategoryBlock = (slug: string, singular: string, plural: string): Block => ({
-//   slug,
-//   labels: {
-//     singular,
-//     plural,
-//   },
-//   fields: [
-//     // {
-//     //   name: 'heading',
-//     //   type: 'text',
-//     //   required: true,
-//     // },
-//     // {
-//     //   name: 'description',
-//     //   type: 'richText',
-//     // },
-//     {
-//       name: 'items',
-//       type: 'array',
-//       label: 'Cards',
-//       required: true,
-//       fields: [
-//         {
-//           name: 'image',
-//           type: 'upload',
-//           relationTo: 'media',
-//           required: true,
-//         },
-//         {
-//           name: 'heading',
-//           type: 'text',
-//           required: true,
-//         },
-//         {
-//           name: 'description',
-//           type: 'richText',
-//         },
-//         {
-//           name: 'buttonLink',
-//           type: 'text',
-//           label: 'Button Link (URL)',
-//         },
-//       ],
-//     },
-//   ],
-// })
-
+import { socialReelSlider } from 'src/blocks/HomePage/SocialChennai/config'
+import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/config'
+import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
+import ZigZagContentBlock from 'src/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
+import featureSectionSplitLayoutBlock from 'src/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/config'
+import StickyImageScroll from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
 export const Visits: CollectionConfig<'visits'> = {
   slug: 'visits',
   access: {
@@ -124,9 +38,7 @@ export const Visits: CollectionConfig<'visits'> = {
     read: authenticatedOrPublished,
     update: authenticated,
   },
-  // This config controls what's populated by default when a post is referenced
-  // https://payloadcms.com/docs/queries/select#defaultpopulate-collection-config-property
-  // Type safe if the collection slug generic is passed to `CollectionConfig` - `CollectionConfig<'visits'>
+
   defaultPopulate: {
     title: true,
     slug: true,
@@ -168,6 +80,7 @@ export const Visits: CollectionConfig<'visits'> = {
       tabs: [
         {
           fields: [
+            //####################### BANNER CONTENT  ############################################
             {
               name: 'heroImage',
               type: 'upload',
@@ -183,33 +96,12 @@ export const Visits: CollectionConfig<'visits'> = {
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({
                       blocks: [
-                        // Banner,
-                        // Code,
-                        // MediaBlock,
-                        // Content,
-                        HotelsInChennaiBlock,
+                        ZigZagContentBlock,
                         ExploreMoreChennaiBlock,
-                        SocialChennaiBlock,
-                        InnerPageBanner,
-
-                        // createVisitCategoryBlock('food', 'Food', 'Food Sections'),
-                        // createVisitCategoryBlock(
-                        //   'placesToVisit',
-                        //   'Place to Visit',
-                        //   'Places to Visit',
-                        // ),
-                        //   createVisitCategoryBlock(
-                        //     'accommodation',
-                        //     'Accommodation',
-                        //     'Accommodations',
-                        //   ),
-                        //   createVisitCategoryBlock('thingsToDo', 'Thing to Do', 'Things to Do'),
-                        //   createVisitCategoryBlock('hiddenGems', 'Hidden Gem', 'Hidden Gems'),
-                        //   createVisitCategoryBlock('shopping', 'Shopping', 'Shopping Sections'),
-                        //   TravelsCategoryBlock('travelTips', 'Travel Tip', 'Travel Tips'),
-                        //   createVisitCategoryBlock('wellness', 'Wellness', 'Wellness Tips'),
-                        //   createVisitCategoryBlock('events', 'Event', 'Events'),
-                        //   createVisitCategoryBlock('conference', 'Conference', 'Conferences'),
+                        socialReelSlider,
+                        introTextBlock,
+                        featureSectionSplitLayoutBlock,
+                        StickyImageScroll
                       ],
                     }),
                     FixedToolbarFeature(),
@@ -281,30 +173,9 @@ export const Visits: CollectionConfig<'visits'> = {
             }),
           ],
         },
-        // LAYOUT TAB  #########
-
-        // {
-        //   label: 'Layout',
-        //   fields: [
-        //     {
-        //       name: 'layout',
-        //       type: 'blocks',
-        //       blocks: [
-        //         Content,
-        //         MediaBlock,
-        //         VisitBannerBlock,
-        //         VisitCategory,
-        //         VisitIntroTextBlock,
-        //       ],
-        //       required: true,
-        //       admin: {
-        //         initCollapsed: true,
-        //       },
-        //     },
-        //   ],
-        // },
       ],
     },
+
     {
       name: 'publishedAt',
       type: 'date',
@@ -325,6 +196,7 @@ export const Visits: CollectionConfig<'visits'> = {
         ],
       },
     },
+
     {
       name: 'authors',
       type: 'relationship',
@@ -359,6 +231,16 @@ export const Visits: CollectionConfig<'visits'> = {
       ],
     },
     ...slugField(),
+
+    {
+      name: 'subpages',
+      type: 'relationship',
+      relationTo: 'hotels',
+      admin: {
+        position: 'sidebar',
+        description: 'Select subpages for this visit. Accessible at /visits/[slug]/[subpageSlug]',
+      },
+    },
   ],
   hooks: {
     afterChange: [revalidatePost],
@@ -368,7 +250,7 @@ export const Visits: CollectionConfig<'visits'> = {
   versions: {
     drafts: {
       autosave: {
-        interval: 100, // We set this interval for optimal live preview
+        interval: 100,
       },
       schedulePublish: true,
     },

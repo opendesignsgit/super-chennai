@@ -1,18 +1,15 @@
 import type { CollectionConfig } from 'payload'
 
+import { slugField } from 'src/fields/slug'
+import { hero } from 'src/heros/config'
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { Archive } from '../../blocks/ArchiveBlock/config'
-import { CallToAction } from '../../blocks/CallToAction/config'
-import { Content } from '../../blocks/Content/config'
-import { FormBlock } from '../../blocks/Form/config'
-import { MediaBlock } from '../../blocks/MediaBlock/config'
-import { hero } from '@/heros/config'
-import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 
+import liveIntrorSection from '@/blocks/MainPages/SharedBlocks/IntroTextWithImage/config'
+import TextHoverImageSection from '@/blocks/MainPages/Work/Works/config'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -20,22 +17,31 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import VisitBannerBlock from '@/blocks/PageBanners/VisitBanner/config'
-import { ExploreBlock } from '@/blocks/HomePage/Explore/config'
-import { FunChennaiBlock } from '@/blocks/HomePage/funChennai/config'
-import { StartupChennaiBlock } from '@/blocks/HomePage/StartupChennai/config'
-import ChennaiInvestmentsBlock from '@/blocks/HomePage/Investments/config'
-import { SocialChennaiBlock } from '@/blocks/HomePage/SocialChennai/config'
-import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
-import EventsCalendarBlock from '@/blocks/HomePage/EventsCalendar/config'
-import { GlobalSearchBlock } from '@/blocks/HomePage/GlobalSearch/config'
-import HeroSlider from '@/blocks/PageBanners/Home/config'
-import VisitCategory from '@/blocks/MainPages/Visit/VisitCategory/config'
-import VisitIntroTextBlock from '@/blocks/MainPages/Visit/VisitIntro/config'
-import HotelsInChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Hotels/config'
-import InnerPageBanner from '@/blocks/InnerPage/SharedBlocks/Banners/config'
-import { careerIntroBlock } from '@/blocks/InnerPage/SharedBlocks/careerIntro/config'
-import mainPageBannerBlock from '@/blocks/MainPages/SharedBlocks/Banner/config'
+import ContentZoneCarousel from 'src/blocks/HomePage/ContentZoneCarousel/config'
+import EventsCalendarBlock from 'src/blocks/HomePage/EventsCalendar/config'
+import { ExploreBlock } from 'src/blocks/HomePage/Explore/config'
+import { FunChennaiBlock } from 'src/blocks/HomePage/funChennai/config'
+import { GlobalSearchBlock } from 'src/blocks/HomePage/GlobalSearch/config'
+import Infography from 'src/blocks/HomePage/infography/config'
+import ChennaiInvestmentsBlock from 'src/blocks/HomePage/Investments/config'
+import SpotlightGallery from 'src/blocks/HomePage/leftContentRightSlider/config'
+import { socialReelSlider } from 'src/blocks/HomePage/SocialChennai/config'
+import { StartupChennaiBlock } from 'src/blocks/HomePage/StartupChennai/config'
+import TwoColumnFeatureBlock from 'src/blocks/HomePage/TwoColumnFeatureBlock/config'
+import Utilities from 'src/blocks/HomePage/Utilities/config'
+import BecameAVolunteerBlock from 'src/blocks/HomePage/Volunteer/config'
+import InnerPageBanner from 'src/blocks/InnerPage/SharedBlocks/Banners/config'
+import HotelsInChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
+import AllEvents from 'src/blocks/MainPages/Events/config'
+import { innovateSlider } from 'src/blocks/MainPages/Innovate/TabWithSlider/config'
+import investmentCategoryListBlock from 'src/blocks/MainPages/Invest/InvestCategory/config'
+import ChennaiLifeEssentialSection from 'src/blocks/MainPages/Live/ChennaiLifeEssentials/config'
+import mainPageBannerBlock from 'src/blocks/MainPages/SharedBlocks/Banner/config'
+import { FormPopup } from 'src/blocks/MainPages/SharedBlocks/FormPopup/config'
+import IntroTextBlock from 'src/blocks/MainPages/SharedBlocks/IntroText/config'
+import VisitCategory from 'src/blocks/MainPages/Visit/VisitCategory/config'
+import volunteerBecameListBlock from 'src/blocks/MainPages/Volunteer/Volunteers/config'
+import HeroSlider from 'src/blocks/PageBanners/Home/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -92,34 +98,38 @@ export const Pages: CollectionConfig<'pages'> = {
               name: 'layout',
               type: 'blocks',
               blocks: [
-                CallToAction,
-                Content,
-                MediaBlock,
-                Archive,
-                FormBlock,
-                VisitBannerBlock,
                 ExploreBlock,
                 FunChennaiBlock,
                 StartupChennaiBlock,
                 ChennaiInvestmentsBlock,
-                SocialChennaiBlock,
+                socialReelSlider,
                 BecameAVolunteerBlock,
                 EventsCalendarBlock,
-                GlobalSearchBlock,
                 HeroSlider,
-
                 //###### INNER BLOCKS #############
                 VisitCategory,
-                VisitIntroTextBlock,
                 HotelsInChennaiBlock,
-
-                careerIntroBlock,
-
+                volunteerBecameListBlock,
                 // REUSABLE BLOCK
                 InnerPageBanner,
+                // RESUSABLE BLOCK NEW #####################
+                mainPageBannerBlock,
+                IntroTextBlock,
+                GlobalSearchBlock,
+                FormPopup,
+                Infography,
+                TwoColumnFeatureBlock,
+                Utilities,
+                ContentZoneCarousel,
+                SpotlightGallery,
+                AllEvents,
+                liveIntrorSection,
+                ChennaiLifeEssentialSection,
+                investmentCategoryListBlock,
+                innovateSlider,
+                TextHoverImageSection,
 
-
-                mainPageBannerBlock
+                
               ],
               required: true,
               admin: {

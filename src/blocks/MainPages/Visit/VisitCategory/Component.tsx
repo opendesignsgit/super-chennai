@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
@@ -19,31 +20,28 @@ type VisitGroupRef = {
   items: VisitItem[]
 }
 
-
-
 export const VisitCategory = ({ title, description, items }: VisitGroupRef) => {
-  const mainSlider = useRef(null)
-  const thumbSlider = useRef(null)
+  const mainSlider = useRef<Slider | null>(null)
+  const thumbSlider = useRef<Slider | null>(null)
 
-  const [nav1, setNav1] = useState(null)
-  const [nav2, setNav2] = useState(null)
+  const [nav1, setNav1] = useState<Slider | undefined>(undefined)
+  const [nav2, setNav2] = useState<Slider | undefined>(undefined)
 
   useEffect(() => {
-    setNav1(mainSlider.current)
-    setNav2(thumbSlider.current)
+    setNav1(mainSlider.current ?? undefined)
+    setNav2(thumbSlider.current ?? undefined)
   }, [])
-
-  // const items = items || []
 
   const mainSettings = {
     asNavFor: nav2,
     arrows: true,
     fade: true,
+    infinite: false,
   }
 
   const thumbSettings = {
     asNavFor: nav1,
-    slidesToShow: 8,
+    slidesToShow: 11,
     focusOnSelect: true,
     infinite: false,
     vertical: true,
@@ -73,7 +71,6 @@ export const VisitCategory = ({ title, description, items }: VisitGroupRef) => {
           </Slider>
         </div>
 
-        {/* Thumbnail */}
         <div className="visitContSlide">
           <Slider {...thumbSettings} ref={thumbSlider}>
             {items.map((item) => (
@@ -82,7 +79,12 @@ export const VisitCategory = ({ title, description, items }: VisitGroupRef) => {
                   <img
                     src={item.image?.url}
                     alt={item.label}
-                    style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      cursor: 'pointer',
+                      borderRadius: '4px',
+                    }}
                   />
                 </a>
                 <h3>

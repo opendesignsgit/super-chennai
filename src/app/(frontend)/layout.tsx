@@ -1,21 +1,46 @@
 import type { Metadata } from 'next'
 
-import { cn } from '@/utilities/ui'
+import { cn } from 'src/utilities/ui'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import React from 'react'
 
-import { AdminBar } from '@/components/AdminBar'
-import { Providers } from '@/providers'
-import { InitTheme } from '@/providers/Theme/InitTheme'
-import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { AdminBar } from 'src/components/AdminBar'
+import { Providers } from 'src/providers'
+import { InitTheme } from 'src/providers/Theme/InitTheme'
+import { mergeOpenGraph } from 'src/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
 import './globals.css'
-import { getServerSideURL } from '@/utilities/getURL'
-import Footer from '@/Footer/Component'
-import Header from '@/Header/Component'
+import { getServerSideURL } from 'src/utilities/getURL'
+import Footer from 'src/Footer/Component'
+import { Header } from '@/Header/Component'
 
+import '@/assets/Css/Accomodation.css'
+import '@/assets/Css/Becameavolunteer.css'
+import '@/assets/Css/Carousel.css'
+import '@/assets/Css/ChennaiChillZone.css'
+import '@/assets/Css/ChennaiInvestments.css'
+import '@/assets/Css/CostOfLiving.css'
+import '@/assets/Css/CostOfLiving1.css'
+import '@/assets/Css/EventsCalendar.css'
+import '@/assets/Css/Eventstyle.css'
+import '@/assets/Css/ExampleHeader.css'
+import '@/assets/Css/Explore.css'
+import '@/assets/Css/Footer.css'
+import '@/assets/Css/Funchennai.css'
+import '@/assets/Css/Header.css'
+import '@/assets/Css/HeroSlider.css'
+import '@/assets/Css/Innovate.css'
+import '@/assets/Css/InnovateSlider.css'
+import '@/assets/Css/Volunteer.css'
+
+import '@/assets/Css/Invest.css'
+import '@/assets/Css/Live.css'
+// import '@/assets/Css/MenuBar.css'
+// import '@/assets/Css/Search.css'
+// import '@/assets/Css/SearchResults.css'
+import '@/assets/Css/SocialChennai.css'
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
@@ -33,7 +58,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               preview: isEnabled,
             }}
           />
-
           <Header />
           {children}
           <Footer />

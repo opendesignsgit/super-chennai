@@ -1,0 +1,172 @@
+.techEduMainRow {
+  display: flex;
+  width: 100%;
+}
+
+.techEduImage1 {
+  width: 50%;
+  border-right: 6px solid white;
+  position: relative;
+}
+.techEduImage1 img {
+}
+.techEduImage2 {
+  width: 50%;
+  border-left: 6px solid white;
+}
+
+.techEduImage2 img {
+}
+
+.techEduMainRow {
+  border-bottom: 13px solid white;
+  position: relative;
+}
+
+.techEdu1Content1 {
+  position: absolute;
+  bottom: 5%;
+  right: 0px;
+  width: 40%;
+}
+
+.techEdu1Content1 h4 {
+  font-family: "NewAmsterdam";
+  color: #fff;
+  font-size: 60px;
+  text-align: left;
+  width: auto;
+  text-transform: uppercase;
+  line-height: 50px;
+}
+
+.techEdu1Content1 p {
+  font-family: "Poppins";
+  color: #afafaf;
+  font-size: clamp(9px, 1.5vw, 16px);
+  line-height: clamp(11px, 2vw, 26px);
+  text-align: left;
+  width: 100%;
+  font-weight: 300;
+}
+.techEdu1Content2 {
+  position: absolute;
+  bottom: 5%;
+  right: 2%;
+  width: 24%;
+}
+.techEdu1Content2 h4 {
+  font-family: "NewAmsterdam";
+  color: #fff;
+  font-size: 60px;
+  text-align: left;
+  width: auto;
+  text-transform: uppercase;
+  line-height: 50px;
+}
+
+.techEdu1Content2 p {
+  font-family: "29LT-Bukra-Light";
+  font-family: "Poppins";
+  color: #afafaf;
+  font-size: clamp(9px, 1.5vw, 16px);
+  line-height: clamp(11px, 2vw, 26px);
+  text-align: left;
+  width: 100%;
+  font-weight: 300;
+}
+
+.techEduImage1 {
+  overflow: hidden;
+}
+
+.techEduImage1 img {
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  will-change: transform;
+}
+
+.techEduImage1 img:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+.techEduImage2 {
+  overflow: hidden;
+}
+
+.techEduImage2 img {
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  will-change: transform;
+}
+
+.techEduImage2 img:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .techEduMainRow {
+    flex-direction: column;
+    border: none;
+  }
+
+  .techEduImage1 {
+    width: 100%;
+    border: none;
+  }
+
+  .techEduImage2 {
+    width: 100%;
+    border: none;
+  }
+
+  .techEdu1Content1 h4 {
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .techEdu1Content2 h4 {
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .techEdu1Content2 {
+    /* bottom: 2%;
+    right: 7px;
+    width: 40%; */
+    bottom: 2%;
+    right: 28px;
+    width: 45%;
+  }
+
+  .techEdu1Content1 {
+    position: absolute;
+    bottom: 3%;
+    right: 0px;
+    width: 40%;
+  }
+
+  .techEdu1Content1 p {
+    width: 90%;
+  }
+
+  .techEdu1Content2 p {
+    width: 90%;
+  }
+}

@@ -32,14 +32,15 @@
     ],
     "paths": {
       "@payload-config": [
-        "./src/payload.config.ts"
+        "src/payload.config.ts"
       ],
       "react": [
         "./node_modules/@types/react"
       ],
       "@/*": [
-        "./src/*"
+        "src/*"
       ],
+      
     }
   },
   "include": [

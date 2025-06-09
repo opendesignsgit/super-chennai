@@ -1,31 +1,43 @@
+
 import React, { Fragment } from 'react'
-import type { Page } from '@/payload-types'
-import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
-import { CallToActionBlock } from '@/blocks/CallToAction/Component'
-import { ContentBlock } from '@/blocks/Content/Component'
-import { FormBlock } from '@/blocks/Form/Component'
-import { MediaBlock } from '@/blocks/MediaBlock/Component'
-import { VisitBanner } from './PageBanners/VisitBanner/Component'
+import { FormBlock } from 'src/blocks/Form/Component'
+import { MediaBlock } from 'src/blocks/MediaBlock/Component'
+import type { Page } from 'src/payload-types'
+import { ContentZoneCarousel } from './HomePage/ContentZoneCarousel/Component'
+import { EventsCalendarBlock } from './HomePage/EventsCalendar/Component'
 import { ExploreBlockServer } from './HomePage/Explore/Components'
 import { FunChennaiBlockServer } from './HomePage/funChennai/Component'
-import { StartupChennaiBlockServer } from './HomePage/StartupChennai/Component'
-import ChennaiInvestments from './HomePage/Investments/Components'
-import SocialChennai from './HomePage/SocialChennai/Component'
-import BecameAVolunteer from './HomePage/Volunteer/Component'
-import EventsCalendarBlock from './HomePage/EventsCalendar/Component'
 import GlobalSearch from './HomePage/GlobalSearch/Component'
-import HeroSliderBlock from './PageBanners/Home/Component'
-import { VisitIntroText } from './MainPages/Visit/VisitIntro/Component'
-import { VisitCategory } from './MainPages/Visit/VisitCategory/Component'
-import HotelsInChennaiSection from './InnerPage/SharedBlocks/Hotels/Component'
+import InfographySection from './HomePage/infography/Component'
+import ChennaiInvestments from './HomePage/Investments/Components'
+import SpotlightGallerySection from './HomePage/leftContentRightSlider/Components'
+import socialReelSlider from './HomePage/SocialChennai/Component'
+import { StartupChennaiBlockServer } from './HomePage/StartupChennai/Component'
+import TwoColumnFeatureBlock from './HomePage/TwoColumnFeatureBlock/Components'
+import Utilities from './HomePage/Utilities/Component'
+import BecameAVolunteer from './HomePage/Volunteer/Component'
+import IntroText from './InnerPage/SharedBlocks/IntroText/Components'
+import InvestCategory from './InnerPage/SharedBlocks/InvestCategory/Components'
+import StickyImageScroll from './InnerPage/SharedBlocks/StickyImageScroll/Component'
+import FeatureSections from './InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
+import ZigZagContentSection from './InnerPage/SharedBlocks/ZigZagContent/Component'
+import { EventsHomeBlock } from './MainPages/Events/AllEvents'
+import { InnovateSliderBlock } from './MainPages/Innovate/TabWithSlider/Component'
+import InvestmentCategoryListSection from './MainPages/Invest/InvestCategory/Component'
+import ChennaiLifeEssentials from './MainPages/Live/ChennaiLifeEssentials/Components'
 import mainPageBanner from './MainPages/SharedBlocks/Banner/Component'
+import { FormPopupComponent } from './MainPages/SharedBlocks/FormPopup/Components'
+import { PageIntroText } from './MainPages/SharedBlocks/IntroText/Component'
+import LiveIntroTextSection from './MainPages/SharedBlocks/IntroTextWithImage/Component'
+import { VisitCategory } from './MainPages/Visit/VisitCategory/Component'
+import VolunteerBecameSection from './MainPages/Volunteer/Volunteers/Components'
+import { TextHoverImageSection } from './MainPages/Work/Works/Components'
+import HeroSliderBlock from './PageBanners/Home/Component'
+import { VisitBanner } from './PageBanners/VisitBanner/Component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
 } = {
-  archive: ArchiveBlock,
-  content: ContentBlock,
-  cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   visitBanner: VisitBanner,
@@ -33,18 +45,36 @@ const blockComponents: {
   funChennai: FunChennaiBlockServer,
   startupChennai: StartupChennaiBlockServer,
   chennaiInvestments: ChennaiInvestments,
-  socialChennai: SocialChennai,
+  socialReelSlider: socialReelSlider,
   becameAVolunteer: BecameAVolunteer,
   eventsCalendar: EventsCalendarBlock,
   globalSearch: GlobalSearch,
   heroSliderBlock: HeroSliderBlock,
-  visitIntroText: VisitIntroText,
-
+  infography: InfographySection,
+  twoColumnFeatureBlock: TwoColumnFeatureBlock,
+  utilities: Utilities,
+  spotlightGallery: SpotlightGallerySection,
+  introTextBlock: PageIntroText,
   visitcategory: VisitCategory,
-
-  ZigZagContent: HotelsInChennaiSection,
-
+  ZigZagContent: ZigZagContentSection,
   mainPageBanner: mainPageBanner,
+  formPopup: FormPopupComponent,
+  volunteerBecameSection: VolunteerBecameSection,
+  contentZoneCarousel: ContentZoneCarousel,
+  allevents: EventsHomeBlock,
+  InvestCategoryBlock: InvestCategory,
+  liveIntrorSection: LiveIntroTextSection,
+  chennaiLifeEssentials: ChennaiLifeEssentials,
+  featureSections: FeatureSections,
+  StickyImageScroll: StickyImageScroll,
+  introText: IntroText,
+  investmentCategoryList: InvestmentCategoryListSection,
+  innovateSlider: InnovateSliderBlock,
+  textHoverImageSection: TextHoverImageSection,
+
+
+  // TESTING 
+
 }
 
 export const RenderBlocks: React.FC<{

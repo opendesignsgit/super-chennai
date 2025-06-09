@@ -1,0 +1,488 @@
+/* / Banner Voluteer / */
+
+.volunteerSectionBanner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.voluntterContent {
+  position: absolute;
+  top: -11%;
+  font-family: "NewAmsterdam";
+  color: #fff;
+  font-size: clamp(80px, 12vw, 230px);
+  line-height: 150px;
+  letter-spacing: 39px;
+  width: 85%;
+  text-align: center;
+}
+
+.VolunteerMainContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 15%;
+}
+
+.VolunteerBgSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  z-index: -1;
+  border-bottom: 4px solid #fff;
+  background: linear-gradient(
+    90deg,
+    rgb(30 110 73) 0%,
+    rgb(48 132 134) 50%,
+    rgb(1 55 83) 100%
+  );
+  background-size: 200% 100%;
+  background-position: 0% 0%;
+  /* animation: animateGradient 6s ease infinite alternate; */
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+}
+
+@keyframes animateGradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+.VolunteerBannerImage {
+  display: flex;
+  justify-content: center;
+}
+.VolunteerBannerImage img {
+  width: 85%;
+  object-fit: cover;
+  border-bottom-right-radius: 150px;
+}
+
+.nav-item button {
+  color: #fff;
+}
+
+.VolunteerBgSection {
+  height: 95vh;
+  position: relative;
+  z-index: 1;
+}
+
+.navbarContents {
+  border-top: 1px solid #679a91;
+  border-bottom: 1px solid #679a91;
+}
+
+.VolunteerBgSection .profile {
+  color: #fff;
+}
+
+/* / Banner Voluteer / */
+
+.volunteeerMainContent {
+}
+
+.volunteerRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5%;
+}
+
+.volunteerRow img {
+  width: 50%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.volunteerRow .volunteeerMainContent {
+  width: 50%;
+}
+
+.volunteeerMainContent h3 {
+  font-family: NewAmsterdam;
+  color: #995098;
+  line-height: 94px;
+  font-size: clamp(42px, 8vw, 100px);
+}
+
+.volunteeerMainContent .paraZeroVolunteerSection {
+  font-family: "29LT Bukra Regular";
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: clamp(22px, 2vw, 26px);
+  margin-top: clamp(12px, 2vh, 20px);
+  color: #000;
+  width: fit-content;
+  font-weight: 600;
+}
+.volunteeerMainContent .paraoneVolunteerSection {
+  font-family: "29LT Bukra Regular";
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: clamp(22px, 2vw, 26px);
+  margin-top: clamp(12px, 2vh, 20px);
+  color: #000;
+  width: fit-content;
+}
+.volunteeerMainContent .paraTwoVolunteerSection {
+  font-family: "29LT Bukra Regular";
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: clamp(20px, 1.7vw, 26px);
+  margin-top: clamp(12px, 2vh, 20px);
+  color: #000;
+  width: fit-content;
+}
+
+.volunteerParaSection {
+  margin-top: 35px;
+  position: relative;
+  padding-bottom: 120px;
+  padding-top: 60px;
+}
+
+.VolunteeerTextBackground {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  white-space: nowrap;
+  width: 200%;
+  /* animation: scrollText 20s linear infinite; */
+  z-index: 0;
+  opacity: 0.025;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation: scrollText 50s linear infinite;
+}
+
+.VolunteeerTextBackground p {
+  font-family: "29LT Bukra SmBd";
+  font-size: clamp(80px, 10vw, 280px);
+  line-height: clamp(100px, 12vw, 160px);
+  text-transform: uppercase;
+}
+.scroll-left {
+  animation-name: scrollLeftVolunteer;
+}
+
+.scroll-right {
+  animation-name: scrollRightVolunteer;
+}
+
+@keyframes scrollLeftVolunteer {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRightVolunteer {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Became a Volunteer  */
+.VolunteerBecameavolunteer h3 {
+  font-family: NewAmsterdam;
+  font-size: clamp(48px, 8vw, 100px);
+  line-height: clamp(48px, 6vw, 94px);
+  color: #fff;
+}
+
+.VolunterPageBecameVolunteerBg {
+  background: linear-gradient(
+    90deg,
+    rgb(30 110 73) 0%,
+    rgb(48 132 134) 50%,
+    rgb(1 55 83) 100%
+  );
+  padding-top: 125px;
+  margin-bottom: 100px;
+  padding-bottom: 200px;
+}
+
+.VolunteerBecameavolunteer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.VolunteerBecameavolunteer p {
+  font-family: "29LT Bukra";
+  font-size: clamp(15px, 1.2vw, 16px);
+  line-height: clamp(24px, 2vw, 26px);
+  color: #fff;
+  text-align: center;
+  width: 43%;
+  margin-top: clamp(10px, 2vh, 15px);
+}
+
+.BecamaAVolunterContentsSection h3 {
+  font-family: NewAmsterdam;
+  font-size: clamp(40px, 6vw, 82px);
+  line-height: clamp(44px, 5vw, 73px);
+  color: #fff;
+}
+
+.BecamaAVolunterContentsSection p {
+  font-family: "29LT Bukra Regular";
+  font-size: clamp(18px, 2vw, 20px);
+  line-height: clamp(28px, 3vw, 31px);
+  color: #fff;
+  text-align: left;
+  margin-top: 20px;
+  font-weight: lighter;
+}
+.DigitalSectionFLex {
+  display: flex;
+  align-items: center;
+  column-gap: 4%;
+  margin-top: 7%;
+}
+
+.DigitalSectionFLex img {
+  width: 49%;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2),
+    0 22px 10px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+}
+
+.BecamaAVolunterContentsSection {
+  width: 49%;
+}
+.exploreVolunteerPage {
+  height: 48px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 35px;
+}
+.exploreVolunteerPage a {
+  width: 175px;
+  text-align: center;
+  font-family: "29LT Bukra SmBd";
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #5b7c9b;
+  background: #fff;
+  border-radius: 50px;
+  font-size: 13px;
+  line-height: 29px;
+}
+
+.BecamaAVolunterContentsSection1 h3 {
+  font-family: NewAmsterdam;
+  font-size: clamp(40px, 6vw, 82px);
+  line-height: clamp(44px, 5vw, 73px);
+  color: #fff;
+  text-align: end;
+}
+.BecamaAVolunterContentsSection1 p {
+  font-family: "29LT Bukra Regular";
+  font-size: clamp(18px, 2vw, 20px);
+  line-height: clamp(28px, 3vw, 31px);
+  color: #fff;
+  margin-top: 20px;
+  font-weight: lighter;
+  text-align: end;
+}
+
+.exploreVolunteerPage1 {
+  height: 48px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 35px;
+}
+
+.exploreVolunteerPage1 a {
+  width: 175px;
+  text-align: center;
+  font-family: "29LT Bukra SmBd";
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #5b7c9b;
+  background: #fff;
+  border-radius: 50px;
+  font-size: 13px;
+  line-height: 29px;
+}
+
+.exploreVolunteerPage1 a:hover {
+  background-color: #995098;
+  color: #fff;
+}
+
+.exploreVolunteerPage a:hover {
+  background-color: #995098;
+  color: #fff;
+}
+
+.DootedBannerSectionVolunteer {
+  background-image: url("../images/doted.png");
+  margin-top: 10%;
+  margin-top: clamp(40px, 25vh, 50px);
+  overflow: hidden;
+}
+
+/* Became a Volunteer  */
+
+/* Responsive  */
+
+.notHomePageSearch .formsSection {
+  position: absolute;
+  width: 100%;
+}
+
+/* @media (max-width: 1300px); */
+
+/* Media-Query */
+
+@media (max-width: 1600px) and (min-width: 1200px) {
+  .VolunteerBgSection {
+    height: auto;
+  }
+  .voluntterContent {
+    font-size: 170px;
+  }
+
+  .volunteeerMainContent h3 {
+    font-size: clamp(42px, 6vw, 100px);
+  }
+
+  .VolunteerBecameavolunteer h3 {
+    font-size: clamp(48px, 6vw, 100px);
+    line-height: clamp(48px, 6vw, 94px);
+  }
+
+  .BecamaAVolunterContentsSection h3 {
+    font-size: clamp(40px, 5vw, 90px);
+  }
+
+  .BecamaAVolunterContentsSection p {
+    font-size: clamp(18px, 2vw, 20px);
+    line-height: clamp(28px, 3vw, 30px);
+  }
+
+  .BecamaAVolunterContentsSection1 p {
+    font-size: clamp(18px, 2vw, 20px);
+    line-height: clamp(28px, 3vw, 30px);
+  }
+
+  .BecamaAVolunterContentsSection1 h3 {
+    font-size: clamp(40px, 5vw, 90px);
+  }
+  /* .container {
+    max-width: 1050px;
+  } */
+}
+
+
+@media(max-width:1150px) and (min-width:1000px){
+
+}
+@media (max-width: 1200px) and (min-width: 800px) {
+  .VolunteerBgSection {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .VolunteerBecameavolunteer p {
+    width: 90%;
+  }
+  .DigitalSectionFLex {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  .BecamaAVolunterContentsSection {
+    width: 90%;
+  }
+
+  .DigitalSectionFLex img {
+    width: 90%;
+  }
+
+  .BecamaAVolunterContentsSection1 h3 {
+    text-align: left;
+  }
+
+  .BecamaAVolunterContentsSection1 p {
+    text-align: left;
+  }
+
+  .BecamaAVolunterContentsSection1 {
+    width: 90%;
+  }
+
+  .exploreVolunteerPage1 {
+    justify-content: flex-start;
+  }
+  .DigitalSectionFLex:nth-child(even) {
+    flex-direction: column-reverse;
+  }
+
+  .volunteerRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5%;
+  }
+
+  .volunteerRow img {
+    width: 90%;
+  }
+  .volunteerRow .volunteeerMainContent {
+    width: 90%;
+  }
+
+  .volunteerParaSection {
+    padding-bottom: 50px;
+  }
+
+  .VolunteerBannerImage img {
+    width: 90%;
+    object-fit: cover;
+    border-bottom-right-radius: 50px;
+  }
+
+  .voluntterContent {
+    position: absolute;
+    top: -11%;
+    font-family: "NewAmsterdam";
+    color: #fff;
+    font-size: clamp(30px, 11vw, 218px);
+    line-height: 11vw;
+    letter-spacing: 11px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .VolunteerBgSection {
+    height: auto;
+    margin-top: 65px;
+  }
+
+  .DootedBannerSectionVolunteer {
+    margin-top: 10%;
+  }
+}
+
+/* Media-Query */

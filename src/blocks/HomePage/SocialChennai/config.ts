@@ -1,29 +1,33 @@
 import { Block } from 'payload'
 
-export const SocialChennaiBlock: Block = {
-  slug: 'socialChennai',
+export const socialReelSlider: Block = {
+  slug: 'socialReelSlider',
   labels: {
-    singular: 'Social Chennai',
-    plural: 'Social Chennai Sections',
+    singular: 'SocialReelSlider',
+    plural: 'SocialReelSlider',
+  },
+  admin: {
+    group: 'Homepage Sections',
   },
   fields: [
     {
       name: 'heading',
       type: 'text',
-      required: true,
+      maxLength: 100,
+      defaultValue: 'Social Chennai',
+      admin: {
+        description: 'Maximum 100 characters allowed',
+      },
     },
     {
       name: 'description',
       type: 'textarea',
-      required: true,
-    },
-    {
-      name: 'reelsRef',
-      type: 'relationship',
-      relationTo: 'social-reels',
-      hasMany: false,
-      label: 'Select Reel Group',
-      required: true,
+      defaultValue:
+        '  Make connections, participate, and add to Chennai s lively social events and community projects',
+      maxLength: 400,
+      admin: {
+        description: 'Maximum 400 characters allowed',
+      },
     },
   ],
 }

@@ -1,43 +1,32 @@
-import { GlobalConfig } from 'payload'
+import type { GlobalConfig } from 'payload'
+
+import { link } from '@/fields/link'
+import { revalidateHeader } from './hooks/revalidateHeader'
 
 export const Header: GlobalConfig = {
   slug: 'header',
+  access: {
+    read: () => true,
+  },
   fields: [
     {
-      name: 'header', 
+      name: 'navItems',
       type: 'array',
       fields: [
-        {
-          name: 'label',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'link',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'content',
-          type: 'array',
-          fields: [
-            {
-              name: 'title',
-              type: 'text',
-            },
-            {
-              name: 'desc',
-              type: 'text',
-            },
-            {
-              name: 'link',
-              type: 'text',
-            },
-          ],
-        },
+        link({
+          appearances: false,
+        }),
       ],
+      maxRows: 20,
+      admin: {
+        initCollapsed: true,
+        components: {
+          RowLabel: '@/Header/RowLabel#RowLabel',
+        },
+      },
     },
   ],
+  hooks: {
+    afterChange: [revalidateHeader],
+  },
 }
-
-export default Header

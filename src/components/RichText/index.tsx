@@ -1,4 +1,6 @@
-import { MediaBlock } from '@/blocks/MediaBlock/Component'
+import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
+import BecameAVolunteer from '@/blocks/HomePage/Volunteer/Component'
+import { HotelDetailSectionBlock } from '@/blocks/InnerPage/SharedBlocks/hotels/component'
 import {
   DefaultNodeTypes,
   SerializedBlockNode,
@@ -6,36 +8,36 @@ import {
   type DefaultTypedEditorState,
 } from '@payloadcms/richtext-lexical'
 import {
+  RichText as ConvertRichText,
   JSXConvertersFunction,
   LinkJSXConverter,
-  RichText as ConvertRichText,
 } from '@payloadcms/richtext-lexical/react'
 
-import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
+import { CodeBlock, CodeBlockProps } from 'src/blocks/Code/Component'
 
+import GlobalSearch from 'src/blocks/HomePage/GlobalSearch/Component'
+import Banner from 'src/blocks/InnerPage/SharedBlocks/Banners/Components'
+import ExploreMoreChennai from 'src/blocks/InnerPage/SharedBlocks/Explore/Component'
+import FeatureSectionList from 'src/blocks/InnerPage/SharedBlocks/featureSectionListLayout/Component'
+import FeatureSectionSplit from 'src/blocks/InnerPage/SharedBlocks/featureSectionSplitLayout/Component'
+import IntroText from 'src/blocks/InnerPage/SharedBlocks/IntroText/Components'
+import InvestCategory from 'src/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
+import { default as StickyImageScroll } from 'src/blocks/InnerPage/SharedBlocks/StickyImageScroll/Component'
+import FeatureSections from 'src/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
+import HotelsInChennaiSection from 'src/blocks/InnerPage/SharedBlocks/ZigZagContent/Component'
+import { PageIntroText } from 'src/blocks/MainPages/SharedBlocks/IntroText/Component'
+import { VisitBanner } from 'src/blocks/PageBanners/VisitBanner/Component'
 import type {
   BannerBlock as BannerBlockProps,
-  CallToActionBlock as CTABlockProps,
+  // CallToActionBlock as CTABlockProps, // Removed because it does not exist in '@/payload-types'
   MediaBlock as MediaBlockProps,
-} from '@/payload-types'
-import { CallToActionBlock } from '@/blocks/CallToAction/Component'
-import { cn } from '@/utilities/ui'
-import { VisitBanner } from '@/blocks/PageBanners/VisitBanner/Component'
-import HotelsInChennaiSection from '@/blocks/InnerPage/SharedBlocks/Hotels/Component'
-import ExploreMoreChennai from '@/blocks/InnerPage/Accomodation/Explore/Component'
-import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
-import Banner from '@/blocks/InnerPage/SharedBlocks/Banners/Components'
-import CareerIntro from '@/blocks/InnerPage/SharedBlocks/careerIntro/Component'
-import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
-import FeatureSections from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
-import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
-import IntroText from '@/blocks/InnerPage/SharedBlocks/IntroText/Components'
-import FutureUnicorns from '@/blocks/InnerPage/SharedBlocks/StickyImageScroll/Component'
+} from 'src/payload-types'
+import { cn } from 'src/utilities/ui'
 
 type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
-      CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps | VisitBannerProps
+      CodeBlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps | VisitBannerProps
     >
 export type VisitBannerProps = {
   title: string
@@ -83,7 +85,6 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
 
     code: ({ node }) => <CodeBlock className="" {...node.fields} />,
 
-    cta: ({ node }) => <CallToActionBlock {...node.fields} />,
     globalSearch: ({ node }: { node: SerializedBlockNode<any> }) => (
       <GlobalSearch {...node.fields} />
     ),
@@ -98,19 +99,41 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
       <ExploreMoreChennai {...node.fields} />
     ),
 
-    socialChennai: ({ node }: { node: SerializedBlockNode<any> }) => (
+    socialReelSlider: ({ node }: { node: SerializedBlockNode<any> }) => (
       <SocialChennai {...node.fields} />
     ),
     Banner: ({ node }: { node: SerializedBlockNode<any> }) => <Banner {...node.fields} />,
-    careerIntro: ({ node }: { node: SerializedBlockNode<any> }) => <CareerIntro {...node.fields} />,
     introText: ({ node }: { node: SerializedBlockNode<any> }) => <IntroText {...node.fields} />,
     featureSections: ({ node }: { node: SerializedBlockNode<any> }) => (
       <FeatureSections {...node.fields} />
     ),
 
-    // WORK PAGE #####
-    futureUnicorns: ({ node }: { node: SerializedBlockNode<any> }) => (
-      <FutureUnicorns {...node.fields} />
+    introTextBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <PageIntroText {...node.fields} />
+    ),
+
+    InvestCategoryBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <InvestCategory {...node.fields} />
+    ),
+
+    StickyImageScroll: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <StickyImageScroll {...node.fields} />
+    ),
+
+    featureSectionSplit: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <FeatureSectionSplit {...node.fields} />
+    ),
+
+    featureSectionList: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <FeatureSectionList {...node.fields} />
+    ),
+
+    hoteldetailSection: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <HotelDetailSectionBlock {...node.fields} />
+    ),
+
+    becameAVolunteer: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <BecameAVolunteer {...node.fields} />
     ),
   },
 })

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
-import './style.css';
+// import './style.css';
 
 type Paragraph = {
   id: string;

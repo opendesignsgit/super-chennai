@@ -6,12 +6,20 @@ const mainPageBannerBlock: Block = {
     singular: 'Main Page Banner',
     plural: 'Main Page Banners',
   },
+  admin: {
+    group: 'Main Page Sections',
+  },
   fields: [
     {
       name: 'heading',
       type: 'text',
       label: 'Heading',
       required: true,
+      maxLength: 50,
+      admin: {
+        description: 'Maximum 50 characters allowed',
+        placeholder: 'Enter a concise heading',
+      },
     },
     {
       name: 'image',

@@ -1,48 +1,74 @@
-import { Block } from "payload";
+import { Block } from 'payload'
 
 const investmentCategoryListBlock: Block = {
-  slug: "investmentCategoryList",
+  slug: 'investmentCategoryList',
+  labels: {
+    singular: 'Investment Category',
+    plural: 'Investment Category',
+  },
+  admin: {
+    group: 'Main Page Sections',
+  },
   fields: [
     {
-      name: "items",
-      label: "Investment Categories",
-      type: "array",
+      name: 'items',
+      label: 'Investment Categories',
+      type: 'array',
       required: true,
       fields: [
         {
-          name: "title",
-          type: "text",
+          name: 'title',
+          type: 'text',
           required: true,
+          maxLength: 30,
+          admin: {
+            description: 'Maximum 30 characters allowed',
+          },
         },
         {
-          name: "subtitle",
-          type: "text",
+          name: 'subtitle',
+          type: 'text',
+          maxLength: 30,
+          admin: {
+            description: 'Maximum 30 characters allowed',
+          },
         },
         {
-          name: "description",
-          type: "textarea",
+          name: 'description',
+          type: 'textarea',
+          maxLength: 400,
+          admin: {
+            description: 'Maximum 400 characters allowed',
+          },
+        },
+
+        {
+          name: 'image',
+          label: 'SVG Icon',
+          type: 'upload',
+          relationTo: 'media',
+          filterOptions: () => ({
+            mimeType: { equals: 'image/svg+xml' },
+          }),
+          admin: {
+            description: 'Upload an SVG file only.',
+          },
         },
         {
-          name: "image",
-          type: "upload",
-          relationTo: "media",
-          required: false,
-        },
-        {
-          name: "link",
-          type: "text",
-          label: "Explore Link",
+          name: 'link',
+          type: 'text',
+          label: 'Explore Link',
         },
       ],
     },
     {
-      name: "backgroundImage",
-      label: "Bottom Background Image",
-      type: "upload",
-      relationTo: "media",
+      name: 'backgroundImage',
+      label: 'Bottom Background Image',
+      type: 'upload',
+      relationTo: 'media',
       required: false,
     },
   ],
-};
+}
 
-export default investmentCategoryListBlock;
+export default investmentCategoryListBlock

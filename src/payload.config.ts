@@ -1,5 +1,5 @@
-// storage-adapter-import-placeholder
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import 'dotenv/config'
 
 import sharp from 'sharp' // sharp-import
 import path from 'path'
@@ -14,18 +14,22 @@ import { Visits } from './collections/Visits'
 
 import { Users } from './collections/Users'
 import { plugins } from './plugins'
-import { defaultLexical } from '@/fields/defaultLexical'
+import { defaultLexical } from 'src/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import SocialReelsCollection from './collections/RelationSchema/SocialReels/SocialReels'
 import VolunteerSlidesCollection from './collections/RelationSchema/Volunteer/Volunteer'
 import Footer from './Footer/config'
-import Header from './Header/config'
-import EventsCalendar from './collections/RelationSchema/EventsCalendar/event-calendar'
 import InvestmentCategoriesCollection from './collections/RelationSchema/Investments/Investments'
 import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config'
 import VisitCategoryCollection from './collections/RelationSchema/main-pages/visit-page/visit-catogory/schema'
 import { work } from './collections/Work'
-import { searchPlugin } from '@payloadcms/plugin-search'
+import { Events } from './collections/Events'
+import { Investments } from './collections/Investments'
+import { Live } from './collections/live'
+import { Volunteer } from './collections/Volunteer'
+import { Innovate } from './collections/Innovate'
+import { Header } from './Header/config'
+import { hotels } from './collections/Visits/Hotels'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -72,10 +76,9 @@ export default buildConfig({
 
   db: postgresAdapter({
     pool: {
-      connectionString:
-        process.env.DATABASE_URL || 'postgresql://postgres:root@localhost:5432/superchennai',
+      connectionString: process.env.DATABASE_URI,
       ssl: false,
-      connectionTimeoutMillis: 5000,
+      connectionTimeoutMillis: 20000,
       idleTimeoutMillis: 30000,
     },
   }),
@@ -88,9 +91,16 @@ export default buildConfig({
     Users,
     Visits,
     work,
+    Events,
+    Investments,
+    Live,
+    Volunteer,
+    Innovate,
+
+    hotels,
+
     VolunteerSlidesCollection,
     SocialReelsCollection,
-    EventsCalendar,
     InvestmentCategoriesCollection,
     VisitCategoryCollection,
   ],

@@ -1,0 +1,317 @@
+.starupchennaiSection {
+  padding-top: 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 100px;
+}
+
+.starupchennaiSection::before {
+  content: "";
+  background-image: url("/images/Background-New-Section.jpg");
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+
+.StartupTextBackground {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  white-space: nowrap;
+  width: 200%;
+  z-index: 0;
+  opacity: 1;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation: scrollText 50s linear infinite;
+}
+
+.StartupTextBackground p {
+  font-family: "29LT Bukra SmBd";
+  font-size: clamp(60px, 14vw, 280px);
+  line-height: clamp(80px, 12vw, 150px);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.04);
+}
+.StartupTextScrollLeft {
+  animation-name: scrollLeftVolunteer;
+}
+
+.StartupTextScrolright {
+  animation-name: scrollRightVolunteer;
+}
+
+@keyframes scrollLeftVolunteer {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRightVolunteer {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.starupChennaiMainContainer {
+  /* overflow: hidden;
+  position: relative; */
+}
+.startupChennaiMainContainer h3 {
+  font-family: "NewAmsterdam";
+  color: #fff;
+  font-size: clamp(36px, 17vw, 100px);
+  line-height: clamp(58px, 9vw, 94px);
+}
+
+.startupChennaiMainContainer p {
+  font-family: "29LT Bukra";
+  color: #fff;
+  text-align: left;
+  margin-top: 10px;
+  font-size: clamp(15px, 1.5vw, 16px);
+  line-height: clamp(24px, 2vw, 26px);
+}
+
+.startupChennaiImageSection {
+  display: flex;
+  column-gap: 0px;
+  margin-top: 50px;
+}
+
+.firstStarupSection {
+  width: 50%;
+  border: 15px solid #fff;
+  overflow: hidden;
+}
+
+.firstStarupSection img {
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  will-change: transform;
+}
+
+.firstStarupSection img:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+.STarupChennaiSections {
+  display: flex;
+  width: 50%;
+  flex-wrap: wrap;
+}
+
+.rightSideSectionSTarup {
+  display: flex;
+  column-gap: 0px;
+}
+
+.rightSideSectionSTarup div {
+  border: 15px solid #fff;
+  border-left: 0;
+  overflow: hidden;
+}
+.StarupForBorder {
+  border-top: 0 !important;
+}
+
+.rightSideSectionSTarup img {
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+.rightSideSectionSTarup img:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.firstStarupSection {
+  position: relative;
+}
+
+.itsectorSection {
+  /* position: absolute;
+  bottom: 0%;
+  padding-left: 40px;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: linear-gradient(transparent, #2a3787); */
+  position: absolute;
+  bottom: 0;
+  padding-left: 40px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-image: linear-gradient(transparent, #000c56);
+  padding: 32px;
+  pointer-events: none;
+}
+
+.itsectorSection h4 {
+  font-family: "29LT Bukra SmBd";
+  font-size: 40px;
+  color: #fff;
+}
+
+.itsectorSection p {
+  font-family: "29LT Bukra Medium";
+  font-size: 16px;
+  line-height: 26px;
+  color: #fff;
+  word-spacing: 3px;
+}
+
+.StartUpChennaiTextLayer {
+  position: relative;
+}
+
+.itsectorSectionOne {
+  /* position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(38, 42, 91, 0.4);
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px; */
+  position: absolute;
+  bottom: 0;
+  padding-left: 40px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-image: linear-gradient(transparent, #000c56);
+  padding: 32px;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.itsectorSectionOne:hover {
+  cursor: pointer;
+}
+
+.firstStarupSection:hover {
+  cursor: pointer;
+}
+
+.StartUpChennaiTextLayer:hover {
+  cursor: pointer;
+}
+
+.itsectorSectionOne h4 {
+  font-family: "29LT Bukra SmBd";
+  font-size: 20px;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .firstStarupSection {
+    width: 50%;
+    border: 7px solid #fff;
+    overflow: hidden;
+  }
+  .rightSideSectionSTarup div {
+    border-right: 0;
+    border-bottom: 6px solid white;
+    border-top: 0;
+    border-left: 8px solid white;
+    border-top: 7px solid white;
+  }
+
+  .StartUpChennaiTextLayer:nth-child(2) {
+    border-right: 10px solid white;
+  }
+
+  .startupChennaiMainContainer h3 {
+    font-size: 65px;
+    line-height: 50px;
+    width: 50%;
+  }
+
+  .startupChennaiImageSection {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .firstStarupSection {
+    width: 100%;
+  }
+
+  .STarupChennaiSections {
+    width: 100%;
+    margin-top: -20px;
+  }
+
+  .starupchennaiSection {
+    height: auto;
+  }
+  .starupchennaiSection {
+    height: auto;
+    margin-bottom: 20px;
+    padding-bottom: 0px;
+    padding-top: 70px;
+  }
+  .itsectorSection h4 {
+    font-size: 20px;
+  }
+
+  .itsectorSection p {
+    font-size: 12px;
+    line-height: 15px;
+    padding-right: 10px;
+    margin-top: 4px;
+  }
+
+  .itsectorSection {
+    padding-left: 20px;
+    height: 100px;
+    padding-bottom: 32px;
+  }
+
+  .itsectorSectionOne h4 {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .itsectorSectionOne {
+    height: 62px;
+    padding: 9px 23px;
+  }
+}

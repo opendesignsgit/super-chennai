@@ -1,11 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Image from 'next/image'
 import './style.css'
-import { FeatureSectionsProps } from '@/models/innerpage/businessModels'
-import { Media } from '@/payload-types'
+import { FeatureSectionsProps } from 'src/models/innerpage/businessModels'
+import { Media } from 'src/payload-types'
 
 export default function FeatureSections({ sections }: FeatureSectionsProps) {
-  console.log('sections', sections)
   return (
     <>
       {sections?.map((section, index) => (
@@ -16,12 +16,7 @@ export default function FeatureSections({ sections }: FeatureSectionsProps) {
             ${index % 3 === 0 ? 'pattern-a' : index % 3 === 1 ? 'pattern-b' : 'pattern-c'}`}
         >
           <div className="imgLeft">
-            <Image
-              src={(section.image as Media)?.url ?? ''}
-              alt={section.sectionTitle}
-              width={500}
-              height={300}
-            />
+            <img src={(section.image as Media)?.url ?? ''} alt={section.sectionTitle} />
           </div>
           <div className="imgText flex items-center">
             <div className="imgcolTitle bg-[#682865] relative">
@@ -39,20 +34,18 @@ export default function FeatureSections({ sections }: FeatureSectionsProps) {
                 {tenant.points?.map((item, j) => (
                   <div key={j} className="clcboxItemss flex mb-4">
                     <div className="clcboxIImg">
-                      <Image
+                      <img
                         src={(item.imgs as Media)?.url ?? '/fallback-image.jpg'}
                         alt={item.title}
-                        width={100}
-                        height={100}
                       />
                     </div>
                     <div className="clcboxICont">
                       <h3>{item.title}</h3>
                       <h5>{item.desc}</h5>
-                      {/* <ul className="list-disc list-inside text-gray-600 space-y-1">
-                        {item.para?.map((point, k) => <li key={k}>{point.point}</li>)}
-                      </ul>                       */}
                       <ul className="list-disc list-inside text-gray-600 space-y-1">
+                        {item.para?.map((point, k) => <li key={k}>{point.point}</li>)}
+                      </ul>
+                      {/* <ul className="list-disc list-inside text-gray-600 space-y-1">
                         {item.para?.map((point, k) => {
                           const [title, ...rest] = point.point.split(':')
                           const desc = rest.join(':').trim()
@@ -62,7 +55,7 @@ export default function FeatureSections({ sections }: FeatureSectionsProps) {
                             </li>
                           )
                         })}
-                      </ul>
+                      </ul> */}
                     </div>
                   </div>
                 ))}

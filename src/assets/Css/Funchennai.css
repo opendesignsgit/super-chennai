@@ -1,0 +1,363 @@
+.funchennaiBg {
+  background-image: url("/public/images/funchennaibackground.png");
+  background-position: top;
+  background-repeat: no-repeat;
+  padding-bottom: 70px;
+  margin-top: 55px;
+  overflow: hidden;
+  animation: moveBackground 30s linear infinite;
+}
+
+.cardImageSection {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.funchennaiContainer h3 {
+  font-family: "NewAmsterdam";
+  color: #fff;
+  font-size: clamp(36px, 18vw, 100px);
+  line-height: clamp(44px, 9vw, 94px);
+}
+
+.cardImageSection {
+  position: relative;
+}
+
+.titleFunChennaiDiv {
+  /* position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  border-radius: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start; */
+}
+
+/* .gradientOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(-52deg, #060606 -92%, #060606 50%, transparent 100%);
+  pointer-events: none; 
+  z-index: 1;
+    padding-left: 3%;
+  padding-right: 3%;
+} */
+
+.cardImageSection img {
+  /* display: none ; */
+  background: linear-gradient(-52deg, #060606 -92%, #060606, transparent 100%);
+}
+.titleFunChennai {
+  color: #fff;
+  font-size: 30px;
+  font-family: "29LT Bukra SmBd";
+  width: auto;
+  text-align: end;
+  line-height: 34px;
+}
+
+.titleFunChennai {
+  position: absolute;
+  bottom: 0;
+  position: absolute;
+  bottom: 0;
+  width: 94%;
+  height: 35%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  border-radius: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-right: 3%;
+  padding-left: 3%;
+  padding: 26px 20px;
+}
+
+.funchennaiContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+.funchennaiContainer h4 {
+  font-family: "29LT Bukra";
+  font-size: clamp(12px, 2vw, 16px);
+  line-height: 26px;
+  color: #fff;
+  text-align: left;
+  width: 74%;
+}
+.funchennaiText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.FunchennaiSliderSection .slick-next {
+  background-image: url("../images/icons/RightArrow-Bg.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  right: -62px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  top: 74%;
+}
+
+.FunchennaiSliderSection .slick-prev {
+  background-image: url("../images/icons/LeftArrow-Bg.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  left: 1142px;
+  top: 62%;
+  right: -25px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.FunchennaiSliderSection {
+  margin-left: 28%;
+}
+
+.FunchennaiSliderSection .slick-prev:before,
+.FunchennaiSliderSection .slick-next:before {
+  font-size: 0;
+}
+.funchennaimainSection {
+  position: relative;
+}
+
+.FunchennaiSliderSection .slick-next:hover {
+  color: #a44294;
+  background-image: url("../images/icons/RightArrow.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+}
+
+.FunchennaiSliderSection .slick-prev:hover {
+  color: #a44294;
+  background-image: url("../images/icons/LeftArrow.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+}
+
+.parachuteSection {
+  /* width: 443px; */
+  width: 22%;
+  position: absolute;
+  top: 25%;
+  left: 8%;
+  animation: parachuteFloat 6s ease-in-out infinite alternate;
+}
+.funchennaiMainConatiner {
+  margin-left: 28%;
+}
+
+@keyframes parachuteFloat {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(10px, 10px) rotate(2deg);
+  }
+  40% {
+    transform: translate(-10px, 20px) rotate(-2deg);
+  }
+  60% {
+    transform: translate(5px, 30px) rotate(1deg);
+  }
+  80% {
+    transform: translate(0, 40px) rotate(0deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0% top;
+  }
+  100% {
+    background-position: 100% top;
+  }
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 100% top;
+  }
+  100% {
+    background-position: 0% top;
+  }
+}
+
+@media (max-width: 1680px) {
+  .FunchennaiSliderSection {
+    margin-left: 24%;
+  }
+  .funchennaiMainConatiner {
+    margin-left: 24%;
+  }
+}
+
+@media (max-width: 1571px) {
+  .FunchennaiSliderSection {
+    margin-left: 19%;
+  }
+  .funchennaiMainConatiner {
+    margin-left: 19%;
+  }
+
+  .FunchennaiSliderSection {
+    width: 70%;
+  }
+
+  .cardImageSection {
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  .FunchennaiSliderSection .slick-prev {
+    left: 101%;
+    top: 54%;
+  }
+
+  .FunchennaiSliderSection .slick-next {
+    right: -50px;
+    top: 67%;
+  }
+  .parachuteSection {
+    left: 4%;
+  }
+}
+
+@media (max-width: 1480px) {
+  /* .FunchennaiSliderSection {
+    margin-left: 16%;
+  }
+  .funchennaiMainConatiner {
+    margin-left: 16%;
+  } */
+
+  /* .cardImageSection{
+    width: 90%;
+  } */
+}
+@media (max-width: 1480px) {
+  /* .FunchennaiSliderSection {
+    margin-left: 16%;
+  }
+  .funchennaiMainConatiner {
+    margin-left: 16%;
+  } */
+}
+
+/* @media(max-width:1500px){
+  .cardImageSection{
+    width: 100%;
+    margin: 2%;
+  }
+}  */
+
+@media (max-width: 1480px) and (min-width: 1200px) {
+  .titleFunChennai {
+    font-size: 23px;
+    line-height: 27px;
+  }
+}
+
+@media(max-width:1258px) and (min-width:1000px){
+      .FunchennaiSliderSection .slick-next {
+        right: -50px;
+        top: 70%;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 1000px) {
+  .titleFunChennai {
+    font-size: 23px;
+    line-height: 27px;
+  }
+}
+
+@media (max-width: 768px) {
+  .titleFunChennai {
+    font-size: 21px;
+  }
+  .FunchennaiSliderSection {
+    width: 100%;
+    margin: 0;
+    padding-right: 0;
+  }
+  .funchennaiMainConatiner {
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 203px;
+  }
+  .funchennaiText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 11%;
+  }
+  .funchennaiContainer h4 {
+    padding-right: 20px;
+    font-size: clamp(14px, 1.5vw, 16px);
+    line-height: clamp(22px, 2vw, 26px);
+    width: 100%;
+    margin-top: 10px;
+    color: #fff;
+  }
+  .parachuteSection {
+    width: 76%;
+    position: absolute;
+    top: -19%;
+    left: 0;
+    /* animation: none;
+    -webkit-animation: none; */
+  }
+  .funchennaiBg {
+    overflow: visible;
+    margin-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .FunchennaiSliderSection .slick-prev {
+    left: 35%;
+    bottom: 8px;
+    position: absolute;
+    top: 118%;
+  }
+  .FunchennaiSliderSection .slick-next {
+    left: 50%;
+    bottom: 8px;
+    position: absolute;
+    top: 118%;
+  }
+
+  .funchennaiContainer h3 {
+    font-size: 65px;
+    line-height: 50px;
+    /* width: 50%; */
+  }
+}
+
+@media (min-width: 400px) and (max-width: 440px) {
+  .parachuteSection {
+    width: 65%;
+  }
+}

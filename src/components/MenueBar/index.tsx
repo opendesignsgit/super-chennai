@@ -1,8 +1,8 @@
 import './style.css'
 import { Dispatch, SetStateAction } from 'react'
 import Image from 'next/image'
-import CloseIcon from '../../public/images/menuBarCloseButton.png'
-import logo from '../../public/images/super-chennai-logo-final-header.png'
+import CloseIcon from '../../assets/images/menuBarCloseButton.png'
+import logo from '../../assets/images/super-chennai-logo-final-header.png'
 export default function MenuBar({ setMenuBar }: { setMenuBar: Dispatch<SetStateAction<boolean>> }) {
   const menuItems = [
     { label: 'About Us', href: '/about' },

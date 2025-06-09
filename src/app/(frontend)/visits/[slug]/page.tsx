@@ -1,23 +1,21 @@
 import type { Metadata } from 'next'
 
-import { RelatedVisits } from '@/blocks/Relatedvisits/Component'
-import { PayloadRedirects } from '@/components/PayloadRedirects'
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
+import { PayloadRedirects } from 'src/components/PayloadRedirects'
+import RichText from 'src/components/RichText'
+import configPromise from 'src/payload.config'
 import { draftMode } from 'next/headers'
-import React, { cache } from 'react'
-import RichText from '@/components/RichText'
+import { getPayload } from 'payload'
+import { cache, Suspense } from 'react'
 
-import type { Post } from '@/payload-types'
-
-import { PostHero } from '@/heros/PostHero'
-import { generateMeta } from '@/utilities/generateMeta'
+import { LivePreviewListener } from 'src/components/LivePreviewListener'
+import { PostHero } from 'src/heros/PostHero'
+import { generateMeta } from 'src/utilities/generateMeta'
 import PageClient from './page.client'
-import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const visits = await payload.find({
+    // depth: 2,
     collection: 'visits',
     draft: false,
     limit: 1000,
@@ -50,25 +48,27 @@ export default async function Post({ params: paramsPromise }: Args) {
   if (!post) return <PayloadRedirects url={url} />
 
   return (
-    <div >
+    <div>
       <PageClient />
 
-      {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
 
       {/* <PostHero post={post} /> */}
+      <Suspense fallback={null}>
+        <PostHero post={post} />
+      </Suspense>
 
-        <div >
-          <RichText  data={post.content} enableGutter={false} />
-          {post.relatedvisits && post.relatedvisits.length > 0 && (
-            <RelatedVisits
-              className=""
-              docs={post.relatedvisits.filter((post) => typeof post === 'object')}
-            />
-          )}
-        </div>
+      <div>
+        <RichText data={post.content} enableGutter={false} />
+        {/* {post.relatedvisits && post.relatedvisits.length > 0 && (
+          <RelatedVisits
+            className=""
+            docs={post.relatedvisits.filter((post) => typeof post === 'object')}
+          />
+        )} */}
+      </div>
     </div>
   )
 }

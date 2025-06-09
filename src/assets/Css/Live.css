@@ -1,0 +1,324 @@
+/* / Banner Voluteer / */
+
+.volunteerSectionBanner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.VolunteerMainContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 15%;
+}
+
+.LiveBgSection::before {
+  background: linear-gradient(
+    90deg,
+    rgb(77 30 143) 0%,
+    rgb(166 53 173) 50%,
+    rgb(125 6 110) 100%
+  );
+}
+
+@keyframes animateGradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+.VolunteerBannerImage {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item button {
+  color: #fff;
+}
+
+/* / Banner Voluteer / */
+
+.LiveRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5%;
+}
+
+.LiveRow img {
+  width: 40%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.LiveRow .LiveMainContent {
+  width: 60%;
+}
+
+.LiveMainContent h3 {
+  font-family: NewAmsterdam;
+  font-size: 100px;
+  color: #995098;
+  line-height: 94px;
+}
+
+.LiveMainContent .paraZeroLiveSection {
+  font-family: "29LT Bukra Medium";
+  font-size: 16px;
+  line-height: 26px;
+  color: #000;
+  margin-top: 20px;
+  width: fit-content;
+  word-spacing: 3px;
+}
+.LiveMainContent .paraoneLiveSection {
+  font-family: "29LT Bukra Regular";
+  font-size: 16px;
+  line-height: 26px;
+  color: #000;
+  margin-top: 20px;
+  width: fit-content;
+}
+.LiveMainContent .paraTwoLiveSection {
+  font-family: "29LT Bukra Regular";
+  font-size: 16px;
+  line-height: 26px;
+  color: #000;
+  margin-top: 20px;
+  width: fit-content;
+}
+
+.LiveParaSection {
+  margin-top: 35px;
+  position: relative;
+  padding-bottom: 140px;
+  padding-top: 60px;
+}
+
+.LiveTextBackground {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  white-space: nowrap;
+  width: 200%;
+  z-index: 0;
+  opacity: 0.025;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation: scrollText 50s linear infinite;
+}
+
+.LiveTextBackground p {
+  font-size: 280px;
+  font-family: "29LT Bukra SmBd";
+  text-transform: uppercase;
+  line-height: 250px;
+}
+.scroll-left {
+  animation-name: scrollLeftVolunteer;
+}
+
+.scroll-right {
+  animation-name: scrollRightVolunteer;
+}
+
+@keyframes scrollLeftVolunteer {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRightVolunteer {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.DootedBannerSectionLive {
+  background-image: url("../images/doted.png");
+  overflow: hidden;
+}
+
+/* Became a Volunteer  */
+
+/* ChennaiLifeEssential */
+
+.chennaiLifeEssentialHeading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chennaiLifeEssentialHeading h3 {
+  font-family: "NewAmsterdam";
+  font-size: 100px;
+  color: #995098;
+  line-height: 94px;
+  text-align: center;
+}
+
+.chennaiLifeEssentialHeading p {
+  font-family: "29LT Bukra Medium";
+  font-size: 16px;
+  color: #383738;
+  line-height: 26px;
+  text-align: center;
+  width: 89%;
+  margin-top: 15px;
+  word-spacing: 3px;
+}
+
+.ChennaiEssentialimagecontainer {
+  position: relative;
+  width: 23.5%;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  will-change: transform;
+  -webkit-transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  -moz-transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  -ms-transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  -o-transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.ChennaiEssentialimagecontainer img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  display: block;
+}
+
+.ChennaiEssentialimagecontainer:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  border: 1px solid #995098;
+}
+
+.ChennaiEssentialOverlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  border-radius: 0 0 15px 15px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0 1rem 1rem;
+  box-sizing: border-box;
+}
+
+.ChennaiEssentialImageText {
+  font-family: "29LT Bukra SmBd";
+  color: white;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.ImageConatinerLiveEssential {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+  row-gap: 21px;
+}
+
+.ChennaiContainerLiveEssential {
+  margin-top: 50px;
+}
+.ChennaiEssentisalMainContainer {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #efefef;
+}
+/* ChennaiLifeEssential */
+
+/* Became a Volunteer  */
+
+@media (max-width: 1600px) and (min-width: 1200px) {
+  .LiveMainContent h3 {
+    font-size: 80px;
+  }
+
+  .chennaiLifeEssentialHeading h3 {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .LiveMainContent h3 {
+    /* font-size: clamp(30px, 11vw, 100px);
+    line-height: clamp(38px, 8vw, 94px); */
+    font-size: clamp(36px, 14vw, 100px);
+    line-height: clamp(44px, 9vw, 94px);
+  }
+
+  .LiveMainContent .paraZeroLiveSection {
+    font-size: clamp(15px, 1.5vw, 16px);
+    line-height: clamp(24px, 2vw, 26px);
+  }
+
+  .LiveRow {
+    flex-direction: column;
+    row-gap: 24px;
+  }
+
+  .LiveRow .LiveMainContent {
+    width: 90%;
+  }
+
+  .LiveMainContent .paraoneLiveSection {
+    font-size: clamp(14px, 1.5vw, 16px);
+    line-height: clamp(22px, 2vw, 26px);
+  }
+
+  .LiveMainContent .paraTwoLiveSection {
+    font-size: clamp(14px, 1.5vw, 16px);
+    line-height: clamp(22px, 2vw, 26px);
+  }
+  .LiveRow img {
+    width: 90%;
+  }
+
+  .chennaiLifeEssentialHeading h3 {
+    font-size: clamp(40px, 14vw, 100px);
+    line-height: clamp(44px, 9vw, 94px);
+  }
+
+  .chennaiLifeEssentialHeading p {
+    font-size: clamp(15px, 1.5vw, 16px);
+    line-height: clamp(24px, 2vw, 32px);
+  }
+
+  .ChennaiEssentialimagecontainer {
+    width: 85%;
+  }
+
+  .ImageConatinerLiveEssential {
+    justify-content: center;
+  }
+
+  .ChennaiEssentisalMainContainer {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #efefef;
+  }
+  .LiveParaSection {
+    margin-top: 5px;
+    position: relative;
+    padding-bottom: 50px;
+    padding-top: 34px;
+  }
+
+  .DootedBannerSectionLive {
+    background-image: none;
+  }
+}

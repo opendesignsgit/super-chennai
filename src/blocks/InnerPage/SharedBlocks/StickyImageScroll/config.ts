@@ -1,7 +1,7 @@
 import { Block } from 'payload'
 
-export const futureUnicorns: Block = {
-  slug: 'futureUnicorns',
+export const StickyImageScroll: Block = {
+  slug: 'StickyImageScroll',
   labels: {
     singular: 'StickyImageScroll',
     plural: 'StickyImageScroll',
@@ -13,12 +13,11 @@ export const futureUnicorns: Block = {
       type: 'select',
       options: [
         { label: 'Color', value: 'color' },
-        { label: 'Image', value: 'image' },
+        { label: 'None', value: 'image' },
       ],
       defaultValue: 'color',
       required: true,
     },
-    // Optional: if you want
     {
       name: 'backgroundColor',
       type: 'text',
@@ -26,31 +25,41 @@ export const futureUnicorns: Block = {
       admin: {
         condition: (data) => data.backgroundType === 'color',
       },
-      defaultValue: '#995098',
+      defaultValue: '#7d377c',
     },
-
     {
       name: 'leftImage',
       type: 'upload',
       relationTo: 'media',
       required: true,
     },
-
     {
       name: 'smallText',
       type: 'text',
       required: false,
       defaultValue: '',
+      maxLength: 100,
+      admin: {
+        description: 'Maximum 20 characters allowed',
+      },
     },
     {
       name: 'title',
       type: 'text',
       required: false,
+      maxLength: 100,
+      admin: {
+        description: 'Maximum 50 characters allowed',
+      },
     },
     {
       name: 'description',
       type: 'textarea',
       required: true,
+      maxLength: 600,
+      admin: {
+        description: 'Maximum 400 characters allowed',
+      },
     },
     {
       name: 'cards',
@@ -68,20 +77,74 @@ export const futureUnicorns: Block = {
           name: 'title',
           type: 'text',
           required: true,
+          maxLength: 100,
+          admin: {
+            description: 'Maximum 100 characters allowed',
+          },
         },
         {
           name: 'description',
           type: 'textarea',
           required: true,
+          maxLength: 600,
+          admin: {
+            description: 'Maximum 500 characters allowed',
+          },
         },
         {
-          name: 'link',
+          name: 'page',
+          type: 'relationship',
+          relationTo: 'visits',
+          required: false,
+          label: 'Select Page Link',
+        },
+        {
+          name: 'customLink',
           type: 'text',
-          label: 'External or Internal URL',
+          label: 'Or Custom URL',
+          admin: {
+            description: 'This will override the selected page link if provided.',
+            placeholder: ' /some-path',
+          },
+        },
+      ],
+    },
+
+    //##### Optional schema as new array field #####
+    {
+      name: 'extraContent',
+      type: 'array',
+      label: 'Bottom KeyPoints',
+      required: false,
+      fields: [
+        {
+          name: 'imgs',
+          type: 'upload',
+          relationTo: 'media',
+        },
+        {
+          name: 'title',
+          type: 'text',
+        },
+
+        {
+          name: 'para',
+          type: 'array',
+          label: 'List Items',
+          fields: [
+            {
+              name: 'point',
+              type: 'text',
+            },
+            {
+              name: 'mainHead',
+              type: 'text',
+            },
+          ],
         },
       ],
     },
   ],
 }
 
-export default futureUnicorns
+export default StickyImageScroll

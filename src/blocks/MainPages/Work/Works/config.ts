@@ -1,45 +1,48 @@
 import { Block } from 'payload'
 
-const workInChennaiBlock: Block = {
-  slug: 'workinchennai',
+const TextHoverImageSection: Block = {
+  slug: 'textHoverImageSection',
   labels: {
     singular: 'Work in Chennai Section',
     plural: 'Work in Chennai Sections',
   },
+  admin: {
+    group: 'Main Page Sections',
+  },
   fields: [
     {
-      name: 'heading',
-      label: 'Heading',
+      name: 'title',
+      label: 'Section Title',
       type: 'text',
       required: true,
-    },
-    {
-      name: 'intro',
-      label: 'Intro Text',
-      type: 'textarea',
-      required: true,
-    },
-    {
-      name: 'description',
-      label: 'Description',
-      type: 'textarea',
-      required: true,
+      maxLength: 100,
+      admin: {
+        description: 'Maximum 100 characters allowed',
+      },
     },
     {
       name: 'items',
-      label: 'Work Items',
+      label: 'Hover Items',
       type: 'array',
-      minRows: 1,
+      required: true,
       fields: [
         {
           name: 'label',
           type: 'text',
           required: true,
+          maxLength: 100,
+          admin: {
+            description: 'Maximum 100 characters allowed',
+          },
         },
         {
           name: 'link',
           type: 'text',
           required: true,
+          maxLength: 200,
+          admin: {
+            description: 'Maximum 200 characters allowed',
+          },
         },
         {
           name: 'image',
@@ -52,4 +55,4 @@ const workInChennaiBlock: Block = {
   ],
 }
 
-export default workInChennaiBlock
+export default TextHoverImageSection

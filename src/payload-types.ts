@@ -76,9 +76,14 @@ export interface Config {
     users: User;
     visits: Visit;
     work: Work;
+    events: Event;
+    investments: Investment;
+    live: Live;
+    volunteer: Volunteer;
+    innovate: Innovate;
+    hotels: Hotel;
     volunteerSlides: VolunteerSlide;
     'social-reels': SocialReel;
-    eventGroups: EventGroup;
     'investment-categories': InvestmentCategory;
     visitGroups: VisitGroup;
     redirects: Redirect;
@@ -99,9 +104,14 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     visits: VisitsSelect<false> | VisitsSelect<true>;
     work: WorkSelect<false> | WorkSelect<true>;
+    events: EventsSelect<false> | EventsSelect<true>;
+    investments: InvestmentsSelect<false> | InvestmentsSelect<true>;
+    live: LiveSelect<false> | LiveSelect<true>;
+    volunteer: VolunteerSelect<false> | VolunteerSelect<true>;
+    innovate: InnovateSelect<false> | InnovateSelect<true>;
+    hotels: HotelsSelect<false> | HotelsSelect<true>;
     volunteerSlides: VolunteerSlidesSelect<false> | VolunteerSlidesSelect<true>;
     'social-reels': SocialReelsSelect<false> | SocialReelsSelect<true>;
-    eventGroups: EventGroupsSelect<false> | EventGroupsSelect<true>;
     'investment-categories': InvestmentCategoriesSelect<false> | InvestmentCategoriesSelect<true>;
     visitGroups: VisitGroupsSelect<false> | VisitGroupsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
@@ -162,30 +172,622 @@ export interface UserAuthOperations {
  * via the `definition` "chennaiInvestments".
  */
 export interface ChennaiInvestments {
+  /**
+   * Maximum 30 characters allowed
+   */
   heading: string;
+  /**
+   * Maximum 400 characters allowed
+   */
   subheading?: string | null;
-  categorySource?: (number | InvestmentCategory)[] | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'chennaiInvestments';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "investment-categories".
+ * via the `definition` "pages".
  */
-export interface InvestmentCategory {
+export interface Page {
   id: number;
-  name: string;
-  items?:
+  title: string;
+  hero: {
+    /**
+     * Choose the type of hero banner to display. Select "None" to hide the banner.
+     */
+    type: 'none' | 'Defult';
+    heading?: string | null;
+    image?: (number | null) | Media;
+    backgroundColor?:
+      | ('gradient-1' | 'gradient-2' | 'gradient-3' | 'gradient-4' | 'gradient-5' | 'gradient-6' | 'gradient-7')
+      | null;
+    links?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: number | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: number | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+            /**
+             * Choose how the link should be rendered.
+             */
+            appearance?: ('default' | 'outline') | null;
+            content?:
+              | {
+                  title?: string | null;
+                  desc?: string | null;
+                  link?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
+  layout: (
     | {
-        title: string;
-        description?: string | null;
-        image?: (number | null) | Media;
+        cards: {
+          /**
+           * Maximum 15 characters allowed
+           */
+          title: string;
+          /**
+           * Maximum 15 characters allowed
+           */
+          place: string;
+          image: number | Media;
+          page?: (number | null) | Visit;
+          /**
+           * This will override the selected page link if provided.
+           */
+          customLink?: string | null;
+          id?: string | null;
+        }[];
         id?: string | null;
-      }[]
-    | null;
+        blockName?: string | null;
+        blockType: 'explore';
+      }
+    | {
+        /**
+         * Maximum 25 characters allowed
+         */
+        heading: string;
+        /**
+         * Maximum 200 characters allowed
+         */
+        subheading: string;
+        cards: {
+          /**
+           * Maximum 15 characters allowed
+           */
+          title: string;
+          /**
+           * Maximum 15 characters allowed
+           */
+          place?: string | null;
+          image: number | Media;
+          page?: (number | null) | Visit;
+          /**
+           * This will override the selected page link if provided.
+           */
+          customLink?: string | null;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'funChennai';
+      }
+    | {
+        /**
+         * Maximum 30 characters allowed
+         */
+        heading?: string | null;
+        /**
+         * Maximum 400 characters allowed
+         */
+        description?: string | null;
+        images?:
+          | {
+              image?: (number | null) | Media;
+              /**
+               * Maximum 20 characters allowed
+               */
+              title: string;
+              /**
+               * Maximum 50 characters allowed
+               */
+              description?: string | null;
+              page?: (number | null) | Investment;
+              /**
+               * This will override the selected page link if provided.
+               */
+              customLink?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'startupChennai';
+      }
+    | {
+        /**
+         * Maximum 30 characters allowed
+         */
+        heading: string;
+        /**
+         * Maximum 400 characters allowed
+         */
+        subheading?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'chennaiInvestments';
+      }
+    | {
+        /**
+         * Maximum 100 characters allowed
+         */
+        heading?: string | null;
+        /**
+         * Maximum 400 characters allowed
+         */
+        description?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'socialReelSlider';
+      }
+    | {
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'becameAVolunteer';
+      }
+    | {
+        /**
+         * Maximum 50 characters allowed
+         */
+        heading?: string | null;
+        /**
+         * Maximum 200 characters allowed
+         */
+        description?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'eventsCalendar';
+      }
+    | {
+        slides: {
+          image: number | Media;
+          title?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'heroSliderBlock';
+      }
+    | {
+        /**
+         * Maximum 100 characters allowed
+         */
+        title: string;
+        /**
+         * Maximum 800 characters allowed
+         */
+        description?: string | null;
+        items?:
+          | {
+              /**
+               * Maximum 200 characters allowed
+               */
+              label: string;
+              /**
+               * Maximum 800 characters allowed
+               */
+              description?: string | null;
+              image: number | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'visitcategory';
+      }
+    | {
+        sections: {
+          title: string;
+          description: string;
+          image: number | Media;
+          linkUrl?: string | null;
+          linkText?: string | null;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ZigZagContent';
+      }
+    | {
+        /**
+         * Maximum 200 characters allowed
+         */
+        sectionTitle: string;
+        /**
+         * Maximum 600 characters allowed
+         */
+        sectionDescription: string;
+        volunteerSections: {
+          /**
+           * Maximum 100 characters allowed
+           */
+          title: string;
+          /**
+           * Maximum 800 characters allowed
+           */
+          description: string;
+          image: number | Media;
+          linkText: string;
+          linkUrl: string;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'volunteerBecameSection';
+      }
+    | {
+        heading: string;
+        image: number | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'Banner';
+      }
+    | {
+        /**
+         * Maximum 50 characters allowed
+         */
+        heading: string;
+        image: number | Media;
+        backgroundColor?:
+          | ('gradient-1' | 'gradient-2' | 'gradient-3' | 'gradient-4' | 'gradient-5' | 'gradient-6')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'mainPageBanner';
+      }
+    | {
+        showMarquee?: boolean | null;
+        /**
+         * Maximum 50 characters allowed
+         */
+        marqueeText?: string | null;
+        marqueeTextSize?: ('sm' | 'lg') | null;
+        /**
+         * Maximum 50 characters allowed
+         */
+        title: string;
+        /**
+         * Maximum 400 characters allowed
+         */
+        highlightedText: string;
+        /**
+         * Maximum 800 characters allowed
+         */
+        description: string;
+        backgroundType: 'none' | 'background';
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'introTextBlock';
+      }
+    | {
+        placeholderText: string;
+        buttonText: string;
+        enableFilters?: boolean | null;
+        filters?:
+          | {
+              label: string;
+              options?:
+                | {
+                    value: string;
+                    label: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'globalSearch';
+      }
+    | {
+        heading: string;
+        description?: string | null;
+        buttonText?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'formPopup';
+      }
+    | {
+        /**
+         * Maximum 20 characters allowed
+         */
+        heading: string;
+        /**
+         * Maximum 20 characters allowed
+         */
+        headingSpan: string;
+        /**
+         * Maximum 200 characters allowed
+         */
+        description: string;
+        foodItems: {
+          /**
+           * Maximum 20 characters allowed
+           */
+          title: string;
+          /**
+           * Maximum 200 characters allowed
+           */
+          description: string;
+          image: number | Media;
+          page?: (number | null) | Visit;
+          /**
+           * This will override the selected page link if provided.
+           */
+          customLink?: string | null;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'infography';
+      }
+    | {
+        techImage: number | Media;
+        /**
+         * Maximum 30 characters allowed
+         */
+        techTitle: string;
+        /**
+         * Maximum 200 characters allowed
+         */
+        techDescription: string;
+        eduImage: number | Media;
+        /**
+         * Maximum 30 characters allowed
+         */
+        eduTitle: string;
+        /**
+         * Maximum 200 characters allowed
+         */
+        eduDescription: string;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'twoColumnFeatureBlock';
+      }
+    | {
+        /**
+         * Maximum 50 characters allowed
+         */
+        title: string;
+        /**
+         * Maximum 200 characters allowed
+         */
+        description?: string | null;
+        tabs: {
+          /**
+           * Maximum 20 characters allowed
+           */
+          tabTitle: string;
+          image: number | Media;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'utilities';
+      }
+    | {
+        /**
+         * Maximum 15 characters allowed
+         */
+        heading: string;
+        /**
+         * Maximum 15 characters allowed
+         */
+        subheading?: string | null;
+        /**
+         * Maximum 200 characters allowed
+         */
+        description?: string | null;
+        cards: {
+          title: string;
+          /**
+           * Maximum 200 characters allowed
+           */
+          description?: string | null;
+          image: number | Media;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'contentZoneCarousel';
+      }
+    | {
+        /**
+         * Maximum 20 characters allowed
+         */
+        heading: string;
+        /**
+         * Maximum 500 characters allowed
+         */
+        description: string;
+        link?: string | null;
+        items?:
+          | {
+              /**
+               * Maximum 15 characters allowed
+               */
+              name: string;
+              /**
+               * Maximum 15 characters allowed
+               */
+              subtitle?: string | null;
+              /**
+               * Maximum 200 characters allowed
+               */
+              para?: string | null;
+              image: number | Media;
+              page?: (number | null) | Event;
+              /**
+               * This will override the selected page link if provided.
+               */
+              customLink?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'spotlightGallery';
+      }
+    | {
+        /**
+         * Maximum 15 characters allowed
+         */
+        title: string;
+        /**
+         * Maximum 400 characters allowed
+         */
+        description?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'allevents';
+      }
+    | {
+        /**
+         * Maximum 50 characters allowed
+         */
+        heading: string;
+        imagePosition: 'left' | 'right';
+        image: number | Media;
+        /**
+         * Maximum 500 characters allowed
+         */
+        paraZeroLiveSection: string;
+        /**
+         * Maximum 500 characters allowed
+         */
+        paraoneLiveSection: string;
+        /**
+         * Maximum 500 characters allowed
+         */
+        paraTwoLiveSection: string;
+        showMarquee?: boolean | null;
+        /**
+         * Maximum 200 characters allowed
+         */
+        marqueeText?: string | null;
+        marqueeTextSize?: ('sm' | 'lg') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'liveIntrorSection';
+      }
+    | {
+        /**
+         * Maximum 15 characters allowed
+         */
+        heading: string;
+        /**
+         * Maximum 500 characters allowed
+         */
+        description: string;
+        essentials?:
+          | {
+              /**
+               * Maximum 500 characters allowed
+               */
+              text: string;
+              page?: (number | null) | Live;
+              image: number | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'chennaiLifeEssentials';
+      }
+    | {
+        items: {
+          /**
+           * Maximum 30 characters allowed
+           */
+          title: string;
+          /**
+           * Maximum 30 characters allowed
+           */
+          subtitle?: string | null;
+          /**
+           * Maximum 400 characters allowed
+           */
+          description?: string | null;
+          /**
+           * Upload an SVG file only.
+           */
+          image?: (number | null) | Media;
+          link?: string | null;
+          id?: string | null;
+        }[];
+        backgroundImage?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'investmentCategoryList';
+      }
+    | {
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'innovateSlider';
+      }
+    | {
+        /**
+         * Maximum 100 characters allowed
+         */
+        title: string;
+        items: {
+          /**
+           * Maximum 100 characters allowed
+           */
+          label: string;
+          /**
+           * Maximum 200 characters allowed
+           */
+          link: string;
+          image: number | Media;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'textHoverImageSection';
+      }
+  )[];
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -281,250 +883,6 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages".
- */
-export interface Page {
-  id: number;
-  title: string;
-  hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
-    richText?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    links?:
-      | {
-          link: {
-            type?: ('reference' | 'custom') | null;
-            newTab?: boolean | null;
-            reference?:
-              | ({
-                  relationTo: 'pages';
-                  value: number | Page;
-                } | null)
-              | ({
-                  relationTo: 'posts';
-                  value: number | Post;
-                } | null);
-            url?: string | null;
-            label: string;
-            /**
-             * Choose how the link should be rendered.
-             */
-            appearance?: ('default' | 'outline') | null;
-          };
-          id?: string | null;
-        }[]
-      | null;
-    media?: (number | null) | Media;
-  };
-  layout: (
-    | CallToActionBlock
-    | ContentBlock
-    | MediaBlock
-    | ArchiveBlock
-    | FormBlock
-    | {
-        title: string;
-        bannerImage: number | Media;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'visitBanner';
-      }
-    | {
-        cards: {
-          title: string;
-          place: string;
-          image: number | Media;
-          id?: string | null;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'explore';
-      }
-    | {
-        heading: string;
-        subheading: string;
-        cards: {
-          title: string;
-          place: string;
-          image: number | Media;
-          id?: string | null;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'funChennai';
-      }
-    | {
-        heading?: string | null;
-        description?: string | null;
-        images?:
-          | {
-              image?: (number | null) | Media;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'startupChennai';
-      }
-    | {
-        heading: string;
-        subheading?: string | null;
-        categorySource?: (number | InvestmentCategory)[] | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'chennaiInvestments';
-      }
-    | {
-        heading: string;
-        description: string;
-        reelsRef: number | SocialReel;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'socialChennai';
-      }
-    | {
-        heading: string;
-        title: string;
-        description?: string | null;
-        volunteerSlidesRef: number | VolunteerSlide;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'becameAVolunteer';
-      }
-    | {
-        heading: string;
-        description?: string | null;
-        eventGroupRef: number | EventGroup;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'eventsCalendar';
-      }
-    | {
-        placeholderText: string;
-        buttonText: string;
-        enableFilters?: boolean | null;
-        filters?:
-          | {
-              label: string;
-              options?:
-                | {
-                    value: string;
-                    label: string;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'globalSearch';
-      }
-    | {
-        slides: {
-          image: number | Media;
-          title?: string | null;
-          description?: string | null;
-          id?: string | null;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'heroSliderBlock';
-      }
-    | {
-        title: string;
-        description?: string | null;
-        items?:
-          | {
-              label: string;
-              description?: string | null;
-              image: number | Media;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'visitcategory';
-      }
-    | {
-        marqueeText?: string | null;
-        title: string;
-        highlightedText: string;
-        description: string;
-        showInstagramReels?: boolean | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'visitIntroText';
-      }
-    | {
-        sections: {
-          title: string;
-          description: string;
-          image: number | Media;
-          linkUrl?: string | null;
-          linkText?: string | null;
-          id?: string | null;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ZigZagContent';
-      }
-    | {
-        title: string;
-        description: string;
-        marqueeText: string;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'careerIntro';
-      }
-    | {
-        heading: string;
-        image: number | Media;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'Banner';
-      }
-    | {
-        heading: string;
-        image: number | Media;
-        backgroundColor?:
-          | ('gradient-1' | 'gradient-2' | 'gradient-3' | 'gradient-4' | 'gradient-5' | 'gradient-6')
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'mainPageBanner';
-      }
-  )[];
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts".
  */
 export interface Post {
@@ -611,10 +969,499 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CallToActionBlock".
+ * via the `definition` "visits".
  */
-export interface CallToActionBlock {
-  richText?: {
+export interface Visit {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedvisits?: (number | Visit)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  /**
+   * Select subpages for this visit. Accessible at /visits/[slug]/[subpageSlug]
+   */
+  subpages?: (number | null) | Hotel;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hotels".
+ */
+export interface Hotel {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedhotels?: (number | Hotel)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "investments".
+ */
+export interface Investment {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedinvestments?: (number | Investment)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  investments?:
+    | {
+        /**
+         * Maximum 40 characters allowed
+         */
+        sectionTitle: string;
+        /**
+         * Maximum 200 characters allowed
+         */
+        sectionDescription?: string | null;
+        sectionImage?: (number | null) | Media;
+        investmentItems?:
+          | {
+              /**
+               * Maximum 100 characters allowed
+               */
+              title: string;
+              /**
+               * Maximum 200 characters allowed
+               */
+              description?: string | null;
+              image?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: number;
+  title: string;
+  /**
+   * Only one event can be featured at a time.
+   */
+  isFeatured?: boolean | null;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  event: {
+    image: number | Media;
+    /**
+     * Upload an image of the performing artist
+     */
+    artistImage?: (number | null) | Media;
+    /**
+     * Maximum 100 characters
+     */
+    singerName?: string | null;
+    /**
+     * Specify the role/designation of the artist in the event
+     */
+    artistDesignation?: string | null;
+    /**
+     * Maximum 200 characters allowed
+     */
+    title: string;
+    /**
+     * Maximum 200 characters allowed
+     */
+    description?: string | null;
+    /**
+     * Choose full date (day, month, year)
+     */
+    eventDate: string;
+    /**
+     * Maximum 30 characters allowed
+     */
+    performerRole?: string | null;
+    details?: {
+      duration?: string | null;
+      ageLimit?: string | null;
+      language?: string | null;
+      genre?: string | null;
+      location?: string | null;
+    };
+    /**
+     * Choose the category of the event
+     */
+    category:
+      | 'music'
+      | 'workshop'
+      | 'festival'
+      | 'concert'
+      | 'comedy'
+      | 'theatre'
+      | 'exhibition'
+      | 'sports'
+      | 'dance'
+      | 'film_screening'
+      | 'conference'
+      | 'meetup'
+      | 'networking'
+      | 'startup_event'
+      | 'hackathon'
+      | 'art_culture'
+      | 'charity'
+      | 'talks'
+      | 'seminar'
+      | 'webinar'
+      | 'kids_family'
+      | 'food_drink'
+      | 'culinary_workshop'
+      | 'book_reading'
+      | 'literature'
+      | 'spiritual'
+      | 'fashion'
+      | 'education'
+      | 'technology'
+      | 'health_wellness'
+      | 'yoga_meditation'
+      | 'photography'
+      | 'design'
+      | 'gaming'
+      | 'esports'
+      | 'motivational_talk'
+      | 'pet_animal'
+      | 'gardening'
+      | 'sustainability'
+      | 'travel_adventure'
+      | 'automobile'
+      | 'magic_show'
+      | 'standup_comedy'
+      | 'open_mic'
+      | 'pageant'
+      | 'film_festival'
+      | 'virtual_reality'
+      | 'ai_data_science'
+      | 'coding_bootcamp'
+      | 'career_fair'
+      | 'job_fair'
+      | 'real_estate_expo'
+      | 'startup_pitch'
+      | 'investor_meet'
+      | 'product_launch'
+      | 'panel_discussion'
+      | 'tedx_talk'
+      | 'book_launch'
+      | 'fundraiser'
+      | 'award_show'
+      | 'carnival'
+      | 'parade'
+      | 'bridal_show'
+      | 'wedding_expo'
+      | 'nightlife'
+      | 'club_event'
+      | 'beach_party'
+      | 'cultural_fest'
+      | 'alumni_meet'
+      | 'orientation'
+      | 'convocation'
+      | 'independence_day'
+      | 'republic_day'
+      | 'national_holiday'
+      | 'religious'
+      | 'temple_event'
+      | 'church_gathering'
+      | 'ramadan'
+      | 'christmas'
+      | 'easter'
+      | 'diwali'
+      | 'pongal'
+      | 'onam'
+      | 'navaratri'
+      | 'durga_puja'
+      | 'ganesh_chaturthi'
+      | 'holi'
+      | 'janmashtami'
+      | 'thanksgiving'
+      | 'halloween'
+      | 'new_year_party'
+      | 'valentines_day'
+      | 'indigenous_culture'
+      | 'language_day'
+      | 'heritage_walk'
+      | 'skating'
+      | 'cycling'
+      | 'marathon'
+      | 'adventure_sports'
+      | 'trekking'
+      | 'camping'
+      | 'bird_watching'
+      | 'zoo_visit'
+      | 'aquarium_event'
+      | 'science_fair'
+      | 'math_olympiad'
+      | 'coding_challenge'
+      | 'quiz_competition';
+    link?: string | null;
+    /**
+     * Full address or venue location for the event(Maximum 100 characters allowed)
+     */
+    address?: string | null;
+  };
+  relatedevents?: (number | Event)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "live".
+ */
+export interface Live {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedlive?: (number | Live)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "work".
+ */
+export interface Work {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedwork?: (number | Work)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteer".
+ */
+export interface Volunteer {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  image: number | Media;
+  /**
+   * Maximum 100 characters allowed
+   */
+  'Voluenteer title': string;
+  /**
+   * Maximum 400 characters allowed
+   */
+  subtitle?: string | null;
+  /**
+   * Maximum 400 characters allowed
+   */
+  description?: string | null;
+  content?: {
     root: {
       type: string;
       children: {
@@ -629,43 +1476,101 @@ export interface CallToActionBlock {
     };
     [k: string]: unknown;
   } | null;
-  links?:
+  relatedvolunteer?: (number | Volunteer)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
         id?: string | null;
+        name?: string | null;
       }[]
     | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'cta';
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ContentBlock".
+ * via the `definition` "innovate".
  */
-export interface ContentBlock {
-  columns?:
+export interface Innovate {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Maximum 200 characters allowed
+   */
+  innovationTitle: string;
+  /**
+   * Maximum 800 characters allowed
+   */
+  innovationDescription?: string | null;
+  innovationImage?: (number | null) | Media;
+  relatedinnovate?: (number | Innovate)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
     | {
-        size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
-        richText?: {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteerSlides".
+ */
+export interface VolunteerSlide {
+  id: number;
+  title: string;
+  slides?:
+    | {
+        slug: string;
+        image: number | Media;
+        title: string;
+        subtitle?: string | null;
+        description?: string | null;
+        detailedContent?: {
           root: {
             type: string;
             children: {
@@ -680,102 +1585,112 @@ export interface ContentBlock {
           };
           [k: string]: unknown;
         } | null;
-        enableLink?: boolean | null;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
+        video?: string | null;
+        faq?:
+          | {
+              question?: string | null;
+              answer?: string | null;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'content';
+  /**
+   * Add custom content for this volunteer slide.
+   */
+  content?: string | null;
+  /**
+   * SEO metadata for the volunteer slide.
+   */
+  seo?: {
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    metaKeywords?: string | null;
+    canonicalUrl?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MediaBlock".
+ * via the `definition` "social-reels".
  */
-export interface MediaBlock {
-  media: number | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'mediaBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ArchiveBlock".
- */
-export interface ArchiveBlock {
-  introContent?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  populateBy?: ('collection' | 'selection') | null;
-  relationTo?: 'posts' | null;
-  categories?: (number | Category)[] | null;
-  limit?: number | null;
-  selectedDocs?:
+export interface SocialReel {
+  id: number;
+  title: string;
+  reels?:
     | {
-        relationTo: 'posts';
-        value: number | Post;
+        thumbnail: number | Media;
+        link: string;
+        id?: string | null;
       }[]
     | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'archive';
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FormBlock".
+ * via the `definition` "investment-categories".
  */
-export interface FormBlock {
-  form: number | Form;
-  enableIntro?: boolean | null;
-  introContent?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'formBlock';
+export interface InvestmentCategory {
+  id: number;
+  name: string;
+  items?:
+    | {
+        title: string;
+        description?: string | null;
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "visitGroups".
+ */
+export interface VisitGroup {
+  id: number;
+  title: string;
+  description?: string | null;
+  items?:
+    | {
+        label: string;
+        description?: string | null;
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects".
+ */
+export interface Redirect {
+  id: number;
+  /**
+   * You will need to rebuild the website when changing this field.
+   */
+  from: string;
+  to?: {
+    type?: ('reference' | 'custom') | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    url?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -948,239 +1863,6 @@ export interface Form {
         id?: string | null;
       }[]
     | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "social-reels".
- */
-export interface SocialReel {
-  id: number;
-  title: string;
-  reels?:
-    | {
-        thumbnail: number | Media;
-        link: string;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "volunteerSlides".
- */
-export interface VolunteerSlide {
-  id: number;
-  title: string;
-  slides?:
-    | {
-        slug: string;
-        image: number | Media;
-        title: string;
-        subtitle?: string | null;
-        description?: string | null;
-        detailedContent?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        video?: string | null;
-        faq?:
-          | {
-              question?: string | null;
-              answer?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Add custom content for this volunteer slide.
-   */
-  content?: string | null;
-  /**
-   * SEO metadata for the volunteer slide.
-   */
-  seo?: {
-    metaTitle?: string | null;
-    metaDescription?: string | null;
-    metaKeywords?: string | null;
-    canonicalUrl?: string | null;
-  };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "eventGroups".
- */
-export interface EventGroup {
-  id: number;
-  title: string;
-  events?:
-    | {
-        image: number | Media;
-        title: string;
-        description?: string | null;
-        time?: string | null;
-        category?: string | null;
-        link?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "visits".
- */
-export interface Visit {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedvisits?: (number | Visit)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "work".
- */
-export interface Work {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedwork?: (number | Work)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "visitGroups".
- */
-export interface VisitGroup {
-  id: number;
-  title: string;
-  description?: string | null;
-  items?:
-    | {
-        label: string;
-        description?: string | null;
-        image: number | Media;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "redirects".
- */
-export interface Redirect {
-  id: number;
-  /**
-   * You will need to rebuild the website when changing this field.
-   */
-  from: string;
-  to?: {
-    type?: ('reference' | 'custom') | null;
-    reference?:
-      | ({
-          relationTo: 'pages';
-          value: number | Page;
-        } | null)
-      | ({
-          relationTo: 'posts';
-          value: number | Post;
-        } | null);
-    url?: string | null;
-  };
   updatedAt: string;
   createdAt: string;
 }
@@ -1368,16 +2050,36 @@ export interface PayloadLockedDocument {
         value: number | Work;
       } | null)
     | ({
+        relationTo: 'events';
+        value: number | Event;
+      } | null)
+    | ({
+        relationTo: 'investments';
+        value: number | Investment;
+      } | null)
+    | ({
+        relationTo: 'live';
+        value: number | Live;
+      } | null)
+    | ({
+        relationTo: 'volunteer';
+        value: number | Volunteer;
+      } | null)
+    | ({
+        relationTo: 'innovate';
+        value: number | Innovate;
+      } | null)
+    | ({
+        relationTo: 'hotels';
+        value: number | Hotel;
+      } | null)
+    | ({
         relationTo: 'volunteerSlides';
         value: number | VolunteerSlide;
       } | null)
     | ({
         relationTo: 'social-reels';
         value: number | SocialReel;
-      } | null)
-    | ({
-        relationTo: 'eventGroups';
-        value: number | EventGroup;
       } | null)
     | ({
         relationTo: 'investment-categories';
@@ -1459,7 +2161,9 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         type?: T;
-        richText?: T;
+        heading?: T;
+        image?: T;
+        backgroundColor?: T;
         links?:
           | T
           | {
@@ -1472,27 +2176,21 @@ export interface PagesSelect<T extends boolean = true> {
                     url?: T;
                     label?: T;
                     appearance?: T;
+                    content?:
+                      | T
+                      | {
+                          title?: T;
+                          desc?: T;
+                          link?: T;
+                          id?: T;
+                        };
                   };
               id?: T;
             };
-        media?: T;
       };
   layout?:
     | T
     | {
-        cta?: T | CallToActionBlockSelect<T>;
-        content?: T | ContentBlockSelect<T>;
-        mediaBlock?: T | MediaBlockSelect<T>;
-        archive?: T | ArchiveBlockSelect<T>;
-        formBlock?: T | FormBlockSelect<T>;
-        visitBanner?:
-          | T
-          | {
-              title?: T;
-              bannerImage?: T;
-              id?: T;
-              blockName?: T;
-            };
         explore?:
           | T
           | {
@@ -1502,6 +2200,8 @@ export interface PagesSelect<T extends boolean = true> {
                     title?: T;
                     place?: T;
                     image?: T;
+                    page?: T;
+                    customLink?: T;
                     id?: T;
                   };
               id?: T;
@@ -1518,6 +2218,8 @@ export interface PagesSelect<T extends boolean = true> {
                     title?: T;
                     place?: T;
                     image?: T;
+                    page?: T;
+                    customLink?: T;
                     id?: T;
                   };
               id?: T;
@@ -1532,6 +2234,10 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     image?: T;
+                    title?: T;
+                    description?: T;
+                    page?: T;
+                    customLink?: T;
                     id?: T;
                   };
               id?: T;
@@ -1542,26 +2248,20 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               heading?: T;
               subheading?: T;
-              categorySource?: T;
               id?: T;
               blockName?: T;
             };
-        socialChennai?:
+        socialReelSlider?:
           | T
           | {
               heading?: T;
               description?: T;
-              reelsRef?: T;
               id?: T;
               blockName?: T;
             };
         becameAVolunteer?:
           | T
           | {
-              heading?: T;
-              title?: T;
-              description?: T;
-              volunteerSlidesRef?: T;
               id?: T;
               blockName?: T;
             };
@@ -1570,29 +2270,6 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               heading?: T;
               description?: T;
-              eventGroupRef?: T;
-              id?: T;
-              blockName?: T;
-            };
-        globalSearch?:
-          | T
-          | {
-              placeholderText?: T;
-              buttonText?: T;
-              enableFilters?: T;
-              filters?:
-                | T
-                | {
-                    label?: T;
-                    options?:
-                      | T
-                      | {
-                          value?: T;
-                          label?: T;
-                          id?: T;
-                        };
-                    id?: T;
-                  };
               id?: T;
               blockName?: T;
             };
@@ -1626,17 +2303,6 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        visitIntroText?:
-          | T
-          | {
-              marqueeText?: T;
-              title?: T;
-              highlightedText?: T;
-              description?: T;
-              showInstagramReels?: T;
-              id?: T;
-              blockName?: T;
-            };
         ZigZagContent?:
           | T
           | {
@@ -1653,12 +2319,21 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        careerIntro?:
+        volunteerBecameSection?:
           | T
           | {
-              title?: T;
-              description?: T;
-              marqueeText?: T;
+              sectionTitle?: T;
+              sectionDescription?: T;
+              volunteerSections?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    linkText?: T;
+                    linkUrl?: T;
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };
@@ -1679,6 +2354,210 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        introTextBlock?:
+          | T
+          | {
+              showMarquee?: T;
+              marqueeText?: T;
+              marqueeTextSize?: T;
+              title?: T;
+              highlightedText?: T;
+              description?: T;
+              backgroundType?: T;
+              id?: T;
+              blockName?: T;
+            };
+        globalSearch?:
+          | T
+          | {
+              placeholderText?: T;
+              buttonText?: T;
+              enableFilters?: T;
+              filters?:
+                | T
+                | {
+                    label?: T;
+                    options?:
+                      | T
+                      | {
+                          value?: T;
+                          label?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        formPopup?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              buttonText?: T;
+              id?: T;
+              blockName?: T;
+            };
+        infography?:
+          | T
+          | {
+              heading?: T;
+              headingSpan?: T;
+              description?: T;
+              foodItems?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    page?: T;
+                    customLink?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        twoColumnFeatureBlock?:
+          | T
+          | {
+              techImage?: T;
+              techTitle?: T;
+              techDescription?: T;
+              eduImage?: T;
+              eduTitle?: T;
+              eduDescription?: T;
+              id?: T;
+              blockName?: T;
+            };
+        utilities?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              tabs?:
+                | T
+                | {
+                    tabTitle?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        contentZoneCarousel?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              description?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        spotlightGallery?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              link?: T;
+              items?:
+                | T
+                | {
+                    name?: T;
+                    subtitle?: T;
+                    para?: T;
+                    image?: T;
+                    page?: T;
+                    customLink?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        allevents?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+              blockName?: T;
+            };
+        liveIntrorSection?:
+          | T
+          | {
+              heading?: T;
+              imagePosition?: T;
+              image?: T;
+              paraZeroLiveSection?: T;
+              paraoneLiveSection?: T;
+              paraTwoLiveSection?: T;
+              showMarquee?: T;
+              marqueeText?: T;
+              marqueeTextSize?: T;
+              id?: T;
+              blockName?: T;
+            };
+        chennaiLifeEssentials?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              essentials?:
+                | T
+                | {
+                    text?: T;
+                    page?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        investmentCategoryList?:
+          | T
+          | {
+              items?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                    image?: T;
+                    link?: T;
+                    id?: T;
+                  };
+              backgroundImage?: T;
+              id?: T;
+              blockName?: T;
+            };
+        innovateSlider?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        textHoverImageSection?:
+          | T
+          | {
+              title?: T;
+              items?:
+                | T
+                | {
+                    label?: T;
+                    link?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -1693,90 +2572,6 @@ export interface PagesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CallToActionBlock_select".
- */
-export interface CallToActionBlockSelect<T extends boolean = true> {
-  richText?: T;
-  links?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
-        id?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ContentBlock_select".
- */
-export interface ContentBlockSelect<T extends boolean = true> {
-  columns?:
-    | T
-    | {
-        size?: T;
-        richText?: T;
-        enableLink?: T;
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
-        id?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MediaBlock_select".
- */
-export interface MediaBlockSelect<T extends boolean = true> {
-  media?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ArchiveBlock_select".
- */
-export interface ArchiveBlockSelect<T extends boolean = true> {
-  introContent?: T;
-  populateBy?: T;
-  relationTo?: T;
-  categories?: T;
-  limit?: T;
-  selectedDocs?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FormBlock_select".
- */
-export interface FormBlockSelect<T extends boolean = true> {
-  form?: T;
-  enableIntro?: T;
-  introContent?: T;
-  id?: T;
-  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1965,6 +2760,7 @@ export interface VisitsSelect<T extends boolean = true> {
       };
   slug?: T;
   slugLock?: T;
+  subpages?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -1978,6 +2774,240 @@ export interface WorkSelect<T extends boolean = true> {
   heroImage?: T;
   content?: T;
   relatedwork?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events_select".
+ */
+export interface EventsSelect<T extends boolean = true> {
+  title?: T;
+  isFeatured?: T;
+  heroImage?: T;
+  content?: T;
+  event?:
+    | T
+    | {
+        image?: T;
+        artistImage?: T;
+        singerName?: T;
+        artistDesignation?: T;
+        title?: T;
+        description?: T;
+        eventDate?: T;
+        performerRole?: T;
+        details?:
+          | T
+          | {
+              duration?: T;
+              ageLimit?: T;
+              language?: T;
+              genre?: T;
+              location?: T;
+            };
+        category?: T;
+        link?: T;
+        address?: T;
+      };
+  relatedevents?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "investments_select".
+ */
+export interface InvestmentsSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  relatedinvestments?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  investments?:
+    | T
+    | {
+        sectionTitle?: T;
+        sectionDescription?: T;
+        sectionImage?: T;
+        investmentItems?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              image?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "live_select".
+ */
+export interface LiveSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  relatedlive?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteer_select".
+ */
+export interface VolunteerSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  image?: T;
+  'Voluenteer title'?: T;
+  subtitle?: T;
+  description?: T;
+  content?: T;
+  relatedvolunteer?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "innovate_select".
+ */
+export interface InnovateSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  innovationTitle?: T;
+  innovationDescription?: T;
+  innovationImage?: T;
+  relatedinnovate?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hotels_select".
+ */
+export interface HotelsSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  relatedhotels?: T;
   categories?: T;
   meta?:
     | T
@@ -2047,26 +3077,6 @@ export interface SocialReelsSelect<T extends boolean = true> {
     | T
     | {
         thumbnail?: T;
-        link?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "eventGroups_select".
- */
-export interface EventGroupsSelect<T extends boolean = true> {
-  title?: T;
-  events?:
-    | T
-    | {
-        image?: T;
-        title?: T;
-        description?: T;
-        time?: T;
-        category?: T;
         link?: T;
         id?: T;
       };
@@ -2368,18 +3378,31 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: number;
-  header?:
+  navItems?:
     | {
-        label: string;
-        link: string;
-        content?:
-          | {
-              title?: string | null;
-              desc?: string | null;
-              link?: string | null;
-              id?: string | null;
-            }[]
-          | null;
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          content?:
+            | {
+                title?: string | null;
+                desc?: string | null;
+                link?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+        };
         id?: string | null;
       }[]
     | null;
@@ -2483,18 +3506,25 @@ export interface Footer {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
-  header?:
+  navItems?:
     | T
     | {
-        label?: T;
-        link?: T;
-        content?:
+        link?:
           | T
           | {
-              title?: T;
-              desc?: T;
-              link?: T;
-              id?: T;
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              content?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    link?: T;
+                    id?: T;
+                  };
             };
         id?: T;
       };
@@ -2620,6 +3650,30 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'work';
           value: number | Work;
+        } | null)
+      | ({
+          relationTo: 'events';
+          value: number | Event;
+        } | null)
+      | ({
+          relationTo: 'investments';
+          value: number | Investment;
+        } | null)
+      | ({
+          relationTo: 'live';
+          value: number | Live;
+        } | null)
+      | ({
+          relationTo: 'volunteer';
+          value: number | Volunteer;
+        } | null)
+      | ({
+          relationTo: 'innovate';
+          value: number | Innovate;
+        } | null)
+      | ({
+          relationTo: 'hotels';
+          value: number | Hotel;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
@@ -2661,6 +3715,25 @@ export interface CodeBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'code';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MediaBlock".
+ */
+export interface MediaBlock {
+  media: number | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mediaBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "InvestCategoryBlock".
+ */
+export interface InvestCategoryBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'InvestCategoryBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

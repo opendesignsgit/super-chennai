@@ -1,12 +1,4 @@
-/* Accomodation-Banner */
 
-/* Accomodation-Banner */
-
-/* Second Section  */
-
-/* Second Section  */
-
-/* ----------Running Text Section----------- */
 
 .CostOflivingBackground {
     position: absolute;
@@ -24,10 +16,10 @@
   }
   
   .CostOflivingBackground p {
-    font-family: "29LT Bukra SmBd";
+    /* font-family: "29LT Bukra SmBd";
     text-transform: uppercase;
     font-size: clamp(60px, 22vw, 280px);
-    line-height: clamp(80px, 12vw, 150px);
+    line-height: clamp(80px, 12vw, 150px); */
   }
   .scroll-leftCostofLiving {
     animation-name: scrollLeftInvestPage;
@@ -93,7 +85,7 @@
     height: 100%;
     top: 0;
     right: 0;
-    background: url(/images/doted-bg.png) no-repeat top right;
+    background: url(../../../../assets/images/doted-bg.png) no-repeat top right;
     background-size: 100%;
     pointer-events: none;
   }

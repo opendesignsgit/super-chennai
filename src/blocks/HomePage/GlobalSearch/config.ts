@@ -4,7 +4,10 @@ export const GlobalSearchBlock: Block = {
   slug: "globalSearch",
   labels: {
     singular: "Global Search",
-    plural: "Global Search Blocks",
+    plural: "Global Search",
+  },
+  admin: {
+    group: "Global Components",
   },
   fields: [
     {

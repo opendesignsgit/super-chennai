@@ -1,25 +1,40 @@
-import React from 'react'
+import { DefaultHeroBanner } from "./DefaultHeroBanner/Component"
 
-import type { Page } from '@/payload-types'
+type Props = {
+  slug: string;
+  hero: {
+    type: string;
+    heading?: string;
+    image?: any;
+    backgroundColor?: string;
+    // Add other properties as needed
+  };
+};
 
-import { HighImpactHero } from '@/heros/HighImpact'
-import { LowImpactHero } from '@/heros/LowImpact'
-import { MediumImpactHero } from '@/heros/MediumImpact'
+export const RenderHero: React.FC<Props> = ({ hero }) => {
+  if (!hero || hero.type === 'none') return null
 
-const heroes = {
-  highImpact: HighImpactHero,
-  lowImpact: LowImpactHero,
-  mediumImpact: MediumImpactHero,
+  const { heading, image, backgroundColor } = hero
+
+  // Ensure image is a valid Media object (not just an ID)
+  const resolvedImage =
+    typeof image === 'object' && image !== null ? image : undefined
+
+  return (
+    <DefaultHeroBanner
+      heading={heading}
+      image={resolvedImage}
+      backgroundColor={backgroundColor ?? undefined}
+    />
+  )
 }
 
-export const RenderHero: React.FC<Page['hero']> = (props) => {
-  const { type } = props || {}
 
-  if (!type || type === 'none') return null
-
-  const HeroToRender = heroes[type]
-
-  if (!HeroToRender) return null
-
-  return <HeroToRender {...props} />
-}
+// return (
+//     <DefaultHeroBanner
+//       heading={heading}
+//       image={image}
+//       backgroundColor={backgroundColor}
+//       type={'none'}
+//     />
+//   )

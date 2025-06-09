@@ -3,7 +3,7 @@ import { Block } from 'payload'
 export const FeatureSectionsBlock: Block = {
   slug: 'featureSections',
   labels: {
-    singular: 'VisualAndKeyPoints',
+    singular: 'VisualAndKeyPoints (Education)',
     plural: 'VisualAndKeyPoints',
   },
   fields: [
@@ -16,10 +16,18 @@ export const FeatureSectionsBlock: Block = {
           name: 'sectionTitle',
           type: 'text',
           required: true,
+          maxLength: 100,
+          admin: {
+            description: 'Maximum 100 characters allowed',
+          },
         },
         {
           name: 'sectionDesc',
           type: 'textarea',
+          maxLength: 400,
+          admin: {
+            description: 'Maximum 400 characters allowed',
+          },
         },
         {
           name: 'image',
@@ -35,7 +43,10 @@ export const FeatureSectionsBlock: Block = {
             {
               name: 'title',
               type: 'text',
-              required: true,
+              maxLength: 100,
+              admin: {
+                description: 'Maximum 100 characters allowed',
+              },
             },
             {
               name: 'points',
@@ -52,10 +63,18 @@ export const FeatureSectionsBlock: Block = {
                   name: 'title',
                   type: 'text',
                   required: true,
+                  maxLength: 100,
+                  admin: {
+                    description: 'Maximum 100 characters allowed',
+                  },
                 },
                 {
                   name: 'desc',
                   type: 'textarea',
+                  maxLength: 400,
+                  admin: {
+                    description: 'Maximum 400 characters allowed',
+                  },
                 },
                 {
                   name: 'para',
@@ -65,6 +84,10 @@ export const FeatureSectionsBlock: Block = {
                     {
                       name: 'point',
                       type: 'text',
+                      maxLength: 400,
+                      admin: {
+                        description: 'Maximum 400 characters allowed',
+                      },
                     },
                   ],
                 },

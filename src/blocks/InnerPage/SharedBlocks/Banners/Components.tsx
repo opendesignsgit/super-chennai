@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import './style.css'
 import { usePathname, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type BannerProps = {
   heading?: string
@@ -18,11 +19,7 @@ type BannerProps = {
   }[]
 }
 
-export default function Banner({
-  heading,
-  image,
-  breadcrumb = [],
-}: BannerProps) {
+export default function Banner({ heading, image, breadcrumb = [] }: BannerProps) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const [fullUrl, setFullUrl] = useState('')
@@ -51,13 +48,19 @@ export default function Banner({
   return (
     <div className="accaodomationBannerSection">
       <div>
-        <img src={image.url} alt={image.alt || 'Accodomation Banner'} />
+        <Image
+          src={image.url}
+          alt={image.alt || 'Accodomation Banner'}
+          width={0}
+          height={0}
+          style={{ width: '100%', height: 'auto' }}
+          priority
+        />
       </div>
       <div className="accodoamationBannerContainer">
         <div className="accodoamationBannerText">
           <h3>{heading}</h3>
           <div className="breadCrum">
-
             {breadcrumbLinks.map((crumb, index) => (
               <React.Fragment key={crumb.href}>
                 <Link href={crumb.href} legacyBehavior>

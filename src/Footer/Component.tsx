@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // import { getCachedGlobal } from '@/utilities/getGlobals'
 // import Link from 'next/link'
 // import React from 'react'
@@ -33,11 +34,12 @@
 //   )
 // }
 
-import config from '@payload-config'
+import config from 'src/payload.config'
 import React from 'react'
 import { getPayload } from 'payload'
 import Link from 'next/link'
 import './style.css'
+import defaultImage from '../assets/images/default/default.jpg'
 
 export default async function Footer() {
   try {
@@ -46,7 +48,6 @@ export default async function Footer() {
     const footerSections = response?.footerSections || {}
     const { socialLinks = [], ...linkSections } = footerSections
 
-    console.log('------------', footerSections)
 
     const digitalChennaiLinks = footerSections.digitalChennaiLinks || []
     const socialChennaiLinks = footerSections.socialChennaiLinks || []
@@ -228,9 +229,17 @@ export default async function Footer() {
               <div>
                 <img
                   src={
-                    footerSections?.mainFooterLogo?.url || '/images/super-chennai-logo-final.png'
+                    typeof footerSections?.mainFooterLogo === 'object' &&
+                    footerSections?.mainFooterLogo?.url
+                      ? footerSections.mainFooterLogo.url
+                      : defaultImage.src
                   }
-                  alt={footerSections?.mainFooterLogo?.alt || 'Super Chennai Logo'}
+                  alt={
+                    typeof footerSections?.mainFooterLogo === 'object' &&
+                    footerSections?.mainFooterLogo?.alt
+                      ? footerSections.mainFooterLogo.alt
+                      : 'Super Chennai Logo'
+                  }
                 />
               </div>
               <div className="followUs ml-6">
@@ -245,8 +254,16 @@ export default async function Footer() {
                       aria-label={social.platform}
                     >
                       <img
-                        src={social?.icon?.url || '/images/default-icon.png'}
-                        alt={social?.icon?.alt || social.platform}
+                        src={
+                          typeof social.icon === 'object' && social.icon?.url
+                            ? social.icon.url
+                            : defaultImage.src
+                        }
+                        alt={
+                          typeof social.icon === 'object' && social.icon?.alt
+                            ? social.icon.alt
+                            : social.platform
+                        }
                       />
                     </a>
                   ))}
@@ -263,7 +280,12 @@ export default async function Footer() {
               <div className="designBy mt-4">
                 <h5>Design By</h5>
                 <img
-                  src={footerSections?.designByLogo?.url || '../../images/threads.png'}
+                  src={
+                    typeof footerSections?.designByLogo === 'object' &&
+                    footerSections?.designByLogo?.url
+                      ? footerSections.designByLogo.url
+                      : defaultImage.src
+                  }
                   alt="Designer Logo"
                 />
               </div>
