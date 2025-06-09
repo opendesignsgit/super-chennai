@@ -245,10 +245,7 @@ export const StickyImageScroll: Block = {
           name: 'title',
           type: 'text',
         },
-        {
-          name: 'desc',
-          type: 'textarea',
-        },
+
         {
           name: 'para',
           type: 'array',
@@ -256,6 +253,10 @@ export const StickyImageScroll: Block = {
           fields: [
             {
               name: 'point',
+              type: 'text',
+            },
+            {
+              name: 'mainHead',
               type: 'text',
             },
           ],
