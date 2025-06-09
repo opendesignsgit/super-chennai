@@ -43,6 +43,8 @@ export default function SocialChennai({ heading, description }: Props) {
           const filtered = data.data.filter(
             (item: InstagramReel) => item.media_type === 'VIDEO' || item.media_type === 'IMAGE',
           )
+          console.log('filtered', filtered)
+
           setReels(filtered)
         } else {
           setReels([])

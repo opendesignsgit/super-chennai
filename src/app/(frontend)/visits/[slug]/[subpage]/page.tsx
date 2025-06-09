@@ -59,7 +59,7 @@ type Params = {
   }
 }
 
-export default async function VisitSubpagePage({ params }: Params) {
+export default async function VisitSubpagePage({ params }: any) {
   const { slug, subpage } = params
 
   console.log('params', params)

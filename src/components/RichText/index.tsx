@@ -1,3 +1,4 @@
+import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
 import { HotelDetailSectionBlock } from '@/blocks/InnerPage/SharedBlocks/hotels/component'
 import {
   DefaultNodeTypes,
@@ -14,7 +15,6 @@ import {
 import { CodeBlock, CodeBlockProps } from 'src/blocks/Code/Component'
 
 import GlobalSearch from 'src/blocks/HomePage/GlobalSearch/Component'
-import SocialChennai from 'src/blocks/HomePage/SocialChennai/Component'
 import Banner from 'src/blocks/InnerPage/SharedBlocks/Banners/Components'
 import ExploreMoreChennai from 'src/blocks/InnerPage/SharedBlocks/Explore/Component'
 import FeatureSectionList from 'src/blocks/InnerPage/SharedBlocks/featureSectionListLayout/Component'
@@ -98,7 +98,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
       <ExploreMoreChennai {...node.fields} />
     ),
 
-    socialChennai: ({ node }: { node: SerializedBlockNode<any> }) => (
+    socialReelSlider: ({ node }: { node: SerializedBlockNode<any> }) => (
       <SocialChennai {...node.fields} />
     ),
     Banner: ({ node }: { node: SerializedBlockNode<any> }) => <Banner {...node.fields} />,

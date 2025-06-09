@@ -30,6 +30,7 @@ import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/c
 import InnerPageBanner from 'src/blocks/InnerPage/SharedBlocks/Banners/config'
 import StickyImageScroll from 'src/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
 import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
+import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
 
 export const Live: CollectionConfig<'live'> = {
   slug: 'live',
@@ -100,6 +101,7 @@ export const Live: CollectionConfig<'live'> = {
                         socialReelSlider,
                         StickyImageScroll,
                         introTextBlock,
+                        FeatureSectionsBlock,
                       ],
                     }),
                     FixedToolbarFeature(),
