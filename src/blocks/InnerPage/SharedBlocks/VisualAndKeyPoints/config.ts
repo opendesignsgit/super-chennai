@@ -43,7 +43,6 @@ export const FeatureSectionsBlock: Block = {
             {
               name: 'title',
               type: 'text',
-              required: true,
               maxLength: 100,
               admin: {
                 description: 'Maximum 100 characters allowed',
