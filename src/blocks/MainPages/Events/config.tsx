@@ -15,11 +15,19 @@ const AllEvents: Block = {
       label: 'Section Title',
       type: 'text',
       required: true,
+      maxLength: 15,
+      admin: {
+        description: 'Maximum 15 characters allowed',
+      },
     },
     {
       name: 'description',
       label: 'Section Description',
       type: 'textarea',
+      maxLength: 400,
+      admin: {
+        description: 'Maximum 400 characters allowed',
+      },
     },
   ],
 }

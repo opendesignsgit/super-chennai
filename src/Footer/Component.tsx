@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // import { getCachedGlobal } from '@/utilities/getGlobals'
 // import Link from 'next/link'
 // import React from 'react'
@@ -226,14 +227,20 @@ export default async function Footer() {
           <div className="footermainsection flex justify-between items-center">
             <div className="LogoandFollow flex items-center">
               <div>
-                {/* <img
+                <img
                   src={
-                    footerSections?.mainFooterLogo?.url || '/images/super-chennai-logo-final.png'
+                    typeof footerSections?.mainFooterLogo === 'object' &&
+                    footerSections?.mainFooterLogo?.url
+                      ? footerSections.mainFooterLogo.url
+                      : '/images/super-chennai-logo-final.png'
                   }
-                  alt={footerSections?.mainFooterLogo?.alt || 'Super Chennai Logo'}
-                /> */}
-
-                
+                  alt={
+                    typeof footerSections?.mainFooterLogo === 'object' &&
+                    footerSections?.mainFooterLogo?.alt
+                      ? footerSections.mainFooterLogo.alt
+                      : 'Super Chennai Logo'
+                  }
+                />
               </div>
               <div className="followUs ml-6">
                 <h3>Follow Us</h3>
@@ -246,10 +253,18 @@ export default async function Footer() {
                       rel="noopener noreferrer"
                       aria-label={social.platform}
                     >
-                      {/* <img
-                        src={social?.icon?.url || '/images/default-icon.png'}
-                        alt={social?.icon?.alt || social.platform}
-                      /> */}
+                      <img
+                        src={
+                          typeof social.icon === 'object' && social.icon?.url
+                            ? social.icon.url
+                            : '/images/default-icon.png'
+                        }
+                        alt={
+                          typeof social.icon === 'object' && social.icon?.alt
+                            ? social.icon.alt
+                            : social.platform
+                        }
+                      />
                     </a>
                   ))}
                 </div>
@@ -264,10 +279,15 @@ export default async function Footer() {
               <h5>All Rights Reserved.</h5>
               <div className="designBy mt-4">
                 <h5>Design By</h5>
-                {/* <img
-                  src={footerSections?.designByLogo?.url || '../../images/threads.png'}
+                <img
+                  src={
+                    typeof footerSections?.designByLogo === 'object' &&
+                    footerSections?.designByLogo?.url
+                      ? footerSections.designByLogo.url
+                      : '../../images/threads.png'
+                  }
                   alt="Designer Logo"
-                /> */}
+                />
               </div>
             </div>
           </div>

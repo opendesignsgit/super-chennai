@@ -16,10 +16,18 @@ export const FeatureSectionsBlock: Block = {
           name: 'sectionTitle',
           type: 'text',
           required: true,
+          maxLength: 20,
+          admin: {
+            description: 'Maximum 20 characters allowed',
+          },
         },
         {
           name: 'sectionDesc',
           type: 'textarea',
+          maxLength: 400,
+          admin: {
+            description: 'Maximum 400 characters allowed',
+          },
         },
         {
           name: 'image',
@@ -36,6 +44,10 @@ export const FeatureSectionsBlock: Block = {
               name: 'title',
               type: 'text',
               required: true,
+              maxLength: 20,
+              admin: {
+                description: 'Maximum 20 characters allowed',
+              },
             },
             {
               name: 'points',
@@ -52,10 +64,18 @@ export const FeatureSectionsBlock: Block = {
                   name: 'title',
                   type: 'text',
                   required: true,
+                  maxLength: 20,
+                  admin: {
+                    description: 'Maximum 20 characters allowed',
+                  },
                 },
                 {
                   name: 'desc',
                   type: 'textarea',
+                  maxLength: 400,
+                  admin: {
+                    description: 'Maximum 400 characters allowed',
+                  },
                 },
                 {
                   name: 'para',
@@ -65,10 +85,13 @@ export const FeatureSectionsBlock: Block = {
                     {
                       name: 'point',
                       type: 'text',
+                      maxLength: 400,
+                      admin: {
+                        description: 'Maximum 400 characters allowed',
+                      },
                     },
                   ],
                 },
-                
               ],
             },
           ],

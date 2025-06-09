@@ -629,7 +629,13 @@ export interface Page {
         blockType: 'spotlightGallery';
       }
     | {
+        /**
+         * Maximum 15 characters allowed
+         */
         title: string;
+        /**
+         * Maximum 400 characters allowed
+         */
         description?: string | null;
         id?: string | null;
         blockName?: string | null;
@@ -662,12 +668,21 @@ export interface Page {
         blockType: 'liveIntrorSection';
       }
     | {
+        /**
+         * Maximum 15 characters allowed
+         */
         heading: string;
+        /**
+         * Maximum 500 characters allowed
+         */
         description: string;
         essentials?:
           | {
+              /**
+               * Maximum 500 characters allowed
+               */
               text: string;
-              page?: (number | null) | Visit;
+              page?: (number | null) | Live;
               image: number | Media;
               id?: string | null;
             }[]
@@ -678,8 +693,17 @@ export interface Page {
       }
     | {
         items: {
+          /**
+           * Maximum 15 characters allowed
+           */
           title: string;
+          /**
+           * Maximum 15 characters allowed
+           */
           subtitle?: string | null;
+          /**
+           * Maximum 400 characters allowed
+           */
           description?: string | null;
           /**
            * Upload an SVG file only.
@@ -1285,9 +1309,9 @@ export interface Event {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "work".
+ * via the `definition` "live".
  */
-export interface Work {
+export interface Live {
   id: number;
   title: string;
   heroImage?: (number | null) | Media;
@@ -1306,7 +1330,7 @@ export interface Work {
     };
     [k: string]: unknown;
   };
-  relatedwork?: (number | Work)[] | null;
+  relatedlive?: (number | Live)[] | null;
   categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
@@ -1332,9 +1356,9 @@ export interface Work {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "live".
+ * via the `definition` "work".
  */
-export interface Live {
+export interface Work {
   id: number;
   title: string;
   heroImage?: (number | null) | Media;
@@ -1353,7 +1377,7 @@ export interface Live {
     };
     [k: string]: unknown;
   };
-  relatedlive?: (number | Live)[] | null;
+  relatedwork?: (number | Work)[] | null;
   categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
