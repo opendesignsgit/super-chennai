@@ -1,4 +1,5 @@
 import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
+import BecameAVolunteer from '@/blocks/HomePage/Volunteer/Component'
 import { HotelDetailSectionBlock } from '@/blocks/InnerPage/SharedBlocks/hotels/component'
 import {
   DefaultNodeTypes,
@@ -129,6 +130,10 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
 
     hoteldetailSection: ({ node }: { node: SerializedBlockNode<any> }) => (
       <HotelDetailSectionBlock {...node.fields} />
+    ),
+
+    becameAVolunteer: ({ node }: { node: SerializedBlockNode<any> }) => (
+      <BecameAVolunteer {...node.fields} />
     ),
   },
 })
