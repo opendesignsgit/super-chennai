@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Image from 'next/image'
 import './style.css'
@@ -15,12 +16,7 @@ export default function FeatureSections({ sections }: FeatureSectionsProps) {
             ${index % 3 === 0 ? 'pattern-a' : index % 3 === 1 ? 'pattern-b' : 'pattern-c'}`}
         >
           <div className="imgLeft">
-            <Image
-              src={(section.image as Media)?.url ?? ''}
-              alt={section.sectionTitle}
-              width={500}
-              height={300}
-            />
+            <img src={(section.image as Media)?.url ?? ''} alt={section.sectionTitle} />
           </div>
           <div className="imgText flex items-center">
             <div className="imgcolTitle bg-[#682865] relative">
