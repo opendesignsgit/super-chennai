@@ -39,6 +39,7 @@ import React from 'react'
 import { getPayload } from 'payload'
 import Link from 'next/link'
 import './style.css'
+import defaultImage from '../assets/images/default/default.jpg'
 
 export default async function Footer() {
   try {
@@ -47,7 +48,6 @@ export default async function Footer() {
     const footerSections = response?.footerSections || {}
     const { socialLinks = [], ...linkSections } = footerSections
 
-    // console.log('------------', footerSections)
 
     const digitalChennaiLinks = footerSections.digitalChennaiLinks || []
     const socialChennaiLinks = footerSections.socialChennaiLinks || []
@@ -232,7 +232,7 @@ export default async function Footer() {
                     typeof footerSections?.mainFooterLogo === 'object' &&
                     footerSections?.mainFooterLogo?.url
                       ? footerSections.mainFooterLogo.url
-                      : '/images/super-chennai-logo-final.png'
+                      : defaultImage.src
                   }
                   alt={
                     typeof footerSections?.mainFooterLogo === 'object' &&
@@ -257,7 +257,7 @@ export default async function Footer() {
                         src={
                           typeof social.icon === 'object' && social.icon?.url
                             ? social.icon.url
-                            : '/images/default-icon.png'
+                            : defaultImage.src
                         }
                         alt={
                           typeof social.icon === 'object' && social.icon?.alt
@@ -284,7 +284,7 @@ export default async function Footer() {
                     typeof footerSections?.designByLogo === 'object' &&
                     footerSections?.designByLogo?.url
                       ? footerSections.designByLogo.url
-                      : '../../images/threads.png'
+                      : defaultImage.src
                   }
                   alt="Designer Logo"
                 />
