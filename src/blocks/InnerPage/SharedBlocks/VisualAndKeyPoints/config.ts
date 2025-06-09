@@ -16,9 +16,9 @@ export const FeatureSectionsBlock: Block = {
           name: 'sectionTitle',
           type: 'text',
           required: true,
-          maxLength: 20,
+          maxLength: 100,
           admin: {
-            description: 'Maximum 20 characters allowed',
+            description: 'Maximum 100 characters allowed',
           },
         },
         {
@@ -44,9 +44,9 @@ export const FeatureSectionsBlock: Block = {
               name: 'title',
               type: 'text',
               required: true,
-              maxLength: 20,
+              maxLength: 100,
               admin: {
-                description: 'Maximum 20 characters allowed',
+                description: 'Maximum 100 characters allowed',
               },
             },
             {
@@ -64,9 +64,9 @@ export const FeatureSectionsBlock: Block = {
                   name: 'title',
                   type: 'text',
                   required: true,
-                  maxLength: 20,
+                  maxLength: 100,
                   admin: {
-                    description: 'Maximum 20 characters allowed',
+                    description: 'Maximum 100 characters allowed',
                   },
                 },
                 {
