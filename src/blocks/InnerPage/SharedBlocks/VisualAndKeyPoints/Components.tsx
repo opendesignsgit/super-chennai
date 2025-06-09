@@ -42,10 +42,10 @@ export default function FeatureSections({ sections }: FeatureSectionsProps) {
                     <div className="clcboxICont">
                       <h3>{item.title}</h3>
                       <h5>{item.desc}</h5>
-                      {/* <ul className="list-disc list-inside text-gray-600 space-y-1">
-                        {item.para?.map((point, k) => <li key={k}>{point.point}</li>)}
-                      </ul>                       */}
                       <ul className="list-disc list-inside text-gray-600 space-y-1">
+                        {item.para?.map((point, k) => <li key={k}>{point.point}</li>)}
+                      </ul>
+                      {/* <ul className="list-disc list-inside text-gray-600 space-y-1">
                         {item.para?.map((point, k) => {
                           const [title, ...rest] = point.point.split(':')
                           const desc = rest.join(':').trim()
@@ -55,7 +55,7 @@ export default function FeatureSections({ sections }: FeatureSectionsProps) {
                             </li>
                           )
                         })}
-                      </ul>
+                      </ul> */}
                     </div>
                   </div>
                 ))}
