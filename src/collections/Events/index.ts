@@ -476,10 +476,10 @@ export const Events: CollectionConfig<'events'> = {
               name: 'address',
               type: 'textarea',
               label: 'Address',
-              maxLength: 30,
+              maxLength: 100,
               admin: {
                 description:
-                  'Full address or venue location for the event(Maximum 30 characters allowed)',
+                  'Full address or venue location for the event(Maximum 100 characters allowed)',
               },
             },
           ],

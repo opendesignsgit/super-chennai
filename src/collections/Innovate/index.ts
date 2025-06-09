@@ -122,11 +122,19 @@ export const Innovate: CollectionConfig<'innovate'> = {
               label: 'Innovation Title',
               type: 'text',
               required: true,
+              maxLength: 200,
+              admin: {
+                description: 'Maximum 200 characters allowed',
+              },
             },
             {
               name: 'innovationDescription',
               label: 'Innovation Description',
               type: 'textarea',
+              maxLength: 800,
+              admin: {
+                description: 'Maximum 800 characters allowed',
+              },
             },
             {
               name: 'innovationImage',

@@ -1,4 +1,4 @@
-import type { Block, CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload'
 
 import {
   BlocksFeature,
@@ -22,15 +22,15 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { slugField } from 'src/fields/slug'
-import HotelsInChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
-import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/config'
+import { GlobalSearchBlock } from 'src/blocks/HomePage/GlobalSearch/config'
 import { socialReelSlider } from 'src/blocks/HomePage/SocialChennai/config'
 import InnerPageBanner from 'src/blocks/InnerPage/SharedBlocks/Banners/config'
-import FeatureSectionsBlock from 'src/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
-import { GlobalSearchBlock } from 'src/blocks/HomePage/GlobalSearch/config'
+import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/config'
 import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
 import futureUnicorns from 'src/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
+import FeatureSectionsBlock from 'src/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
+import HotelsInChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/ZigZagContent/config'
+import { slugField } from 'src/fields/slug'
 
 export const work: CollectionConfig<'work'> = {
   slug: 'work',

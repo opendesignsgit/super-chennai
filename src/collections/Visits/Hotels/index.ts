@@ -98,6 +98,8 @@ export const hotels: CollectionConfig<'hotels'> = {
                         socialReelSlider,
                         introTextBlock,
                         HotelsDetailSection,
+                        ZigZagContentBlock,
+                        featureSectionSplitLayoutBlock,
                       ],
                     }),
                     FixedToolbarFeature(),

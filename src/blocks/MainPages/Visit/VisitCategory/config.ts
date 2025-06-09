@@ -37,6 +37,10 @@ const VisitCategory: Block = {
           name: 'label',
           type: 'text',
           required: true,
+          maxLength: 200,
+          admin: {
+            description: 'Maximum 200 characters allowed',
+          },
         },
         {
           name: 'description',
@@ -46,7 +50,7 @@ const VisitCategory: Block = {
             description: 'Maximum 800 characters allowed',
           },
         },
-        
+
         {
           name: 'image',
           type: 'upload',

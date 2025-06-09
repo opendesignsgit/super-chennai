@@ -375,11 +375,23 @@ export interface Page {
         blockType: 'heroSliderBlock';
       }
     | {
+        /**
+         * Maximum 100 characters allowed
+         */
         title: string;
+        /**
+         * Maximum 800 characters allowed
+         */
         description?: string | null;
         items?:
           | {
+              /**
+               * Maximum 200 characters allowed
+               */
               label: string;
+              /**
+               * Maximum 800 characters allowed
+               */
               description?: string | null;
               image: number | Media;
               id?: string | null;
@@ -403,10 +415,22 @@ export interface Page {
         blockType: 'ZigZagContent';
       }
     | {
+        /**
+         * Maximum 200 characters allowed
+         */
         sectionTitle: string;
+        /**
+         * Maximum 600 characters allowed
+         */
         sectionDescription: string;
         volunteerSections: {
+          /**
+           * Maximum 100 characters allowed
+           */
           title: string;
+          /**
+           * Maximum 800 characters allowed
+           */
           description: string;
           image: number | Media;
           linkText: string;
@@ -664,6 +688,9 @@ export interface Page {
          */
         paraTwoLiveSection: string;
         showMarquee?: boolean | null;
+        /**
+         * Maximum 200 characters allowed
+         */
         marqueeText?: string | null;
         marqueeTextSize?: ('sm' | 'lg') | null;
         id?: string | null;
@@ -697,11 +724,11 @@ export interface Page {
     | {
         items: {
           /**
-           * Maximum 15 characters allowed
+           * Maximum 30 characters allowed
            */
           title: string;
           /**
-           * Maximum 15 characters allowed
+           * Maximum 30 characters allowed
            */
           subtitle?: string | null;
           /**
@@ -726,9 +753,18 @@ export interface Page {
         blockType: 'innovateSlider';
       }
     | {
+        /**
+         * Maximum 100 characters allowed
+         */
         title: string;
         items: {
+          /**
+           * Maximum 100 characters allowed
+           */
           label: string;
+          /**
+           * Maximum 200 characters allowed
+           */
           link: string;
           image: number | Media;
           id?: string | null;
@@ -1282,7 +1318,7 @@ export interface Event {
       | 'quiz_competition';
     link?: string | null;
     /**
-     * Full address or venue location for the event(Maximum 30 characters allowed)
+     * Full address or venue location for the event(Maximum 100 characters allowed)
      */
     address?: string | null;
   };
@@ -1487,7 +1523,13 @@ export interface Innovate {
     };
     [k: string]: unknown;
   };
+  /**
+   * Maximum 200 characters allowed
+   */
   innovationTitle: string;
+  /**
+   * Maximum 800 characters allowed
+   */
   innovationDescription?: string | null;
   innovationImage?: (number | null) | Media;
   relatedinnovate?: (number | Innovate)[] | null;

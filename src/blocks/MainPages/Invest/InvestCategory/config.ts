@@ -20,17 +20,17 @@ const investmentCategoryListBlock: Block = {
           name: 'title',
           type: 'text',
           required: true,
-          maxLength: 15,
+          maxLength: 30,
           admin: {
-            description: 'Maximum 15 characters allowed',
+            description: 'Maximum 30 characters allowed',
           },
         },
         {
           name: 'subtitle',
           type: 'text',
-          maxLength: 15,
+          maxLength: 30,
           admin: {
-            description: 'Maximum 15 characters allowed',
+            description: 'Maximum 30 characters allowed',
           },
         },
         {

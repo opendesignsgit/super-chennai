@@ -77,8 +77,10 @@ const liveIntrorSection: Block = {
       name: 'marqueeText',
       type: 'text',
       label: 'Scrolling Marquee Text',
+      maxLength: 200,
       admin: {
         condition: (_, siblingData) => siblingData.showMarquee === true,
+        description: 'Maximum 200 characters allowed',
       },
     },
     {

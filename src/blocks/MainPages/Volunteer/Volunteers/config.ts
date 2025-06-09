@@ -14,11 +14,20 @@ const volunteerBecameListBlock: Block = {
       name: 'sectionTitle',
       type: 'text',
       required: true,
+      maxLength: 200,
+      admin: {
+        description: 'Maximum 200 characters allowed',
+      },
     },
     {
       name: 'sectionDescription',
       type: 'textarea',
       required: true,
+      maxLength: 600,
+      admin: {
+        description: 'Maximum 600 characters allowed',
+        placeholder: 'Enter a description',
+      },
     },
     {
       name: 'volunteerSections',
@@ -29,11 +38,19 @@ const volunteerBecameListBlock: Block = {
           name: 'title',
           type: 'text',
           required: true,
+          maxLength: 100,
+          admin: {
+            description: 'Maximum 100 characters allowed',
+          },
         },
         {
           name: 'description',
           type: 'textarea',
           required: true,
+          maxLength: 800,
+          admin: {
+            description: 'Maximum 800 characters allowed',
+          },
         },
         {
           name: 'image',
