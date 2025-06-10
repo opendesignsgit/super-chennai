@@ -341,6 +341,14 @@ export interface Page {
          * Maximum 400 characters allowed
          */
         description?: string | null;
+        /**
+         * Select whether to display videos or images in the slider
+         */
+        contentType: 'video' | 'image';
+        /**
+         * If enabled, videos will be shown as thumbnails only without autoplay/play buttons.
+         */
+        showVideoThumbnailOnly?: boolean | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'socialReelSlider';
@@ -2256,6 +2264,8 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               heading?: T;
               description?: T;
+              contentType?: T;
+              showVideoThumbnailOnly?: T;
               id?: T;
               blockName?: T;
             };

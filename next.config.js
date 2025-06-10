@@ -18,6 +18,21 @@ const nextConfig = {
           protocol: url.protocol.replace(':', ''),
         }
       }),
+
+      // Instagram video thumbnail and video CDN domains
+      {
+        protocol: 'https',
+        hostname: 'scontent.cdninstagram.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'instagram.fmaa3-3.fna.fbcdn.net',
+      },
+      // Add more regions as needed, for example:
+      {
+        protocol: 'https',
+        hostname: 'instagram.fdel1-1.fna.fbcdn.net',
+      },
     ],
   },
   reactStrictMode: true,
