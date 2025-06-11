@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import Link from 'next/link'
@@ -21,6 +22,11 @@ interface MenuItem {
   label: string
   link: string
   content: Block[]
+  contentImage?: {
+    filename: string
+    mimeType: string
+    url?: string
+  }
 }
 
 const dropIn = {
@@ -56,7 +62,7 @@ interface MenuContentBlock {
   id: string
   title: string
   desc: string
-  link: string 
+  link: string
 }
 
 interface MenuLinkReferenceValue {
@@ -112,6 +118,13 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             content: Array.isArray(item?.link?.content)
               ? item.link.content.filter((block: any) => block.title && block.desc && block.link)
               : [],
+            contentImage: item?.link?.contentImage
+              ? {
+                  filename: item.link.contentImage.filename,
+                  mimeType: item.link.contentImage.mimeType,
+                  url: `/media/${item.link.contentImage.filename}`,
+                }
+              : undefined,
           })),
         )
       } catch (error) {
@@ -142,7 +155,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   return (
     <div className="mainMegamenuContainers">
       <header className={`mainMegamenuContainer ${scrolled ? 'scrolled' : ''}`}>
-        <nav className="Megamenunav" onMouseLeave={handleMenuLeave}>
+        <nav className="Megamenunav HomePageStyle" onMouseLeave={handleMenuLeave}>
           <div className={`Megamenutop-bar ${activeMenu ? 'activeStateMegamenu' : ''}`}>
             <Link href="/" className="Megamenulogo" aria-label="Home" />
             <div className="Megamenumenuicon md:hidden">
@@ -219,6 +232,13 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                       </motion.div>
                     ))}
                   </div>
+                  {activeMenu?.contentImage?.url && (
+                    <img
+                      className="megamenuMainImage"
+                      src={activeMenu.contentImage.url}
+                      alt="Menu Content"
+                    />
+                  )}
                 </motion.div>
               </motion.div>
             )}

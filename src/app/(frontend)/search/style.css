@@ -1,0 +1,102 @@
+.searchResultsContainer {
+  padding: 40px;
+  width: 100%;
+  color: #000000;
+  font-family: '29LT-Bukra-Light';
+}
+
+.searchResultsContainer h2 {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.searchResultsContainer p {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 100px;
+}
+
+.SearchCardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.Searchcard h3 {
+  font-family: "29LT Bukra SmBd";
+  font-size: 20px;
+  margin: 16px;
+  color: #a44294;
+}
+
+.Searchcard a {
+  display: block;
+  margin: 0 16px 20px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #2b3889;
+  transition: color 0.3s ease;
+}
+
+.Searchcard a:hover {
+  color: #763ca7;
+}
+
+.searchResultsContainer {
+  background-color: #fff;
+
+  padding: 1rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.searchResultsContainer:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.SearchCardGrid {
+  display: flex;
+  flex-direction: column;
+}
+
+.Searchcard {
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+
+
+.workIntro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 0 12%;
+}
+
+.workIntro h3 {
+  font-family: NewAmsterdam;
+  color: #995098;
+  font-size: clamp(36px, 14vw, 100px);
+  line-height: clamp(44px, 9vw, 94px);
+}
+
+.workIntro p {
+  font-family: "29LT Bukra Regular";
+  color: #000;
+  margin-top: 20px;
+  width: fit-content;
+  font-size: clamp(15px, 1.5vw, 16px);
+  line-height: clamp(24px, 2vw, 26px);
+}
+
+.detailIntro .workIntro {
+  padding-bottom: 50px;
+}
