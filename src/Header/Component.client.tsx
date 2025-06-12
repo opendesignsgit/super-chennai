@@ -1,12 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 
-import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import MenuBar from '@/components/MenueBar'
 import type { Header } from '@/payload-types'
 import { AnimatePresence, motion } from 'framer-motion'
-import MenuBar from '@/components/MenueBar'
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
 import './style.css'
+
+import iconEmail from '../assets/images/HomePage-Images/Icons/mobile-Header-Email.svg'
+import iconEvents from '../assets/images/HomePage-Images/Icons/mobile-Header-Events.svg'
+import iconHamburger from '../assets/images/HomePage-Images/Icons/mobile-Header-Hamburger.svg'
+import iconSearch from '../assets/images/HomePage-Images/Icons/mobile-Header-Search.svg'
+import logoSuperChennai from '../assets/images/HomePage-Images/Superchennai.png'
+import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 
 interface HeaderClientProps {
   data: Header
@@ -72,12 +79,12 @@ interface MenuLinkReferenceValue {
 }
 
 interface MenuLinkReference {
-  relationTo: string // e.g. "pages"
+  relationTo: string
   value: MenuLinkReferenceValue
 }
 
 interface MenuLink {
-  type: string // "reference"
+  type: string
   newTab: boolean | null
   reference?: MenuLinkReference
   url?: string | null
@@ -104,6 +111,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [menuBar, setMenuBar] = useState(false)
+  const [searchForm, setSearchForm] = useState(false)
   let menuTimeout: NodeJS.Timeout
 
   useEffect(() => {
@@ -150,6 +158,13 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     menuTimeout = setTimeout(() => {
       setActiveMenu(null)
     }, 200)
+  }
+
+  const handleScrollToSearchForm = () => {
+    const element = document.getElementById('SearchForm')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (
@@ -265,6 +280,36 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           )}
         </nav>
 
+        <div className="Mobileheader">
+          <div className="mobilesvgSize">
+            <img src={iconEvents.src} alt="Events Icon" />
+          </div>
+          <div className="mobilesvgSize">
+            <img src={iconEmail.src} alt="Email Icon" />
+          </div>
+          <div className="mobilesvgSize">
+            <Link href="/.">
+              <img src={logoSuperChennai.src} alt="Super Chennai Logo" />
+            </Link>
+          </div>
+          <div className="mobilesvgSize" onClick={handleScrollToSearchForm}>
+            <img
+              src={iconSearch.src}
+              alt="Search Icon"
+              onClick={() => setSearchForm(true)}
+              style={{ cursor: 'pointer' }}
+            />
+          </div>
+          <div className="mobilesvgSize">
+            <img
+              src={iconHamburger.src}
+              alt="Hamburger Menu Icon"
+              onClick={() => setMenuBar(true)}
+              style={{ cursor: 'pointer' }}
+            />
+          </div>
+        </div>
+
         <AnimatePresence>
           {menuBar && (
             <motion.div
@@ -281,6 +326,27 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               }}
             >
               <MenuBar setMenuBar={setMenuBar} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {searchForm && (
+            <motion.div
+              className="mobileSearchSectionsRow"
+              variants={dropIn}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                zIndex: 100000000,
+              }}
+            >
+              <GlobalSearch placeholderText="" buttonText="" onClose={() => setSearchForm(false)} />
             </motion.div>
           )}
         </AnimatePresence>
