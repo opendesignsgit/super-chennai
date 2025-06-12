@@ -107,7 +107,12 @@ export default function StickyImageScroll({
                     {link && (
                       <p className="linkpara">
                         <Link href={link}>
-                          <Image src={arrowImage.src} alt="Link arrow" width={24} height={24} />
+                          <Image
+                            src={arrowImage?.src || ''}
+                            alt="Link arrow"
+                            width={24}
+                            height={24}
+                          />
                         </Link>
                       </p>
                     )}

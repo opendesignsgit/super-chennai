@@ -3435,7 +3435,19 @@ export interface Header {
 export interface Footer {
   id: number;
   footerSections: {
-    mainFooterLogo?: (number | null) | Media;
+    topSectionLinks?:
+      | {
+          category: string;
+          links?:
+            | {
+                label: string;
+                link: string;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
     socialLinks?:
       | {
           platform: string;
@@ -3444,76 +3456,7 @@ export interface Footer {
           id?: string | null;
         }[]
       | null;
-    digitalChennaiLinks?:
-      | {
-          label: string;
-          link: string;
-          id?: string | null;
-        }[]
-      | null;
-    socialChennaiLinks?:
-      | {
-          title: string;
-          link: string;
-          id?: string | null;
-        }[]
-      | null;
-    funChennaiLinks?:
-      | {
-          title: string;
-          link: string;
-          id?: string | null;
-        }[]
-      | null;
-    startupChennaiLinks?:
-      | {
-          title: string;
-          link: string;
-          id?: string | null;
-        }[]
-      | null;
-    foodieChennaiLinks?:
-      | {
-          title: string;
-          link: string;
-          id?: string | null;
-        }[]
-      | null;
-    techChennaiLinks?:
-      | {
-          title: string;
-          link: string;
-          id?: string | null;
-        }[]
-      | null;
-    creativeChennaiLinks?:
-      | {
-          label: string;
-          link: string;
-          id?: string | null;
-        }[]
-      | null;
-    businessChennaiLinks?:
-      | {
-          label: string;
-          link: string;
-          id?: string | null;
-        }[]
-      | null;
-    networkChennaiLinks?:
-      | {
-          label: string;
-          link: string;
-          id?: string | null;
-        }[]
-      | null;
-    usefulLinks?:
-      | {
-          label: string;
-          link: string;
-          id?: string | null;
-        }[]
-      | null;
+    mainFooterLogo?: (number | null) | Media;
     designByLogo: number | Media;
     footerText: string;
   };
@@ -3560,7 +3503,19 @@ export interface FooterSelect<T extends boolean = true> {
   footerSections?:
     | T
     | {
-        mainFooterLogo?: T;
+        topSectionLinks?:
+          | T
+          | {
+              category?: T;
+              links?:
+                | T
+                | {
+                    label?: T;
+                    link?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
         socialLinks?:
           | T
           | {
@@ -3569,76 +3524,7 @@ export interface FooterSelect<T extends boolean = true> {
               icon?: T;
               id?: T;
             };
-        digitalChennaiLinks?:
-          | T
-          | {
-              label?: T;
-              link?: T;
-              id?: T;
-            };
-        socialChennaiLinks?:
-          | T
-          | {
-              title?: T;
-              link?: T;
-              id?: T;
-            };
-        funChennaiLinks?:
-          | T
-          | {
-              title?: T;
-              link?: T;
-              id?: T;
-            };
-        startupChennaiLinks?:
-          | T
-          | {
-              title?: T;
-              link?: T;
-              id?: T;
-            };
-        foodieChennaiLinks?:
-          | T
-          | {
-              title?: T;
-              link?: T;
-              id?: T;
-            };
-        techChennaiLinks?:
-          | T
-          | {
-              title?: T;
-              link?: T;
-              id?: T;
-            };
-        creativeChennaiLinks?:
-          | T
-          | {
-              label?: T;
-              link?: T;
-              id?: T;
-            };
-        businessChennaiLinks?:
-          | T
-          | {
-              label?: T;
-              link?: T;
-              id?: T;
-            };
-        networkChennaiLinks?:
-          | T
-          | {
-              label?: T;
-              link?: T;
-              id?: T;
-            };
-        usefulLinks?:
-          | T
-          | {
-              label?: T;
-              link?: T;
-              id?: T;
-            };
+        mainFooterLogo?: T;
         designByLogo?: T;
         footerText?: T;
       };
