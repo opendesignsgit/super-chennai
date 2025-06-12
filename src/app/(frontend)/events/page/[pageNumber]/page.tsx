@@ -6,6 +6,7 @@ import Banner from 'src/blocks/InnerPage/SharedBlocks/Banners/Components'
 import { Pagination } from 'src/components/Pagination'
 import configPromise from 'src/payload.config'
 import PageClient from './page.client'
+import { Suspense } from 'react'
 
 export const revalidate = 600
 
@@ -39,7 +40,9 @@ export default async function Page({ params: paramsPromise }: Args) {
           <h1>events</h1>
         </div>
       </div>
-      <Banner />
+      <Suspense fallback={null}>
+        <Banner />
+      </Suspense>
 
       {/* <div className="container mb-8">
         <PageRange
@@ -64,7 +67,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { pageNumber } = await paramsPromise
   return {
-    title: `Payload Website Template events Page ${pageNumber || ''}`,
+    title: `Super Chennai events Page ${pageNumber || ''}`,
   }
 }
 

@@ -63,7 +63,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { pageNumber } = await paramsPromise
   return {
-    title: `Payload Website Template investments Page ${pageNumber || ''}`,
+    title: `Super Chennai investments Page ${pageNumber || ''}`,
   }
 }
 

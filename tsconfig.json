@@ -50,7 +50,10 @@
     "redirects.js",
     "next.config.js",
     "next-sitemap.config.cjs"
-, "src/Header/test.jsx"  ],
+, "src/Header/test.jsx",
+"next-env.d.ts", "**/*.ts", "**/*.tsx", "custom.d.ts"
+
+  ],
   "exclude": [
     "node_modules"
   ]

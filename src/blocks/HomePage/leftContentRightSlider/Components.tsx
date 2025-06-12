@@ -93,7 +93,7 @@ export default function SpotlightGallerySection({ heading, description, link, it
       </div>
 
       <section className="TrendCheniSec">
-        <div className="max-w-7xl mx-auto flex mainContainerFlexTrending">
+        <div className="container max-w-7xl mx-auto flex mainContainerFlexTrending">
           <div className="trendccol trendcLeft">
             <h2>{heading}</h2>
             <p className="trendingChennaiText">{description}</p>
