@@ -1,8 +1,5 @@
 .FooterBackground {
-  /* background-color: #3b1d48; */
-  /* background-image:
-   url("../public/images/footer-background.png"),
-    url("../public/images/footer-background-image.png"); */
+
   background-image: url("../images/footer-background-image.png"),
     url("../images/footer-background.png");
 }
@@ -38,7 +35,7 @@
 }
 
 .firstsectionwidth {
-  width: 25%;
+  width: 23%;
 }
 
 .containerSection {
