@@ -128,8 +128,6 @@ export const Pages: CollectionConfig<'pages'> = {
                 investmentCategoryListBlock,
                 innovateSlider,
                 TextHoverImageSection,
-
-                
               ],
               required: true,
               admin: {
@@ -177,11 +175,11 @@ export const Pages: CollectionConfig<'pages'> = {
     },
     ...slugField(),
   ],
-  // hooks: {
-  //   afterChange: [revalidatePage],
-  //   beforeChange: [populatePublishedAt],
-  //   afterDelete: [revalidateDelete],
-  // },
+  hooks: {
+    afterChange: [revalidatePage],
+    beforeChange: [populatePublishedAt],
+    afterDelete: [revalidateDelete],
+  },
   versions: {
     drafts: {
       autosave: {
