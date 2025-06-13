@@ -14,18 +14,18 @@ export const FunChennaiBlock: Block = {
       name: 'heading',
       type: 'text',
       required: true,
-      maxLength: 25,
+      maxLength: 100,
       admin: {
-        description: 'Maximum 25 characters allowed',
+        description: 'Maximum 100 characters allowed',
       },
     },
     {
       name: 'subheading',
       type: 'textarea',
       required: true,
-      maxLength: 200,
+      maxLength: 500,
       admin: {
-        description: 'Maximum 200 characters allowed',
+        description: 'Maximum 500 characters allowed',
       },
     },
     {
@@ -37,17 +37,17 @@ export const FunChennaiBlock: Block = {
           name: 'title',
           type: 'text',
           required: true,
-          maxLength: 15,
+          maxLength: 100,
           admin: {
-            description: 'Maximum 15 characters allowed',
+            description: 'Maximum 100 characters allowed',
           },
         },
         {
           name: 'place',
           type: 'text',
-          maxLength: 15,
+          maxLength: 100,
           admin: {
-            description: 'Maximum 15 characters allowed',
+            description: 'Maximum 100 characters allowed',
           },
         },
         {

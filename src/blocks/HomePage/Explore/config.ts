@@ -30,9 +30,9 @@ export const ExploreBlock: Block = {
           name: 'place',
           type: 'text',
           required: true,
-          maxLength: 15,
+          maxLength: 100,
           admin: {
-            description: 'Maximum 15 characters allowed',
+            description: 'Maximum 100 characters allowed',
           },
         },
         {

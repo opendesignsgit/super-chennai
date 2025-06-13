@@ -347,8 +347,8 @@ export default async function Footer() {
                 <img
                   src={mainFooterLogo?.url ?? defaultImage.src}
                   alt={mainFooterLogo?.alt ?? 'Super Chennai Logo'}
-                  width={120} // replace with your desired width
-                  height={40} // replace with your desired height
+                  width={120} 
+                  height={40} 
                 />
               </div>
               <div className="followUs ml-6">
