@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import arrowImage from '@/assets/icons/LinkArrowRightIcon.svg'
+import arrowImage from '../../../../assets/images/LinkArrowRightIcon.svg'
 import './style.css'
 
 type Card = {

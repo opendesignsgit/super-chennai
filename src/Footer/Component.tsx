@@ -271,7 +271,7 @@ import config from 'src/payload.config'
 import React from 'react'
 import { getPayload } from 'payload'
 import './style.css'
-import defaultImage from '../assets/images/default/default.jpg'
+import defaultImage from '../assets/images/default/default.png'
 
 type LinkItem = {
   label: string

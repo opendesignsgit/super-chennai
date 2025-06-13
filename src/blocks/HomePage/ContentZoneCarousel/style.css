@@ -1,5 +1,5 @@
 .chillZoneMainContainer {
-    background-image: url("../../../assets/images/chennaiChilloutZone.jpg");
+    background-image: url("../../../assets/images/chennaiChilloutZone11.png");
   height: 700px;
   background-repeat: no-repeat;
   display: flex;
@@ -286,7 +286,7 @@
     background-position: bottom;
     margin-top: -55px;
     background-color: #a24c8d;
-    background-image: url("../../../assets/images/Mobile-Bg-ChillOut.png");
+    background-image: url("../../../assets/images/HomePage-Images/Mobile-Bg-ChillOut.png");
     background-position: top;
     background-size: contain;
   }

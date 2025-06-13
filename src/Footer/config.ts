@@ -328,6 +328,7 @@ const Footer: GlobalConfig = {
           ],
         },
 
+        
         // BOTTOM SECTION LINKS
         {
           type: 'array',

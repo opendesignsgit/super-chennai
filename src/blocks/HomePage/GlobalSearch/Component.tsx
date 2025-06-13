@@ -1,5 +1,4 @@
-
-
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import './style.css'
 import React, { useState, useEffect, useRef } from 'react'
@@ -7,9 +6,11 @@ import { useRouter } from 'next/navigation'
 import Loader from 'src/components/Loader/loader'
 import { FaMicrophone, FaMicrophoneSlash } from 'react-icons/fa'
 import Link from 'next/link'
+import CloseMenuIcon from '../../../assets/images/HomePage-Images/Icons/close-x.svg'
 
 type Props = {
   placeholderText: string
+  onClose?: () => void
   buttonText: string
   enableFilters?: boolean
   filters?: {
@@ -76,6 +77,7 @@ declare global {
 }
 
 export default function GlobalSearch({
+  onClose,
   placeholderText,
   buttonText,
   enableFilters = false,
@@ -144,7 +146,6 @@ export default function GlobalSearch({
         console.error('Error fetching suggestions:', err)
       })
   }, [])
-
 
   function playSound(action: 'start' | 'stop') {
     try {
@@ -294,6 +295,9 @@ export default function GlobalSearch({
             {popupMessage && <div className="voice-popup">{popupMessage}</div>}
           </span>
         </form>
+      </div>
+      <div className="mobileCloseButtoniMAGE" onClick={onClose}>
+        {onClose && <img src={CloseMenuIcon.src} alt="" />}
       </div>
     </div>
   )

@@ -1,12 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 
-import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import MenuBar from '@/components/MenueBar'
 import type { Header } from '@/payload-types'
 import { AnimatePresence, motion } from 'framer-motion'
-import MenuBar from '@/components/MenueBar'
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
 import './style.css'
+
+import iconEmail from '../assets/images/HomePage-Images/Icons/mobile-Header-Email.svg'
+import iconEvents from '../assets/images/HomePage-Images/Icons/mobile-Header-Events.svg'
+import iconHamburger from '../assets/images/HomePage-Images/Icons/mobile-Header-Hamburger.svg'
+import iconSearch from '../assets/images/HomePage-Images/Icons/mobile-Header-Search.svg'
+import logoSuperChennai from '../assets/images/HomePage-Images/Superchennai.png'
+import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
+
+//######################## TYPES  #############################################
 
 interface HeaderClientProps {
   data: Header
@@ -29,82 +38,17 @@ interface MenuItem {
   }
 }
 
-const dropIn = {
-  hidden: {
-    opacity: 0,
-    y: -100,
-    scale: 0.9,
-    filter: 'blur(8px)',
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    filter: 'blur(0px)',
-    transition: {
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-  exit: {
-    opacity: 0,
-    y: -50,
-    scale: 0.95,
-    filter: 'blur(4px)',
-    transition: {
-      duration: 0.4,
-      ease: 'easeInOut',
-    },
-  },
-}
-
-interface MenuContentBlock {
-  id: string
-  title: string
-  desc: string
-  link: string
-}
-
-interface MenuLinkReferenceValue {
-  id: number
-  title: string
-  slug: string
-}
-
-interface MenuLinkReference {
-  relationTo: string // e.g. "pages"
-  value: MenuLinkReferenceValue
-}
-
-interface MenuLink {
-  type: string // "reference"
-  newTab: boolean | null
-  reference?: MenuLinkReference
-  url?: string | null
-  label: string
-  content?: MenuContentBlock[]
-}
-
-interface NavItem {
-  id: string
-  link: MenuLink
-}
-
-interface MenuData {
-  id: number
-  navItems: NavItem[]
-  updatedAt: string
-  createdAt: string
-  globalType: string
-}
-
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
+  //##################### STATE  ##############################################
   const [menuItems, setMenuItems] = useState<MenuItem[]>([])
   const [activeMenu, setActiveMenu] = useState<MenuItem | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [menuBar, setMenuBar] = useState(false)
+  const [searchForm, setSearchForm] = useState(false)
   let menuTimeout: NodeJS.Timeout
+
+  //############################## HOOKS  #######################################
 
   useEffect(() => {
     const fetchMenuItems = async () => {
@@ -140,7 +84,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
+  //############################# HELPER FUNCTIONS ###############################
   const handleMenuEnter = (item: MenuItem) => {
     clearTimeout(menuTimeout)
     setActiveMenu(item)
@@ -152,9 +96,17 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     }, 200)
   }
 
+  const handleScrollToSearchForm = () => {
+    const element = document.getElementById('SearchForm')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+  //#################### RENDER UI#################################################
   return (
     <div className="mainMegamenuContainers">
       <header className={`mainMegamenuContainer ${scrolled ? 'scrolled' : ''}`}>
+        {/*#################### DESKTOP MENUE NAVBAR ########################### */}
         <nav className="Megamenunav HomePageStyle" onMouseLeave={handleMenuLeave}>
           <div className={`Megamenutop-bar ${activeMenu ? 'activeStateMegamenu' : ''}`}>
             <Link href="/" className="Megamenulogo" aria-label="Home" />
@@ -166,7 +118,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                 {mobileMenuOpen ? '✖' : '☰'}
               </button>
             </div>
-
             <ul className="Megamenumenudesktop">
               {menuItems.map((item, i) => (
                 <li key={i} className="Megamenumenuitem" onMouseEnter={() => handleMenuEnter(item)}>
@@ -174,7 +125,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                 </li>
               ))}
             </ul>
-
             <div
               style={{ cursor: 'pointer' }}
               className="Megamenulogo1 hidden md:block"
@@ -265,10 +215,42 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           )}
         </nav>
 
+        {/*#################### MOBILE MENUE NAVBAR ############################## */}
+
+        <div className="Mobileheader">
+          <div className="mobilesvgSize">
+            <img src={iconEvents.src} alt="Events Icon" />
+          </div>
+          <div className="mobilesvgSize">
+            <img src={iconEmail.src} alt="Email Icon" />
+          </div>
+          <div className="mobilesvgSize">
+            <Link href="/.">
+              <img src={logoSuperChennai.src} alt="Super Chennai Logo" />
+            </Link>
+          </div>
+          <div className="mobilesvgSize" onClick={handleScrollToSearchForm}>
+            <img
+              src={iconSearch.src}
+              alt="Search Icon"
+              onClick={() => setSearchForm(true)}
+              style={{ cursor: 'pointer' }}
+            />
+          </div>
+          <div className="mobilesvgSize">
+            <img
+              src={iconHamburger.src}
+              alt="Hamburger Menu Icon"
+              onClick={() => setMenuBar(true)}
+              style={{ cursor: 'pointer' }}
+            />
+          </div>
+        </div>
+        {/*#################### DESKTOP MENUE HAMBURGER ########################### */}
+
         <AnimatePresence>
           {menuBar && (
             <motion.div
-              variants={dropIn}
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -281,6 +263,27 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               }}
             >
               <MenuBar setMenuBar={setMenuBar} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/*#################### MOBILE MENUE HAMBURGER ########################### */}
+        <AnimatePresence>
+          {searchForm && (
+            <motion.div
+              className="mobileSearchSectionsRow"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                zIndex: 100000000,
+              }}
+            >
+              <GlobalSearch placeholderText="" buttonText="" onClose={() => setSearchForm(false)} />
             </motion.div>
           )}
         </AnimatePresence>
