@@ -719,18 +719,6 @@
     /* top: 10px; */
   }
 
-  /* .mobilesvgSize:first-child {
-    position: relative;
-  }
-  .mobilesvgSize:first-child::after {
-    content: "";
-    position: absolute;
-    right: -70%;
-    width: 1px;
-    height: 65px;
-    background: black;
-    top: 0px;
-  } */
 
   .Mobileheader::after {
     content: "";
