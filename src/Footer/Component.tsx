@@ -343,9 +343,12 @@ export default async function Footer() {
           <div className="footermainsection flex justify-between items-center">
             <div className="LogoandFollow flex items-center">
               <div>
+            
                 <img
                   src={mainFooterLogo?.url ?? defaultImage.src}
                   alt={mainFooterLogo?.alt ?? 'Super Chennai Logo'}
+                  width={120} // replace with your desired width
+                  height={40} // replace with your desired height
                 />
               </div>
               <div className="followUs ml-6">
