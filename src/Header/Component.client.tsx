@@ -133,6 +133,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               MENU
             </div>
           </div>
+          {/*#################### HOVER MENUE  #################################### */}
 
           <AnimatePresence mode="wait">
             {activeMenu && (
@@ -268,6 +269,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         </AnimatePresence>
 
         {/*#################### MOBILE MENUE HAMBURGER ########################### */}
+        
         <AnimatePresence>
           {searchForm && (
             <motion.div
