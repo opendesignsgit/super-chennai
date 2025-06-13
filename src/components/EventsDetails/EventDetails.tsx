@@ -5,9 +5,9 @@ import calendar from '../../assets/images/events/calendar.png'
 import time from '../../assets/images/events/time.png'
 import Eveduration from '../../assets/images/events/duration.png'
 import age from '../../assets//images/events/language.png'
-import genres from '../../assets//images/events/genre.png'
-import lang from '../../assets//images/events/language.png'
-import loc from '../../assets//images/events/location.png'
+import genres from '../../assets/images/events/genre.png'
+import lang from '../../assets/images/events/language.png'
+import loc from '../../assets/images/events/location.png'
 
 interface EventDetailsProps {
   data: any
