@@ -18,7 +18,10 @@ const nextConfig = {
           protocol: url.protocol.replace(':', ''),
         }
       }),
-
+      {
+        protocol: 'https',
+        hostname: 'demo.superchennai.com',
+      },
       // Instagram video thumbnail and video CDN domains
       {
         protocol: 'https',
