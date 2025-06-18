@@ -3,15 +3,14 @@ import { Block } from 'payload'
 const ExploreMoreChennaiBlock: Block = {
   slug: 'exploreMoreChennai',
   labels: {
-    singular: 'Explore More Chennai',
-    plural: 'Explore More Chennai Sections',
+    singular: 'Explore More Slides',
+    plural: 'Explore More Slides',
   },
   fields: [
     {
       name: 'heading',
       type: 'text',
       required: true,
-      defaultValue: 'CHENNAI LIFE ESSENTIALS',
       maxLength: 100,
       admin: {
         description: 'Main title for the section. Max 100 characters.',
@@ -21,11 +20,21 @@ const ExploreMoreChennaiBlock: Block = {
       name: 'description',
       type: 'textarea',
       maxLength: 500,
-      defaultValue:
-        'Regardless of whether you have chosen Chennai to stay or move from one area to another area, Super Chennai will be the best guide to explore the essentials. So that you could easily live a lively and energetic life in Chennai.',
       admin: {
         description: 'Short paragraph explaining the section. Max 500 characters allowed.',
       },
+    },
+    {
+      name: 'apiEndpoint',
+      type: 'select',
+      options: [
+        { label: 'Live', value: 'live' },
+        { label: 'Visit', value: 'visits' },
+        { label: 'Investments', value: 'investments' },
+      ],
+      defaultValue: 'live',
+      required: true,
+      label: 'Select Data Source',
     },
   ],
 }

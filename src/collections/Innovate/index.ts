@@ -74,7 +74,7 @@ export const Innovate: CollectionConfig<'innovate'> = {
       required: true,
     },
     {
-      type: 'tabs',
+      type: 'tabs',   
       tabs: [
         {
           fields: [

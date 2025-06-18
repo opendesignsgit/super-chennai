@@ -999,6 +999,10 @@ export interface Visit {
   id: number;
   title: string;
   heroImage?: (number | null) | Media;
+  /**
+   * This image will be used as the featured image for Slides.
+   */
+  FeaturedImage?: (number | null) | Media;
   content: {
     root: {
       type: string;
@@ -2778,6 +2782,7 @@ export interface UsersSelect<T extends boolean = true> {
 export interface VisitsSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
+  FeaturedImage?: T;
   content?: T;
   relatedvisits?: T;
   categories?: T;
