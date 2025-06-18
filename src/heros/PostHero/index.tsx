@@ -4,8 +4,8 @@ import Link from 'next/link'
 import './style.css'
 
 import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
-import { usePathname, useSearchParams } from 'next/navigation'
-import React from 'react'
+import { usePathname } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
 import { Media } from 'src/components/Media'
 import type { Post } from 'src/payload-types'
 import { formatAuthors } from 'src/utilities/formatAuthors'
@@ -14,12 +14,12 @@ export const PostHero: React.FC<{
   post: Post
 }> = ({ post }) => {
   const { heroImage, populatedAuthors, publishedAt, title } = post
+  const pathname = usePathname()
+
+  const [parentCrumb, setParentCrumb] = useState<{ name: string; href: string } | null>(null)
 
   const hasAuthors =
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
-
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
 
   const pathSegments = pathname.split('/').filter(Boolean)
 
@@ -28,8 +28,17 @@ export const PostHero: React.FC<{
     return { name: segment.toUpperCase(), href }
   })
 
+  //################# Retrieve parent slug from sessionStorage######################
+  useEffect(() => {
+    const storedSlug = sessionStorage.getItem('parentSlug')
+    if (storedSlug) {
+      const slug = storedSlug.replace('/', '')
+      setParentCrumb({ name: slug.replace(/-/g, ' ').toUpperCase(), href: storedSlug })
+    }
+  }, [])
+
   return (
-    <div className="accaodomationBannerSection relative  min-h-[60vh]">
+    <div className="accaodomationBannerSection relative min-h-[60vh]">
       {heroImage && typeof heroImage !== 'string' && (
         <Media fill priority imgClassName="-z-10 object-cover" resource={heroImage} />
       )}
@@ -39,6 +48,12 @@ export const PostHero: React.FC<{
           <h3>{title}</h3>
 
           <div className="breadCrum">
+            {/*############ Inject stored parent breadcrumb ##############*/}
+            {parentCrumb && (
+              <>
+                <Link href="">{parentCrumb.name}</Link> - {/* {parentCrumb.href} */}
+              </>
+            )}
             {breadcrumbLinks.map((crumb, index) => (
               <React.Fragment key={crumb.href}>
                 <Link href={crumb.href}>{crumb.name}</Link>
@@ -46,24 +61,10 @@ export const PostHero: React.FC<{
               </React.Fragment>
             ))}
           </div>
-
-          {/* <div className="authorDetails">
-            {hasAuthors && (
-              <div>
-                <p className="text-sm">Author</p>
-                <p>{formatAuthors(populatedAuthors)}</p>
-              </div>
-            )}
-            {publishedAt && (
-              <div>
-                <p className="text-sm">Date Published</p>
-                <time dateTime={publishedAt}>{new Date(publishedAt).toLocaleDateString()}</time>
-              </div>
-            )}
-          </div> */}
         </div>
       </div>
-      <GlobalSearch placeholderText={'Experience Chennai'} buttonText={'Search'} />
+
+      <GlobalSearch placeholderText="Experience Chennai" buttonText="Search" />
     </div>
   )
 }

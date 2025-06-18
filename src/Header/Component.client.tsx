@@ -173,10 +173,26 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                           show: { opacity: 1, y: 0 },
                         }}
                         transition={{ duration: 0.3, ease: 'easeOut' }}
+                        // onClick={() => {
+                        //   const linkPath = block.link.startsWith('/')
+                        //     ? block.link
+                        //     : `/${block.link}`
+                        //   router.push(linkPath)
+                        //   setActiveMenu(null)
+                        //   window.scrollTo({ top: 0, behavior: 'smooth' })
+                        // }}
+
                         onClick={() => {
                           const linkPath = block.link.startsWith('/')
                             ? block.link
                             : `/${block.link}`
+
+                          // 🟡 Store current menu parent slug in sessionStorage
+                          // Assuming `activeMenu.link` is something like "/visits-chennai"
+                          if (activeMenu?.link) {
+                            sessionStorage.setItem('parentSlug', activeMenu.link)
+                          }
+
                           router.push(linkPath)
                           setActiveMenu(null)
                           window.scrollTo({ top: 0, behavior: 'smooth' })

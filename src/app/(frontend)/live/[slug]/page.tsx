@@ -7,7 +7,6 @@ import { PayloadRedirects } from 'src/components/PayloadRedirects'
 import RichText from 'src/components/RichText'
 import configPromise from 'src/payload.config'
 
-import ExploreMoreChennai from '@/blocks/InnerPage/SharedBlocks/Explore/Component'
 import { LivePreviewListener } from 'src/components/LivePreviewListener'
 import { PostHero } from 'src/heros/PostHero'
 import { generateMeta } from 'src/utilities/generateMeta'
