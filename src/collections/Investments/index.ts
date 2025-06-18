@@ -16,10 +16,9 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
-import InnerPageBanner from 'src/blocks/InnerPage/SharedBlocks/Banners/config'
-import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
-import InvestCategoryBlock from 'src/blocks/InnerPage/SharedBlocks/InvestCategory/config'
-import { slugField } from 'src/fields/slug'
+import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
+import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
+import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -27,10 +26,9 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
-import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
-import PropertyPropects from '@/blocks/InnerPage/SharedBlocks/PropertySlide/config'
-import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
+import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
+import InvestCategoryBlock from 'src/blocks/InnerPage/SharedBlocks/InvestCategory/config'
+import { slugField } from 'src/fields/slug'
 export const Investments: CollectionConfig<'investments'> = {
   slug: 'investments',
   access: {
