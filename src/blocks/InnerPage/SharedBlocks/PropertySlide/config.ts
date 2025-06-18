@@ -1,17 +1,17 @@
 import { Block } from 'payload'
 
-const ExploreMoreChennaiBlock: Block = {
-  slug: 'exploreMoreChennai',
+const PropertyPropects: Block = {
+  slug: 'propertyPropects',
   labels: {
-    singular: 'Explore More Chennai',
-    plural: 'Explore More Chennai Sections',
+    singular: 'Property Propects Slides',
+    plural: 'Property Propects Slides',
   },
   fields: [
     {
       name: 'heading',
       type: 'text',
       required: true,
-      defaultValue: 'CHENNAI LIFE ESSENTIALS',
+      defaultValue: 'PROPERTY PROSPECTS IN CHENNAI',
       maxLength: 100,
       admin: {
         description: 'Main title for the section. Max 100 characters.',
@@ -22,7 +22,7 @@ const ExploreMoreChennaiBlock: Block = {
       type: 'textarea',
       maxLength: 500,
       defaultValue:
-        'Regardless of whether you have chosen Chennai to stay or move from one area to another area, Super Chennai will be the best guide to explore the essentials. So that you could easily live a lively and energetic life in Chennai.',
+        'Chennai s real estate market offers consistent demand and income. By its developed infrastructure, this city market offers substantial profits from both business and residential areas.',
       admin: {
         description: 'Short paragraph explaining the section. Max 500 characters allowed.',
       },
@@ -30,4 +30,4 @@ const ExploreMoreChennaiBlock: Block = {
   ],
 }
 
-export default ExploreMoreChennaiBlock
+export default PropertyPropects

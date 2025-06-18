@@ -27,6 +27,9 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
+import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
+import PropertyPropects from '@/blocks/InnerPage/SharedBlocks/PropertySlide/config'
 export const Investments: CollectionConfig<'investments'> = {
   slug: 'investments',
   access: {
@@ -83,6 +86,14 @@ export const Investments: CollectionConfig<'investments'> = {
               relationTo: 'media',
             },
             {
+              name: 'FeaturedImage',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                description: 'This image will be used as the featured image for Slides.',
+              },
+            },
+            {
               name: 'content',
               type: 'richText',
               editor: lexicalEditor({
@@ -91,7 +102,13 @@ export const Investments: CollectionConfig<'investments'> = {
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({
-                      blocks: [InnerPageBanner, introTextBlock, InvestCategoryBlock],
+                      blocks: [
+                        introTextBlock,
+                        PropertyPropects,
+                        InvestCategoryBlock,
+                        BecameAVolunteerBlock,
+                        socialReelSlider,
+                      ],
                     }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),

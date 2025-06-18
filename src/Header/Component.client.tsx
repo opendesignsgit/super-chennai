@@ -7,7 +7,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import './style.css'
-
+import { useRouter } from 'next/navigation'
+//######################## ASSETS  #############################################
 import iconEmail from '../assets/images/HomePage-Images/Icons/mobile-Header-Email.svg'
 import iconEvents from '../assets/images/HomePage-Images/Icons/mobile-Header-Events.svg'
 import iconHamburger from '../assets/images/HomePage-Images/Icons/mobile-Header-Hamburger.svg'
@@ -46,10 +47,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const [scrolled, setScrolled] = useState(false)
   const [menuBar, setMenuBar] = useState(false)
   const [searchForm, setSearchForm] = useState(false)
+  const router = useRouter()
+  //##################### TIMEOUT  ############################################
   let menuTimeout: NodeJS.Timeout
 
-  //############################## HOOKS  #######################################
-
+  //##################### INITIALIZATION #######################################
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
@@ -75,7 +77,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         console.error('Failed to fetch menu items', error)
       }
     }
-    console.log('headrt data', data)
+
     fetchMenuItems()
   }, [data])
 
@@ -171,8 +173,14 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                           show: { opacity: 1, y: 0 },
                         }}
                         transition={{ duration: 0.3, ease: 'easeOut' }}
+                        // onClick={() => {
+                        //   window.location.href = block.link
+                        //   setActiveMenu(null)
+                        //   window.scrollTo({ top: 0, behavior: 'smooth' })
+                        // }}
+
                         onClick={() => {
-                          window.location.href = block.link
+                          router.push(block.link)
                           setActiveMenu(null)
                           window.scrollTo({ top: 0, behavior: 'smooth' })
                         }}
@@ -269,7 +277,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         </AnimatePresence>
 
         {/*#################### MOBILE MENUE HAMBURGER ########################### */}
-        
+
         <AnimatePresence>
           {searchForm && (
             <motion.div

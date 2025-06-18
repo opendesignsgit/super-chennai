@@ -16,7 +16,6 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
-import { slugField } from 'src/fields/slug'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -24,14 +23,14 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { slugField } from 'src/fields/slug'
 
+import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
+import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
 import { socialReelSlider } from 'src/blocks/HomePage/SocialChennai/config'
 import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/config'
-import InnerPageBanner from 'src/blocks/InnerPage/SharedBlocks/Banners/config'
-import StickyImageScroll from 'src/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
 import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
-import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
-import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
+import StickyImageScroll from 'src/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
 
 export const Live: CollectionConfig<'live'> = {
   slug: 'live',
@@ -89,6 +88,14 @@ export const Live: CollectionConfig<'live'> = {
               relationTo: 'media',
             },
             {
+              name: 'FeaturedImage',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                description: 'This image will be used as the featured image for Slides.',
+              },
+            },
+            {
               name: 'content',
               type: 'richText',
               editor: lexicalEditor({
@@ -103,7 +110,7 @@ export const Live: CollectionConfig<'live'> = {
                         StickyImageScroll,
                         introTextBlock,
                         FeatureSectionsBlock,
-                        BecameAVolunteerBlock
+                        BecameAVolunteerBlock,
                       ],
                     }),
                     FixedToolbarFeature(),

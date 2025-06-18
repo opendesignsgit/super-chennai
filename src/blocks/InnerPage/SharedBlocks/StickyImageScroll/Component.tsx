@@ -135,7 +135,7 @@ export default function StickyImageScroll({
                 <ul className="list-disc list-inside text-gray-700 space-y-1">
                   {item.para.map((pointObj, j) => (
                     <li key={j}>
-                      <strong>{pointObj.mainHead}</strong>: {pointObj.point}
+                      <strong>{pointObj.mainHead}</strong> {pointObj.point}
                     </li>
                   ))}
                 </ul>
