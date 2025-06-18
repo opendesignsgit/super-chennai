@@ -21,14 +21,28 @@ export const PostHero: React.FC<{
   const hasAuthors =
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
 
-  const pathSegments = pathname.split('/').filter(Boolean)
+  const ignoredSegments = [
+    'visits',
+    'place',
+    'live',
+    'investments',
+    'place',
+    'innovate',
+    'events',
+    'volunteer',
+    'work',
+  ]
+
+  const pathSegments = pathname
+    .split('/')
+    .filter((segment) => segment && !ignoredSegments.includes(segment.toLowerCase()))
 
   const breadcrumbLinks = pathSegments.map((segment, index) => {
     const href = '/' + pathSegments.slice(0, index + 1).join('/')
-    return { name: segment.toUpperCase(), href }
+    return { name: segment.replace(/-/g, ' ').toUpperCase(), href }
   })
 
-  //################# Retrieve parent slug from sessionStorage######################
+  //############ Retrieve parent slug from sessionStorage ############
   useEffect(() => {
     const storedSlug = sessionStorage.getItem('parentSlug')
     if (storedSlug) {
@@ -48,10 +62,10 @@ export const PostHero: React.FC<{
           <h3>{title}</h3>
 
           <div className="breadCrum">
-            {/*############ Inject stored parent breadcrumb ##############*/}
             {parentCrumb && (
               <>
-                <Link href="">{parentCrumb.name}</Link> - {/* {parentCrumb.href} */}
+                <Link href={parentCrumb.href}>{parentCrumb.name}</Link>
+                {breadcrumbLinks.length > 0 && ' - '}
               </>
             )}
             {breadcrumbLinks.map((crumb, index) => (
