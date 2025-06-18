@@ -30,6 +30,7 @@ import {
 import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
 import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
 import PropertyPropects from '@/blocks/InnerPage/SharedBlocks/PropertySlide/config'
+import ExploreMoreChennaiBlock from '@/blocks/InnerPage/SharedBlocks/Explore/config'
 export const Investments: CollectionConfig<'investments'> = {
   slug: 'investments',
   access: {
@@ -104,7 +105,7 @@ export const Investments: CollectionConfig<'investments'> = {
                     BlocksFeature({
                       blocks: [
                         introTextBlock,
-                        PropertyPropects,
+                        ExploreMoreChennaiBlock,
                         InvestCategoryBlock,
                         BecameAVolunteerBlock,
                         socialReelSlider,

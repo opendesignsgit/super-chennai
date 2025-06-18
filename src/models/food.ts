@@ -16,4 +16,5 @@ type Props = {
   headingSpan?: string
   description: string
   foodItems: FoodItem[]
+  apiEndpoint?: string
 }

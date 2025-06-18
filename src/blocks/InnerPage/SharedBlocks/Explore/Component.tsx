@@ -30,7 +30,7 @@ const settings = {
   ],
 }
 
-const ExploreMoreChennai: React.FC<Props> = ({ heading, description }) => {
+const ExploreMoreChennai: React.FC<Props> = ({ heading, description, apiEndpoint }) => {
   // STATE VARIABLES ################################################
   const [slides, setSlides] = useState<Slide[]>([])
 
@@ -39,7 +39,7 @@ const ExploreMoreChennai: React.FC<Props> = ({ heading, description }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/api/live')
+        const res = await fetch(`/api/${apiEndpoint}`)
         const data = await res.json()
 
         if (!data?.docs?.length) {
@@ -49,7 +49,8 @@ const ExploreMoreChennai: React.FC<Props> = ({ heading, description }) => {
 
         const formattedSlides = data.docs.map((item: any) => ({
           title: item.title,
-          link: item.slug ? `/live/${item.slug}` : '#',
+          link: item.slug ? `/${apiEndpoint}/${item.slug}` : '#',
+
           image: {
             url: item.FeaturedImage?.url ?? '',
             alt: item.FeaturedImage?.alt ?? item.title,
@@ -63,7 +64,7 @@ const ExploreMoreChennai: React.FC<Props> = ({ heading, description }) => {
     }
 
     fetchData()
-  }, [])
+  }, [apiEndpoint])
 
   return (
     <div className="exploreSldierBg">
