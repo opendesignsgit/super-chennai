@@ -2,7 +2,6 @@ import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
 import BecameAVolunteer from '@/blocks/HomePage/Volunteer/Component'
 import { HotelDetailSectionBlock } from '@/blocks/InnerPage/SharedBlocks/hotels/component'
 import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
-import PropertyPropects from '@/blocks/InnerPage/SharedBlocks/PropertySlide/Component'
 import {
   DefaultNodeTypes,
   SerializedBlockNode,
@@ -200,9 +199,6 @@ const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<
 
         becameAVolunteer: ({ node }: { node: SerializedBlockNode<any> }) => (
           <BecameAVolunteer {...node.fields} />
-        ),
-        propertyPropects: ({ node }: { node: SerializedBlockNode<any> }) => (
-          <PropertyPropects {...node.fields} />
         ),
       },
     }

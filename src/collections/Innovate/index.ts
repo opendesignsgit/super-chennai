@@ -28,6 +28,7 @@ import { socialReelSlider } from 'src/blocks/HomePage/SocialChennai/config'
 import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/config'
 import featureSectionListLayoutBlock from 'src/blocks/InnerPage/SharedBlocks/featureSectionListLayout/config'
 import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
+import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
 export const Innovate: CollectionConfig<'innovate'> = {
   slug: 'innovate',
   access: {
@@ -74,7 +75,7 @@ export const Innovate: CollectionConfig<'innovate'> = {
       required: true,
     },
     {
-      type: 'tabs',   
+      type: 'tabs',
       tabs: [
         {
           fields: [
@@ -98,6 +99,7 @@ export const Innovate: CollectionConfig<'innovate'> = {
                         socialReelSlider,
                         featureSectionListLayoutBlock,
                         introTextBlock,
+                        BecameAVolunteerBlock,
                       ],
                     }),
                     FixedToolbarFeature(),
@@ -116,6 +118,11 @@ export const Innovate: CollectionConfig<'innovate'> = {
         // ###########  FILED CONTENT  FOR INNOVATE #########################
         {
           label: 'Inovations',
+          admin: {
+            description:
+              'This section is used in the Innovate main page as a tabbed slider. Add key innovations to highlight Chennai’s advancements across sectors.',
+          },
+
           fields: [
             {
               name: 'innovationTitle',

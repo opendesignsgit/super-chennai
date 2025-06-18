@@ -68,22 +68,47 @@ export default function InvestCategory({ data }: InvestDetailsProps) {
 
         {/* Investment Items */}
         <div className="buildingSectionFlex">
-          {activeItems.map((item) => (
-            <div key={item.id} className="bulidingSection">
-              <div className="builidngContent">
-                <h3>{item.title}</h3>
-                <h5>{item.description}</h5>
+          <div className="buildingSectionFlex">
+            {activeItems.map((item, index) => (
+              <div key={item.id} className="bulidingSection">
+                {index % 2 === 0 ? (
+                  <>
+                    <div className="builidngContent">
+                      <h3>{item.title}</h3>
+                      <h5>{item.description}</h5>
+                    </div>
+                    {item.image?.url && (
+                      <img
+                        className="buildingImage"
+                        src={item.image.url}
+                        alt={item.image.alt || ''}
+                        width={500}
+                        height={300}
+                      />
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {item.image?.url && (
+                      <img
+                        className="buildingImage1"
+                        src={item.image.url}
+                        alt={item.image.alt || ''}
+                        width={500}
+                        height={300}
+                      />
+                    )}
+                    <div className="builidngContent1">
+                      <h3>{item.title}</h3>
+                      <h5>{item.description}</h5>
+                    </div>
+                  </>
+                )}
               </div>
-              <img
-                className="buildingImage"
-                src={item.image?.url || '/placeholder.jpg'}
-                alt={item.image?.alt || item.title}
-              />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
   )
 }
-
