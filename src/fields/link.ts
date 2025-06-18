@@ -138,7 +138,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
   linkResult.fields.push({
     name: 'content',
     type: 'array',
-    maxRows: 10,
+    maxRows: 21,
     admin: {
       width: '100%',
     },

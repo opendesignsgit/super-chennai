@@ -29,6 +29,7 @@ import { revalidatePost } from '@/collections/Posts/hooks/revalidatePost'
 import { populateAuthors } from '@/collections/Posts/hooks/populateAuthors'
 import { revalidateDelete } from '@/collections/Pages/hooks/revalidatePage'
 import HotelsDetailSection from '@/blocks/InnerPage/SharedBlocks/hotels/config'
+import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
 export const hotels: CollectionConfig<'hotels'> = {
   slug: 'hotels',
   access: {
@@ -95,11 +96,12 @@ export const hotels: CollectionConfig<'hotels'> = {
                     BlocksFeature({
                       blocks: [
                         ExploreMoreChennaiBlock,
-                        socialReelSlider,
                         introTextBlock,
                         HotelsDetailSection,
                         ZigZagContentBlock,
                         featureSectionSplitLayoutBlock,
+                        BecameAVolunteerBlock,
+                        socialReelSlider,
                       ],
                     }),
                     FixedToolbarFeature(),

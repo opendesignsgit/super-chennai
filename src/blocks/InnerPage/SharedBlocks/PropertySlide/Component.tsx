@@ -30,7 +30,7 @@ const settings = {
   ],
 }
 
-const ExploreMoreChennai: React.FC<Props> = ({ heading, description }) => {
+const PropertyPropects: React.FC<Props> = ({ heading, description }) => {
   // STATE VARIABLES ################################################
   const [slides, setSlides] = useState<Slide[]>([])
 
@@ -39,9 +39,8 @@ const ExploreMoreChennai: React.FC<Props> = ({ heading, description }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/api/live')
+        const res = await fetch('/api/investments')
         const data = await res.json()
-
         if (!data?.docs?.length) {
           console.warn('No data found')
           return
@@ -49,7 +48,7 @@ const ExploreMoreChennai: React.FC<Props> = ({ heading, description }) => {
 
         const formattedSlides = data.docs.map((item: any) => ({
           title: item.title,
-          link: item.slug ? `/live/${item.slug}` : '#',
+          link: item.slug ? `/investments/${item.slug}` : '#',
           image: {
             url: item.FeaturedImage?.url ?? '',
             alt: item.FeaturedImage?.alt ?? item.title,
@@ -109,4 +108,4 @@ const ExploreMoreChennai: React.FC<Props> = ({ heading, description }) => {
   )
 }
 
-export default ExploreMoreChennai
+export default PropertyPropects

@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 
-import { PayloadRedirects } from 'src/components/PayloadRedirects'
-import RichText from 'src/components/RichText'
-import configPromise from 'src/payload.config'
 import { draftMode } from 'next/headers'
 import { getPayload } from 'payload'
 import { cache, Suspense } from 'react'
+import { PayloadRedirects } from 'src/components/PayloadRedirects'
+import RichText from 'src/components/RichText'
+import configPromise from 'src/payload.config'
 
+import ExploreMoreChennai from '@/blocks/InnerPage/SharedBlocks/Explore/Component'
 import { LivePreviewListener } from 'src/components/LivePreviewListener'
 import { PostHero } from 'src/heros/PostHero'
 import { generateMeta } from 'src/utilities/generateMeta'
@@ -45,20 +46,14 @@ export default async function Post({ params: paramsPromise }: Args) {
   const post = await queryPostBySlug({ slug })
 
   if (!post) return <PayloadRedirects url={url} />
-
   return (
     <div>
       <PageClient />
-
       <PayloadRedirects disableNotFound url={url} />
-
       {draft && <LivePreviewListener />}
-
-      {/* <PostHero post={post} /> */}
       <Suspense fallback={null}>
         <PostHero post={post} />
       </Suspense>
-
       <div>
         <RichText data={post.content} enableGutter={false} />
         {/* {post.relatedlive && post.relatedlive.length > 0 && (

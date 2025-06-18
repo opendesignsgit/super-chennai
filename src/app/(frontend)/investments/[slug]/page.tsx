@@ -46,30 +46,18 @@ export default async function Post({ params: paramsPromise }: Args) {
   const post = await queryPostBySlug({ slug })
 
   if (!post) return <PayloadRedirects url={url} />
-  console.log('Post data:', post)
   return (
     <div>
       <PageClient />
-
       <PayloadRedirects disableNotFound url={url} />
-
       {draft && <LivePreviewListener />}
-
       <Suspense fallback={null}>
         <PostHero post={post} />
       </Suspense>
-
       <div>
-        <RichText data={post.content} enableGutter={false} />
-        {/* {post.relatedinvestments && post.relatedinvestments.length > 0 && (
-          <Relatedinvestments
-            className=""
-            docs={post.relatedinvestments.filter((post) => typeof post === 'object')}
-          />
-        )} */}
+        <RichText data={post.content} pageData={post} enableGutter={false} />
       </div>
-      {/* <InvestCategory data={post} /> */}
-      {post && (
+      {/* {post && (
         <InvestCategory
           data={{
             id: post.id?.toString() ?? '',
@@ -81,12 +69,12 @@ export default async function Post({ params: paramsPromise }: Args) {
               sectionTitle: inv.sectionTitle,
               sectionDescription: inv.sectionDescription,
               sectionImage: inv.sectionImage,
-              investments: inv.investments,
+              investments: inv.invpostestments,
               investmentItems: inv.investmentItems,
             })),
           }}
         />
-      )}
+      )} */}
     </div>
   )
 }

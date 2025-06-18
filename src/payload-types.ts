@@ -246,7 +246,7 @@ export interface Page {
            */
           title: string;
           /**
-           * Maximum 15 characters allowed
+           * Maximum 100 characters allowed
            */
           place: string;
           image: number | Media;
@@ -263,20 +263,20 @@ export interface Page {
       }
     | {
         /**
-         * Maximum 25 characters allowed
+         * Maximum 100 characters allowed
          */
         heading: string;
         /**
-         * Maximum 200 characters allowed
+         * Maximum 500 characters allowed
          */
         subheading: string;
         cards: {
           /**
-           * Maximum 15 characters allowed
+           * Maximum 100 characters allowed
            */
           title: string;
           /**
-           * Maximum 15 characters allowed
+           * Maximum 100 characters allowed
            */
           place?: string | null;
           image: number | Media;
@@ -358,6 +358,18 @@ export interface Page {
         blockType: 'socialReelSlider';
       }
     | {
+        /**
+         * Short heading (max 50 characters)
+         */
+        heading?: string | null;
+        /**
+         * Main title (max 100 characters)
+         */
+        title?: string | null;
+        /**
+         * Short description (max 600 characters)
+         */
+        description?: string | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'becameAVolunteer';
@@ -528,24 +540,24 @@ export interface Page {
       }
     | {
         /**
-         * Maximum 20 characters allowed
+         * Maximum 100 characters allowed
          */
         heading: string;
         /**
-         * Maximum 20 characters allowed
+         * Maximum 100 characters allowed
          */
         headingSpan: string;
         /**
-         * Maximum 200 characters allowed
+         * Maximum 500 characters allowed
          */
         description: string;
         foodItems: {
           /**
-           * Maximum 20 characters allowed
+           * Maximum 100 characters allowed
            */
           title: string;
           /**
-           * Maximum 200 characters allowed
+           * Maximum 500 characters allowed
            */
           description: string;
           image: number | Media;
@@ -1085,6 +1097,10 @@ export interface Investment {
   id: number;
   title: string;
   heroImage?: (number | null) | Media;
+  /**
+   * This image will be used as the featured image for Slides.
+   */
+  FeaturedImage?: (number | null) | Media;
   content: {
     root: {
       type: string;
@@ -1113,11 +1129,11 @@ export interface Investment {
   investments?:
     | {
         /**
-         * Maximum 40 characters allowed
+         * Maximum 100 characters allowed
          */
         sectionTitle: string;
         /**
-         * Maximum 200 characters allowed
+         * Maximum 500 characters allowed
          */
         sectionDescription?: string | null;
         sectionImage?: (number | null) | Media;
@@ -1128,7 +1144,7 @@ export interface Investment {
                */
               title: string;
               /**
-               * Maximum 200 characters allowed
+               * Maximum 500 characters allowed
                */
               description?: string | null;
               image?: (number | null) | Media;
@@ -1366,6 +1382,10 @@ export interface Live {
   id: number;
   title: string;
   heroImage?: (number | null) | Media;
+  /**
+   * This image will be used as the featured image for Slides.
+   */
+  FeaturedImage?: (number | null) | Media;
   content: {
     root: {
       type: string;
@@ -2277,6 +2297,9 @@ export interface PagesSelect<T extends boolean = true> {
         becameAVolunteer?:
           | T
           | {
+              heading?: T;
+              title?: T;
+              description?: T;
               id?: T;
               blockName?: T;
             };
@@ -2874,6 +2897,7 @@ export interface EventsSelect<T extends boolean = true> {
 export interface InvestmentsSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
+  FeaturedImage?: T;
   content?: T;
   relatedinvestments?: T;
   categories?: T;
@@ -2921,6 +2945,7 @@ export interface InvestmentsSelect<T extends boolean = true> {
 export interface LiveSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
+  FeaturedImage?: T;
   content?: T;
   relatedlive?: T;
   categories?: T;

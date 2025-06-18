@@ -24,7 +24,6 @@ export default async function Page() {
       meta: true,
     },
   })
-
   return (
     <div className="pt-24 pb-24">
       <PageClient />
@@ -44,7 +43,6 @@ export default async function Page() {
       </div>
 
       {/* <CollectionArchive posts={posts.docs} /> */}
-
       <div className="container">
         {posts.totalPages > 1 && posts.page && (
           <Pagination page={posts.page} totalPages={posts.totalPages} />
