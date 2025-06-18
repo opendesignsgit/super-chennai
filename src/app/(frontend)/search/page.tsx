@@ -6,6 +6,7 @@ import { Card, CardPostData } from 'src/components/Card'
 import configPromise from 'src/payload.config'
 import SearchBanner from '../../../assets/images/AccodomationBannerr.jpg'
 import './style.css'
+import { distance } from 'fastest-levenshtein'
 
 type Args = {
   searchParams: Promise<{ q?: string }>
@@ -40,18 +41,30 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
           meta: true,
         },
         pagination: false,
-        ...(query
-          ? {
-              where: {
-                or: [
-                  { title: { like: `%${query}%` } },
-                  { 'meta.title': { like: `%${query}%` } },
-                  { 'meta.description': { like: `%${query}%` } },
-                  { slug: { like: `%${query}%` } },
-                ],
-              },
-            }
-          : {}),
+        // ...(query
+        //   ? {
+        //       where: {
+        //         or: [
+        //           { title: { like: `%${query}%` } },
+        //           { 'meta.title': { like: `%${query}%` } },
+        //           { 'meta.description': { like: `%${query}%` } },
+        //           { slug: { like: `%${query}%` } },
+        //         ],
+        //       },
+        //     }
+        //   : {}),
+
+        where: {
+          or: (query ?? '')
+            .toLowerCase()
+            .split(/\s+/)
+            .flatMap((word) => [
+              { title: { like: `%${word}%` } } as Record<string, any>,
+              { meta: { title: { like: `%${word}%` } } } as Record<string, any>,
+              { meta: { description: { like: `%${word}%` } } } as Record<string, any>,
+              { slug: { like: `%${word}%` } } as Record<string, any>,
+            ]),
+        },
       })
 
       return res.docs.map(
@@ -123,12 +136,18 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
     const titleWords = normalizedTitle.split(' ')
     const slugWords = normalizedSlug.split(' ')
 
+    // queryWords.forEach((queryWord) => {
+    //   if (titleWords.some((titleWord) => titleWord.includes(queryWord))) {
+    //     score += 30 // Add score for partial matches in title
+    //   }
+    //   if (slugWords.some((slugWord) => slugWord.includes(queryWord))) {
+    //     score += 25 // Add score for partial matches in slug
+    //   }
+    // })
+
     queryWords.forEach((queryWord) => {
-      if (titleWords.some((titleWord) => titleWord.includes(queryWord))) {
-        score += 30 // Add score for partial matches in title
-      }
-      if (slugWords.some((slugWord) => slugWord.includes(queryWord))) {
-        score += 25 // Add score for partial matches in slug
+      if (distance(queryWord, normalizedTitle) <= 2) {
+        score += 10
       }
     })
 
