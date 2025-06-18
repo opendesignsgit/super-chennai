@@ -179,8 +179,17 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                         //   window.scrollTo({ top: 0, behavior: 'smooth' })
                         // }}
 
+                        // onClick={() => {
+                        //   router.push(block.link)
+                        //   setActiveMenu(null)
+                        //   window.scrollTo({ top: 0, behavior: 'smooth' })
+                        // }}
+
                         onClick={() => {
-                          router.push(block.link)
+                          const linkPath = block.link.startsWith('/')
+                            ? block.link
+                            : `/${block.link}`
+                          router.push(linkPath)
                           setActiveMenu(null)
                           window.scrollTo({ top: 0, behavior: 'smooth' })
                         }}
