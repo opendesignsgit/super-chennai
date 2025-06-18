@@ -29,6 +29,8 @@ import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/c
 import featureSectionListLayoutBlock from 'src/blocks/InnerPage/SharedBlocks/featureSectionListLayout/config'
 import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
 import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
+import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
+import { populateAuthors } from './hooks/populateAuthors'
 export const Innovate: CollectionConfig<'innovate'> = {
   slug: 'innovate',
   access: {
@@ -267,11 +269,11 @@ export const Innovate: CollectionConfig<'innovate'> = {
     },
     ...slugField(),
   ],
-  // hooks: {
-  //   afterChange: [revalidatePost],
-  //   afterRead: [populateAuthors],
-  //   afterDelete: [revalidateDelete],
-  // },
+  hooks: {
+    afterChange: [revalidatePost],
+    afterRead: [populateAuthors],
+    afterDelete: [revalidateDelete],
+  },
   versions: {
     drafts: {
       autosave: {

@@ -173,18 +173,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                           show: { opacity: 1, y: 0 },
                         }}
                         transition={{ duration: 0.3, ease: 'easeOut' }}
-                        // onClick={() => {
-                        //   window.location.href = block.link
-                        //   setActiveMenu(null)
-                        //   window.scrollTo({ top: 0, behavior: 'smooth' })
-                        // }}
-
-                        // onClick={() => {
-                        //   router.push(block.link)
-                        //   setActiveMenu(null)
-                        //   window.scrollTo({ top: 0, behavior: 'smooth' })
-                        // }}
-
                         onClick={() => {
                           const linkPath = block.link.startsWith('/')
                             ? block.link
