@@ -359,7 +359,7 @@ export interface Page {
       }
     | {
         /**
-         * Short heading (max 50 characters)
+         * Short heading (max 100 characters)
          */
         heading?: string | null;
         /**
@@ -447,20 +447,7 @@ export interface Page {
          * Maximum 600 characters allowed
          */
         sectionDescription: string;
-        volunteerSections: {
-          /**
-           * Maximum 100 characters allowed
-           */
-          title: string;
-          /**
-           * Maximum 800 characters allowed
-           */
-          description: string;
-          image: number | Media;
-          linkText: string;
-          linkUrl: string;
-          id?: string | null;
-        }[];
+        buttonText: string;
         id?: string | null;
         blockName?: string | null;
         blockType: 'volunteerBecameSection';
@@ -2374,16 +2361,7 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               sectionTitle?: T;
               sectionDescription?: T;
-              volunteerSections?:
-                | T
-                | {
-                    title?: T;
-                    description?: T;
-                    image?: T;
-                    linkText?: T;
-                    linkUrl?: T;
-                    id?: T;
-                  };
+              buttonText?: T;
               id?: T;
               blockName?: T;
             };
