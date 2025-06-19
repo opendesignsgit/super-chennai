@@ -1437,6 +1437,10 @@ export interface Work {
   id: number;
   title: string;
   heroImage?: (number | null) | Media;
+  /**
+   * This image will be used as the featured image for Slides.
+   */
+  FeaturedImage?: (number | null) | Media;
   content: {
     root: {
       type: string;
@@ -1544,6 +1548,10 @@ export interface Innovate {
   id: number;
   title: string;
   heroImage?: (number | null) | Media;
+  /**
+   * This image will be used as the featured image for Slides.
+   */
+  FeaturedImage?: (number | null) | Media;
   content: {
     root: {
       type: string;
@@ -2815,6 +2823,7 @@ export interface VisitsSelect<T extends boolean = true> {
 export interface WorkSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
+  FeaturedImage?: T;
   content?: T;
   relatedwork?: T;
   categories?: T;
@@ -3017,6 +3026,7 @@ export interface VolunteerSelect<T extends boolean = true> {
 export interface InnovateSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
+  FeaturedImage?: T;
   content?: T;
   innovationTitle?: T;
   innovationDescription?: T;
