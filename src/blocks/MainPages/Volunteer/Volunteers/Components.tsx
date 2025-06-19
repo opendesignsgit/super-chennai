@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
-import React from 'react'
-import Image from 'next/image'
+import React, { useEffect, useState } from 'react'
 import { FormPopupComponent } from '../../SharedBlocks/FormPopup/Components'
 
 type VolunteerSection = {
@@ -18,16 +18,47 @@ type VolunteerSection = {
 type Props = {
   sectionTitle: string
   sectionDescription: string
+  buttonText?: string
   volunteerSections: VolunteerSection[]
 }
 
 export default function VolunteerBecameSection({
   sectionTitle,
   sectionDescription,
-  volunteerSections,
+  buttonText = 'Explore More',
 }: Props) {
   const defaultImage = '/images/default-placeholder.png'
 
+  const [volunteerSections, setvolunteers] = useState<VolunteerSection[]>([])
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch('/api/volunteer')
+        const data = await res.json()
+
+        if (!data?.docs?.length) {
+          console.warn('No data found')
+          return
+        }
+        const allvolunteers = data.docs.map((item: any) => ({
+          id: item.id || item._id,
+          title: item['Voluenteer title'] || item.title || 'Untitled',
+          subtitle: item.subtitle || '',
+          description: item.description || '',
+          slug: item.slug || '',
+          image: item.image || {},
+        }))
+
+        console.log('All volunteers:', allvolunteers)
+        setvolunteers(allvolunteers)
+      } catch (error) {
+        console.error('Failed to fetch events:', error)
+      }
+    }
+
+    fetchEvents()
+  }, [])
   return (
     <div className="VolunterPageBecameVolunteerBg">
       <div className="VolunteerBecameavolunteer">
@@ -42,11 +73,9 @@ export default function VolunteerBecameSection({
             const imageAlt = section.image?.alt || section.title
 
             const ImageComponent = (
-              <Image
+              <img
                 src={imageUrl}
                 alt={imageAlt}
-                width={600}
-                height={400}
                 style={{ objectFit: 'cover' }}
                 onError={(e) => {
                   e.currentTarget.src = defaultImage
@@ -65,7 +94,7 @@ export default function VolunteerBecameSection({
                       <div className="exploreVolunteerPage">
                         <FormPopupComponent
                           heading="VOLUNTEER FOR SUPER CHENNAI"
-                          buttonText={section.title}
+                          buttonText={buttonText}
                         />
                       </div>
                     </div>
@@ -78,7 +107,7 @@ export default function VolunteerBecameSection({
                       <div className="exploreVolunteerPage1">
                         <FormPopupComponent
                           heading="VOLUNTEER FOR SUPER CHENNAI"
-                          buttonText={section.title}
+                          buttonText={buttonText}
                         />
                       </div>
                     </div>

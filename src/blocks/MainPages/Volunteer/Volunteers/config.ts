@@ -30,46 +30,51 @@ const volunteerBecameListBlock: Block = {
       },
     },
     {
-      name: 'volunteerSections',
-      type: 'array',
+      name: 'buttonText',
+      type: 'text',
       required: true,
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-          required: true,
-          maxLength: 100,
-          admin: {
-            description: 'Maximum 100 characters allowed',
-          },
-        },
-        {
-          name: 'description',
-          type: 'textarea',
-          required: true,
-          maxLength: 800,
-          admin: {
-            description: 'Maximum 800 characters allowed',
-          },
-        },
-        {
-          name: 'image',
-          type: 'upload',
-          relationTo: 'media',
-          required: true,
-        },
-        {
-          name: 'linkText',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'linkUrl',
-          type: 'text',
-          required: true,
-        },
-      ],
     },
+    // {
+    //   name: 'volunteerSections',
+    //   type: 'array',
+    //   required: true,
+    //   fields: [
+    //     {
+    //       name: 'title',
+    //       type: 'text',
+    //       required: true,
+    //       maxLength: 100,
+    //       admin: {
+    //         description: 'Maximum 100 characters allowed',
+    //       },
+    //     },
+    //     {
+    //       name: 'description',
+    //       type: 'textarea',
+    //       required: true,
+    //       maxLength: 800,
+    //       admin: {
+    //         description: 'Maximum 800 characters allowed',
+    //       },
+    //     },
+    //     {
+    //       name: 'image',
+    //       type: 'upload',
+    //       relationTo: 'media',
+    //       required: true,
+    //     },
+    //     {
+    //       name: 'linkText',
+    //       type: 'text',
+    //       required: true,
+    //     },
+    //     {
+    //       name: 'linkUrl',
+    //       type: 'text',
+    //       required: true,
+    //     },
+    //   ],
+    // },
   ],
 }
 

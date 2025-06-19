@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
@@ -63,7 +64,6 @@ export default function BecameAVolunteer({ heading, title, description }: Props)
     fetchEvents()
   }, [])
 
-  // if (loading) return <SectionLoader message="Loading volunteer events..." />
 
   const nextSlide = () => {
     if (slides.length > 0) {
@@ -109,13 +109,7 @@ export default function BecameAVolunteer({ heading, title, description }: Props)
                   exit={{ opacity: 0, x: -100 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Image
-                    src={imageUrl}
-                    alt={imageAlt}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto object-cover"
-                  />
+                  <img src={imageUrl} alt={imageAlt} className="w-full h-auto object-cover" />
                 </motion.div>
               </AnimatePresence>
             </div>

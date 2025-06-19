@@ -15,9 +15,9 @@ const BecameAVolunteerBlock: Block = {
       type: 'text',
       required: false,
       defaultValue: 'Become a',
-      maxLength: 50,
+      maxLength: 100,
       admin: {
-        description: 'Short heading (max 50 characters)',
+        description: 'Short heading (max 100 characters)',
       },
     },
     {
