@@ -31,6 +31,8 @@ const ExploreMoreChennaiBlock: Block = {
         { label: 'Live', value: 'live' },
         { label: 'Visit', value: 'visits' },
         { label: 'Investments', value: 'investments' },
+        { label: 'innovate', value: 'innovate' },
+        { label: 'work', value: 'work' },
       ],
       defaultValue: 'live',
       required: true,

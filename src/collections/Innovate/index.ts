@@ -88,6 +88,14 @@ export const Innovate: CollectionConfig<'innovate'> = {
               relationTo: 'media',
             },
             {
+              name: 'FeaturedImage',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                description: 'This image will be used as the featured image for Slides.',
+              },
+            },
+            {
               name: 'content',
               type: 'richText',
               editor: lexicalEditor({

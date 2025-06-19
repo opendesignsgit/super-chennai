@@ -41,6 +41,7 @@ import '@/assets/Css/Live.css'
 // import '@/assets/Css/Search.css'
 // import '@/assets/Css/SearchResults.css'
 import '@/assets/Css/SocialChennai.css'
+import { Preloader } from '@/components/Loader/Preloader'
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
@@ -58,9 +59,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               preview: isEnabled,
             }}
           />
-          <Header />
-          {children}
-          <Footer />
+          <Preloader>
+            <Header />
+            {children}
+            <Footer />
+          </Preloader>
         </Providers>
       </body>
     </html>
