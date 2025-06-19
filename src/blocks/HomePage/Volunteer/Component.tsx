@@ -23,9 +23,13 @@ type Props = {
   heading?: string
   title?: string
   description?: string
+  page?: {
+    slug: string
+  }
+  customLink?: string
 }
 
-export default function BecameAVolunteer({ heading, title, description }: Props) {
+export default function BecameAVolunteer({ heading, title, description, page, customLink }: Props) {
   const [slides, setSlides] = useState<Slide[]>([])
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
   const [loading, setLoading] = useState(true)
@@ -79,6 +83,9 @@ export default function BecameAVolunteer({ heading, title, description }: Props)
   const imageUrl = current?.image?.url || '/placeholder.jpg'
   const imageAlt = current?.image?.alt || current?.title || 'Volunteer Slide'
 
+  const hash = current?.title?.replace(/\s+/g, '-').toLowerCase() // optional: sanitize hash
+  const finalLink = customLink || (page?.slug ? `/${page.slug}#${hash}` : '')
+
   return (
     <div className="Becameavolunteerbg">
       <div className="runningTextContainer">
@@ -124,12 +131,21 @@ export default function BecameAVolunteer({ heading, title, description }: Props)
                   {current?.title && <h3>{current.title}</h3>}
                   {current?.subtitle && <h4>{current.subtitle}</h4>}
                   {current?.description && <p>{current.description}</p>}
-                  {current?.slug && (
+
+                  {/* {current?.slug && (
                     <div className="linksContainer">
                       <Link
                         href={`/volunteer-chennai#${current.title}`}
                         className="exploreMoreLink"
                       >
+                        Explore More
+                      </Link>
+                    </div>
+                  )} */}
+
+                  {finalLink && (
+                    <div className="linksContainer">
+                      <Link href={finalLink} className="exploreMoreLink">
                         Explore More
                       </Link>
                     </div>

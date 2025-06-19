@@ -41,6 +41,22 @@ const BecameAVolunteerBlock: Block = {
         description: 'Short description (max 600 characters)',
       },
     },
+    {
+      name: 'page',
+      type: 'relationship',
+      relationTo: 'pages',
+      required: false,
+      label: 'Select Page Link',
+    },
+    {
+      name: 'customLink',
+      type: 'text',
+      label: 'Or Custom URL',
+      admin: {
+        description: 'This will override the selected page link if provided.',
+        placeholder: ' /some-path',
+      },
+    },
   ],
 }
 

@@ -370,6 +370,11 @@ export interface Page {
          * Short description (max 600 characters)
          */
         description?: string | null;
+        page?: (number | null) | Page;
+        /**
+         * This will override the selected page link if provided.
+         */
+        customLink?: string | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'becameAVolunteer';
@@ -2299,6 +2304,8 @@ export interface PagesSelect<T extends boolean = true> {
               heading?: T;
               title?: T;
               description?: T;
+              page?: T;
+              customLink?: T;
               id?: T;
               blockName?: T;
             };
