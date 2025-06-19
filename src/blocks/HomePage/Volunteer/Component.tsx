@@ -2,7 +2,6 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import NoData from 'src/components/NoData'
@@ -63,7 +62,6 @@ export default function BecameAVolunteer({ heading, title, description }: Props)
 
     fetchEvents()
   }, [])
-
 
   const nextSlide = () => {
     if (slides.length > 0) {
@@ -128,7 +126,10 @@ export default function BecameAVolunteer({ heading, title, description }: Props)
                   {current?.description && <p>{current.description}</p>}
                   {current?.slug && (
                     <div className="linksContainer">
-                      <Link href={`/volunteer/${current.slug}`} className="exploreMoreLink">
+                      <Link
+                        href={`/volunteer-chennai#${current.title}`}
+                        className="exploreMoreLink"
+                      >
                         Explore More
                       </Link>
                     </div>

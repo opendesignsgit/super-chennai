@@ -13,6 +13,7 @@ type VolunteerSection = {
   }
   linkText: string
   linkUrl: string
+  slug: string
 }
 
 type Props = {
@@ -59,6 +60,20 @@ export default function VolunteerBecameSection({
 
     fetchEvents()
   }, [])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const hash = window.location.hash
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 500)
+    }
+  }, [])
   return (
     <div className="VolunterPageBecameVolunteerBg">
       <div className="VolunteerBecameavolunteer">
@@ -84,7 +99,7 @@ export default function VolunteerBecameSection({
             )
 
             return (
-              <div className="DigitalSectionFLex" key={index}>
+              <div className="DigitalSectionFLex" key={index} id={section.title}>
                 {index % 2 === 0 ? (
                   <>
                     {ImageComponent}

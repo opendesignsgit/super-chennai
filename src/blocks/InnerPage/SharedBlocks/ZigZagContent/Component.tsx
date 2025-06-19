@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import React, { useRef, useEffect, useState } from 'react'
 import './style.css'
@@ -7,7 +8,7 @@ type Section = {
   description: string
   image: { url: string }
   linkUrl?: string
-  linkText?: string
+  linkText?: string,
 }
 
 type Props = {
@@ -52,7 +53,6 @@ const ZigZagContentSection: React.FC<Props> = ({ sections }) => {
                   <div className="AccomoddationPage">
                     <a href={section.linkUrl}>{section.linkText}</a>
                   </div>
-                
                 </div>
               </>
             ) : (
@@ -76,7 +76,7 @@ const ZigZagContentSection: React.FC<Props> = ({ sections }) => {
 
 export default ZigZagContentSection
 
-// CuSTOME API RENDER WORKING VERSION ################TEMPRORRY BLOCK U CAN USE REFRENCE 
+// CuSTOME API RENDER WORKING VERSION ################TEMPRORRY BLOCK U CAN USE REFRENCE
 
 // 'use client'
 // import React, { useRef, useEffect, useState } from 'react'
