@@ -9,6 +9,7 @@ type FoodItem = {
     slug?: string
   }
   customLink?: string
+  foodSectionTitle?: string
 }
 
 type Props = {

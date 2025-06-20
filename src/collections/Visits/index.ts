@@ -40,6 +40,8 @@ export const Visits: CollectionConfig<'visits'> = {
     update: authenticated,
   },
 
+
+
   defaultPopulate: {
     title: true,
     slug: true,
