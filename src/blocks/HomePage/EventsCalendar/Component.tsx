@@ -41,9 +41,12 @@ type EventType = {
 type Props = {
   heading: string
   description: string
+  page?: {
+    slug?: string
+  }
 }
 
-export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) => {
+export const EventsCalendarBlock: React.FC<Props> = ({ heading, description, page }) => {
   const carouselRef = useRef<HTMLDivElement>(null)
   const [x, setX] = useState(0)
 
@@ -172,7 +175,7 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-  // if (loading) return <SectionLoader message="Loading volunteer events..." />
+  const pageSlug = typeof page === 'object' && 'slug' in page ? page.slug : undefined
   return (
     <div className="EventsCalendarMainSection">
       <div
@@ -242,16 +245,12 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description }) =
               <div className="eventsCalendarLinks">
                 {isFeaturedEvent.category && <a href="#">{isFeaturedEvent.category}</a>}
               </div>
-
-              <p
-                onClick={() => {
-                  window.location.href = '/events'
-                  window.scrollTo({ top: 0 })
-                }}
-                className="FindOutMore"
-              >
-                Find Out More
-              </p>
+           
+              {pageSlug && (
+                <Link href={`/${pageSlug}`} scroll={true}>
+                  <p className="FindOutMore cursor-pointer">Find Out More</p>
+                </Link>
+              )}
             </div>
           </div>
         ) : (

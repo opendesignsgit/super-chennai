@@ -40,8 +40,6 @@ export const Visits: CollectionConfig<'visits'> = {
     update: authenticated,
   },
 
-
-
   defaultPopulate: {
     title: true,
     slug: true,
@@ -247,7 +245,7 @@ export const Visits: CollectionConfig<'visits'> = {
     {
       name: 'subpages',
       type: 'relationship',
-      relationTo: 'hotels',
+      relationTo: 'visitsInnerPage',
       admin: {
         position: 'sidebar',
         description: 'Select subpages for this visit. Accessible at /visits/[slug]/[subpageSlug]',

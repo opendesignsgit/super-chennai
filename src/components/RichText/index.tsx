@@ -1,6 +1,6 @@
 import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
 import BecameAVolunteer from '@/blocks/HomePage/Volunteer/Component'
-import { HotelDetailSectionBlock } from '@/blocks/InnerPage/SharedBlocks/hotels/component'
+import { HotelDetailSectionBlock } from '@/blocks/InnerPage/SharedBlocks/InnerSubPageDetails/component'
 import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
 import {
   DefaultNodeTypes,
@@ -67,82 +67,6 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   return relationTo === 'posts' ? `/posts/${slug}` : `/${slug}`
 }
 
-// const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) => ({
-//   ...defaultConverters,
-//   ...LinkJSXConverter({ internalDocToHref }),
-
-//   blocks: {
-//     // banner: ({ node }) => <BannerBlock className="col-start-2 mb-4" {...node.fields} />,
-//     // mediaBlock: ({ node }) => (
-//     //   <MediaBlock
-//     //     className=""
-//     //     imgClassName=""
-//     //     {...node.fields}
-//     //     captionClassName=""
-//     //     enableGutter={false}
-//     //     disableInnerContainer={true}
-//     //   />
-//     // ),
-
-//     code: ({ node }) => <CodeBlock className="" {...node.fields} />,
-
-//     globalSearch: ({ node }: { node: SerializedBlockNode<any> }) => (
-//       <GlobalSearch {...node.fields} />
-//     ),
-//     visitBanner: ({ node }: { node: SerializedBlockNode<VisitBannerProps> }) => (
-//       <VisitBanner {...node.fields} />
-//     ),
-
-//     ZigZagContent: ({ node }: { node: SerializedBlockNode<any> }) => (
-//       <HotelsInChennaiSection {...node.fields} />
-//     ),
-//     exploreMoreChennai: ({ node }: { node: SerializedBlockNode<any> }) => (
-//       <ExploreMoreChennai {...node.fields} />
-//     ),
-
-//     socialReelSlider: ({ node }: { node: SerializedBlockNode<any> }) => (
-//       <SocialChennai {...node.fields} />
-//     ),
-//     Banner: ({ node }: { node: SerializedBlockNode<any> }) => <Banner {...node.fields} />,
-//     introText: ({ node }: { node: SerializedBlockNode<any> }) => <IntroText {...node.fields} />,
-//     featureSections: ({ node }: { node: SerializedBlockNode<any> }) => (
-//       <FeatureSections {...node.fields} />
-//     ),
-
-//     introTextBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
-//       <PageIntroText {...node.fields} />
-//     ),
-
-//     InvestCategoryBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
-//       // <InvestCategory {...node.fields} />
-//       <InvestCategory data={pageData} {...node.fields} />
-//     ),
-
-//     StickyImageScroll: ({ node }: { node: SerializedBlockNode<any> }) => (
-//       <StickyImageScroll {...node.fields} />
-//     ),
-
-//     featureSectionSplit: ({ node }: { node: SerializedBlockNode<any> }) => (
-//       <FeatureSectionSplit {...node.fields} />
-//     ),
-
-//     featureSectionList: ({ node }: { node: SerializedBlockNode<any> }) => (
-//       <FeatureSectionList {...node.fields} />
-//     ),
-
-//     hoteldetailSection: ({ node }: { node: SerializedBlockNode<any> }) => (
-//       <HotelDetailSectionBlock {...node.fields} />
-//     ),
-
-//     becameAVolunteer: ({ node }: { node: SerializedBlockNode<any> }) => (
-//       <BecameAVolunteer {...node.fields} />
-//     ),
-//     propertyPropects: ({ node }: { node: SerializedBlockNode<any> }) => (
-//       <PropertyPropects {...node.fields} />
-//     ),
-//   },
-// })
-
 const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<NodeTypes> => {
   return ({ defaultConverters }) => {
     return {
@@ -193,7 +117,7 @@ const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<
           <FeatureSectionList {...node.fields} />
         ),
 
-        hoteldetailSection: ({ node }: { node: SerializedBlockNode<any> }) => (
+        innerSubPageDetails: ({ node }: { node: SerializedBlockNode<any> }) => (
           <HotelDetailSectionBlock {...node.fields} />
         ),
 

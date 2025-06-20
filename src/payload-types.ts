@@ -81,7 +81,7 @@ export interface Config {
     live: Live;
     volunteer: Volunteer;
     innovate: Innovate;
-    hotels: Hotel;
+    visitsInnerPage: VisitsInnerPage;
     volunteerSlides: VolunteerSlide;
     'social-reels': SocialReel;
     'investment-categories': InvestmentCategory;
@@ -109,7 +109,7 @@ export interface Config {
     live: LiveSelect<false> | LiveSelect<true>;
     volunteer: VolunteerSelect<false> | VolunteerSelect<true>;
     innovate: InnovateSelect<false> | InnovateSelect<true>;
-    hotels: HotelsSelect<false> | HotelsSelect<true>;
+    visitsInnerPage: VisitsInnerPageSelect<false> | VisitsInnerPageSelect<true>;
     volunteerSlides: VolunteerSlidesSelect<false> | VolunteerSlidesSelect<true>;
     'social-reels': SocialReelsSelect<false> | SocialReelsSelect<true>;
     'investment-categories': InvestmentCategoriesSelect<false> | InvestmentCategoriesSelect<true>;
@@ -388,6 +388,10 @@ export interface Page {
          * Maximum 200 characters allowed
          */
         description?: string | null;
+        /**
+         * Choose the appropriate Events page from the dropdown that lists all available Pages.
+         */
+        page?: (number | null) | Page;
         id?: string | null;
         blockName?: string | null;
         blockType: 'eventsCalendar';
@@ -1040,16 +1044,16 @@ export interface Visit {
   /**
    * Select subpages for this visit. Accessible at /visits/[slug]/[subpageSlug]
    */
-  subpages?: (number | null) | Hotel;
+  subpages?: (number | null) | VisitsInnerPage;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "hotels".
+ * via the `definition` "visitsInnerPage".
  */
-export interface Hotel {
+export interface VisitsInnerPage {
   id: number;
   title: string;
   heroImage?: (number | null) | Media;
@@ -1068,7 +1072,7 @@ export interface Hotel {
     };
     [k: string]: unknown;
   };
-  relatedhotels?: (number | Hotel)[] | null;
+  relatedhotels?: (number | VisitsInnerPage)[] | null;
   categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
@@ -2113,8 +2117,8 @@ export interface PayloadLockedDocument {
         value: number | Innovate;
       } | null)
     | ({
-        relationTo: 'hotels';
-        value: number | Hotel;
+        relationTo: 'visitsInnerPage';
+        value: number | VisitsInnerPage;
       } | null)
     | ({
         relationTo: 'volunteerSlides';
@@ -2321,6 +2325,7 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               heading?: T;
               description?: T;
+              page?: T;
               id?: T;
               blockName?: T;
             };
@@ -3049,9 +3054,9 @@ export interface InnovateSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "hotels_select".
+ * via the `definition` "visitsInnerPage_select".
  */
-export interface HotelsSelect<T extends boolean = true> {
+export interface VisitsInnerPageSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
   content?: T;
@@ -3611,8 +3616,8 @@ export interface TaskSchedulePublish {
           value: number | Innovate;
         } | null)
       | ({
-          relationTo: 'hotels';
-          value: number | Hotel;
+          relationTo: 'visitsInnerPage';
+          value: number | VisitsInnerPage;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
