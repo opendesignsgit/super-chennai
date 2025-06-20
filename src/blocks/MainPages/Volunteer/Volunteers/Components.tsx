@@ -3,6 +3,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { FormPopupComponent } from '../../SharedBlocks/FormPopup/Components'
+import { usePathname } from 'next/navigation'
 
 type VolunteerSection = {
   title: string
@@ -60,9 +61,11 @@ export default function VolunteerBecameSection({
 
     fetchEvents()
   }, [])
+  const pathname = usePathname()
 
   useEffect(() => {
     if (typeof window === 'undefined') return
+    if (volunteerSections.length === 0) return
 
     const hash = window.location.hash
     if (hash) {
@@ -71,9 +74,10 @@ export default function VolunteerBecameSection({
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' })
         }
-      }, 500)
+      }, 100) // Slight delay to ensure elements are mounted
     }
-  }, [])
+  }, [pathname, volunteerSections])
+
   return (
     <div className="VolunterPageBecameVolunteerBg">
       <div className="VolunteerBecameavolunteer">
@@ -99,7 +103,7 @@ export default function VolunteerBecameSection({
             )
 
             return (
-              <div className="DigitalSectionFLex" key={index} id={section.title}>
+              <div className="DigitalSectionFLex" key={index} id={section.slug}>
                 {index % 2 === 0 ? (
                   <>
                     {ImageComponent}
