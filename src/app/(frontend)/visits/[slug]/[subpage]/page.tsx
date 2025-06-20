@@ -36,7 +36,7 @@ const querySubpageBySlug = cache(async ({ slug }: { slug: string }) => {
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
-    collection: 'hotels',
+    collection: 'visitsInnerPage',
     draft,
     limit: 1,
     overrideAccess: draft,
