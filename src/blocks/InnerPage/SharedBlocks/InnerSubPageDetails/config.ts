@@ -1,7 +1,7 @@
-import { Block } from "payload";
+import { Block } from 'payload'
 
-const HotelsDetailSection: Block = {
-  slug: 'hoteldetailSection',
+const InnerSubPageDetails: Block = {
+  slug: 'innerSubPageDetails',
   labels: {
     singular: 'Detail Section',
     plural: 'Detail Sections',
@@ -43,6 +43,6 @@ const HotelsDetailSection: Block = {
       ],
     },
   ],
-};
+}
 
-export default HotelsDetailSection;
+export default InnerSubPageDetails

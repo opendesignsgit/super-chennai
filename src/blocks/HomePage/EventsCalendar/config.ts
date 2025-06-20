@@ -31,6 +31,18 @@ const EventsCalendarBlock: Block = {
         placeholder: 'Enter a description',
       },
     },
+
+    {
+      name: 'page',
+      type: 'relationship',
+      relationTo: 'pages',
+      required: false,
+      label: 'Find Out More',
+      admin: {
+        description:
+          'Choose the appropriate Events page from the dropdown that lists all available Pages.',
+      },
+    },
   ],
 }
 

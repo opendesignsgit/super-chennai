@@ -84,7 +84,6 @@ export default function BecameAVolunteer({ heading, title, description, page, cu
 
   const hash = current?.slug?.replace(/\s+/g, '-').toLowerCase()
   const finalLink = customLink || (page?.slug ? `/${page.slug}#${hash}` : '')
-  console.log('Final hash:', hash)
 
   return (
     <div className="Becameavolunteerbg">

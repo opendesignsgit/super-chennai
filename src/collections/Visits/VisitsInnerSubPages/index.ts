@@ -28,10 +28,10 @@ import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { revalidatePost } from '@/collections/Posts/hooks/revalidatePost'
 import { populateAuthors } from '@/collections/Posts/hooks/populateAuthors'
 import { revalidateDelete } from '@/collections/Pages/hooks/revalidatePage'
-import HotelsDetailSection from '@/blocks/InnerPage/SharedBlocks/hotels/config'
 import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
-export const hotels: CollectionConfig<'hotels'> = {
-  slug: 'hotels',
+import InnerSubPageDetails from '@/blocks/InnerPage/SharedBlocks/InnerSubPageDetails/config'
+export const VisitsInnerPage: CollectionConfig<'visitsInnerPage'> = {
+  slug: 'visitsInnerPage',
   access: {
     create: authenticated,
     delete: authenticated,
@@ -54,7 +54,7 @@ export const hotels: CollectionConfig<'hotels'> = {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
           slug: typeof data?.slug === 'string' ? data.slug : '',
-          collection: 'hotels',
+          collection: 'visitsInnerPage',
           req,
         })
 
@@ -64,7 +64,7 @@ export const hotels: CollectionConfig<'hotels'> = {
     preview: (data, { req }) =>
       generatePreviewPath({
         slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'hotels',
+        collection: 'visitsInnerPage',
         req,
       }),
     useAsTitle: 'title',
@@ -95,13 +95,14 @@ export const hotels: CollectionConfig<'hotels'> = {
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({
                       blocks: [
+                        InnerSubPageDetails,
                         ExploreMoreChennaiBlock,
                         introTextBlock,
-                        HotelsDetailSection,
                         ZigZagContentBlock,
                         featureSectionSplitLayoutBlock,
                         BecameAVolunteerBlock,
                         socialReelSlider,
+
                       ],
                     }),
                     FixedToolbarFeature(),
@@ -132,7 +133,7 @@ export const hotels: CollectionConfig<'hotels'> = {
                 }
               },
               hasMany: true,
-              relationTo: 'hotels',
+              relationTo: 'visitsInnerPage',
             },
             {
               name: 'categories',
@@ -229,10 +230,10 @@ export const hotels: CollectionConfig<'hotels'> = {
     // {
     //   name: 'subpages',
     //   type: 'relationship',
-    //   relationTo: 'hotels',
+    //   relationTo: 'visitsInnerPage',
     //   admin: {
     //     position: 'sidebar',
-    //     description: 'Select subpages for this visit. Accessible at /hotels/[slug]/[subpageSlug]',
+    //     description: 'Select subpages for this visit. Accessible at /visitsInnerPage/[slug]/[subpageSlug]',
     //   },
     // },
   ],
