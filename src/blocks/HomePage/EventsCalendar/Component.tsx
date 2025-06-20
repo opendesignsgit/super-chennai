@@ -175,7 +175,7 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description, pag
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-  const pageSlug = typeof page === 'object' && 'slug' in page ? page.slug : undefined
+  const pageSlug = page?.slug ?? undefined
   return (
     <div className="EventsCalendarMainSection">
       <div
@@ -245,7 +245,7 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description, pag
               <div className="eventsCalendarLinks">
                 {isFeaturedEvent.category && <a href="#">{isFeaturedEvent.category}</a>}
               </div>
-           
+
               {pageSlug && (
                 <Link href={`/${pageSlug}`} scroll={true}>
                   <p className="FindOutMore cursor-pointer">Find Out More</p>
