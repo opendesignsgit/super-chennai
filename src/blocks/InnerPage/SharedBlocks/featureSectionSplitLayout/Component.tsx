@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import React from 'react'
-import Image from 'next/image'
 import { Media } from 'src/payload-types'
+import Link from 'next/link'
 
 export interface IconItem {
   icon: Media
@@ -40,12 +41,7 @@ export default function FeatureSectionSplit({ imgSec }: { imgSec: ImageSection[]
               >
                 <div className="imgLeft">
                   {section.img && (
-                    <Image
-                      src={section.img.url || ''}
-                      alt={String(section.title) || ''}
-                      width={1000}
-                      height={700}
-                    />
+                    <img src={section.img.url || ''} alt={String(section.title) || ''} />
                   )}
                 </div>
 
@@ -67,12 +63,7 @@ export default function FeatureSectionSplit({ imgSec }: { imgSec: ImageSection[]
                         <div key={j} className="clcboxItemss flex mb-4">
                           <div className="clcboxIImg">
                             {item.icon && (
-                              <Image
-                                src={item.icon.url || ''}
-                                alt={item.heading || ''}
-                                width={60}
-                                height={60}
-                              />
+                              <img src={item.icon.url || ''} alt={item.heading || ''} />
                             )}
                           </div>
                           <div className="clcboxICont">
@@ -80,12 +71,12 @@ export default function FeatureSectionSplit({ imgSec }: { imgSec: ImageSection[]
                             <p>{item.body}</p>
                             {item.url && (
                               <div className="exploreMorebuttonVisitChennai">
-                                <a
+                                <Link
                                   href={item.url}
                                   className="text-blue-600 hover:underline text-sm font-medium"
                                 >
                                   Explore More
-                                </a>
+                                </Link>
                               </div>
                             )}
                           </div>

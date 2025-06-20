@@ -58,6 +58,43 @@ const TwoColumnFeatureBlock: Block = {
         description: 'Maximum 200 characters allowed',
       },
     },
+
+    {
+      name: 'techLink',
+      type: 'group',
+      label: 'Tech Link',
+      fields: [
+        {
+          name: 'url',
+          type: 'text',
+          label: 'External Link (optional)',
+        },
+        {
+          name: 'page',
+          type: 'relationship',
+          relationTo: 'pages',
+          label: 'Internal Page (optional)',
+        },
+      ],
+    },
+    {
+      name: 'eduLink',
+      type: 'group',
+      label: 'Education Link',
+      fields: [
+        {
+          name: 'url',
+          type: 'text',
+          label: 'External Link (optional)',
+        },
+        {
+          name: 'page',
+          type: 'relationship',
+          relationTo: 'pages',
+          label: 'Internal Page (optional)',
+        },
+      ],
+    },
   ],
 }
 
