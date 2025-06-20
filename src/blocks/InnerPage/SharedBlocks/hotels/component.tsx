@@ -2,7 +2,6 @@
 
 import { Media } from '@/payload-types'
 import Image from 'next/image'
-import '../css/CostOfLiving.css'
 
 type DetailSectionProps = {
   sections: {
