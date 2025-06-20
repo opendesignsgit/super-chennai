@@ -37,10 +37,20 @@ import '@/assets/Css/Volunteer.css'
 
 import '@/assets/Css/Invest.css'
 import '@/assets/Css/Live.css'
-// import '@/assets/Css/MenuBar.css'
-// import '@/assets/Css/Search.css'
-// import '@/assets/Css/SearchResults.css'
 import '@/assets/Css/SocialChennai.css'
+
+import '@/assets/Css/DivereseDelights.css'
+import '@/assets/Css/MenuBar.css'
+import '@/assets/Css/PeekCarosel.css'
+import '@/assets/Css/Search.css'
+import '@/assets/Css/SearchResults.css'
+import '@/assets/Css/StartupChennai.css'
+import '@/assets/Css/TechEdu.css'
+import '@/assets/Css/TrendingChennai.css'
+import '@/assets/Css/Utilities.css'
+import '@/assets/Css/VisitPage.css'
+import '@/assets/Css/Work.css'
+
 import { Preloader } from '@/components/Loader/Preloader'
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()

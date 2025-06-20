@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-import '../../SharedBlocks/css/style.css'
 import { Media } from 'src/payload-types'
 
 export interface IconItem {
