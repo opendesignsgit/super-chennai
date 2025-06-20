@@ -33,7 +33,6 @@ export default function BecameAVolunteer({ heading, title, description, page, cu
   const [slides, setSlides] = useState<Slide[]>([])
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
   const [loading, setLoading] = useState(true)
-
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -83,8 +82,9 @@ export default function BecameAVolunteer({ heading, title, description, page, cu
   const imageUrl = current?.image?.url || '/placeholder.jpg'
   const imageAlt = current?.image?.alt || current?.title || 'Volunteer Slide'
 
-  const hash = current?.title?.replace(/\s+/g, '-').toLowerCase() // optional: sanitize hash
+  const hash = current?.slug?.replace(/\s+/g, '-').toLowerCase()
   const finalLink = customLink || (page?.slug ? `/${page.slug}#${hash}` : '')
+  console.log('Final hash:', hash)
 
   return (
     <div className="Becameavolunteerbg">
@@ -131,17 +131,6 @@ export default function BecameAVolunteer({ heading, title, description, page, cu
                   {current?.title && <h3>{current.title}</h3>}
                   {current?.subtitle && <h4>{current.subtitle}</h4>}
                   {current?.description && <p>{current.description}</p>}
-
-                  {/* {current?.slug && (
-                    <div className="linksContainer">
-                      <Link
-                        href={`/volunteer-chennai#${current.title}`}
-                        className="exploreMoreLink"
-                      >
-                        Explore More
-                      </Link>
-                    </div>
-                  )} */}
 
                   {finalLink && (
                     <div className="linksContainer">
