@@ -594,6 +594,14 @@ export interface Page {
          * Maximum 200 characters allowed
          */
         eduDescription: string;
+        techLink?: {
+          url?: string | null;
+          page?: (number | null) | Page;
+        };
+        eduLink?: {
+          url?: string | null;
+          page?: (number | null) | Page;
+        };
         id?: string | null;
         blockName?: string | null;
         blockType: 'twoColumnFeatureBlock';
@@ -639,6 +647,10 @@ export interface Page {
            */
           description?: string | null;
           image: number | Media;
+          /**
+           * Optional external URL. If "Page Link" is also set, it will be ignored.
+           */
+          url?: string | null;
           id?: string | null;
         }[];
         id?: string | null;
@@ -2474,6 +2486,18 @@ export interface PagesSelect<T extends boolean = true> {
               eduImage?: T;
               eduTitle?: T;
               eduDescription?: T;
+              techLink?:
+                | T
+                | {
+                    url?: T;
+                    page?: T;
+                  };
+              eduLink?:
+                | T
+                | {
+                    url?: T;
+                    page?: T;
+                  };
               id?: T;
               blockName?: T;
             };
@@ -2504,6 +2528,7 @@ export interface PagesSelect<T extends boolean = true> {
                     title?: T;
                     description?: T;
                     image?: T;
+                    url?: T;
                     id?: T;
                   };
               id?: T;

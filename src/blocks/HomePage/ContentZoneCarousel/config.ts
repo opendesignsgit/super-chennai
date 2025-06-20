@@ -71,6 +71,26 @@ const ContentZoneCarousel: Block = {
           relationTo: 'media',
           required: true,
         },
+        {
+          name: 'url',
+          type: 'text',
+          required: false,
+          label: 'External Link (optional)',
+          admin: {
+            placeholder: 'https://example.com',
+            description: 'Optional external URL. If "Page Link" is also set, it will be ignored.',
+          },
+        },
+        // {
+        //   name: 'page',
+        //   type: 'relationship',
+        //   relationTo: 'visits',
+        //   required: false,
+        //   label: 'Page Link (optional)',
+        //   admin: {
+        //     description: 'Link this card to a page in the site. Takes priority over external URL.',
+        //   },
+        // },
       ],
     },
   ],

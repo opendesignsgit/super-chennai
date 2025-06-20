@@ -2,6 +2,7 @@
 'use client'
 import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import './style.css'
 
 interface ImageData {
@@ -14,6 +15,10 @@ interface Card {
   image: ImageData
   title: string
   description: string
+  url?: string
+  page?: {
+    slug?: string
+  }
 }
 
 interface ContentZoneCarouselBlockProps {
@@ -50,7 +55,7 @@ export const ContentZoneCarousel = ({
       const isMobile = window.innerWidth < 768
       const newWidth = isMobile ? window.innerWidth : 320
       setCardWidth(newWidth)
-      setX(0) // Reset to first slide
+      setX(0)
     }
 
     window.addEventListener('resize', handleResize)
@@ -79,23 +84,43 @@ export const ContentZoneCarousel = ({
             animate={{ x }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           >
-            {cards.map((card, idx) => (
-              <motion.div
-                className="chillZoneImageCard cursor-pointer"
-                key={idx}
-                style={{ width: `${cardWidth}px` }}
-              >
-                <img
-                  className="chillZoneImage"
-                  src={card.image?.url || card.image?.thumbnailURL || '/fallback-image.jpg'}
-                  alt={card.title}
-                />
-                <div className="chillzoneContentSection">
-                  <h3>{card.title}</h3>
-                  <p>{card.description}</p>
-                </div>
-              </motion.div>
-            ))}
+            {cards.map((card, idx) => {
+              const link = card.page?.slug ? `/visits/${card.page.slug}` : card.url || null
+
+              const content = (
+                <>
+                  <img
+                    className="chillZoneImage"
+                    src={card.image?.url || card.image?.thumbnailURL || '/fallback-image.jpg'}
+                    alt={card.title}
+                  />
+                  <div className="chillzoneContentSection">
+                    <h3>{card.title}</h3>
+                    <p>{card.description}</p>
+                  </div>
+                </>
+              )
+
+              return (
+                <motion.div
+                  className="chillZoneImageCard cursor-pointer"
+                  key={idx}
+                  style={{ width: `${cardWidth}px` }}
+                >
+                  {link ? (
+                    link.startsWith('http') ? (
+                      <a href={link} target="_blank" rel="noopener noreferrer">
+                        {content}
+                      </a>
+                    ) : (
+                      <Link href={link}>{content}</Link>
+                    )
+                  ) : (
+                    content
+                  )}
+                </motion.div>
+              )
+            })}
           </motion.div>
 
           <div className="chillZonecarousel-buttons">

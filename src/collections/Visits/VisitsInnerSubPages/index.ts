@@ -102,7 +102,6 @@ export const VisitsInnerPage: CollectionConfig<'visitsInnerPage'> = {
                         featureSectionSplitLayoutBlock,
                         BecameAVolunteerBlock,
                         socialReelSlider,
-
                       ],
                     }),
                     FixedToolbarFeature(),
