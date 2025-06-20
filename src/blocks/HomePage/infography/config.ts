@@ -72,7 +72,21 @@ const Infography: Block = {
           type: 'relationship',
           relationTo: 'visits',
           required: false,
-          label: 'Select Page Link',
+          label: 'Select Visits Page',
+          admin: {
+            description: '📄 Select the Visits page to link to. This will be used in the URL.',
+          },
+        },
+        {
+          name: 'foodSectionTitle',
+          type: 'text',
+          label: 'Anchor Section Title',
+          required: false,
+          admin: {
+            placeholder: 'e.g., Italian Cuisine',
+            description:
+              '🔗 This will scroll to a section within the selected page. Must exactly match a title in the "featureSectionSplit" block of that page. Final URL becomes: /visits/[page]/#[FoodTitle]',
+          },
         },
         {
           name: 'customLink',

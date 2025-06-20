@@ -30,7 +30,16 @@ export default function FeatureSectionSplit({ imgSec }: { imgSec: ImageSection[]
         return (
           <div className="detailIconSec" key={index}>
             <div className="detailIconSections">
+              {/* <section
+                className={`imgcontent flex flex-wrap justify-center transition-colors duration-300
+                ${index % 2 === 0 ? 'bg-white whitebgsec' : 'bg-[#f7f7f7] colorbgsec'}
+                ${index % 3 === 0 ? 'pattern-a' : index % 3 === 1 ? 'pattern-b' : 'pattern-c'}`}
+              > */}
+
               <section
+                id={
+                  typeof section.title === 'string' ? section.title.replace(/\s+/g, '') : undefined
+                }
                 className={`imgcontent flex flex-wrap justify-center transition-colors duration-300
                 ${index % 2 === 0 ? 'bg-white whitebgsec' : 'bg-[#f7f7f7] colorbgsec'}
                 ${index % 3 === 0 ? 'pattern-a' : index % 3 === 1 ? 'pattern-b' : 'pattern-c'}`}

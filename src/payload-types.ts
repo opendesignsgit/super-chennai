@@ -553,7 +553,14 @@ export interface Page {
            */
           description: string;
           image: number | Media;
+          /**
+           * 📄 Select the Visits page to link to. This will be used in the URL.
+           */
           page?: (number | null) | Visit;
+          /**
+           * 🔗 This will scroll to a section within the selected page. Must exactly match a title in the "featureSectionSplit" block of that page. Final URL becomes: /visits/[page]/#[FoodTitle]
+           */
+          foodSectionTitle?: string | null;
           /**
            * This will override the selected page link if provided.
            */
@@ -2446,6 +2453,7 @@ export interface PagesSelect<T extends boolean = true> {
                     description?: T;
                     image?: T;
                     page?: T;
+                    foodSectionTitle?: T;
                     customLink?: T;
                     id?: T;
                   };

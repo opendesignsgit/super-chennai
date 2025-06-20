@@ -45,10 +45,20 @@ export default function InfographySection({ heading, headingSpan, description, f
 
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
+  // const getLink = (item: FoodItem) => {
+  //   if (item.customLink) return item.customLink
+  //   if (item.page?.slug) return `/visits/${item.page.slug}`
+  //    if (item.foodSectionTitle) return `#${encodeURIComponent(item.foodSectionTitle)}`
+  //   return null
+  // }
+
   const getLink = (item: FoodItem) => {
     if (item.customLink) return item.customLink
-    if (item.page?.slug) return `/pages/${item.page.slug}`
-    return null
+
+    const basePath = item.page?.slug ? `/visits/${item.page.slug}` : ''
+    const anchor = item.foodSectionTitle ? `#${item.foodSectionTitle.replace(/\s+/g, '')}` : ''
+
+    return basePath + anchor
   }
 
   return (
@@ -107,7 +117,7 @@ export default function InfographySection({ heading, headingSpan, description, f
                   >
                     {link ? (
                       <Link href={link} className="foodItemLink">
-                        <h4>{item.title}</h4>
+                        <h4>{item.title}qqqq</h4>
                       </Link>
                     ) : (
                       <h4>{item.title}</h4>
@@ -138,7 +148,7 @@ export default function InfographySection({ heading, headingSpan, description, f
                   >
                     {link ? (
                       <Link href={link} className="foodItemLink">
-                        <h4>{item.title}</h4>
+                        <h4>{item.title}ssssss</h4>
                       </Link>
                     ) : (
                       <h4>{item.title}</h4>
