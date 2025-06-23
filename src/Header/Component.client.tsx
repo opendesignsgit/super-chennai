@@ -2,7 +2,6 @@
 'use client'
 
 import MenuBar from '@/components/MenueBar'
-import type { Header } from '@/payload-types'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -13,36 +12,8 @@ import iconEmail from '../assets/images/HomePage-Images/Icons/mobile-Header-Emai
 import iconEvents from '../assets/images/HomePage-Images/Icons/mobile-Header-Events.svg'
 import iconHamburger from '../assets/images/HomePage-Images/Icons/mobile-Header-Hamburger.svg'
 import iconSearch from '../assets/images/HomePage-Images/Icons/mobile-Header-Search.svg'
-import logoSuperChennai from '../assets/images/HomePage-Images/Superchennai.png'
-
 //######################## TYPES  #############################################
-
-interface HeaderClientProps {
-  data: Header
-}
-
-interface Block {
-  title: string
-  desc: string
-  link: string
-}
-
-interface MenuItem {
-  label: string
-  link: string
-  content: Block[]
-  contentImage?: {
-    filename: string
-    mimeType: string
-    url?: string
-  }
-}
-
-interface DrawerItem {
-  label: string
-  link: string
-}
-
+import { HeaderClientProps, DrawerItem, MenuItem } from '@/models/header'
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   //##################### STATE  ##############################################
   const [menuItems, setMenuItems] = useState<MenuItem[]>([])
@@ -53,6 +24,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const [searchForm, setSearchForm] = useState(false)
   const router = useRouter()
   const [drawerMenuItems, setDrawerMenuItems] = useState<DrawerItem[]>([])
+  const [draweLogo, setDraweLogo] = useState<any>(null)
 
   //##################### TIMEOUT  ############################################
   let menuTimeout: NodeJS.Timeout
@@ -80,6 +52,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               : undefined,
           })),
         )
+        setDraweLogo(data?.logo)
         setDrawerMenuItems(data?.drawerMenu || [])
       } catch (error) {
         console.error('Failed to fetch menu items', error)
@@ -265,21 +238,32 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         <AnimatePresence>
           {menuBar && (
             <motion.div
-              initial="hidden"
-              animate="visible"
-              exit="exit"
+              initial={{ x: '100%', opacity: 0 }}
+              animate={{
+                x: '0%',
+                opacity: 1,
+                transition: { duration: 0.5, ease: 'easeOut' },
+              }}
+              exit={{
+                x: '100%',
+                opacity: 0,
+                transition: { duration: 0.4, ease: 'easeIn' },
+              }}
               style={{
-                position: 'absolute',
+                position: 'fixed',
                 top: 0,
                 left: 0,
                 width: '100%',
+                height: '100vh',
                 zIndex: 100000000,
+                overflowY: 'auto',
               }}
             >
               <MenuBar
                 setMenuBar={setMenuBar}
                 menuItems={menuItems}
                 drawerMenuItems={drawerMenuItems}
+                logo={draweLogo}
               />
             </motion.div>
           )}

@@ -4,31 +4,19 @@ import { useState } from 'react'
 import { Dispatch, SetStateAction } from 'react'
 import closeButton from '../../assets/images/close.svg'
 import MenuBarCloseButton from '../../assets/images/menuBarCloseButton.png'
-
-interface Block {
-  title: string
-  desc: string
-  link: string
-}
-
-interface MenuItem {
-  label: string
-  link: string
-  content: Block[]
-}
-interface DrawerItem {
-  label: string
-  link: string
-}
+//########################### TYPES######################################
+import { DrawerItem, MenuItem, Logo } from '@/models/headerDrawer'
 
 export default function MenuBar({
   setMenuBar,
   menuItems,
   drawerMenuItems = [],
+  logo,
 }: {
   setMenuBar: Dispatch<SetStateAction<boolean>>
   menuItems: MenuItem[]
   drawerMenuItems?: DrawerItem[]
+  logo?: Logo
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
@@ -36,15 +24,22 @@ export default function MenuBar({
     setOpenIndex(openIndex === index ? null : index)
   }
 
-
-
   return (
     <div className="menuBarFullContainer">
       <div className="menuBarFullFirstSection"></div>
 
       <div className="menuBarFullSecondSection">
         <div className="closeButtonMenubar">
-          <div className="SuperCehnnaiLogoImages"></div>
+          <div className="SuperCehnnaiLogoImages">
+            {logo?.filename && (
+              <img
+                className="SuperCehnnaiLogoImages"
+                src={`/media/${logo.filename}`}
+                alt={logo.alt || 'Super Chennai Logo'}
+              />
+            )}
+          </div>
+
           <img
             className="closeButtonMenuBarMobile cursor:pointer"
             onClick={() => setMenuBar(false)}
