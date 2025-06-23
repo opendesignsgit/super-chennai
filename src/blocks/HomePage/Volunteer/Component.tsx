@@ -44,7 +44,6 @@ export default function BecameAVolunteer({ heading, title, description, page, cu
           return
         }
 
-        console.log('Fetched volunteer data:', data)
 
         const allSlides = data.docs.map((item: any) => ({
           id: item.id || item._id,

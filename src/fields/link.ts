@@ -135,6 +135,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
   }
 
   //################## CUSTOME FILES ADDED BY OPEN DESIGN ##############
+
   linkResult.fields.push({
     name: 'content',
     type: 'array',
@@ -167,7 +168,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
     ],
   })
 
-  // IMAGE ##################################
+  // ########################### IMAGE ###################################
 
   linkResult.fields.unshift({
     name: 'contentImage',

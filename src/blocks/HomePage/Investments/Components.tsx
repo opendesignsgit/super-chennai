@@ -60,7 +60,7 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
               })),
             ),
           }))
-          console.log('extracted', data)
+         
           setCategories(extracted)
           setSelectedCategory(extracted[0]?.title || '')
         }

@@ -42,6 +42,23 @@ export const PostHero: React.FC<{
     return { name: segment.replace(/-/g, ' ').toUpperCase(), href }
   })
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        document.body.classList.remove('post-hero-active')
+      } else {
+        document.body.classList.add('post-hero-active')
+      }
+    }
+    document.body.classList.add('post-hero-active')
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    return () => {
+      document.body.classList.remove('post-hero-active')
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   //############ Retrieve parent slug from sessionStorage ############
   useEffect(() => {
     const storedSlug = sessionStorage.getItem('parentSlug')
