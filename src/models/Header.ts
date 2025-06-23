@@ -1,4 +1,4 @@
-// headerTypes.ts
+import type { Header } from '@/payload-types'
 
 export interface Block {
   title: string
@@ -23,12 +23,5 @@ export interface DrawerItem {
 }
 
 export interface HeaderClientProps {
-  data: {
-    navItems: MenuItem[]
-    logo?: {
-      filename: string
-      alt?: string
-    }
-    drawerMenu?: DrawerItem[]
-  }
+  data: Header
 }

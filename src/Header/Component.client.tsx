@@ -13,7 +13,9 @@ import iconEvents from '../assets/images/HomePage-Images/Icons/mobile-Header-Eve
 import iconHamburger from '../assets/images/HomePage-Images/Icons/mobile-Header-Hamburger.svg'
 import iconSearch from '../assets/images/HomePage-Images/Icons/mobile-Header-Search.svg'
 //######################## TYPES  #############################################
-import { HeaderClientProps, DrawerItem, MenuItem } from '@/models/header'
+import { HeaderClientProps, DrawerItem, MenuItem } from '@/models/Header'
+
+
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   //##################### STATE  ##############################################
   const [menuItems, setMenuItems] = useState<MenuItem[]>([])
