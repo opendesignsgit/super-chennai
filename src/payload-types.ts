@@ -3456,6 +3456,10 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: number;
+  /**
+   * Upload the logo for the header.
+   */
+  logo?: (number | null) | Media;
   navItems?:
     | {
         link: {
@@ -3485,6 +3489,13 @@ export interface Header {
               }[]
             | null;
         };
+        id?: string | null;
+      }[]
+    | null;
+  drawerMenu?:
+    | {
+        label: string;
+        link: string;
         id?: string | null;
       }[]
     | null;
@@ -3519,6 +3530,7 @@ export interface Footer {
           id?: string | null;
         }[]
       | null;
+    partnersLogo?: (number | null) | Media;
     mainFooterLogo?: (number | null) | Media;
     designByLogo: number | Media;
     footerText: string;
@@ -3531,6 +3543,7 @@ export interface Footer {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
+  logo?: T;
   navItems?:
     | T
     | {
@@ -3552,6 +3565,13 @@ export interface HeaderSelect<T extends boolean = true> {
                     id?: T;
                   };
             };
+        id?: T;
+      };
+  drawerMenu?:
+    | T
+    | {
+        label?: T;
+        link?: T;
         id?: T;
       };
   updatedAt?: T;
@@ -3587,6 +3607,7 @@ export interface FooterSelect<T extends boolean = true> {
               icon?: T;
               id?: T;
             };
+        partnersLogo?: T;
         mainFooterLogo?: T;
         designByLogo?: T;
         footerText?: T;

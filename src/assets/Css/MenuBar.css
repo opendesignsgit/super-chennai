@@ -16,6 +16,7 @@
 .closeButtonMenubar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .closeButtonMenubar img:first-child {
@@ -51,7 +52,7 @@
 }
 
 .menuBarLinksContent li {
-  /* font-family: "Poppinsthin";
+  /*font-family: "Poppinsthin";
   font-weight: 600;
   text-transform: uppercase;
   color: #808080;
@@ -59,7 +60,8 @@
   border-bottom: 1px solid #dddddd;
   letter-spacing: 2px;
   font-size: clamp(22px, 4vw, 44px);
-  line-height: clamp(36px, 6vw, 74px); */
+  line-height: clamp(36px, 6vw, 74px);
+  */
   font-family: "Poppinsthin";
   font-weight: 600;
   text-transform: uppercase;
@@ -68,21 +70,9 @@
   letter-spacing: 0px;
   font-size: clamp(22px, 4vw, 44px);
   line-height: clamp(36px, 6vw, 74px);
-  position: relative; /* Needed for absolute ::after */
-}
+  position: relative;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
 
-.menuBarLinksContent li::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 1px;
-  width: 100%;
-  background: linear-gradient(to right, #ddd, #f1f1f1);
-}
-
-.menuBarLinksContent li:last-child::after {
-  background: none; /* or display: none; */
 }
 
 .menuBarLinksContent li:hover {
@@ -101,13 +91,19 @@
   margin-top: 50px;
   margin-left: 10px;
 }
+
 .SuperCehnnaiLogoImages {
   width: 139px !important;
   height: 108px;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url(/public/images/super-chennai-logo-final-header.png);
+  background-image: url(../../assets/images/super-chennai-logo-final-header.png);
+}
+
+.closeButtonMenuBaDesktop {
+  width: 50px;
+  height: 50px;
 }
 
 @media (max-width: 1600px) {
@@ -122,20 +118,62 @@
   }
 }
 
+@media (max-width: 1000px) and (min-width: 768px) {
+  .menuBarFullFirstSection {
+    display: none;
+  }
+
+  .menuBarFullSecondSection {
+    width: 100%;
+  }
+
+  .containerMenuBar {
+    margin: 2% 1% 2% 1%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .menuBarLinksContent {
+    max-width: 500px;
+    margin-right: 0;
+  }
+
+  .menuBarLinksContent li {
+    text-align: center;
+  }
+}
+
 @media (max-width: 768px) {
+  .closeButtonMenuBaDesktop {
+    display: none;
+  }
+
+  .menuBarLinksContent {
+    padding: 0;
+    margin: 0;
+  }
+
+  .menuBarLinksContent li::after {
+    background: none;
+  }
+
   .menuBarLinksContent li:last-child {
     border: none;
   }
+
   .mobileNavLinks {
     color: #fff;
     font-size: 19px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
+
   .MenuBarTitleSection {
     margin-top: 15px;
     background: #1a0f6b;
     padding-top: 20px;
   }
+
   .closeButtonMenubar {
     margin-top: 10px;
     display: flex;
@@ -144,20 +182,9 @@
   }
 
   .SuperCehnnaiLogoImages {
-    /* width: 136px !important;
-    height: 147px;
-    object-fit: cover !important;
-    background-image: url("../images/super-chennai-logo-final.png"); */
-    /* width: 136px !important;
-    height: 147px;
-    background-image: url("/images/super-chennai-logo-final.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; */
     width: 156px;
     height: 115px;
-    /* background-image: url("../images/super-chennai-logo-final-header.png"); */
-    background-image: url("/public/images/super-chennai-logo-final.png");
+    background-image: url("../../assets/images/super-chennai-logo-final.png");
     background-size: contain;
     z-index: 10;
   }
@@ -166,14 +193,18 @@
     margin-top: 50px;
   }
 
-  .closeButtonMenubar .SuperCehnnaiLogoImages {
+  .menuBarMain:last-child {
+    margin-top: 0px;
   }
+
+  .closeButtonMenubar .SuperCehnnaiLogoImages {}
 
   .closeButtonMenubar img:nth-child(2) {
     width: 50px;
     object-fit: contain;
     cursor: pointer;
   }
+
   .menuBarFullContainer {
     flex-direction: column;
   }
@@ -190,10 +221,12 @@
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
+
   .menuBarLinksContent li {
     font-size: 19px;
     line-height: 50px;
     color: #fff;
+    padding-left: 10px;
   }
 
   .titleMenuBar {
@@ -209,7 +242,16 @@
     padding-bottom: 0;
   }
 }
+
 @media (min-width: 768px) {
+  .containerMenuBar {
+    margin-left: 0;
+  }
+
+  .closeButtonMenuBarMobile {
+    display: none;
+  }
+
   .menuBarMain {
     display: none;
   }
@@ -292,7 +334,7 @@
   margin-bottom: 10px;
   font-family: NewAmsterdam;
   font-size: clamp(40px, 6vw, 60px);
-  line-height: clamp(44px, 5vw, 73px);
+  line-height: clamp(44px, 5vw, 50px);
   color: #995098;
 }
 

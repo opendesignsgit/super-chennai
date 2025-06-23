@@ -53,7 +53,9 @@ export default async function Post({ params: paramsPromise }: Args) {
       <PayloadRedirects disableNotFound url={url} />
       {draft && <LivePreviewListener />}
       <Suspense fallback={null}>
-        <PostHero post={post} />
+        <div className="post-hero-wrapper">
+          <PostHero post={post} />
+        </div>
       </Suspense>
       <div>
         <EventDetails data={post} />

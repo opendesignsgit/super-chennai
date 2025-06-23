@@ -5,16 +5,15 @@ import MenuBar from '@/components/MenueBar'
 import type { Header } from '@/payload-types'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
-import './style.css'
 import { useRouter } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
 //######################## ASSETS  #############################################
+import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 import iconEmail from '../assets/images/HomePage-Images/Icons/mobile-Header-Email.svg'
 import iconEvents from '../assets/images/HomePage-Images/Icons/mobile-Header-Events.svg'
 import iconHamburger from '../assets/images/HomePage-Images/Icons/mobile-Header-Hamburger.svg'
 import iconSearch from '../assets/images/HomePage-Images/Icons/mobile-Header-Search.svg'
 import logoSuperChennai from '../assets/images/HomePage-Images/Superchennai.png'
-import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 
 //######################## TYPES  #############################################
 
@@ -39,6 +38,11 @@ interface MenuItem {
   }
 }
 
+interface DrawerItem {
+  label: string
+  link: string
+}
+
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   //##################### STATE  ##############################################
   const [menuItems, setMenuItems] = useState<MenuItem[]>([])
@@ -48,8 +52,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const [menuBar, setMenuBar] = useState(false)
   const [searchForm, setSearchForm] = useState(false)
   const router = useRouter()
+  const [drawerMenuItems, setDrawerMenuItems] = useState<DrawerItem[]>([])
+
   //##################### TIMEOUT  ############################################
   let menuTimeout: NodeJS.Timeout
+  console.log('HeaderClient data:', data)
 
   //##################### INITIALIZATION #######################################
   useEffect(() => {
@@ -73,6 +80,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               : undefined,
           })),
         )
+        setDrawerMenuItems(data?.drawerMenu || [])
       } catch (error) {
         console.error('Failed to fetch menu items', error)
       }
@@ -111,7 +119,16 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         {/*#################### DESKTOP MENUE NAVBAR ########################### */}
         <nav className="Megamenunav HomePageStyle" onMouseLeave={handleMenuLeave}>
           <div className={`Megamenutop-bar ${activeMenu ? 'activeStateMegamenu' : ''}`}>
-            <Link href="/" className="Megamenulogo" aria-label="Home" />
+            <Link href="/" aria-label="Home">
+              {data?.logo && typeof data.logo === 'object' && 'filename' in data.logo && (
+                <img
+                  src={`/media/${data.logo.filename}`}
+                  alt={data.logo.alt || 'Site Logo'}
+                  className="Megamenulogo"
+                />
+              )}
+            </Link>
+
             <div className="Megamenumenuicon md:hidden">
               <button
                 className="Megamenumenuicon md:hidden"
@@ -173,22 +190,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                           show: { opacity: 1, y: 0 },
                         }}
                         transition={{ duration: 0.3, ease: 'easeOut' }}
-                        // onClick={() => {
-                        //   const linkPath = block.link.startsWith('/')
-                        //     ? block.link
-                        //     : `/${block.link}`
-                        //   router.push(linkPath)
-                        //   setActiveMenu(null)
-                        //   window.scrollTo({ top: 0, behavior: 'smooth' })
-                        // }}
-
                         onClick={() => {
                           const linkPath = block.link.startsWith('/')
                             ? block.link
                             : `/${block.link}`
 
-                          // 🟡 Store current menu parent slug in sessionStorage
-                          // Assuming `activeMenu.link` is something like "/visits-chennai"
                           if (activeMenu?.link) {
                             sessionStorage.setItem('parentSlug', activeMenu.link)
                           }
@@ -215,26 +221,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               </motion.div>
             )}
           </AnimatePresence>
-
-          {mobileMenuOpen && (
-            <div className="mobile-menu md:hidden">
-              {menuItems.map((item, i) => (
-                <div key={i} className="mobile-section">
-                  <Link href={item.link}>
-                    <p className="mobile-title">{item.label}</p>
-                  </Link>
-                  <div className="mobile-content">
-                    {item.content.map((block, j) => (
-                      <Link key={j} href={block.link} className="mobile-link-wrapper">
-                        <p className="mobile-subtitle">{block.title}</p>
-                        <p className="mobile-subdesc">{block.desc}</p>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
         </nav>
 
         {/*#################### MOBILE MENUE NAVBAR ############################## */}
@@ -248,7 +234,13 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           </div>
           <div className="mobilesvgSize">
             <Link href="/.">
-              <img src={logoSuperChennai.src} alt="Super Chennai Logo" />
+              {data?.logo && typeof data.logo === 'object' && 'url' in data.logo && (
+                <img
+                  src={`/media/${data.logo.filename}`}
+                  alt={data.logo.alt || 'Site Logo'}
+                  style={{ maxHeight: 60 }}
+                />
+              )}
             </Link>
           </div>
           <div className="mobilesvgSize" onClick={handleScrollToSearchForm}>
@@ -268,7 +260,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             />
           </div>
         </div>
-        {/*#################### DESKTOP MENUE HAMBURGER ########################### */}
+        {/*####################  MENUE HAMBURGER ########################### */}
 
         <AnimatePresence>
           {menuBar && (
@@ -284,7 +276,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                 zIndex: 100000000,
               }}
             >
-              <MenuBar setMenuBar={setMenuBar} />
+              <MenuBar
+                setMenuBar={setMenuBar}
+                menuItems={menuItems}
+                drawerMenuItems={drawerMenuItems}
+              />
             </motion.div>
           )}
         </AnimatePresence>
