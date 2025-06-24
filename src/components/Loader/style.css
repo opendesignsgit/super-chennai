@@ -16,12 +16,11 @@
 .animated-text {
   display: flex;
   gap: 0.2em;
-  font-size: 6rem; 
+  font-size: 6vw; /* Responsive font size */
   font-weight: bold;
   letter-spacing: 0.1em; /* Increased letter spacing */
   font-family: 'Poppins', sans-serif;
   text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Added text shadow */
-  animation: pulse 1.5s infinite; /* Added pulse animation */
 }
 
 .animated-text span {
@@ -31,20 +30,15 @@
 }
 
 @keyframes riseFade {
-  to {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
-/* 
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-} */
 
 @keyframes backgroundAnimation {
   0% {
