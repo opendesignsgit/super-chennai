@@ -9,6 +9,7 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
+import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
@@ -22,9 +23,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { GlobalSearchBlock } from 'src/blocks/HomePage/GlobalSearch/config'
 import { socialReelSlider } from 'src/blocks/HomePage/SocialChennai/config'
-import InnerPageBanner from 'src/blocks/InnerPage/SharedBlocks/Banners/config'
 import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/config'
 import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
 import futureUnicorns from 'src/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
@@ -109,11 +108,10 @@ export const work: CollectionConfig<'work'> = {
                         HotelsInChennaiBlock,
                         ExploreMoreChennaiBlock,
                         socialReelSlider,
-                        InnerPageBanner,
                         FeatureSectionsBlock,
-                        GlobalSearchBlock,
                         introTextBlock,
                         futureUnicorns,
+                        BecameAVolunteerBlock,
                       ],
                     }),
                     FixedToolbarFeature(),
