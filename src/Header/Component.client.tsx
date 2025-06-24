@@ -14,7 +14,7 @@ import iconHamburger from '../assets/images/HomePage-Images/Icons/mobile-Header-
 import iconSearch from '../assets/images/HomePage-Images/Icons/mobile-Header-Search.svg'
 //######################## TYPES  #############################################
 import { HeaderClientProps, DrawerItem, MenuItem } from '@/models/Header'
-
+import Image from 'next/image'
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   //##################### STATE  ##############################################
@@ -96,10 +96,12 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <div className={`Megamenutop-bar ${activeMenu ? 'activeStateMegamenu' : ''}`}>
             <Link href="/" aria-label="Home">
               {data?.logo && typeof data.logo === 'object' && 'filename' in data.logo && (
-                <img
+                <Image
                   src={`/media/${data.logo.filename}`}
                   alt={data.logo.alt || 'Site Logo'}
                   className="Megamenulogo"
+                  width={150}
+                  height={60}
                 />
               )}
             </Link>
