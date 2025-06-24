@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import React from 'react'
-import './style.css'
+// import './style.css'
 
 type Section = {
   title: string

@@ -2,8 +2,22 @@
   position: absolute;
   width: 100%;
 }
-
 /*############# CUSTOME CSS ADDED BY BHARATHI ################ */
+
+/* body.post-hero-active .Megamenumenuitem {
+  cursor: pointer;
+  position: relative;
+  background: none;
+  border: none;
+  font-weight: 500;
+  font-size: 13px;
+  color: #fff;
+  font-family: "29LT Bukra SmBd";
+  text-transform: uppercase;
+  letter-spacing: 2px;
+} */
+
+
 
 body.post-hero-active .Megamenulogo {
   filter: invert(98%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(111%) contrast(92%);
