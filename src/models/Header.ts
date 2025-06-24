@@ -23,14 +23,13 @@ export interface DrawerItem {
 }
 
 export interface HeaderClientProps {
-  data: Header & {
-    socialLinks?: {
-      url: string
-      platform: string
-      icon?: {
-        filename: string
-        url?: string
-      }
-    }[]
-  }
+  data: Header
+  socialLinks?: {
+    url: string
+    platform: string
+    icon?: {
+      filename: string
+      url?: string
+    }
+  }[]
 }
