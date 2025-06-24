@@ -37,7 +37,7 @@ export const Header: GlobalConfig = {
         },
       },
     },
-    //################## SOCIAL MEDIA ICON LINKS #######################
+    //################## SOCIAL MEDIA ICON LINKS #############
     {
       name: 'socialLinks',
       label: 'Social Links',
