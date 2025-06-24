@@ -1,9 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
-import Image from 'next/image'
-import './style.css'
 import { FeatureSectionsProps } from 'src/models/innerpage/businessModels'
 import { Media } from 'src/payload-types'
+import './style.css'
 
 export default function FeatureSections({ sections }: FeatureSectionsProps) {
   return (
