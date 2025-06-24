@@ -27,6 +27,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const router = useRouter()
   const [drawerMenuItems, setDrawerMenuItems] = useState<DrawerItem[]>([])
   const [draweLogo, setDraweLogo] = useState<any>(null)
+  const [socialLinks, setSocialLinks] = useState<any>([])
 
   //##################### TIMEOUT  ############################################
   let menuTimeout: NodeJS.Timeout
@@ -56,6 +57,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         )
         setDraweLogo(data?.logo)
         setDrawerMenuItems(data?.drawerMenu || [])
+        setSocialLinks(data?.socialLinks || [])
       } catch (error) {
         console.error('Failed to fetch menu items', error)
       }
@@ -295,6 +297,21 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           )}
         </AnimatePresence>
       </header>
+      {socialLinks?.length > 0 && (
+        <div className="stickyIconsContainer">
+          {socialLinks.map((item: any, index: number) => (
+            <a key={index} href={item.url} target="_blank" rel="noopener noreferrer">
+              <img
+                src={item.icon?.url ?? `/media/${item.icon?.filename}`}
+                alt={item.platform}
+                width={30}
+                height={30}
+                style={{ objectFit: 'contain' }}
+              />
+            </a>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

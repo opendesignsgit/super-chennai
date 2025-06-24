@@ -65,3 +65,32 @@ html {
   font-weight: normal;
   font-style: normal;
 }
+
+.stickyIconsContainer {
+  position: fixed;
+  top: 46%;
+  right: 34px;
+  z-index: 5;
+}
+.stickyIconsContainer a {
+  width: 36px;
+}
+
+.stickyIconsContainer img {
+  border: 1px solid white;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  width: 36px;
+  height: auto;
+  margin-top: 3px;
+}
+
+@media (max-width: 700px) {
+  .stickyIconsContainer {
+    right: 18px;
+    top: 38%;
+  }
+}

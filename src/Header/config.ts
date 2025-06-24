@@ -37,7 +37,40 @@ export const Header: GlobalConfig = {
         },
       },
     },
-
+    //################## SOCIAL MEDIA ICON LINKS #######################
+    {
+      name: 'socialLinks',
+      label: 'Social Links',
+      type: 'array',
+      labels: {
+        singular: 'Social Link',
+        plural: 'Social Links',
+      },
+      fields: [
+        {
+          name: 'platform',
+          label: 'Platform Name',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'url',
+          label: 'URL',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'icon',
+          label: 'Icon Image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+      ],
+      admin: {
+        initCollapsed: true,
+      },
+    },
     // #################### DRWER MENUE FILED   #######################
     {
       name: 'drawerMenu',

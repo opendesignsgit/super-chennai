@@ -3492,6 +3492,14 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  socialLinks?:
+    | {
+        platform: string;
+        url: string;
+        icon: number | Media;
+        id?: string | null;
+      }[]
+    | null;
   drawerMenu?:
     | {
         label: string;
@@ -3565,6 +3573,14 @@ export interface HeaderSelect<T extends boolean = true> {
                     id?: T;
                   };
             };
+        id?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
+        icon?: T;
         id?: T;
       };
   drawerMenu?:
