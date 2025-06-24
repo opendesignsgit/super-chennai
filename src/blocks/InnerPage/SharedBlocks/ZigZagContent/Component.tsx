@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
-import React, { useRef, useEffect, useState } from 'react'
+import React from 'react'
 import './style.css'
 
 type Section = {
@@ -8,7 +8,7 @@ type Section = {
   description: string
   image: { url: string }
   linkUrl?: string
-  linkText?: string,
+  linkText?: string
 }
 
 type Props = {
@@ -16,31 +16,8 @@ type Props = {
 }
 
 const ZigZagContentSection: React.FC<Props> = ({ sections }) => {
-  const bgTextRef = useRef<HTMLDivElement>(null)
-  const [scrollDir, setScrollDir] = useState<'left' | 'right'>('left')
-
-  useEffect(() => {
-    let lastScrollX = window.scrollX
-    const handleScroll = () => {
-      const currentX = window.scrollX
-      setScrollDir(currentX > lastScrollX ? 'right' : 'left')
-      lastScrollX = currentX
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
     <div className="AccodomationPageBecameVolunteerBg">
-      <div
-        className={`AccodomationTextBackground ${
-          scrollDir === 'right' ? 'scroll-rightAccomodation' : 'scroll-leftAccomodation'
-        }`}
-        ref={bgTextRef}
-      >
-        <p>Visit &nbsp; Chennai &nbsp; Visit &nbsp; Chennai</p>
-      </div>
-
       <div className="container max-w-7xl mx-auto px-4">
         {sections.map((section, index) => (
           <div className="AccodoSectionFLex" key={index}>
