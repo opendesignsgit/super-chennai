@@ -1053,65 +1053,6 @@ export interface Visit {
     | null;
   slug?: string | null;
   slugLock?: boolean | null;
-  /**
-   * Select subpages for this visit. Accessible at /visits/[slug]/[subpageSlug]
-   */
-  subpages?: (number | null) | VisitDetail;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "visitDetails".
- */
-export interface VisitDetail {
-  id: number;
-  title: string;
-  /**
-   * Select parent Visit category (eg: Food, Nature)
-   */
-  parent: number | Visit;
-  heroImage?: (number | null) | Media;
-  /**
-   * This image will be used as the featured image for Slides.
-   */
-  FeaturedImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedlive?: (number | VisitDetail)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -1600,6 +1541,61 @@ export interface Innovate {
   innovationDescription?: string | null;
   innovationImage?: (number | null) | Media;
   relatedinnovate?: (number | Innovate)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "visitDetails".
+ */
+export interface VisitDetail {
+  id: number;
+  title: string;
+  /**
+   * Select parent Visit category (eg: Food, Nature)
+   */
+  parent: number | Visit;
+  heroImage?: (number | null) | Media;
+  /**
+   * This image will be used as the featured image for Slides.
+   */
+  FeaturedImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedlive?: (number | VisitDetail)[] | null;
   categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
@@ -2842,7 +2838,6 @@ export interface VisitsSelect<T extends boolean = true> {
       };
   slug?: T;
   slugLock?: T;
-  subpages?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;

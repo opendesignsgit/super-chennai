@@ -3,6 +3,9 @@ import { revalidateFooter } from './hooks/revalidateFooter'
 
 const Footer: GlobalConfig = {
   slug: 'footer',
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       type: 'group',

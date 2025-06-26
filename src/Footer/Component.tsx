@@ -1,49 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import config from 'src/payload.config'
-import { getPayload } from 'payload'
 import './style.css'
 import defaultImage from '../assets/images/default/default.png'
 import FooterAccordion from '@/components/FooterAccordion/FooterAccordion'
+import { getCachedGlobal } from '@/utilities/getGlobals'
+import { FooterSections } from '@/models/footer'
 
-type LinkItem = {
-  label: string
-  link: string
-}
-
-type TopSectionLink = {
-  category: string
-  links: LinkItem[]
-}
-
-type SocialLink = {
-  platform: string
-  link: string
-  icon?: {
-    url?: string
-  }
-}
-
-type FooterSections = {
-  topSectionLinks?: TopSectionLink[]
-  socialLinks?: SocialLink[]
-  mainFooterLogo?: {
-    url?: string
-    alt?: string
-  }
-  designByLogo?: {
-    url?: string
-    alt?: string
-  }
-  partnersLogo?: {
-    url?: string
-    alt?: string
-  }
-}
+//###################### THIS PROPER WAY TO GET FOOTER DATA DONT CHANGE GET DATA METHOD ############################
 
 export default async function Footer() {
   try {
-    const payload = await getPayload({ config })
-    const response = await payload.findGlobal({ slug: 'footer' })
+    const response = (await getCachedGlobal('footer', 1)()) as { footerSections: FooterSections }
     const footerSections = response?.footerSections as FooterSections
     const {
       topSectionLinks = [],
@@ -57,6 +23,7 @@ export default async function Footer() {
       <footer className="FooterBackground w-full bg-900 text-white py-8">
         <div className="SectionConatinerSecond max-w-7xl mx-auto px-4">
           <div className="containerSection">
+            {/*################ TOP GRID SYSTEM MOBILE AND DESKTOP############ */}
             {topSectionLinks.map((section) => (
               <FooterAccordion
                 key={section.category}
@@ -64,31 +31,10 @@ export default async function Footer() {
                 items={section.links.map(({ label, link }) => ({ title: label, link }))}
               />
             ))}
-            {/* 
-            {topSectionLinks.map((section) => (
-              <div key={section.category} className="SectionLeft firstsectionwidth">
-                <h3 className="FooterHeading">{section.category}</h3>
-
-                <div className="FooterSectionDiv">
-                  <div>
-                    {section.links.slice(0, 13).map((item, index) => (
-                      <a href={item.link} key={index}>
-                        <h5>{item.label}</h5>
-                      </a>
-                    ))}
-                  </div>
-                  <div>
-                    {section.links.slice(13, 26).map((item, index) => (
-                      <a href={item.link} key={index + 13}>
-                        <h5>{item.label}</h5>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))} */}
           </div>
         </div>
+
+        {/*############# BOTTOM SECTION SOCIAL MEADIA PARTNER COPY RIHGTS RESERVED DESIGN BY LOGO############ */}
 
         <div className="SectionConatinerSecond1 max-w-7xl mx-auto px-4">
           <div className="footermainsection flex justify-between items-center">
@@ -144,6 +90,6 @@ export default async function Footer() {
     )
   } catch (error) {
     console.error('Error fetching footer data:', error)
-    return <footer className="py-8 text-center text-white bg-red-800">SOMETHING BROKEN</footer>
+    return <footer className="py-8 text-center text-white bg-red-800">SOMETHING BROKEN !</footer>
   }
 }
