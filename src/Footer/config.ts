@@ -1,4 +1,5 @@
 import { GlobalConfig } from 'payload'
+import { revalidateFooter } from './hooks/revalidateFooter'
 
 const Footer: GlobalConfig = {
   slug: 'footer',
@@ -102,6 +103,9 @@ const Footer: GlobalConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [revalidateFooter],
+  },
 }
 
 export default Footer
