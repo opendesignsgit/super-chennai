@@ -9,7 +9,7 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 1280,
     height: 800,
-    show: true, // required for `ready-to-show` to work
+    show: false,
     icon: path.join(__dirname, 'public', 'favicon.ico'),
     webPreferences: {
       nodeIntegration: false,
