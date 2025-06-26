@@ -242,15 +242,15 @@ export const Visits: CollectionConfig<'visits'> = {
     },
     ...slugField(),
 
-    {
-      name: 'subpages',
-      type: 'relationship',
-      relationTo: 'visitDetails',
-      admin: {
-        position: 'sidebar',
-        description: 'Select subpages for this visit. Accessible at /visits/[slug]/[subpageSlug]',
-      },
-    },
+    // {
+    //   name: 'subpages',
+    //   type: 'relationship',
+    //   relationTo: 'visitDetails',
+    //   admin: {
+    //     position: 'sidebar',
+    //     description: 'Select subpages for this visit. Accessible at /visits/[slug]/[subpageSlug]',
+    //   },
+    // },
   ],
   hooks: {
     afterChange: [revalidatePost],

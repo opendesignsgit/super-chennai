@@ -330,16 +330,17 @@ export const VisitDetails: CollectionConfig<'visitDetails'> = {
       type: 'text',
       required: true,
     },
-    // {
-    //   name: 'parent',
-    //   type: 'relationship',
-    //   relationTo: 'visits',
-    //   required: true,
-    //   admin: {
-    //     position: 'sidebar',
-    //     description: 'Select parent Visit category (eg: Food, Nature)',
-    //   },
-    // },
+    // ###################CHoose Parent Visit Category@#################
+    {
+      name: 'parent',
+      type: 'relationship',
+      relationTo: 'visits',
+      required: true,
+      admin: {
+        position: 'sidebar',
+        description: 'Select parent Visit category (eg: Food, Nature)',
+      },
+    },
     {
       type: 'tabs',
       tabs: [
