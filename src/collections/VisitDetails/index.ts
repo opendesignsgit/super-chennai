@@ -286,6 +286,7 @@ import { socialReelSlider } from 'src/blocks/HomePage/SocialChennai/config'
 import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/config'
 import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
 import StickyImageScroll from 'src/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
+import InnerSubPageDetails from '@/blocks/InnerPage/SharedBlocks/InnerSubPageDetails/config'
 
 export const VisitDetails: CollectionConfig<'visitDetails'> = {
   slug: 'visitDetails',
@@ -329,16 +330,16 @@ export const VisitDetails: CollectionConfig<'visitDetails'> = {
       type: 'text',
       required: true,
     },
-    {
-      name: 'parent',
-      type: 'relationship',
-      relationTo: 'visits',
-      required: true,
-      admin: {
-        position: 'sidebar',
-        description: 'Select parent Visit category (eg: Food, Nature)',
-      },
-    },
+    // {
+    //   name: 'parent',
+    //   type: 'relationship',
+    //   relationTo: 'visits',
+    //   required: true,
+    //   admin: {
+    //     position: 'sidebar',
+    //     description: 'Select parent Visit category (eg: Food, Nature)',
+    //   },
+    // },
     {
       type: 'tabs',
       tabs: [
@@ -373,6 +374,7 @@ export const VisitDetails: CollectionConfig<'visitDetails'> = {
                       introTextBlock,
                       FeatureSectionsBlock,
                       BecameAVolunteerBlock,
+                      InnerSubPageDetails,
                     ],
                   }),
                   FixedToolbarFeature(),
