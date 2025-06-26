@@ -1,35 +1,35 @@
-import { postgresAdapter } from '@payloadcms/db-postgres'
-import 'dotenv/config'
+import { postgresAdapter } from '@payloadcms/db-postgres';
+import 'dotenv/config';
 
-import sharp from 'sharp' // sharp-import
-import path from 'path'
-import { buildConfig, PayloadRequest } from 'payload'
-import { fileURLToPath } from 'url'
+import path from 'path';
+import { buildConfig, PayloadRequest } from 'payload';
+import sharp from 'sharp'; // sharp-import
+import { fileURLToPath } from 'url';
 
-import { Categories } from './collections/Categories'
-import { Media } from './collections/Media'
-import { Pages } from './collections/Pages'
-import { Posts } from './collections/Posts'
-import { Visits } from './collections/Visits'
+import { Categories } from './collections/Categories';
+import { Media } from './collections/Media';
+import { Pages } from './collections/Pages';
+import { Posts } from './collections/Posts';
+import { Visits } from './collections/Visits';
 
-import { Users } from './collections/Users'
-import { plugins } from './plugins'
-import { defaultLexical } from 'src/fields/defaultLexical'
-import { getServerSideURL } from './utilities/getURL'
-import SocialReelsCollection from './collections/RelationSchema/SocialReels/SocialReels'
-import VolunteerSlidesCollection from './collections/RelationSchema/Volunteer/Volunteer'
-import Footer from './Footer/config'
-import InvestmentCategoriesCollection from './collections/RelationSchema/Investments/Investments'
-import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config'
-import VisitCategoryCollection from './collections/RelationSchema/main-pages/visit-page/visit-catogory/schema'
-import { work } from './collections/Work'
-import { Events } from './collections/Events'
-import { Investments } from './collections/Investments'
-import { Live } from './collections/live'
-import { Volunteer } from './collections/Volunteer'
-import { Innovate } from './collections/Innovate'
-import { Header } from './Header/config'
-import { VisitsInnerPage } from './collections/Visits/VisitsInnerSubPages'
+import { defaultLexical } from 'src/fields/defaultLexical';
+import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config';
+import { Events } from './collections/Events';
+import { Innovate } from './collections/Innovate';
+import { Investments } from './collections/Investments';
+import { Live } from './collections/live';
+import InvestmentCategoriesCollection from './collections/RelationSchema/Investments/Investments';
+import VisitCategoryCollection from './collections/RelationSchema/main-pages/visit-page/visit-catogory/schema';
+import SocialReelsCollection from './collections/RelationSchema/SocialReels/SocialReels';
+import VolunteerSlidesCollection from './collections/RelationSchema/Volunteer/Volunteer';
+import { Users } from './collections/Users';
+import { VisitDetails } from './collections/VisitDetails';
+import { Volunteer } from './collections/Volunteer';
+import { work } from './collections/Work';
+import Footer from './Footer/config';
+import { Header } from './Header/config';
+import { plugins } from './plugins';
+import { getServerSideURL } from './utilities/getURL';
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -96,7 +96,7 @@ export default buildConfig({
     Live,
     Volunteer,
     Innovate,
-    VisitsInnerPage,
+    VisitDetails,
 
     VolunteerSlidesCollection,
     SocialReelsCollection,

@@ -81,7 +81,7 @@ export interface Config {
     live: Live;
     volunteer: Volunteer;
     innovate: Innovate;
-    visitsInnerPage: VisitsInnerPage;
+    visitDetails: VisitDetail;
     volunteerSlides: VolunteerSlide;
     'social-reels': SocialReel;
     'investment-categories': InvestmentCategory;
@@ -109,7 +109,7 @@ export interface Config {
     live: LiveSelect<false> | LiveSelect<true>;
     volunteer: VolunteerSelect<false> | VolunteerSelect<true>;
     innovate: InnovateSelect<false> | InnovateSelect<true>;
-    visitsInnerPage: VisitsInnerPageSelect<false> | VisitsInnerPageSelect<true>;
+    visitDetails: VisitDetailsSelect<false> | VisitDetailsSelect<true>;
     volunteerSlides: VolunteerSlidesSelect<false> | VolunteerSlidesSelect<true>;
     'social-reels': SocialReelsSelect<false> | SocialReelsSelect<true>;
     'investment-categories': InvestmentCategoriesSelect<false> | InvestmentCategoriesSelect<true>;
@@ -1056,19 +1056,27 @@ export interface Visit {
   /**
    * Select subpages for this visit. Accessible at /visits/[slug]/[subpageSlug]
    */
-  subpages?: (number | null) | VisitsInnerPage;
+  subpages?: (number | null) | VisitDetail;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "visitsInnerPage".
+ * via the `definition` "visitDetails".
  */
-export interface VisitsInnerPage {
+export interface VisitDetail {
   id: number;
   title: string;
+  /**
+   * Select parent Visit category (eg: Food, Nature)
+   */
+  parent: number | Visit;
   heroImage?: (number | null) | Media;
+  /**
+   * This image will be used as the featured image for Slides.
+   */
+  FeaturedImage?: (number | null) | Media;
   content: {
     root: {
       type: string;
@@ -1084,7 +1092,7 @@ export interface VisitsInnerPage {
     };
     [k: string]: unknown;
   };
-  relatedhotels?: (number | VisitsInnerPage)[] | null;
+  relatedlive?: (number | VisitDetail)[] | null;
   categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
@@ -2129,8 +2137,8 @@ export interface PayloadLockedDocument {
         value: number | Innovate;
       } | null)
     | ({
-        relationTo: 'visitsInnerPage';
-        value: number | VisitsInnerPage;
+        relationTo: 'visitDetails';
+        value: number | VisitDetail;
       } | null)
     | ({
         relationTo: 'volunteerSlides';
@@ -3079,13 +3087,15 @@ export interface InnovateSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "visitsInnerPage_select".
+ * via the `definition` "visitDetails_select".
  */
-export interface VisitsInnerPageSelect<T extends boolean = true> {
+export interface VisitDetailsSelect<T extends boolean = true> {
   title?: T;
+  parent?: T;
   heroImage?: T;
+  FeaturedImage?: T;
   content?: T;
-  relatedhotels?: T;
+  relatedlive?: T;
   categories?: T;
   meta?:
     | T
@@ -3678,8 +3688,8 @@ export interface TaskSchedulePublish {
           value: number | Innovate;
         } | null)
       | ({
-          relationTo: 'visitsInnerPage';
-          value: number | VisitsInnerPage;
+          relationTo: 'visitDetails';
+          value: number | VisitDetail;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
