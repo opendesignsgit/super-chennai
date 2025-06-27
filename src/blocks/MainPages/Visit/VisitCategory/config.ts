@@ -57,6 +57,23 @@ const VisitCategory: Block = {
           relationTo: 'media',
           required: true,
         },
+
+        {
+          name: 'page',
+          type: 'relationship',
+          relationTo: 'visits',
+          required: false,
+          label: 'Select Page Link',
+        },
+        {
+          name: 'customLink',
+          type: 'text',
+          label: 'Or Custom URL',
+          admin: {
+            description: 'This will override the selected page link if provided.',
+            placeholder: ' /some-path',
+          },
+        },
       ],
     },
   ],

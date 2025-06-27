@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
-import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
+
 export type Media = {
   id: string
   url: string
@@ -10,30 +12,16 @@ export type Media = {
   filename?: string
 }
 
-export type WorkHoverCardItem = {
+export type HoverItem = {
   label: string
-  link: string
   image: Media
+  customLink?: string
+  page?: {
+    slug?: string
+  }
 }
 
-export type WorkHoverCardsBlock = {
-  blockType: 'workHoverCards'
-  blockName?: string
-  title: string
-  items: WorkHoverCardItem[]
-}
-
-type Item = {
-  label: string
-  link: string
-  image:
-    | {
-        url: string
-      }
-    | Media
-}
-
-export const TextHoverImageSection = ({ title, items }: { title: string; items: Item[] }) => {
+export const TextHoverImageSection = ({ title, items }: { title: string; items: HoverItem[] }) => {
   const [previewSrc, setPreviewSrc] = useState(items?.[0]?.image?.url || '')
   const [hoverIndex, setHoverIndex] = useState<number | null>(null)
   const tooltipRef = useRef<HTMLSpanElement>(null)
@@ -44,6 +32,10 @@ export const TextHoverImageSection = ({ title, items }: { title: string; items: 
     const timeout = setTimeout(() => setFade(true), 50)
     return () => clearTimeout(timeout)
   }, [previewSrc])
+
+  const resolveLink = (item: HoverItem): string => {
+    return item.customLink || (item.page?.slug ? `/work/${item.page.slug}` : '#')
+  }
 
   return (
     <>
@@ -71,7 +63,7 @@ export const TextHoverImageSection = ({ title, items }: { title: string; items: 
                     }
                   >
                     <Link
-                      href={item.link}
+                      href={resolveLink(item)}
                       className={`text-white font-bold text-lg transition-opacity ${
                         hoverIndex === index || (hoverIndex === null && index === 0)
                           ? 'opacity-100'
@@ -124,7 +116,7 @@ export const TextHoverImageSection = ({ title, items }: { title: string; items: 
                   {item.label}
                 </h5>
                 <Link
-                  href={item.link}
+                  href={resolveLink(item)}
                   className="text-blue-500 hover:underline text-sm CardLinkWork"
                 >
                   Explore →

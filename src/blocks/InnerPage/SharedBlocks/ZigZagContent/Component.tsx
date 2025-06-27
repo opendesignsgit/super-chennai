@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import React from 'react'
-// import './style.css'
+import Link from 'next/link'
 
 type Section = {
   title: string
@@ -27,9 +27,11 @@ const ZigZagContentSection: React.FC<Props> = ({ sections }) => {
                 <div className="AccodContentsSection">
                   <h3>{section.title}</h3>
                   <p>{section.description}</p>
-                  <div className="AccomoddationPage">
-                    <a href={section.linkUrl}>{section.linkText}</a>
-                  </div>
+                  {section.linkUrl && section.linkText && (
+                    <div className="AccomoddationPage">
+                      <Link href={section.linkUrl}>{section.linkText}</Link>
+                    </div>
+                  )}
                 </div>
               </>
             ) : (
@@ -37,9 +39,11 @@ const ZigZagContentSection: React.FC<Props> = ({ sections }) => {
                 <div className="AccodContentsSection1">
                   <h3>{section.title}</h3>
                   <p>{section.description}</p>
-                  <div className="AccomoddationPage1">
-                    <a href={section.linkUrl}>{section.linkText}</a>
-                  </div>
+                  {section.linkUrl && section.linkText && (
+                    <div className="AccomoddationPage1">
+                      <Link href={section.linkUrl}>{section.linkText}</Link>
+                    </div>
+                  )}
                 </div>
                 <img src={section.image?.url} alt={section.title} />
               </>
