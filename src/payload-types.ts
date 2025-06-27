@@ -427,6 +427,11 @@ export interface Page {
                */
               description?: string | null;
               image: number | Media;
+              page?: (number | null) | Visit;
+              /**
+               * This will override the selected page link if provided.
+               */
+              customLink?: string | null;
               id?: string | null;
             }[]
           | null;
@@ -801,10 +806,11 @@ export interface Page {
            * Maximum 100 characters allowed
            */
           label: string;
+          page?: (number | null) | Work;
           /**
-           * Maximum 200 characters allowed
+           * This will override the selected page link if provided.
            */
-          link: string;
+          customLink?: string | null;
           image: number | Media;
           id?: string | null;
         }[];
@@ -2370,6 +2376,8 @@ export interface PagesSelect<T extends boolean = true> {
                     label?: T;
                     description?: T;
                     image?: T;
+                    page?: T;
+                    customLink?: T;
                     id?: T;
                   };
               id?: T;
@@ -2628,7 +2636,8 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     label?: T;
-                    link?: T;
+                    page?: T;
+                    customLink?: T;
                     image?: T;
                     id?: T;
                   };

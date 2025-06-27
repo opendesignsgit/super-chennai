@@ -36,12 +36,19 @@ const TextHoverImageSection: Block = {
           },
         },
         {
-          name: 'link',
+          name: 'page',
+          type: 'relationship',
+          relationTo: 'work',
+          required: false,
+          label: 'Select Page Link',
+        },
+        {
+          name: 'customLink',
           type: 'text',
-          required: true,
-          maxLength: 200,
+          label: 'Or Custom URL',
           admin: {
-            description: 'Maximum 200 characters allowed',
+            description: 'This will override the selected page link if provided.',
+            placeholder: ' /some-path',
           },
         },
         {

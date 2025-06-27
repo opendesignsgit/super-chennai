@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
 import Slider from 'react-slick'
 import './style.css'
 
@@ -11,6 +12,10 @@ type VisitItem = {
   description?: string
   image: {
     url: string
+  }
+  customLink?: string
+  page?: {
+    slug?: string
   }
 }
 
@@ -24,8 +29,8 @@ export const VisitCategory = ({ title, description, items }: VisitGroupRef) => {
   const mainSlider = useRef<Slider | null>(null)
   const thumbSlider = useRef<Slider | null>(null)
 
-  const [nav1, setNav1] = useState<Slider | undefined>(undefined)
-  const [nav2, setNav2] = useState<Slider | undefined>(undefined)
+  const [nav1, setNav1] = useState<Slider | undefined>()
+  const [nav2, setNav2] = useState<Slider | undefined>()
 
   useEffect(() => {
     setNav1(mainSlider.current ?? undefined)
@@ -49,6 +54,12 @@ export const VisitCategory = ({ title, description, items }: VisitGroupRef) => {
     verticalSwiping: false,
   }
 
+  const resolveLink = (item: VisitItem): string | null => {
+    if (item.customLink) return item.customLink
+    if (item.page?.slug) return `/visits/${item.page.slug}`
+    return null
+  }
+
   return (
     <div className="visitslideOut">
       <div className="visitslideTop container max-w-7xl mx-auto px-4">
@@ -57,7 +68,7 @@ export const VisitCategory = ({ title, description, items }: VisitGroupRef) => {
       </div>
 
       <div className="sliderSection">
-        {/* Main Image */}
+        {/* Main Image Slider */}
         <div className="visitslideImg">
           <Slider {...mainSettings} ref={mainSlider}>
             {items.map((item) => (
@@ -71,35 +82,47 @@ export const VisitCategory = ({ title, description, items }: VisitGroupRef) => {
           </Slider>
         </div>
 
+        {/* Thumbnails + Description */}
         <div className="visitContSlide">
           <Slider {...thumbSettings} ref={thumbSlider}>
-            {items.map((item) => (
-              <div key={item.id}>
-                <a href={`/visit/${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                  <img
-                    src={item.image?.url}
-                    alt={item.label}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      cursor: 'pointer',
-                      borderRadius: '4px',
-                    }}
-                  />
-                </a>
-                <h3>
-                  <a href={`/category/${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                    {item.label}
-                  </a>
-                </h3>
-                <p>
-                  {item.description}{' '}
-                  <a href={`/details/${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                    Learn more
-                  </a>
-                </p>
-              </div>
-            ))}
+            {items.map((item) => {
+              const link = resolveLink(item)
+
+              return (
+                <div key={item.id}>
+                  {link ? (
+                    <Link href={link}>
+                      <img
+                        src={item.image?.url}
+                        alt={item.label}
+                        style={{
+                          width: '100%',
+                          height: 'auto',
+                          cursor: 'pointer',
+                          borderRadius: '4px',
+                        }}
+                      />
+                    </Link>
+                  ) : (
+                    <img
+                      src={item.image?.url}
+                      alt={item.label}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        borderRadius: '4px',
+                      }}
+                    />
+                  )}
+
+                  <h3>{link ? <Link href={link}>{item.label}</Link> : item.label}</h3>
+
+                  <p>
+                    {item.description} {link && <Link href={link}>Learn more</Link>}
+                  </p>
+                </div>
+              )
+            })}
           </Slider>
         </div>
       </div>
