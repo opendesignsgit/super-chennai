@@ -10,8 +10,6 @@ export async function sendFormEmail(data: {
   context: string
 }): Promise<boolean> {
   try {
-    console.log('Preparing to send email with data:', data)
-
     if (
       !process.env.SMTP_HOST ||
       !process.env.SMTP_USER ||
@@ -30,8 +28,6 @@ export async function sendFormEmail(data: {
         pass: process.env.SMTP_PASS,
       },
     })
-
-    console.log('SMTP transporter created. Sending email...')
 
     const messageBodyHTML = `
   <div style="font-family: Arial, sans-serif; color: #333; padding: 20px; max-width: 600px; margin: auto; border: 1px solid #eee; border-radius: 10px;">
@@ -82,7 +78,6 @@ export async function sendFormEmail(data: {
       html: messageBodyHTML,
     })
 
-    console.log(' Email sent successfully.')
     return true
   } catch (err: any) {
     console.error(' Error sending email:', err.message)

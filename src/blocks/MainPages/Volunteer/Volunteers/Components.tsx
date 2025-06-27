@@ -52,7 +52,6 @@ export default function VolunteerBecameSection({
           image: item.image || {},
         }))
 
-        console.log('All volunteers:', allvolunteers)
         setvolunteers(allvolunteers)
       } catch (error) {
         console.error('Failed to fetch events:', error)

@@ -15,7 +15,7 @@ interface EventDetailsProps {
 
 const EventDetails: React.FC<EventDetailsProps> = ({ data }) => {
   if (!data || !data.event) return null
-  console.log('test data ', data)
+
   const formatDate = (dateStr: string) => {
     if (!dateStr) return ''
     const options: Intl.DateTimeFormatOptions = {

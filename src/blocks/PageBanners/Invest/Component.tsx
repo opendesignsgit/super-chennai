@@ -13,12 +13,6 @@ type InvestBannerProps = {
 }
 
 export default function InvestBannerSection({ heading, image }: InvestBannerProps) {
-  console.log('Invest Banner Block:')
-  console.log('Heading:', heading)
-  console.log('Image URL:', image?.url)
-  console.log('Image Alt:', image?.alt)
-  console.log('Image Filename:', image?.filename)
-
   if (!heading || !image?.url) {
     return (
       <div className="InvestBgSection notHome">

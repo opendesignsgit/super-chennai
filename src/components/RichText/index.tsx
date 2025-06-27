@@ -138,7 +138,6 @@ type Props = {
 
 export default function RichText(props: Props) {
   const { pageData, className, enableProse = true, enableGutter = true, ...rest } = props
-  console.log(props)
 
   return (
     <ConvertRichText

@@ -4,17 +4,15 @@
   "description": "Website template for Payload",
   "license": "MIT",
   "type": "module",
+  "main": "main.js",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "export": "next export",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
-    "dev:prod": "cross-env NODE_OPTIONS=--no-deprecation rm -rf .next && pnpm build && pnpm start",
+    "build:static": "npm run build && npm run export && npm run postbuild",
+    "build:electron": "npm run build:static && npx electron-builder",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "ii": "cross-env NODE_OPTIONS=--no-deprecation pnpm --ignore-workspace install",
-    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
-    "lint:fix": "cross-env NODE_OPTIONS=--no-deprecation next lint --fix",
-    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "reinstall": "cross-env NODE_OPTIONS=--no-deprecation rm -rf node_modules && rm pnpm-lock.yaml && pnpm --ignore-workspace install",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "dev:web": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "electron": "wait-on http://localhost:3000 && electron .",
@@ -39,7 +37,6 @@
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "cross-env": "^7.0.3",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "fastest-levenshtein": "^1.0.16",
@@ -77,6 +74,7 @@
     "autoprefixer": "^10.4.19",
     "concurrently": "^9.2.0",
     "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
     "electron": "^37.1.0",
     "eslint": "^9.16.0",
     "eslint-config-next": "15.3.0",
@@ -94,5 +92,18 @@
     "onlyBuiltDependencies": [
       "sharp"
     ]
+  },
+  "build": {
+    "appId": "com.superchennai.desktop",
+    "productName": "SuperChennai Desktop",
+    "files": [
+      "electron.js",
+      "out/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    }
   }
 }

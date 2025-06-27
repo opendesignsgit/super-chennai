@@ -31,7 +31,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
   //##################### TIMEOUT  ############################################
   let menuTimeout: NodeJS.Timeout
-  console.log('HeaderClient data:', data)
 
   //##################### INITIALIZATION #######################################
   useEffect(() => {

@@ -3,7 +3,7 @@ import type { Page } from 'src/payload-types'
 import './style.css'
 import defaultImage from '../../assets/images/AccodomationBannerr.jpg'
 import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
-console.log(defaultImage)
+
 interface ImageObject {
   url: string
 }
