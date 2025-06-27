@@ -60,11 +60,21 @@ export const PostHero: React.FC<{
   }, [])
 
   //############ Retrieve parent slug from sessionStorage ############
+  // useEffect(() => {
+  //   const storedSlug = sessionStorage.getItem('parentSlug')
+  //   if (storedSlug) {
+  //     const slug = storedSlug.replace('/', '')
+  //     setParentCrumb({ name: slug.replace(/-/g, ' ').toUpperCase(), href: storedSlug })
+  //   }
+  // }, [])
+
   useEffect(() => {
     const storedSlug = sessionStorage.getItem('parentSlug')
     if (storedSlug) {
       const slug = storedSlug.replace('/', '')
       setParentCrumb({ name: slug.replace(/-/g, ' ').toUpperCase(), href: storedSlug })
+
+      sessionStorage.removeItem('parentSlug')
     }
   }, [])
 
