@@ -95,15 +95,28 @@
   },
   "build": {
     "appId": "com.superchennai.desktop",
-    "productName": "SuperChennai Desktop",
+    "productName": "Super Chennai Desktop",
     "files": [
-      "electron.js",
       "out/**/*",
       "node_modules/**/*",
+      "electron.js",
       "package.json"
     ],
     "directories": {
+      "buildResources": "build",
       "output": "release"
+    },
+    "win": {
+      "icon": "build/app-icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "mac": {
+      "icon": "build/app-icon.icns",
+      "target": [
+        "dmg"
+      ]
     }
   }
 }
