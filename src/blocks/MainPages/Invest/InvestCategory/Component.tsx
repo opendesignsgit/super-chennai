@@ -127,7 +127,7 @@ export default function InvestmentCategoryListSection({
               })),
             ),
           }))
-          console.log('extracted', data)
+          
         }
       } catch (error) {
         console.error('Failed to fetch events:', error)

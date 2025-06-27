@@ -10,7 +10,6 @@ function createWindow() {
     width: 1280,
     height: 800,
     show: false,
-    icon: path.join(__dirname, 'public', 'favicon.ico'),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -18,24 +17,31 @@ function createWindow() {
   })
 
   win.loadURL('http://localhost:3000')
-  win.webContents.openDevTools()
 
   win.once('ready-to-show', () => {
     win.show()
-    win.focus()
+  })
+
+  win.webContents.session.on('will-download', (event, item) => {
+    const filePath = path.join(app.getPath('downloads'), item.getFilename())
+    item.setSavePath(filePath)
+
+    item.once('done', (_, state) => {
+      if (state === 'completed') {
+        console.log('✅ Download complete:', filePath)
+      } else {
+        console.error('❌ Download failed:', state)
+      }
+    })
   })
 }
 
 app.whenReady().then(createWindow)
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+  if (process.platform !== 'darwin') app.quit()
 })
 
 app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow()
-  }
+  if (BrowserWindow.getAllWindows().length === 0) createWindow()
 })

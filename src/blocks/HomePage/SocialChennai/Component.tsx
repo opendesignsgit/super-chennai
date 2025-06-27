@@ -53,7 +53,6 @@ export default function SocialChennai({
             (item: InstagramReel) => item.media_type === contentType.toUpperCase(),
           )
           setReels(filtered)
-          console.log(filtered)
         } else {
           setReels([])
         }

@@ -60,7 +60,7 @@ const querySubpageBySlug = cache(async ({ slug }: { slug: string }) => {
 
 export default async function VisitSubpagePage({ params }: any) {
   const { slug, subpage } = params
-  console.log('params', params)
+
   const { isEnabled: draft } = await draftMode()
   const url = `/visits/${slug}/${subpage}`
   const post = await querySubpageBySlug({ slug: subpage })
