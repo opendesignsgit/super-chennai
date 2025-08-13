@@ -1,7 +1,9 @@
+import { BannerBlock } from '@/blocks/Banner/Component'
 import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
 import BecameAVolunteer from '@/blocks/HomePage/Volunteer/Component'
 import { HotelDetailSectionBlock } from '@/blocks/InnerPage/SharedBlocks/InnerSubPageDetails/component'
 import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
+import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import {
   DefaultNodeTypes,
   SerializedBlockNode,
@@ -29,15 +31,17 @@ import { PageIntroText } from 'src/blocks/MainPages/SharedBlocks/IntroText/Compo
 import { VisitBanner } from 'src/blocks/PageBanners/VisitBanner/Component'
 import type {
   BannerBlock as BannerBlockProps,
-  // CallToActionBlock as CTABlockProps, // Removed because it does not exist in '@/payload-types'
+  // CallToActionBlock as CTABlockProps,
   MediaBlock as MediaBlockProps,
 } from 'src/payload-types'
 import { cn } from 'src/utilities/ui'
+// import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 
 type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
-      CodeBlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps | VisitBannerProps
+      // CTABlockProps | 
+      MediaBlockProps | BannerBlockProps | CodeBlockProps | VisitBannerProps
     >
 export type VisitBannerProps = {
   title: string
@@ -73,7 +77,24 @@ const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<
       ...defaultConverters,
       ...LinkJSXConverter({ internalDocToHref }),
       blocks: {
+        //###################### THIS IS POST RELATED BLOG #####################
+        banner: ({ node }) => <BannerBlock className="col-start-2 mb-4" {...node.fields} />,
+        mediaBlock: ({ node }) => (
+          <MediaBlock
+            className="col-start-1 col-span-3"
+            imgClassName="m-0"
+            {...node.fields}
+            captionClassName="mx-auto max-w-[48rem]"
+            enableGutter={false}
+            disableInnerContainer={true}
+          />
+        ),
+
+        //################# THIS IS POST RELATED BLOG #####
+
         code: ({ node }) => <CodeBlock className="" {...node.fields} />,
+        // cta: ({ node }) => <CallToActionBlock {...node.fields} />,
+
         globalSearch: ({ node }: { node: SerializedBlockNode<any> }) => (
           <GlobalSearch {...node.fields} />
         ),

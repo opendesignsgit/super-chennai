@@ -961,6 +961,37 @@ export interface Post {
   };
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
+  blogCategory:
+    | 'technology'
+    | 'health'
+    | 'travel'
+    | 'education'
+    | 'finance'
+    | 'business'
+    | 'lifestyle'
+    | 'food'
+    | 'fitness'
+    | 'parenting'
+    | 'personal-development'
+    | 'fashion'
+    | 'beauty'
+    | 'gaming'
+    | 'entertainment'
+    | 'culture'
+    | 'politics'
+    | 'science'
+    | 'environment'
+    | 'real-estate'
+    | 'career'
+    | 'news'
+    | 'photography'
+    | 'spirituality'
+    | 'writing'
+    | 'diy'
+    | 'pets'
+    | 'automotive'
+    | 'home-garden'
+    | 'productivity';
   populatedAuthors?:
     | {
         id?: string | null;
@@ -2678,6 +2709,7 @@ export interface PostsSelect<T extends boolean = true> {
       };
   publishedAt?: T;
   authors?: T;
+  blogCategory?: T;
   populatedAuthors?:
     | T
     | {

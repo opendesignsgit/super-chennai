@@ -68,11 +68,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               preview: isEnabled,
             }}
           />
-          <Preloader>
+          {/* <Preloader> */}
             <Header />
             {children}
             <Footer />
-          </Preloader>
+          {/* </Preloader> */}
         </Providers>
       </body>
     </html>

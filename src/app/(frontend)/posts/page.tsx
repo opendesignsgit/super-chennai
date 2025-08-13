@@ -5,6 +5,7 @@ import { PageRange } from 'src/components/PageRange'
 import { Pagination } from 'src/components/Pagination'
 import configPromise from 'src/payload.config'
 import PageClient from './page.client'
+import { CollectionArchive } from '@/components/CollectionArchive'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -43,13 +44,13 @@ export default async function Page() {
         />
       </div>
 
-      {/* <CollectionArchive
+      <CollectionArchive
         posts={posts.docs.map((post: any) => ({
           ...post,
           collection: 'posts',
           className: '',
         }))}
-      /> */}
+      />
 
       <div className="container">
         {posts.totalPages > 1 && posts.page && (
@@ -65,3 +66,7 @@ export function generateMetadata(): Metadata {
     title: `Super Chennai EverthinkPost`,
   }
 }
+
+
+
+

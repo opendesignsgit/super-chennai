@@ -34,6 +34,7 @@ import VolunteerBecameSection from './MainPages/Volunteer/Volunteers/Components'
 import { TextHoverImageSection } from './MainPages/Work/Works/Components'
 import HeroSliderBlock from './PageBanners/Home/Component'
 import { VisitBanner } from './PageBanners/VisitBanner/Component'
+// import { CallToActionBlock } from './CallToAction/Component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -74,6 +75,9 @@ const blockComponents: {
 
 
   // TESTING 
+
+  // BLOG 
+    // cta: CallToActionBlock,
 
 }
 
