@@ -7,11 +7,12 @@ import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { Media } from 'src/components/Media'
-import type { Post } from 'src/payload-types'
+import type { Post,Event,Innovate,Investment } from 'src/payload-types'
 import { formatAuthors } from 'src/utilities/formatAuthors'
 
 export const PostHero: React.FC<{
-  post: Post
+post: Post | Event | Innovate | Investment ;
+
 }> = ({ post }) => {
   const { heroImage, populatedAuthors, publishedAt, title } = post
   const pathname = usePathname()
