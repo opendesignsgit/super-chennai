@@ -1,35 +1,35 @@
-import { postgresAdapter } from '@payloadcms/db-postgres';
-import 'dotenv/config';
+import { postgresAdapter } from '@payloadcms/db-postgres'
+import 'dotenv/config'
 
-import path from 'path';
-import { buildConfig, PayloadRequest } from 'payload';
-import sharp from 'sharp'; // sharp-import
-import { fileURLToPath } from 'url';
+import path from 'path'
+import { buildConfig, PayloadRequest } from 'payload'
+import sharp from 'sharp' // sharp-import
+import { fileURLToPath } from 'url'
 
-import { Categories } from './collections/Categories';
-import { Media } from './collections/Media';
-import { Pages } from './collections/Pages';
-import { Posts } from './collections/Posts';
-import { Visits } from './collections/Visits';
+import { Categories } from './collections/Categories'
+import { Media } from './collections/Media'
+import { Pages } from './collections/Pages'
+import { Posts } from './collections/Posts'
+import { Visits } from './collections/Visits'
 
-import { defaultLexical } from 'src/fields/defaultLexical';
-import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config';
-import { Events } from './collections/Events';
-import { Innovate } from './collections/Innovate';
-import { Investments } from './collections/Investments';
-import { Live } from './collections/live';
-import InvestmentCategoriesCollection from './collections/RelationSchema/Investments/Investments';
-import VisitCategoryCollection from './collections/RelationSchema/main-pages/visit-page/visit-catogory/schema';
-import SocialReelsCollection from './collections/RelationSchema/SocialReels/SocialReels';
-import VolunteerSlidesCollection from './collections/RelationSchema/Volunteer/Volunteer';
-import { Users } from './collections/Users';
-import { VisitDetails } from './collections/VisitDetails';
-import { Volunteer } from './collections/Volunteer';
-import { work } from './collections/Work';
-import Footer from './Footer/config';
-import { Header } from './Header/config';
-import { plugins } from './plugins';
-import { getServerSideURL } from './utilities/getURL';
+import { defaultLexical } from 'src/fields/defaultLexical'
+import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config'
+import { Events } from './collections/Events'
+import { Innovate } from './collections/Innovate'
+import { Investments } from './collections/Investments'
+import { Live } from './collections/live'
+import InvestmentCategoriesCollection from './collections/RelationSchema/Investments/Investments'
+import VisitCategoryCollection from './collections/RelationSchema/main-pages/visit-page/visit-catogory/schema'
+import SocialReelsCollection from './collections/RelationSchema/SocialReels/SocialReels'
+import VolunteerSlidesCollection from './collections/RelationSchema/Volunteer/Volunteer'
+import { Users } from './collections/Users'
+import { VisitDetails } from './collections/VisitDetails'
+import { Volunteer } from './collections/Volunteer'
+import { work } from './collections/Work'
+import Footer from './Footer/config'
+import { Header } from './Header/config'
+import { plugins } from './plugins'
+import { getServerSideURL } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -44,7 +44,7 @@ export default buildConfig({
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
       beforeDashboard: ['@/components/BeforeDashboard'],
     },
-    
+
     importMap: {
       baseDir: path.resolve(dirname),
     },
@@ -72,7 +72,7 @@ export default buildConfig({
       ],
     },
   },
-  
+
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
 
@@ -105,7 +105,16 @@ export default buildConfig({
     InvestmentCategoriesCollection,
     VisitCategoryCollection,
   ],
-  cors: [getServerSideURL()].filter(Boolean),
+  // cors: [getServerSideURL()].filter(Boolean),
+  // ✅ CORS settings: Add your Vite frontend here
+  cors: [
+    'https://superchennai.com', // Your Vite React frontend
+    getServerSideURL(), // Your backend server origin
+  ].filter(Boolean),
+
+  // ✅ CSRF settings (optional but recommended for secure forms)
+  csrf: ['https://superchennai.com', getServerSideURL()].filter(Boolean),
+
   globals: [Header, Footer],
   blocks: [ChennaiInvestmentsBlock],
   plugins: [
