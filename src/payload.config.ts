@@ -116,16 +116,16 @@ export default buildConfig({
   // csrf: ['https://superchennai.com', getServerSideURL()].filter(Boolean),
 
   cors: [
-    'http://localhost:5173',
-    'https://superchennai.com',
-    'https://www.superchennai.com',
+    // 'http://localhost:5173',
+    // 'https://superchennai.com',
+    // 'https://www.superchennai.com',
     getServerSideURL(),
   ].filter(Boolean),
 
   csrf: [
-    'http://localhost:5173',
-    'https://superchennai.com',
-    'https://www.superchennai.com',
+    // 'http://localhost:5173',
+    // 'https://superchennai.com',
+    // 'https://www.superchennai.com',
     getServerSideURL(),
   ].filter(Boolean),
 
