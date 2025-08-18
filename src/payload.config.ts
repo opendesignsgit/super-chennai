@@ -104,7 +104,7 @@ export default buildConfig({
     VisitCategoryCollection,
   ],
   // cors: [getServerSideURL()].filter(Boolean),
-  cors: ['https://superchennai.com', getServerSideURL()].filter(Boolean),
+  cors: ['https://www.superchennai.com', getServerSideURL()].filter(Boolean),
   // csrf: ['http://localhost:5173', getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   blocks: [ChennaiInvestmentsBlock],
