@@ -105,15 +105,29 @@ export default buildConfig({
     InvestmentCategoriesCollection,
     VisitCategoryCollection,
   ],
-  // cors: [getServerSideURL()].filter(Boolean),
-  // ✅ CORS settings: Add your Vite frontend here
+  // // cors: [getServerSideURL()].filter(Boolean),
+  // // ✅ CORS settings: Add your Vite frontend here
+  // cors: [
+  //   'https://superchennai.com', // Your Vite React frontend
+  //   getServerSideURL(), // Your backend server origin
+  // ].filter(Boolean),
+
+  // // ✅ CSRF settings (optional but recommended for secure forms)
+  // csrf: ['https://superchennai.com', getServerSideURL()].filter(Boolean),
+
   cors: [
-    'https://superchennai.com', // Your Vite React frontend
-    getServerSideURL(), // Your backend server origin
+    'http://localhost:5173',
+    'https://superchennai.com',
+    'https://www.superchennai.com',
+    getServerSideURL(),
   ].filter(Boolean),
 
-  // ✅ CSRF settings (optional but recommended for secure forms)
-  csrf: ['https://superchennai.com', getServerSideURL()].filter(Boolean),
+  csrf: [
+    'http://localhost:5173',
+    'https://superchennai.com',
+    'https://www.superchennai.com',
+    getServerSideURL(),
+  ].filter(Boolean),
 
   globals: [Header, Footer],
   blocks: [ChennaiInvestmentsBlock],
