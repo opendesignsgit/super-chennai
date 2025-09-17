@@ -30,6 +30,11 @@ import Footer from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { getServerSideURL } from './utilities/getURL'
+import { Properties } from './collections/Properties'
+import { BhkTypes } from './collections/Properties/options/BhkTypes'
+import { Amenities } from './collections/Properties/options/Amenities'
+import { Locations } from './collections/Properties/options/Locations'
+import { PropertyTypes } from './collections/Properties/options/PropertyTypes'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -102,7 +107,18 @@ export default buildConfig({
     SocialReelsCollection,
     InvestmentCategoriesCollection,
     VisitCategoryCollection,
+
+    Properties,
+     BhkTypes,
+    PropertyTypes,
+    Locations,
+    Amenities,
   ],
+
+  // #################################################################################
+  // ################## DONT TOCH THIS PART MODIFIED BY OPEN DESIGN  #################
+  // #################################################################################
+
   // cors: [getServerSideURL()].filter(Boolean),
   cors: ['https://www.superchennai.com', 'http://localhost:5173', getServerSideURL()].filter(
     Boolean,

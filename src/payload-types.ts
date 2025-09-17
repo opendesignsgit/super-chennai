@@ -86,6 +86,11 @@ export interface Config {
     'social-reels': SocialReel;
     'investment-categories': InvestmentCategory;
     visitGroups: VisitGroup;
+    properties: Property;
+    bhkTypes: BhkType;
+    propertyTypes: PropertyType;
+    locations: Location;
+    amenities: Amenity;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -114,6 +119,11 @@ export interface Config {
     'social-reels': SocialReelsSelect<false> | SocialReelsSelect<true>;
     'investment-categories': InvestmentCategoriesSelect<false> | InvestmentCategoriesSelect<true>;
     visitGroups: VisitGroupsSelect<false> | VisitGroupsSelect<true>;
+    properties: PropertiesSelect<false> | PropertiesSelect<true>;
+    bhkTypes: BhkTypesSelect<false> | BhkTypesSelect<true>;
+    propertyTypes: PropertyTypesSelect<false> | PropertyTypesSelect<true>;
+    locations: LocationsSelect<false> | LocationsSelect<true>;
+    amenities: AmenitiesSelect<false> | AmenitiesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1768,6 +1778,156 @@ export interface VisitGroup {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "properties".
+ */
+export interface Property {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedPosts?: (number | Property)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  /**
+   * Sale or Rent price
+   */
+  price: number;
+  /**
+   * Area
+   */
+  area: number;
+  /**
+   * bhk
+   */
+  bhk: number | BhkType;
+  /**
+   * propertyType
+   */
+  propertyType: number | PropertyType;
+  /**
+   * location
+   */
+  location: number | Location;
+  /**
+   * Amenities
+   */
+  amenities?: (number | Amenity)[] | null;
+  /**
+   * furnishing
+   */
+  furnishing?: ('fully' | 'semi' | 'none') | null;
+  /**
+   * furnishing
+   */
+  floor?: number | null;
+  /**
+   * facingDirection
+   */
+  facingDirection?: ('north' | 'south' | 'east' | 'west') | null;
+  /**
+   * Parking
+   */
+  parking?: ('covered' | 'open' | 'none') | null;
+  images?:
+    | {
+        image: number | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bhkTypes".
+ */
+export interface BhkType {
+  id: number;
+  label: string;
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "propertyTypes".
+ */
+export interface PropertyType {
+  id: number;
+  label: string;
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "locations".
+ */
+export interface Location {
+  id: number;
+  city: string;
+  state?: string | null;
+  /**
+   * Display label for the location, e.g., "City, State"
+   */
+  label: string;
+  /**
+   * Unique identifier for the location
+   */
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "amenities".
+ */
+export interface Amenity {
+  id: number;
+  label: string;
+  /**
+   * Unique identifier for this amenity
+   */
+  value: string;
+  icon?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -2188,6 +2348,26 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'visitGroups';
         value: number | VisitGroup;
+      } | null)
+    | ({
+        relationTo: 'properties';
+        value: number | Property;
+      } | null)
+    | ({
+        relationTo: 'bhkTypes';
+        value: number | BhkType;
+      } | null)
+    | ({
+        relationTo: 'propertyTypes';
+        value: number | PropertyType;
+      } | null)
+    | ({
+        relationTo: 'locations';
+        value: number | Location;
+      } | null)
+    | ({
+        relationTo: 'amenities';
+        value: number | Amenity;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -3244,6 +3424,97 @@ export interface VisitGroupsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "properties_select".
+ */
+export interface PropertiesSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  relatedPosts?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  price?: T;
+  area?: T;
+  bhk?: T;
+  propertyType?: T;
+  location?: T;
+  amenities?: T;
+  furnishing?: T;
+  floor?: T;
+  facingDirection?: T;
+  parking?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bhkTypes_select".
+ */
+export interface BhkTypesSelect<T extends boolean = true> {
+  label?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "propertyTypes_select".
+ */
+export interface PropertyTypesSelect<T extends boolean = true> {
+  label?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "locations_select".
+ */
+export interface LocationsSelect<T extends boolean = true> {
+  city?: T;
+  state?: T;
+  label?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "amenities_select".
+ */
+export interface AmenitiesSelect<T extends boolean = true> {
+  label?: T;
+  value?: T;
+  icon?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
@@ -3726,6 +3997,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'visitDetails';
           value: number | VisitDetail;
+        } | null)
+      | ({
+          relationTo: 'properties';
+          value: number | Property;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
