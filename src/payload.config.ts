@@ -3,7 +3,7 @@ import 'dotenv/config'
 
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
-import sharp from 'sharp' // sharp-import
+import sharp from 'sharp'; // sharp-import
 import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
@@ -18,6 +18,11 @@ import { Events } from './collections/Events'
 import { Innovate } from './collections/Innovate'
 import { Investments } from './collections/Investments'
 import { Live } from './collections/live'
+import { Properties } from './collections/Properties'
+import { Amenities } from './collections/Properties/options/Amenities'
+import { BhkTypes } from './collections/Properties/options/BhkTypes'
+import { Locations } from './collections/Properties/options/Locations'
+import { PropertyTypes } from './collections/Properties/options/PropertyTypes'
 import InvestmentCategoriesCollection from './collections/RelationSchema/Investments/Investments'
 import VisitCategoryCollection from './collections/RelationSchema/main-pages/visit-page/visit-catogory/schema'
 import SocialReelsCollection from './collections/RelationSchema/SocialReels/SocialReels'
@@ -30,11 +35,6 @@ import Footer from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { getServerSideURL } from './utilities/getURL'
-import { Properties } from './collections/Properties'
-import { BhkTypes } from './collections/Properties/options/BhkTypes'
-import { Amenities } from './collections/Properties/options/Amenities'
-import { Locations } from './collections/Properties/options/Locations'
-import { PropertyTypes } from './collections/Properties/options/PropertyTypes'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -109,7 +109,7 @@ export default buildConfig({
     VisitCategoryCollection,
 
     Properties,
-     BhkTypes,
+    BhkTypes,
     PropertyTypes,
     Locations,
     Amenities,

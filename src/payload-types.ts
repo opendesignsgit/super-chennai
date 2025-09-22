@@ -1799,34 +1799,50 @@ export interface Property {
     };
     [k: string]: unknown;
   };
-  relatedPosts?: (number | Property)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
+  images?:
+    | {
+        image: number | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  faq?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  mapView?: {
+    latitude?: number | null;
+    longitude?: number | null;
+    mapEmbed?: string | null;
   };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  /**
-   * Sale or Rent price
-   */
-  price: number;
-  /**
-   * Area
-   */
-  area: number;
-  /**
-   * bhk
-   */
-  bhk: number | BhkType;
+  nearby?:
+    | {
+        place?: string | null;
+        distance?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   /**
    * propertyType
    */
   propertyType: number | PropertyType;
+  purpose: 'sale' | 'rent' | 'lease' | 'pg';
+  ownership?: ('freehold' | 'leasehold' | 'society' | 'poa') | null;
+  ageOfProperty?: ('new' | '0-5' | '5-10' | '10plus') | null;
+  /**
+   * Select the transaction type for this property (e.g., New Booking, Resale, Pre-Launch)
+   */
+  transactionType: 'new_booking' | 'resale' | 'pre_launch';
+  agentReraId?: string | null;
+  society?: {
+    name?: string | null;
+    builder?: string | null;
+    totalUnits?: number | null;
+    possessionStatus?: ('ready' | 'under') | null;
+  };
   /**
    * location
    */
@@ -1836,9 +1852,25 @@ export interface Property {
    */
   amenities?: (number | Amenity)[] | null;
   /**
-   * furnishing
+   * Furnishing
    */
-  furnishing?: ('fully' | 'semi' | 'none') | null;
+  furnishing: 'fully' | 'semi' | 'unfurnished';
+  /**
+   * bhk
+   */
+  bhk: number | BhkType;
+  bedrooms?: number | null;
+  semiRooms?: {
+    studyRoom?: boolean | null;
+    servantRoom?: boolean | null;
+    poojaRoom?: boolean | null;
+    storeRoom?: boolean | null;
+  };
+  balconies?: number | null;
+  /**
+   * Area
+   */
+  area: number;
   /**
    * furnishing
    */
@@ -1851,13 +1883,103 @@ export interface Property {
    * Parking
    */
   parking?: ('covered' | 'open' | 'none') | null;
-  images?:
+  waterSupply?: ('corporation' | 'borewell' | 'both') | null;
+  parkingOutdoor?: {
+    coveredParking?: number | null;
+    openParking?: number | null;
+    visitorParking?: boolean | null;
+    evCharging?: boolean | null;
+  };
+  commercialType?: ('office' | 'shop' | 'warehouse' | 'industrial') | null;
+  seatingCapacity?: number | null;
+  washrooms?: number | null;
+  plotArea?: number | null;
+  dimensions?: {
+    length?: number | null;
+    width?: number | null;
+  };
+  roadWidth?: number | null;
+  cornerPlot?: boolean | null;
+  /**
+   * Sale or Rent price
+   */
+  price: number;
+  pricePerSqft?: number | null;
+  maintenanceCharges?: number | null;
+  bookingAmount?: number | null;
+  negotiable?: boolean | null;
+  listedBy?: ('owner' | 'agent' | 'builder') | null;
+  contactInfo?: {
+    name?: string | null;
+    phone?: string | null;
+    email?: string | null;
+  };
+  greenFeatures?:
     | {
-        image: number | Media;
-        caption?: string | null;
+        feature?: string | null;
         id?: string | null;
       }[]
     | null;
+  interiors?: {
+    doorType?: ('sliding' | 'wooden' | 'glass' | 'other') | null;
+    wardrobes?: number | null;
+    curtains?: boolean | null;
+    modularKitchen?: boolean | null;
+    chimney?: boolean | null;
+    falseCeiling?: boolean | null;
+    lighting?: number | null;
+  };
+  appliances?: {
+    acUnits?: number | null;
+    fridgeCount?: number | null;
+    microwaveCount?: number | null;
+    waterPurifier?: number | null;
+    washingMachine?: boolean | null;
+    dishwasher?: boolean | null;
+    tvCount?: number | null;
+    geyserCount?: number | null;
+    powerBackup?: boolean | null;
+    solar?: boolean | null;
+  };
+  bathroomFeatures?: {
+    bathtubs?: number | null;
+    jacuzzi?: boolean | null;
+    heatedFlooring?: boolean | null;
+  };
+  buildingAmenities?: {
+    elevator?: boolean | null;
+    security?: boolean | null;
+    intercom?: boolean | null;
+    fireSafety?: boolean | null;
+    clubhouse?: boolean | null;
+    swimmingPool?: boolean | null;
+    gym?: boolean | null;
+    playArea?: boolean | null;
+    garden?: boolean | null;
+  };
+  rentDetails?: {
+    monthlyRent?: number | null;
+    securityDeposit?: number | null;
+    maintenanceIncluded?: boolean | null;
+    preferredTenants?: ('family' | 'bachelors' | 'company')[] | null;
+  };
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  relatedPosts?: (number | Property)[] | null;
+  categories?: (number | Category)[] | null;
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  availabilityStatus?: ('available' | 'booked' | 'sold') | null;
+  featured?: boolean | null;
+  urgentSale?: boolean | null;
+  security?: boolean | null;
+  liftAvailable?: boolean | null;
   populatedAuthors?:
     | {
         id?: string | null;
@@ -1872,23 +1994,28 @@ export interface Property {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "bhkTypes".
- */
-export interface BhkType {
-  id: number;
-  label: string;
-  value: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "propertyTypes".
  */
 export interface PropertyType {
   id: number;
-  label: string;
-  value: string;
+  value:
+    | 'apartment'
+    | 'villa'
+    | 'builder_floor'
+    | 'studio'
+    | 'penthouse'
+    | 'shop'
+    | 'office'
+    | 'coworking'
+    | 'warehouse'
+    | 'industrial_shed'
+    | 'factory'
+    | 'plot'
+    | 'agriculture_land'
+    | 'farmhouse'
+    | 'hotel'
+    | 'pg_coliving'
+    | 'serviced_apartment';
   updatedAt: string;
   createdAt: string;
 }
@@ -1898,14 +2025,24 @@ export interface PropertyType {
  */
 export interface Location {
   id: number;
-  city: string;
-  state?: string | null;
   /**
-   * Display label for the location, e.g., "City, State"
+   * State name (e.g. Tamil Nadu, Karnataka)
+   */
+  state: string;
+  /**
+   * City name (e.g. Chennai, Bangalore, Mumbai)
+   */
+  city: string;
+  /**
+   * Locality / Area (e.g. OMR, ECR, Whitefield)
+   */
+  locality: string;
+  /**
+   * Display label, e.g. "OMR, Chennai"
    */
   label: string;
   /**
-   * Unique identifier for the location
+   * Unique slug, e.g. "chennai-omr"
    */
   value: string;
   updatedAt: string;
@@ -1923,6 +2060,17 @@ export interface Amenity {
    */
   value: string;
   icon?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bhkTypes".
+ */
+export interface BhkType {
+  id: number;
+  label: string;
+  value: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -3430,27 +3578,6 @@ export interface PropertiesSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
   content?: T;
-  relatedPosts?: T;
-  categories?: T;
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
-      };
-  publishedAt?: T;
-  authors?: T;
-  price?: T;
-  area?: T;
-  bhk?: T;
-  propertyType?: T;
-  location?: T;
-  amenities?: T;
-  furnishing?: T;
-  floor?: T;
-  facingDirection?: T;
-  parking?: T;
   images?:
     | T
     | {
@@ -3458,6 +3585,168 @@ export interface PropertiesSelect<T extends boolean = true> {
         caption?: T;
         id?: T;
       };
+  faq?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  mapView?:
+    | T
+    | {
+        latitude?: T;
+        longitude?: T;
+        mapEmbed?: T;
+      };
+  nearby?:
+    | T
+    | {
+        place?: T;
+        distance?: T;
+        id?: T;
+      };
+  propertyType?: T;
+  purpose?: T;
+  ownership?: T;
+  ageOfProperty?: T;
+  transactionType?: T;
+  agentReraId?: T;
+  society?:
+    | T
+    | {
+        name?: T;
+        builder?: T;
+        totalUnits?: T;
+        possessionStatus?: T;
+      };
+  location?: T;
+  amenities?: T;
+  furnishing?: T;
+  bhk?: T;
+  bedrooms?: T;
+  semiRooms?:
+    | T
+    | {
+        studyRoom?: T;
+        servantRoom?: T;
+        poojaRoom?: T;
+        storeRoom?: T;
+      };
+  balconies?: T;
+  area?: T;
+  floor?: T;
+  facingDirection?: T;
+  parking?: T;
+  waterSupply?: T;
+  parkingOutdoor?:
+    | T
+    | {
+        coveredParking?: T;
+        openParking?: T;
+        visitorParking?: T;
+        evCharging?: T;
+      };
+  commercialType?: T;
+  seatingCapacity?: T;
+  washrooms?: T;
+  plotArea?: T;
+  dimensions?:
+    | T
+    | {
+        length?: T;
+        width?: T;
+      };
+  roadWidth?: T;
+  cornerPlot?: T;
+  price?: T;
+  pricePerSqft?: T;
+  maintenanceCharges?: T;
+  bookingAmount?: T;
+  negotiable?: T;
+  listedBy?: T;
+  contactInfo?:
+    | T
+    | {
+        name?: T;
+        phone?: T;
+        email?: T;
+      };
+  greenFeatures?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  interiors?:
+    | T
+    | {
+        doorType?: T;
+        wardrobes?: T;
+        curtains?: T;
+        modularKitchen?: T;
+        chimney?: T;
+        falseCeiling?: T;
+        lighting?: T;
+      };
+  appliances?:
+    | T
+    | {
+        acUnits?: T;
+        fridgeCount?: T;
+        microwaveCount?: T;
+        waterPurifier?: T;
+        washingMachine?: T;
+        dishwasher?: T;
+        tvCount?: T;
+        geyserCount?: T;
+        powerBackup?: T;
+        solar?: T;
+      };
+  bathroomFeatures?:
+    | T
+    | {
+        bathtubs?: T;
+        jacuzzi?: T;
+        heatedFlooring?: T;
+      };
+  buildingAmenities?:
+    | T
+    | {
+        elevator?: T;
+        security?: T;
+        intercom?: T;
+        fireSafety?: T;
+        clubhouse?: T;
+        swimmingPool?: T;
+        gym?: T;
+        playArea?: T;
+        garden?: T;
+      };
+  rentDetails?:
+    | T
+    | {
+        monthlyRent?: T;
+        securityDeposit?: T;
+        maintenanceIncluded?: T;
+        preferredTenants?: T;
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  relatedPosts?: T;
+  categories?: T;
+  publishedAt?: T;
+  authors?: T;
+  availabilityStatus?: T;
+  featured?: T;
+  urgentSale?: T;
+  security?: T;
+  liftAvailable?: T;
   populatedAuthors?:
     | T
     | {
@@ -3485,7 +3774,6 @@ export interface BhkTypesSelect<T extends boolean = true> {
  * via the `definition` "propertyTypes_select".
  */
 export interface PropertyTypesSelect<T extends boolean = true> {
-  label?: T;
   value?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -3495,8 +3783,9 @@ export interface PropertyTypesSelect<T extends boolean = true> {
  * via the `definition` "locations_select".
  */
 export interface LocationsSelect<T extends boolean = true> {
-  city?: T;
   state?: T;
+  city?: T;
+  locality?: T;
   label?: T;
   value?: T;
   updatedAt?: T;

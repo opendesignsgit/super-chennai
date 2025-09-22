@@ -19,6 +19,20 @@ import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
 import {
+  balconies,
+  commercialType,
+  cornerPlot,
+  dimensions,
+  ExtraRooms,
+  floor,
+  furnishedStatus,
+  parking,
+  plotArea,
+  seatingCapacity,
+  TYPES_WITH_BEDROOMS,
+  washrooms,
+} from '@/constants/propertyTypes'
+import {
   MetaDescriptionField,
   MetaImageField,
   MetaTitleField,
@@ -26,6 +40,12 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from 'src/fields/slug'
+import {
+  validateCheckboxGroupByPropertyType,
+  validateDimensionsByPropertyType,
+  validateGroupByPropertyType,
+  validatePrimitiveByPropertyType,
+} from '@/utilities/validateByPropertyType'
 
 export const Properties: CollectionConfig<'properties'> = {
   slug: 'properties',
@@ -70,6 +90,8 @@ export const Properties: CollectionConfig<'properties'> = {
   },
 
   fields: [
+    // PROJECT SELECTIOn
+
     {
       name: 'title',
       type: 'text',
@@ -103,8 +125,614 @@ export const Properties: CollectionConfig<'properties'> = {
               label: false,
               required: true,
             },
+
+            //############## PROPERTY IMAGE ##############
+            {
+              name: 'images',
+              type: 'array',
+              label: 'Property Images',
+              fields: [
+                {
+                  name: 'image',
+                  type: 'upload',
+                  relationTo: 'media',
+                  required: true,
+                },
+                {
+                  name: 'caption',
+                  type: 'text',
+                },
+              ],
+            },
+            //############## FAQ #########################
+            {
+              name: 'faq',
+              type: 'array',
+              label: 'FAQ',
+              labels: {
+                singular: 'Question',
+                plural: 'Questions',
+              },
+              fields: [
+                { name: 'question', type: 'text', label: 'Question', required: true },
+                { name: 'answer', type: 'textarea', label: 'Answer', required: true },
+              ],
+            },
+            //############## MAP VIEW ####################
+            {
+              name: 'mapView',
+              type: 'group',
+              label: 'Map View',
+              fields: [
+                { name: 'latitude', type: 'number', label: 'Latitude' },
+                { name: 'longitude', type: 'number', label: 'Longitude' },
+                {
+                  name: 'mapEmbed',
+                  type: 'text',
+                  label: 'Google Maps Embed URL',
+                },
+              ],
+            },
+            //############## . Nearby / Connectivity ######
+            {
+              name: 'nearby',
+              type: 'array',
+              label: 'Nearby / Connectivity',
+              fields: [
+                { name: 'place', type: 'text', label: 'Place' },
+                { name: 'distance', type: 'text', label: 'Distance (km)' },
+              ],
+            },
           ],
           label: 'Content',
+        },
+
+        //############################ GENTRAL INFORMATIONS  ##########################
+
+        {
+          label: 'General Info',
+          fields: [
+            //##############  Property TYPE  #######################
+            {
+              name: 'propertyType',
+              type: 'relationship',
+              relationTo: 'propertyTypes',
+              required: true,
+              admin: {
+                description: 'propertyType',
+                position: 'sidebar',
+              },
+            },
+            //##############  Property Purpose  #####################
+            {
+              name: 'purpose',
+              type: 'select',
+              required: true,
+              options: [
+                { label: 'Sale', value: 'sale' },
+                { label: 'Rent', value: 'rent' },
+                { label: 'Lease', value: 'lease' },
+                { label: 'PG / Coliving', value: 'pg' },
+              ],
+            },
+            //############## 2. Tenure / Ownership  #################
+            {
+              name: 'ownership',
+              type: 'select',
+              options: [
+                { label: 'Freehold', value: 'freehold' },
+                { label: 'Leasehold', value: 'leasehold' },
+                { label: 'Co-operative Society', value: 'society' },
+                { label: 'Power of Attorney', value: 'poa' },
+              ],
+            },
+            //############## 3. Age of Property ######################
+            {
+              name: 'ageOfProperty',
+              type: 'select',
+              options: [
+                { label: 'New Construction', value: 'new' },
+                { label: '0-5 years', value: '0-5' },
+                { label: '5-10 years', value: '5-10' },
+                { label: '10+ years', value: '10plus' },
+              ],
+            },
+            //############## 4. Transaction Type   Important for under-construction projects: ##############
+            {
+              name: 'transactionType',
+              type: 'select',
+              required: true,
+              admin: {
+                description:
+                  'Select the transaction type for this property (e.g., New Booking, Resale, Pre-Launch)',
+              },
+              options: [
+                { label: 'New Booking', value: 'new_booking' },
+                { label: 'Resale', value: 'resale' },
+                { label: 'Pre-Launch', value: 'pre_launch' },
+              ],
+            },
+
+            //############## 3. AGENT IDENTYID ########################
+            {
+              name: 'agentReraId',
+              type: 'text',
+              label: 'Agent RERA ID',
+            },
+            //############## 7. Society / Project Info#################
+            {
+              name: 'society',
+              type: 'group',
+              label: 'Society / Project Details',
+              fields: [
+                { name: 'name', type: 'text', label: 'Project / Society Name' },
+                { name: 'builder', type: 'text', label: 'Builder / Developer' },
+                { name: 'totalUnits', type: 'number', label: 'Total Units' },
+                {
+                  name: 'possessionStatus',
+                  type: 'select',
+                  options: [
+                    { label: 'Ready to Move', value: 'ready' },
+                    { label: 'Under Construction', value: 'under' },
+                  ],
+                },
+              ],
+            },
+            //############## LOCATIONS ################################
+            {
+              name: 'location',
+              type: 'relationship',
+              relationTo: 'locations',
+              required: true,
+              admin: {
+                description: 'location',
+                position: 'sidebar',
+              },
+            },
+            //############## AMENTIES #################################
+            {
+              name: 'amenities',
+              type: 'relationship',
+              relationTo: 'amenities',
+              hasMany: true,
+              admin: {
+                description: 'Amenities',
+                position: 'sidebar',
+              },
+            },
+            //############## FURNISHING #################################
+            {
+              name: 'furnishing',
+              type: 'select',
+              required: true,
+              admin: {
+                description: 'Furnishing',
+              },
+              options: [
+                { label: 'Fully Furnished', value: 'fully' },
+                { label: 'Semi Furnished', value: 'semi' },
+                { label: 'Unfurnished', value: 'unfurnished' },
+              ],
+            },
+          ],
+        },
+
+        //############################ FEATURE AND SPECS  ##########################
+
+        {
+          label: 'Features / Specs',
+          fields: [
+            //##############  bhk     Info  #################
+            {
+              name: 'bhk',
+              type: 'relationship',
+              relationTo: 'bhkTypes',
+              required: true,
+              admin: {
+                description: 'bhk',
+              },
+            },
+            // //##############  BED ROOMS  ######################
+
+            {
+              name: 'bedrooms',
+              type: 'number',
+              validate: validateGroupByPropertyType(TYPES_WITH_BEDROOMS, 'bedrooms'),
+              // admin: {
+              //   hidden: ({ siblingData }) => {
+              //     return (
+              //       !siblingData?.propertyType || !ExtraRooms.includes(siblingData.propertyType)
+              //     )
+              //   },
+              // },
+            },
+
+            //##############  SEMI ROOMS  ######################
+            {
+              name: 'semiRooms',
+              type: 'group',
+              label: 'Extra Rooms',
+              fields: [
+                { name: 'studyRoom', type: 'checkbox', label: 'Study Room' },
+                { name: 'servantRoom', type: 'checkbox', label: 'Servant Room' },
+                { name: 'poojaRoom', type: 'checkbox', label: 'Pooja Room' },
+                { name: 'storeRoom', type: 'checkbox', label: 'Store Room' },
+              ],
+              validate: validateCheckboxGroupByPropertyType(ExtraRooms, 'semiRooms', true),
+            },
+            // ##############  BALCONIES  ######################
+            {
+              name: 'balconies',
+              type: 'number',
+              label: 'Number of Balconies',
+              admin: {
+                condition: (_, siblingData) => !!siblingData?.propertyType,
+              },
+              validate: validatePrimitiveByPropertyType(balconies, 'Balconies', true),
+            },
+            //##############  AREA NUMBER OF SQFIT  ############
+            {
+              name: 'area',
+              type: 'number',
+              label: 'Built-up Area (sq.ft)',
+              required: true,
+              admin: {
+                description: 'Area',
+                position: 'sidebar',
+              },
+            },
+            //##############  FLOORS OPTION   ##################
+            {
+              name: 'floor',
+              type: 'number',
+              label: 'Total Floors',
+
+              admin: {
+                description: 'furnishing',
+              },
+              validate: validateGroupByPropertyType(floor, 'Total Floors', true),
+            },
+            //##############  FACING DIRECTIONS   ##############
+            {
+              name: 'facingDirection',
+              type: 'select',
+              options: [
+                { label: 'North', value: 'north' },
+                { label: 'South', value: 'south' },
+                { label: 'East', value: 'east' },
+                { label: 'West', value: 'west' },
+              ],
+              admin: {
+                description: 'facingDirection',
+              },
+            },
+            //##############  PARKING FACILITYS   ##############
+            {
+              name: 'parking',
+              type: 'select',
+              options: [
+                { label: 'Covered', value: 'covered' },
+                { label: 'Open', value: 'open' },
+                { label: 'None', value: 'none' },
+              ],
+              admin: {
+                description: 'Parking',
+              },
+              validate: validateGroupByPropertyType(parking, 'Parking', true),
+            },
+            //##############  WATER SUPPLY   ####################
+            {
+              name: 'waterSupply',
+              type: 'select',
+              options: [
+                { label: 'Corporation', value: 'corporation' },
+                { label: 'Borewell', value: 'borewell' },
+                { label: 'Both', value: 'both' },
+              ],
+              label: 'Water Supply',
+            },
+            //##############  parkingOutdoor   ###################
+            {
+              name: 'parkingOutdoor',
+              type: 'group',
+              label: 'Parking / Outdoor',
+              fields: [
+                { name: 'coveredParking', type: 'number', label: 'Covered Parking Slots' },
+                { name: 'openParking', type: 'number', label: 'Open Parking Slots' },
+                { name: 'visitorParking', type: 'checkbox', label: 'Visitor Parking' },
+                { name: 'evCharging', type: 'checkbox', label: 'EV Charging Point' },
+              ],
+            },
+          ],
+        },
+
+        //############################ COMMERCIAL PLOT  ##########################
+        {
+          label: 'Commercial / Plot',
+          fields: [
+            //##############  COMMERCIAL SPECIFIC   ###############
+            {
+              name: 'commercialType',
+              type: 'select',
+              label: 'Commercial Property Type',
+              options: [
+                { label: 'Office Space', value: 'office' },
+                { label: 'Shop / Showroom', value: 'shop' },
+                { label: 'Warehouse / Godown', value: 'warehouse' },
+                { label: 'Industrial Land', value: 'industrial' },
+              ],
+              validate: validateGroupByPropertyType(
+                commercialType,
+                'Commercial Property Type',
+                true,
+              ),
+            },
+            //##############  SEATING CAPACITY   ###################
+            {
+              name: 'seatingCapacity',
+              type: 'number',
+              label: 'Seating Capacity (for offices)',
+              validate: validateGroupByPropertyType(
+                seatingCapacity,
+                'Seating Capacity (for offices)',
+                true,
+              ),
+            },
+            //##############  WASHROOMS  NUMBERS  ###################
+            {
+              name: 'washrooms',
+              type: 'number',
+              label: 'Washrooms',
+              validate: validateGroupByPropertyType(washrooms, 'Washrooms', true),
+            },
+            //##############  PLOT LAND SPECIFIC  ###################
+            {
+              name: 'plotArea',
+              type: 'number',
+              label: 'Plot Area (sq.ft / acres)',
+              validate: validateGroupByPropertyType(plotArea, 'Plot Area (sq.ft / acres)', true),
+            },
+            //##############  DIMENTIONS  ###########################
+
+            {
+              name: 'dimensions',
+              type: 'group',
+              label: 'Plot Dimensions',
+              fields: [
+                { name: 'length', type: 'number', label: 'Length' },
+                { name: 'width', type: 'number', label: 'Width' },
+              ],
+              validate: validateDimensionsByPropertyType(dimensions, 'Dimensions', true),
+            },
+
+            //##############  ROAD WIDTH  ###########################
+            {
+              name: 'roadWidth',
+              type: 'number',
+              label: 'Road Width (feet)',
+            },
+            //##############  cornerPlot    ##########################
+            {
+              name: 'cornerPlot',
+              type: 'checkbox',
+              label: 'Corner Plot',
+              validate: validateGroupByPropertyType(cornerPlot, 'Corner Plot', true),
+            },
+          ],
+        },
+
+        //############################ FINANCE PRICE  ############################
+
+        {
+          label: 'Price / Financials',
+          fields: [
+            //##############  PRICE WHOLE   ####################
+            {
+              name: 'price',
+              type: 'number',
+              required: true,
+              admin: {
+                description: 'Sale or Rent price',
+                position: 'sidebar',
+              },
+            },
+            //##############  PRICE PER SQRFT   ################
+            {
+              name: 'pricePerSqft',
+              type: 'number',
+              label: 'Price per Sq.ft',
+            },
+            //##############  MAINTAINCE CHARGE   ###############
+            {
+              name: 'maintenanceCharges',
+              type: 'number',
+              label: 'Maintenance Charges (per month)',
+            },
+            //##############  BOOKING AMOUNT      ###############
+            {
+              name: 'bookingAmount',
+              type: 'number',
+              label: 'Booking / Advance Amount',
+            },
+            //##############  negotiable IS       ###############
+            {
+              name: 'negotiable',
+              type: 'checkbox',
+              label: 'Price Negotiable',
+            },
+            //##############  WHO iS CREATED       ###############
+            {
+              name: 'listedBy',
+              type: 'select',
+              label: 'Listed By',
+              options: [
+                { label: 'Owner', value: 'owner' },
+                { label: 'Agent', value: 'agent' },
+                { label: 'Builder', value: 'builder' },
+              ],
+            },
+            //##############  CONTACT INFOS     ##################
+            {
+              name: 'contactInfo',
+              type: 'group',
+              label: 'Contact Info',
+              fields: [
+                { name: 'name', type: 'text', label: 'Contact Name' },
+                { name: 'phone', type: 'text', label: 'Phone Number' },
+                { name: 'email', type: 'email', label: 'Email' },
+              ],
+            },
+          ],
+        },
+
+        //############################ Interiors/ FEATRES  ##########################
+
+        {
+          label: 'Features / Interiors',
+          fields: [
+            //############## GREEN FATURES ##############
+            {
+              name: 'greenFeatures',
+              type: 'array',
+              label: 'Green Features',
+              fields: [
+                { name: 'feature', type: 'text' }, // e.g., Solar Panels, Rainwater Harvesting
+              ],
+            },
+            //############## interiors FATURES ##########
+            {
+              name: 'interiors',
+              type: 'group',
+              label: 'Interiors / Furnishings',
+              fields: [
+                {
+                  name: 'doorType',
+                  type: 'select',
+                  label: 'Doors / Windows Type',
+                  options: [
+                    { label: 'Sliding', value: 'sliding' },
+                    { label: 'Wooden', value: 'wooden' },
+                    { label: 'Glass', value: 'glass' },
+                    { label: 'Other', value: 'other' },
+                  ],
+                },
+                { name: 'wardrobes', type: 'number', label: 'Wardrobes' },
+                { name: 'curtains', type: 'checkbox', label: 'Curtains / Blinds' },
+                { name: 'modularKitchen', type: 'checkbox', label: 'Modular Kitchen' },
+                { name: 'chimney', type: 'checkbox', label: 'Chimney / Exhaust' },
+                { name: 'falseCeiling', type: 'checkbox', label: 'False Ceiling / POP Work' },
+                { name: 'lighting', type: 'number', label: 'Lighting Fixtures (Count)' },
+              ],
+              validate: validateGroupByPropertyType(furnishedStatus, 'Furnishing', true),
+            },
+
+            //############## appliances FATURES ##########
+
+            {
+              name: 'appliances',
+              type: 'group',
+              label: 'Appliances / Electronics',
+              fields: [
+                { name: 'acUnits', type: 'number', label: 'Air Conditioners' },
+                { name: 'fridgeCount', type: 'number', label: 'Refrigerators' },
+                { name: 'microwaveCount', type: 'number', label: 'Microwaves' },
+                { name: 'waterPurifier', type: 'number', label: 'Water Purifiers' },
+                { name: 'washingMachine', type: 'checkbox', label: 'Washing Machine' },
+                { name: 'dishwasher', type: 'checkbox', label: 'Dishwasher' },
+                { name: 'tvCount', type: 'number', label: 'Televisions' },
+                { name: 'geyserCount', type: 'number', label: 'Geysers / Water Heaters' },
+                { name: 'powerBackup', type: 'checkbox', label: 'Inverter / Power Backup' },
+                { name: 'solar', type: 'checkbox', label: 'Solar Panel Setup' },
+              ],  
+            },
+            //############## bathroomFeatures  ##########
+            {
+              name: 'bathroomFeatures',
+              type: 'group',
+              label: 'Bathroom Features',
+              fields: [
+                { name: 'bathtubs', type: 'number', label: 'Bathtubs' },
+                { name: 'jacuzzi', type: 'checkbox', label: 'Jacuzzi' },
+                { name: 'heatedFlooring', type: 'checkbox', label: 'Heated Flooring' },
+              ],
+            },
+            //############## buildingAmenities  ##########
+            {
+              name: 'buildingAmenities',
+              type: 'group',
+              label: 'Building / Amenities',
+              fields: [
+                { name: 'elevator', type: 'checkbox', label: 'Lift / Elevator' },
+                { name: 'security', type: 'checkbox', label: 'Security / CCTV' },
+                { name: 'intercom', type: 'checkbox', label: 'Intercom Facility' },
+                { name: 'fireSafety', type: 'checkbox', label: 'Fire Safety System' },
+                { name: 'clubhouse', type: 'checkbox', label: 'Clubhouse Access' },
+                { name: 'swimmingPool', type: 'checkbox', label: 'Swimming Pool' },
+                { name: 'gym', type: 'checkbox', label: 'Gym / Fitness Center' },
+                { name: 'playArea', type: 'checkbox', label: 'Children’s Play Area' },
+                { name: 'garden', type: 'checkbox', label: 'Garden / Park' },
+              ],
+            },
+          ],
+        },
+
+        //############################ Rental / info  ##########################
+
+        {
+          label: 'Rental Info',
+          fields: [
+            //############## 9. Rental-Specific Fields ##############
+            {
+              name: 'rentDetails',
+              type: 'group',
+              admin: { condition: (_, data) => data.purpose === 'rent' },
+              fields: [
+                { name: 'monthlyRent', type: 'number', label: 'Monthly Rent' },
+                { name: 'securityDeposit', type: 'number', label: 'Security Deposit' },
+                { name: 'maintenanceIncluded', type: 'checkbox', label: 'Maintenance Included' },
+                {
+                  name: 'preferredTenants',
+                  type: 'select',
+                  hasMany: true,
+                  options: [
+                    { label: 'Family', value: 'family' },
+                    { label: 'Bachelors', value: 'bachelors' },
+                    { label: 'Company Lease', value: 'company' },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+
+        //############################ META MEADIA  #####################################
+
+        {
+          name: 'meta',
+          label: 'SEO',
+          fields: [
+            OverviewField({
+              titlePath: 'meta.title',
+              descriptionPath: 'meta.description',
+              imagePath: 'meta.image',
+            }),
+            MetaTitleField({
+              hasGenerateFn: true,
+            }),
+            MetaImageField({
+              relationTo: 'media',
+            }),
+
+            MetaDescriptionField({}),
+            PreviewField({
+              // if the `generateUrl` function is configured
+              hasGenerateFn: true,
+
+              // field paths to match the target field for data
+              titlePath: 'meta.title',
+              descriptionPath: 'meta.description',
+            }),
+          ],
         },
 
         {
@@ -137,36 +765,9 @@ export const Properties: CollectionConfig<'properties'> = {
           ],
           label: 'Meta',
         },
-
-        {
-          name: 'meta',
-          label: 'SEO',
-          fields: [
-            OverviewField({
-              titlePath: 'meta.title',
-              descriptionPath: 'meta.description',
-              imagePath: 'meta.image',
-            }),
-            MetaTitleField({
-              hasGenerateFn: true,
-            }),
-            MetaImageField({
-              relationTo: 'media',
-            }),
-
-            MetaDescriptionField({}),
-            PreviewField({
-              // if the `generateUrl` function is configured
-              hasGenerateFn: true,
-
-              // field paths to match the target field for data
-              titlePath: 'meta.title',
-              descriptionPath: 'meta.description',
-            }),
-          ],
-        },
       ],
     },
+
     {
       name: 'publishedAt',
       type: 'date',
@@ -197,135 +798,48 @@ export const Properties: CollectionConfig<'properties'> = {
       relationTo: 'users',
     },
 
-    //############ FEATIURES  ############
+    // ###################################### SIDEBAR FEATURES  ######################################################################################################################################
+
+    //############## availabilityStatus ##############
 
     {
-      name: 'price',
-      type: 'number',
-      required: true,
-      admin: {
-        description: 'Sale or Rent price',
-        position: 'sidebar',
-      },
+      name: 'availabilityStatus',
+      type: 'select',
+      admin: { position: 'sidebar' },
+      options: [
+        { label: 'Available', value: 'available' },
+        { label: 'Booked', value: 'booked' },
+        { label: 'Sold Out', value: 'sold' },
+      ],
+      label: 'Availability',
     },
+    //############## featured VISIBLITY ##############
     {
-      name: 'area',
-      type: 'number',
-      label: 'Built-up Area (sq.ft)',
-      required: true,
-      admin: {
-        description: 'Area',
-        position: 'sidebar',
-      },
+      name: 'featured',
+      type: 'checkbox',
+      label: 'Featured Property',
+      admin: { position: 'sidebar' },
     },
 
+    //############## URGENT SALE  #####################
     {
-      name: 'bhk',
-      type: 'relationship',
-      relationTo: 'bhkTypes',
-      required: true,
-      admin: {
-        description: 'bhk',
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'propertyType',
-      type: 'relationship',
-      relationTo: 'propertyTypes',
-      required: true,
-      admin: {
-        description: 'propertyType',
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'location',
-      type: 'relationship',
-      relationTo: 'locations',
-      required: true,
-      admin: {
-        description: 'location',
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'amenities',
-      type: 'relationship',
-      relationTo: 'amenities',
-      hasMany: true,
-      admin: {
-        description: 'Amenities',
-        position: 'sidebar',
-      },
+      name: 'urgentSale',
+      type: 'checkbox',
+      label: 'Urgent Sale',
+      admin: { position: 'sidebar' },
     },
 
     {
-      name: 'furnishing',
-      type: 'select',
-      options: [
-        { label: 'Fully Furnished', value: 'fully' },
-        { label: 'Semi Furnished', value: 'semi' },
-        { label: 'Unfurnished', value: 'none' },
-      ],
-      admin: {
-        description: 'furnishing',
-        position: 'sidebar',
-      },
+      name: 'security',
+      type: 'checkbox',
+      label: 'Security Available',
+      admin: { position: 'sidebar' },
     },
     {
-      name: 'floor',
-      type: 'number',
-      label: 'Total Floors',
-      admin: {
-        description: 'furnishing',
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'facingDirection',
-      type: 'select',
-      options: [
-        { label: 'North', value: 'north' },
-        { label: 'South', value: 'south' },
-        { label: 'East', value: 'east' },
-        { label: 'West', value: 'west' },
-      ],
-      admin: {
-        description: 'facingDirection',
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'parking',
-      type: 'select',
-      options: [
-        { label: 'Covered', value: 'covered' },
-        { label: 'Open', value: 'open' },
-        { label: 'None', value: 'none' },
-      ],
-      admin: {
-        description: 'Parking',
-        position: 'sidebar',
-      },
-    },
-    //############## PROPERTY IMAGE ##############
-    {
-      name: 'images',
-      type: 'array',
-      label: 'Property Images',
-      fields: [
-        {
-          name: 'image',
-          type: 'upload',
-          relationTo: 'media',
-          required: true,
-        },
-        {
-          name: 'caption',
-          type: 'text',
-        },
-      ],
+      name: 'liftAvailable',
+      type: 'checkbox',
+      label: 'Lift Available',
+      admin: { position: 'sidebar' },
     },
 
     // This field is only used to populate the user data via the `populateAuthors` hook
