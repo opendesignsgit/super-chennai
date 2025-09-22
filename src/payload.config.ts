@@ -108,11 +108,11 @@ export default buildConfig({
     InvestmentCategoriesCollection,
     VisitCategoryCollection,
 
-    // Properties,
-    // BhkTypes,
-    // PropertyTypes,
-    // Locations,
-    // Amenities,
+    Properties,
+    BhkTypes,
+    PropertyTypes,
+    Locations,
+    Amenities,
   ],
 
   // #################################################################################
