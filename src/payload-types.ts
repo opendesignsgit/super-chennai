@@ -1825,6 +1825,13 @@ export interface Property {
         id?: string | null;
       }[]
     | null;
+  floorPlans?:
+    | {
+        file: number | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   /**
    * propertyType
    */
@@ -3604,6 +3611,13 @@ export interface PropertiesSelect<T extends boolean = true> {
     | {
         place?: T;
         distance?: T;
+        id?: T;
+      };
+  floorPlans?:
+    | T
+    | {
+        file?: T;
+        caption?: T;
         id?: T;
       };
   propertyType?: T;

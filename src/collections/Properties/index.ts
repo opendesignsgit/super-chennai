@@ -183,6 +183,26 @@ export const Properties: CollectionConfig<'properties'> = {
                 { name: 'distance', type: 'text', label: 'Distance (km)' },
               ],
             },
+            //################# FOLOOR PLAN##################
+            {
+              name: 'floorPlans',
+              type: 'array',
+              label: 'Floor Plans',
+              fields: [
+                {
+                  name: 'file',
+                  type: 'upload',
+                  relationTo: 'media',
+                  required: true,
+                  label: 'Floor Plan (Image/PDF)',
+                },
+                {
+                  name: 'caption',
+                  type: 'text',
+                  label: 'Caption / Plan Name',
+                },
+              ],
+            },
           ],
           label: 'Content',
         },
@@ -643,7 +663,7 @@ export const Properties: CollectionConfig<'properties'> = {
                 { name: 'geyserCount', type: 'number', label: 'Geysers / Water Heaters' },
                 { name: 'powerBackup', type: 'checkbox', label: 'Inverter / Power Backup' },
                 { name: 'solar', type: 'checkbox', label: 'Solar Panel Setup' },
-              ],  
+              ],
             },
             //############## bathroomFeatures  ##########
             {

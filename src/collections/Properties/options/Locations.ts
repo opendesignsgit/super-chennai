@@ -6,6 +6,7 @@ export const Locations: CollectionConfig<'locations'> = {
     read: () => true,
   },
   admin: {
+    hidden: true,
     useAsTitle: 'label',
   },
   fields: [
@@ -62,9 +63,7 @@ export const Locations: CollectionConfig<'locations'> = {
 
         // Auto-generate value (slug) if not given
         if (!data?.value && data?.locality && data?.city) {
-          data.value = `${data.city}-${data.locality}`
-            .toLowerCase()
-            .replace(/\s+/g, '-')
+          data.value = `${data.city}-${data.locality}`.toLowerCase().replace(/\s+/g, '-')
         }
       },
     ],
