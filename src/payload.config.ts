@@ -35,6 +35,7 @@ import Footer from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { getServerSideURL } from './utilities/getURL'
+import ContactMessages from './collections/Properties/forms/ContacctProperties';
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -113,6 +114,7 @@ export default buildConfig({
     PropertyTypes,
     Locations,
     Amenities,
+    ContactMessages
   ],
 
   // #################################################################################

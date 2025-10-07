@@ -91,6 +91,7 @@ export interface Config {
     propertyTypes: PropertyType;
     locations: Location;
     amenities: Amenity;
+    contactMessages: ContactMessage;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -124,6 +125,7 @@ export interface Config {
     propertyTypes: PropertyTypesSelect<false> | PropertyTypesSelect<true>;
     locations: LocationsSelect<false> | LocationsSelect<true>;
     amenities: AmenitiesSelect<false> | AmenitiesSelect<true>;
+    contactMessages: ContactMessagesSelect<false> | ContactMessagesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -2083,6 +2085,22 @@ export interface BhkType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contactMessages".
+ */
+export interface ContactMessage {
+  id: number;
+  name: string;
+  email: string;
+  phone?: string | null;
+  message: string;
+  propertyId?: string | null;
+  propertyType?: string | null;
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -2523,6 +2541,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'amenities';
         value: number | Amenity;
+      } | null)
+    | ({
+        relationTo: 'contactMessages';
+        value: number | ContactMessage;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -3813,6 +3835,21 @@ export interface AmenitiesSelect<T extends boolean = true> {
   label?: T;
   value?: T;
   icon?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contactMessages_select".
+ */
+export interface ContactMessagesSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  phone?: T;
+  message?: T;
+  propertyId?: T;
+  propertyType?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }
