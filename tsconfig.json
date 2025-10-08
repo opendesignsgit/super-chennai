@@ -52,7 +52,7 @@
     "next-sitemap.config.cjs"
 , "src/Header/test.jsx",
 "next-env.d.ts", "**/*.ts", "**/*.tsx", "custom.d.ts"
-
+, "src/utilities/emailComponents"
   ],
   "exclude": [
     "node_modules"

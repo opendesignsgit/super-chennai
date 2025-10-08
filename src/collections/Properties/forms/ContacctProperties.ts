@@ -15,15 +15,16 @@ const ContactMessages: CollectionConfig = {
     { name: 'societyName', type: 'text' },
     { name: 'builderName', type: 'text' },
     { name: 'buildercontactEmail', type: 'text' },
-    
+
     { name: 'publishedAt', type: 'date' },
   ],
   admin: {
     useAsTitle: 'name',
+    defaultColumns: ['name', 'email', 'phone', 'propertyType', 'builderName', 'publishedAt'],
   },
   access: {
     create: () => true,
-    read: () => false,
+    read: () => true,
     update: () => false,
     delete: () => false,
   },
@@ -41,6 +42,7 @@ const ContactMessages: CollectionConfig = {
               context: `New message about ${doc.propertyType || 'property'}`,
               subject: `New Contact Form: ${doc.propertyType || 'Property Inquiry'}`,
               templateTitle: ` ${doc.propertyType || 'Property'} Inquiry`,
+              buildercontactEmail: doc.buildercontactEmail || '',
               extraFields: {
                 'Property ID': doc.propertyId || 'N/A',
                 Slug: doc.slug || 'N/A',

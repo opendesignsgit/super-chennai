@@ -2096,6 +2096,11 @@ export interface ContactMessage {
   propertyId?: string | null;
   propertyType?: string | null;
   slug?: string | null;
+  title?: string | null;
+  societyName?: string | null;
+  builderName?: string | null;
+  buildercontactEmail?: string | null;
+  publishedAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -3850,6 +3855,11 @@ export interface ContactMessagesSelect<T extends boolean = true> {
   propertyId?: T;
   propertyType?: T;
   slug?: T;
+  title?: T;
+  societyName?: T;
+  builderName?: T;
+  buildercontactEmail?: T;
+  publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }
