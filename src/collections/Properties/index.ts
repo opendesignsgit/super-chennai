@@ -154,8 +154,8 @@ export const Properties: CollectionConfig<'properties'> = {
                 plural: 'Questions',
               },
               fields: [
-                { name: 'question', type: 'text', label: 'Question', required: true },
-                { name: 'answer', type: 'textarea', label: 'Answer', required: true },
+                { name: 'question', type: 'text', label: 'Question' },
+                { name: 'answer', type: 'textarea', label: 'Answer' },
               ],
             },
             //############## MAP VIEW ####################
@@ -193,7 +193,6 @@ export const Properties: CollectionConfig<'properties'> = {
                   name: 'file',
                   type: 'upload',
                   relationTo: 'media',
-                  required: true,
                   label: 'Floor Plan (Image/PDF)',
                 },
                 {
@@ -279,6 +278,11 @@ export const Properties: CollectionConfig<'properties'> = {
               type: 'text',
               label: 'Agent RERA ID',
             },
+            {
+              name: 'agentCmdaId',
+              type: 'text',
+              label: 'Agent CMDA Approval ID',
+            },
             //############## 7. Society / Project Info#################
             {
               name: 'society',
@@ -347,7 +351,7 @@ export const Properties: CollectionConfig<'properties'> = {
               name: 'bhk',
               type: 'relationship',
               relationTo: 'bhkTypes',
-              required: true,
+              // required: true,
               admin: {
                 description: 'bhk',
               },

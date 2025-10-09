@@ -1810,8 +1810,8 @@ export interface Property {
     | null;
   faq?:
     | {
-        question: string;
-        answer: string;
+        question?: string | null;
+        answer?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -1829,7 +1829,7 @@ export interface Property {
     | null;
   floorPlans?:
     | {
-        file: number | Media;
+        file?: (number | null) | Media;
         caption?: string | null;
         id?: string | null;
       }[]
@@ -1846,6 +1846,7 @@ export interface Property {
    */
   transactionType: 'new_booking' | 'resale' | 'pre_launch';
   agentReraId?: string | null;
+  agentCmdaId?: string | null;
   society?: {
     name?: string | null;
     builder?: string | null;
@@ -1867,7 +1868,7 @@ export interface Property {
   /**
    * bhk
    */
-  bhk: number | BhkType;
+  bhk?: (number | null) | BhkType;
   bedrooms?: number | null;
   semiRooms?: {
     studyRoom?: boolean | null;
@@ -3653,6 +3654,7 @@ export interface PropertiesSelect<T extends boolean = true> {
   ageOfProperty?: T;
   transactionType?: T;
   agentReraId?: T;
+  agentCmdaId?: T;
   society?:
     | T
     | {
