@@ -283,7 +283,6 @@ export const Properties: CollectionConfig<'properties'> = {
               type: 'text',
               label: 'Agent CMDA Approval ID',
             },
-            //############## 7. Society / Project Info#################
             {
               name: 'society',
               type: 'group',
@@ -300,8 +299,18 @@ export const Properties: CollectionConfig<'properties'> = {
                     { label: 'Under Construction', value: 'under' },
                   ],
                 },
+                //############## URL OFFICIAL ############################
+                {
+                  name: 'externalUrl',
+                  type: 'text',
+                  label: 'External URL',
+                  admin: {
+                    description: 'Enter the official website or external link for this property',
+                  },
+                },
               ],
             },
+
             //############## LOCATIONS ################################
             {
               name: 'location',
@@ -314,21 +323,20 @@ export const Properties: CollectionConfig<'properties'> = {
               },
             },
             //############## AMENTIES #################################
-            {
-              name: 'amenities',
-              type: 'relationship',
-              relationTo: 'amenities',
-              hasMany: true,
-              admin: {
-                description: 'Amenities',
-                position: 'sidebar',
-              },
-            },
+            // {
+            //   name: 'amenities',
+            //   type: 'relationship',
+            //   relationTo: 'amenities',
+            //   hasMany: true,
+            //   admin: {
+            //     description: 'Amenities',
+            //     position: 'sidebar',
+            //   },
+            // },
             //############## FURNISHING #################################
             {
               name: 'furnishing',
               type: 'select',
-              required: true,
               admin: {
                 description: 'Furnishing',
               },
@@ -394,16 +402,19 @@ export const Properties: CollectionConfig<'properties'> = {
               },
               validate: validatePrimitiveByPropertyType(balconies, 'Balconies', true),
             },
-            //##############  AREA NUMBER OF SQFIT  ############
+            //############### BUILDUP AREA RANGE ##################
             {
               name: 'area',
-              type: 'number',
-              label: 'Built-up Area (sq.ft)',
-              required: true,
+              type: 'group',
+              label: 'Built-up Area Range',
               admin: {
-                description: 'Area',
-                position: 'sidebar',
+                description: 'Specify the min and max built-up area for apartments in sq.ft',
               },
+              fields: [
+                { name: 'minSqft', type: 'number', label: 'Minimum Area (sq.ft)' },
+                { name: 'maxSqft', type: 'number', label: 'Maximum Area (sq.ft)' },
+                { name: 'aker', type: 'text', label: 'Area in Aker (e.g., 0.02-0.05)' },
+              ],
             },
             //##############  FLOORS OPTION   ##################
             {
@@ -618,7 +629,7 @@ export const Properties: CollectionConfig<'properties'> = {
             {
               name: 'greenFeatures',
               type: 'array',
-              label: 'Green Features',
+              label: 'Location Advantages',
               fields: [
                 { name: 'feature', type: 'text' }, // e.g., Solar Panels, Rainwater Harvesting
               ],
@@ -639,6 +650,11 @@ export const Properties: CollectionConfig<'properties'> = {
                     { label: 'Glass', value: 'glass' },
                     { label: 'Other', value: 'other' },
                   ],
+                },
+                {
+                  name: 'doorTypeDescription',
+                  type: 'text',
+                  label: 'Door/Window Description',
                 },
                 { name: 'wardrobes', type: 'number', label: 'Wardrobes' },
                 { name: 'curtains', type: 'checkbox', label: 'Curtains / Blinds' },
@@ -686,17 +702,236 @@ export const Properties: CollectionConfig<'properties'> = {
               type: 'group',
               label: 'Building / Amenities',
               fields: [
-                { name: 'elevator', type: 'checkbox', label: 'Lift / Elevator' },
-                { name: 'security', type: 'checkbox', label: 'Security / CCTV' },
-                { name: 'intercom', type: 'checkbox', label: 'Intercom Facility' },
-                { name: 'fireSafety', type: 'checkbox', label: 'Fire Safety System' },
-                { name: 'clubhouse', type: 'checkbox', label: 'Clubhouse Access' },
-                { name: 'swimmingPool', type: 'checkbox', label: 'Swimming Pool' },
-                { name: 'gym', type: 'checkbox', label: 'Gym / Fitness Center' },
-                { name: 'playArea', type: 'checkbox', label: 'Children’s Play Area' },
-                { name: 'garden', type: 'checkbox', label: 'Garden / Park' },
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'elevator', type: 'checkbox', label: 'Lift / Elevator' },
+                    { name: 'security', type: 'checkbox', label: 'Security / CCTV' },
+                    { name: 'intercom', type: 'checkbox', label: 'Intercom Facility' },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'fireSafety', type: 'checkbox', label: 'Fire Safety System' },
+                    { name: 'clubhouse', type: 'checkbox', label: 'Clubhouse Access' },
+                    { name: 'swimmingPool', type: 'checkbox', label: 'Swimming Pool' },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'gym', type: 'checkbox', label: 'Gym / Fitness Center' },
+                    { name: 'playArea', type: 'checkbox', label: 'Children’s Play Area' },
+                    { name: 'garden', type: 'checkbox', label: 'Garden / Park' },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'yogaArea', type: 'checkbox', label: 'Yoga Area' },
+                    { name: 'clubHouse', type: 'checkbox', label: 'Club House' },
+                    { name: 'miniTheatre', type: 'checkbox', label: 'Mini Theatre' },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'indoorGames', type: 'checkbox', label: 'Indoor Games' },
+                    { name: 'herbGarden', type: 'checkbox', label: 'Herb Garden' },
+                    { name: 'multipurposeHall', type: 'checkbox', label: 'Multipurpose Hall' },
+                  ],
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'liftLobby', type: 'checkbox', label: 'Lift Lobby' },
+                    { name: 'amphitheatre', type: 'checkbox', label: 'Amphitheatre' },
+                    { name: 'creche', type: 'checkbox', label: 'Creche' },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'lobby', type: 'checkbox', label: 'Lobby' },
+                    { name: 'reflexology', type: 'checkbox', label: 'Reflexology' },
+                    { name: 'seatingPlaza', type: 'checkbox', label: 'Seating Plaza' },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'dropOff', type: 'checkbox', label: 'Drop Off' },
+                    { name: 'retreatTerrace', type: 'checkbox', label: 'Retreat Terrace' },
+                    { name: 'mandate', type: 'checkbox', label: 'Mandate' },
+                  ],
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'tranquilDeck', type: 'checkbox', label: 'Tranquil Deck' },
+                    { name: 'aiFresco', type: 'checkbox', label: 'AI Fresco' },
+                    { name: 'theLounge', type: 'checkbox', label: 'The Lounge' },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'fairviewDeck', type: 'checkbox', label: 'Fairview Deck' },
+                    { name: 'wellnessPatio', type: 'checkbox', label: 'Wellness Patio' },
+                    { name: 'aerobicsZumba', type: 'checkbox', label: 'Aerobics & Zumba' },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'basementParking', type: 'checkbox', label: 'Basement Parking' },
+                    { name: 'evChargingPoint', type: 'checkbox', label: 'EV Charging Point' },
+                    { name: 'kidsPlayArea', type: 'checkbox', label: 'Kids Play Area' },
+                  ],
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'pergolaSeating', type: 'checkbox', label: 'Pergola Seating' },
+                    { name: 'tennisCourt', type: 'checkbox', label: 'Tennis Court' },
+                    { name: 'chessBoard', type: 'checkbox', label: 'Chess Board' },
+                  ],
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'cricketPracticePitch',
+                      type: 'checkbox',
+                      label: 'Cricket Practice Pitch',
+                    },
+                    { name: 'futsalCourt', type: 'checkbox', label: 'Futsal Court' },
+                    {
+                      name: 'halfBasketballCourt',
+                      type: 'checkbox',
+                      label: 'Half Basketball Court',
+                    },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'hopscotch', type: 'checkbox', label: 'Hopscotch' },
+                    { name: 'moundsPlayArea', type: 'checkbox', label: 'Mounds & Play Area' },
+                    { name: 'snakesAndLadder', type: 'checkbox', label: 'Snakes & Ladder' },
+                  ],
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'coWorking', type: 'checkbox', label: 'Co Working' },
+                    { name: 'partyHall', type: 'checkbox', label: 'Party Hall' },
+                    { name: 'skatingRink', type: 'checkbox', label: 'Skating Rink' },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'miniGolf', type: 'checkbox', label: 'Mini Golf' },
+                    { name: 'basketballCourt', type: 'checkbox', label: 'Full Basketball Court' },
+                    { name: 'soccerField', type: 'checkbox', label: 'Soccer / Football Field' },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'bocceCourt', type: 'checkbox', label: 'Bocce / Lawn Bowling' },
+                    { name: 'cyclingTrack', type: 'checkbox', label: 'Cycling Track' },
+                    { name: 'rockClimbingWall', type: 'checkbox', label: 'Rock Climbing Wall' },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'zipLine', type: 'checkbox', label: 'Zip Line' },
+                    { name: 'trampolinePark', type: 'checkbox', label: 'Trampoline Park' },
+                    { name: 'petPark', type: 'checkbox', label: 'Pet Park' },
+                  ],
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'amphitheaterStage', type: 'checkbox', label: 'Amphitheater Stage' },
+                    { name: 'communityGarden', type: 'checkbox', label: 'Community Garden' },
+                    { name: 'readingLounge', type: 'checkbox', label: 'Reading / Library Lounge' },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'multipurposePlayArea',
+                      type: 'checkbox',
+                      label: 'Multipurpose Play Area',
+                    },
+                    {
+                      name: 'basketballHalfCourt',
+                      type: 'checkbox',
+                      label: 'Half Basketball Court (Additional)',
+                    },
+                    { name: 'boardGamesRoom', type: 'checkbox', label: 'Board Games Room' },
+                  ],
+                },
+
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'meditationDeck', type: 'checkbox', label: 'Meditation Deck' },
+                    { name: 'outdoorFitnessZone', type: 'checkbox', label: 'Outdoor Fitness Zone' },
+                    { name: 'hammockLounge', type: 'checkbox', label: 'Hammock / Relax Zone' },
+                  ],
+                },
+                { name: 'firePit', type: 'checkbox', label: 'Fire Pit / BBQ Area' },
               ],
             },
+            // ##############SPECFICATIONS ################
+            
+            {
+              name: 'specifications',
+              type: 'group',
+              label: 'Specifications',
+              admin: {
+                description: 'Detailed property specifications',
+              },
+              fields: [
+                { name: 'structure', type: 'textarea', label: 'Structure' },
+                { name: 'floorFinish', type: 'textarea', label: 'Floor Finish with Skirting' },
+                { name: 'wallFinishes', type: 'textarea', label: 'Wall Finishes' },
+                { name: 'kitchenUtility', type: 'textarea', label: 'Kitchen / Utility' },
+                { name: 'bathrooms', type: 'textarea', label: 'Bathrooms' },
+                { name: 'joinery', type: 'textarea', label: 'Joinery' },
+                { name: 'windows', type: 'textarea', label: 'Windows' },
+                { name: 'waterproofing', type: 'textarea', label: 'Waterproofing' },
+                { name: 'electrical', type: 'textarea', label: 'Electrical' },
+                {
+                  name: 'communicationSecurity',
+                  type: 'textarea',
+                  label: 'Communication / Security',
+                },
+                { name: 'plumbing', type: 'textarea', label: 'Plumbing' },
+                { name: 'commonFeatures', type: 'textarea', label: 'Common Features' },
+              ],
+            },
+            
           ],
         },
 

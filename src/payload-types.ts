@@ -1852,19 +1852,19 @@ export interface Property {
     builder?: string | null;
     totalUnits?: number | null;
     possessionStatus?: ('ready' | 'under') | null;
+    /**
+     * Enter the official website or external link for this property
+     */
+    externalUrl?: string | null;
   };
   /**
    * location
    */
   location: number | Location;
   /**
-   * Amenities
-   */
-  amenities?: (number | Amenity)[] | null;
-  /**
    * Furnishing
    */
-  furnishing: 'fully' | 'semi' | 'unfurnished';
+  furnishing?: ('fully' | 'semi' | 'unfurnished') | null;
   /**
    * bhk
    */
@@ -1878,9 +1878,13 @@ export interface Property {
   };
   balconies?: number | null;
   /**
-   * Area
+   * Specify the min and max built-up area for apartments in sq.ft
    */
-  area: number;
+  area?: {
+    minSqft?: number | null;
+    maxSqft?: number | null;
+    aker?: string | null;
+  };
   /**
    * furnishing
    */
@@ -1932,6 +1936,7 @@ export interface Property {
     | null;
   interiors?: {
     doorType?: ('sliding' | 'wooden' | 'glass' | 'other') | null;
+    doorTypeDescription?: string | null;
     wardrobes?: number | null;
     curtains?: boolean | null;
     modularKitchen?: boolean | null;
@@ -1966,6 +1971,78 @@ export interface Property {
     gym?: boolean | null;
     playArea?: boolean | null;
     garden?: boolean | null;
+    yogaArea?: boolean | null;
+    clubHouse?: boolean | null;
+    miniTheatre?: boolean | null;
+    indoorGames?: boolean | null;
+    herbGarden?: boolean | null;
+    multipurposeHall?: boolean | null;
+    liftLobby?: boolean | null;
+    amphitheatre?: boolean | null;
+    creche?: boolean | null;
+    lobby?: boolean | null;
+    reflexology?: boolean | null;
+    seatingPlaza?: boolean | null;
+    dropOff?: boolean | null;
+    retreatTerrace?: boolean | null;
+    mandate?: boolean | null;
+    tranquilDeck?: boolean | null;
+    aiFresco?: boolean | null;
+    theLounge?: boolean | null;
+    fairviewDeck?: boolean | null;
+    wellnessPatio?: boolean | null;
+    aerobicsZumba?: boolean | null;
+    basementParking?: boolean | null;
+    evChargingPoint?: boolean | null;
+    kidsPlayArea?: boolean | null;
+    pergolaSeating?: boolean | null;
+    tennisCourt?: boolean | null;
+    chessBoard?: boolean | null;
+    cricketPracticePitch?: boolean | null;
+    futsalCourt?: boolean | null;
+    halfBasketballCourt?: boolean | null;
+    hopscotch?: boolean | null;
+    moundsPlayArea?: boolean | null;
+    snakesAndLadder?: boolean | null;
+    coWorking?: boolean | null;
+    partyHall?: boolean | null;
+    skatingRink?: boolean | null;
+    miniGolf?: boolean | null;
+    basketballCourt?: boolean | null;
+    soccerField?: boolean | null;
+    bocceCourt?: boolean | null;
+    cyclingTrack?: boolean | null;
+    rockClimbingWall?: boolean | null;
+    zipLine?: boolean | null;
+    trampolinePark?: boolean | null;
+    petPark?: boolean | null;
+    amphitheaterStage?: boolean | null;
+    communityGarden?: boolean | null;
+    readingLounge?: boolean | null;
+    multipurposePlayArea?: boolean | null;
+    basketballHalfCourt?: boolean | null;
+    boardGamesRoom?: boolean | null;
+    meditationDeck?: boolean | null;
+    outdoorFitnessZone?: boolean | null;
+    hammockLounge?: boolean | null;
+    firePit?: boolean | null;
+  };
+  /**
+   * Detailed property specifications
+   */
+  specifications?: {
+    structure?: string | null;
+    floorFinish?: string | null;
+    wallFinishes?: string | null;
+    kitchenUtility?: string | null;
+    bathrooms?: string | null;
+    joinery?: string | null;
+    windows?: string | null;
+    waterproofing?: string | null;
+    electrical?: string | null;
+    communicationSecurity?: string | null;
+    plumbing?: string | null;
+    commonFeatures?: string | null;
   };
   rentDetails?: {
     monthlyRent?: number | null;
@@ -2060,6 +2137,17 @@ export interface Location {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bhkTypes".
+ */
+export interface BhkType {
+  id: number;
+  label: string;
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "amenities".
  */
 export interface Amenity {
@@ -2070,17 +2158,6 @@ export interface Amenity {
    */
   value: string;
   icon?: (number | null) | Media;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "bhkTypes".
- */
-export interface BhkType {
-  id: number;
-  label: string;
-  value: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -3662,9 +3739,9 @@ export interface PropertiesSelect<T extends boolean = true> {
         builder?: T;
         totalUnits?: T;
         possessionStatus?: T;
+        externalUrl?: T;
       };
   location?: T;
-  amenities?: T;
   furnishing?: T;
   bhk?: T;
   bedrooms?: T;
@@ -3677,7 +3754,13 @@ export interface PropertiesSelect<T extends boolean = true> {
         storeRoom?: T;
       };
   balconies?: T;
-  area?: T;
+  area?:
+    | T
+    | {
+        minSqft?: T;
+        maxSqft?: T;
+        aker?: T;
+      };
   floor?: T;
   facingDirection?: T;
   parking?: T;
@@ -3725,6 +3808,7 @@ export interface PropertiesSelect<T extends boolean = true> {
     | T
     | {
         doorType?: T;
+        doorTypeDescription?: T;
         wardrobes?: T;
         curtains?: T;
         modularKitchen?: T;
@@ -3765,6 +3849,77 @@ export interface PropertiesSelect<T extends boolean = true> {
         gym?: T;
         playArea?: T;
         garden?: T;
+        yogaArea?: T;
+        clubHouse?: T;
+        miniTheatre?: T;
+        indoorGames?: T;
+        herbGarden?: T;
+        multipurposeHall?: T;
+        liftLobby?: T;
+        amphitheatre?: T;
+        creche?: T;
+        lobby?: T;
+        reflexology?: T;
+        seatingPlaza?: T;
+        dropOff?: T;
+        retreatTerrace?: T;
+        mandate?: T;
+        tranquilDeck?: T;
+        aiFresco?: T;
+        theLounge?: T;
+        fairviewDeck?: T;
+        wellnessPatio?: T;
+        aerobicsZumba?: T;
+        basementParking?: T;
+        evChargingPoint?: T;
+        kidsPlayArea?: T;
+        pergolaSeating?: T;
+        tennisCourt?: T;
+        chessBoard?: T;
+        cricketPracticePitch?: T;
+        futsalCourt?: T;
+        halfBasketballCourt?: T;
+        hopscotch?: T;
+        moundsPlayArea?: T;
+        snakesAndLadder?: T;
+        coWorking?: T;
+        partyHall?: T;
+        skatingRink?: T;
+        miniGolf?: T;
+        basketballCourt?: T;
+        soccerField?: T;
+        bocceCourt?: T;
+        cyclingTrack?: T;
+        rockClimbingWall?: T;
+        zipLine?: T;
+        trampolinePark?: T;
+        petPark?: T;
+        amphitheaterStage?: T;
+        communityGarden?: T;
+        readingLounge?: T;
+        multipurposePlayArea?: T;
+        basketballHalfCourt?: T;
+        boardGamesRoom?: T;
+        meditationDeck?: T;
+        outdoorFitnessZone?: T;
+        hammockLounge?: T;
+        firePit?: T;
+      };
+  specifications?:
+    | T
+    | {
+        structure?: T;
+        floorFinish?: T;
+        wallFinishes?: T;
+        kitchenUtility?: T;
+        bathrooms?: T;
+        joinery?: T;
+        windows?: T;
+        waterproofing?: T;
+        electrical?: T;
+        communicationSecurity?: T;
+        plumbing?: T;
+        commonFeatures?: T;
       };
   rentDetails?:
     | T
