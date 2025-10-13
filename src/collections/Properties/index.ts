@@ -390,7 +390,7 @@ export const Properties: CollectionConfig<'properties'> = {
                 { name: 'poojaRoom', type: 'checkbox', label: 'Pooja Room' },
                 { name: 'storeRoom', type: 'checkbox', label: 'Store Room' },
               ],
-              validate: validateCheckboxGroupByPropertyType(ExtraRooms, 'semiRooms', true),
+              // validate: validateCheckboxGroupByPropertyType(ExtraRooms, 'semiRooms', true),
             },
             // ##############  BALCONIES  ######################
             {
@@ -425,7 +425,7 @@ export const Properties: CollectionConfig<'properties'> = {
               admin: {
                 description: 'furnishing',
               },
-              validate: validateGroupByPropertyType(floor, 'Total Floors', true),
+              // validate: validateGroupByPropertyType(floor, 'Total Floors', true),
             },
             //##############  FACING DIRECTIONS   ##############
             {
