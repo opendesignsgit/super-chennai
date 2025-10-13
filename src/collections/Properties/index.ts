@@ -525,7 +525,7 @@ export const Properties: CollectionConfig<'properties'> = {
               name: 'plotArea',
               type: 'number',
               label: 'Plot Area (sq.ft / acres)',
-              validate: validateGroupByPropertyType(plotArea, 'Plot Area (sq.ft / acres)', true),
+              // validate: validateGroupByPropertyType(plotArea, 'Plot Area (sq.ft / acres)', true),
             },
             //##############  DIMENTIONS  ###########################
 
@@ -551,7 +551,7 @@ export const Properties: CollectionConfig<'properties'> = {
               name: 'cornerPlot',
               type: 'checkbox',
               label: 'Corner Plot',
-              validate: validateGroupByPropertyType(cornerPlot, 'Corner Plot', true),
+              // validate: validateGroupByPropertyType(cornerPlot, 'Corner Plot', true),
             },
           ],
         },
@@ -904,7 +904,7 @@ export const Properties: CollectionConfig<'properties'> = {
               ],
             },
             // ##############SPECFICATIONS ################
-            
+
             {
               name: 'specifications',
               type: 'group',
@@ -931,7 +931,6 @@ export const Properties: CollectionConfig<'properties'> = {
                 { name: 'commonFeatures', type: 'textarea', label: 'Common Features' },
               ],
             },
-            
           ],
         },
 
