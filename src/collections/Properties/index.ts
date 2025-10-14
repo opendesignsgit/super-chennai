@@ -565,10 +565,12 @@ export const Properties: CollectionConfig<'properties'> = {
             //##############  PRICE WHOLE   ####################
             {
               name: 'price',
-              type: 'number',
+              type: 'text',
+              // min: 0,
+              // max: 99999999999,
               required: true,
               admin: {
-                description: 'Sale or Rent price',
+                description: 'Supports large numbers (e.g. 1 Cr, 100000000)',
                 position: 'sidebar',
               },
             },

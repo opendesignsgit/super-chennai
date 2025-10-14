@@ -1844,7 +1844,7 @@ export interface Property {
   /**
    * Select the transaction type for this property (e.g., New Booking, Resale, Pre-Launch)
    */
-  transactionType: 'new_booking' | 'resale' | 'pre_launch';
+  transactionType?: ('new_booking' | 'resale' | 'pre_launch') | null;
   agentReraId?: string | null;
   agentCmdaId?: string | null;
   society?: {
@@ -1915,9 +1915,9 @@ export interface Property {
   roadWidth?: number | null;
   cornerPlot?: boolean | null;
   /**
-   * Sale or Rent price
+   * Supports large numbers (e.g. 1 Cr, 100000000)
    */
-  price: number;
+  price: string;
   pricePerSqft?: number | null;
   maintenanceCharges?: number | null;
   bookingAmount?: number | null;
