@@ -358,6 +358,7 @@ export const Properties: CollectionConfig<'properties'> = {
             {
               name: 'bhk',
               type: 'relationship',
+              hasMany: true,
               relationTo: 'bhkTypes',
               // required: true,
               admin: {

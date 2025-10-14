@@ -1868,7 +1868,7 @@ export interface Property {
   /**
    * bhk
    */
-  bhk?: (number | null) | BhkType;
+  bhk?: (number | BhkType)[] | null;
   bedrooms?: number | null;
   semiRooms?: {
     studyRoom?: boolean | null;
