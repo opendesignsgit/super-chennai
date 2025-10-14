@@ -369,7 +369,7 @@ export const Properties: CollectionConfig<'properties'> = {
             {
               name: 'bedrooms',
               type: 'number',
-              validate: validateGroupByPropertyType(TYPES_WITH_BEDROOMS, 'bedrooms'),
+              // validate: validateGroupByPropertyType(TYPES_WITH_BEDROOMS, 'bedrooms'),
               // admin: {
               //   hidden: ({ siblingData }) => {
               //     return (
@@ -400,7 +400,7 @@ export const Properties: CollectionConfig<'properties'> = {
               admin: {
                 condition: (_, siblingData) => !!siblingData?.propertyType,
               },
-              validate: validatePrimitiveByPropertyType(balconies, 'Balconies', true),
+              // validate: validatePrimitiveByPropertyType(balconies, 'Balconies', true),
             },
             //############### BUILDUP AREA RANGE ##################
             {
@@ -453,7 +453,7 @@ export const Properties: CollectionConfig<'properties'> = {
               admin: {
                 description: 'Parking',
               },
-              validate: validateGroupByPropertyType(parking, 'Parking', true),
+              // validate: validateGroupByPropertyType(parking, 'Parking', true),
             },
             //##############  WATER SUPPLY   ####################
             {
@@ -496,29 +496,29 @@ export const Properties: CollectionConfig<'properties'> = {
                 { label: 'Warehouse / Godown', value: 'warehouse' },
                 { label: 'Industrial Land', value: 'industrial' },
               ],
-              validate: validateGroupByPropertyType(
-                commercialType,
-                'Commercial Property Type',
-                true,
-              ),
+              // validate: validateGroupByPropertyType(
+              //   commercialType,
+              //   'Commercial Property Type',
+              //   true,
+              // ),
             },
             //##############  SEATING CAPACITY   ###################
             {
               name: 'seatingCapacity',
               type: 'number',
               label: 'Seating Capacity (for offices)',
-              validate: validateGroupByPropertyType(
-                seatingCapacity,
-                'Seating Capacity (for offices)',
-                true,
-              ),
+              // validate: validateGroupByPropertyType(
+              //   seatingCapacity,
+              //   'Seating Capacity (for offices)',
+              //   true,
+              // ),
             },
             //##############  WASHROOMS  NUMBERS  ###################
             {
               name: 'washrooms',
               type: 'number',
               label: 'Washrooms',
-              validate: validateGroupByPropertyType(washrooms, 'Washrooms', true),
+              // validate: validateGroupByPropertyType(washrooms, 'Washrooms', true),
             },
             //##############  PLOT LAND SPECIFIC  ###################
             {
@@ -537,7 +537,7 @@ export const Properties: CollectionConfig<'properties'> = {
                 { name: 'length', type: 'number', label: 'Length' },
                 { name: 'width', type: 'number', label: 'Width' },
               ],
-              validate: validateDimensionsByPropertyType(dimensions, 'Dimensions', true),
+              // validate: validateDimensionsByPropertyType(dimensions, 'Dimensions', true),
             },
 
             //##############  ROAD WIDTH  ###########################
@@ -663,7 +663,7 @@ export const Properties: CollectionConfig<'properties'> = {
                 { name: 'falseCeiling', type: 'checkbox', label: 'False Ceiling / POP Work' },
                 { name: 'lighting', type: 'number', label: 'Lighting Fixtures (Count)' },
               ],
-              validate: validateGroupByPropertyType(furnishedStatus, 'Furnishing', true),
+              // validate: validateGroupByPropertyType(furnishedStatus, 'Furnishing', true),
             },
 
             //############## appliances FATURES ##########
