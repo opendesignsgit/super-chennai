@@ -260,7 +260,7 @@ export const Properties: CollectionConfig<'properties'> = {
             {
               name: 'transactionType',
               type: 'select',
-              required: true,
+              // required: true,
               admin: {
                 description:
                   'Select the transaction type for this property (e.g., New Booking, Resale, Pre-Launch)',
