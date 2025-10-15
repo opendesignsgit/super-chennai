@@ -48,7 +48,7 @@ import {
 } from '@/utilities/validateByPropertyType'
 
 export const Properties: CollectionConfig<'properties'> = {
-  slug: 'properties',
+  slug: 'property',
   access: {
     create: authenticated,
     delete: authenticated,
