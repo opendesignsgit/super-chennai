@@ -628,18 +628,18 @@ export const Properties: CollectionConfig<'properties'> = {
           label: 'Price / Financials',
           fields: [
             //##############  PRICE WHOLE   ####################
-            {
-              name: 'price',
-              type: 'number',
-              min: 0,
-              max: 99999999999,
-              required: true,
-              admin: {
-                description: 'Sale or Rent price',
-                position: 'sidebar',
-                step: 1,
-              },
-            },
+            // {
+            //   name: 'price',
+            //   type: 'number',
+            //   min: 0,
+            //   max: 99999999999,
+            //   required: true,
+            //   admin: {
+            //     description: 'Sale or Rent price',
+            //     position: 'sidebar',
+            //     step: 1,
+            //   },
+            // },
             //##############  PRICE PER SQRFT   ################
             {
               name: 'pricePerSqft',
