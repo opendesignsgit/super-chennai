@@ -1915,9 +1915,9 @@ export interface Property {
   roadWidth?: number | null;
   cornerPlot?: boolean | null;
   /**
-   * Supports large numbers (e.g. 1 Cr, 100000000)
+   * Sale or Rent price
    */
-  price: string;
+  price: number;
   pricePerSqft?: number | null;
   maintenanceCharges?: number | null;
   bookingAmount?: number | null;
