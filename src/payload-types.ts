@@ -1820,6 +1820,10 @@ export interface Property {
     longitude?: number | null;
     mapEmbed?: string | null;
   };
+  /**
+   * Paste a video URL (e.g., YouTube or Vimeo) to show a walkthrough video on the property page
+   */
+  walkthroughVideo?: string | null;
   nearby?:
     | {
         place?: string | null;
@@ -1834,10 +1838,26 @@ export interface Property {
         id?: string | null;
       }[]
     | null;
+  routeMap?:
+    | {
+        file?: (number | null) | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   /**
    * propertyType
    */
   propertyType: number | PropertyType;
+  /**
+   * bhk
+   */
+  bhk?: (number | BhkType)[] | null;
+  totalUnits?: number | null;
+  /**
+   * furnishing
+   */
+  floor?: number | null;
   purpose: 'sale' | 'rent' | 'lease' | 'pg';
   ownership?: ('freehold' | 'leasehold' | 'society' | 'poa') | null;
   ageOfProperty?: ('new' | '0-5' | '5-10' | '10plus') | null;
@@ -1865,10 +1885,6 @@ export interface Property {
    * Furnishing
    */
   furnishing?: ('fully' | 'semi' | 'unfurnished') | null;
-  /**
-   * bhk
-   */
-  bhk?: (number | BhkType)[] | null;
   bedrooms?: number | null;
   semiRooms?: {
     studyRoom?: boolean | null;
@@ -1886,9 +1902,13 @@ export interface Property {
     aker?: string | null;
   };
   /**
-   * furnishing
+   * Specify the minimum and maximum square feet range for this property
    */
-  floor?: number | null;
+  squareFeetRange?: {
+    minSqft?: number | null;
+    maxSqft?: number | null;
+    acres?: string | null;
+  };
   /**
    * facingDirection
    */
@@ -1929,6 +1949,15 @@ export interface Property {
     email?: string | null;
   };
   greenFeatures?:
+    | {
+        feature?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * List key highlights or amenities of this property
+   */
+  features?:
     | {
         feature?: string | null;
         id?: string | null;
@@ -2028,22 +2057,18 @@ export interface Property {
     firePit?: boolean | null;
   };
   /**
-   * Detailed property specifications
+   * Add specification rows. Each row has a label and value.
    */
-  specifications?: {
-    structure?: string | null;
-    floorFinish?: string | null;
-    wallFinishes?: string | null;
-    kitchenUtility?: string | null;
-    bathrooms?: string | null;
-    joinery?: string | null;
-    windows?: string | null;
-    waterproofing?: string | null;
-    electrical?: string | null;
-    communicationSecurity?: string | null;
-    plumbing?: string | null;
-    commonFeatures?: string | null;
-  };
+  specifications?:
+    | {
+        label: string;
+        /**
+         * Enter a short description or details for this spec
+         */
+        value?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   rentDetails?: {
     monthlyRent?: number | null;
     securityDeposit?: number | null;
@@ -2067,6 +2092,10 @@ export interface Property {
   urgentSale?: boolean | null;
   security?: boolean | null;
   liftAvailable?: boolean | null;
+  /**
+   * Enable if this property should be marked as Official View
+   */
+  officialView?: boolean | null;
   populatedAuthors?:
     | {
         id?: string | null;
@@ -2108,6 +2137,17 @@ export interface PropertyType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bhkTypes".
+ */
+export interface BhkType {
+  id: number;
+  label: string;
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "locations".
  */
 export interface Location {
@@ -2131,17 +2171,6 @@ export interface Location {
   /**
    * Unique slug, e.g. "chennai-omr"
    */
-  value: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "bhkTypes".
- */
-export interface BhkType {
-  id: number;
-  label: string;
   value: string;
   updatedAt: string;
   createdAt: string;
@@ -3711,6 +3740,7 @@ export interface PropertiesSelect<T extends boolean = true> {
         longitude?: T;
         mapEmbed?: T;
       };
+  walkthroughVideo?: T;
   nearby?:
     | T
     | {
@@ -3725,7 +3755,17 @@ export interface PropertiesSelect<T extends boolean = true> {
         caption?: T;
         id?: T;
       };
+  routeMap?:
+    | T
+    | {
+        file?: T;
+        caption?: T;
+        id?: T;
+      };
   propertyType?: T;
+  bhk?: T;
+  totalUnits?: T;
+  floor?: T;
   purpose?: T;
   ownership?: T;
   ageOfProperty?: T;
@@ -3743,7 +3783,6 @@ export interface PropertiesSelect<T extends boolean = true> {
       };
   location?: T;
   furnishing?: T;
-  bhk?: T;
   bedrooms?: T;
   semiRooms?:
     | T
@@ -3761,7 +3800,13 @@ export interface PropertiesSelect<T extends boolean = true> {
         maxSqft?: T;
         aker?: T;
       };
-  floor?: T;
+  squareFeetRange?:
+    | T
+    | {
+        minSqft?: T;
+        maxSqft?: T;
+        acres?: T;
+      };
   facingDirection?: T;
   parking?: T;
   waterSupply?: T;
@@ -3799,6 +3844,12 @@ export interface PropertiesSelect<T extends boolean = true> {
         email?: T;
       };
   greenFeatures?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  features?:
     | T
     | {
         feature?: T;
@@ -3908,18 +3959,9 @@ export interface PropertiesSelect<T extends boolean = true> {
   specifications?:
     | T
     | {
-        structure?: T;
-        floorFinish?: T;
-        wallFinishes?: T;
-        kitchenUtility?: T;
-        bathrooms?: T;
-        joinery?: T;
-        windows?: T;
-        waterproofing?: T;
-        electrical?: T;
-        communicationSecurity?: T;
-        plumbing?: T;
-        commonFeatures?: T;
+        label?: T;
+        value?: T;
+        id?: T;
       };
   rentDetails?:
     | T
@@ -3945,6 +3987,7 @@ export interface PropertiesSelect<T extends boolean = true> {
   urgentSale?: T;
   security?: T;
   liftAvailable?: T;
+  officialView?: T;
   populatedAuthors?:
     | T
     | {

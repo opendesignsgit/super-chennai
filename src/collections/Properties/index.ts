@@ -173,6 +173,19 @@ export const Properties: CollectionConfig<'properties'> = {
                 },
               ],
             },
+            //############## WALK throw VIDEO  ####################
+            {
+              name: 'walkthroughVideo',
+              type: 'text',
+              label: 'Walkthrough Video URL',
+              admin: {
+                description:
+                  'Paste a video URL (e.g., YouTube or Vimeo) to show a walkthrough video on the property page',
+                placeholder: 'https://www.youtube.com/watch?v=example',
+                position: 'sidebar',
+              },
+            },
+
             //############## . Nearby / Connectivity ######
             {
               name: 'nearby',
@@ -193,12 +206,32 @@ export const Properties: CollectionConfig<'properties'> = {
                   name: 'file',
                   type: 'upload',
                   relationTo: 'media',
-                  label: 'Floor Plan (Image/PDF)',
+                  label: 'Floor Plan (Image)',
                 },
                 {
                   name: 'caption',
                   type: 'text',
                   label: 'Caption / Plan Name',
+                },
+              ],
+            },
+            //################# ROUTE MAP ##################
+
+            {
+              name: 'routeMap',
+              type: 'array',
+              label: 'Route Map',
+              fields: [
+                {
+                  name: 'file',
+                  type: 'upload',
+                  relationTo: 'media',
+                  label: 'Route Map (Image)',
+                },
+                {
+                  name: 'caption',
+                  type: 'text',
+                  label: 'Caption / Location Description',
                 },
               ],
             },
@@ -221,6 +254,32 @@ export const Properties: CollectionConfig<'properties'> = {
                 description: 'propertyType',
                 position: 'sidebar',
               },
+            },
+            //##############  bhk     Info  #######################
+            {
+              name: 'bhk',
+              type: 'relationship',
+              hasMany: true,
+              relationTo: 'bhkTypes',
+              // required: true,
+              admin: {
+                description: 'bhk',
+              },
+            },
+
+            //############# TOTAL UNITS ############################
+            { name: 'totalUnits', type: 'number', label: 'Total Units' },
+
+            //##############  FLOORS OPTION   ##################
+            {
+              name: 'floor',
+              type: 'number',
+              label: 'Total Floors',
+
+              admin: {
+                description: 'furnishing',
+              },
+              // validate: validateGroupByPropertyType(floor, 'Total Floors', true),
             },
             //##############  Property Purpose  #####################
             {
@@ -276,12 +335,12 @@ export const Properties: CollectionConfig<'properties'> = {
             {
               name: 'agentReraId',
               type: 'text',
-              label: 'Agent RERA ID',
+              label: 'RERA ID',
             },
             {
               name: 'agentCmdaId',
               type: 'text',
-              label: 'Agent CMDA Approval ID',
+              label: 'CMDA Approval ID',
             },
             {
               name: 'society',
@@ -354,17 +413,6 @@ export const Properties: CollectionConfig<'properties'> = {
         {
           label: 'Features / Specs',
           fields: [
-            //##############  bhk     Info  #################
-            {
-              name: 'bhk',
-              type: 'relationship',
-              hasMany: true,
-              relationTo: 'bhkTypes',
-              // required: true,
-              admin: {
-                description: 'bhk',
-              },
-            },
             // //##############  BED ROOMS  ######################
 
             {
@@ -417,18 +465,35 @@ export const Properties: CollectionConfig<'properties'> = {
                 { name: 'aker', type: 'text', label: 'Area in Aker (e.g., 0.02-0.05)' },
               ],
             },
-            //##############  FLOORS OPTION   ##################
-            {
-              name: 'floor',
-              type: 'number',
-              label: 'Total Floors',
+            //############### // SURE FEETRANGE  ##################
 
+            {
+              name: 'squareFeetRange',
+              type: 'group',
+              label: 'Square Feet Range',
               admin: {
-                description: 'furnishing',
+                description: 'Specify the minimum and maximum square feet range for this property',
               },
-              // validate: validateGroupByPropertyType(floor, 'Total Floors', true),
+              fields: [
+                {
+                  name: 'minSqft',
+                  type: 'number',
+                  label: 'Minimum Sq.ft',
+                },
+                {
+                  name: 'maxSqft',
+                  type: 'number',
+                  label: 'Maximum Sq.ft',
+                },
+                {
+                  name: 'acres',
+                  type: 'text',
+                  label: 'Area in Acres (e.g., 0.02 - 0.05)',
+                },
+              ],
             },
-            //##############  FACING DIRECTIONS   ##############
+
+            //##############  FACING DIRECTIONS   ##################
             {
               name: 'facingDirection',
               type: 'select',
@@ -638,6 +703,25 @@ export const Properties: CollectionConfig<'properties'> = {
                 { name: 'feature', type: 'text' }, // e.g., Solar Panels, Rainwater Harvesting
               ],
             },
+            {
+              name: 'features',
+              type: 'array',
+              label: 'Features',
+              admin: {
+                description: 'List key highlights or amenities of this property',
+              },
+              fields: [
+                {
+                  name: 'feature',
+                  type: 'text',
+                  label: 'Feature',
+                  admin: {
+                    placeholder: 'e.g., Swimming Pool, Gym, Clubhouse, 24/7 Security',
+                  },
+                },
+              ],
+            },
+
             //############## interiors FATURES ##########
             {
               name: 'interiors',
@@ -911,28 +995,23 @@ export const Properties: CollectionConfig<'properties'> = {
 
             {
               name: 'specifications',
-              type: 'group',
+              type: 'array',
               label: 'Specifications',
               admin: {
-                description: 'Detailed property specifications',
+                description: 'Add specification rows. Each row has a label and value.',
               },
               fields: [
-                { name: 'structure', type: 'textarea', label: 'Structure' },
-                { name: 'floorFinish', type: 'textarea', label: 'Floor Finish with Skirting' },
-                { name: 'wallFinishes', type: 'textarea', label: 'Wall Finishes' },
-                { name: 'kitchenUtility', type: 'textarea', label: 'Kitchen / Utility' },
-                { name: 'bathrooms', type: 'textarea', label: 'Bathrooms' },
-                { name: 'joinery', type: 'textarea', label: 'Joinery' },
-                { name: 'windows', type: 'textarea', label: 'Windows' },
-                { name: 'waterproofing', type: 'textarea', label: 'Waterproofing' },
-                { name: 'electrical', type: 'textarea', label: 'Electrical' },
+                { name: 'label', type: 'text', label: 'Spec name', required: true },
                 {
-                  name: 'communicationSecurity',
+                  name: 'value',
                   type: 'textarea',
-                  label: 'Communication / Security',
+                  label: 'Value / Details',
+                  admin: {
+                    description: 'Enter a short description or details for this spec',
+                  },
                 },
-                { name: 'plumbing', type: 'textarea', label: 'Plumbing' },
-                { name: 'commonFeatures', type: 'textarea', label: 'Common Features' },
+                // optional: an order field if you need explicit ordering
+                // { name: 'order', type: 'number', admin: { readOnly: true } }
               ],
             },
           ],
@@ -1102,6 +1181,15 @@ export const Properties: CollectionConfig<'properties'> = {
       type: 'checkbox',
       label: 'Lift Available',
       admin: { position: 'sidebar' },
+    },
+    {
+      name: 'officialView',
+      type: 'checkbox',
+      label: 'Official View',
+      admin: {
+        position: 'sidebar',
+        description: 'Enable if this property should be marked as Official View',
+      },
     },
 
     // This field is only used to populate the user data via the `populateAuthors` hook
