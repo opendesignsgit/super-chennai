@@ -565,11 +565,15 @@ export const Properties: CollectionConfig<'properties'> = {
             //##############  PRICE WHOLE   ####################
             {
               name: 'price',
-              type: 'number',
+              type: 'text',
+
+              // min: 0,
+              // max: 99999999999,
               required: true,
               admin: {
                 description: 'Sale or Rent price',
                 position: 'sidebar',
+                // step: 1,
               },
             },
             //##############  PRICE PER SQRFT   ################
