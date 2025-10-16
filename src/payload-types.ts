@@ -1870,7 +1870,6 @@ export interface Property {
   society?: {
     name?: string | null;
     builder?: string | null;
-    totalUnits?: number | null;
     possessionStatus?: ('ready' | 'under') | null;
     /**
      * Enter the official website or external link for this property
@@ -3777,7 +3776,6 @@ export interface PropertiesSelect<T extends boolean = true> {
     | {
         name?: T;
         builder?: T;
-        totalUnits?: T;
         possessionStatus?: T;
         externalUrl?: T;
       };

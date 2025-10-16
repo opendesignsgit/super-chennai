@@ -349,7 +349,6 @@ export const Properties: CollectionConfig<'properties'> = {
               fields: [
                 { name: 'name', type: 'text', label: 'Project / Society Name' },
                 { name: 'builder', type: 'text', label: 'Builder / Developer' },
-                { name: 'totalUnits', type: 'number', label: 'Total Units' },
                 {
                   name: 'possessionStatus',
                   type: 'select',
