@@ -1824,6 +1824,26 @@ export interface Property {
    * Paste a video URL (e.g., YouTube or Vimeo) to show a walkthrough video on the property page
    */
   walkthroughVideo?: string | null;
+  /**
+   * Paste a video URL for the Home Tour section to showcase the property’s highlights.
+   */
+  homeTourVideo?: string | null;
+  /**
+   * Paste a video URL explaining the top reasons to buy this property.
+   */
+  topReasonsToBuyVideo?: string | null;
+  /**
+   * Paste a video URL giving a detailed explanation or walkthrough of the model house.
+   */
+  modelHouseExplanationVideo?: string | null;
+  /**
+   * Paste a video URL that provides an overview or walkthrough of the Experience Centre.
+   */
+  experienceCentreVideo?: string | null;
+  /**
+   * Paste any additional video URL (e.g., amenities, neighborhood, or promo).
+   */
+  otherVideo?: string | null;
   nearby?:
     | {
         place?: string | null;
@@ -1870,7 +1890,12 @@ export interface Property {
   society?: {
     name?: string | null;
     builder?: string | null;
-    possessionStatus?: ('ready' | 'under') | null;
+    /**
+     * Select the current project possession status.
+     */
+    possessionStatus?:
+      | ('ready_move' | 'under_construction' | 'ongoing_progress' | 'pre_launched' | 'launched' | 'launching')
+      | null;
     /**
      * Enter the official website or external link for this property
      */
@@ -3740,6 +3765,11 @@ export interface PropertiesSelect<T extends boolean = true> {
         mapEmbed?: T;
       };
   walkthroughVideo?: T;
+  homeTourVideo?: T;
+  topReasonsToBuyVideo?: T;
+  modelHouseExplanationVideo?: T;
+  experienceCentreVideo?: T;
+  otherVideo?: T;
   nearby?:
     | T
     | {

@@ -173,7 +173,9 @@ export const Properties: CollectionConfig<'properties'> = {
                 },
               ],
             },
-            //############## WALK throw VIDEO  ####################
+
+            //############## VIDEO SECTIONS  #############
+
             {
               name: 'walkthroughVideo',
               type: 'text',
@@ -183,6 +185,63 @@ export const Properties: CollectionConfig<'properties'> = {
                   'Paste a video URL (e.g., YouTube or Vimeo) to show a walkthrough video on the property page',
                 placeholder: 'https://www.youtube.com/watch?v=example',
                 position: 'sidebar',
+              },
+            },
+
+            {
+              name: 'homeTourVideo',
+              type: 'text',
+              label: 'Home Tour Video URL',
+              admin: {
+                description:
+                  'Paste a video URL for the Home Tour section to showcase the property’s highlights.',
+                placeholder: 'https://www.youtube.com/watch?v=example',
+                position: 'sidebar',
+              },
+            },
+
+            {
+              name: 'topReasonsToBuyVideo',
+              type: 'text',
+              label: 'Top Reasons to Buy Video URL',
+              admin: {
+                description: 'Paste a video URL explaining the top reasons to buy this property.',
+                placeholder: 'https://www.youtube.com/watch?v=example',
+                position: 'sidebar',
+              },
+            },
+
+            {
+              name: 'modelHouseExplanationVideo',
+              type: 'text',
+              label: 'Model House Explanation Video URL',
+              admin: {
+                description:
+                  'Paste a video URL giving a detailed explanation or walkthrough of the model house.',
+                placeholder: 'https://www.youtube.com/watch?v=example',
+                position: 'sidebar',
+              },
+            },
+
+            {
+              name: 'experienceCentreVideo',
+              type: 'text',
+              label: 'Experience Centre Explanation Video URL',
+              admin: {
+                description:
+                  'Paste a video URL that provides an overview or walkthrough of the Experience Centre.',
+                placeholder: 'https://www.youtube.com/watch?v=example',
+              },
+            },
+
+            {
+              name: 'otherVideo',
+              type: 'text',
+              label: 'Other Video URL',
+              admin: {
+                description:
+                  'Paste any additional video URL (e.g., amenities, neighborhood, or promo).',
+                placeholder: 'https://www.youtube.com/watch?v=example',
               },
             },
 
@@ -196,7 +255,7 @@ export const Properties: CollectionConfig<'properties'> = {
                 { name: 'distance', type: 'text', label: 'Distance (km)' },
               ],
             },
-            //################# FOLOOR PLAN##################
+            //################# FOLOOR PLAN ################
             {
               name: 'floorPlans',
               type: 'array',
@@ -352,11 +411,21 @@ export const Properties: CollectionConfig<'properties'> = {
                 {
                   name: 'possessionStatus',
                   type: 'select',
+                  label: 'Possession Status',
                   options: [
-                    { label: 'Ready to Move', value: 'ready' },
-                    { label: 'Under Construction', value: 'under' },
+                    { label: 'Ready to Move', value: 'ready_move' },
+                    { label: 'Under Construction', value: 'under_construction' },
+                    { label: 'Ongoing Progress', value: 'ongoing_progress' },
+                    { label: 'Pre-Launched', value: 'pre_launched' },
+                    { label: 'Launched', value: 'launched' },
+                    { label: 'Launching', value: 'launching' },
                   ],
+                  admin: {
+                    description: 'Select the current project possession status.',
+                    position: 'sidebar',
+                  },
                 },
+
                 //############## URL OFFICIAL ############################
                 {
                   name: 'externalUrl',
