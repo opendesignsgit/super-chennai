@@ -1253,7 +1253,118 @@ export interface Event {
       genre?: string | null;
       location?: string | null;
     };
-    eventsCategory: (number | EventsCategory)[];
+    /**
+     * Choose the category of the event
+     */
+    category:
+      | 'music'
+      | 'workshop'
+      | 'festival'
+      | 'concert'
+      | 'comedy'
+      | 'theatre'
+      | 'exhibition'
+      | 'sports'
+      | 'dance'
+      | 'film_screening'
+      | 'conference'
+      | 'meetup'
+      | 'networking'
+      | 'startup_event'
+      | 'hackathon'
+      | 'art_culture'
+      | 'charity'
+      | 'talks'
+      | 'seminar'
+      | 'webinar'
+      | 'kids_family'
+      | 'food_drink'
+      | 'culinary_workshop'
+      | 'book_reading'
+      | 'literature'
+      | 'spiritual'
+      | 'fashion'
+      | 'education'
+      | 'technology'
+      | 'health_wellness'
+      | 'yoga_meditation'
+      | 'photography'
+      | 'design'
+      | 'gaming'
+      | 'esports'
+      | 'motivational_talk'
+      | 'pet_animal'
+      | 'gardening'
+      | 'sustainability'
+      | 'travel_adventure'
+      | 'automobile'
+      | 'magic_show'
+      | 'standup_comedy'
+      | 'open_mic'
+      | 'pageant'
+      | 'film_festival'
+      | 'virtual_reality'
+      | 'ai_data_science'
+      | 'coding_bootcamp'
+      | 'career_fair'
+      | 'job_fair'
+      | 'real_estate_expo'
+      | 'startup_pitch'
+      | 'investor_meet'
+      | 'product_launch'
+      | 'panel_discussion'
+      | 'tedx_talk'
+      | 'book_launch'
+      | 'fundraiser'
+      | 'award_show'
+      | 'carnival'
+      | 'parade'
+      | 'bridal_show'
+      | 'wedding_expo'
+      | 'nightlife'
+      | 'club_event'
+      | 'beach_party'
+      | 'cultural_fest'
+      | 'alumni_meet'
+      | 'orientation'
+      | 'convocation'
+      | 'independence_day'
+      | 'republic_day'
+      | 'national_holiday'
+      | 'religious'
+      | 'temple_event'
+      | 'church_gathering'
+      | 'ramadan'
+      | 'christmas'
+      | 'easter'
+      | 'diwali'
+      | 'pongal'
+      | 'onam'
+      | 'navaratri'
+      | 'durga_puja'
+      | 'ganesh_chaturthi'
+      | 'holi'
+      | 'janmashtami'
+      | 'thanksgiving'
+      | 'halloween'
+      | 'new_year_party'
+      | 'valentines_day'
+      | 'indigenous_culture'
+      | 'language_day'
+      | 'heritage_walk'
+      | 'skating'
+      | 'cycling'
+      | 'marathon'
+      | 'adventure_sports'
+      | 'trekking'
+      | 'camping'
+      | 'bird_watching'
+      | 'zoo_visit'
+      | 'aquarium_event'
+      | 'science_fair'
+      | 'math_olympiad'
+      | 'coding_challenge'
+      | 'quiz_competition';
     link?: string | null;
     /**
      * Full address or venue location for the event(Maximum 100 characters allowed)
@@ -1283,21 +1394,6 @@ export interface Event {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "eventsCategories".
- */
-export interface EventsCategory {
-  id: number;
-  title: string;
-  slug: string;
-  /**
-   * Optional short description of this category
-   */
-  description?: string | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2140,6 +2236,21 @@ export interface ContactMessage {
   builderName?: string | null;
   buildercontactEmail?: string | null;
   publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "eventsCategories".
+ */
+export interface EventsCategory {
+  id: number;
+  title: string;
+  slug: string;
+  /**
+   * Optional short description of this category
+   */
+  description?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -3387,7 +3498,7 @@ export interface EventsSelect<T extends boolean = true> {
               genre?: T;
               location?: T;
             };
-        eventsCategory?: T;
+        category?: T;
         link?: T;
         address?: T;
       };
