@@ -14,7 +14,7 @@ import { Visits } from './collections/Visits'
 
 import { defaultLexical } from 'src/fields/defaultLexical'
 import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config'
-// import { Events } from './collections/Events'
+import { Events } from './collections/Events'
 import { Innovate } from './collections/Innovate'
 import { Investments } from './collections/Investments'
 import { Live } from './collections/live'
@@ -100,7 +100,7 @@ export default buildConfig({
     Users,
     Visits,
     work,
-    // Events,
+    Events,
     Investments,
     Live,
     Volunteer,
