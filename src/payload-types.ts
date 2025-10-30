@@ -92,6 +92,8 @@ export interface Config {
     locations: Location;
     amenities: Amenity;
     contactMessages: ContactMessage;
+    eventsCategories: EventsCategory;
+    neighbourhoods: Neighbourhood;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -126,6 +128,8 @@ export interface Config {
     locations: LocationsSelect<false> | LocationsSelect<true>;
     amenities: AmenitiesSelect<false> | AmenitiesSelect<true>;
     contactMessages: ContactMessagesSelect<false> | ContactMessagesSelect<true>;
+    eventsCategories: EventsCategoriesSelect<false> | EventsCategoriesSelect<true>;
+    neighbourhoods: NeighbourhoodsSelect<false> | NeighbourhoodsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1249,118 +1253,7 @@ export interface Event {
       genre?: string | null;
       location?: string | null;
     };
-    /**
-     * Choose the category of the event
-     */
-    category:
-      | 'music'
-      | 'workshop'
-      | 'festival'
-      | 'concert'
-      | 'comedy'
-      | 'theatre'
-      | 'exhibition'
-      | 'sports'
-      | 'dance'
-      | 'film_screening'
-      | 'conference'
-      | 'meetup'
-      | 'networking'
-      | 'startup_event'
-      | 'hackathon'
-      | 'art_culture'
-      | 'charity'
-      | 'talks'
-      | 'seminar'
-      | 'webinar'
-      | 'kids_family'
-      | 'food_drink'
-      | 'culinary_workshop'
-      | 'book_reading'
-      | 'literature'
-      | 'spiritual'
-      | 'fashion'
-      | 'education'
-      | 'technology'
-      | 'health_wellness'
-      | 'yoga_meditation'
-      | 'photography'
-      | 'design'
-      | 'gaming'
-      | 'esports'
-      | 'motivational_talk'
-      | 'pet_animal'
-      | 'gardening'
-      | 'sustainability'
-      | 'travel_adventure'
-      | 'automobile'
-      | 'magic_show'
-      | 'standup_comedy'
-      | 'open_mic'
-      | 'pageant'
-      | 'film_festival'
-      | 'virtual_reality'
-      | 'ai_data_science'
-      | 'coding_bootcamp'
-      | 'career_fair'
-      | 'job_fair'
-      | 'real_estate_expo'
-      | 'startup_pitch'
-      | 'investor_meet'
-      | 'product_launch'
-      | 'panel_discussion'
-      | 'tedx_talk'
-      | 'book_launch'
-      | 'fundraiser'
-      | 'award_show'
-      | 'carnival'
-      | 'parade'
-      | 'bridal_show'
-      | 'wedding_expo'
-      | 'nightlife'
-      | 'club_event'
-      | 'beach_party'
-      | 'cultural_fest'
-      | 'alumni_meet'
-      | 'orientation'
-      | 'convocation'
-      | 'independence_day'
-      | 'republic_day'
-      | 'national_holiday'
-      | 'religious'
-      | 'temple_event'
-      | 'church_gathering'
-      | 'ramadan'
-      | 'christmas'
-      | 'easter'
-      | 'diwali'
-      | 'pongal'
-      | 'onam'
-      | 'navaratri'
-      | 'durga_puja'
-      | 'ganesh_chaturthi'
-      | 'holi'
-      | 'janmashtami'
-      | 'thanksgiving'
-      | 'halloween'
-      | 'new_year_party'
-      | 'valentines_day'
-      | 'indigenous_culture'
-      | 'language_day'
-      | 'heritage_walk'
-      | 'skating'
-      | 'cycling'
-      | 'marathon'
-      | 'adventure_sports'
-      | 'trekking'
-      | 'camping'
-      | 'bird_watching'
-      | 'zoo_visit'
-      | 'aquarium_event'
-      | 'science_fair'
-      | 'math_olympiad'
-      | 'coding_challenge'
-      | 'quiz_competition';
+    eventsCategory: (number | EventsCategory)[];
     link?: string | null;
     /**
      * Full address or venue location for the event(Maximum 100 characters allowed)
@@ -1390,6 +1283,21 @@ export interface Event {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "eventsCategories".
+ */
+export interface EventsCategory {
+  id: number;
+  title: string;
+  slug: string;
+  /**
+   * Optional short description of this category
+   */
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1868,7 +1776,7 @@ export interface Property {
   /**
    * propertyType
    */
-  propertyType: number | PropertyType;
+  propertyType: (number | PropertyType)[];
   /**
    * bhk
    */
@@ -1884,7 +1792,7 @@ export interface Property {
   /**
    * Select the transaction type for this property (e.g., New Booking, Resale, Pre-Launch)
    */
-  transactionType?: ('new_booking' | 'resale' | 'pre_launch') | null;
+  transactionType?: ('new_booking' | 'resale' | 'pre_launch' | 'new_launch') | null;
   agentReraId?: string | null;
   agentCmdaId?: string | null;
   society?: {
@@ -2232,6 +2140,40 @@ export interface ContactMessage {
   builderName?: string | null;
   buildercontactEmail?: string | null;
   publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhoods".
+ */
+export interface Neighbourhood {
+  id: number;
+  title: string;
+  categories?:
+    | {
+        label: string;
+        value: string;
+        subcats?:
+          | {
+              name: string;
+              prideData?:
+                | {
+                    name: string;
+                    nature?: string | null;
+                    image?: (number | null) | Media;
+                    achievement1?: string | null;
+                    achievement2?: string | null;
+                    achievement3?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -2681,6 +2623,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'contactMessages';
         value: number | ContactMessage;
+      } | null)
+    | ({
+        relationTo: 'eventsCategories';
+        value: number | EventsCategory;
+      } | null)
+    | ({
+        relationTo: 'neighbourhoods';
+        value: number | Neighbourhood;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -3437,7 +3387,7 @@ export interface EventsSelect<T extends boolean = true> {
               genre?: T;
               location?: T;
             };
-        category?: T;
+        eventsCategory?: T;
         link?: T;
         address?: T;
       };
@@ -4088,6 +4038,50 @@ export interface ContactMessagesSelect<T extends boolean = true> {
   builderName?: T;
   buildercontactEmail?: T;
   publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "eventsCategories_select".
+ */
+export interface EventsCategoriesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhoods_select".
+ */
+export interface NeighbourhoodsSelect<T extends boolean = true> {
+  title?: T;
+  categories?:
+    | T
+    | {
+        label?: T;
+        value?: T;
+        subcats?:
+          | T
+          | {
+              name?: T;
+              prideData?:
+                | T
+                | {
+                    name?: T;
+                    nature?: T;
+                    image?: T;
+                    achievement1?: T;
+                    achievement2?: T;
+                    achievement3?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

@@ -309,6 +309,7 @@ export const Properties: CollectionConfig<'properties'> = {
               type: 'relationship',
               relationTo: 'propertyTypes',
               required: true,
+              hasMany: true,
               admin: {
                 description: 'propertyType',
                 position: 'sidebar',
@@ -387,6 +388,7 @@ export const Properties: CollectionConfig<'properties'> = {
                 { label: 'New Booking', value: 'new_booking' },
                 { label: 'Resale', value: 'resale' },
                 { label: 'Pre-Launch', value: 'pre_launch' },
+                { label: 'New Launch', value: 'new_launch' },
               ],
             },
 

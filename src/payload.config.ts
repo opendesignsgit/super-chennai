@@ -3,7 +3,7 @@ import 'dotenv/config'
 
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
-import sharp from 'sharp'; // sharp-import
+import sharp from 'sharp' // sharp-import
 import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
@@ -35,7 +35,9 @@ import Footer from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { getServerSideURL } from './utilities/getURL'
-import ContactMessages from './collections/Properties/forms/ContacctProperties';
+import ContactMessages from './collections/Properties/forms/ContacctProperties'
+import { eventsCategories } from './collections/Events/options/Categories'
+import Neighbourhoods from './collections/Neighbourhoods/Neighbourhoods'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -49,9 +51,8 @@ export default buildConfig({
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
       beforeDashboard: ['@/components/BeforeDashboard'],
-      
     },
-    
+
     importMap: {
       baseDir: path.resolve(dirname),
     },
@@ -116,7 +117,10 @@ export default buildConfig({
     PropertyTypes,
     Locations,
     Amenities,
-    ContactMessages
+    ContactMessages,
+
+    eventsCategories,
+    Neighbourhoods,
   ],
 
   // #################################################################################
