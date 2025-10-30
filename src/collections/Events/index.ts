@@ -469,13 +469,13 @@ export const Events: CollectionConfig<'events'> = {
             //   },
             // },
 
-            {
-              name: 'eventsCategory',
-              type: 'relationship',
-              relationTo: 'eventsCategories',
-              hasMany: true,
-              required: true,
-            },
+            // {
+            //   name: 'eventsCategory',
+            //   type: 'relationship',
+            //   relationTo: 'eventsCategories',
+            //   hasMany: true,
+            //   required: true,
+            // },
 
             {
               name: 'link',
