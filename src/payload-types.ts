@@ -1253,7 +1253,6 @@ export interface Event {
       genre?: string | null;
       location?: string | null;
     };
-    eventsCategory: (number | EventsCategory)[];
     link?: string | null;
     /**
      * Full address or venue location for the event(Maximum 100 characters allowed)
@@ -1283,21 +1282,6 @@ export interface Event {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "eventsCategories".
- */
-export interface EventsCategory {
-  id: number;
-  title: string;
-  slug: string;
-  /**
-   * Optional short description of this category
-   */
-  description?: string | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1776,7 +1760,7 @@ export interface Property {
   /**
    * propertyType
    */
-  propertyType: (number | PropertyType)[];
+  propertyType: number | PropertyType;
   /**
    * bhk
    */
@@ -2140,6 +2124,21 @@ export interface ContactMessage {
   builderName?: string | null;
   buildercontactEmail?: string | null;
   publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "eventsCategories".
+ */
+export interface EventsCategory {
+  id: number;
+  title: string;
+  slug: string;
+  /**
+   * Optional short description of this category
+   */
+  description?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -3387,7 +3386,6 @@ export interface EventsSelect<T extends boolean = true> {
               genre?: T;
               location?: T;
             };
-        eventsCategory?: T;
         link?: T;
         address?: T;
       };
