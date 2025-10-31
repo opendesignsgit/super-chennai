@@ -403,42 +403,42 @@ export const Properties: CollectionConfig<'properties'> = {
               type: 'text',
               label: 'CMDA Approval ID',
             },
-            // {
-            //   name: 'society',
-            //   type: 'group',
-            //   label: 'Society / Project Details',
-            //   fields: [
-            //     { name: 'name', type: 'text', label: 'Project / Society Name' },
-            //     { name: 'builder', type: 'text', label: 'Builder / Developer' },
-            //     {
-            //       name: 'possessionStatus',
-            //       type: 'select',
-            //       label: 'Possession Status',
-            //       options: [
-            //         { label: 'Ready to Move', value: 'ready_move' },
-            //         { label: 'Under Construction', value: 'under_construction' },
-            //         { label: 'Ongoing Progress', value: 'ongoing_progress' },
-            //         { label: 'Pre-Launched', value: 'pre_launched' },
-            //         { label: 'Launched', value: 'launched' },
-            //         { label: 'Launching', value: 'launching' },
-            //       ],
-            //       admin: {
-            //         description: 'Select the current project possession status.',
-            //         position: 'sidebar',
-            //       },
-            //     },
+            {
+              name: 'society',
+              type: 'group',
+              label: 'Society / Project Details',
+              fields: [
+                { name: 'name', type: 'text', label: 'Project / Society Name' },
+                { name: 'builder', type: 'text', label: 'Builder / Developer' },
+                {
+                  name: 'possessionStatus',
+                  type: 'select',
+                  label: 'Possession Status',
+                  options: [
+                    { label: 'Ready to Move', value: 'ready_move' },
+                    { label: 'Under Construction', value: 'under_construction' },
+                    { label: 'Ongoing Progress', value: 'ongoing_progress' },
+                    { label: 'Pre-Launched', value: 'pre_launched' },
+                    { label: 'Launched', value: 'launched' },
+                    { label: 'Launching', value: 'launching' },
+                  ],
+                  admin: {
+                    description: 'Select the current project possession status.',
+                    position: 'sidebar',
+                  },
+                },
 
-            //     //############## URL OFFICIAL ############################
-            //     {
-            //       name: 'externalUrl',
-            //       type: 'text',
-            //       label: 'External URL',
-            //       admin: {
-            //         description: 'Enter the official website or external link for this property',
-            //       },
-            //     },
-            //   ],
-            // },
+                //############## URL OFFICIAL ############################
+                {
+                  name: 'externalUrl',
+                  type: 'text',
+                  label: 'External URL',
+                  admin: {
+                    description: 'Enter the official website or external link for this property',
+                  },
+                },
+              ],
+            },
 
             //############## LOCATIONS ################################
             {
