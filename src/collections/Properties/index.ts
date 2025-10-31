@@ -309,7 +309,7 @@ export const Properties: CollectionConfig<'properties'> = {
               type: 'relationship',
               relationTo: 'propertyTypes',
               required: true,
-              // hasMany: true,
+              hasMany: true,
               admin: {
                 description: 'propertyType',
                 position: 'sidebar',
