@@ -18,7 +18,7 @@ import { Events } from './collections/Events'
 import { Innovate } from './collections/Innovate'
 import { Investments } from './collections/Investments'
 import { Live } from './collections/live'
-import { Properties } from './collections/Properties'
+// import { Properties } from './collections/Properties'
 import { Amenities } from './collections/Properties/options/Amenities'
 import { BhkTypes } from './collections/Properties/options/BhkTypes'
 import { Locations } from './collections/Properties/options/Locations'
@@ -112,7 +112,7 @@ export default buildConfig({
     InvestmentCategoriesCollection,
     VisitCategoryCollection,
 
-    Properties,
+    // Properties,
     BhkTypes,
     PropertyTypes,
     Locations,

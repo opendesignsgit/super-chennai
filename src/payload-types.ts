@@ -1758,6 +1758,10 @@ export interface Property {
       }[]
     | null;
   /**
+   * propertyType
+   */
+  propertyType: (number | PropertyType)[];
+  /**
    * bhk
    */
   bhk?: (number | BhkType)[] | null;
@@ -2022,6 +2026,33 @@ export interface Property {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "propertyTypes".
+ */
+export interface PropertyType {
+  id: number;
+  value:
+    | 'apartment'
+    | 'villa'
+    | 'builder_floor'
+    | 'studio'
+    | 'penthouse'
+    | 'shop'
+    | 'office'
+    | 'coworking'
+    | 'warehouse'
+    | 'industrial_shed'
+    | 'factory'
+    | 'plot'
+    | 'agriculture_land'
+    | 'farmhouse'
+    | 'hotel'
+    | 'pg_coliving'
+    | 'serviced_apartment';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "bhkTypes".
  */
 export interface BhkType {
@@ -2057,33 +2088,6 @@ export interface Location {
    * Unique slug, e.g. "chennai-omr"
    */
   value: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "propertyTypes".
- */
-export interface PropertyType {
-  id: number;
-  value:
-    | 'apartment'
-    | 'villa'
-    | 'builder_floor'
-    | 'studio'
-    | 'penthouse'
-    | 'shop'
-    | 'office'
-    | 'coworking'
-    | 'warehouse'
-    | 'industrial_shed'
-    | 'factory'
-    | 'plot'
-    | 'agriculture_land'
-    | 'farmhouse'
-    | 'hotel'
-    | 'pg_coliving'
-    | 'serviced_apartment';
   updatedAt: string;
   createdAt: string;
 }
@@ -3735,6 +3739,7 @@ export interface PropertiesSelect<T extends boolean = true> {
         caption?: T;
         id?: T;
       };
+  propertyType?: T;
   bhk?: T;
   totalUnits?: T;
   floor?: T;
