@@ -309,7 +309,7 @@ export const Properties: CollectionConfig<'properties'> = {
               type: 'relationship',
               relationTo: 'propertyTypes',
               required: true,
-              hasMany: true,
+              // hasMany: true,
               admin: {
                 description: 'propertyType',
                 position: 'sidebar',
@@ -417,10 +417,10 @@ export const Properties: CollectionConfig<'properties'> = {
                   options: [
                     { label: 'Ready to Move', value: 'ready_move' },
                     { label: 'Under Construction', value: 'under_construction' },
-                    { label: 'Ongoing Progress', value: 'ongoing_progress' },
-                    { label: 'Pre-Launched', value: 'pre_launched' },
-                    { label: 'Launched', value: 'launched' },
-                    { label: 'Launching', value: 'launching' },
+                    // { label: 'Ongoing Progress', value: 'ongoing_progress' },
+                    // { label: 'Pre-Launched', value: 'pre_launched' },
+                    // { label: 'Launched', value: 'launched' },
+                    // { label: 'Launching', value: 'launching' },
                   ],
                   admin: {
                     description: 'Select the current project possession status.',
