@@ -304,17 +304,17 @@ export const Properties: CollectionConfig<'properties'> = {
           label: 'General Info',
           fields: [
             //##############  Property TYPE  #######################
-            {
-              name: 'propertyType',
-              type: 'relationship',
-              relationTo: 'propertyTypes',
-              required: true,
-              hasMany: true,
-              admin: {
-                description: 'propertyType',
-                position: 'sidebar',
-              },
-            },
+            // {
+            //   name: 'propertyType',
+            //   type: 'relationship',
+            //   relationTo: 'propertyTypes',
+            //   required: true,
+            //   hasMany: true,
+            //   admin: {
+            //     description: 'propertyType',
+            //     position: 'sidebar',
+            //   },
+            // },
             //##############  bhk     Info  #######################
             {
               name: 'bhk',
