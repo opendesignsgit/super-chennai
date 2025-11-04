@@ -1219,10 +1219,6 @@ export interface Event {
   event: {
     image: number | Media;
     /**
-     * Upload an image of the performing artist
-     */
-    artistImage?: (number | null) | Media;
-    /**
      * Maximum 100 characters
      */
     singerName?: string | null;
@@ -1235,7 +1231,7 @@ export interface Event {
      */
     title: string;
     /**
-     * Maximum 200 characters allowed
+     * Maximum 500 characters allowed
      */
     description?: string | null;
     /**
@@ -1246,13 +1242,112 @@ export interface Event {
      * Maximum 30 characters allowed
      */
     performerRole?: string | null;
-    details?: {
+    details: {
       duration?: string | null;
       ageLimit?: string | null;
-      language?: string | null;
+      /**
+       * Select one or more languages spoken or used in this event
+       */
+      language?:
+        | (
+            | 'tamil'
+            | 'telugu'
+            | 'malayalam'
+            | 'kannada'
+            | 'hindi'
+            | 'bengali'
+            | 'marathi'
+            | 'gujarati'
+            | 'punjabi'
+            | 'odia'
+            | 'urdu'
+            | 'sanskrit'
+            | 'english'
+            | 'spanish'
+            | 'french'
+            | 'german'
+            | 'italian'
+            | 'portuguese'
+            | 'russian'
+            | 'chinese'
+            | 'japanese'
+            | 'korean'
+            | 'arabic'
+            | 'turkish'
+            | 'persian'
+            | 'hebrew'
+            | 'thai'
+            | 'vietnamese'
+            | 'indonesian'
+            | 'filipino'
+            | 'malay'
+            | 'swahili'
+            | 'dutch'
+            | 'greek'
+            | 'polish'
+            | 'swedish'
+            | 'norwegian'
+            | 'finnish'
+            | 'danish'
+            | 'czech'
+            | 'hungarian'
+            | 'romanian'
+            | 'ukrainian'
+            | 'bulgarian'
+            | 'serbian'
+            | 'croatian'
+            | 'slovak'
+            | 'slovenian'
+            | 'latvian'
+            | 'lithuanian'
+            | 'estonian'
+            | 'icelandic'
+            | 'irish'
+            | 'welsh'
+            | 'scottish_gaelic'
+            | 'albanian'
+            | 'bosnian'
+            | 'macedonian'
+            | 'armenian'
+            | 'georgian'
+            | 'kazakh'
+            | 'uzbek'
+            | 'turkmen'
+            | 'tajik'
+            | 'nepali'
+            | 'sinhala'
+            | 'burmese'
+            | 'khmer'
+            | 'lao'
+            | 'mongolian'
+            | 'pashto'
+            | 'somali'
+            | 'amharic'
+            | 'yoruba'
+            | 'hausa'
+            | 'zulu'
+            | 'afrikaans'
+            | 'maori'
+            | 'samoan'
+            | 'tongan'
+            | 'fijian'
+          )[]
+        | null;
       genre?: string | null;
-      location?: string | null;
+      /**
+       * Select the venue or location from the Locations collection
+       */
+      location: number | Location;
+      /**
+       * Check if this event has free entry (no ticket required).
+       */
+      isFree?: boolean | null;
+      /**
+       * Check if this event is suitable for families/children.
+       */
+      familyFriendly?: boolean | null;
     };
+    eventsCategory: (number | EventsCategory)[];
     link?: string | null;
     /**
      * Full address or venue location for the event(Maximum 100 characters allowed)
@@ -1282,6 +1377,50 @@ export interface Event {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "locations".
+ */
+export interface Location {
+  id: number;
+  /**
+   * State name (e.g. Tamil Nadu, Karnataka)
+   */
+  state: string;
+  /**
+   * City name (e.g. Chennai, Bangalore, Mumbai)
+   */
+  city: string;
+  /**
+   * Locality / Area (e.g. OMR, ECR, Whitefield)
+   */
+  locality: string;
+  /**
+   * Display label, e.g. "OMR, Chennai"
+   */
+  label: string;
+  /**
+   * Unique slug, e.g. "chennai-omr"
+   */
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "eventsCategories".
+ */
+export interface EventsCategory {
+  id: number;
+  title: string;
+  slug: string;
+  /**
+   * Optional short description of this category
+   */
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2064,35 +2203,6 @@ export interface BhkType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "locations".
- */
-export interface Location {
-  id: number;
-  /**
-   * State name (e.g. Tamil Nadu, Karnataka)
-   */
-  state: string;
-  /**
-   * City name (e.g. Chennai, Bangalore, Mumbai)
-   */
-  city: string;
-  /**
-   * Locality / Area (e.g. OMR, ECR, Whitefield)
-   */
-  locality: string;
-  /**
-   * Display label, e.g. "OMR, Chennai"
-   */
-  label: string;
-  /**
-   * Unique slug, e.g. "chennai-omr"
-   */
-  value: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "amenities".
  */
 export interface Amenity {
@@ -2124,21 +2234,6 @@ export interface ContactMessage {
   builderName?: string | null;
   buildercontactEmail?: string | null;
   publishedAt?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "eventsCategories".
- */
-export interface EventsCategory {
-  id: number;
-  title: string;
-  slug: string;
-  /**
-   * Optional short description of this category
-   */
-  description?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -3370,7 +3465,6 @@ export interface EventsSelect<T extends boolean = true> {
     | T
     | {
         image?: T;
-        artistImage?: T;
         singerName?: T;
         artistDesignation?: T;
         title?: T;
@@ -3385,7 +3479,10 @@ export interface EventsSelect<T extends boolean = true> {
               language?: T;
               genre?: T;
               location?: T;
+              isFree?: T;
+              familyFriendly?: T;
             };
+        eventsCategory?: T;
         link?: T;
         address?: T;
       };

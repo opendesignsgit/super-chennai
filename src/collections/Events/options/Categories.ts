@@ -3,12 +3,13 @@ import type { CollectionConfig } from 'payload'
 export const eventsCategories: CollectionConfig = {
   slug: 'eventsCategories',
   labels: {
-    singular: 'Category',
+    singular: ' Events Category',
     plural: 'Categories',
   },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'createdAt'],
+    hidden: true,
   },
   access: {
     read: () => true,
@@ -25,6 +26,7 @@ export const eventsCategories: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
+      index: true, 
       admin: {
         placeholder: 'auto-generated from title if empty',
       },
