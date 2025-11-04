@@ -7,7 +7,7 @@ export const eventsCategories: CollectionConfig = {
     plural: 'Categories',
   },
   admin: {
-    useAsTitle: 'title',
+    // useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'createdAt'],
     hidden: true,
   },
