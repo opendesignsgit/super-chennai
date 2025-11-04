@@ -167,7 +167,7 @@ export const Events: CollectionConfig<'events'> = {
         collection: 'events',
         req,
       }),
-    useAsTitle: 'title',
+    // useAsTitle: 'title',
   },
 
   fields: [
