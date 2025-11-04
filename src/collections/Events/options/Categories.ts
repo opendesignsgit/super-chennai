@@ -7,7 +7,7 @@ export const eventsCategories: CollectionConfig = {
     plural: 'Categories',
   },
   admin: {
-    // useAsTitle: 'title',
+    useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'createdAt'],
     hidden: true,
   },
@@ -26,7 +26,7 @@ export const eventsCategories: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
-      index: true, 
+      index: true,
       admin: {
         placeholder: 'auto-generated from title if empty',
       },
