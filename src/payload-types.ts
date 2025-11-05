@@ -1235,15 +1235,19 @@ export interface Event {
      */
     description?: string | null;
     /**
-     * Choose full date (day, month, year)
+     * Add one or more dates for the event (example: show multiple dates if the event happens on different days)
      */
-    eventDate: string;
+    eventDates: {
+      date: string;
+      id?: string | null;
+    }[];
     /**
      * Maximum 30 characters allowed
      */
     performerRole?: string | null;
     details: {
       duration?: string | null;
+      eventTime: string;
       ageLimit?: string | null;
       /**
        * Select one or more languages spoken or used in this event
@@ -1349,6 +1353,10 @@ export interface Event {
     };
     eventsCategory: (number | EventsCategory)[];
     link?: string | null;
+    /**
+     * Enter the CTA button label (Example: "Book Now", "Register", "Buy Tickets")
+     */
+    linkbutton?: string | null;
     /**
      * Full address or venue location for the event(Maximum 100 characters allowed)
      */
@@ -3469,12 +3477,18 @@ export interface EventsSelect<T extends boolean = true> {
         artistDesignation?: T;
         title?: T;
         description?: T;
-        eventDate?: T;
+        eventDates?:
+          | T
+          | {
+              date?: T;
+              id?: T;
+            };
         performerRole?: T;
         details?:
           | T
           | {
               duration?: T;
+              eventTime?: T;
               ageLimit?: T;
               language?: T;
               genre?: T;
@@ -3484,6 +3498,7 @@ export interface EventsSelect<T extends boolean = true> {
             };
         eventsCategory?: T;
         link?: T;
+        linkbutton?: T;
         address?: T;
       };
   relatedevents?: T;

@@ -305,18 +305,47 @@ export const Events: CollectionConfig<'events'> = {
               },
             },
 
+            // {
+            //   name: 'eventDate',
+            //   type: 'date',
+            //   required: true,
+            //   admin: {
+            //     date: {
+            //       pickerAppearance: 'dayOnly',
+            //     },
+            //     placeholder: 'Select event date',
+            //     description: 'Choose full date (day, month, year)',
+            //   },
+            // },
+
             {
-              name: 'eventDate',
-              type: 'date',
+              name: 'eventDates',
+              type: 'array',
+              label: 'Event Dates',
               required: true,
-              admin: {
-                date: {
-                  pickerAppearance: 'dayOnly',
-                },
-                placeholder: 'Select event date',
-                description: 'Choose full date (day, month, year)',
+              labels: {
+                singular: 'Event Date',
+                plural: 'Event Dates',
               },
+              admin: {
+                description:
+                  'Add one or more dates for the event (example: show multiple dates if the event happens on different days)',
+              },
+              fields: [
+                {
+                  name: 'date',
+                  type: 'date',
+                  required: true,
+                  admin: {
+                    date: {
+                      pickerAppearance: 'dayOnly',
+                    },
+                    placeholder: 'Select event date',
+                  },
+                },
+              ],
             },
+
             {
               name: 'performerRole',
               type: 'text',
@@ -339,6 +368,20 @@ export const Events: CollectionConfig<'events'> = {
                     placeholder: 'e.g. 2 hours',
                   },
                 },
+                {
+                  name: 'eventTime',
+                  label: 'Event Time',
+                  type: 'date',
+                  admin: {
+                    date: {
+                      pickerAppearance: 'timeOnly',
+                      timeFormat: 'hh:mm a',
+                    },
+                    placeholder: 'Select event time (ex: 08:00 PM)',
+                  },
+                  required: true,
+                },
+
                 {
                   name: 'ageLimit',
                   type: 'text',
@@ -455,7 +498,7 @@ export const Events: CollectionConfig<'events'> = {
                 {
                   name: 'location',
                   type: 'relationship',
-                  relationTo: 'locations', // ✅ assumes you already have a "locations" collection
+                  relationTo: 'locations',
                   label: 'Event Location',
                   required: true,
                   admin: {
@@ -496,6 +539,17 @@ export const Events: CollectionConfig<'events'> = {
             {
               name: 'link',
               type: 'text',
+            },
+
+            {
+              name: 'linkbutton',
+              type: 'text',
+              label: 'Button Name',
+              admin: {
+                placeholder: 'Buy Tickets / Book Now / Register',
+                description:
+                  'Enter the CTA button label (Example: "Book Now", "Register", "Buy Tickets")',
+              },
             },
             {
               name: 'address',
