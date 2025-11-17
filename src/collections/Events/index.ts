@@ -379,7 +379,7 @@ export const Events: CollectionConfig<'events'> = {
                     },
                     placeholder: 'Select event time (ex: 08:00 PM)',
                   },
-                  required: true,
+                  required: false,
                 },
 
                 {
