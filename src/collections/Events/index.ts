@@ -504,6 +504,8 @@ export const Events: CollectionConfig<'events'> = {
                   admin: {
                     description: 'Select the venue or location from the Locations collection',
                   },
+
+                  
                 },
                 {
                   name: 'isFree',

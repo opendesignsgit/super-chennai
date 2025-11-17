@@ -159,7 +159,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({ data }) => {
                     <div className="iconsssec flex items-center">
                       <Image src={loc.src} alt="Duration" width={24} height={24} />
                     </div>
-                    <p>{location || 'Duration not specified'}</p>
+                    {/* <p>{location?.label || 'Location not specified'}</p> */}
                   </a>
                 </div>
               </div>

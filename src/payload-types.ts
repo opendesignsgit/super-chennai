@@ -1247,7 +1247,7 @@ export interface Event {
     performerRole?: string | null;
     details: {
       duration?: string | null;
-      eventTime: string;
+      eventTime?: string | null;
       ageLimit?: string | null;
       /**
        * Select one or more languages spoken or used in this event
