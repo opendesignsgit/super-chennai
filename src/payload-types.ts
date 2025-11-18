@@ -92,6 +92,7 @@ export interface Config {
     locations: Location;
     amenities: Amenity;
     contactMessages: ContactMessage;
+    propertylocations: Propertylocation;
     eventsCategories: EventsCategory;
     neighbourhoods: Neighbourhood;
     redirects: Redirect;
@@ -128,6 +129,7 @@ export interface Config {
     locations: LocationsSelect<false> | LocationsSelect<true>;
     amenities: AmenitiesSelect<false> | AmenitiesSelect<true>;
     contactMessages: ContactMessagesSelect<false> | ContactMessagesSelect<true>;
+    propertylocations: PropertylocationsSelect<false> | PropertylocationsSelect<true>;
     eventsCategories: EventsCategoriesSelect<false> | EventsCategoriesSelect<true>;
     neighbourhoods: NeighbourhoodsSelect<false> | NeighbourhoodsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
@@ -1945,6 +1947,10 @@ export interface Property {
    */
   location: number | Location;
   /**
+   * Property Location
+   */
+  propertyLocation: number | Propertylocation;
+  /**
    * Furnishing
    */
   furnishing?: ('fully' | 'semi' | 'unfurnished') | null;
@@ -2205,6 +2211,35 @@ export interface PropertyType {
 export interface BhkType {
   id: number;
   label: string;
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "propertylocations".
+ */
+export interface Propertylocation {
+  id: number;
+  /**
+   * State name (e.g. Tamil Nadu, Karnataka)
+   */
+  state: string;
+  /**
+   * City name (e.g. Chennai, Bangalore, Mumbai)
+   */
+  city: string;
+  /**
+   * Locality / Area (e.g. OMR, ECR, Whitefield)
+   */
+  locality: string;
+  /**
+   * Display label, e.g. "OMR, Chennai"
+   */
+  label: string;
+  /**
+   * Unique slug, e.g. "chennai-omr"
+   */
   value: string;
   updatedAt: string;
   createdAt: string;
@@ -2725,6 +2760,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'contactMessages';
         value: number | ContactMessage;
+      } | null)
+    | ({
+        relationTo: 'propertylocations';
+        value: number | Propertylocation;
       } | null)
     | ({
         relationTo: 'eventsCategories';
@@ -3870,6 +3909,7 @@ export interface PropertiesSelect<T extends boolean = true> {
         externalUrl?: T;
       };
   location?: T;
+  propertyLocation?: T;
   furnishing?: T;
   bedrooms?: T;
   semiRooms?:
@@ -4148,6 +4188,19 @@ export interface ContactMessagesSelect<T extends boolean = true> {
   builderName?: T;
   buildercontactEmail?: T;
   publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "propertylocations_select".
+ */
+export interface PropertylocationsSelect<T extends boolean = true> {
+  state?: T;
+  city?: T;
+  locality?: T;
+  label?: T;
+  value?: T;
   updatedAt?: T;
   createdAt?: T;
 }

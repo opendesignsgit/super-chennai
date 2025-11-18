@@ -440,7 +440,7 @@ export const Properties: CollectionConfig<'properties'> = {
               ],
             },
 
-            //############## LOCATIONS ################################
+            //############## LOCATIONS is USED TO EVENTS SIDE  #############
             {
               name: 'location',
               type: 'relationship',
@@ -449,8 +449,23 @@ export const Properties: CollectionConfig<'properties'> = {
               admin: {
                 description: 'location',
                 position: 'sidebar',
+                 hidden: true,  
               },
             },
+
+            //############### Property Locations #####################
+
+            {
+              name: 'propertyLocation',
+              type: 'relationship',
+              relationTo: 'propertylocations',
+              required: true,
+              admin: {
+                description: 'Property Location',
+                position: 'sidebar',
+              },
+            },
+
             //############## AMENTIES #################################
             // {
             //   name: 'amenities',

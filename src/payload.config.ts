@@ -38,6 +38,7 @@ import { getServerSideURL } from './utilities/getURL'
 import ContactMessages from './collections/Properties/forms/ContacctProperties'
 import { eventsCategories } from './collections/Events/options/Categories'
 import Neighbourhoods from './collections/Neighbourhoods/Neighbourhoods'
+import { PropertyLocations } from './collections/Properties/options/propertyLocation'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -118,6 +119,7 @@ export default buildConfig({
     Locations,
     Amenities,
     ContactMessages,
+    PropertyLocations,
 
     eventsCategories,
     Neighbourhoods,

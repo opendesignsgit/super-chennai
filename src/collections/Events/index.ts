@@ -503,9 +503,7 @@ export const Events: CollectionConfig<'events'> = {
                   required: true,
                   admin: {
                     description: 'Select the venue or location from the Locations collection',
-                  },
-
-                  
+                  },                 
                 },
                 {
                   name: 'isFree',
