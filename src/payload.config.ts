@@ -123,6 +123,7 @@ export default buildConfig({
 
     eventsCategories,
     Neighbourhoods,
+    
   ],
 
   // #################################################################################

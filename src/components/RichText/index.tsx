@@ -3,6 +3,7 @@ import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
 import BecameAVolunteer from '@/blocks/HomePage/Volunteer/Component'
 import { HotelDetailSectionBlock } from '@/blocks/InnerPage/SharedBlocks/InnerSubPageDetails/component'
 import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
+import RestaurantsCategoriesComponent from '@/blocks/InnerPage/SharedBlocks/Restaurants/Components'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import {
   DefaultNodeTypes,
@@ -144,6 +145,10 @@ const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<
 
         becameAVolunteer: ({ node }: { node: SerializedBlockNode<any> }) => (
           <BecameAVolunteer {...node.fields} />
+        ),
+
+        RestaurantsCategories: ({ node }: { node: SerializedBlockNode<any> }) => (
+          <RestaurantsCategoriesComponent {...node.fields} />
         ),
       },
     }

@@ -32,6 +32,7 @@ import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/c
 import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
 import StickyImageScroll from 'src/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
 import InnerSubPageDetails from '@/blocks/InnerPage/SharedBlocks/InnerSubPageDetails/config'
+import { RestaurantsCategories } from '@/blocks/InnerPage/SharedBlocks/Restaurants/config'
 
 export const VisitDetails: CollectionConfig<'visitDetails'> = {
   slug: 'visitDetails',
@@ -121,6 +122,7 @@ export const VisitDetails: CollectionConfig<'visitDetails'> = {
                       FeatureSectionsBlock,
                       BecameAVolunteerBlock,
                       InnerSubPageDetails,
+                      RestaurantsCategories,
                     ],
                   }),
                   FixedToolbarFeature(),

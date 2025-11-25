@@ -1943,10 +1943,6 @@ export interface Property {
     externalUrl?: string | null;
   };
   /**
-   * location
-   */
-  location: number | Location;
-  /**
    * Property Location
    */
   propertyLocation: number | Propertylocation;
@@ -3908,7 +3904,6 @@ export interface PropertiesSelect<T extends boolean = true> {
         possessionStatus?: T;
         externalUrl?: T;
       };
-  location?: T;
   propertyLocation?: T;
   furnishing?: T;
   bedrooms?: T;

@@ -34,6 +34,7 @@ import VolunteerBecameSection from './MainPages/Volunteer/Volunteers/Components'
 import { TextHoverImageSection } from './MainPages/Work/Works/Components'
 import HeroSliderBlock from './PageBanners/Home/Component'
 import { VisitBanner } from './PageBanners/VisitBanner/Component'
+import RestaurantsCategoriesComponent from './InnerPage/SharedBlocks/Restaurants/Components'
 // import { CallToActionBlock } from './CallToAction/Component'
 
 const blockComponents: {
@@ -72,6 +73,9 @@ const blockComponents: {
   investmentCategoryList: InvestmentCategoryListSection,
   innovateSlider: InnovateSliderBlock,
   textHoverImageSection: TextHoverImageSection,
+  RestaurantsCategories:RestaurantsCategoriesComponent
+
+
 
 
   // TESTING 
