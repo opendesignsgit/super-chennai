@@ -449,7 +449,7 @@ export const Properties: CollectionConfig<'properties'> = {
             //   admin: {
             //     description: 'location',
             //     position: 'sidebar',
-            //      hidden: true,  
+            //      hidden: true,
             //   },
             // },
 
@@ -1074,6 +1074,15 @@ export const Properties: CollectionConfig<'properties'> = {
                   ],
                 },
                 { name: 'firePit', type: 'checkbox', label: 'Fire Pit / BBQ Area' },
+              ],
+            },
+            {
+              name: 'moreAmenities',
+              type: 'array',
+              label: 'More Amenities',
+              fields: [
+                { name: 'name', type: 'text' },
+                { name: 'icon', type: 'upload', relationTo: 'media' },
               ],
             },
             // ##############SPECFICATIONS ################

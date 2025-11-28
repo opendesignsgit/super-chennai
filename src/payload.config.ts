@@ -39,6 +39,8 @@ import ContactMessages from './collections/Properties/forms/ContacctProperties'
 import { eventsCategories } from './collections/Events/options/Categories'
 import Neighbourhoods from './collections/Neighbourhoods/Neighbourhoods'
 import { PropertyLocations } from './collections/Properties/options/propertyLocation'
+import { SuperchennaiContests } from './collections/SuperchennaiContests'
+import { IconOfMonth } from './collections/IconOfTheMonth'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -122,8 +124,10 @@ export default buildConfig({
     PropertyLocations,
 
     eventsCategories,
+    SuperchennaiContests,
+    IconOfMonth,
+
     Neighbourhoods,
-    
   ],
 
   // #################################################################################

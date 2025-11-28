@@ -57,14 +57,14 @@ export const PropertyLocations: CollectionConfig<'propertylocations'> = {
   hooks: {
     beforeValidate: [
       async ({ data }) => {
+        // Auto-generate label if not given
         if (!data?.label && data?.locality && data?.city) {
           data.label = `${data.locality}, ${data.city}`
         }
 
+        // Auto-generate value (slug) if not given
         if (!data?.value && data?.locality && data?.city) {
-          data.value = `${data.city}-${data.locality}`
-            .toLowerCase()
-            .replace(/\s+/g, '-')
+          data.value = `${data.city}-${data.locality}`.toLowerCase().replace(/\s+/g, '-')
         }
       },
     ],
