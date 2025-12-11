@@ -30,7 +30,7 @@ function createWindow() {
       if (state === 'completed') {
         console.log('✅ Download complete:', filePath)
       } else {
-        console.error('❌ Download failed:', state)
+        console.error(' Download failed:', state)
       }
     })
   })
