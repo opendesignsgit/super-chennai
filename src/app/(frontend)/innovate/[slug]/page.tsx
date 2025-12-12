@@ -59,7 +59,7 @@ export default async function Post({ params: paramsPromise }: Args) {
       </Suspense>
 
       <div>
-        <RichText data={post.content} enableGutter={false} />     
+        <RichText data={post.content as any} enableGutter={false} />
       </div>
     </div>
   )
