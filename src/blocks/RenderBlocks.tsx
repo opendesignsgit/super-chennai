@@ -4,7 +4,7 @@ import { FormBlock } from 'src/blocks/Form/Component'
 import { MediaBlock } from 'src/blocks/MediaBlock/Component'
 import type { Page } from 'src/payload-types'
 import { ContentZoneCarousel } from './HomePage/ContentZoneCarousel/Component'
-// import { EventsCalendarBlock } from './HomePage/EventsCalendar/Component'
+import { EventsCalendarBlock } from './HomePage/EventsCalendar/Component'
 import { ExploreBlockServer } from './HomePage/Explore/Components'
 import { FunChennaiBlockServer } from './HomePage/funChennai/Component'
 import GlobalSearch from './HomePage/GlobalSearch/Component'
@@ -21,7 +21,7 @@ import InvestCategory from './InnerPage/SharedBlocks/InvestCategory/Components'
 import StickyImageScroll from './InnerPage/SharedBlocks/StickyImageScroll/Component'
 import FeatureSections from './InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
 import ZigZagContentSection from './InnerPage/SharedBlocks/ZigZagContent/Component'
-// import { EventsHomeBlock } from './MainPages/Events/AllEvents'
+import { EventsHomeBlock } from './MainPages/Events/AllEvents'
 import { InnovateSliderBlock } from './MainPages/Innovate/TabWithSlider/Component'
 import InvestmentCategoryListSection from './MainPages/Invest/InvestCategory/Component'
 import ChennaiLifeEssentials from './MainPages/Live/ChennaiLifeEssentials/Components'
@@ -49,7 +49,7 @@ const blockComponents: {
   chennaiInvestments: ChennaiInvestments,
   socialReelSlider: socialReelSlider,
   becameAVolunteer: BecameAVolunteer,
-  // eventsCalendar: EventsCalendarBlock,
+  eventsCalendar: EventsCalendarBlock,
   globalSearch: GlobalSearch,
   heroSliderBlock: HeroSliderBlock,
   infography: InfographySection,
@@ -63,7 +63,7 @@ const blockComponents: {
   formPopup: FormPopupComponent,
   volunteerBecameSection: VolunteerBecameSection,
   contentZoneCarousel: ContentZoneCarousel,
-  // allevents: EventsHomeBlock,
+  allevents: EventsHomeBlock,
   InvestCategoryBlock: InvestCategory,
   liveIntrorSection: LiveIntroTextSection,
   chennaiLifeEssentials: ChennaiLifeEssentials,
