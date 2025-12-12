@@ -6,17 +6,20 @@ import React, { useCallback, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import RichText from 'src/components/RichText'
 import { Button } from 'src/components/ui/button'
-import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
+// import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 
 import { fields } from './fields'
 import { getClientSideURL } from 'src/utilities/getURL'
+import { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
 
 export type FormBlockType = {
   blockName?: string
   blockType?: 'formBlock'
   enableIntro: boolean
   form: FormType
-  introContent?: SerializedEditorState
+  // introContent?: SerializedEditorState
+    introContent?: DefaultTypedEditorState | null
+
 }
 
 export const FormBlock: React.FC<
@@ -116,7 +119,9 @@ export const FormBlock: React.FC<
   return (
     <div className="container lg:max-w-[48rem]">
       {enableIntro && introContent && !hasSubmitted && (
-        <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />
+        // <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />
+        <RichText className="mb-8 lg:mb-12" data={introContent as any} enableGutter={false} />
+
       )}
       <div className="p-4 lg:p-6 border border-border rounded-[0.8rem]">
         <FormProvider {...formMethods}>
