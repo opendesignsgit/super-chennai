@@ -42,7 +42,7 @@ import { PropertyLocations } from './collections/Properties/options/propertyLoca
 import { SuperchennaiContests } from './collections/SuperchennaiContests'
 import { IconOfMonth } from './collections/IconOfTheMonth'
 import Neighbourhoods from './blocks/InnerPage/SharedBlocks/Neighbourhood/config'
-import { Neighbourhood } from './collections/Neighbourhoods/Neighbourhoods'
+// import { Neighbourhood } from './collections/Neighbourhoods/Neighbourhoods'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -139,7 +139,7 @@ export default buildConfig({
     SuperchennaiContests,
     IconOfMonth,
 
-    Neighbourhood,
+    // Neighbourhood,
   ],
 
   // #################################################################################

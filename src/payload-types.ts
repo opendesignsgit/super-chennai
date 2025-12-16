@@ -1473,83 +1473,8 @@ export interface Live {
     };
     [k: string]: unknown;
   };
-  NeighbourhoodData?: (number | Neighbourhood)[] | null;
   relatedlive?: (number | Live)[] | null;
   categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "neighbourhood".
- */
-export interface Neighbourhood {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  /**
-   * This image will be used as the featured image for Slides.
-   */
-  FeaturedImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  cardTitle: string;
-  neighbourSlug: string;
-  nature?: string | null;
-  image?: (number | null) | Media;
-  achievements?:
-    | {
-        point?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  neighbourContent?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
   meta?: {
     title?: string | null;
     /**
@@ -2440,6 +2365,80 @@ export interface IconOfMonth {
     };
     [k: string]: unknown;
   };
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhood".
+ */
+export interface Neighbourhood {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  /**
+   * This image will be used as the featured image for Slides.
+   */
+  FeaturedImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  cardTitle: string;
+  neighbourSlug: string;
+  nature?: string | null;
+  image?: (number | null) | Media;
+  achievements?:
+    | {
+        point?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  neighbourContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   meta?: {
     title?: string | null;
     /**
@@ -3796,7 +3795,6 @@ export interface LiveSelect<T extends boolean = true> {
   heroImage?: T;
   FeaturedImage?: T;
   content?: T;
-  NeighbourhoodData?: T;
   relatedlive?: T;
   categories?: T;
   meta?:
