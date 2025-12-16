@@ -96,11 +96,12 @@ export interface Config {
     eventsCategories: EventsCategory;
     superchennaiContests: SuperchennaiContest;
     iconOfMonth: IconOfMonth;
-    neighbourhoods: Neighbourhood;
+    neighbourhood: Neighbourhood;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
     search: Search;
+    'payload-kv': PayloadKv;
     'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -135,11 +136,12 @@ export interface Config {
     eventsCategories: EventsCategoriesSelect<false> | EventsCategoriesSelect<true>;
     superchennaiContests: SuperchennaiContestsSelect<false> | SuperchennaiContestsSelect<true>;
     iconOfMonth: IconOfMonthSelect<false> | IconOfMonthSelect<true>;
-    neighbourhoods: NeighbourhoodsSelect<false> | NeighbourhoodsSelect<true>;
+    neighbourhood: NeighbourhoodSelect<false> | NeighbourhoodSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     search: SearchSelect<false> | SearchSelect<true>;
+    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -148,6 +150,7 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
+  fallbackLocale: null;
   globals: {
     header: Header;
     footer: Footer;
@@ -867,7 +870,7 @@ export interface Media {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -960,7 +963,7 @@ export interface Post {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1063,6 +1066,13 @@ export interface User {
   hash?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
   password?: string | null;
 }
 /**
@@ -1081,7 +1091,7 @@ export interface Visit {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1132,7 +1142,7 @@ export interface Investment {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1211,7 +1221,7 @@ export interface Event {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1452,7 +1462,7 @@ export interface Live {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1463,8 +1473,83 @@ export interface Live {
     };
     [k: string]: unknown;
   };
+  NeighbourhoodData?: (number | Neighbourhood)[] | null;
   relatedlive?: (number | Live)[] | null;
   categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhood".
+ */
+export interface Neighbourhood {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  /**
+   * This image will be used as the featured image for Slides.
+   */
+  FeaturedImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  cardTitle: string;
+  neighbourSlug: string;
+  nature?: string | null;
+  image?: (number | null) | Media;
+  achievements?:
+    | {
+        point?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  neighbourContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   meta?: {
     title?: string | null;
     /**
@@ -1503,7 +1588,7 @@ export interface Work {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1563,7 +1648,7 @@ export interface Volunteer {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1614,7 +1699,7 @@ export interface Innovate {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1678,7 +1763,7 @@ export interface VisitDetail {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1731,7 +1816,7 @@ export interface VolunteerSlide {
           root: {
             type: string;
             children: {
-              type: string;
+              type: any;
               version: number;
               [k: string]: unknown;
             }[];
@@ -1835,7 +1920,7 @@ export interface Property {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -2299,7 +2384,7 @@ export interface SuperchennaiContest {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -2344,7 +2429,7 @@ export interface IconOfMonth {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -2376,40 +2461,6 @@ export interface IconOfMonth {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "neighbourhoods".
- */
-export interface Neighbourhood {
-  id: number;
-  title: string;
-  categories?:
-    | {
-        label: string;
-        value: string;
-        subcats?:
-          | {
-              name: string;
-              prideData?:
-                | {
-                    name: string;
-                    nature?: string | null;
-                    image?: (number | null) | Media;
-                    achievement1?: string | null;
-                    achievement2?: string | null;
-                    achievement3?: string | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2479,7 +2530,7 @@ export interface Form {
               root: {
                 type: string;
                 children: {
-                  type: string;
+                  type: any;
                   version: number;
                   [k: string]: unknown;
                 }[];
@@ -2562,7 +2613,7 @@ export interface Form {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -2594,7 +2645,7 @@ export interface Form {
           root: {
             type: string;
             children: {
-              type: string;
+              type: any;
               version: number;
               [k: string]: unknown;
             }[];
@@ -2666,6 +2717,23 @@ export interface Search {
     | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv".
+ */
+export interface PayloadKv {
+  id: number;
+  key: string;
+  data:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2875,7 +2943,7 @@ export interface PayloadLockedDocument {
         value: number | IconOfMonth;
       } | null)
     | ({
-        relationTo: 'neighbourhoods';
+        relationTo: 'neighbourhood';
         value: number | Neighbourhood;
       } | null)
     | ({
@@ -2893,10 +2961,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'search';
         value: number | Search;
-      } | null)
-    | ({
-        relationTo: 'payload-jobs';
-        value: number | PayloadJob;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -3539,6 +3603,13 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -3725,6 +3796,7 @@ export interface LiveSelect<T extends boolean = true> {
   heroImage?: T;
   FeaturedImage?: T;
   content?: T;
+  NeighbourhoodData?: T;
   relatedlive?: T;
   categories?: T;
   meta?:
@@ -4386,36 +4458,44 @@ export interface IconOfMonthSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "neighbourhoods_select".
+ * via the `definition` "neighbourhood_select".
  */
-export interface NeighbourhoodsSelect<T extends boolean = true> {
+export interface NeighbourhoodSelect<T extends boolean = true> {
   title?: T;
-  categories?:
+  heroImage?: T;
+  FeaturedImage?: T;
+  content?: T;
+  cardTitle?: T;
+  neighbourSlug?: T;
+  nature?: T;
+  image?: T;
+  achievements?:
     | T
     | {
-        label?: T;
-        value?: T;
-        subcats?:
-          | T
-          | {
-              name?: T;
-              prideData?:
-                | T
-                | {
-                    name?: T;
-                    nature?: T;
-                    image?: T;
-                    achievement1?: T;
-                    achievement2?: T;
-                    achievement3?: T;
-                    id?: T;
-                  };
-              id?: T;
-            };
+        point?: T;
         id?: T;
       };
+  neighbourContent?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -4607,6 +4687,14 @@ export interface SearchSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv_select".
+ */
+export interface PayloadKvSelect<T extends boolean = true> {
+  key?: T;
+  data?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -4913,6 +5001,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'iconOfMonth';
           value: number | IconOfMonth;
+        } | null)
+      | ({
+          relationTo: 'neighbourhood';
+          value: number | Neighbourhood;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
@@ -4929,7 +5021,7 @@ export interface BannerBlock {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];

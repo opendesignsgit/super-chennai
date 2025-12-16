@@ -83,7 +83,7 @@ export const Properties: CollectionConfig<'properties'> = {
     preview: (data, { req }) =>
       generatePreviewPath({
         slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'posts',
+        collection: 'properties',
         req,
       }),
     useAsTitle: 'title',

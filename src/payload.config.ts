@@ -37,10 +37,12 @@ import { plugins } from './plugins'
 import { getServerSideURL } from './utilities/getURL'
 import ContactMessages from './collections/Properties/forms/ContacctProperties'
 import { eventsCategories } from './collections/Events/options/Categories'
-import Neighbourhoods from './collections/Neighbourhoods/Neighbourhoods'
+// import Neighbourhoods from './collections/Neighbourhoods/Neighbourhoods'
 import { PropertyLocations } from './collections/Properties/options/propertyLocation'
 import { SuperchennaiContests } from './collections/SuperchennaiContests'
 import { IconOfMonth } from './collections/IconOfTheMonth'
+import Neighbourhoods from './blocks/InnerPage/SharedBlocks/Neighbourhood/config'
+import { Neighbourhood } from './collections/Neighbourhoods/Neighbourhoods'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -86,12 +88,22 @@ export default buildConfig({
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
 
+  // db: postgresAdapter({
+  //   pool: {
+  //     connectionString: process.env.DATABASE_URI,
+  //     ssl: false,
+  //     connectionTimeoutMillis: 20000,
+  //     idleTimeoutMillis: 30000,
+  //   },
+  // }),
+
   db: postgresAdapter({
     pool: {
+      max: 10, // max connections
       connectionString: process.env.DATABASE_URI,
-      ssl: false,
-      connectionTimeoutMillis: 20000,
-      idleTimeoutMillis: 30000,
+      //   ssl: false, // enable ssl: true if your DB is public
+      connectionTimeoutMillis: 120000, // 60 seconds
+      idleTimeoutMillis: 120000, // 30 seconds 30000
     },
   }),
 
@@ -127,7 +139,7 @@ export default buildConfig({
     SuperchennaiContests,
     IconOfMonth,
 
-    Neighbourhoods,
+    Neighbourhood,
   ],
 
   // #################################################################################
