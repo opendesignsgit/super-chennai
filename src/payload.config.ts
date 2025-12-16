@@ -102,8 +102,8 @@ export default buildConfig({
       max: 10, // max connections
       connectionString: process.env.DATABASE_URI,
       //   ssl: false, // enable ssl: true if your DB is public
-      connectionTimeoutMillis: 120000, // 60 seconds
-      idleTimeoutMillis: 120000, // 30 seconds 30000
+      connectionTimeoutMillis: 300000, // 60 seconds
+      idleTimeoutMillis: 300000, // 30 seconds 30000
     },
   }),
 
