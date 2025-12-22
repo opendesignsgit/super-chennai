@@ -42,6 +42,11 @@ import { PropertyLocations } from './collections/Properties/options/propertyLoca
 import { SuperchennaiContests } from './collections/SuperchennaiContests'
 import { IconOfMonth } from './collections/IconOfTheMonth'
 import Neighbourhoods from './blocks/InnerPage/SharedBlocks/Neighbourhood/config'
+import { Contest } from './collections/Contest'
+import { Organizers } from './collections/Contest/Options/Organizers'
+import { MargazhiEventCategories } from './collections/Contest/Options/MargazhiEventCategories'
+import { Venues } from './collections/Contest/Options/Venues'
+import { SabhaFoods } from './collections/Contest/Options/Food'
 // import { Neighbourhood } from './collections/Neighbourhoods/Neighbourhoods'
 
 const filename = fileURLToPath(import.meta.url)
@@ -140,6 +145,8 @@ export default buildConfig({
     IconOfMonth,
 
     // Neighbourhood,
+    Contest,
+    Organizers,Venues,MargazhiEventCategories,SabhaFoods
   ],
 
   // #################################################################################

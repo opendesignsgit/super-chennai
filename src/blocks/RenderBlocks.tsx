@@ -35,6 +35,8 @@ import { TextHoverImageSection } from './MainPages/Work/Works/Components'
 import HeroSliderBlock from './PageBanners/Home/Component'
 import { VisitBanner } from './PageBanners/VisitBanner/Component'
 import RestaurantsCategoriesComponent from './InnerPage/SharedBlocks/Restaurants/Components'
+import MargazhiEventsSectionComponent from './Contest/Component'
+import ContestFoodBlockComponent from './Contest/FoodBlock/Component'
 // import { CallToActionBlock } from './CallToAction/Component'
 
 const blockComponents: {
@@ -73,12 +75,11 @@ const blockComponents: {
   investmentCategoryList: InvestmentCategoryListSection,
   innovateSlider: InnovateSliderBlock,
   textHoverImageSection: TextHoverImageSection,
-  RestaurantsCategories:RestaurantsCategoriesComponent
+  RestaurantsCategories:RestaurantsCategoriesComponent,
 
 
-
-
-  // TESTING 
+  MargazhiEventsBlock: MargazhiEventsSectionComponent,
+  ContestFoodBlock:ContestFoodBlockComponent
 
   // BLOG 
     // cta: CallToActionBlock,

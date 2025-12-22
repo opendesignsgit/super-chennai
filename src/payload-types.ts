@@ -96,6 +96,11 @@ export interface Config {
     eventsCategories: EventsCategory;
     superchennaiContests: SuperchennaiContest;
     iconOfMonth: IconOfMonth;
+    contest: Contest;
+    organizers: Organizer;
+    venues: Venue;
+    margazhiContestCategories: MargazhiContestCategory;
+    sabhaFoods: SabhaFood;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -135,6 +140,11 @@ export interface Config {
     eventsCategories: EventsCategoriesSelect<false> | EventsCategoriesSelect<true>;
     superchennaiContests: SuperchennaiContestsSelect<false> | SuperchennaiContestsSelect<true>;
     iconOfMonth: IconOfMonthSelect<false> | IconOfMonthSelect<true>;
+    contest: ContestSelect<false> | ContestSelect<true>;
+    organizers: OrganizersSelect<false> | OrganizersSelect<true>;
+    venues: VenuesSelect<false> | VenuesSelect<true>;
+    margazhiContestCategories: MargazhiContestCategoriesSelect<false> | MargazhiContestCategoriesSelect<true>;
+    sabhaFoods: SabhaFoodsSelect<false> | SabhaFoodsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -2387,6 +2397,163 @@ export interface IconOfMonth {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contest".
+ */
+export interface Contest {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organizers".
+ */
+export interface Organizer {
+  id: number;
+  title: string;
+  subtitle?: string | null;
+  /**
+   * Emoji shown in UI (🎼 🎶 🪔 🛕 etc)
+   */
+  icon?: string | null;
+  venue?: ('dr-nalli-gana-vihar' | 'kamakoti-hall' | 'multiple') | null;
+  website?: string | null;
+  description?: string | null;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Manage all event venues here. Venues can be reused across events and pages.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "venues".
+ */
+export interface Venue {
+  id: number;
+  /**
+   * Official name of the venue as it should appear on the website.
+   */
+  title: string;
+  /**
+   * URL-friendly identifier. Use lowercase letters and hyphens only. Example: dr-nalli-gana-vihar
+   */
+  slug: string;
+  /**
+   * Optional. Helps visitors understand where the venue is located.
+   */
+  location?: string | null;
+  /**
+   * Internal reference only. Not displayed on the website.
+   */
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Manage Margazhi event categories like Music, Dance, Conference, Ceremony etc.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "margazhiContestCategories".
+ */
+export interface MargazhiContestCategory {
+  id: number;
+  /**
+   * Display name of the category shown to users.
+   */
+  title: string;
+  /**
+   * Unique identifier used internally. Use lowercase letters and hyphens only.
+   */
+  slug: string;
+  /**
+   * Optional emoji icon displayed in filters or category lists.
+   */
+  icon?: string | null;
+  /**
+   * Controls the order in which categories appear in the UI.
+   */
+  order?: number | null;
+  /**
+   * Internal reference only. Not shown on the website.
+   */
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Manage Margazhi-related food spots, canteens, and snack places shown on the website.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sabhaFoods".
+ */
+export interface SabhaFood {
+  id: number;
+  /**
+   * This name will be shown as the main heading on the food card.
+   */
+  title: string;
+  /**
+   * A short line describing the food or speciality (optional).
+   */
+  subtitle?: string | null;
+  /**
+   * Upload a photo of the canteen or food. Recommended: square image, good lighting.
+   */
+  image?: (number | null) | Media;
+  /**
+   * Optional. Used only if no image is uploaded (☕ 🍘 🍚).
+   */
+  icon?: string | null;
+  /**
+   * Helps group food items logically on the website.
+   */
+  type: 'canteen' | 'snacks' | 'restaurant';
+  /**
+   * Lower numbers appear first. Leave empty if order does not matter.
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -2864,6 +3031,26 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'iconOfMonth';
         value: number | IconOfMonth;
+      } | null)
+    | ({
+        relationTo: 'contest';
+        value: number | Contest;
+      } | null)
+    | ({
+        relationTo: 'organizers';
+        value: number | Organizer;
+      } | null)
+    | ({
+        relationTo: 'venues';
+        value: number | Venue;
+      } | null)
+    | ({
+        relationTo: 'margazhiContestCategories';
+        value: number | MargazhiContestCategory;
+      } | null)
+    | ({
+        relationTo: 'sabhaFoods';
+        value: number | SabhaFood;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -4376,6 +4563,89 @@ export interface IconOfMonthSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contest_select".
+ */
+export interface ContestSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organizers_select".
+ */
+export interface OrganizersSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  icon?: T;
+  venue?: T;
+  website?: T;
+  description?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "venues_select".
+ */
+export interface VenuesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  location?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "margazhiContestCategories_select".
+ */
+export interface MargazhiContestCategoriesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  icon?: T;
+  order?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sabhaFoods_select".
+ */
+export interface SabhaFoodsSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  image?: T;
+  icon?: T;
+  type?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
@@ -4878,6 +5148,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'iconOfMonth';
           value: number | IconOfMonth;
+        } | null)
+      | ({
+          relationTo: 'contest';
+          value: number | Contest;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
