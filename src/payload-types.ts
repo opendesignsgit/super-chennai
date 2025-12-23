@@ -2449,6 +2449,10 @@ export interface Organizer {
   title: string;
   subtitle?: string | null;
   /**
+   * Upload an image for the organizer. Recommended: square image, good lighting.
+   */
+  image?: (number | null) | Media;
+  /**
    * Emoji shown in UI (🎼 🎶 🪔 🛕 etc)
    */
   icon?: string | null;
@@ -4597,6 +4601,7 @@ export interface ContestSelect<T extends boolean = true> {
 export interface OrganizersSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
+  image?: T;
   icon?: T;
   venue?: T;
   website?: T;

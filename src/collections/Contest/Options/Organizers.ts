@@ -1,15 +1,15 @@
-import { CollectionConfig } from "payload";
+import { CollectionConfig } from 'payload'
 
 export const Organizers: CollectionConfig = {
-  slug: "organizers",
+  slug: 'organizers',
   labels: {
-    singular: "Organizer",
-    plural: "Organizers",
+    singular: 'Organizer',
+    plural: 'Organizers',
   },
 
   admin: {
-    useAsTitle: "title",
-    defaultColumns: ["title", "subtitle", "venue"],
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'subtitle', 'venue'],
   },
 
   access: {
@@ -20,68 +20,80 @@ export const Organizers: CollectionConfig = {
     /* ---------- BASIC INFO ---------- */
 
     {
-      name: "title",
-      type: "text",
+      name: 'title',
+      type: 'text',
       required: true,
-      label: "Organizer Name",
+      label: 'Organizer Name',
       admin: {
-        placeholder: "Krishna Gana Sabha",
+        placeholder: 'Krishna Gana Sabha',
       },
     },
 
     {
-      name: "subtitle",
-      type: "text",
-      label: "Subtitle / Description",
+      name: 'subtitle',
+      type: 'text',
+      label: 'Subtitle / Description',
       admin: {
-        placeholder: "Traditional Excellence",
+        placeholder: 'Traditional Excellence',
+      },
+    },
+
+    /* ---------- MEDIA ---------- */
+
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Organizer Image',
+      admin: {
+        description: 'Upload an image for the organizer. Recommended: square image, good lighting.',
       },
     },
 
     {
-      name: "icon",
-      type: "text",
-      label: "Icon (Emoji)",
+      name: 'icon',
+      type: 'text',
+      label: 'Icon (Emoji)',
       admin: {
-        placeholder: "🎶",
-        description: "Emoji shown in UI (🎼 🎶 🪔 🛕 etc)",
+        placeholder: '🎶',
+        description: 'Emoji shown in UI (🎼 🎶 🪔 🛕 etc)',
       },
     },
 
     /* ---------- OPTIONAL METADATA ---------- */
 
     {
-      name: "venue",
-      type: "select",
-      label: "Primary Venue",
+      name: 'venue',
+      type: 'select',
+      label: 'Primary Venue',
       options: [
-        { label: "Dr Nalli Gana Vihar", value: "dr-nalli-gana-vihar" },
-        { label: "Kamakoti Hall", value: "kamakoti-hall" },
-        { label: "Multiple Venues", value: "multiple" },
+        { label: 'Dr Nalli Gana Vihar', value: 'dr-nalli-gana-vihar' },
+        { label: 'Kamakoti Hall', value: 'kamakoti-hall' },
+        { label: 'Multiple Venues', value: 'multiple' },
       ],
     },
 
     {
-      name: "website",
-      type: "text",
-      label: "Website URL",
+      name: 'website',
+      type: 'text',
+      label: 'Website URL',
     },
 
     {
-      name: "description",
-      type: "textarea",
-      label: "About Organizer",
+      name: 'description',
+      type: 'textarea',
+      label: 'About Organizer',
     },
 
     /* ---------- INTERNAL ---------- */
 
     {
-      name: "order",
-      type: "number",
-      label: "Display Order",
+      name: 'order',
+      type: 'number',
+      label: 'Display Order',
       admin: {
-        position: "sidebar",
+        position: 'sidebar',
       },
     },
   ],
-};
+}
