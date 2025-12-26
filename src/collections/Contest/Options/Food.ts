@@ -44,7 +44,6 @@ export const SabhaFoods: CollectionConfig<'sabhaFoods'> = {
           'Upload a photo of the canteen or food. Recommended: square image, good lighting.',
       },
     },
-
     // 😀 EMOJI FALLBACK
     {
       name: 'icon',
@@ -71,6 +70,7 @@ export const SabhaFoods: CollectionConfig<'sabhaFoods'> = {
         description: 'Helps group food items logically on the website.',
       },
     },
+
     {
       name: 'order',
       type: 'number',
@@ -78,6 +78,95 @@ export const SabhaFoods: CollectionConfig<'sabhaFoods'> = {
       admin: {
         placeholder: '1',
         description: 'Lower numbers appear first. Leave empty if order does not matter.',
+      },
+    },
+
+    {
+      name: 'availDate',
+      type: 'group',
+      label: 'Available Time Period',
+      fields: [
+        {
+          name: 'from',
+          type: 'date',
+          label: 'From Date',
+        },
+        {
+          name: 'to',
+          type: 'date',
+          label: 'To Date',
+        },
+      ],
+    },
+
+    {
+      name: 'timings',
+      type: 'text',
+      label: 'Food Timings',
+      admin: {
+        placeholder: 'Example: 7:00 AM – 10:30 AM',
+        description: 'Client can enter any timing text.',
+      },
+    },
+
+    {
+      name: 'place',
+      type: 'group',
+      label: 'Place Details',
+      fields: [
+        {
+          name: 'name',
+          type: 'text',
+          label: 'Place Name / Area',
+          admin: {
+            placeholder: 'Example: Mylapore, Chennai',
+          },
+        },
+        {
+          name: 'mapUrl',
+          type: 'text',
+          label: 'Google Maps URL',
+          admin: {
+            placeholder: 'https://maps.google.com/...',
+          },
+        },
+      ],
+    },
+
+    {
+      name: 'foodDetails',
+      type: 'text',
+      label: 'Food Availability / Details',
+      admin: {
+        placeholder: 'Example: Breakfast, Lunch, Golden Water, Special Prasadam',
+      },
+    },
+
+    {
+      name: 'sabhaName',
+      type: 'text',
+      label: 'Sabha Name',
+      admin: {
+        placeholder: 'Example: Music Academy Sabha',
+      },
+    },
+
+    {
+      name: 'organizer',
+      type: 'text',
+      label: 'Organizer Name',
+      admin: {
+        placeholder: 'Example: Margazhi Festival Committee',
+      },
+    },
+
+    {
+      name: 'otherDetails',
+      type: 'richText',
+      label: 'Other Details',
+      admin: {
+        description:
+          'Use this space for timings, special notes, must-try items, pricing info, etc.',
       },
     },
   ],
