@@ -93,14 +93,16 @@ export const Contest: CollectionConfig<'contest'> = {
                   return [
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [Banner, Code, MediaBlock,MargazhiEventsBlock,ContestFoodBlock] }),
+                    BlocksFeature({
+                      blocks: [Banner, Code, MediaBlock, MargazhiEventsBlock, ContestFoodBlock],
+                    }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),
                     HorizontalRuleFeature(),
                   ]
                 },
               }),
-              label: false,
+              // label: false,
               required: true,
             },
           ],
@@ -124,7 +126,6 @@ export const Contest: CollectionConfig<'contest'> = {
             //   hasMany: true,
             //   relationTo: 'contest',
             // },
-            
           ],
           label: 'Meta',
         },
@@ -186,7 +187,7 @@ export const Contest: CollectionConfig<'contest'> = {
       hasMany: true,
       relationTo: 'users',
     },
-    
+
     // This field is only used to populate the user data via the `populateAuthors` hook
     // This is because the `user` collection has access control locked to protect user privacy
     // GraphQL will also not return mutated user data that differs from the underlying schema

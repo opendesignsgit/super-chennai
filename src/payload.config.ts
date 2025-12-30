@@ -47,6 +47,7 @@ import { Organizers } from './collections/Contest/Options/Organizers'
 import { MargazhiEventCategories } from './collections/Contest/Options/MargazhiEventCategories'
 import { Venues } from './collections/Contest/Options/Venues'
 import { SabhaFoods } from './collections/Contest/Options/Food'
+import { Neighbourhood } from './collections/Neighbourhoods/Neighbourhoods'
 // import { Neighbourhood } from './collections/Neighbourhoods/Neighbourhoods'
 
 const filename = fileURLToPath(import.meta.url)
@@ -93,14 +94,7 @@ export default buildConfig({
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
 
-  // db: postgresAdapter({
-  //   pool: {
-  //     connectionString: process.env.DATABASE_URI,
-  //     ssl: false,
-  //     connectionTimeoutMillis: 20000,
-  //     idleTimeoutMillis: 30000,
-  //   },
-  // }),
+
 
   db: postgresAdapter({
     pool: {
@@ -144,7 +138,7 @@ export default buildConfig({
     SuperchennaiContests,
     IconOfMonth,
 
-    // Neighbourhood,
+    Neighbourhood,
     Contest,
     Organizers,Venues,MargazhiEventCategories,SabhaFoods
   ],

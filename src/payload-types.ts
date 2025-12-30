@@ -96,6 +96,7 @@ export interface Config {
     eventsCategories: EventsCategory;
     superchennaiContests: SuperchennaiContest;
     iconOfMonth: IconOfMonth;
+    neighbourhood: Neighbourhood;
     contest: Contest;
     organizers: Organizer;
     venues: Venue;
@@ -140,6 +141,7 @@ export interface Config {
     eventsCategories: EventsCategoriesSelect<false> | EventsCategoriesSelect<true>;
     superchennaiContests: SuperchennaiContestsSelect<false> | SuperchennaiContestsSelect<true>;
     iconOfMonth: IconOfMonthSelect<false> | IconOfMonthSelect<true>;
+    neighbourhood: NeighbourhoodSelect<false> | NeighbourhoodSelect<true>;
     contest: ContestSelect<false> | ContestSelect<true>;
     organizers: OrganizersSelect<false> | OrganizersSelect<true>;
     venues: VenuesSelect<false> | VenuesSelect<true>;
@@ -1065,6 +1067,10 @@ export interface Category {
 export interface User {
   id: number;
   name?: string | null;
+  /**
+   * Upload author profile photo (square image preferred)
+   */
+  profileImage?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1481,8 +1487,83 @@ export interface Live {
     };
     [k: string]: unknown;
   };
+  NeighbourhoodData?: (number | Neighbourhood)[] | null;
   relatedlive?: (number | Live)[] | null;
   categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhood".
+ */
+export interface Neighbourhood {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  /**
+   * This image will be used as the featured image for Slides.
+   */
+  FeaturedImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  cardTitle: string;
+  neighbourSlug: string;
+  nature?: string | null;
+  image?: (number | null) | Media;
+  achievements?:
+    | {
+        point?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  neighbourContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   meta?: {
     title?: string | null;
     /**
@@ -2553,6 +2634,39 @@ export interface SabhaFood {
    * Lower numbers appear first. Leave empty if order does not matter.
    */
   order?: number | null;
+  availDate?: {
+    from?: string | null;
+    to?: string | null;
+  };
+  /**
+   * Client can enter any timing text.
+   */
+  timings?: string | null;
+  place?: {
+    name?: string | null;
+    mapUrl?: string | null;
+  };
+  foodDetails?: string | null;
+  sabhaName?: string | null;
+  organizer?: string | null;
+  /**
+   * Use this space for timings, special notes, must-try items, pricing info, etc.
+   */
+  otherDetails?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -3035,6 +3149,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'iconOfMonth';
         value: number | IconOfMonth;
+      } | null)
+    | ({
+        relationTo: 'neighbourhood';
+        value: number | Neighbourhood;
       } | null)
     | ({
         relationTo: 'contest';
@@ -3704,6 +3822,7 @@ export interface CategoriesSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  profileImage?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -3906,6 +4025,7 @@ export interface LiveSelect<T extends boolean = true> {
   heroImage?: T;
   FeaturedImage?: T;
   content?: T;
+  NeighbourhoodData?: T;
   relatedlive?: T;
   categories?: T;
   meta?:
@@ -4567,6 +4687,47 @@ export interface IconOfMonthSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhood_select".
+ */
+export interface NeighbourhoodSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  FeaturedImage?: T;
+  content?: T;
+  cardTitle?: T;
+  neighbourSlug?: T;
+  nature?: T;
+  image?: T;
+  achievements?:
+    | T
+    | {
+        point?: T;
+        id?: T;
+      };
+  neighbourContent?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contest_select".
  */
 export interface ContestSelect<T extends boolean = true> {
@@ -4646,6 +4807,23 @@ export interface SabhaFoodsSelect<T extends boolean = true> {
   icon?: T;
   type?: T;
   order?: T;
+  availDate?:
+    | T
+    | {
+        from?: T;
+        to?: T;
+      };
+  timings?: T;
+  place?:
+    | T
+    | {
+        name?: T;
+        mapUrl?: T;
+      };
+  foodDetails?: T;
+  sabhaName?: T;
+  organizer?: T;
+  otherDetails?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -5153,6 +5331,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'iconOfMonth';
           value: number | IconOfMonth;
+        } | null)
+      | ({
+          relationTo: 'neighbourhood';
+          value: number | Neighbourhood;
         } | null)
       | ({
           relationTo: 'contest';
