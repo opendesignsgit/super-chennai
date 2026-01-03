@@ -37,6 +37,7 @@ import { VisitBanner } from './PageBanners/VisitBanner/Component'
 import RestaurantsCategoriesComponent from './InnerPage/SharedBlocks/Restaurants/Components'
 import MargazhiEventsSectionComponent from './Contest/Component'
 import ContestFoodBlockComponent from './Contest/FoodBlock/Component'
+import { VideoBlockComponent } from './VideoBlock/Component'
 // import { CallToActionBlock } from './CallToAction/Component'
 
 const blockComponents: {
@@ -79,7 +80,8 @@ const blockComponents: {
 
 
   MargazhiEventsBlock: MargazhiEventsSectionComponent,
-  ContestFoodBlock:ContestFoodBlockComponent
+  ContestFoodBlock:ContestFoodBlockComponent,
+  VideoBlock:VideoBlockComponent 
 
   // BLOG 
     // cta: CallToActionBlock,

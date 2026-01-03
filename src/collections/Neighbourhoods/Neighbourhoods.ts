@@ -124,62 +124,6 @@ export const Neighbourhood: CollectionConfig<'neighbourhood'> = {
           label: 'Content',
         },
         {
-          fields: [
-            {
-              name: 'cardTitle',
-              type: 'text',
-              required: true,
-            },
-            {
-              name: 'neighbourSlug',
-              type: 'text',
-              required: true,
-              unique: true,
-            },
-            {
-              name: 'nature',
-              type: 'text',
-            },
-            
-            {
-              name: 'image',
-              type: 'upload',
-              relationTo: 'media',
-            },
-
-            {
-              name: 'achievements',
-              type: 'array',
-              fields: [{ name: 'point', type: 'text' }],
-            },
-
-            // 👇 Add content & SEO (same as your Live)
-            {
-              name: 'neighbourContent',
-              type: 'richText',
-            },
-
-            {
-              name: 'meta',
-              label: 'SEO',
-              type: 'group',
-              fields: [
-                { name: 'title', type: 'text' },
-                {
-                  name: 'description',
-                  type: 'textarea',
-                },
-                {
-                  name: 'image',
-                  type: 'upload',
-                  relationTo: 'media',
-                },
-              ],
-            },
-          ],
-          label: 'Meta',
-        },
-        {
           name: 'meta',
           label: 'SEO',
           fields: [
@@ -208,6 +152,7 @@ export const Neighbourhood: CollectionConfig<'neighbourhood'> = {
         },
       ],
     },
+
     {
       name: 'publishedAt',
       type: 'date',

@@ -10,5 +10,32 @@ export const MediaBlock: Block = {
       relationTo: 'media',
       required: true,
     },
+    {
+      name: 'thumbnail',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Thumbnail Image',
+      admin: {
+        description: 'Optional thumbnail image',
+      },
+    },
+    {
+      name: 'link',
+      type: 'group',
+      label: 'Image Link',
+      fields: [
+        {
+          name: 'url',
+          type: 'text',
+          label: 'Link URL',
+        },
+        {
+          name: 'newTab',
+          type: 'checkbox',
+          label: 'Open in new tab',
+          defaultValue: true,
+        },
+      ],
+    },
   ],
 }

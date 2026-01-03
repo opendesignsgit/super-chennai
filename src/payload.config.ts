@@ -94,8 +94,6 @@ export default buildConfig({
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
 
-
-
   db: postgresAdapter({
     pool: {
       max: 10, // max connections
@@ -104,6 +102,11 @@ export default buildConfig({
       connectionTimeoutMillis: 300000, // 60 seconds
       idleTimeoutMillis: 300000, // 30 seconds 30000
     },
+    // pool: {
+    //   max: 10, // 10–20 OK
+    //   idleTimeoutMillis: 10000,
+    //   connectionTimeoutMillis: 10000,
+    // },
   }),
 
   collections: [
@@ -140,7 +143,10 @@ export default buildConfig({
 
     Neighbourhood,
     Contest,
-    Organizers,Venues,MargazhiEventCategories,SabhaFoods
+    Organizers,
+    Venues,
+    MargazhiEventCategories,
+    SabhaFoods,
   ],
 
   // #################################################################################

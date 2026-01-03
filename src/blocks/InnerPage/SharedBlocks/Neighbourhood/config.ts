@@ -8,43 +8,58 @@ const Neighbourhoods: Block = {
   },
 
   fields: [
-    { name: 'title', type: 'text', required: true },
     {
-      name: 'categories',
+      name: 'title',
+      label: 'Section Title',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'neighbourhoodCategories',
+      label: 'Neighbourhood Categories',
       type: 'array',
-      label: 'Categories',
       minRows: 1,
       fields: [
-        { name: 'label', type: 'text', required: true },
-        { name: 'value', type: 'text', required: true },
         {
-          name: 'subcats',
+          name: 'categoryTitle',
+          label: 'Category Title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'categoryKey',
+          label: 'Category Key',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'neighbourhoodCards',
+          label: 'Neighbourhood Cards',
           type: 'array',
-          label: 'Subcategories',
           fields: [
-            { name: 'name', type: 'text', required: true },
-
-            // 🧠 Flattened pride data
             {
-              name: 'prideData',
-              label: 'Neigbourhood cards',
-              type: 'array',
-              fields: [
-                { name: 'name', type: 'text', required: true },
-                { name: 'nature', type: 'text' },
-                {
-                  name: 'image',
-                  type: 'upload',
-                  relationTo: 'media',
-                },
-                // 🧩 Flatten popup points
-                {
-                  name: 'achievements',
-                  label: 'Achievements',
-                  type: 'array',
-                  fields: [{ name: 'point', type: 'text', label: 'Achievement Point' }],
-                },
-              ],
+              name: 'neighbourhoodName',
+              label: 'Neighbourhood Name',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'neighbourhoodType',
+              label: 'Neighbourhood Type',
+              type: 'text',
+            },
+            {
+              name: 'neighbourhoodImage',
+              label: 'Neighbourhood Image',
+              type: 'upload',
+              relationTo: 'media',
+            },
+            {
+              name: 'neighbourhood',
+              label: 'Neighbourhood Detail Page',
+              type: 'relationship',
+              relationTo: 'neighbourhood',
+              required: true,
             },
           ],
         },

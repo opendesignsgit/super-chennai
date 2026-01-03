@@ -31,6 +31,8 @@ import { socialReelSlider } from 'src/blocks/HomePage/SocialChennai/config'
 import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/config'
 import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
 import StickyImageScroll from 'src/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
+import { Neighbourhood } from '../Neighbourhoods/Neighbourhoods'
+import Neighbourhoods from '@/blocks/InnerPage/SharedBlocks/Neighbourhood/config'
 
 export const Live: CollectionConfig<'live'> = {
   slug: 'live',
@@ -111,6 +113,7 @@ export const Live: CollectionConfig<'live'> = {
                         introTextBlock,
                         FeatureSectionsBlock,
                         BecameAVolunteerBlock,
+                        Neighbourhoods,
                       ],
                     }),
                     FixedToolbarFeature(),

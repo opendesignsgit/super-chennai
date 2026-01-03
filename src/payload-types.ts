@@ -1539,31 +1539,6 @@ export interface Neighbourhood {
     };
     [k: string]: unknown;
   };
-  cardTitle: string;
-  neighbourSlug: string;
-  nature?: string | null;
-  image?: (number | null) | Media;
-  achievements?:
-    | {
-        point?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  neighbourContent?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
   meta?: {
     title?: string | null;
     /**
@@ -4694,17 +4669,6 @@ export interface NeighbourhoodSelect<T extends boolean = true> {
   heroImage?: T;
   FeaturedImage?: T;
   content?: T;
-  cardTitle?: T;
-  neighbourSlug?: T;
-  nature?: T;
-  image?: T;
-  achievements?:
-    | T
-    | {
-        point?: T;
-        id?: T;
-      };
-  neighbourContent?: T;
   meta?:
     | T
     | {
@@ -5387,9 +5351,36 @@ export interface CodeBlock {
  */
 export interface MediaBlock {
   media: number | Media;
+  /**
+   * Optional thumbnail image
+   */
+  thumbnail?: (number | null) | Media;
+  link?: {
+    url?: string | null;
+    newTab?: boolean | null;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock".
+ */
+export interface VideoBlock {
+  source: 'youtube' | 'instagram' | 'mp4';
+  /**
+   * Paste YouTube / Instagram / mp4 URL
+   */
+  url: string;
+  autoplay?: boolean | null;
+  /**
+   * Optional: Add a cover image for Instagram posts
+   */
+  thumbnail?: (number | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'videoBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
