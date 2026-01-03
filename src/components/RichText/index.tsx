@@ -81,13 +81,27 @@ const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<
         //###################### THIS IS POST RELATED BLOG #####################
         banner: ({ node }) => <BannerBlock className="col-start-2 mb-4" {...node.fields} />,
         mediaBlock: ({ node }) => (
+          // <MediaBlock
+          //   className="col-start-1 col-span-3"
+          //   imgClassName="m-0"
+          //   {...node.fields}
+          //   captionClassName="mx-auto max-w-[48rem]"
+          //   enableGutter={false}
+          //   disableInnerContainer={true}
+          // />
+
           <MediaBlock
             className="col-start-1 col-span-3"
             imgClassName="m-0"
-            {...node.fields}
             captionClassName="mx-auto max-w-[48rem]"
             enableGutter={false}
             disableInnerContainer={true}
+            {...node.fields}
+            link={{
+              url: node.fields.link?.url ?? undefined,
+              newTab: node.fields.link?.newTab ?? undefined,
+            }}
+            thumbnail={node.fields.thumbnail ?? undefined}
           />
         ),
 
