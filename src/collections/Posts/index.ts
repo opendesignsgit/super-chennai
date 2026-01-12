@@ -34,7 +34,8 @@ export const Posts: CollectionConfig<'posts'> = {
     create: authenticated,
     delete: authenticated,
     read: authenticatedOrPublished,
-    update: authenticated,
+    // update: authenticated,
+    update: () => true,
   },
   // This config controls what's populated by default when a post is referenced
   // https://payloadcms.com/docs/queries/select#defaultpopulate-collection-config-property
@@ -165,6 +166,26 @@ export const Posts: CollectionConfig<'posts'> = {
         },
       ],
     },
+    //########## LIKE AND VIEWS ########
+    {
+      name: 'views',
+      type: 'number',
+      defaultValue: 0,
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+      },
+    },
+    {
+      name: 'likes',
+      type: 'number',
+      defaultValue: 0,
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+      },
+    },
+
     {
       name: 'publishedAt',
       type: 'date',
