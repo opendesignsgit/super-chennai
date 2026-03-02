@@ -7,6 +7,7 @@ export const MargazhiEventCategories: CollectionConfig = {
     plural: "Event Categories",
   },
   admin: {
+     hidden: true,
     useAsTitle: "title",
     description:
       "Manage Margazhi event categories like Music, Dance, Conference, Ceremony etc.",

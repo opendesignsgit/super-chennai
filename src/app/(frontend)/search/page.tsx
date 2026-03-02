@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
-import { getPayload } from 'payload'
+import { CollectionSlug, getPayload } from 'payload'
 import { Suspense } from 'react'
 import { Card, CardPostData } from 'src/components/Card'
 import configPromise from 'src/payload.config'
@@ -8,15 +7,50 @@ import SearchBanner from '../../../assets/images/AccodomationBannerr.jpg'
 import './style.css'
 import { distance } from 'fastest-levenshtein'
 
+/* ------------------------------------------------ */
+/* 🔥 UNIVERSAL DEEP TEXT EXTRACTOR (PRODUCTION)   */
+/* ------------------------------------------------ */
+
+const extractDeepText = (data: any): string => {
+  if (!data) return ''
+
+  let text = ''
+
+  if (typeof data === 'string') {
+    return data + ' '
+  }
+
+  if (Array.isArray(data)) {
+    data.forEach((item) => {
+      text += extractDeepText(item)
+    })
+    return text
+  }
+
+  if (typeof data === 'object') {
+    Object.values(data).forEach((value) => {
+      text += extractDeepText(value)
+    })
+  }
+
+  return text
+}
+
+/* ------------------------------------------------ */
+
 type Args = {
   searchParams: Promise<{ q?: string }>
 }
 
-export default async function Page({ searchParams: searchParamsPromise }: Args) {
-  const { q: query } = await searchParamsPromise
+export default async function Page({ searchParams }: Args) {
+  const { q: query } = await searchParams
   const payload = await getPayload({ config: configPromise })
 
-  const collectionsToSearch = [
+  if (!query || query.trim().length < 2) {
+    return <div className="container mt-10">Search query too short</div>
+  }
+
+  const collectionsToSearch: CollectionSlug[] = [
     'pages',
     'posts',
     'visits',
@@ -26,55 +60,40 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
     'innovate',
     'investments',
     'volunteer',
+    'neighbourhood',
   ]
 
   const results = await Promise.all(
-    collectionsToSearch.map(async (collection: any) => {
+    collectionsToSearch.map(async (collection) => {
       const res = await payload.find({
         collection,
-        limit: 12,
-        depth: 1,
+        limit: 50,
+        depth: 2,
+        pagination: false,
         select: {
           title: true,
           slug: true,
           categories: true,
           meta: true,
-        },
-        pagination: false,
-        // ...(query
-        //   ? {
-        //       where: {
-        //         or: [
-        //           { title: { like: `%${query}%` } },
-        //           { 'meta.title': { like: `%${query}%` } },
-        //           { 'meta.description': { like: `%${query}%` } },
-        //           { slug: { like: `%${query}%` } },
-        //         ],
-        //       },
-        //     }
-        //   : {}),
-
-        where: {
-          or: (query ?? '')
-            .toLowerCase()
-            .split(/\s+/)
-            .flatMap((word) => [
-              { title: { like: `%${word}%` } } as Record<string, any>,
-              { meta: { title: { like: `%${word}%` } } } as Record<string, any>,
-              { meta: { description: { like: `%${word}%` } } } as Record<string, any>,
-              { slug: { like: `%${word}%` } } as Record<string, any>,
-            ]),
+          content: true,
+          layout: true,
         },
       })
 
       return res.docs.map(
-        (doc): CardPostData => ({
+        (doc: any): CardPostData => ({
           collection,
-          className: '',
-          slug: String(doc.slug ?? ''),
-          title: String(doc.title ?? ''),
-          categories: Array.isArray(doc.categories) ? doc.categories : [],
-          meta: doc.meta ?? {},
+
+          slug: 'slug' in doc ? String(doc.slug ?? '') : '',
+          title: 'title' in doc ? String(doc.title ?? '') : '',
+
+          categories: 'categories' in doc && Array.isArray(doc.categories) ? doc.categories : [],
+
+          meta: 'meta' in doc ? (doc.meta ?? {}) : {},
+
+          content: 'content' in doc ? (doc.content ?? null) : null,
+
+          layout: 'layout' in doc ? (doc.layout ?? null) : null,
         }),
       )
     }),
@@ -82,84 +101,85 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
 
   const allDocs = results.flat()
 
-  const normalizeString = (str: string) => {
-    return str.toLowerCase().trim().replace(/\s+/g, ' ')
-  }
+  const normalize = (str: string) => str.toLowerCase().trim().replace(/\s+/g, ' ')
 
-  const calculateSpecificityScore = (
-    doc: CardPostData,
-    query: string | null | undefined,
-  ): number => {
-    const safeQuery = normalizeString(query ?? '')
+  const calculateScore = (doc: any, searchQuery: string) => {
+    const safeQuery = normalize(searchQuery)
     let score = 0
 
-    const normalizedTitle = normalizeString(doc.title ?? '')
-    const normalizedSlug = normalizeString(doc.slug ?? '')
-    const normalizedMetaTitle = normalizeString(doc.meta?.title ?? '')
-    const normalizedMetaDescription = normalizeString(doc.meta?.description ?? '')
+    const title = normalize(doc.title ?? '')
+    const slug = normalize(doc.slug ?? '')
+    const metaTitle = normalize(doc.meta?.title ?? '')
+    const metaDesc = normalize(doc.meta?.description ?? '')
 
-    // Exact matches
-    if (normalizedTitle === safeQuery) {
-      score += 150
-    } else if (normalizedTitle.startsWith(safeQuery)) {
-      score += 120
-    } else if (normalizedTitle.includes(safeQuery)) {
-      score += 70
-    }
+    /* ---------- Rich Text Scan ---------- */
+    let deepText = ''
+    deepText += extractDeepText(doc.content)
+    deepText += extractDeepText(doc.layout)
+    deepText = normalize(deepText)
 
-    if (normalizedSlug === safeQuery) {
-      score += 130
-    } else if (normalizedSlug.startsWith(safeQuery)) {
-      score += 100
-    } else if (normalizedSlug.includes(safeQuery)) {
-      score += 60
-    }
+    if (deepText.includes(safeQuery)) score += 80
 
-    if (normalizedMetaTitle === safeQuery) {
-      score += 90
-    } else if (normalizedMetaTitle.startsWith(safeQuery)) {
-      score += 80
-    } else if (normalizedMetaTitle.includes(safeQuery)) {
-      score += 50
-    }
+    /* ---------- Title ---------- */
+    if (title === safeQuery) score += 200
+    else if (title.startsWith(safeQuery)) score += 140
+    else if (title.includes(safeQuery)) score += 100
 
-    if (normalizedMetaDescription === safeQuery) {
-      score += 80
-    } else if (normalizedMetaDescription.startsWith(safeQuery)) {
-      score += 70
-    } else if (normalizedMetaDescription.includes(safeQuery)) {
-      score += 40
-    }
+    /* ---------- Slug ---------- */
+    if (slug === safeQuery) score += 150
+    else if (slug.startsWith(safeQuery)) score += 110
+    else if (slug.includes(safeQuery)) score += 80
 
-    // Fuzzy matching: Check for similar words
+    /* ---------- Meta ---------- */
+    if (metaTitle.includes(safeQuery)) score += 70
+    if (metaDesc.includes(safeQuery)) score += 50
+
+    /* ---------- Smart Fuzzy Matching ---------- */
+
     const queryWords = safeQuery.split(' ')
-    const titleWords = normalizedTitle.split(' ')
-    const slugWords = normalizedSlug.split(' ')
+    const titleWords = title.split(' ')
+    const contentWords = deepText.split(' ')
 
-    // queryWords.forEach((queryWord) => {
-    //   if (titleWords.some((titleWord) => titleWord.includes(queryWord))) {
-    //     score += 30 // Add score for partial matches in title
-    //   }
-    //   if (slugWords.some((slugWord) => slugWord.includes(queryWord))) {
-    //     score += 25 // Add score for partial matches in slug
-    //   }
-    // })
+    queryWords.forEach((qWord) => {
+      // Skip very small words
+      if (qWord.length < 3) return
 
-    queryWords.forEach((queryWord) => {
-      if (distance(queryWord, normalizedTitle) <= 2) {
-        score += 10
-      }
+      const allowedDistance = qWord.length <= 4 ? 1 : qWord.length <= 7 ? 2 : 3
+
+      // Check title words
+      titleWords.forEach((tWord) => {
+        if (distance(qWord, tWord) <= allowedDistance) {
+          score += 40 // title fuzzy strong
+        }
+      })
+
+      // Check content words
+      contentWords.forEach((cWord) => {
+        if (distance(qWord, cWord) <= allowedDistance) {
+          score += 15 // content fuzzy weaker
+        }
+      })
+    })
+
+    queryWords.forEach((qWord) => {
+      titleWords.forEach((tWord) => {
+        if (distance(qWord, tWord) <= 1) {
+          score += 25
+        }
+      })
     })
 
     return score
   }
 
-  const sortedDocs = allDocs.sort((a, b) => {
-    const safeQuery = query ?? ''
-    const scoreA = calculateSpecificityScore(a, safeQuery)
-    const scoreB = calculateSpecificityScore(b, safeQuery)
-    return scoreB - scoreA
-  })
+  const sortedDocs = allDocs
+    .map((doc) => ({
+      doc,
+      score: calculateScore(doc, query),
+    }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .map((item) => item.doc)
 
   return (
     <div>
@@ -170,28 +190,26 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
           </div>
           <div className="accodoamationBannerContainer">
             <div className="accodoamationBannerText">
-              <h3>Search Results for &quot;{query}&quot;</h3>
-              <div className="breadCrum">
-                <a href=""></a> - <a href="">Search Results for &quot;{query}&quot;</a>{' '}
-              </div>
+              <h3>Search Results for{query}</h3>
             </div>
           </div>
           <div className="notHomePageSearch">
-            <GlobalSearch placeholderText={'Explore Chennai '} buttonText={'Search'} />
+            <GlobalSearch placeholderText={'Explore Chennai'} buttonText={'Search'} />
           </div>
         </div>
       </Suspense>
+
       <div>
         {sortedDocs.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 container mt-10 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 container mt-10">
             {sortedDocs.map((doc) => (
               <Card key={`${doc.collection}-${doc.slug}`} doc={doc} />
             ))}
           </div>
         ) : (
           <div className="workIntro mt-10">
-            <h3>No results found {query ? `for "${query}"` : ''}</h3>
-            <p>Try using different keywords or check your spelling and try again.</p>
+            <h3>No results found for{query}</h3>
+            <p>Try different keywords.</p>
           </div>
         )}
       </div>

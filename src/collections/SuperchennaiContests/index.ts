@@ -36,7 +36,7 @@ export const SuperchennaiContests: CollectionConfig<'superchennaiContests'> = {
     read: authenticatedOrPublished,
     update: authenticated,
   },
- 
+
   defaultPopulate: {
     title: true,
     slug: true,
@@ -46,6 +46,7 @@ export const SuperchennaiContests: CollectionConfig<'superchennaiContests'> = {
     },
   },
   admin: {
+    hidden: true,
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) => {
@@ -82,7 +83,7 @@ export const SuperchennaiContests: CollectionConfig<'superchennaiContests'> = {
               type: 'upload',
               relationTo: 'media',
             },
-            {
+            { 
               name: 'content',
               type: 'richText',
               editor: lexicalEditor({
@@ -90,8 +91,7 @@ export const SuperchennaiContests: CollectionConfig<'superchennaiContests'> = {
                   return [
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [Banner, Code, MediaBlock,introTextBlock,
-                    ] }),
+                    BlocksFeature({ blocks: [Banner, Code, MediaBlock, introTextBlock] }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),
                     HorizontalRuleFeature(),
@@ -105,26 +105,7 @@ export const SuperchennaiContests: CollectionConfig<'superchennaiContests'> = {
           label: 'Content',
         },
         {
-          fields: [
-         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          ],
+          fields: [],
           label: 'Meta',
         },
         {

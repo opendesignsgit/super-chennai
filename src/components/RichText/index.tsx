@@ -1,3 +1,4 @@
+import AdBlockComponent from '@/blocks/AdBlock/Components'
 import { BannerBlock } from '@/blocks/Banner/Component'
 import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
 import BecameAVolunteer from '@/blocks/HomePage/Volunteer/Component'
@@ -41,7 +42,7 @@ import { cn } from 'src/utilities/ui'
 type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
-      // CTABlockProps | 
+      // CTABlockProps |
       MediaBlockProps | BannerBlockProps | CodeBlockProps | VisitBannerProps
     >
 export type VisitBannerProps = {
@@ -81,6 +82,7 @@ const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<
         //###################### THIS IS POST RELATED BLOG #####################
         banner: ({ node }) => <BannerBlock className="col-start-2 mb-4" {...node.fields} />,
         mediaBlock: ({ node }) => (
+          
           // <MediaBlock
           //   className="col-start-1 col-span-3"
           //   imgClassName="m-0"
@@ -164,6 +166,10 @@ const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<
         RestaurantsCategories: ({ node }: { node: SerializedBlockNode<any> }) => (
           <RestaurantsCategoriesComponent {...node.fields} />
         ),
+
+        AdBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
+          <AdBlockComponent {...node.fields} />
+        ),
       },
     }
   }
@@ -181,7 +187,6 @@ export default function RichText(props: Props) {
 
   return (
     <ConvertRichText
-      // converters={jsxConverters}
       converters={jsxConverters({ pageData })}
       className={cn(
         {

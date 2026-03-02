@@ -7,21 +7,15 @@ import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { Media } from 'src/components/Media'
-import type { Post,Event,Innovate,Investment } from 'src/payload-types'
-import { formatAuthors } from 'src/utilities/formatAuthors'
+import type { Event, Innovate, Investment, Neighbourhood, Post } from 'src/payload-types'
 
 export const PostHero: React.FC<{
-post: Post | Event | Innovate | Investment ;
-
+  post: Post | Event | Innovate | Investment | Neighbourhood
 }> = ({ post }) => {
-  const { heroImage, populatedAuthors, publishedAt, title } = post
+  const { heroImage, title } = post
   const pathname = usePathname()
 
   const [parentCrumb, setParentCrumb] = useState<{ name: string; href: string } | null>(null)
-
-  const hasAuthors =
-    populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
-
   const ignoredSegments = [
     'visits',
     'place',
@@ -60,15 +54,6 @@ post: Post | Event | Innovate | Investment ;
     }
   }, [])
 
-  //############ Retrieve parent slug from sessionStorage ############
-  // useEffect(() => {
-  //   const storedSlug = sessionStorage.getItem('parentSlug')
-  //   if (storedSlug) {
-  //     const slug = storedSlug.replace('/', '')
-  //     setParentCrumb({ name: slug.replace(/-/g, ' ').toUpperCase(), href: storedSlug })
-  //   }
-  // }, [])
-
   useEffect(() => {
     const storedSlug = sessionStorage.getItem('parentSlug')
     if (storedSlug) {
@@ -80,7 +65,7 @@ post: Post | Event | Innovate | Investment ;
   }, [])
 
   return (
-    <div className="accaodomationBannerSection relative min-h-[60vh]">
+    <div className="accaodomationBannerSection relative min-h-[50vh]">
       {heroImage && typeof heroImage !== 'string' && (
         <Media fill priority imgClassName="-z-10 object-cover" resource={heroImage} />
       )}

@@ -20,9 +20,12 @@ export default async function Page() {
     overrideAccess: false,
     select: {
       title: true,
+      heroImage: true,
+      FeaturedImage: true,
       slug: true,
       categories: true,
       meta: true,
+      content: true,
     },
   })
 
