@@ -1,11 +1,13 @@
 import type { CollectionConfig } from 'payload'
 
 export const SabhaFoods: CollectionConfig<'sabhaFoods'> = {
+  
   slug: 'sabhaFoods',
   access: {
     read: () => true,
   },
   admin: {
+     hidden: true,
     useAsTitle: 'title',
     defaultColumns: ['title', 'type', 'order', 'updatedAt'],
     description:

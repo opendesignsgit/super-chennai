@@ -48,6 +48,17 @@ import { MargazhiEventCategories } from './collections/Contest/Options/MargazhiE
 import { Venues } from './collections/Contest/Options/Venues'
 import { SabhaFoods } from './collections/Contest/Options/Food'
 import { Neighbourhood } from './collections/Neighbourhoods/Neighbourhoods'
+import { verifyOTP } from './endpoints/verifyOTP'
+import { Articles } from './collections/Articles'
+import { Ads } from './collections/Ads'
+import { ArticleTypes } from './collections/Articles/option/ArticleTypes'
+import { ArticleLocations } from './collections/Articles/option/loactions'
+import { ArticleCategory } from './collections/Articles/option/Articlecategory'
+import { Languages } from './collections/Articles/option/Languages'
+import { NeighbourhoodCategories } from './collections/Neighbourhoods/options/businessCategories'
+import { NeighbourhoodSubCategories } from './collections/Neighbourhoods/options/NeighbourhoodSubCategories'
+import { NeighbourhoodTags } from './collections/Neighbourhoods/options/NeighbourhoodTags'
+import { ChennaiNeighbourhoodlocations } from './collections/Neighbourhoods/options/locations'
 // import { Neighbourhood } from './collections/Neighbourhoods/Neighbourhoods'
 
 const filename = fileURLToPath(import.meta.url)
@@ -140,20 +151,46 @@ export default buildConfig({
     eventsCategories,
     SuperchennaiContests,
     IconOfMonth,
-
-    Neighbourhood,
     Contest,
     Organizers,
     Venues,
     MargazhiEventCategories,
     SabhaFoods,
+
+    Articles,
+    Ads,
+    ArticleTypes,
+    ArticleLocations,
+    ArticleCategory,
+    Languages,
+
+
+    //########## NEIGHBOURHOODS #########
+
+    
+    Neighbourhood,
+    NeighbourhoodCategories,
+    NeighbourhoodSubCategories,
+    NeighbourhoodTags,
+    ChennaiNeighbourhoodlocations
+
+    
+  ],
+
+  //######### CUSTOME END POINT  ###############
+
+  endpoints: [
+    {
+      path: '/verify-otp',
+      method: 'post',
+      handler: verifyOTP,
+    },
   ],
 
   // #################################################################################
   // ################## DONT TOCH THIS PART MODIFIED BY OPEN DESIGN  #################
   // #################################################################################
 
-  // cors: [getServerSideURL()].filter(Boolean),
   cors: ['https://www.superchennai.com', 'http://localhost:5173', getServerSideURL()].filter(
     Boolean,
   ),

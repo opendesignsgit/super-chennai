@@ -1,12 +1,11 @@
 import type { Metadata } from 'next/types'
-
 import { notFound } from 'next/navigation'
 import { getPayload } from 'payload'
-import Banner from 'src/blocks/InnerPage/SharedBlocks/Banners/Components'
+import { PageRange } from 'src/components/PageRange'
 import { Pagination } from 'src/components/Pagination'
 import configPromise from 'src/payload.config'
 import PageClient from './page.client'
-import { Suspense } from 'react'
+import { CollectionArchive } from '@/components/CollectionArchive'
 
 export const revalidate = 600
 
@@ -24,41 +23,45 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   if (!Number.isInteger(sanitizedPageNumber)) notFound()
 
-  const events = await payload.find({
-    collection: 'events',
+  const neighbourhood = await payload.find({
+    collection: 'neighbourhood',
     depth: 1,
     limit: 12,
     page: sanitizedPageNumber,
     overrideAccess: false,
   })
 
+  console.log("-----------------------------------------------------------------------------------------",neighbourhood)
+
   return (
     <div className="pt-24 pb-24">
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none">
-          <h1>events</h1>
+          <h1>neighbourhood</h1>
         </div>
       </div>
-      
-      <Suspense fallback={null}>
-        <Banner />
-      </Suspense>
 
       {/* <div className="container mb-8">
         <PageRange
-          collection="posts"
-          currentPage={events.page}
+          collection="neighbourhood"
+          currentPage={neighbourhood.page}
           limit={12}
-          totalDocs={events.totalDocs}
+          totalDocs={neighbourhood.totalDocs}
         />
       </div> */}
 
-      {/* <CollectionArchive posts={events.docs} /> */}
+      <CollectionArchive
+        posts={neighbourhood.docs.map((neighbourhood: any) => ({
+          ...neighbourhood,
+          collection: 'neighbourhood',
+          className: '',
+        }))}
+      />
 
       <div className="container">
-        {events?.page && events?.totalPages > 1 && (
-          <Pagination page={events.page} totalPages={events.totalPages} />
+        {neighbourhood?.page && neighbourhood?.totalPages > 1 && (
+          <Pagination page={neighbourhood.page} totalPages={neighbourhood.totalPages} />
         )}
       </div>
     </div>
@@ -68,14 +71,14 @@ export default async function Page({ params: paramsPromise }: Args) {
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { pageNumber } = await paramsPromise
   return {
-    title: `Super Chennai events Page ${pageNumber || ''}`,
+    title: `Super Chennai  ${pageNumber || ''}`,
   }
 }
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const { totalDocs } = await payload.count({
-    collection: 'events',
+    collection: 'neighbourhood',
     overrideAccess: false,
   })
 

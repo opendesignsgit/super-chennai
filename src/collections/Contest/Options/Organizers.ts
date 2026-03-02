@@ -8,6 +8,7 @@ export const Organizers: CollectionConfig = {
   },
 
   admin: {
+     hidden: true,
     useAsTitle: 'title',
     defaultColumns: ['title', 'subtitle', 'venue'],
   },

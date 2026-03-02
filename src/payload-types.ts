@@ -96,12 +96,22 @@ export interface Config {
     eventsCategories: EventsCategory;
     superchennaiContests: SuperchennaiContest;
     iconOfMonth: IconOfMonth;
-    neighbourhood: Neighbourhood;
     contest: Contest;
     organizers: Organizer;
     venues: Venue;
     margazhiContestCategories: MargazhiContestCategory;
     sabhaFoods: SabhaFood;
+    articles: Article;
+    ads: Ad;
+    articleTypes: ArticleType;
+    Articlelocations: Articlelocation;
+    articlecategory: Articlecategory;
+    languages: Language;
+    neighbourhood: Neighbourhood;
+    'neighbourhood-categories': NeighbourhoodCategory;
+    'neighbourhood-subcategories': NeighbourhoodSubcategory;
+    'neighbourhood-tags': NeighbourhoodTag;
+    chennaiNeighbourhoodlocations: ChennaiNeighbourhoodlocation;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -141,12 +151,22 @@ export interface Config {
     eventsCategories: EventsCategoriesSelect<false> | EventsCategoriesSelect<true>;
     superchennaiContests: SuperchennaiContestsSelect<false> | SuperchennaiContestsSelect<true>;
     iconOfMonth: IconOfMonthSelect<false> | IconOfMonthSelect<true>;
-    neighbourhood: NeighbourhoodSelect<false> | NeighbourhoodSelect<true>;
     contest: ContestSelect<false> | ContestSelect<true>;
     organizers: OrganizersSelect<false> | OrganizersSelect<true>;
     venues: VenuesSelect<false> | VenuesSelect<true>;
     margazhiContestCategories: MargazhiContestCategoriesSelect<false> | MargazhiContestCategoriesSelect<true>;
     sabhaFoods: SabhaFoodsSelect<false> | SabhaFoodsSelect<true>;
+    articles: ArticlesSelect<false> | ArticlesSelect<true>;
+    ads: AdsSelect<false> | AdsSelect<true>;
+    articleTypes: ArticleTypesSelect<false> | ArticleTypesSelect<true>;
+    Articlelocations: ArticlelocationsSelect<false> | ArticlelocationsSelect<true>;
+    articlecategory: ArticlecategorySelect<false> | ArticlecategorySelect<true>;
+    languages: LanguagesSelect<false> | LanguagesSelect<true>;
+    neighbourhood: NeighbourhoodSelect<false> | NeighbourhoodSelect<true>;
+    'neighbourhood-categories': NeighbourhoodCategoriesSelect<false> | NeighbourhoodCategoriesSelect<true>;
+    'neighbourhood-subcategories': NeighbourhoodSubcategoriesSelect<false> | NeighbourhoodSubcategoriesSelect<true>;
+    'neighbourhood-tags': NeighbourhoodTagsSelect<false> | NeighbourhoodTagsSelect<true>;
+    chennaiNeighbourhoodlocations: ChennaiNeighbourhoodlocationsSelect<false> | ChennaiNeighbourhoodlocationsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -994,6 +1014,8 @@ export interface Post {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  views?: number | null;
+  likes?: number | null;
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
   blogCategory:
@@ -1066,11 +1088,17 @@ export interface Category {
  */
 export interface User {
   id: number;
+  role: 'admin' | 'client' | 'user';
   name?: string | null;
+  phone?: string | null;
+  location?: string | null;
   /**
    * Upload author profile photo (square image preferred)
    */
   profileImage?: (number | null) | Media;
+  phoneVerified?: boolean | null;
+  otp?: string | null;
+  otpExpires?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1487,58 +1515,8 @@ export interface Live {
     };
     [k: string]: unknown;
   };
-  NeighbourhoodData?: (number | Neighbourhood)[] | null;
   relatedlive?: (number | Live)[] | null;
   categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "neighbourhood".
- */
-export interface Neighbourhood {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  /**
-   * This image will be used as the featured image for Slides.
-   */
-  FeaturedImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
   meta?: {
     title?: string | null;
     /**
@@ -2647,6 +2625,541 @@ export interface SabhaFood {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles".
+ */
+export interface Article {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  excerpt?: string | null;
+  articleType: (number | ArticleType)[];
+  location: (number | Articlelocation)[];
+  Articlecategory: number | Articlecategory;
+  language: number | Language;
+  thumbnailType?: ('image' | 'video' | 'gif' | 'none') | null;
+  thumbnailImage?: (number | null) | Media;
+  thumbnailVideoUrl?: string | null;
+  thumbnailGifUrl?: string | null;
+  thumbnailAlt?: string | null;
+  featured?: boolean | null;
+  pinned?: boolean | null;
+  readingTime?: number | null;
+  relatedPosts?: (number | Article)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+    /**
+     * Paste valid JSON-LD schema (without <script> tag)
+     */
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+  };
+  views?: number | null;
+  likes?: number | null;
+  /**
+   * Only one articles can be featured at a time.
+   */
+  isFeatured?: boolean | null;
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articleTypes".
+ */
+export interface ArticleType {
+  id: number;
+  /**
+   * Display name (e.g. News, Guide)
+   */
+  label: string;
+  /**
+   * Slug (e.g. news, guide, opinion)
+   */
+  value: string;
+  /**
+   * Used for SEO or landing pages
+   */
+  description?: string | null;
+  /**
+   * Optional icon for UI
+   */
+  icon?: (number | null) | Media;
+  /**
+   * Sort order
+   */
+  order?: number | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Articlelocations".
+ */
+export interface Articlelocation {
+  id: number;
+  /**
+   * State name (e.g. Tamil Nadu, Karnataka)
+   */
+  state: string;
+  /**
+   * City name (e.g. Chennai, Bangalore, Mumbai)
+   */
+  city: string;
+  /**
+   * Locality / Area (e.g. OMR, ECR, Whitefield)
+   */
+  locality: string;
+  /**
+   * Display label, e.g. "OMR, Chennai"
+   */
+  label: string;
+  /**
+   * Unique slug, e.g. "chennai-omr"
+   */
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articlecategory".
+ */
+export interface Articlecategory {
+  id: number;
+  /**
+   * Display name (e.g. Technology, Travel, Food)
+   */
+  label: string;
+  /**
+   * URL slug (e.g. technology, travel, food)
+   */
+  value: string;
+  /**
+   * Category description (used for SEO pages)
+   */
+  description?: string | null;
+  /**
+   * Optional category icon
+   */
+  icon?: (number | null) | Media;
+  /**
+   * Hero image for category page
+   */
+  coverImage?: (number | null) | Media;
+  /**
+   * Hex color for UI (e.g. #FF5733)
+   */
+  color?: string | null;
+  /**
+   * Sorting order in menus
+   */
+  order?: number | null;
+  active?: boolean | null;
+  seo?: {
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "languages".
+ */
+export interface Language {
+  id: number;
+  /**
+   * Language name (e.g. English, Tamil)
+   */
+  label: string;
+  /**
+   * ISO code (en, ta, hi, fr)
+   */
+  code: string;
+  /**
+   * Native name (தமிழ், हिंदी)
+   */
+  nativeLabel?: string | null;
+  direction?: ('ltr' | 'rtl') | null;
+  active?: boolean | null;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ads".
+ */
+export interface Ad {
+  id: number;
+  title: string;
+  Adstitle: string;
+  Adsstatus?: ('active' | 'inactive' | 'draft') | null;
+  mediaType?: ('image' | 'gif' | 'video' | 'html') | null;
+  media?: (number | null) | Media;
+  mediaUrl?: string | null;
+  altText?: string | null;
+  caption?: string | null;
+  videoDuration?: number | null;
+  priority?: number | null;
+  targetUrl?: string | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  relatedPosts?: (number | Post)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  showOnArticles?: boolean | null;
+  showPriority?: ('primary' | 'secondary' | 'tertiary') | null;
+  position?: ('inline' | 'left' | 'right' | 'top' | 'bottom') | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhood".
+ */
+export interface Neighbourhood {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  FeaturedImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  gallery?:
+    | {
+        image: number | Media;
+        alt: string;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  name: string;
+  description?: string | null;
+  category: number | NeighbourhoodCategory;
+  subCategories?: (number | NeighbourhoodSubcategory)[] | null;
+  listingType?: ('free' | 'premium' | 'sponsored') | null;
+  /**
+   * Higher value = higher search priority
+   */
+  priorityRank?: number | null;
+  subscriptionExpiry?: string | null;
+  branches?:
+    | {
+        branchName?: string | null;
+        address?: string | null;
+        area?: string | null;
+        phone?: string | null;
+        latitude?: number | null;
+        longitude?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  documents?:
+    | {
+        documentName?: string | null;
+        file?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  is24Hours?: boolean | null;
+  temporarilyClosed?: boolean | null;
+  /**
+   * Comma separated keywords for search boost
+   */
+  searchKeywords?: string | null;
+  normalizedName?: string | null;
+  isVerified?: boolean | null;
+  isSponsored?: boolean | null;
+  contactInfo?: {
+    primaryPhone?: string | null;
+    secondaryPhone?: string | null;
+    whatsapp?: string | null;
+    email?: string | null;
+    website?: string | null;
+  };
+  businessHours?:
+    | {
+        day?: ('Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday') | null;
+        openTime?: string | null;
+        closeTime?: string | null;
+        isClosed?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  priceInfo?: {
+    priceRange?: ('₹' | '₹₹' | '₹₹₹') | null;
+    averageCost?: number | null;
+  };
+  socialMedia?: {
+    facebook?: string | null;
+    instagram?: string | null;
+    youtube?: string | null;
+    twitter?: string | null;
+  };
+  companyInfo?: {
+    ownerName?: string | null;
+    foundedYear?: number | null;
+    gstNumber?: string | null;
+  };
+  serviceOptions?:
+    | {
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  tags?: (number | NeighbourhoodTag)[] | null;
+  /**
+   * location
+   */
+  locations: number | ChennaiNeighbourhoodlocation;
+  serviceAreas?: (number | ChennaiNeighbourhoodlocation)[] | null;
+  googleData?: {
+    placeId?: string | null;
+    googleRating?: number | null;
+    totalGoogleReviews?: number | null;
+  };
+  location: {
+    latitude: number;
+    longitude: number;
+  };
+  googlePlaceId?: string | null;
+  menuItems?:
+    | {
+        itemName?: string | null;
+        price?: number | null;
+        isVeg?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  fuelTypes?:
+    | {
+        fuelName?: string | null;
+        pricePerLitre?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  rating?: number | null;
+  totalReviews?: number | null;
+  amenities?:
+    | {
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  awards?:
+    | {
+        title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  establishedYear?: number | null;
+  isFeatured?: boolean | null;
+  isActive?: boolean | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  structuredData?: {
+    schemaType?:
+      | (
+          | 'LocalBusiness'
+          | 'Restaurant'
+          | 'GasStation'
+          | 'Hotel'
+          | 'Hospital'
+          | 'Store'
+          | 'Event'
+          | 'FAQPage'
+          | 'Custom'
+        )
+      | null;
+    faqSchema?:
+      | {
+          question: string;
+          answer: string;
+          id?: string | null;
+        }[]
+      | null;
+    eventSchema?:
+      | {
+          eventName?: string | null;
+          startDate?: string | null;
+          endDate?: string | null;
+          locationName?: string | null;
+          ticketPrice?: number | null;
+          id?: string | null;
+        }[]
+      | null;
+    customSchema?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+    viewCount?: number | null;
+    callClickCount?: number | null;
+    whatsappClickCount?: number | null;
+    websiteClickCount?: number | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhood-categories".
+ */
+export interface NeighbourhoodCategory {
+  id: number;
+  title: string;
+  slug: string;
+  icon?: (number | null) | Media;
+  description?: string | null;
+  hasMenu?: boolean | null;
+  hasFuel?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhood-subcategories".
+ */
+export interface NeighbourhoodSubcategory {
+  id: number;
+  title: string;
+  parentCategory?: (number | null) | NeighbourhoodCategory;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhood-tags".
+ */
+export interface NeighbourhoodTag {
+  id: number;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "chennaiNeighbourhoodlocations".
+ */
+export interface ChennaiNeighbourhoodlocation {
+  id: number;
+  /**
+   * State name (e.g. Tamil Nadu, Karnataka)
+   */
+  state: string;
+  /**
+   * City name (e.g. Chennai, Bangalore, Mumbai)
+   */
+  city: string;
+  /**
+   * Locality / Area (e.g. OMR, ECR, Whitefield)
+   */
+  locality: string;
+  /**
+   * Display label, e.g. "OMR, Chennai"
+   */
+  label: string;
+  /**
+   * Unique slug, e.g. "chennai-omr"
+   */
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -3126,10 +3639,6 @@ export interface PayloadLockedDocument {
         value: number | IconOfMonth;
       } | null)
     | ({
-        relationTo: 'neighbourhood';
-        value: number | Neighbourhood;
-      } | null)
-    | ({
         relationTo: 'contest';
         value: number | Contest;
       } | null)
@@ -3148,6 +3657,50 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'sabhaFoods';
         value: number | SabhaFood;
+      } | null)
+    | ({
+        relationTo: 'articles';
+        value: number | Article;
+      } | null)
+    | ({
+        relationTo: 'ads';
+        value: number | Ad;
+      } | null)
+    | ({
+        relationTo: 'articleTypes';
+        value: number | ArticleType;
+      } | null)
+    | ({
+        relationTo: 'Articlelocations';
+        value: number | Articlelocation;
+      } | null)
+    | ({
+        relationTo: 'articlecategory';
+        value: number | Articlecategory;
+      } | null)
+    | ({
+        relationTo: 'languages';
+        value: number | Language;
+      } | null)
+    | ({
+        relationTo: 'neighbourhood';
+        value: number | Neighbourhood;
+      } | null)
+    | ({
+        relationTo: 'neighbourhood-categories';
+        value: number | NeighbourhoodCategory;
+      } | null)
+    | ({
+        relationTo: 'neighbourhood-subcategories';
+        value: number | NeighbourhoodSubcategory;
+      } | null)
+    | ({
+        relationTo: 'neighbourhood-tags';
+        value: number | NeighbourhoodTag;
+      } | null)
+    | ({
+        relationTo: 'chennaiNeighbourhoodlocations';
+        value: number | ChennaiNeighbourhoodlocation;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -3663,6 +4216,8 @@ export interface PostsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  views?: T;
+  likes?: T;
   publishedAt?: T;
   authors?: T;
   blogCategory?: T;
@@ -3796,8 +4351,14 @@ export interface CategoriesSelect<T extends boolean = true> {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  role?: T;
   name?: T;
+  phone?: T;
+  location?: T;
   profileImage?: T;
+  phoneVerified?: T;
+  otp?: T;
+  otpExpires?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -4000,7 +4561,6 @@ export interface LiveSelect<T extends boolean = true> {
   heroImage?: T;
   FeaturedImage?: T;
   content?: T;
-  NeighbourhoodData?: T;
   relatedlive?: T;
   categories?: T;
   meta?:
@@ -4662,36 +5222,6 @@ export interface IconOfMonthSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "neighbourhood_select".
- */
-export interface NeighbourhoodSelect<T extends boolean = true> {
-  title?: T;
-  heroImage?: T;
-  FeaturedImage?: T;
-  content?: T;
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
-      };
-  publishedAt?: T;
-  authors?: T;
-  populatedAuthors?:
-    | T
-    | {
-        id?: T;
-        name?: T;
-      };
-  slug?: T;
-  slugLock?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contest_select".
  */
 export interface ContestSelect<T extends boolean = true> {
@@ -4788,6 +5318,397 @@ export interface SabhaFoodsSelect<T extends boolean = true> {
   sabhaName?: T;
   organizer?: T;
   otherDetails?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles_select".
+ */
+export interface ArticlesSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  excerpt?: T;
+  articleType?: T;
+  location?: T;
+  Articlecategory?: T;
+  language?: T;
+  thumbnailType?: T;
+  thumbnailImage?: T;
+  thumbnailVideoUrl?: T;
+  thumbnailGifUrl?: T;
+  thumbnailAlt?: T;
+  featured?: T;
+  pinned?: T;
+  readingTime?: T;
+  relatedPosts?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+        structuredData?: T;
+      };
+  views?: T;
+  likes?: T;
+  isFeatured?: T;
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ads_select".
+ */
+export interface AdsSelect<T extends boolean = true> {
+  title?: T;
+  Adstitle?: T;
+  Adsstatus?: T;
+  mediaType?: T;
+  media?: T;
+  mediaUrl?: T;
+  altText?: T;
+  caption?: T;
+  videoDuration?: T;
+  priority?: T;
+  targetUrl?: T;
+  startDate?: T;
+  endDate?: T;
+  relatedPosts?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  showOnArticles?: T;
+  showPriority?: T;
+  position?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articleTypes_select".
+ */
+export interface ArticleTypesSelect<T extends boolean = true> {
+  label?: T;
+  value?: T;
+  description?: T;
+  icon?: T;
+  order?: T;
+  active?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Articlelocations_select".
+ */
+export interface ArticlelocationsSelect<T extends boolean = true> {
+  state?: T;
+  city?: T;
+  locality?: T;
+  label?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articlecategory_select".
+ */
+export interface ArticlecategorySelect<T extends boolean = true> {
+  label?: T;
+  value?: T;
+  description?: T;
+  icon?: T;
+  coverImage?: T;
+  color?: T;
+  order?: T;
+  active?: T;
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "languages_select".
+ */
+export interface LanguagesSelect<T extends boolean = true> {
+  label?: T;
+  code?: T;
+  nativeLabel?: T;
+  direction?: T;
+  active?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhood_select".
+ */
+export interface NeighbourhoodSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  FeaturedImage?: T;
+  content?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        alt?: T;
+        caption?: T;
+        id?: T;
+      };
+  name?: T;
+  description?: T;
+  category?: T;
+  subCategories?: T;
+  listingType?: T;
+  priorityRank?: T;
+  subscriptionExpiry?: T;
+  branches?:
+    | T
+    | {
+        branchName?: T;
+        address?: T;
+        area?: T;
+        phone?: T;
+        latitude?: T;
+        longitude?: T;
+        id?: T;
+      };
+  documents?:
+    | T
+    | {
+        documentName?: T;
+        file?: T;
+        id?: T;
+      };
+  is24Hours?: T;
+  temporarilyClosed?: T;
+  searchKeywords?: T;
+  normalizedName?: T;
+  isVerified?: T;
+  isSponsored?: T;
+  contactInfo?:
+    | T
+    | {
+        primaryPhone?: T;
+        secondaryPhone?: T;
+        whatsapp?: T;
+        email?: T;
+        website?: T;
+      };
+  businessHours?:
+    | T
+    | {
+        day?: T;
+        openTime?: T;
+        closeTime?: T;
+        isClosed?: T;
+        id?: T;
+      };
+  priceInfo?:
+    | T
+    | {
+        priceRange?: T;
+        averageCost?: T;
+      };
+  socialMedia?:
+    | T
+    | {
+        facebook?: T;
+        instagram?: T;
+        youtube?: T;
+        twitter?: T;
+      };
+  companyInfo?:
+    | T
+    | {
+        ownerName?: T;
+        foundedYear?: T;
+        gstNumber?: T;
+      };
+  serviceOptions?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  tags?: T;
+  locations?: T;
+  serviceAreas?: T;
+  googleData?:
+    | T
+    | {
+        placeId?: T;
+        googleRating?: T;
+        totalGoogleReviews?: T;
+      };
+  location?:
+    | T
+    | {
+        latitude?: T;
+        longitude?: T;
+      };
+  googlePlaceId?: T;
+  menuItems?:
+    | T
+    | {
+        itemName?: T;
+        price?: T;
+        isVeg?: T;
+        id?: T;
+      };
+  fuelTypes?:
+    | T
+    | {
+        fuelName?: T;
+        pricePerLitre?: T;
+        id?: T;
+      };
+  rating?: T;
+  totalReviews?: T;
+  amenities?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  awards?:
+    | T
+    | {
+        title?: T;
+        id?: T;
+      };
+  establishedYear?: T;
+  isFeatured?: T;
+  isActive?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  structuredData?:
+    | T
+    | {
+        schemaType?: T;
+        faqSchema?:
+          | T
+          | {
+              question?: T;
+              answer?: T;
+              id?: T;
+            };
+        eventSchema?:
+          | T
+          | {
+              eventName?: T;
+              startDate?: T;
+              endDate?: T;
+              locationName?: T;
+              ticketPrice?: T;
+              id?: T;
+            };
+        customSchema?: T;
+        viewCount?: T;
+        callClickCount?: T;
+        whatsappClickCount?: T;
+        websiteClickCount?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhood-categories_select".
+ */
+export interface NeighbourhoodCategoriesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  icon?: T;
+  description?: T;
+  hasMenu?: T;
+  hasFuel?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhood-subcategories_select".
+ */
+export interface NeighbourhoodSubcategoriesSelect<T extends boolean = true> {
+  title?: T;
+  parentCategory?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighbourhood-tags_select".
+ */
+export interface NeighbourhoodTagsSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "chennaiNeighbourhoodlocations_select".
+ */
+export interface ChennaiNeighbourhoodlocationsSelect<T extends boolean = true> {
+  state?: T;
+  city?: T;
+  locality?: T;
+  label?: T;
+  value?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -5297,12 +6218,20 @@ export interface TaskSchedulePublish {
           value: number | IconOfMonth;
         } | null)
       | ({
-          relationTo: 'neighbourhood';
-          value: number | Neighbourhood;
-        } | null)
-      | ({
           relationTo: 'contest';
           value: number | Contest;
+        } | null)
+      | ({
+          relationTo: 'articles';
+          value: number | Article;
+        } | null)
+      | ({
+          relationTo: 'ads';
+          value: number | Ad;
+        } | null)
+      | ({
+          relationTo: 'neighbourhood';
+          value: number | Neighbourhood;
         } | null);
     global?: string | null;
     user?: (number | null) | User;

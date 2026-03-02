@@ -1,17 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
-import {
-  BlocksFeature,
-  FixedToolbarFeature,
-  HeadingFeature,
-  HorizontalRuleFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
-
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
@@ -25,40 +15,40 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from 'src/fields/slug'
 
-import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
-import FeatureSectionsBlock from '@/blocks/InnerPage/SharedBlocks/VisualAndKeyPoints/config'
-import { socialReelSlider } from 'src/blocks/HomePage/SocialChennai/config'
-import ExploreMoreChennaiBlock from 'src/blocks/InnerPage/SharedBlocks/Explore/config'
-import introTextBlock from 'src/blocks/InnerPage/SharedBlocks/IntroText/config'
-import StickyImageScroll from 'src/blocks/InnerPage/SharedBlocks/StickyImageScroll/config'
-import { Neighbourhood } from '../Neighbourhoods/Neighbourhoods'
-import Neighbourhoods from '@/blocks/InnerPage/SharedBlocks/Neighbourhood/config'
-
-export const Live: CollectionConfig<'live'> = {
-  slug: 'live',
+export const Ads: CollectionConfig<'ads'> = {
+  slug: 'ads',
   access: {
     create: authenticated,
     delete: authenticated,
     read: authenticatedOrPublished,
-    update: authenticated,
+    update: () => true,
   },
 
   defaultPopulate: {
     title: true,
     slug: true,
+    mediaType: true,
+    media: true,
+     mediaUrl: true,
+    altText: true,
+    caption: true,
+    targetUrl: true,
+    // position: true,
+    priority: true,
     categories: true,
     meta: {
       image: true,
       description: true,
     },
   },
+
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
           slug: typeof data?.slug === 'string' ? data.slug : '',
-          collection: 'live',
+          collection: 'ads',
           req,
         })
 
@@ -68,7 +58,7 @@ export const Live: CollectionConfig<'live'> = {
     preview: (data, { req }) =>
       generatePreviewPath({
         slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'live',
+        collection: 'ads',
         req,
       }),
     useAsTitle: 'title',
@@ -85,60 +75,91 @@ export const Live: CollectionConfig<'live'> = {
         {
           fields: [
             {
-              name: 'heroImage',
-              type: 'upload',
-              relationTo: 'media',
-            },
-            {
-              name: 'FeaturedImage',
-              type: 'upload',
-              relationTo: 'media',
-              admin: {
-                description: 'This image will be used as the featured image for Slides.',
-              },
-            },
-            {
-              name: 'content',
-              type: 'richText',
-              editor: lexicalEditor({
-                features: ({ rootFeatures }) => {
-                  return [
-                    ...rootFeatures,
-                    HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({
-                      blocks: [
-                        ExploreMoreChennaiBlock,
-                        socialReelSlider,
-                        StickyImageScroll,
-                        introTextBlock,
-                        FeatureSectionsBlock,
-                        BecameAVolunteerBlock,
-                        Neighbourhoods,
-                      ],
-                    }),
-                    FixedToolbarFeature(),
-                    InlineToolbarFeature(),
-                    HorizontalRuleFeature(),
-                  ]
-                },
-              }),
-              label: false,
+              name: 'Adstitle',
+              type: 'text',
               required: true,
             },
+
             // {
-            //   name: 'NeighbourhoodData',
-            //   label: 'Neighbourhood Cards',
-            //   type: 'relationship',
-            //   hasMany: true,
-            //   relationTo: 'neighbourhood',
+            //   name: 'adType',
+            //   type: 'select',
+            //   options: [
+            //     'banner',
+            //     'sidebar',
+            //     'inline',
+            //     'popup',
+            //     'video',
+            //     'interstitial',  
+            //     'sponsored',
+            //   ],
             // },
+
+            {
+              name: 'Adsstatus',
+              type: 'select',
+              admin: {
+                position: 'sidebar',
+              },
+              options: ['active', 'inactive', 'draft'],
+              defaultValue: 'draft',
+            },
+
+            {
+              name: 'mediaType',
+              type: 'select',
+              options: ['image', 'gif', 'video', 'html'],
+            },
+
+            {
+              name: 'media',
+              type: 'upload',
+              relationTo: 'media',
+            },
+
+            {
+              name: 'mediaUrl',
+              type: 'text',
+              label: 'Video / HTML URL',
+            },
+
+            {
+              name: 'altText',
+              type: 'text',
+            },
+            {
+              name: 'caption',
+              type: 'text',
+            },
+            {
+              name: 'videoDuration',
+              type: 'number',
+            },
+
+            {
+              name: 'priority',
+              type: 'number',
+              defaultValue: 0,
+            },
+            {
+              name: 'targetUrl',
+              type: 'text',
+            },
+            {
+              name: 'startDate',
+              type: 'date',
+            },
+            {
+              name: 'endDate',
+              type: 'date',
+            },
           ],
           label: 'Content',
         },
+
         {
           fields: [
             {
-              name: 'relatedlive',
+              name: 'relatedPosts',
               type: 'relationship',
               admin: {
                 position: 'sidebar',
@@ -151,7 +172,7 @@ export const Live: CollectionConfig<'live'> = {
                 }
               },
               hasMany: true,
-              relationTo: 'live',
+              relationTo: 'posts',
             },
             {
               name: 'categories',
@@ -183,10 +204,8 @@ export const Live: CollectionConfig<'live'> = {
 
             MetaDescriptionField({}),
             PreviewField({
-              // if the `generateUrl` function is configured
               hasGenerateFn: true,
 
-              // field paths to match the target field for data
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
@@ -194,6 +213,7 @@ export const Live: CollectionConfig<'live'> = {
         },
       ],
     },
+
     {
       name: 'publishedAt',
       type: 'date',
@@ -214,6 +234,7 @@ export const Live: CollectionConfig<'live'> = {
         ],
       },
     },
+
     {
       name: 'authors',
       type: 'relationship',
@@ -222,6 +243,46 @@ export const Live: CollectionConfig<'live'> = {
       },
       hasMany: true,
       relationTo: 'users',
+    },
+
+    {
+      name: 'showOnArticles',
+      type: 'checkbox',
+      label: 'Show on Article Pages',
+      defaultValue: false,
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
+      name: 'showPriority',
+      type: 'select',
+      label: 'Show Priority',
+      defaultValue: 'secondary',
+      options: [
+        { label: 'Primary', value: 'primary' },
+        { label: 'Secondary', value: 'secondary' },
+        { label: 'Tertiary', value: 'tertiary' },
+      ],
+      admin: {
+        position: 'sidebar',
+        condition: (_, siblingData) => siblingData?.showOnArticles,
+      },
+    },
+
+    {
+      name: 'position',
+      type: 'select',
+      admin: {
+        position: 'sidebar',
+      },
+      options: [
+        { label: 'Inline (Center)', value: 'inline' },
+        { label: 'Left Side', value: 'left' },
+        { label: 'Right Side', value: 'right' },
+        { label: 'Top', value: 'top' },
+        { label: 'Bottom', value: 'bottom' },
+      ],
     },
 
     {
@@ -245,6 +306,7 @@ export const Live: CollectionConfig<'live'> = {
         },
       ],
     },
+
     ...slugField(),
   ],
   hooks: {
