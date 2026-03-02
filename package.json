@@ -10,13 +10,11 @@
     "export": "next export",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "build:static": "npm run build && npm run export && npm run postbuild",
-    "build:electron": "npm run build:static && npx electron-builder",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "dev:web": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "electron": "wait-on http://localhost:3000 && electron .",
-    "dev": "concurrently --raw -n WEB,ELECTRON -c yellow,blue \"npm run dev:web\" \"npm run electron\""
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev"
   },
   "dependencies": {
     "@payloadcms/admin-bar": "3.33.0",
