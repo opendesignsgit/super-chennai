@@ -623,6 +623,7 @@ export const Events: CollectionConfig<'events'> = {
                 description:
                   'Paste valid JSON-LD schema (Event schema for SEO)',
               },
+              
             },
           ],
         },
