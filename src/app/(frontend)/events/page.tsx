@@ -4,6 +4,8 @@ import { getPayload } from 'payload'
 import { Pagination } from 'src/components/Pagination'
 import configPromise from 'src/payload.config'
 import PageClient from './page.client'
+import { CollectionArchive } from '@/components/CollectionArchive'
+import { PageRange } from '@/components/PageRange'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -33,7 +35,7 @@ export default async function Page() {
         </div>
       </div>
 
-      {/* <div className="container mb-8">
+      <div className="container mb-8">
         <PageRange
           collection="events"
           currentPage={events.page}
@@ -42,7 +44,14 @@ export default async function Page() {
         />
       </div>
 
-      <CollectionArchive posts={events.docs} /> */}
+      <CollectionArchive
+        posts={events.docs.map((neighbourhood: any) => ({
+          ...neighbourhood,
+          collection: 'events',
+          className: '',
+        }))}
+        relationTo="events"
+      />
 
       <div className="container">
         {events.totalPages > 1 && events.page && (
