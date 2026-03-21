@@ -503,7 +503,7 @@ export const Events: CollectionConfig<'events'> = {
                   required: true,
                   admin: {
                     description: 'Select the venue or location from the Locations collection',
-                  },                 
+                  },
                 },
                 {
                   name: 'isFree',
@@ -615,6 +615,16 @@ export const Events: CollectionConfig<'events'> = {
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
+            //  {
+            //   name: 'schema',
+            //   type: 'json',
+            //   label: 'Structured Data (JSON-LD)',
+            //   admin: {
+            //     description:
+            //       'Paste valid JSON-LD schema (Event schema for SEO)',
+            //   },
+
+            // },
           ],
         },
       ],

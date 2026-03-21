@@ -4,13 +4,11 @@ import { getPayload } from 'payload'
 import { PageRange } from 'src/components/PageRange'
 import { Pagination } from 'src/components/Pagination'
 import configPromise from 'src/payload.config'
-import "../../../heros/PostHero/style.css"
+import '../../../heros/PostHero/style.css'
 import PageClient from './page.client'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
-
-
 
 export default async function Page() {
   const payload = await getPayload({ config: configPromise })
@@ -44,6 +42,7 @@ export default async function Page() {
   return (
     <div className="">
       <PageClient />
+      
       <CollectionArchive
         posts={neighbourhood.docs.map((neighbourhood: any) => ({
           ...neighbourhood,
@@ -59,8 +58,7 @@ export default async function Page() {
         )}
       </div>
 
-
-       <div className="container mb-8">
+      <div className="container mb-8">
         <PageRange
           collection="posts"
           currentPage={neighbourhood.page}
