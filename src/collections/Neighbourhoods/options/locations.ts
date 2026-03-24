@@ -2,7 +2,7 @@
 import { CollectionConfig } from "payload"
 
 export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourhoodlocations'> = {
-  slug: 'chennaiNeighbourhoodlocations',          
+  slug: 'chennaiNeighbourhoodlocations',
   access: {
     read: () => true,
   },
@@ -33,6 +33,15 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
       required: true,
       admin: {
         description: 'Locality / Area (e.g. OMR, ECR, Whitefield)',
+      },
+    },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
+      admin: {
+        description: 'Neighbourhood location  image',
       },
     },
     {
