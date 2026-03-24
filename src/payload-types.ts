@@ -3148,6 +3148,10 @@ export interface ChennaiNeighbourhoodlocation {
    */
   locality: string;
   /**
+   * Neighbourhood location  image
+   */
+  image?: (number | null) | Media;
+  /**
    * Display label, e.g. "OMR, Chennai"
    */
   label: string;
@@ -5707,6 +5711,7 @@ export interface ChennaiNeighbourhoodlocationsSelect<T extends boolean = true> {
   state?: T;
   city?: T;
   locality?: T;
+  image?: T;
   label?: T;
   value?: T;
   updatedAt?: T;
