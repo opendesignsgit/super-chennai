@@ -36,6 +36,26 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
       },
     },
     {
+      name: 'about',
+      label: 'About Location',
+      type: 'textarea',
+      required: false,
+      admin: {
+        description: 'Short description about this location (OMR, ECR, etc.)',
+      },
+    },
+    {
+      name: 'locationUrl',
+      type: 'text',
+      label: 'Location URL',
+    },
+    {
+      name: 'openInNewTab',
+      type: 'checkbox',
+      label: 'Open in new tab',
+      defaultValue: true,
+    },
+    {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
