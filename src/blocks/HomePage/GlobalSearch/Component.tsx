@@ -7,6 +7,8 @@ import Loader from 'src/components/Loader/loader'
 import { FaMicrophone, FaMicrophoneSlash } from 'react-icons/fa'
 import Link from 'next/link'
 import CloseMenuIcon from '../../../assets/images/HomePage-Images/Icons/close-x.svg'
+import ExpandFilterButton from '@/components/neighbourhood/ExpandFilterButton'
+import { getPayload } from 'payload'
 
 type Props = {
   placeholderText: string
@@ -223,6 +225,13 @@ export default function GlobalSearch({
     }, 300)
   }
 
+
+  //   const payload = await getPayload({ config: configPromise })
+  //   const categories = await payload.find({
+  //   collection: 'neighbourhood-categories',
+  //   depth: 2, // IMPORTANT
+  // })
+
   return (
     <div className="formsSection">
       <div className="searchInputFormbanner mobileSearchContainer">
@@ -281,7 +290,9 @@ export default function GlobalSearch({
             </div>
           )}
 
+        
           <div className="buttonGroup">
+            
             <button type="submit" disabled={loading}>
               {loading ? <Loader /> : buttonText}
             </button>
@@ -295,6 +306,8 @@ export default function GlobalSearch({
             {popupMessage && <div className="voice-popup">{popupMessage}</div>}
           </span>
         </form>
+        
+        {/* <ExpandFilterButton categories={categories.docs} /> */}
       </div>
       <div className="mobileCloseButtoniMAGE" onClick={onClose}>
         {onClose && <img src={CloseMenuIcon.src} alt="" />}
