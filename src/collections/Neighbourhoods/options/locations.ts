@@ -36,6 +36,15 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
       },
     },
     {
+      name: 'pincode',
+      label: 'Pincode',
+      type: 'text',
+      required: false,
+      admin: {
+        description: 'Area pincode (e.g. 600096)',
+      },
+    },
+    {
       name: 'about',
       label: 'About Location',
       type: 'textarea',
@@ -62,6 +71,20 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
       required: false,
       admin: {
         description: 'Neighbourhood location  image',
+      },
+    },
+
+    {
+      name: 'iconSvg',
+      label: 'SVG Icon',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
+      filterOptions: {
+        mimeType: { contains: 'svg' },
+      },
+      admin: {
+        description: 'Upload SVG icon for this location',
       },
     },
     {

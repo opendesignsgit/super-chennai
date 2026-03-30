@@ -3148,6 +3148,12 @@ export interface ChennaiNeighbourhoodlocation {
    */
   locality: string;
   /**
+   * Short description about this location (OMR, ECR, etc.)
+   */
+  about?: string | null;
+  locationUrl?: string | null;
+  openInNewTab?: boolean | null;
+  /**
    * Neighbourhood location  image
    */
   image?: (number | null) | Media;
@@ -5711,6 +5717,9 @@ export interface ChennaiNeighbourhoodlocationsSelect<T extends boolean = true> {
   state?: T;
   city?: T;
   locality?: T;
+  about?: T;
+  locationUrl?: T;
+  openInNewTab?: T;
   image?: T;
   label?: T;
   value?: T;
