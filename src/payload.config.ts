@@ -164,17 +164,13 @@ export default buildConfig({
     ArticleCategory,
     Languages,
 
-
     //########## NEIGHBOURHOODS #########
 
-    
     Neighbourhood,
     NeighbourhoodCategories,
     NeighbourhoodSubCategories,
     NeighbourhoodTags,
-    ChennaiNeighbourhoodlocations
-
-    
+    ChennaiNeighbourhoodlocations,
   ],
 
   //######### CUSTOME END POINT  ###############
@@ -191,9 +187,15 @@ export default buildConfig({
   // ################## DONT TOCH THIS PART MODIFIED BY OPEN DESIGN  #################
   // #################################################################################
 
-  cors: ['https://www.superchennai.com', 'http://localhost:5173', getServerSideURL()].filter(
-    Boolean,
-  ),
+  // cors: ['https://www.superchennai.com', 'http://localhost:5173', getServerSideURL()].filter(
+  //   Boolean,
+  // ),
+  cors: [
+    'https://www.superchennai.com',
+    'http://localhost:5173',
+    'http://localhost:5174',
+    getServerSideURL(),
+  ].filter(Boolean),
   // csrf: ['http://localhost:5173', getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   blocks: [ChennaiInvestmentsBlock],
