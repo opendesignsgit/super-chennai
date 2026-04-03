@@ -368,6 +368,11 @@ export const Neighbourhood: CollectionConfig<'neighbourhood'> = {
           label: 'Location',
           fields: [
             {
+              name: 'icon',
+              type: 'upload',
+              relationTo: 'media',
+            },
+            {
               name: 'locations',
               type: 'relationship',
               relationTo: 'chennaiNeighbourhoodlocations',

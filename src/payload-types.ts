@@ -2979,6 +2979,7 @@ export interface Neighbourhood {
       }[]
     | null;
   tags?: (number | NeighbourhoodTag)[] | null;
+  icon?: (number | null) | Media;
   /**
    * location
    */
@@ -3148,6 +3149,10 @@ export interface ChennaiNeighbourhoodlocation {
    */
   locality: string;
   /**
+   * Area pincode (e.g. 600096)
+   */
+  pincode?: string | null;
+  /**
    * Short description about this location (OMR, ECR, etc.)
    */
   about?: string | null;
@@ -3157,6 +3162,10 @@ export interface ChennaiNeighbourhoodlocation {
    * Neighbourhood location  image
    */
   image?: (number | null) | Media;
+  /**
+   * Upload SVG icon for this location
+   */
+  iconSvg?: (number | null) | Media;
   /**
    * Display label, e.g. "OMR, Chennai"
    */
@@ -5580,6 +5589,7 @@ export interface NeighbourhoodSelect<T extends boolean = true> {
         id?: T;
       };
   tags?: T;
+  icon?: T;
   locations?: T;
   serviceAreas?: T;
   googleData?:
@@ -5717,10 +5727,12 @@ export interface ChennaiNeighbourhoodlocationsSelect<T extends boolean = true> {
   state?: T;
   city?: T;
   locality?: T;
+  pincode?: T;
   about?: T;
   locationUrl?: T;
   openInNewTab?: T;
   image?: T;
+  iconSvg?: T;
   label?: T;
   value?: T;
   updatedAt?: T;
