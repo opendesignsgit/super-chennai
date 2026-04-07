@@ -2,7 +2,7 @@
 import { CollectionConfig } from "payload"
 
 export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourhoodlocations'> = {
-  slug: 'chennaiNeighbourhoodlocations',          
+  slug: 'chennaiNeighbourhoodlocations',
   access: {
     read: () => true,
   },
@@ -33,6 +33,58 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
       required: true,
       admin: {
         description: 'Locality / Area (e.g. OMR, ECR, Whitefield)',
+      },
+    },
+    {
+      name: 'pincode',
+      label: 'Pincode',
+      type: 'text',
+      required: false,
+      admin: {
+        description: 'Area pincode (e.g. 600096)',
+      },
+    },
+    {
+      name: 'about',
+      label: 'About Location',
+      type: 'textarea',
+      required: false,
+      admin: {
+        description: 'Short description about this location (OMR, ECR, etc.)',
+      },
+    },
+    {
+      name: 'locationUrl',
+      type: 'text',
+      label: 'Location URL',
+    },
+    {
+      name: 'openInNewTab',
+      type: 'checkbox',
+      label: 'Open in new tab',
+      defaultValue: true,
+    },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
+      admin: {
+        description: 'Neighbourhood location  image',
+      },
+    },
+
+    {
+      name: 'iconSvg',
+      label: 'SVG Icon',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
+      filterOptions: {
+        mimeType: { contains: 'svg' },
+      },
+      admin: {
+        description: 'Upload SVG icon for this location',
       },
     },
     {
