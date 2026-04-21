@@ -54,6 +54,16 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
       },
     },
     {
+      name: 'purpose',
+      label: 'Purpose / Highlights',
+      type: 'textarea',
+      required: false,
+      admin: {
+        description:
+          'Describe the main purpose of this location (e.g. IT hub, residential hotspot, investment zone)',
+      },
+    },
+    {
       name: 'locationUrl',
       type: 'text',
       label: 'Location URL',
