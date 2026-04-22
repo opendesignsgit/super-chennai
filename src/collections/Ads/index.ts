@@ -126,6 +126,7 @@ export const Ads: CollectionConfig<'ads'> = {
               name: 'altText',
               type: 'text',
             },
+
             {
               name: 'caption',
               type: 'text',
@@ -151,6 +152,53 @@ export const Ads: CollectionConfig<'ads'> = {
             {
               name: 'endDate',
               type: 'date',
+            },
+
+             // ================= MOBILE SETTINGS =================
+            {
+              name: 'mobileSettings',
+              label: 'Mobile Ad Settings',
+              type: 'group',
+              fields: [
+                {
+                  name: 'mobileMediaType',
+                  type: 'select',
+                  options: ['image', 'gif', 'video', 'html'],
+                },
+                {
+                  name: 'mobileMedia',
+                  type: 'upload',
+                  relationTo: 'media',
+                },
+                {
+                  name: 'mobileMediaUrl',
+                  type: 'text',
+                  label: 'Mobile Video / HTML URL',
+                },
+                {
+                  name: 'mobileAltText',
+                  type: 'text',
+                },
+                {
+                  name: 'mobileCaption',
+                  type: 'text',
+                },
+              ],
+            },
+
+            // ================= DEVICE TARGET =================
+            {
+              name: 'deviceTarget',
+              type: 'select',
+              defaultValue: 'all',
+              options: [
+                { label: 'All Devices', value: 'all' },
+                { label: 'Mobile Only', value: 'mobile' },
+                { label: 'Desktop Only', value: 'desktop' },
+              ],
+              admin: {
+                position: 'sidebar',
+              },
             },
           ],
           label: 'Content',

@@ -2845,6 +2845,14 @@ export interface Ad {
   targetUrl?: string | null;
   startDate?: string | null;
   endDate?: string | null;
+  mobileSettings?: {
+    mobileMediaType?: ('image' | 'gif' | 'video' | 'html') | null;
+    mobileMedia?: (number | null) | Media;
+    mobileMediaUrl?: string | null;
+    mobileAltText?: string | null;
+    mobileCaption?: string | null;
+  };
+  deviceTarget?: ('all' | 'mobile' | 'desktop') | null;
   relatedPosts?: (number | Post)[] | null;
   categories?: (number | Category)[] | null;
   meta?: {
@@ -3116,6 +3124,7 @@ export interface NeighbourhoodCategory {
 export interface NeighbourhoodSubcategory {
   id: number;
   title: string;
+  slug: string;
   parentCategory?: (number | null) | NeighbourhoodCategory;
   updatedAt: string;
   createdAt: string;
@@ -3156,6 +3165,10 @@ export interface ChennaiNeighbourhoodlocation {
    * Short description about this location (OMR, ECR, etc.)
    */
   about?: string | null;
+  /**
+   * Describe the main purpose of this location (e.g. IT hub, residential hotspot, investment zone)
+   */
+  purpose?: string | null;
   locationUrl?: string | null;
   openInNewTab?: boolean | null;
   /**
@@ -5406,6 +5419,16 @@ export interface AdsSelect<T extends boolean = true> {
   targetUrl?: T;
   startDate?: T;
   endDate?: T;
+  mobileSettings?:
+    | T
+    | {
+        mobileMediaType?: T;
+        mobileMedia?: T;
+        mobileMediaUrl?: T;
+        mobileAltText?: T;
+        mobileCaption?: T;
+      };
+  deviceTarget?: T;
   relatedPosts?: T;
   categories?: T;
   meta?:
@@ -5706,6 +5729,7 @@ export interface NeighbourhoodCategoriesSelect<T extends boolean = true> {
  */
 export interface NeighbourhoodSubcategoriesSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   parentCategory?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -5729,6 +5753,7 @@ export interface ChennaiNeighbourhoodlocationsSelect<T extends boolean = true> {
   locality?: T;
   pincode?: T;
   about?: T;
+  purpose?: T;
   locationUrl?: T;
   openInNewTab?: T;
   image?: T;
