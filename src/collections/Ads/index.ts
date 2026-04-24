@@ -29,11 +29,13 @@ export const Ads: CollectionConfig<'ads'> = {
     slug: true,
     mediaType: true,
     media: true,
-     mediaUrl: true,
+    mediaUrl: true,
     altText: true,
     caption: true,
     targetUrl: true,
     // position: true,
+    mobileSettings: true,
+    deviceTarget: true,
     priority: true,
     categories: true,
     meta: {
@@ -89,7 +91,7 @@ export const Ads: CollectionConfig<'ads'> = {
             //     'inline',
             //     'popup',
             //     'video',
-            //     'interstitial',  
+            //     'interstitial',
             //     'sponsored',
             //   ],
             // },
@@ -154,7 +156,7 @@ export const Ads: CollectionConfig<'ads'> = {
               type: 'date',
             },
 
-             // ================= MOBILE SETTINGS =================
+            // ================= MOBILE SETTINGS =================
             {
               name: 'mobileSettings',
               label: 'Mobile Ad Settings',
