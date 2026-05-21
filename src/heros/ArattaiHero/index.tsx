@@ -1,42 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
-
-import Link from 'next/link'
-// import './style.css'
-
 import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
-import { usePathname } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Media } from 'src/components/Media'
-import type { Event, Innovate, Investment, Neighbourhood, Post } from 'src/payload-types'
-import AutoShrinkText from '@/components/Text/AutoShrinkText'
+import type { Arattai } from 'src/payload-types'
 
-export const ArattaiHero: React.FC<{
-  post: Post | Event | Innovate | Investment | Neighbourhood
-}> = ({ post }) => {
-  const { heroImage, title } = post
-  const pathname = usePathname()
-
-  const [parentCrumb, setParentCrumb] = useState<{ name: string; href: string } | null>(null)
-  const ignoredSegments = [
-    'visits',
-    'place',
-    'live',
-    'investments',
-    'place',
-    'innovate',
-    'events',
-    'volunteer',
-    'work',
-  ]
-
-  const pathSegments = pathname
-    .split('/')
-    .filter((segment) => segment && !ignoredSegments.includes(segment.toLowerCase()))
-
-  const breadcrumbLinks = pathSegments.map((segment, index) => {
-    const href = '/' + pathSegments.slice(0, index + 1).join('/')
-    return { name: segment.replace(/-/g, ' ').toUpperCase(), href }
-  })
+export const ArattaiHero: React.FC<{ arattai: Arattai }> = ({ arattai }) => {
+  const { heroImage,mobileImage } = arattai
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,50 +25,15 @@ export const ArattaiHero: React.FC<{
     }
   }, [])
 
-  useEffect(() => {
-    const storedSlug = sessionStorage.getItem('parentSlug')
-    if (storedSlug) {
-      const slug = storedSlug.replace('/', '')
-      setParentCrumb({ name: slug.replace(/-/g, ' ').toUpperCase(), href: storedSlug })
-
-      sessionStorage.removeItem('parentSlug')
-    }
-  }, [])
-
   return (
     <div className="accaodomationBannerSection relative max-h-[100vh] min-h-[50vh]">
+     
       {heroImage && typeof heroImage !== 'string' && (
-        <Media fill priority imgClassName="-z-10 object-cover" resource={heroImage} />
+        <Media fill priority imgClassName="-z-10 object-cover hidden sm:block w-full" resource={heroImage} />
       )}
-
-      <div className="accodoamationBannerContainer relative z-10">
-        <div className="accodoamationBannerText">
-          {/* <AutoShrinkText
-            baseSize={60}
-            minSize={40}
-            maxChars={40}
-            className="accodoamationBannerText"
-            width="80%"
-            maxLines={2}
-          /> */}
-
-          {/* <div className="breadCrum">
-            {parentCrumb && (
-              <>
-                <Link href={parentCrumb.href}>{parentCrumb.name}</Link>
-                {breadcrumbLinks.length > 0 && ' - '}
-              </>
-            )}
-            {breadcrumbLinks.map((crumb, index) => (
-              <React.Fragment key={crumb.href}>
-                <Link href={crumb.href}>{crumb.name}</Link>
-                {index < breadcrumbLinks.length - 1 && ' - '}
-              </React.Fragment>
-            ))}
-          </div> */}
-        </div>
-      </div>
-
+        {mobileImage && typeof mobileImage !== 'string' && (
+        <Media fill priority imgClassName="-z-10 object-cover block sm:hidden w-full" resource={mobileImage} />
+      )}
       <GlobalSearch placeholderText="Experience Chennai" buttonText="Search" />
     </div>
   )

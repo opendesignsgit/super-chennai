@@ -259,7 +259,7 @@ export const trendingChennai: CollectionConfig<'trendingChennai'> = {
               }),
               label: false,
               required: true,
-              localized: true, 
+             
             },
           ],
           label: 'Content',
@@ -303,7 +303,6 @@ export const trendingChennai: CollectionConfig<'trendingChennai'> = {
               name: 'title',
               type: 'text',
               required: true,
-              localized: true,
               // maxLength: 200,
               admin: {
                 description: 'Maximum 200 characters allowed',
@@ -312,7 +311,7 @@ export const trendingChennai: CollectionConfig<'trendingChennai'> = {
             {
               name: 'description',
               type: 'textarea',
-              localized: true,
+             
               // maxLength: 500,
               admin: {
                 description: 'Maximum 500 characters allowed',

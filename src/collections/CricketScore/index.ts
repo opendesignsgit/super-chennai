@@ -111,7 +111,7 @@ export const CricketScore: CollectionConfig<'cricketScore'> = {
               }),
               label: false,
               required: true,
-              localized: true,
+            
             },
           ],
           label: 'Content',

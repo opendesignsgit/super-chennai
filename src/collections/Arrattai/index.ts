@@ -86,6 +86,11 @@ export const Arattai: CollectionConfig<'arattai'> = {
               relationTo: 'media',
             },
             {
+              name: 'mobileImage',
+              type: 'upload',
+              relationTo: 'media',
+            },
+            {
               name: 'content',
               type: 'richText',
               editor: lexicalEditor({
@@ -111,7 +116,7 @@ export const Arattai: CollectionConfig<'arattai'> = {
               }),
               label: false,
               required: true,
-              localized: true,
+             
             },
           ],
           label: 'Content',
@@ -131,20 +136,17 @@ export const Arattai: CollectionConfig<'arattai'> = {
               name: 'title',
               type: 'text',
               required: true,
-              localized: true,
             },
 
             {
               name: 'shortDescription',
-              type: 'textarea',
-              required: true,
-              localized: true,
+              type: 'textarea',           
             },
 
             {
               name: 'speakerName',
               type: 'text',
-              required: true,
+            
             },
 
             {
@@ -244,39 +246,7 @@ export const Arattai: CollectionConfig<'arattai'> = {
               ],
             },
 
-            /* =========================================================
-                RICH CONTENT
-             ========================================================= */
-
-            // {
-            //   name: 'content',
-            //   type: 'richText',
-            //   editor: lexicalEditor({
-            //     features: ({ rootFeatures }) => {
-            //       return [
-            //         ...rootFeatures,
-            //         HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            //         BlocksFeature({
-            //           blocks: [
-            //             // ############################ INSER WA WAITING DETAIL PGE BLOCKS ##################
-
-            //             Banner,
-            //             Code,
-            //             MediaBlock,
-            //             VideoBlock,
-            //           ],
-            //         }),
-            //         FixedToolbarFeature(),
-            //         InlineToolbarFeature(),
-            //         HorizontalRuleFeature(),
-            //       ]
-            //     },
-            //   }),
-            //   label: false,
-            //   required: true,
-            //   localized: true,
-            // },
-
+      
             /* =========================================================
                 REGISTRATION SETTINGS
              ========================================================= */

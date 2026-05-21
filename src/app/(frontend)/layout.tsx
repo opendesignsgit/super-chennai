@@ -50,6 +50,8 @@ import '@/assets/Css/Utilities.css'
 import '@/assets/Css/VisitPage.css'
 import '@/assets/Css/Work.css'
 import '@/assets/Css/Welcometosuperchennai.css'
+import '@/assets/Css/lexicalCustome.css'
+
 
 import { Preloader } from '@/components/Loader/Preloader'
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

@@ -3661,6 +3661,7 @@ export interface Arattai {
   id: number;
   title: string;
   heroImage?: (number | null) | Media;
+  mobileImage?: (number | null) | Media;
   content: {
     root: {
       type: string;
@@ -3678,8 +3679,8 @@ export interface Arattai {
   };
   Arattai: {
     title: string;
-    shortDescription: string;
-    speakerName: string;
+    shortDescription?: string | null;
+    speakerName?: string | null;
     speakerDesignation?: string | null;
     speakerImage?: (number | null) | Media;
     eventDetails: {
@@ -6705,6 +6706,7 @@ export interface IplLanguagesSelect<T extends boolean = true> {
 export interface ArattaiSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
+  mobileImage?: T;
   content?: T;
   Arattai?:
     | T

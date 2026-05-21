@@ -397,12 +397,12 @@ const ArattaiDetails: React.FC<ArattaiDetailsProps> = ({ data }) => {
     if (!content?.root?.children) return null
 
     const headingClasses: Record<string, string> = {
-      h1: 'text-5xl font-black text-gray-900 mb-6 leading-tight',
-      h2: 'text-4xl font-bold text-gray-900 mb-5 leading-tight',
-      h3: 'text-3xl font-bold text-gray-900 mb-4 leading-snug',
-      h4: 'text-2xl font-semibold text-gray-900 mb-4',
-      h5: 'text-xl font-semibold text-gray-900 mb-3',
-      h6: 'text-lg font-semibold text-gray-900 mb-3',
+      h1: 'blog-h1',
+      h2: 'blog-h2',
+      h3: 'blog-h3',
+      h4: 'blog-h4',
+      h5: 'blog-h5',
+      h6: 'blog-h6',
     }
 
     return content.root.children.map((node: any, idx: number) => {
@@ -417,10 +417,12 @@ const ArattaiDetails: React.FC<ArattaiDetailsProps> = ({ data }) => {
 
       /* ---------------- HEADING ---------------- */
       if (node.type === 'heading') {
-        const Tag = (node.tag || 'h2') as keyof JSX.IntrinsicElements
+        const tagName = (node.tag || 'h2') as keyof typeof headingClasses
+
+        const Tag = (node.tag || 'h2') as React.ElementType
 
         return (
-          <Tag key={idx} className={headingClasses[Tag] || headingClasses.h2}>
+          <Tag key={idx} className={headingClasses[tagName] || headingClasses.h2}>
             {renderTextChildren(node.children)}
           </Tag>
         )

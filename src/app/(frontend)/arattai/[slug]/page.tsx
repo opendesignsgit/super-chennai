@@ -37,15 +37,15 @@ type Args = {
     slug?: string
   }>
 }
-export default async function Post({ params: paramsPromise }: Args) {
+export default async function ArrataiPage({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
   const url = '/arattais/' + slug
-  const post = await queryPostBySlug({ slug })
+  const arattai = await queryPostBySlug({ slug })
 
-  console.log('arattais', post)
+  console.log('arattais', arattai)
 
-  if (!post) return <PayloadRedirects url={url} />
+  if (!arattai) return <PayloadRedirects url={url} />
 
   return (
     <div>
@@ -54,11 +54,11 @@ export default async function Post({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
       <Suspense fallback={null}>
         <div className="post-hero-wrapper">
-          <ArattaiHero post={post} />
+          <ArattaiHero arattai={arattai} />
         </div>
       </Suspense>
       <div>
-        <ArattaiDetails data={post} />
+        <ArattaiDetails data={arattai} />
       </div>
     </div>
   )
