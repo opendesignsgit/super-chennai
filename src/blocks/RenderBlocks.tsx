@@ -1,8 +1,9 @@
-
 import React, { Fragment } from 'react'
 import { FormBlock } from 'src/blocks/Form/Component'
 import { MediaBlock } from 'src/blocks/MediaBlock/Component'
 import type { Page } from 'src/payload-types'
+import MargazhiEventsSectionComponent from './Contest/Component'
+import ContestFoodBlockComponent from './Contest/FoodBlock/Component'
 import { ContentZoneCarousel } from './HomePage/ContentZoneCarousel/Component'
 import { EventsCalendarBlock } from './HomePage/EventsCalendar/Component'
 import { ExploreBlockServer } from './HomePage/Explore/Components'
@@ -16,8 +17,10 @@ import { StartupChennaiBlockServer } from './HomePage/StartupChennai/Component'
 import TwoColumnFeatureBlock from './HomePage/TwoColumnFeatureBlock/Components'
 import Utilities from './HomePage/Utilities/Component'
 import BecameAVolunteer from './HomePage/Volunteer/Component'
+import SecondSection from './HomePage/WelcomeSction/component'
 import IntroText from './InnerPage/SharedBlocks/IntroText/Components'
 import InvestCategory from './InnerPage/SharedBlocks/InvestCategory/Components'
+import RestaurantsCategoriesComponent from './InnerPage/SharedBlocks/Restaurants/Components'
 import StickyImageScroll from './InnerPage/SharedBlocks/StickyImageScroll/Component'
 import FeatureSections from './InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
 import ZigZagContentSection from './InnerPage/SharedBlocks/ZigZagContent/Component'
@@ -34,11 +37,11 @@ import VolunteerBecameSection from './MainPages/Volunteer/Volunteers/Components'
 import { TextHoverImageSection } from './MainPages/Work/Works/Components'
 import HeroSliderBlock from './PageBanners/Home/Component'
 import { VisitBanner } from './PageBanners/VisitBanner/Component'
-import RestaurantsCategoriesComponent from './InnerPage/SharedBlocks/Restaurants/Components'
-import MargazhiEventsSectionComponent from './Contest/Component'
-import ContestFoodBlockComponent from './Contest/FoodBlock/Component'
+import TrendingChennaiBlock from './HomePage/TrendingChennaiSlider/server'
 import { VideoBlockComponent } from './VideoBlock/Component'
-// import { CallToActionBlock } from './CallToAction/Component'
+import PopupBanner from './Popup/component'
+import CricketScoreBlockComponent from './HomePage/CricketScoreBlock/Component'
+import CricketScoreBlock from './HomePage/CricketScoreBlock/server'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -76,16 +79,16 @@ const blockComponents: {
   investmentCategoryList: InvestmentCategoryListSection,
   innovateSlider: InnovateSliderBlock,
   textHoverImageSection: TextHoverImageSection,
-  RestaurantsCategories:RestaurantsCategoriesComponent,
-
-
+  RestaurantsCategories: RestaurantsCategoriesComponent,
   MargazhiEventsBlock: MargazhiEventsSectionComponent,
-  ContestFoodBlock:ContestFoodBlockComponent,
-  VideoBlock:VideoBlockComponent 
-
-  // BLOG 
-    // cta: CallToActionBlock,
-
+  ContestFoodBlock: ContestFoodBlockComponent,
+  VideoBlock: VideoBlockComponent,
+  secondSection: SecondSection,
+  trendingChennaiSlider: TrendingChennaiBlock,
+  popupBanner: PopupBanner,
+  cricketScoreBlock: CricketScoreBlock,
+  // BLOG
+  // cta: CallToActionBlock,
 }
 
 export const RenderBlocks: React.FC<{
@@ -100,8 +103,6 @@ export const RenderBlocks: React.FC<{
       <Fragment>
         {blocks.map((block, index) => {
           const { blockType } = block
-
-       
 
           if (blockType && blockType in blockComponents) {
             const Block = blockComponents[blockType]

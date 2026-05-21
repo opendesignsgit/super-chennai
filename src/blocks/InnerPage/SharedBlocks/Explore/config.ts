@@ -11,7 +11,7 @@ const ExploreMoreChennaiBlock: Block = {
       name: 'heading',
       type: 'text',
       required: true,
-      maxLength: 100,
+      // maxLength: 100,
       admin: {
         description: 'Main title for the section. Max 100 characters.',
       },
@@ -19,7 +19,7 @@ const ExploreMoreChennaiBlock: Block = {
     {
       name: 'description',
       type: 'textarea',
-      maxLength: 500,
+      // maxLength: 500,
       admin: {
         description: 'Short paragraph explaining the section. Max 500 characters allowed.',
       },

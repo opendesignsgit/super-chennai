@@ -15,7 +15,7 @@ const ChennaiLifeEssentialSection: Block = {
       type: 'text',
       required: true,
       label: 'Heading',
-      maxLength: 15,
+      // maxLength: 15,
       admin: {
         description: 'Maximum 15 characters allowed',
       },
@@ -25,7 +25,7 @@ const ChennaiLifeEssentialSection: Block = {
       type: 'textarea',
       required: true,
       label: 'Description',
-      maxLength: 500,
+      // maxLength: 500,
       admin: {
         description: 'Maximum 500 characters allowed',
       },
@@ -44,7 +44,7 @@ const ChennaiLifeEssentialSection: Block = {
           type: 'text',
           required: true,
           label: 'Text Label',
-          maxLength: 500,
+          // maxLength: 500,
           admin: {
             description: 'Maximum 500 characters allowed',
           },

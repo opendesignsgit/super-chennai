@@ -20,7 +20,7 @@ const TwoColumnFeatureBlock: Block = {
       name: 'techTitle',
       type: 'text',
       required: true,
-      maxLength: 30,
+      // maxLength: 30,
       admin: {
         description: 'Maximum 30 characters allowed',
       },
@@ -29,7 +29,7 @@ const TwoColumnFeatureBlock: Block = {
       name: 'techDescription',
       type: 'textarea',
       required: true,
-      maxLength: 200,
+      // maxLength: 200,
       admin: {
         description: 'Maximum 200 characters allowed',
       },
@@ -44,7 +44,7 @@ const TwoColumnFeatureBlock: Block = {
       name: 'eduTitle',
       type: 'text',
       required: true,
-      maxLength: 30,
+      // maxLength: 30,
       admin: {
         description: 'Maximum 30 characters allowed',
       },
@@ -53,7 +53,7 @@ const TwoColumnFeatureBlock: Block = {
       name: 'eduDescription',
       type: 'textarea',
       required: true,
-      maxLength: 200,
+      // maxLength: 200,
       admin: {
         description: 'Maximum 200 characters allowed',
       },

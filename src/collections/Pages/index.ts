@@ -42,6 +42,10 @@ import IntroTextBlock from 'src/blocks/MainPages/SharedBlocks/IntroText/config'
 import VisitCategory from 'src/blocks/MainPages/Visit/VisitCategory/config'
 import volunteerBecameListBlock from 'src/blocks/MainPages/Volunteer/Volunteers/config'
 import HeroSlider from 'src/blocks/PageBanners/Home/config'
+import { TrendingChennaiSlider } from '@/blocks/HomePage/TrendingChennaiSlider/config'
+import SecondSectionBlock from '@/blocks/HomePage/WelcomeSction/config'
+import { PopupBannerBlock } from '@/blocks/Popup/config'
+import { CricketScoreBlock } from '@/blocks/HomePage/CricketScoreBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -128,6 +132,12 @@ export const Pages: CollectionConfig<'pages'> = {
                 investmentCategoryListBlock,
                 innovateSlider,
                 TextHoverImageSection,
+
+                // TRENDINGCHENNAI@#########
+                TrendingChennaiSlider,
+                SecondSectionBlock,
+                PopupBannerBlock,
+                CricketScoreBlock,
               ],
               required: true,
               admin: {
@@ -183,7 +193,7 @@ export const Pages: CollectionConfig<'pages'> = {
   versions: {
     drafts: {
       autosave: {
-        interval: 100, 
+        interval: 100,
       },
       schedulePublish: true,
     },

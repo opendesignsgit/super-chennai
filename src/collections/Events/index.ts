@@ -150,6 +150,7 @@ export const Events: CollectionConfig<'events'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
+       group: 'Main collections',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
@@ -269,7 +270,7 @@ export const Events: CollectionConfig<'events'> = {
               name: 'singerName',
               label: 'Singer Name',
               type: 'text',
-              maxLength: 100,
+              // maxLength: 100,
               admin: {
                 description: 'Maximum 100 characters',
                 placeholder: 'Enter artist name',
@@ -280,7 +281,7 @@ export const Events: CollectionConfig<'events'> = {
               label: 'Artist Designation',
               type: 'text',
               required: false,
-              maxLength: 300,
+              // maxLength: 300,
               admin: {
                 placeholder: 'e.g., Singer, Guitarist, Director, etc.',
                 description: 'Specify the role/designation of the artist in the event',
@@ -291,7 +292,7 @@ export const Events: CollectionConfig<'events'> = {
               name: 'title',
               type: 'text',
               required: true,
-              maxLength: 200,
+              // maxLength: 200,
               admin: {
                 description: 'Maximum 200 characters allowed',
               },
@@ -299,7 +300,7 @@ export const Events: CollectionConfig<'events'> = {
             {
               name: 'description',
               type: 'textarea',
-              maxLength: 500,
+              // maxLength: 500,
               admin: {
                 description: 'Maximum 500 characters allowed',
               },
@@ -349,7 +350,7 @@ export const Events: CollectionConfig<'events'> = {
             {
               name: 'performerRole',
               type: 'text',
-              maxLength: 30,
+              // maxLength: 30,
               admin: {
                 description: 'Maximum 30 characters allowed',
               },
@@ -555,7 +556,7 @@ export const Events: CollectionConfig<'events'> = {
               name: 'address',
               type: 'textarea',
               label: 'Address',
-              maxLength: 100,
+              // maxLength: 100,
               admin: {
                 description:
                   'Full address or venue location for the event(Maximum 100 characters allowed)',

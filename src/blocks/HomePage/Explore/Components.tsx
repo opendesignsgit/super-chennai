@@ -9,6 +9,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 type Props = {
+  heading?: string
+  description?: string
   cards: {
     title: string
     place: string
@@ -18,7 +20,7 @@ type Props = {
   }[]
 }
 
-export const ExploreBlockServer: React.FC<Props> = ({ cards }) => {
+export const ExploreBlockServer: React.FC<Props> = ({ heading, description, cards }) => {
   const firstRow = cards.slice(0, 4)
   const secondRow = cards.slice(4, 8)
 
@@ -68,6 +70,16 @@ export const ExploreBlockServer: React.FC<Props> = ({ cards }) => {
   return (
     <div className="relative w-full px-4 py-10 ExploreChennaiContainer">
       <div className="container exploreChennaiContiner max-w-7xl mx-auto px-4 space-y-10">
+        <div className="ChennaiInvestMents">
+          <h1 className="chennaiInvestmentsHeading" style={{ textAlign: 'center' }}>
+            {heading || 'Explore Chennai'}
+          </h1>
+
+          <h5 className="chennaiInvestmentsHeadingSub" style={{ textAlign: 'center' }}>
+            {description ||
+              'Explore restaurants, nightlife, sports, shopping, and entertainment in Super Chennai—where every moment is extraordinary.'}
+          </h5>
+        </div>
         <div className="space-y-4">
           <Slider {...settings}>{firstRow.map(renderCard)}</Slider>
           <Slider {...settings}>{secondRow.map(renderCard)}</Slider>

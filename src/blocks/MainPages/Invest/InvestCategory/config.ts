@@ -20,7 +20,7 @@ const investmentCategoryListBlock: Block = {
           name: 'title',
           type: 'text',
           required: true,
-          maxLength: 30,
+          // maxLength: 30,
           admin: {
             description: 'Maximum 30 characters allowed',
           },
@@ -28,7 +28,7 @@ const investmentCategoryListBlock: Block = {
         {
           name: 'subtitle',
           type: 'text',
-          maxLength: 30,
+          // maxLength: 30,
           admin: {
             description: 'Maximum 30 characters allowed',
           },
@@ -36,7 +36,7 @@ const investmentCategoryListBlock: Block = {
         {
           name: 'description',
           type: 'textarea',
-          maxLength: 400,
+          // maxLength: 400,
           admin: {
             description: 'Maximum 400 characters allowed',
           },

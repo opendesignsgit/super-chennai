@@ -13,7 +13,7 @@ const SpotlightGallery: Block = {
       name: 'heading',
       type: 'text',
       required: true,
-      maxLength: 20,
+      // maxLength: 20,
       admin: {
         description: 'Maximum 20 characters allowed',
         placeholder: 'Enter a heading',
@@ -23,7 +23,7 @@ const SpotlightGallery: Block = {
       name: 'description',
       type: 'textarea',
       required: true,
-      maxLength: 500,
+      // maxLength: 500,
       admin: {
         description: 'Maximum 500 characters allowed',
         placeholder: 'Enter a description',
@@ -41,7 +41,7 @@ const SpotlightGallery: Block = {
           name: 'name',
           type: 'text',
           required: true,
-          maxLength: 15,
+          // maxLength: 15,
           admin: {
             description: 'Maximum 15 characters allowed',
           },
@@ -49,7 +49,7 @@ const SpotlightGallery: Block = {
         {
           name: 'subtitle',
           type: 'text',
-          maxLength: 15,
+          // maxLength: 15,
           admin: {
             description: 'Maximum 15 characters allowed',
           },
@@ -57,7 +57,7 @@ const SpotlightGallery: Block = {
         {
           name: 'para',
           type: 'text',
-          maxLength: 200,
+          // maxLength: 200,
           admin: {
             description: 'Maximum 200 characters allowed',
           },

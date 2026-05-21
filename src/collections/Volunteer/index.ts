@@ -47,6 +47,7 @@ export const Volunteer: CollectionConfig<'volunteer'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
+       group: 'Main collections',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
@@ -94,7 +95,7 @@ export const Volunteer: CollectionConfig<'volunteer'> = {
               name: 'Voluenteer title',
               type: 'text',
               required: true,
-              maxLength: 100,
+              // maxLength: 100,
               admin: {
                 description: 'Maximum 100 characters allowed',
               },
@@ -102,7 +103,7 @@ export const Volunteer: CollectionConfig<'volunteer'> = {
             {
               name: 'subtitle',
               type: 'text',
-              maxLength: 400,
+              // maxLength: 400,
               admin: {
                 description: 'Maximum 400 characters allowed',
               },
@@ -110,7 +111,7 @@ export const Volunteer: CollectionConfig<'volunteer'> = {
             {
               name: 'description',
               type: 'textarea',
-              maxLength: 400,
+              // maxLength: 400,
               admin: {
                 description: 'Maximum 400 characters allowed',
               },

@@ -51,6 +51,7 @@ export const Innovate: CollectionConfig<'innovate'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
+       group: 'Main collections',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
@@ -139,7 +140,7 @@ export const Innovate: CollectionConfig<'innovate'> = {
               label: 'Innovation Title',
               type: 'text',
               required: true,
-              maxLength: 200,
+              // maxLength: 200,
               admin: {
                 description: 'Maximum 200 characters allowed',
               },
@@ -148,7 +149,7 @@ export const Innovate: CollectionConfig<'innovate'> = {
               name: 'innovationDescription',
               label: 'Innovation Description',
               type: 'textarea',
-              maxLength: 800,
+              // maxLength: 800,
               admin: {
                 description: 'Maximum 800 characters allowed',
               },

@@ -14,7 +14,7 @@ const volunteerBecameListBlock: Block = {
       name: 'sectionTitle',
       type: 'text',
       required: true,
-      maxLength: 200,
+      // maxLength: 200,
       admin: {
         description: 'Maximum 200 characters allowed',
       },
@@ -23,7 +23,7 @@ const volunteerBecameListBlock: Block = {
       name: 'sectionDescription',
       type: 'textarea',
       required: true,
-      maxLength: 600,
+      // maxLength: 600,
       admin: {
         description: 'Maximum 600 characters allowed',
         placeholder: 'Enter a description',

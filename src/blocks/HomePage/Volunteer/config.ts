@@ -15,7 +15,7 @@ const BecameAVolunteerBlock: Block = {
       type: 'text',
       required: false,
       defaultValue: 'Become a',
-      maxLength: 100,
+      // maxLength: 100,
       admin: {
         description: 'Short heading (max 100 characters)',
       },
@@ -25,7 +25,7 @@ const BecameAVolunteerBlock: Block = {
       type: 'text',
       required: false,
       defaultValue: 'Volunteer',
-      maxLength: 100,
+      // maxLength: 100,
       admin: {
         description: 'Main title (max 100 characters)',
       },
@@ -36,7 +36,7 @@ const BecameAVolunteerBlock: Block = {
       required: false,
       defaultValue:
         'Change things! Contribute your time and expertise to worthwhile causes in Chennai.',
-      maxLength: 600,
+      // maxLength: 600,
       admin: {
         description: 'Short description (max 600 characters)',
       },

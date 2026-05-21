@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { Media } from 'src/components/Media'
 import type { Event, Innovate, Investment, Neighbourhood, Post } from 'src/payload-types'
+import AutoShrinkText from '@/components/Text/AutoShrinkText'
 
 export const PostHero: React.FC<{
   post: Post | Event | Innovate | Investment | Neighbourhood
@@ -72,7 +73,14 @@ export const PostHero: React.FC<{
 
       <div className="accodoamationBannerContainer relative z-10">
         <div className="accodoamationBannerText">
-          <h3>{title}</h3>
+          <AutoShrinkText
+            baseSize={60}
+            minSize={40}
+            maxChars={40}
+            className="accodoamationBannerText"
+            width="80%"
+            maxLines={2}
+          />
 
           <div className="breadCrum">
             {parentCrumb && (

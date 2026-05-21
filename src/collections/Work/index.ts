@@ -52,6 +52,7 @@ export const work: CollectionConfig<'work'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
+       group: 'Main collections',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({

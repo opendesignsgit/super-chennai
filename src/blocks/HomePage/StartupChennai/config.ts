@@ -14,7 +14,7 @@ export const StartupChennaiBlock: Block = {
     {
       name: 'heading',
       type: 'text',
-      maxLength: 30,
+      // maxLength: 30,
       admin: {
         description: 'Maximum 30 characters allowed',
       },
@@ -22,7 +22,7 @@ export const StartupChennaiBlock: Block = {
     {
       name: 'description',
       type: 'textarea',
-      maxLength: 400,
+      // maxLength: 400,
       admin: {
         description: 'Maximum 400 characters allowed',
         placeholder: 'Enter a description',
@@ -43,7 +43,7 @@ export const StartupChennaiBlock: Block = {
           name: 'title',
           type: 'text',
           required: true,
-          maxLength: 20,
+          // maxLength: 20,
           admin: {
             description: 'Maximum 20 characters allowed',
           },
@@ -51,7 +51,7 @@ export const StartupChennaiBlock: Block = {
         {
           name: 'description',
           type: 'textarea',
-          maxLength: 50,
+          // maxLength: 50,
           admin: {
             description: 'Maximum 50 characters allowed',
             placeholder: 'Enter a description',

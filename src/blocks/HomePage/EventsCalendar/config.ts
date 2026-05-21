@@ -15,7 +15,7 @@ const EventsCalendarBlock: Block = {
       name: 'heading',
       type: 'text',
       label: 'Top Heading',
-      maxLength: 50,
+      // maxLength: 50,
       admin: {
         description: 'Maximum 50 characters allowed',
         placeholder: 'Enter a concise heading',
@@ -25,7 +25,7 @@ const EventsCalendarBlock: Block = {
       name: 'description',
       type: 'textarea',
       label: 'Description',
-      maxLength: 200,
+      // maxLength: 200,
       admin: {
         description: 'Maximum 200 characters allowed',
         placeholder: 'Enter a description',

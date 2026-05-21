@@ -46,6 +46,7 @@ export const Ads: CollectionConfig<'ads'> = {
 
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
+    group: 'Main collections',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
