@@ -1,63 +1,3 @@
-// import type { CollectionConfig } from 'payload'
-
-// export const ArattaiRegistrations: CollectionConfig = {
-//   slug: 'arattai-registrations',
-
-//   admin: {
-//     useAsTitle: 'name',
-//     defaultColumns: ['name', 'email', 'createdAt'],
-//   },
-
-//   access: {
-//     read: () => true,
-//     create: () => true,
-//     update: () => true,
-//     delete: () => true,
-//   },
-
-//   fields: [
-//     {
-//       name: 'arattai',
-//       type: 'relationship',
-//       relationTo: 'arattai',
-//       required: true,
-//     },
-
-//     {
-//       name: 'name',
-//       type: 'text',
-//     },
-
-//     {
-//       name: 'email',
-//       type: 'email',
-//     },
-
-//     {
-//       name: 'phone',
-//       type: 'text',
-//     },
-
-//     {
-//       name: 'values',
-//       type: 'json',
-//     },
-
-//     {
-//       name: 'mailSent',
-//       type: 'checkbox',
-//       defaultValue: false,
-//     },
-
-//     {
-//       name: 'mailResponse',
-//       type: 'textarea',
-//     },
-//   ],
-
-//   timestamps: true,
-// }
-
 import type { CollectionConfig } from 'payload'
 
 export const ArattaiRegistrations: CollectionConfig = {
@@ -68,7 +8,7 @@ export const ArattaiRegistrations: CollectionConfig = {
 
     defaultColumns: ['name', 'email', 'status', 'thankYouMailSent', 'createdAt'],
 
-    group: 'Arattai Management',
+    group: 'USER RESGISTARTIONS',
   },
 
   access: {
@@ -185,6 +125,9 @@ export const ArattaiRegistrations: CollectionConfig = {
 
       admin: {
         description: 'Dynamic submitted form values',
+        components: {
+          Field: '@/collections/Arrattai/components/RegistrationViewer',
+        },
       },
     },
 

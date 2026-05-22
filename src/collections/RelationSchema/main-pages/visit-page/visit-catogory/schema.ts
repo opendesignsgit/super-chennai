@@ -12,6 +12,7 @@ const VisitCategoryCollection: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     group: 'Main Page Contents',
+    hidden: true,
   },
   fields: [
     {

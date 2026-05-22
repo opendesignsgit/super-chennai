@@ -1,11 +1,11 @@
-import type { Metadata } from 'next/types'
-import PageClient from './page.client'
-import { getPayload } from 'payload'
+import { ArattaiArchive } from '@/components/Arratai/ArattaiArchive'
 import configPromise from '@/payload.config'
-import { EventArchive } from '@/components/EventCard/EventArchive'
 import Image from 'next/image'
 import Link from 'next/link'
+import type { Metadata } from 'next/types'
+import { getPayload } from 'payload'
 import AccodomationBanner from '../../../assets/images/AccodomationBannerr.jpg'
+import PageClient from './page.client'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -20,35 +20,25 @@ export default async function Page() {
   })
 
   return (
-    <div className="pt-24 pb-24">
+    <div className=" pb-24">
       <PageClient />
-
-      {/* Banner */}
       <section className="accaodomationBannerSection relative">
-        <div className="relative w-full h-[300px]">
-          <Image
-            src={AccodomationBanner}
-            alt="arattai"
-            fill
-            className="object-cover"
-            priority
-          />
+        <div className="relative w-full h-[400px]">
+          <Image src={AccodomationBanner} alt="arattai" fill className="object-cover" priority />
         </div>
 
         <div className="accodoamationBannerContainer absolute inset-0 flex items-center">
           <div className="accodoamationBannerText container mx-auto">
-            <h3>Trending Chennai Events</h3>
-
+            <h3>Arattai</h3>
             <div className="breadCrum">
-              <Link href="/">Home</Link> - <Link href="/arattai">arattai</Link>
+              <Link href="/">Home</Link> - <Link href="/arattai">Arattai</Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ONLY CARDS */}
       <div className="container mx-auto mt-10">
-        <EventArchive events={eventsRes.docs} />
+        <ArattaiArchive events={eventsRes.docs} />
       </div>
     </div>
   )

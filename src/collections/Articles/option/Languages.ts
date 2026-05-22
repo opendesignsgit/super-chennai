@@ -7,6 +7,7 @@ export const Languages: CollectionConfig<'languages'> = {
   },
   admin: {
     useAsTitle: 'label',
+     hidden: true,
   },
   fields: [
     {

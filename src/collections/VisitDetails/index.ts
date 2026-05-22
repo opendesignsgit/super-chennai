@@ -69,7 +69,9 @@ export const VisitDetails: CollectionConfig<'visitDetails'> = {
         req,
       }),
     useAsTitle: 'title',
+    hidden: true,
   },
+
   fields: [
     {
       name: 'title',

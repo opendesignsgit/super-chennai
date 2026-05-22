@@ -2,7 +2,29 @@ import type { CollectionConfig } from 'payload'
 
 import { Banner } from '@/blocks/Banner/config'
 import { Code } from '@/blocks/Code/config'
+import ContentZoneCarousel from '@/blocks/HomePage/ContentZoneCarousel/config'
+import { CricketScoreBlock } from '@/blocks/HomePage/CricketScoreBlock/config'
+import { ExploreBlock } from '@/blocks/HomePage/Explore/config'
+import { FunChennaiBlock } from '@/blocks/HomePage/funChennai/config'
+import Infography from '@/blocks/HomePage/infography/config'
+import ChennaiInvestmentsBlock from '@/blocks/HomePage/Investments/config'
+import SpotlightGallery from '@/blocks/HomePage/leftContentRightSlider/config'
+import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
+import { StartupChennaiBlock } from '@/blocks/HomePage/StartupChennai/config'
+import { TrendingChennaiSlider } from '@/blocks/HomePage/TrendingChennaiSlider/config'
+import TwoColumnFeatureBlock from '@/blocks/HomePage/TwoColumnFeatureBlock/config'
+import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
+import SecondSectionBlock from '@/blocks/HomePage/WelcomeSction/config'
+import AllEvents from '@/blocks/MainPages/Events/config'
+import { innovateSlider } from '@/blocks/MainPages/Innovate/TabWithSlider/config'
+import investmentCategoryListBlock from '@/blocks/MainPages/Invest/InvestCategory/config'
+import ChennaiLifeEssentialSection from '@/blocks/MainPages/Live/ChennaiLifeEssentials/config'
+import liveIntrorSection from '@/blocks/MainPages/SharedBlocks/IntroTextWithImage/config'
+import VisitCategory from '@/blocks/MainPages/Visit/VisitCategory/config'
+import volunteerBecameListBlock from '@/blocks/MainPages/Volunteer/Volunteers/config'
+import TextHoverImageSection from '@/blocks/MainPages/Work/Works/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
+import { PopupBannerBlock } from '@/blocks/Popup/config'
 import { VideoBlock } from '@/blocks/VideoBlock/config'
 import { SEOFieldSchema } from '@/fields/seo'
 import {
@@ -26,6 +48,7 @@ import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
+import { GalleryBlock } from '@/blocks/MediaHighlights/config'
 
 export const Arattai: CollectionConfig<'arattai'> = {
   slug: 'arattai',
@@ -116,7 +139,38 @@ export const Arattai: CollectionConfig<'arattai'> = {
               }),
               label: false,
               required: true,
-             
+            },
+            {
+              name: 'layout',
+              type: 'blocks',
+              blocks: [
+                ExploreBlock,
+                FunChennaiBlock,
+                StartupChennaiBlock,
+                ChennaiInvestmentsBlock,
+                socialReelSlider,
+                BecameAVolunteerBlock,
+                VisitCategory,
+                volunteerBecameListBlock,
+                Infography,
+                TwoColumnFeatureBlock,
+                ContentZoneCarousel,
+                SpotlightGallery,
+                AllEvents,
+                liveIntrorSection,
+                ChennaiLifeEssentialSection,
+                investmentCategoryListBlock,
+                innovateSlider,
+                TextHoverImageSection,
+                TrendingChennaiSlider,
+                SecondSectionBlock,
+                PopupBannerBlock,
+                CricketScoreBlock,
+                GalleryBlock,
+              ],
+              admin: {
+                initCollapsed: true,
+              },
             },
           ],
           label: 'Content',
@@ -140,13 +194,12 @@ export const Arattai: CollectionConfig<'arattai'> = {
 
             {
               name: 'shortDescription',
-              type: 'textarea',           
+              type: 'textarea',
             },
 
             {
               name: 'speakerName',
               type: 'text',
-            
             },
 
             {
@@ -246,7 +299,6 @@ export const Arattai: CollectionConfig<'arattai'> = {
               ],
             },
 
-      
             /* =========================================================
                 REGISTRATION SETTINGS
              ========================================================= */

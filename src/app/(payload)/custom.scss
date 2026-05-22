@@ -1,0 +1,1061 @@
+/* =========================================================
+   LOGIN PAGE ONLY
+========================================================= */
+
+.login.template-minimal {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background:
+    radial-gradient(circle at top left,
+      rgba(236,72,153,0.08),
+      transparent 30%),
+    radial-gradient(circle at bottom right,
+      rgba(139,92,246,0.08),
+      transparent 30%),
+    #f8fafc !important;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================================================
+   LOGIN CARD
+========================================================= */
+
+.login.template-minimal .template-minimal__wrap {
+  width: 100%;
+  max-width: 540px;
+
+  padding: 50px;
+
+  border-radius: 32px;
+
+  background: rgba(255,255,255,0.82);
+
+  backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 20px 60px rgba(15,23,42,0.08);
+
+  border: 1px solid rgba(255,255,255,0.4);
+
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   LOGO FIX
+========================================================= */
+
+.login.template-minimal .login__brand {
+  position: relative;
+
+  width: 240px;
+  height: 90px;
+
+  margin: 0 auto 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* next/image fix */
+
+.login.template-minimal .login__brand img {
+  object-fit: contain !important;
+
+  position: relative !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  inset: unset !important;
+}
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.login.template-minimal p {
+  text-align: center;
+  color: #64748b;
+
+  line-height: 1.7;
+
+  margin-bottom: 32px;
+}
+
+.login.template-minimal p b {
+  display: block;
+
+  color: #0f172a;
+
+  font-size: 26px;
+
+  margin-bottom: 10px;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.login.template-minimal .login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.login.template-minimal .login__form__inputWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.login.template-minimal .field-label {
+  margin-bottom: 10px;
+
+  display: block;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #0f172a;
+}
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.login.template-minimal .field-type__wrap input {
+  width: 100%;
+  height: 58px;
+
+  padding: 0 20px;
+
+  border-radius: 18px !important;
+
+  border: 1px solid #e2e8f0 !important;
+
+  background: rgba(255,255,255,0.9) !important;
+
+  font-size: 15px;
+
+  transition: all 0.25s ease;
+}
+
+.login.template-minimal .field-type__wrap input:focus {
+  outline: none !important;
+
+  border-color: #ec4899 !important;
+
+  box-shadow:
+    0 0 0 5px rgba(236,72,153,0.12) !important;
+}
+
+/* =========================================================
+   FORGOT PASSWORD
+========================================================= */
+
+.login.template-minimal .login__form a,
+.login.template-minimal a {
+  color: #ec4899;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.login.template-minimal .form-submit .btn {
+  width: 100%;
+  height: 58px;
+
+  border: none !important;
+
+  border-radius: 18px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899 0%,
+      #8b5cf6 100%
+    ) !important;
+
+  color: white !important;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 16px 35px rgba(236,72,153,0.22);
+}
+
+.login.template-minimal .form-submit .btn:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .login.template-minimal {
+    padding: 20px;
+  }
+
+  .login.template-minimal .template-minimal__wrap {
+    padding: 32px 24px;
+  }
+
+  .login.template-minimal .login__brand {
+    width: 180px;
+    height: 70px;
+  }
+}
+
+
+
+/* =========================================================
+   LOGIN + FORGOT PASSWORD ONLY
+========================================================= */
+
+.login.template-minimal,
+.forgot-password.template-minimal {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+
+  background:
+    radial-gradient(circle at top left,
+      rgba(236,72,153,0.08),
+      transparent 30%),
+    radial-gradient(circle at bottom right,
+      rgba(139,92,246,0.08),
+      transparent 30%),
+    #f8fafc !important;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.login.template-minimal .template-minimal__wrap,
+.forgot-password.template-minimal .template-minimal__wrap {
+  width: 100%;
+  max-width: 540px;
+
+  padding: 50px;
+
+  border-radius: 32px;
+
+  background: rgba(255,255,255,0.82);
+
+  backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 20px 60px rgba(15,23,42,0.08);
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.login.template-minimal .login__brand,
+.forgot-password.template-minimal .login__brand {
+  position: relative;
+
+  width: 220px;
+  height: 80px;
+
+  margin: 0 auto 30px;
+}
+
+.login.template-minimal .login__brand img,
+.forgot-password.template-minimal .login__brand img {
+  position: relative !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: contain !important;
+
+  inset: unset !important;
+}
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.login.template-minimal .field-type__wrap input,
+.forgot-password.template-minimal .field-type__wrap input {
+  height: 58px;
+
+  border-radius: 18px !important;
+
+  border: 1px solid #e2e8f0 !important;
+
+  padding: 0 20px;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.login.template-minimal .form-submit .btn,
+.forgot-password.template-minimal .form-submit .btn {
+  width: 100%;
+  height: 58px;
+
+  border-radius: 18px !important;
+
+  border: none !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    ) !important;
+}
+
+
+/* =========================================================
+   PAYLOAD CMS SIDEBAR NAV - ADVANCED UI
+   SAFE SCOPED CSS (ONLY ADMIN SIDEBAR)
+========================================================= */
+
+:root {
+  --nav-primary: #ec4899;
+  --nav-secondary: #8b5cf6;
+
+  --nav-bg: #ffffff;
+  --nav-card: #ffffff;
+
+  --nav-text: #0f172a;
+  --nav-text-light: #64748b;
+
+  --nav-border: rgba(15, 23, 42, 0.08);
+
+  --nav-gradient:
+    linear-gradient(
+      135deg,
+      #ec4899 0%,
+      #8b5cf6 100%
+    );
+
+  --nav-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* =========================================================
+   SIDEBAR WRAPPER
+========================================================= */
+
+.nav__scroll {
+  background: #f8fafc !important;
+
+  padding: 18px 14px 120px;
+
+  border-right: 1px solid var(--nav-border);
+
+  scrollbar-width: thin;
+}
+
+/* =========================================================
+   CUSTOM SCROLLBAR
+========================================================= */
+
+.nav__scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.nav__scroll::-webkit-scrollbar-thumb {
+  background: var(--nav-gradient);
+
+  border-radius: 999px;
+}
+
+/* =========================================================
+   NAV WRAP
+========================================================= */
+
+.nav__wrap {
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+/* =========================================================
+   NAV GROUP
+========================================================= */
+
+.nav-group {
+  background: rgba(255,255,255,0.88);
+
+  border: 1px solid rgba(15,23,42,0.06);
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 4px 20px rgba(15,23,42,0.04);
+
+  transition: all 0.3s ease;
+}
+
+.nav-group:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 30px rgba(15,23,42,0.08);
+}
+
+/* =========================================================
+   GROUP HEADER
+========================================================= */
+
+.nav-group__toggle {
+  width: 100%;
+ color:#f2f2f2!important;
+  min-height: 60px;
+
+  padding: 0 20px;
+
+  border: none !important;
+
+  background: #9d54a1!important;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.nav-group__toggle:hover {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(236,72,153,0.05),
+      rgba(139,92,246,0.05)
+    ) !important;
+}
+
+/* =========================================================
+   GROUP TITLE
+========================================================= */
+
+.nav-group__label {
+  color: var(--nav-card);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.6px;
+
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   CHEVRON
+========================================================= */
+
+.nav-group__indicator {
+  width: 18px;
+  height: 18px;
+
+  color: var(--nav-text-light);
+
+  transition: all 0.3s ease;
+}
+
+.nav-group__toggle:hover .nav-group__indicator {
+  color: var(--nav-primary);
+}
+
+/* =========================================================
+   GROUP CONTENT
+========================================================= */
+
+.nav-group__content {
+  padding:
+    6px
+    10px
+    14px;
+}
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.nav__link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 48px;
+
+  padding:
+    0
+    16px;
+
+  margin-bottom: 6px;
+
+  border-radius: 14px;
+
+  color: var(--nav-text-light) !important;
+
+  text-decoration: none !important;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  overflow: hidden;
+
+  transition: all 0.25s ease;
+}
+
+/* =========================================================
+   HOVER EFFECT
+========================================================= */
+
+.nav__link::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(236,72,153,0.08),
+      rgba(139,92,246,0.08)
+    );
+
+  opacity: 0;
+
+  transition: all 0.25s ease;
+}
+
+.nav__link:hover::before {
+  opacity: 1;
+}
+
+.nav__link:hover {
+  transform: translateX(4px);
+
+  color: var(--nav-text) !important;
+}
+
+/* =========================================================
+   ACTIVE LINK
+========================================================= */
+
+.nav__link--active,
+.nav__link.active,
+.nav__link[aria-current='page'] {
+  background: var(--nav-gradient) !important;
+
+  color: #ffffff !important;
+
+  box-shadow:
+    0 10px 24px rgba(236,72,153,0.24);
+}
+
+.nav__link--active .nav__link-label,
+.nav__link.active .nav__link-label,
+.nav__link[aria-current='page'] .nav__link-label {
+  color: #ffffff !important;
+}
+
+/* =========================================================
+   LINK LABEL
+========================================================= */
+
+.nav__link-label {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   SMALL ACTIVE DOT
+========================================================= */
+
+.nav__link-indicator {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 999px;
+
+  margin-right: 10px;
+
+  background: var(--nav-gradient);
+
+  box-shadow:
+    0 0 12px rgba(236,72,153,0.4);
+}
+
+/* =========================================================
+   LOGOUT AREA
+========================================================= */
+
+.nav__controls {
+  margin-top: 24px;
+
+  padding: 0 8px;
+}
+
+/* =========================================================
+   LOGOUT BUTTON
+========================================================= */
+
+.nav__log-out {
+  width: 100%;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(239,68,68,0.1),
+      rgba(236,72,153,0.1)
+    );
+
+  border:
+    1px solid rgba(239,68,68,0.12);
+
+  transition: all 0.3s ease;
+}
+
+.nav__log-out:hover {
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ef4444,
+      #ec4899
+    );
+}
+
+.nav__log-out:hover .icon {
+  color: white !important;
+}
+
+/* =========================================================
+   LOGOUT ICON
+========================================================= */
+
+.nav__log-out .icon {
+  width: 20px;
+  height: 20px;
+
+  color: #ef4444;
+
+  transition: all 0.3s ease;
+}
+
+/* =========================================================
+   MOBILE CLOSE BUTTON
+========================================================= */
+
+.nav__mobile-close {
+  width: 42px;
+  height: 42px;
+
+  border: none !important;
+
+  border-radius: 14px;
+
+  background:
+    rgba(236,72,153,0.08) !important;
+
+  transition: all 0.25s ease;
+}
+
+.nav__mobile-close:hover {
+  background:
+    rgba(236,72,153,0.16) !important;
+
+  transform: rotate(90deg);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .nav__scroll {
+    padding: 14px 10px 100px;
+  }
+
+  .nav-group {
+    border-radius: 18px;
+  }
+
+  .nav-group__toggle {
+    min-height: 54px;
+  }
+
+  .nav__link {
+    min-height: 44px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   PREMIUM PAYLOAD CMS COLLECTION LIST DESIGN
+   Scoped only for collection pages
+========================================================= */
+
+.collection-list {
+  padding-top: 20px;
+}
+
+/* =========================================================
+   PAGE WRAP
+========================================================= */
+
+.collection-list .collection-list__wrap {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow:
+    0 10px 40px rgba(15, 23, 42, 0.06);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.collection-list .list-header {
+  background:
+    linear-gradient(
+      135deg,
+      #9d54a1 0%,
+      #c95dd8 100%
+    );
+
+  border-radius: 24px;
+
+  padding: 22px 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+
+  box-shadow:
+    0 10px 30px rgba(157,84,161,0.25);
+}
+
+.collection-list .list-header h1 {
+  color: white !important;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* =========================================================
+   CREATE BUTTON
+========================================================= */
+
+.collection-list .list-header .btn {
+  background: white !important;
+  color: #9d54a1 !important;
+
+  border: none !important;
+
+  border-radius: 14px !important;
+
+  padding: 12px 20px !important;
+
+  font-weight: 700;
+
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 8px 20px rgba(255,255,255,0.18);
+}
+
+.collection-list .list-header .btn:hover {
+  transform: translateY(-2px);
+
+  background: #fdf4ff !important;
+}
+
+/* =========================================================
+   SEARCH + FILTER SECTION
+========================================================= */
+
+.collection-list .list-controls {
+  background: #faf5ff;
+
+  border: 1px solid #f3e8ff;
+
+  border-radius: 22px;
+
+  padding: 18px 22px;
+
+  margin-bottom: 24px;
+}
+
+.collection-list .list-controls__wrap {
+  gap: 14px;
+}
+
+/* =========================================================
+   SEARCH INPUT
+========================================================= */
+
+.collection-list .search-filter__input {
+  height: 50px !important;
+
+  border-radius: 14px !important;
+
+  border: 1px solid #ead5ff !important;
+
+  background: white !important;
+
+  padding: 0 18px !important;
+
+  transition: all 0.25s ease;
+}
+
+.collection-list .search-filter__input:focus {
+  border-color: #9d54a1 !important;
+
+  box-shadow:
+    0 0 0 4px rgba(157,84,161,0.12) !important;
+}
+
+/* =========================================================
+   FILTER BUTTONS
+========================================================= */
+
+.collection-list .pill {
+  border-radius: 14px !important;
+
+  border: 1px solid #e9d5ff !important;
+
+  background: white !important;
+
+  transition: all 0.25s ease;
+}
+
+.collection-list .pill:hover {
+  background: #fdf4ff !important;
+
+  border-color: #c084fc !important;
+
+  transform: translateY(-1px);
+}
+
+.collection-list .pill__label {
+  color: #6b21a8 !important;
+  font-weight: 600;
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.collection-list .table {
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  border: 1px solid #f1f5f9;
+
+  background: white;
+}
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.collection-list table thead {
+  background:
+    linear-gradient(
+      135deg,
+      #faf5ff 0%,
+      #f3e8ff 100%
+    );
+}
+
+.collection-list table thead th {
+  padding: 18px 16px !important;
+
+  border-bottom: 1px solid #e9d5ff !important;
+}
+
+.collection-list table thead label {
+  color: #6b21a8 !important;
+
+  font-weight: 700 !important;
+
+  font-size: 14px;
+}
+
+/* =========================================================
+   TABLE ROWS
+========================================================= */
+
+.collection-list table tbody tr {
+  transition: all 0.25s ease;
+
+  border-bottom: 1px solid #f8fafc;
+}
+
+.collection-list table tbody tr:hover {
+  background: #fcfaff;
+}
+
+/* =========================================================
+   TABLE CELLS
+========================================================= */
+
+.collection-list table tbody td {
+  padding: 18px 16px !important;
+
+  color: #334155;
+}
+
+/* =========================================================
+   TABLE LINKS
+========================================================= */
+
+.collection-list table tbody td a {
+  color: #9d54a1 !important;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+
+.collection-list table tbody td a:hover {
+  color: #7e22ce !important;
+}
+
+/* =========================================================
+   CHECKBOX
+========================================================= */
+
+.collection-list .checkbox-input__icon {
+  border-radius: 8px !important;
+
+  border-color: #d8b4fe !important;
+}
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.collection-list .collection-list__page-controls {
+  margin-top: 22px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #f1f5f9;
+}
+
+/* =========================================================
+   PER PAGE BUTTON
+========================================================= */
+
+.collection-list .popup-button {
+  border-radius: 14px !important;
+
+  background: #faf5ff !important;
+
+  border: 1px solid #e9d5ff !important;
+
+  transition: all 0.25s ease;
+}
+
+.collection-list .popup-button:hover {
+  background: #f3e8ff !important;
+}
+
+/* =========================================================
+   SORT ICONS
+========================================================= */
+
+.collection-list .sort-column__button {
+  transition: all 0.2s ease;
+}
+
+.collection-list .sort-column__button:hover {
+  transform: scale(1.1);
+}
+
+/* =========================================================
+   ICON COLORS
+========================================================= */
+
+.collection-list svg .stroke {
+  stroke: #9d54a1 !important;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .collection-list .list-header {
+    flex-direction: column;
+    gap: 16px;
+
+    align-items: flex-start;
+  }
+
+  .collection-list .list-header h1 {
+    font-size: 24px;
+  }
+
+  .collection-list .collection-list__wrap {
+    padding: 16px;
+  }
+
+  .collection-list .list-controls {
+    padding: 14px;
+  }
+}

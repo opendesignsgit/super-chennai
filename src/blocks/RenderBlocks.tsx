@@ -42,6 +42,7 @@ import { VideoBlockComponent } from './VideoBlock/Component'
 import PopupBanner from './Popup/component'
 import CricketScoreBlockComponent from './HomePage/CricketScoreBlock/Component'
 import CricketScoreBlock from './HomePage/CricketScoreBlock/server'
+import GalleryBlockComponent from './MediaHighlights/Component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -87,6 +88,7 @@ const blockComponents: {
   trendingChennaiSlider: TrendingChennaiBlock,
   popupBanner: PopupBanner,
   cricketScoreBlock: CricketScoreBlock,
+  GalleryBlock: GalleryBlockComponent,
   // BLOG
   // cta: CallToActionBlock,
 }

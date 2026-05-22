@@ -12,6 +12,7 @@ export const IPLLanguages: CollectionConfig = {
     useAsTitle: 'name',
     defaultColumns: ['name', 'code', 'region', 'isActive'],
     group: 'IPL',
+     hidden: true,
   },
 
   access: {

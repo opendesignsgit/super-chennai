@@ -40,6 +40,7 @@ import type {
   MediaBlock as MediaBlockProps,
 } from 'src/payload-types'
 import { cn } from 'src/utilities/ui'
+import GalleryBlockComponent from '@/blocks/MediaHighlights/Component'
 // import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 
 type NodeTypes =
@@ -175,6 +176,9 @@ const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<
 
         CricketScoreBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
           <CricketScoreBlockComponent {...node.fields} />
+        ),
+        GalleryBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
+          <GalleryBlockComponent {...node.fields} />
         ),
       },
     }

@@ -7,6 +7,7 @@ export const TrendingLanguages: CollectionConfig = {
     useAsTitle: 'name',
     defaultColumns: ['name', 'code', 'region', 'isActive'],
     group: 'Master Data', // optional grouping in admin
+     hidden: true,
   },
 
   access: {

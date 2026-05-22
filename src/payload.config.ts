@@ -3,7 +3,7 @@ import 'dotenv/config'
 
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
-import sharp from 'sharp'; // sharp-import
+import sharp from 'sharp' // sharp-import
 import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
@@ -64,17 +64,16 @@ import { trendingEventsCategories } from './collections/trendingChennai/options/
 import { TrendingLanguages } from './collections/trendingChennai/options/TrendingLangauge'
 import { trendinglocations } from './collections/trendingChennai/options/TrendingLocations'
 import { verifyOTP } from './endpoints/verifyOTP'
-import { IplLocations } from './collections/CricketScore/options/IPLLocations';
-import { IPLLanguages } from './collections/CricketScore/options/IPLLangauge';
-import { Arattai } from './collections/Arrattai';
-import { ArattaiRegistrations } from './collections/Arrattai/ArattaiRegistrations';
+import { IplLocations } from './collections/CricketScore/options/IPLLocations'
+import { IPLLanguages } from './collections/CricketScore/options/IPLLangauge'
+import { Arattai } from './collections/Arrattai'
+import { ArattaiRegistrations } from './collections/Arrattai/ArattaiRegistrations'
+import { EventDashboard } from './collections/EventDashboard'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
- 
-
   admin: {
     components: {
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
@@ -83,6 +82,15 @@ export default buildConfig({
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
       beforeDashboard: ['@/components/BeforeDashboard'],
+      views: {
+        Login: {
+          // Component: '@/components/admin/CustomLogin',
+        },
+      },
+      graphics: {
+        Logo: '@/components/admin/AdminLogo',
+        Icon: '@/components/admin/AdminIcon',
+      },
     },
 
     importMap: {
@@ -190,6 +198,7 @@ export default buildConfig({
     //####### ARATTAI THANI DEPARTMENT ###########
     Arattai,
     ArattaiRegistrations,
+    EventDashboard,
   ],
 
   //######### CUSTOME END POINT  ###############
