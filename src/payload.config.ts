@@ -83,9 +83,7 @@ export default buildConfig({
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
       beforeDashboard: ['@/components/BeforeDashboard'],
       views: {
-        Login: {
-          // Component: '@/components/admin/CustomLogin',
-        },
+       
       },
       graphics: {
         Logo: '@/components/admin/AdminLogo',

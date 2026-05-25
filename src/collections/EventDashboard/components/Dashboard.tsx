@@ -57,7 +57,7 @@ export default function Dashboard() {
   useEffect(() => {
     const keys = Object.keys(groupedEvents)
 
-    if (keys.length > 0) {
+    if (keys[0]) {
       setSelectedEvent(keys[0])
     }
   }, [groupedEvents])

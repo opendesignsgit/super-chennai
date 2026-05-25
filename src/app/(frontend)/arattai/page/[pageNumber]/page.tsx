@@ -20,12 +20,10 @@ type Args = {
 export default async function Page({ params: paramsPromise }: Args) {
   const { pageNumber } = await paramsPromise
   const payload = await getPayload({ config: configPromise })
-
   const sanitizedPageNumber = Number(pageNumber)
-
   if (!Number.isInteger(sanitizedPageNumber)) notFound()
 
-  const events = await payload.find({
+  const arattai = await payload.find({
     collection: 'arattai',
     depth: 1,
     limit: 12,
@@ -38,21 +36,19 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none">
-          <h1>arattai</h1>
+          <h1>Arattai</h1>
         </div>
       </div>
-      
+
       <Suspense fallback={null}>
         <Banner />
       </Suspense>
 
-   
-
-      <ArattaiDetails posts={events.docs} />
+      <ArattaiDetails data={arattai} />
 
       <div className="container">
-        {events?.page && events?.totalPages > 1 && (
-          <Pagination page={events.page} totalPages={events.totalPages} />
+        {arattai?.page && arattai?.totalPages > 1 && (
+          <Pagination page={arattai.page} totalPages={arattai.totalPages} />
         )}
       </div>
     </div>
