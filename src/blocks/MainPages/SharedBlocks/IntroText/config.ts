@@ -24,7 +24,7 @@ const IntroTextBlock: Block = {
         condition: (_, siblingData) => siblingData.showMarquee === true,
         description: 'Maximum 50 characters allowed',
       },
-      maxLength: 50,
+      // maxLength: 50,
     },
     {
       name: 'marqueeTextSize',
@@ -44,7 +44,7 @@ const IntroTextBlock: Block = {
       type: 'text',
       label: 'Main Title',
       required: true,
-      maxLength: 50,
+      // maxLength: 50,
       admin: {
         description: 'Maximum 50 characters allowed',
       },
@@ -54,7 +54,7 @@ const IntroTextBlock: Block = {
       type: 'textarea',
       label: 'Highlighted Text (Bold)',
       required: true,
-      maxLength: 400,
+      // maxLength: 400,
       admin: {
         description: 'Maximum 400 characters allowed',
       },
@@ -64,7 +64,7 @@ const IntroTextBlock: Block = {
       type: 'textarea',
       label: 'Supporting Description',
       required: true,
-      maxLength: 800,
+      // maxLength: 800,
       admin: {
         description: 'Maximum 800 characters allowed',
       },

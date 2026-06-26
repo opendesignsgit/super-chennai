@@ -49,6 +49,7 @@ export const Investments: CollectionConfig<'investments'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
+       group: 'Main collections',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
@@ -199,7 +200,7 @@ export const Investments: CollectionConfig<'investments'> = {
                   label: 'Category Title',
                   type: 'text',
                   required: true,
-                  maxLength: 100,
+                  // maxLength: 100,
                   admin: {
                     description: 'Maximum 100 characters allowed',
                   },
@@ -208,7 +209,7 @@ export const Investments: CollectionConfig<'investments'> = {
                   name: 'sectionDescription',
                   label: 'Category Description',
                   type: 'textarea',
-                  maxLength: 500,
+                  // maxLength: 500,
                   admin: {
                     description: 'Maximum 500 characters allowed',
                     placeholder: 'Enter a description',
@@ -230,7 +231,7 @@ export const Investments: CollectionConfig<'investments'> = {
                       label: 'Investment Title',
                       type: 'text',
                       required: true,
-                      maxLength: 100,
+                      // maxLength: 100,
                       admin: {
                         description: 'Maximum 100 characters allowed',
                       },
@@ -243,7 +244,7 @@ export const Investments: CollectionConfig<'investments'> = {
                       name: 'description',
                       label: 'Description',
                       type: 'textarea',
-                      maxLength: 500,
+                      // maxLength: 500,
                       admin: {
                         description: 'Maximum 500 characters allowed',
                       },

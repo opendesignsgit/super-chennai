@@ -1,11 +1,14 @@
 import AdBlockComponent from '@/blocks/AdBlock/Components'
 import { BannerBlock } from '@/blocks/Banner/Component'
+import CricketScoreBlockComponent from '@/blocks/HomePage/CricketScoreBlock/Component'
 import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
 import BecameAVolunteer from '@/blocks/HomePage/Volunteer/Component'
 import { HotelDetailSectionBlock } from '@/blocks/InnerPage/SharedBlocks/InnerSubPageDetails/component'
 import InvestCategory from '@/blocks/InnerPage/SharedBlocks/InvestCategory/Components'
 import RestaurantsCategoriesComponent from '@/blocks/InnerPage/SharedBlocks/Restaurants/Components'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
+import PopupBanner from '@/blocks/Popup/component'
+import TrendingChennaiClient from '@/blocks/HomePage/TrendingChennaiSlider/component'
 import {
   DefaultNodeTypes,
   SerializedBlockNode,
@@ -37,6 +40,7 @@ import type {
   MediaBlock as MediaBlockProps,
 } from 'src/payload-types'
 import { cn } from 'src/utilities/ui'
+import GalleryBlockComponent from '@/blocks/MediaHighlights/Component'
 // import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 
 type NodeTypes =
@@ -82,16 +86,6 @@ const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<
         //###################### THIS IS POST RELATED BLOG #####################
         banner: ({ node }) => <BannerBlock className="col-start-2 mb-4" {...node.fields} />,
         mediaBlock: ({ node }) => (
-          
-          // <MediaBlock
-          //   className="col-start-1 col-span-3"
-          //   imgClassName="m-0"
-          //   {...node.fields}
-          //   captionClassName="mx-auto max-w-[48rem]"
-          //   enableGutter={false}
-          //   disableInnerContainer={true}
-          // />
-
           <MediaBlock
             className="col-start-1 col-span-3"
             imgClassName="m-0"
@@ -122,6 +116,7 @@ const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<
         ZigZagContent: ({ node }: { node: SerializedBlockNode<any> }) => (
           <HotelsInChennaiSection {...node.fields} />
         ),
+
         exploreMoreChennai: ({ node }: { node: SerializedBlockNode<any> }) => (
           <ExploreMoreChennai {...node.fields} />
         ),
@@ -129,6 +124,7 @@ const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<
         socialReelSlider: ({ node }: { node: SerializedBlockNode<any> }) => (
           <SocialChennai {...node.fields} />
         ),
+
         Banner: ({ node }: { node: SerializedBlockNode<any> }) => <Banner {...node.fields} />,
         introText: ({ node }: { node: SerializedBlockNode<any> }) => <IntroText {...node.fields} />,
         featureSections: ({ node }: { node: SerializedBlockNode<any> }) => (
@@ -169,6 +165,20 @@ const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<
 
         AdBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
           <AdBlockComponent {...node.fields} />
+        ),
+        TrendingChennaiSlider: ({ node }: { node: SerializedBlockNode<any> }) => (
+          <TrendingChennaiClient {...node.fields} />
+        ),
+
+        PopupBannerBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
+          <PopupBanner {...node.fields} />
+        ),
+
+        CricketScoreBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
+          <CricketScoreBlockComponent {...node.fields} />
+        ),
+        GalleryBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
+          <GalleryBlockComponent {...node.fields} />
         ),
       },
     }

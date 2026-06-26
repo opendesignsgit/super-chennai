@@ -15,7 +15,7 @@ const TextHoverImageSection: Block = {
       label: 'Section Title',
       type: 'text',
       required: true,
-      maxLength: 100,
+      // maxLength: 100,
       admin: {
         description: 'Maximum 100 characters allowed',
       },
@@ -30,7 +30,7 @@ const TextHoverImageSection: Block = {
           name: 'label',
           type: 'text',
           required: true,
-          maxLength: 100,
+          // maxLength: 100,
           admin: {
             description: 'Maximum 100 characters allowed',
           },

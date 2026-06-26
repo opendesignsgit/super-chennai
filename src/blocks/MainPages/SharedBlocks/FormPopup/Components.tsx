@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { sendFormEmail } from 'src/utilities/sendFormEmail'
-import './style.css'
+// import './style.css'
 import contactImage from '@/assets/images/Volunteer-Images/popupimg.jpg'
 import SectionLoader from '@/components/SectionLoader/component'
 

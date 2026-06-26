@@ -95,6 +95,31 @@ export const Header: GlobalConfig = {
         initCollapsed: true,
       },
     },
+
+    //######################### STICKY SIDE #######################
+
+    {
+      name: 'pointCast',
+      label: 'Point Cast',
+      type: 'group',
+
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: false,
+        },
+
+        {
+          name: 'url',
+          type: 'text',
+          required: false,
+        },
+      ],
+    },
+
+    
   ],
   hooks: {
     afterChange: [revalidateHeader],

@@ -28,6 +28,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const [drawerMenuItems, setDrawerMenuItems] = useState<DrawerItem[]>([])
   const [draweLogo, setDraweLogo] = useState<any>(null)
   const [socialLinks, setSocialLinks] = useState<any>([])
+  const [pointCast, setPointCast] = useState<any>(null)
 
   //##################### TIMEOUT  ############################################
   let menuTimeout: NodeJS.Timeout
@@ -63,6 +64,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     }
 
     fetchMenuItems()
+    setPointCast(data?.pointCast || null)
   }, [data])
 
   useEffect(() => {
@@ -88,6 +90,28 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       element.scrollIntoView({ behavior: 'smooth' })
     }
   }
+
+  //################# STICKY LOGIC ###################
+
+  const [footerReached, setFooterReached] = useState(false)
+
+  useEffect(() => {
+    const handleFooterScroll = () => {
+      const footer = document.querySelector('footer')
+
+      if (!footer) return
+
+      const footerTop = footer.getBoundingClientRect().top
+      const windowHeight = window.innerHeight
+
+      setFooterReached(footerTop <= windowHeight)
+    }
+
+    window.addEventListener('scroll', handleFooterScroll)
+
+    return () => window.removeEventListener('scroll', handleFooterScroll)
+  }, [])
+
   //#################### RENDER UI#################################################
   return (
     <div className="mainMegamenuContainers">
@@ -295,8 +319,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             </motion.div>
           )}
         </AnimatePresence>
+
       </header>
-      {socialLinks?.length > 0 && (
+      {/* {socialLinks?.length > 0 && (
         <div className="stickyIconsContainer">
           {socialLinks.map((item: any, index: number) => (
             <a key={index} href={item.url} target="_blank" rel="noopener noreferrer">
@@ -309,6 +334,43 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               />
             </a>
           ))}
+        </div>
+      )} */}
+
+      {/* STICKY SOCIAL ################################## */}
+      {socialLinks?.length > 0 && (
+        <div className={`stickyIconsContainer ${footerReached ? 'footerreached' : ''}`}>
+          {socialLinks.map((item: any, index: number) => (
+            <a
+              key={index}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={item.platform}
+            >
+              <img
+                src={item.icon?.url ?? `/media/${item.icon?.filename}`}
+                alt={item.platform}
+                width={30}
+                height={30}
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
+            </a>
+          ))}
+        </div>
+      )}
+
+      {/* POINTCAST ################################## */}
+      {pointCast?.image && (
+        <div id="mainfirst" className={`pointcastSticky ${footerReached ? 'footerreached' : ''}`}>
+          <a target="_blank" href={pointCast?.url} rel="noopener noreferrer">
+            <img
+              src={pointCast.image?.url ?? `/media/${pointCast.image?.filename}`}
+              alt="Pointcast"
+            />
+          </a>
         </div>
       )}
     </div>

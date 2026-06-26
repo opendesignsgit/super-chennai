@@ -1,24 +1,23 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import 'dotenv/config'
-
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import sharp from 'sharp' // sharp-import
 import { fileURLToPath } from 'url'
-
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Visits } from './collections/Visits'
-
 import { defaultLexical } from 'src/fields/defaultLexical'
 import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config'
 import { Events } from './collections/Events'
+import { eventsCategories } from './collections/Events/options/Categories'
 import { Innovate } from './collections/Innovate'
 import { Investments } from './collections/Investments'
 import { Live } from './collections/live'
 import { Properties } from './collections/Properties'
+import ContactMessages from './collections/Properties/forms/ContacctProperties'
 import { Amenities } from './collections/Properties/options/Amenities'
 import { BhkTypes } from './collections/Properties/options/BhkTypes'
 import { Locations } from './collections/Properties/options/Locations'
@@ -35,31 +34,39 @@ import Footer from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { getServerSideURL } from './utilities/getURL'
-import ContactMessages from './collections/Properties/forms/ContacctProperties'
-import { eventsCategories } from './collections/Events/options/Categories'
-// import Neighbourhoods from './collections/Neighbourhoods/Neighbourhoods'
-import { PropertyLocations } from './collections/Properties/options/propertyLocation'
-import { SuperchennaiContests } from './collections/SuperchennaiContests'
-import { IconOfMonth } from './collections/IconOfTheMonth'
-import Neighbourhoods from './blocks/InnerPage/SharedBlocks/Neighbourhood/config'
-import { Contest } from './collections/Contest'
-import { Organizers } from './collections/Contest/Options/Organizers'
-import { MargazhiEventCategories } from './collections/Contest/Options/MargazhiEventCategories'
-import { Venues } from './collections/Contest/Options/Venues'
-import { SabhaFoods } from './collections/Contest/Options/Food'
-import { Neighbourhood } from './collections/Neighbourhoods/Neighbourhoods'
-import { verifyOTP } from './endpoints/verifyOTP'
-import { Articles } from './collections/Articles'
 import { Ads } from './collections/Ads'
-import { ArticleTypes } from './collections/Articles/option/ArticleTypes'
-import { ArticleLocations } from './collections/Articles/option/loactions'
+import { Articles } from './collections/Articles'
 import { ArticleCategory } from './collections/Articles/option/Articlecategory'
+import { ArticleTypes } from './collections/Articles/option/ArticleTypes'
 import { Languages } from './collections/Articles/option/Languages'
+import { ArticleLocations } from './collections/Articles/option/loactions'
+import { Contest } from './collections/Contest'
+import { SabhaFoods } from './collections/Contest/Options/Food'
+import { MargazhiEventCategories } from './collections/Contest/Options/MargazhiEventCategories'
+import { Organizers } from './collections/Contest/Options/Organizers'
+import { Venues } from './collections/Contest/Options/Venues'
+import { CricketScore } from './collections/CricketScore'
+import { IPLCategories } from './collections/CricketScore/options/IPLCategoriesCategories'
+import { IconOfMonth } from './collections/IconOfTheMonth'
+import { Neighbourhood } from './collections/Neighbourhoods/Neighbourhoods'
 import { NeighbourhoodCategories } from './collections/Neighbourhoods/options/businessCategories'
+import { ChennaiNeighbourhoodlocations } from './collections/Neighbourhoods/options/locations'
 import { NeighbourhoodSubCategories } from './collections/Neighbourhoods/options/NeighbourhoodSubCategories'
 import { NeighbourhoodTags } from './collections/Neighbourhoods/options/NeighbourhoodTags'
-import { ChennaiNeighbourhoodlocations } from './collections/Neighbourhoods/options/locations'
-// import { Neighbourhood } from './collections/Neighbourhoods/Neighbourhoods'
+import { PropertyLocations } from './collections/Properties/options/propertyLocation'
+import { SuperchennaiContests } from './collections/SuperchennaiContests'
+import { trendingChennai } from './collections/trendingChennai'
+import { trendingEventsCategories } from './collections/trendingChennai/options/TrendingCategories'
+import { TrendingLanguages } from './collections/trendingChennai/options/TrendingLangauge'
+import { trendinglocations } from './collections/trendingChennai/options/TrendingLocations'
+import { verifyOTP } from './endpoints/verifyOTP'
+import { IplLocations } from './collections/CricketScore/options/IPLLocations'
+import { IPLLanguages } from './collections/CricketScore/options/IPLLangauge'
+import { Arattai } from './collections/Arrattai'
+import { ArattaiRegistrations } from './collections/Arrattai/ArattaiRegistrations'
+import { EventDashboard } from './collections/EventDashboard'
+import { IconMonthCategories } from './collections/IconOfTheMonth/Options/icon-month-categories'
+import { IconOfMonthPage } from './collections/IconOfTheMonth/Options/CollectionPageData'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -67,12 +74,13 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   admin: {
     components: {
-      // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
       beforeLogin: ['@/components/BeforeLogin'],
-      // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
       beforeDashboard: ['@/components/BeforeDashboard'],
+      views: {},
+      graphics: {
+        Logo: '@/components/admin/AdminLogo',
+        Icon: '@/components/admin/AdminIcon',
+      },
     },
 
     importMap: {
@@ -102,22 +110,15 @@ export default buildConfig({
       ],
     },
   },
-  // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
 
   db: postgresAdapter({
     pool: {
       max: 10, // max connections
       connectionString: process.env.DATABASE_URI,
-      //   ssl: false, // enable ssl: true if your DB is public
       connectionTimeoutMillis: 300000, // 60 seconds
       idleTimeoutMillis: 300000, // 30 seconds 30000
     },
-    // pool: {
-    //   max: 10, // 10–20 OK
-    //   idleTimeoutMillis: 10000,
-    //   connectionTimeoutMillis: 10000,
-    // },
   }),
 
   collections: [
@@ -134,12 +135,10 @@ export default buildConfig({
     Volunteer,
     Innovate,
     VisitDetails,
-
     VolunteerSlidesCollection,
     SocialReelsCollection,
     InvestmentCategoriesCollection,
     VisitCategoryCollection,
-
     Properties,
     BhkTypes,
     PropertyTypes,
@@ -147,16 +146,14 @@ export default buildConfig({
     Amenities,
     ContactMessages,
     PropertyLocations,
-
     eventsCategories,
     SuperchennaiContests,
-    IconOfMonth,
+
     Contest,
     Organizers,
     Venues,
     MargazhiEventCategories,
     SabhaFoods,
-
     Articles,
     Ads,
     ArticleTypes,
@@ -164,16 +161,37 @@ export default buildConfig({
     ArticleCategory,
     Languages,
 
-    //########## NEIGHBOURHOODS #########
+    //########## NEIGHBOURHOODS ##############
 
     Neighbourhood,
     NeighbourhoodCategories,
     NeighbourhoodSubCategories,
     NeighbourhoodTags,
     ChennaiNeighbourhoodlocations,
+
+    // ######### TRENDING CHENNAI #############
+
+    trendingChennai,
+    trendinglocations,
+    trendingEventsCategories,
+    TrendingLanguages,
+    CricketScore,
+    IPLCategories,
+    IplLocations,
+    IPLLanguages,
+
+    //####### ARATTAI THANI DEPARTMENT ##########
+    Arattai,
+    ArattaiRegistrations,
+    EventDashboard,
+
+    //####### ICON OFTHE MONTH ##################
+
+    IconOfMonth,
+    IconMonthCategories,
   ],
 
-  //######### CUSTOME END POINT  ###############
+  //######### CUSTOME END POINT  ################
 
   endpoints: [
     {
@@ -187,22 +205,15 @@ export default buildConfig({
   // ################## DONT TOCH THIS PART MODIFIED BY OPEN DESIGN  #################
   // #################################################################################
 
-  // cors: ['https://www.superchennai.com', 'http://localhost:5173', getServerSideURL()].filter(
-  //   Boolean,
-  // ),
   cors: [
     'https://www.superchennai.com',
     'http://localhost:5173',
     'http://localhost:5174',
     getServerSideURL(),
   ].filter(Boolean),
-  // csrf: ['http://localhost:5173', getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
+  globals: [Header, Footer, IconOfMonthPage],
   blocks: [ChennaiInvestmentsBlock],
-  plugins: [
-    ...plugins,
-    // storage-adapter-placeholder
-  ],
+  plugins: [...plugins],
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {
@@ -211,12 +222,7 @@ export default buildConfig({
   jobs: {
     access: {
       run: ({ req }: { req: PayloadRequest }): boolean => {
-        // Allow logged in users to execute this endpoint (default)
         if (req.user) return true
-
-        // If there is no logged in user, then check
-        // for the Vercel Cron secret to be present as an
-        // Authorization header:
         const authHeader = req.headers.get('authorization')
         return authHeader === `Bearer ${process.env.CRON_SECRET}`
       },

@@ -10,6 +10,27 @@ export const ExploreBlock: Block = {
     group: 'Homepage Sections',
   },
   fields: [
+    // SECTION HEADING ########################################
+    {
+      name: 'heading',
+      type: 'text',
+      required: true,
+      label: 'Section Heading',
+      admin: {
+        placeholder: 'Enter section heading',
+      },
+    },
+
+    // SECTION DESCRIPTION ####################################
+    {
+      name: 'description',
+      type: 'textarea',
+      required: false,
+      label: 'Section Description',
+      admin: {
+        placeholder: 'Enter section description',
+      },
+    },
     {
       name: 'cards',
       type: 'array',
@@ -20,7 +41,7 @@ export const ExploreBlock: Block = {
           name: 'title',
           type: 'text',
           required: true,
-          maxLength: 15,
+
           admin: {
             description: 'Maximum 15 characters allowed',
             placeholder: 'Enter a title ',
@@ -30,7 +51,7 @@ export const ExploreBlock: Block = {
           name: 'place',
           type: 'text',
           required: true,
-          maxLength: 100,
+
           admin: {
             description: 'Maximum 100 characters allowed',
           },

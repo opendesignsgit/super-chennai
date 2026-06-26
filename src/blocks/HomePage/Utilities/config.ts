@@ -14,7 +14,7 @@ const Utilities: Block = {
       name: 'title',
       type: 'text',
       required: true,
-      maxLength: 50,
+      // maxLength: 50,
       admin: {
         description: 'Maximum 50 characters allowed',
       },
@@ -22,7 +22,7 @@ const Utilities: Block = {
     {
       name: 'description',
       type: 'textarea',
-      maxLength: 200,
+      // maxLength: 200,
       admin: {
         description: 'Maximum 200 characters allowed',
       },
@@ -38,7 +38,7 @@ const Utilities: Block = {
           name: 'tabTitle',
           type: 'text',
           required: true,
-          maxLength: 20,
+          // maxLength: 20,
           admin: {
             description: 'Maximum 20 characters allowed',
           },

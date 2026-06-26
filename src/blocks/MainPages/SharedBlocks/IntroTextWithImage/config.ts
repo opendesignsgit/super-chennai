@@ -14,7 +14,7 @@ const liveIntrorSection: Block = {
       type: 'text',
       label: 'Heading',
       required: true,
-      maxLength: 50,
+      // maxLength: 50,
       admin: {
         description: 'Maximum 50 characters allowed',
       },
@@ -42,7 +42,7 @@ const liveIntrorSection: Block = {
       type: 'text',
       label: 'First Paragraph',
       required: true,
-      maxLength: 500,
+      // maxLength: 500,
       admin: {
         description: 'Maximum 500 characters allowed',
       },
@@ -52,7 +52,7 @@ const liveIntrorSection: Block = {
       type: 'text',
       label: 'Second Paragraph',
       required: true,
-      maxLength: 500,
+      // maxLength: 500,
       admin: {
         description: 'Maximum 500 characters allowed',
       },
@@ -62,7 +62,7 @@ const liveIntrorSection: Block = {
       type: 'text',
       label: 'Third Paragraph',
       required: true,
-      maxLength: 500,
+      // maxLength: 500,
       admin: {
         description: 'Maximum 500 characters allowed',
       },
@@ -77,7 +77,7 @@ const liveIntrorSection: Block = {
       name: 'marqueeText',
       type: 'text',
       label: 'Scrolling Marquee Text',
-      maxLength: 200,
+      // maxLength: 200,
       admin: {
         condition: (_, siblingData) => siblingData.showMarquee === true,
         description: 'Maximum 200 characters allowed',

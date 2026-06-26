@@ -23,27 +23,29 @@ export default function IntroText({
   const bgImageUrl = backgroundType === 'background' ? dotedImage.src : undefined
 
   return (
-    <section
-      className="visitIntroParaSection detailIntro"
-      style={{ backgroundImage: bgImageUrl ? `url(${bgImageUrl})` : undefined }}
-    >
-      <div className="container max-w-7xl mx-auto px-4">
-        <div
-          className={`CostOflivingBackground ${
-            scrollDir === 'right' ? 'scroll-rightCostofLiving' : 'scroll-leftCostofLiving'
-          }`}
-          ref={bgTextRef}
-        >
-          {showMarquee && marqueeText && <p>{marqueeText.repeat(3)}</p>}
-        </div>
+    <div className="mt-20">
+      <section
+        className="visitIntroParaSection detailIntro "
+        style={{ backgroundImage: bgImageUrl ? `url(${bgImageUrl})` : undefined }}
+      >
+        <div className="container max-w-7xl mx-auto px-4">
+          <div
+            className={`CostOflivingBackground ${
+              scrollDir === 'right' ? 'scroll-rightCostofLiving' : 'scroll-leftCostofLiving'
+            }`}
+            ref={bgTextRef}
+          >
+            {showMarquee && marqueeText && <p>{marqueeText.repeat(3)}</p>}
+          </div>
 
-        <div className="workIntro">
-          {title && <h3>{title}</h3>}
-          {description && (
-            <p dangerouslySetInnerHTML={{ __html: description.replace(/\n/g, '<br/>') }} />
-          )}
+          <div className="workIntro p-20">
+            {title && <h3>{title}</h3>}
+            {description && (
+              <p dangerouslySetInnerHTML={{ __html: description.replace(/\n/g, '<br/>') }} />
+            )}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }

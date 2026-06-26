@@ -49,6 +49,9 @@ import '@/assets/Css/TrendingChennai.css'
 import '@/assets/Css/Utilities.css'
 import '@/assets/Css/VisitPage.css'
 import '@/assets/Css/Work.css'
+import '@/assets/Css/Welcometosuperchennai.css'
+import '@/assets/Css/lexicalCustome.css'
+import '@/assets/Css/IconOfTheMonth.css'
 
 import { Preloader } from '@/components/Loader/Preloader'
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -69,9 +72,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }}
           />
           {/* <Preloader> */}
-            <Header />
-            {children}
-            <Footer />
+          <Header />
+          {children}
+          <Footer />
           {/* </Preloader> */}
         </Providers>
       </body>

@@ -14,7 +14,7 @@ export const FunChennaiBlock: Block = {
       name: 'heading',
       type: 'text',
       required: true,
-      maxLength: 100,
+      // maxLength: 100,
       admin: {
         description: 'Maximum 100 characters allowed',
       },
@@ -23,7 +23,7 @@ export const FunChennaiBlock: Block = {
       name: 'subheading',
       type: 'textarea',
       required: true,
-      maxLength: 500,
+      // maxLength: 500,
       admin: {
         description: 'Maximum 500 characters allowed',
       },
@@ -37,7 +37,7 @@ export const FunChennaiBlock: Block = {
           name: 'title',
           type: 'text',
           required: true,
-          maxLength: 100,
+          // maxLength: 100,
           admin: {
             description: 'Maximum 100 characters allowed',
           },
@@ -45,7 +45,7 @@ export const FunChennaiBlock: Block = {
         {
           name: 'place',
           type: 'text',
-          maxLength: 100,
+          // maxLength: 100,
           admin: {
             description: 'Maximum 100 characters allowed',
           },

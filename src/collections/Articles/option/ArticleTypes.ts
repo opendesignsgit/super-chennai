@@ -7,6 +7,7 @@ export const ArticleTypes: CollectionConfig<'articleTypes'> = {
   },
   admin: {
     useAsTitle: 'label',
+     hidden: true,
   },
   fields: [
     {

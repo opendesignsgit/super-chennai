@@ -95,7 +95,6 @@ export interface Config {
     propertylocations: Propertylocation;
     eventsCategories: EventsCategory;
     superchennaiContests: SuperchennaiContest;
-    iconOfMonth: IconOfMonth;
     contest: Contest;
     organizers: Organizer;
     venues: Venue;
@@ -112,11 +111,23 @@ export interface Config {
     'neighbourhood-subcategories': NeighbourhoodSubcategory;
     'neighbourhood-tags': NeighbourhoodTag;
     chennaiNeighbourhoodlocations: ChennaiNeighbourhoodlocation;
+    trendingChennai: TrendingChennai;
+    trendinglocations: Trendinglocation;
+    trendingEventsCategories: TrendingEventsCategory;
+    TrendingLanguages: TrendingLanguage;
+    cricketScore: CricketScore;
+    iplCategories: IplCategory;
+    iplLocations: IplLocation;
+    iplLanguages: IplLanguage;
+    arattai: Arattai;
+    'arattai-registrations': ArattaiRegistration;
+    'event-dashboard': EventDashboard;
+    iconOfMonth: IconOfMonth;
+    'icon-month-categories': IconMonthCategory;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
     search: Search;
-    'payload-kv': PayloadKv;
     'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -150,7 +161,6 @@ export interface Config {
     propertylocations: PropertylocationsSelect<false> | PropertylocationsSelect<true>;
     eventsCategories: EventsCategoriesSelect<false> | EventsCategoriesSelect<true>;
     superchennaiContests: SuperchennaiContestsSelect<false> | SuperchennaiContestsSelect<true>;
-    iconOfMonth: IconOfMonthSelect<false> | IconOfMonthSelect<true>;
     contest: ContestSelect<false> | ContestSelect<true>;
     organizers: OrganizersSelect<false> | OrganizersSelect<true>;
     venues: VenuesSelect<false> | VenuesSelect<true>;
@@ -167,11 +177,23 @@ export interface Config {
     'neighbourhood-subcategories': NeighbourhoodSubcategoriesSelect<false> | NeighbourhoodSubcategoriesSelect<true>;
     'neighbourhood-tags': NeighbourhoodTagsSelect<false> | NeighbourhoodTagsSelect<true>;
     chennaiNeighbourhoodlocations: ChennaiNeighbourhoodlocationsSelect<false> | ChennaiNeighbourhoodlocationsSelect<true>;
+    trendingChennai: TrendingChennaiSelect<false> | TrendingChennaiSelect<true>;
+    trendinglocations: TrendinglocationsSelect<false> | TrendinglocationsSelect<true>;
+    trendingEventsCategories: TrendingEventsCategoriesSelect<false> | TrendingEventsCategoriesSelect<true>;
+    TrendingLanguages: TrendingLanguagesSelect<false> | TrendingLanguagesSelect<true>;
+    cricketScore: CricketScoreSelect<false> | CricketScoreSelect<true>;
+    iplCategories: IplCategoriesSelect<false> | IplCategoriesSelect<true>;
+    iplLocations: IplLocationsSelect<false> | IplLocationsSelect<true>;
+    iplLanguages: IplLanguagesSelect<false> | IplLanguagesSelect<true>;
+    arattai: ArattaiSelect<false> | ArattaiSelect<true>;
+    'arattai-registrations': ArattaiRegistrationsSelect<false> | ArattaiRegistrationsSelect<true>;
+    'event-dashboard': EventDashboardSelect<false> | EventDashboardSelect<true>;
+    iconOfMonth: IconOfMonthSelect<false> | IconOfMonthSelect<true>;
+    'icon-month-categories': IconMonthCategoriesSelect<false> | IconMonthCategoriesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     search: SearchSelect<false> | SearchSelect<true>;
-    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -180,14 +202,15 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  fallbackLocale: null;
   globals: {
     header: Header;
     footer: Footer;
+    iconOfMonthLandingPage: IconOfMonthLandingPage;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    iconOfMonthLandingPage: IconOfMonthLandingPageSelect<false> | IconOfMonthLandingPageSelect<true>;
   };
   locale: null;
   user: User & {
@@ -295,6 +318,8 @@ export interface Page {
   };
   layout: (
     | {
+        heading: string;
+        description?: string | null;
         cards: {
           /**
            * Maximum 15 characters allowed
@@ -873,6 +898,72 @@ export interface Page {
         blockName?: string | null;
         blockType: 'textHoverImageSection';
       }
+    | {
+        title?: string | null;
+        description?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'trendingChennaiSlider';
+      }
+    | {
+        heading: string;
+        subHeading: string;
+        firstColumn?:
+          | {
+              highlight: string;
+              content: string;
+              id?: string | null;
+            }[]
+          | null;
+        secondColumn?:
+          | {
+              highlight: string;
+              content: string;
+              id?: string | null;
+            }[]
+          | null;
+        buttonText?: string | null;
+        buttonLink?: string | null;
+        icon?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'secondSection';
+      }
+    | {
+        enablePopup?: boolean | null;
+        isGlobal?: boolean | null;
+        /**
+         * Choose pages where popup should appear
+         */
+        selectedPages?: (number | Page)[] | null;
+        popupImage: number | Media;
+        redirectLink?: string | null;
+        openInNewTab?: boolean | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'popupBanner';
+      }
+    | {
+        title?: string | null;
+        description?: string | null;
+        IPLimage: number | Media;
+        pointsTable?:
+          | {
+              teamName: string;
+              teamLogo: number | Media;
+              played?: number | null;
+              won?: number | null;
+              loss?: number | null;
+              noResult?: number | null;
+              netRunRate?: string | null;
+              points?: number | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'cricketScoreBlock';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -900,7 +991,7 @@ export interface Media {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -993,7 +1084,7 @@ export interface Post {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1108,13 +1199,6 @@ export interface User {
   hash?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
-  sessions?:
-    | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
-      }[]
-    | null;
   password?: string | null;
 }
 /**
@@ -1133,7 +1217,7 @@ export interface Visit {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1184,7 +1268,7 @@ export interface Investment {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1263,7 +1347,7 @@ export interface Event {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1504,7 +1588,7 @@ export interface Live {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1555,7 +1639,7 @@ export interface Work {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1615,7 +1699,7 @@ export interface Volunteer {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1666,7 +1750,7 @@ export interface Innovate {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1730,7 +1814,7 @@ export interface VisitDetail {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1783,7 +1867,7 @@ export interface VolunteerSlide {
           root: {
             type: string;
             children: {
-              type: any;
+              type: string;
               version: number;
               [k: string]: unknown;
             }[];
@@ -1887,7 +1971,7 @@ export interface Property {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -2351,52 +2435,7 @@ export interface SuperchennaiContest {
     root: {
       type: string;
       children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "iconOfMonth".
- */
-export interface IconOfMonth {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -2441,7 +2480,7 @@ export interface Contest {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -2609,7 +2648,7 @@ export interface SabhaFood {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -2635,7 +2674,7 @@ export interface Article {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -2893,7 +2932,7 @@ export interface Neighbourhood {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -3192,6 +3231,1191 @@ export interface ChennaiNeighbourhoodlocation {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "trendingChennai".
+ */
+export interface TrendingChennai {
+  id: number;
+  title: string;
+  /**
+   * Only one event can be featured at a time.
+   */
+  isFeatured?: boolean | null;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  trendingChennai: {
+    image: number | Media;
+    /**
+     * Maximum 100 characters
+     */
+    singerName?: string | null;
+    /**
+     * Specify the role/designation of the artist in the event
+     */
+    artistDesignation?: string | null;
+    /**
+     * Maximum 200 characters allowed
+     */
+    title: string;
+    /**
+     * Maximum 500 characters allowed
+     */
+    description?: string | null;
+    /**
+     * Add one or more dates for the event (example: show multiple dates if the event happens on different days)
+     */
+    eventDates: {
+      date: string;
+      id?: string | null;
+    }[];
+    /**
+     * Maximum 30 characters allowed
+     */
+    performerRole?: string | null;
+    details: {
+      duration?: string | null;
+      eventTime?: string | null;
+      ageLimit?: string | null;
+      languages?: (number | TrendingLanguage)[] | null;
+      genre?: string | null;
+      /**
+       * Select the venue or location from the Locations collection
+       */
+      location: number | Trendinglocation;
+      /**
+       * Check if this event has free entry (no ticket required).
+       */
+      isFree?: boolean | null;
+      /**
+       * Check if this event is suitable for families/children.
+       */
+      familyFriendly?: boolean | null;
+    };
+    trendingChennaiCategory: (number | TrendingEventsCategory)[];
+    link?: string | null;
+    /**
+     * Enter the CTA button label (Example: "Book Now", "Register", "Buy Tickets")
+     */
+    linkbutton?: string | null;
+    /**
+     * Full address or venue location for the event(Maximum 100 characters allowed)
+     */
+    address?: string | null;
+  };
+  relatedevents?: (number | Event)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+    /**
+     * Paste valid JSON-LD schema (Event schema for SEO)
+     */
+    schema?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+    seo?: {
+      title?: string | null;
+      description?: string | null;
+      keywords?:
+        | {
+            keyword?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+      canonicalURL?: string | null;
+      ogImage?: (number | null) | Media;
+      structuredData?:
+        | {
+            [k: string]: unknown;
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    };
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TrendingLanguages".
+ */
+export interface TrendingLanguage {
+  id: number;
+  name: string;
+  /**
+   * ISO code (e.g., ta, en, hi)
+   */
+  code: string;
+  /**
+   * Name in its own language (e.g., தமிழ், हिंदी)
+   */
+  nativeName?: string | null;
+  region?: ('india' | 'asia' | 'europe' | 'africa' | 'global') | null;
+  flag?: (number | null) | Media;
+  isActive?: boolean | null;
+  /**
+   * Lower number = higher priority
+   */
+  sortOrder?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "trendinglocations".
+ */
+export interface Trendinglocation {
+  id: number;
+  /**
+   * State name (e.g. Tamil Nadu, Karnataka)
+   */
+  state: string;
+  /**
+   * City name (e.g. Chennai, Bangalore, Mumbai)
+   */
+  city: string;
+  /**
+   * Locality / Area (e.g. OMR, ECR, Whitefield)
+   */
+  locality: string;
+  /**
+   * Display label, e.g. "OMR, Chennai"
+   */
+  label: string;
+  /**
+   * Unique slug, e.g. "chennai-omr"
+   */
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "trendingEventsCategories".
+ */
+export interface TrendingEventsCategory {
+  id: number;
+  title: string;
+  slug: string;
+  /**
+   * Optional short description of this category
+   */
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cricketScore".
+ */
+export interface CricketScore {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  cricketScore: {
+    title: string;
+    description?: string | null;
+    IPLimage: number | Media;
+    matchDetails: {
+      duration?: string | null;
+      matchTime?: string | null;
+      ageLimit?: string | null;
+      languages?: (number | IplLanguage)[] | null;
+      matchType?: string | null;
+      /**
+       * Select the stadium or venue location
+       */
+      stadiumLocation: number | IplLocation;
+      /**
+       * Check if the match can be streamed for free.
+       */
+      freeStreaming?: boolean | null;
+      /**
+       * Suitable for family audience.
+       */
+      familyFriendly?: boolean | null;
+    };
+  };
+  relatedevents?: (number | Event)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+    /**
+     * Paste valid JSON-LD schema (Event schema for SEO)
+     */
+    schema?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+    seo?: {
+      title?: string | null;
+      description?: string | null;
+      keywords?:
+        | {
+            keyword?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+      canonicalURL?: string | null;
+      ogImage?: (number | null) | Media;
+      structuredData?:
+        | {
+            [k: string]: unknown;
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    };
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iplLanguages".
+ */
+export interface IplLanguage {
+  id: number;
+  name: string;
+  /**
+   * ISO code (example: ta, en, hi)
+   */
+  code: string;
+  /**
+   * Language name in native format
+   */
+  nativeName?: string | null;
+  region?: ('india' | 'asia' | 'europe' | 'africa' | 'global') | null;
+  flag?: (number | null) | Media;
+  isActive?: boolean | null;
+  /**
+   * Lower number = higher priority
+   */
+  sortOrder?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iplLocations".
+ */
+export interface IplLocation {
+  id: number;
+  /**
+   * State name (Example: Tamil Nadu, Karnataka)
+   */
+  state: string;
+  /**
+   * City name (Example: Chennai, Mumbai)
+   */
+  city: string;
+  /**
+   * Area / Stadium locality
+   */
+  locality: string;
+  /**
+   * Display label (Example: Chepauk, Chennai)
+   */
+  label: string;
+  /**
+   * Unique slug value (Example: chennai-chepauk)
+   */
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iplCategories".
+ */
+export interface IplCategory {
+  id: number;
+  title: string;
+  slug: string;
+  /**
+   * Optional short description for this IPL category
+   */
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "arattai".
+ */
+export interface Arattai {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  mobileImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  layout?:
+    | (
+        | {
+            heading: string;
+            description?: string | null;
+            cards: {
+              /**
+               * Maximum 15 characters allowed
+               */
+              title: string;
+              /**
+               * Maximum 100 characters allowed
+               */
+              place: string;
+              image: number | Media;
+              page?: (number | null) | Visit;
+              /**
+               * This will override the selected page link if provided.
+               */
+              customLink?: string | null;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'explore';
+          }
+        | {
+            /**
+             * Maximum 100 characters allowed
+             */
+            heading: string;
+            /**
+             * Maximum 500 characters allowed
+             */
+            subheading: string;
+            cards: {
+              /**
+               * Maximum 100 characters allowed
+               */
+              title: string;
+              /**
+               * Maximum 100 characters allowed
+               */
+              place?: string | null;
+              image: number | Media;
+              page?: (number | null) | Visit;
+              /**
+               * This will override the selected page link if provided.
+               */
+              customLink?: string | null;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'funChennai';
+          }
+        | {
+            /**
+             * Maximum 30 characters allowed
+             */
+            heading?: string | null;
+            /**
+             * Maximum 400 characters allowed
+             */
+            description?: string | null;
+            images?:
+              | {
+                  image?: (number | null) | Media;
+                  /**
+                   * Maximum 20 characters allowed
+                   */
+                  title: string;
+                  /**
+                   * Maximum 50 characters allowed
+                   */
+                  description?: string | null;
+                  page?: (number | null) | Investment;
+                  /**
+                   * This will override the selected page link if provided.
+                   */
+                  customLink?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'startupChennai';
+          }
+        | {
+            /**
+             * Maximum 30 characters allowed
+             */
+            heading: string;
+            /**
+             * Maximum 400 characters allowed
+             */
+            subheading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'chennaiInvestments';
+          }
+        | {
+            /**
+             * Maximum 100 characters allowed
+             */
+            heading?: string | null;
+            /**
+             * Maximum 400 characters allowed
+             */
+            description?: string | null;
+            /**
+             * Select whether to display videos or images in the slider
+             */
+            contentType: 'video' | 'image';
+            /**
+             * If enabled, videos will be shown as thumbnails only without autoplay/play buttons.
+             */
+            showVideoThumbnailOnly?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'socialReelSlider';
+          }
+        | {
+            /**
+             * Short heading (max 100 characters)
+             */
+            heading?: string | null;
+            /**
+             * Main title (max 100 characters)
+             */
+            title?: string | null;
+            /**
+             * Short description (max 600 characters)
+             */
+            description?: string | null;
+            page?: (number | null) | Page;
+            /**
+             * This will override the selected page link if provided.
+             */
+            customLink?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'becameAVolunteer';
+          }
+        | {
+            /**
+             * Maximum 100 characters allowed
+             */
+            title: string;
+            /**
+             * Maximum 800 characters allowed
+             */
+            description?: string | null;
+            items?:
+              | {
+                  /**
+                   * Maximum 200 characters allowed
+                   */
+                  label: string;
+                  /**
+                   * Maximum 800 characters allowed
+                   */
+                  description?: string | null;
+                  image: number | Media;
+                  page?: (number | null) | Visit;
+                  /**
+                   * This will override the selected page link if provided.
+                   */
+                  customLink?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'visitcategory';
+          }
+        | {
+            /**
+             * Maximum 200 characters allowed
+             */
+            sectionTitle: string;
+            /**
+             * Maximum 600 characters allowed
+             */
+            sectionDescription: string;
+            buttonText: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'volunteerBecameSection';
+          }
+        | {
+            /**
+             * Maximum 100 characters allowed
+             */
+            heading: string;
+            /**
+             * Maximum 100 characters allowed
+             */
+            headingSpan: string;
+            /**
+             * Maximum 500 characters allowed
+             */
+            description: string;
+            foodItems: {
+              /**
+               * Maximum 100 characters allowed
+               */
+              title: string;
+              /**
+               * Maximum 500 characters allowed
+               */
+              description: string;
+              image: number | Media;
+              /**
+               * 📄 Select the Visits page to link to. This will be used in the URL.
+               */
+              page?: (number | null) | Visit;
+              /**
+               * 🔗 This will scroll to a section within the selected page. Must exactly match a title in the "featureSectionSplit" block of that page. Final URL becomes: /visits/[page]/#[FoodTitle]
+               */
+              foodSectionTitle?: string | null;
+              /**
+               * This will override the selected page link if provided.
+               */
+              customLink?: string | null;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'infography';
+          }
+        | {
+            techImage: number | Media;
+            /**
+             * Maximum 30 characters allowed
+             */
+            techTitle: string;
+            /**
+             * Maximum 200 characters allowed
+             */
+            techDescription: string;
+            eduImage: number | Media;
+            /**
+             * Maximum 30 characters allowed
+             */
+            eduTitle: string;
+            /**
+             * Maximum 200 characters allowed
+             */
+            eduDescription: string;
+            techLink?: {
+              url?: string | null;
+              page?: (number | null) | Page;
+            };
+            eduLink?: {
+              url?: string | null;
+              page?: (number | null) | Page;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'twoColumnFeatureBlock';
+          }
+        | {
+            /**
+             * Maximum 15 characters allowed
+             */
+            heading: string;
+            /**
+             * Maximum 15 characters allowed
+             */
+            subheading?: string | null;
+            /**
+             * Maximum 200 characters allowed
+             */
+            description?: string | null;
+            cards: {
+              title: string;
+              /**
+               * Maximum 200 characters allowed
+               */
+              description?: string | null;
+              image: number | Media;
+              /**
+               * Optional external URL. If "Page Link" is also set, it will be ignored.
+               */
+              url?: string | null;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contentZoneCarousel';
+          }
+        | {
+            /**
+             * Maximum 20 characters allowed
+             */
+            heading: string;
+            /**
+             * Maximum 500 characters allowed
+             */
+            description: string;
+            link?: string | null;
+            items?:
+              | {
+                  /**
+                   * Maximum 15 characters allowed
+                   */
+                  name: string;
+                  /**
+                   * Maximum 15 characters allowed
+                   */
+                  subtitle?: string | null;
+                  /**
+                   * Maximum 200 characters allowed
+                   */
+                  para?: string | null;
+                  image: number | Media;
+                  page?: (number | null) | Event;
+                  /**
+                   * This will override the selected page link if provided.
+                   */
+                  customLink?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'spotlightGallery';
+          }
+        | {
+            /**
+             * Maximum 15 characters allowed
+             */
+            title: string;
+            /**
+             * Maximum 400 characters allowed
+             */
+            description?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'allevents';
+          }
+        | {
+            /**
+             * Maximum 50 characters allowed
+             */
+            heading: string;
+            imagePosition: 'left' | 'right';
+            image: number | Media;
+            /**
+             * Maximum 500 characters allowed
+             */
+            paraZeroLiveSection: string;
+            /**
+             * Maximum 500 characters allowed
+             */
+            paraoneLiveSection: string;
+            /**
+             * Maximum 500 characters allowed
+             */
+            paraTwoLiveSection: string;
+            showMarquee?: boolean | null;
+            /**
+             * Maximum 200 characters allowed
+             */
+            marqueeText?: string | null;
+            marqueeTextSize?: ('sm' | 'lg') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'liveIntrorSection';
+          }
+        | {
+            /**
+             * Maximum 15 characters allowed
+             */
+            heading: string;
+            /**
+             * Maximum 500 characters allowed
+             */
+            description: string;
+            essentials?:
+              | {
+                  /**
+                   * Maximum 500 characters allowed
+                   */
+                  text: string;
+                  page?: (number | null) | Live;
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'chennaiLifeEssentials';
+          }
+        | {
+            items: {
+              /**
+               * Maximum 30 characters allowed
+               */
+              title: string;
+              /**
+               * Maximum 30 characters allowed
+               */
+              subtitle?: string | null;
+              /**
+               * Maximum 400 characters allowed
+               */
+              description?: string | null;
+              /**
+               * Upload an SVG file only.
+               */
+              image?: (number | null) | Media;
+              link?: string | null;
+              id?: string | null;
+            }[];
+            backgroundImage?: (number | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'investmentCategoryList';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'innovateSlider';
+          }
+        | {
+            /**
+             * Maximum 100 characters allowed
+             */
+            title: string;
+            items: {
+              /**
+               * Maximum 100 characters allowed
+               */
+              label: string;
+              page?: (number | null) | Work;
+              /**
+               * This will override the selected page link if provided.
+               */
+              customLink?: string | null;
+              image: number | Media;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'textHoverImageSection';
+          }
+        | {
+            title?: string | null;
+            description?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'trendingChennaiSlider';
+          }
+        | {
+            heading: string;
+            subHeading: string;
+            firstColumn?:
+              | {
+                  highlight: string;
+                  content: string;
+                  id?: string | null;
+                }[]
+              | null;
+            secondColumn?:
+              | {
+                  highlight: string;
+                  content: string;
+                  id?: string | null;
+                }[]
+              | null;
+            buttonText?: string | null;
+            buttonLink?: string | null;
+            icon?: (number | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'secondSection';
+          }
+        | {
+            enablePopup?: boolean | null;
+            isGlobal?: boolean | null;
+            /**
+             * Choose pages where popup should appear
+             */
+            selectedPages?: (number | Page)[] | null;
+            popupImage: number | Media;
+            redirectLink?: string | null;
+            openInNewTab?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'popupBanner';
+          }
+        | {
+            title?: string | null;
+            description?: string | null;
+            IPLimage: number | Media;
+            pointsTable?:
+              | {
+                  teamName: string;
+                  teamLogo: number | Media;
+                  played?: number | null;
+                  won?: number | null;
+                  loss?: number | null;
+                  noResult?: number | null;
+                  netRunRate?: string | null;
+                  points?: number | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cricketScoreBlock';
+          }
+        | GalleryBlockType
+      )[]
+    | null;
+  Arattai: {
+    title: string;
+    shortDescription?: string | null;
+    speakerName?: string | null;
+    speakerDesignation?: string | null;
+    speakerImage?: (number | null) | Media;
+    eventDetails: {
+      eventDate: string;
+      registrationDeadline?: string | null;
+      venue?: string | null;
+      city?: string | null;
+      googleMapLink?: string | null;
+      eventMode?: ('offline' | 'online' | 'hybrid') | null;
+    };
+    registrationSettings?: {
+      isRegistrationOpen?: boolean | null;
+      enableOTP?: boolean | null;
+      maxRegistrations?: number | null;
+      showOrganisationField?: boolean | null;
+      thankYouMessage?: string | null;
+    };
+    customFields?:
+      | {
+          label: string;
+          fieldName: string;
+          fieldType: 'text' | 'email' | 'number' | 'textarea' | 'select';
+          required?: boolean | null;
+          placeholder?: string | null;
+          options?:
+            | {
+                label?: string | null;
+                value?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+    emailSettings?: {
+      adminEmail?: string | null;
+      fromEmail?: string | null;
+      userConfirmationSubject?: string | null;
+      adminNotificationSubject?: string | null;
+    };
+  };
+  relatedevents?: (number | Event)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+    /**
+     * Paste valid JSON-LD schema (Event schema for SEO)
+     */
+    schema?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+    seo?: {
+      title?: string | null;
+      description?: string | null;
+      keywords?:
+        | {
+            keyword?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+      canonicalURL?: string | null;
+      ogImage?: (number | null) | Media;
+      structuredData?:
+        | {
+            [k: string]: unknown;
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    };
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlockType".
+ */
+export interface GalleryBlockType {
+  title?: string | null;
+  description?: string | null;
+  galleryImages?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'galleryBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "arattai-registrations".
+ */
+export interface ArattaiRegistration {
+  id: number;
+  arattai: number | Arattai;
+  status?: ('pending' | 'confirmed' | 'rejected') | null;
+  name?: string | null;
+  email?: string | null;
+  phone?: string | null;
+  company?: string | null;
+  /**
+   * Dynamic submitted form values
+   */
+  values?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  thankYouMailSent?: boolean | null;
+  confirmedAt?: string | null;
+  /**
+   * This message will be included in confirmation mail.
+   */
+  adminMessage?: string | null;
+  mailResponse?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "event-dashboard".
+ */
+export interface EventDashboard {
+  id: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iconOfMonth".
+ */
+export interface IconOfMonth {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  personName: string;
+  designation: string;
+  profileImage: number | Media;
+  coverImage?: (number | null) | Media;
+  month:
+    | 'january'
+    | 'february'
+    | 'march'
+    | 'april'
+    | 'may'
+    | 'june'
+    | 'july'
+    | 'august'
+    | 'september'
+    | 'october'
+    | 'november'
+    | 'december';
+  year: number;
+  category: number | IconMonthCategory;
+  shortDescription: string;
+  quote?: string | null;
+  achievements?:
+    | {
+        achievement: string;
+        id?: string | null;
+      }[]
+    | null;
+  socialLinks?: {
+    website?: string | null;
+    linkedin?: string | null;
+    twitter?: string | null;
+    instagram?: string | null;
+  };
+  featured?: boolean | null;
+  ranking?: number | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "icon-month-categories".
+ */
+export interface IconMonthCategory {
+  id: number;
+  title: string;
+  slug: string;
+  description?: string | null;
+  icon?: (number | null) | Media;
+  /**
+   * Hex color (#FF5722)
+   */
+  color?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -3258,7 +4482,7 @@ export interface Form {
               root: {
                 type: string;
                 children: {
-                  type: any;
+                  type: string;
                   version: number;
                   [k: string]: unknown;
                 }[];
@@ -3341,7 +4565,7 @@ export interface Form {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -3373,7 +4597,7 @@ export interface Form {
           root: {
             type: string;
             children: {
-              type: any;
+              type: string;
               version: number;
               [k: string]: unknown;
             }[];
@@ -3445,23 +4669,6 @@ export interface Search {
     | null;
   updatedAt: string;
   createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "payload-kv".
- */
-export interface PayloadKv {
-  id: number;
-  key: string;
-  data:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -3667,10 +4874,6 @@ export interface PayloadLockedDocument {
         value: number | SuperchennaiContest;
       } | null)
     | ({
-        relationTo: 'iconOfMonth';
-        value: number | IconOfMonth;
-      } | null)
-    | ({
         relationTo: 'contest';
         value: number | Contest;
       } | null)
@@ -3735,6 +4938,58 @@ export interface PayloadLockedDocument {
         value: number | ChennaiNeighbourhoodlocation;
       } | null)
     | ({
+        relationTo: 'trendingChennai';
+        value: number | TrendingChennai;
+      } | null)
+    | ({
+        relationTo: 'trendinglocations';
+        value: number | Trendinglocation;
+      } | null)
+    | ({
+        relationTo: 'trendingEventsCategories';
+        value: number | TrendingEventsCategory;
+      } | null)
+    | ({
+        relationTo: 'TrendingLanguages';
+        value: number | TrendingLanguage;
+      } | null)
+    | ({
+        relationTo: 'cricketScore';
+        value: number | CricketScore;
+      } | null)
+    | ({
+        relationTo: 'iplCategories';
+        value: number | IplCategory;
+      } | null)
+    | ({
+        relationTo: 'iplLocations';
+        value: number | IplLocation;
+      } | null)
+    | ({
+        relationTo: 'iplLanguages';
+        value: number | IplLanguage;
+      } | null)
+    | ({
+        relationTo: 'arattai';
+        value: number | Arattai;
+      } | null)
+    | ({
+        relationTo: 'arattai-registrations';
+        value: number | ArattaiRegistration;
+      } | null)
+    | ({
+        relationTo: 'event-dashboard';
+        value: number | EventDashboard;
+      } | null)
+    | ({
+        relationTo: 'iconOfMonth';
+        value: number | IconOfMonth;
+      } | null)
+    | ({
+        relationTo: 'icon-month-categories';
+        value: number | IconMonthCategory;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -3749,6 +5004,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'search';
         value: number | Search;
+      } | null)
+    | ({
+        relationTo: 'payload-jobs';
+        value: number | PayloadJob;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -3836,6 +5095,8 @@ export interface PagesSelect<T extends boolean = true> {
         explore?:
           | T
           | {
+              heading?: T;
+              description?: T;
               cards?:
                 | T
                 | {
@@ -4216,6 +5477,73 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        trendingChennaiSlider?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+              blockName?: T;
+            };
+        secondSection?:
+          | T
+          | {
+              heading?: T;
+              subHeading?: T;
+              firstColumn?:
+                | T
+                | {
+                    highlight?: T;
+                    content?: T;
+                    id?: T;
+                  };
+              secondColumn?:
+                | T
+                | {
+                    highlight?: T;
+                    content?: T;
+                    id?: T;
+                  };
+              buttonText?: T;
+              buttonLink?: T;
+              icon?: T;
+              id?: T;
+              blockName?: T;
+            };
+        popupBanner?:
+          | T
+          | {
+              enablePopup?: T;
+              isGlobal?: T;
+              selectedPages?: T;
+              popupImage?: T;
+              redirectLink?: T;
+              openInNewTab?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cricketScoreBlock?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              IPLimage?: T;
+              pointsTable?:
+                | T
+                | {
+                    teamName?: T;
+                    teamLogo?: T;
+                    played?: T;
+                    won?: T;
+                    loss?: T;
+                    noResult?: T;
+                    netRunRate?: T;
+                    points?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -4400,13 +5728,6 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
-  sessions?:
-    | T
-    | {
-        id?: T;
-        createdAt?: T;
-        expiresAt?: T;
-      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -5225,35 +6546,6 @@ export interface SuperchennaiContestsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "iconOfMonth_select".
- */
-export interface IconOfMonthSelect<T extends boolean = true> {
-  title?: T;
-  heroImage?: T;
-  content?: T;
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
-      };
-  publishedAt?: T;
-  authors?: T;
-  populatedAuthors?:
-    | T
-    | {
-        id?: T;
-        name?: T;
-      };
-  slug?: T;
-  slugLock?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contest_select".
  */
 export interface ContestSelect<T extends boolean = true> {
@@ -5765,6 +7057,783 @@ export interface ChennaiNeighbourhoodlocationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "trendingChennai_select".
+ */
+export interface TrendingChennaiSelect<T extends boolean = true> {
+  title?: T;
+  isFeatured?: T;
+  heroImage?: T;
+  content?: T;
+  trendingChennai?:
+    | T
+    | {
+        image?: T;
+        singerName?: T;
+        artistDesignation?: T;
+        title?: T;
+        description?: T;
+        eventDates?:
+          | T
+          | {
+              date?: T;
+              id?: T;
+            };
+        performerRole?: T;
+        details?:
+          | T
+          | {
+              duration?: T;
+              eventTime?: T;
+              ageLimit?: T;
+              languages?: T;
+              genre?: T;
+              location?: T;
+              isFree?: T;
+              familyFriendly?: T;
+            };
+        trendingChennaiCategory?: T;
+        link?: T;
+        linkbutton?: T;
+        address?: T;
+      };
+  relatedevents?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+        schema?: T;
+        seo?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              keywords?:
+                | T
+                | {
+                    keyword?: T;
+                    id?: T;
+                  };
+              canonicalURL?: T;
+              ogImage?: T;
+              structuredData?: T;
+            };
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "trendinglocations_select".
+ */
+export interface TrendinglocationsSelect<T extends boolean = true> {
+  state?: T;
+  city?: T;
+  locality?: T;
+  label?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "trendingEventsCategories_select".
+ */
+export interface TrendingEventsCategoriesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TrendingLanguages_select".
+ */
+export interface TrendingLanguagesSelect<T extends boolean = true> {
+  name?: T;
+  code?: T;
+  nativeName?: T;
+  region?: T;
+  flag?: T;
+  isActive?: T;
+  sortOrder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cricketScore_select".
+ */
+export interface CricketScoreSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  cricketScore?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        IPLimage?: T;
+        matchDetails?:
+          | T
+          | {
+              duration?: T;
+              matchTime?: T;
+              ageLimit?: T;
+              languages?: T;
+              matchType?: T;
+              stadiumLocation?: T;
+              freeStreaming?: T;
+              familyFriendly?: T;
+            };
+      };
+  relatedevents?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+        schema?: T;
+        seo?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              keywords?:
+                | T
+                | {
+                    keyword?: T;
+                    id?: T;
+                  };
+              canonicalURL?: T;
+              ogImage?: T;
+              structuredData?: T;
+            };
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iplCategories_select".
+ */
+export interface IplCategoriesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iplLocations_select".
+ */
+export interface IplLocationsSelect<T extends boolean = true> {
+  state?: T;
+  city?: T;
+  locality?: T;
+  label?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iplLanguages_select".
+ */
+export interface IplLanguagesSelect<T extends boolean = true> {
+  name?: T;
+  code?: T;
+  nativeName?: T;
+  region?: T;
+  flag?: T;
+  isActive?: T;
+  sortOrder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "arattai_select".
+ */
+export interface ArattaiSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  mobileImage?: T;
+  content?: T;
+  layout?:
+    | T
+    | {
+        explore?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    place?: T;
+                    image?: T;
+                    page?: T;
+                    customLink?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        funChennai?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    place?: T;
+                    image?: T;
+                    page?: T;
+                    customLink?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        startupChennai?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                    description?: T;
+                    page?: T;
+                    customLink?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        chennaiInvestments?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        socialReelSlider?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              contentType?: T;
+              showVideoThumbnailOnly?: T;
+              id?: T;
+              blockName?: T;
+            };
+        becameAVolunteer?:
+          | T
+          | {
+              heading?: T;
+              title?: T;
+              description?: T;
+              page?: T;
+              customLink?: T;
+              id?: T;
+              blockName?: T;
+            };
+        visitcategory?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              items?:
+                | T
+                | {
+                    label?: T;
+                    description?: T;
+                    image?: T;
+                    page?: T;
+                    customLink?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        volunteerBecameSection?:
+          | T
+          | {
+              sectionTitle?: T;
+              sectionDescription?: T;
+              buttonText?: T;
+              id?: T;
+              blockName?: T;
+            };
+        infography?:
+          | T
+          | {
+              heading?: T;
+              headingSpan?: T;
+              description?: T;
+              foodItems?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    page?: T;
+                    foodSectionTitle?: T;
+                    customLink?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        twoColumnFeatureBlock?:
+          | T
+          | {
+              techImage?: T;
+              techTitle?: T;
+              techDescription?: T;
+              eduImage?: T;
+              eduTitle?: T;
+              eduDescription?: T;
+              techLink?:
+                | T
+                | {
+                    url?: T;
+                    page?: T;
+                  };
+              eduLink?:
+                | T
+                | {
+                    url?: T;
+                    page?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        contentZoneCarousel?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              description?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    url?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        spotlightGallery?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              link?: T;
+              items?:
+                | T
+                | {
+                    name?: T;
+                    subtitle?: T;
+                    para?: T;
+                    image?: T;
+                    page?: T;
+                    customLink?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        allevents?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+              blockName?: T;
+            };
+        liveIntrorSection?:
+          | T
+          | {
+              heading?: T;
+              imagePosition?: T;
+              image?: T;
+              paraZeroLiveSection?: T;
+              paraoneLiveSection?: T;
+              paraTwoLiveSection?: T;
+              showMarquee?: T;
+              marqueeText?: T;
+              marqueeTextSize?: T;
+              id?: T;
+              blockName?: T;
+            };
+        chennaiLifeEssentials?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              essentials?:
+                | T
+                | {
+                    text?: T;
+                    page?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        investmentCategoryList?:
+          | T
+          | {
+              items?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    description?: T;
+                    image?: T;
+                    link?: T;
+                    id?: T;
+                  };
+              backgroundImage?: T;
+              id?: T;
+              blockName?: T;
+            };
+        innovateSlider?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        textHoverImageSection?:
+          | T
+          | {
+              title?: T;
+              items?:
+                | T
+                | {
+                    label?: T;
+                    page?: T;
+                    customLink?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        trendingChennaiSlider?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+              blockName?: T;
+            };
+        secondSection?:
+          | T
+          | {
+              heading?: T;
+              subHeading?: T;
+              firstColumn?:
+                | T
+                | {
+                    highlight?: T;
+                    content?: T;
+                    id?: T;
+                  };
+              secondColumn?:
+                | T
+                | {
+                    highlight?: T;
+                    content?: T;
+                    id?: T;
+                  };
+              buttonText?: T;
+              buttonLink?: T;
+              icon?: T;
+              id?: T;
+              blockName?: T;
+            };
+        popupBanner?:
+          | T
+          | {
+              enablePopup?: T;
+              isGlobal?: T;
+              selectedPages?: T;
+              popupImage?: T;
+              redirectLink?: T;
+              openInNewTab?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cricketScoreBlock?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              IPLimage?: T;
+              pointsTable?:
+                | T
+                | {
+                    teamName?: T;
+                    teamLogo?: T;
+                    played?: T;
+                    won?: T;
+                    loss?: T;
+                    noResult?: T;
+                    netRunRate?: T;
+                    points?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        galleryBlock?: T | GalleryBlockTypeSelect<T>;
+      };
+  Arattai?:
+    | T
+    | {
+        title?: T;
+        shortDescription?: T;
+        speakerName?: T;
+        speakerDesignation?: T;
+        speakerImage?: T;
+        eventDetails?:
+          | T
+          | {
+              eventDate?: T;
+              registrationDeadline?: T;
+              venue?: T;
+              city?: T;
+              googleMapLink?: T;
+              eventMode?: T;
+            };
+        registrationSettings?:
+          | T
+          | {
+              isRegistrationOpen?: T;
+              enableOTP?: T;
+              maxRegistrations?: T;
+              showOrganisationField?: T;
+              thankYouMessage?: T;
+            };
+        customFields?:
+          | T
+          | {
+              label?: T;
+              fieldName?: T;
+              fieldType?: T;
+              required?: T;
+              placeholder?: T;
+              options?:
+                | T
+                | {
+                    label?: T;
+                    value?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        emailSettings?:
+          | T
+          | {
+              adminEmail?: T;
+              fromEmail?: T;
+              userConfirmationSubject?: T;
+              adminNotificationSubject?: T;
+            };
+      };
+  relatedevents?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+        schema?: T;
+        seo?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              keywords?:
+                | T
+                | {
+                    keyword?: T;
+                    id?: T;
+                  };
+              canonicalURL?: T;
+              ogImage?: T;
+              structuredData?: T;
+            };
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlockType_select".
+ */
+export interface GalleryBlockTypeSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  galleryImages?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "arattai-registrations_select".
+ */
+export interface ArattaiRegistrationsSelect<T extends boolean = true> {
+  arattai?: T;
+  status?: T;
+  name?: T;
+  email?: T;
+  phone?: T;
+  company?: T;
+  values?: T;
+  thankYouMailSent?: T;
+  confirmedAt?: T;
+  adminMessage?: T;
+  mailResponse?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "event-dashboard_select".
+ */
+export interface EventDashboardSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iconOfMonth_select".
+ */
+export interface IconOfMonthSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  personName?: T;
+  designation?: T;
+  profileImage?: T;
+  coverImage?: T;
+  month?: T;
+  year?: T;
+  category?: T;
+  shortDescription?: T;
+  quote?: T;
+  achievements?:
+    | T
+    | {
+        achievement?: T;
+        id?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        website?: T;
+        linkedin?: T;
+        twitter?: T;
+        instagram?: T;
+      };
+  featured?: T;
+  ranking?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "icon-month-categories_select".
+ */
+export interface IconMonthCategoriesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  description?: T;
+  icon?: T;
+  color?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
@@ -5956,14 +8025,6 @@ export interface SearchSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "payload-kv_select".
- */
-export interface PayloadKvSelect<T extends boolean = true> {
-  key?: T;
-  data?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-jobs_select".
  */
 export interface PayloadJobsSelect<T extends boolean = true> {
@@ -6082,6 +8143,10 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  pointCast?: {
+    image?: (number | null) | Media;
+    url?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -6118,6 +8183,33 @@ export interface Footer {
     designByLogo: number | Media;
     footerText: string;
   };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iconOfMonthLandingPage".
+ */
+export interface IconOfMonthLandingPage {
+  id: number;
+  title: string;
+  desktopImage: number | Media;
+  mobileImage: number | Media;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -6165,6 +8257,12 @@ export interface HeaderSelect<T extends boolean = true> {
         link?: T;
         id?: T;
       };
+  pointCast?:
+    | T
+    | {
+        image?: T;
+        url?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -6203,6 +8301,19 @@ export interface FooterSelect<T extends boolean = true> {
         designByLogo?: T;
         footerText?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iconOfMonthLandingPage_select".
+ */
+export interface IconOfMonthLandingPageSelect<T extends boolean = true> {
+  title?: T;
+  desktopImage?: T;
+  mobileImage?: T;
+  content?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -6265,10 +8376,6 @@ export interface TaskSchedulePublish {
           value: number | SuperchennaiContest;
         } | null)
       | ({
-          relationTo: 'iconOfMonth';
-          value: number | IconOfMonth;
-        } | null)
-      | ({
           relationTo: 'contest';
           value: number | Contest;
         } | null)
@@ -6283,6 +8390,22 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'neighbourhood';
           value: number | Neighbourhood;
+        } | null)
+      | ({
+          relationTo: 'trendingChennai';
+          value: number | TrendingChennai;
+        } | null)
+      | ({
+          relationTo: 'cricketScore';
+          value: number | CricketScore;
+        } | null)
+      | ({
+          relationTo: 'arattai';
+          value: number | Arattai;
+        } | null)
+      | ({
+          relationTo: 'iconOfMonth';
+          value: number | IconOfMonth;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
@@ -6299,7 +8422,7 @@ export interface BannerBlock {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -6319,7 +8442,7 @@ export interface BannerBlock {
  * via the `definition` "CodeBlock".
  */
 export interface CodeBlock {
-  language?: ('typescript' | 'javascript' | 'css') | null;
+  language?: ('typescript' | 'javascript' | 'css' | 'html') | null;
   code: string;
   id?: string | null;
   blockName?: string | null;

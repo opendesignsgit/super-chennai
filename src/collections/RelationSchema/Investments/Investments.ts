@@ -5,6 +5,7 @@ const InvestmentCategoriesCollection: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     group: 'Common Block Contents',
+    hidden: true,
   },
   access: {
     read: () => true,

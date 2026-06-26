@@ -13,6 +13,7 @@ const VolunteerSlidesCollection: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     group: 'Common Block Contents',
+    hidden: true,
   },
   fields: [
     {

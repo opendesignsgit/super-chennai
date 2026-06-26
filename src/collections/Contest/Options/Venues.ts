@@ -11,7 +11,9 @@ export const Venues: CollectionConfig = {
     useAsTitle: 'title',
     description: 'Manage all event venues here. Venues can be reused across events and pages.',
     defaultColumns: ['title', 'slug', 'location'],
+     hidden: true,
   },
+
 
   access: {
     read: () => true,

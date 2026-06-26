@@ -14,7 +14,7 @@ const Infography: Block = {
       name: 'heading',
       type: 'text',
       required: true,
-      maxLength: 100,
+      // maxLength: 100,
       admin: {
         description: 'Maximum 100 characters allowed',
       },
@@ -23,7 +23,7 @@ const Infography: Block = {
       name: 'headingSpan',
       type: 'text',
       required: true,
-      maxLength: 100,
+      // maxLength: 100,
       admin: {
         description: 'Maximum 100 characters allowed',
       },
@@ -32,7 +32,7 @@ const Infography: Block = {
       name: 'description',
       type: 'textarea',
       required: true,
-      maxLength: 500,
+      // maxLength: 500,
       admin: {
         description: 'Maximum 500 characters allowed',
       },
@@ -46,7 +46,7 @@ const Infography: Block = {
           name: 'title',
           type: 'text',
           required: true,
-          maxLength: 100,
+          // maxLength: 100,
           admin: {
             description: 'Maximum 100 characters allowed',
           },
@@ -56,7 +56,7 @@ const Infography: Block = {
           name: 'description',
           type: 'textarea',
           required: true,
-          maxLength: 500,
+          // maxLength: 500,
           admin: {
             description: 'Maximum 500 characters allowed',
           },

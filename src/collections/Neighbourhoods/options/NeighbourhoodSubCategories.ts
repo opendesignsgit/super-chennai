@@ -3,7 +3,7 @@ import { CollectionConfig } from 'payload'
 export const NeighbourhoodSubCategories: CollectionConfig = {
   slug: 'neighbourhood-subcategories',
 
-  admin: { useAsTitle: 'title' },
+  admin: { useAsTitle: 'title', hidden: true, },
 
   access: {
     read: () => true,

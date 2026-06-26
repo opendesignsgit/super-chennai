@@ -5,6 +5,7 @@ export const NeighbourhoodCategories: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug'],
+     hidden: true,
   },
   access: {
     read: () => true,

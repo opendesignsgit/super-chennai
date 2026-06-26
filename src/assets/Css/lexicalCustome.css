@@ -1,0 +1,282 @@
+.blog-h1 {
+  font-family: "NewAmsterdam";
+  font-size: clamp(36px, 4.5vw, 52px);
+  line-height: 1.15;
+  color: #000000;
+  margin: 2.5rem 0 1.5rem;
+}
+
+.blog-h2 {
+  font-family: "NewAmsterdam";
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.2;
+  color: #da644a;
+  margin: 2.2rem 0 1.2rem;
+}
+
+.blog-h3 {
+  font-family: "NewAmsterdam";
+  font-size: clamp(24px, 3.2vw, 36px);
+  line-height: 1.25;
+  color: #a44294;
+  margin: 2rem 0 1rem;
+}
+
+.blog-h4 {
+  font-family: "NewAmsterdam";
+  font-size: clamp(20px, 2.5vw, 28px);
+  line-height: 1.3;
+  color: #2b3889;
+
+  margin: 1.5rem 0 0.75rem;
+}
+
+.blog-h5 {
+  font-family: "NewAmsterdam";
+  font-size: 18px;
+  line-height: 1.35;
+  color: #444;
+  margin: 1.2rem 0 0.6rem;
+}
+
+.blog-h6 {
+  font-family: "NewAmsterdam";
+  font-size: 14px;
+  line-height: 1.4;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 1rem 0 0.5rem;
+}
+
+.blog {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #222;
+}
+
+/* paragraphs */
+.blog p {
+  margin-bottom: 1.25rem;
+}
+
+/* bold */
+.blog strong,
+.blog b {
+  font-weight: 700;
+  color: #000;
+}
+
+/* italic */
+.blog em,
+.blog i {
+  font-style: italic;
+}
+
+/* underline */
+.blog u {
+  text-decoration: underline;
+}
+
+/* links */
+.blog a {
+  color: #2563eb;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.blog a:hover {
+  text-decoration: none;
+}
+
+/* spacing between blocks */
+.blog>*+* {
+  margin-top: 1rem;
+}
+
+
+/* 🔒 Reset all inline formatting inside headings */
+.blog h1 strong,
+.blog h1 b,
+.blog h1 em,
+.blog h1 u,
+.blog h1 a,
+
+.blog h2 strong,
+.blog h2 b,
+.blog h2 em,
+.blog h2 u,
+.blog h2 a,
+
+.blog h3 strong,
+.blog h3 b,
+.blog h3 em,
+.blog h3 u,
+.blog h3 a,
+
+.blog h4 strong,
+.blog h4 b,
+.blog h4 em,
+.blog h4 u,
+.blog h4 a,
+
+.blog h5 strong,
+.blog h5 b,
+.blog h5 em,
+.blog h5 u,
+.blog h5 a,
+
+.blog h6 strong,
+.blog h6 b,
+.blog h6 em,
+.blog h6 u,
+.blog h6 a {
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Blog image wrapper */
+.blog-media-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+/* Image */
+.blog-media-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+  .blog-media-wrapper {
+    aspect-ratio: auto;
+  }
+
+  .blog-media-wrapper img {
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* AUTO SCROLL ANIMATION */
+
+
+
+
+.autoinfonew h3 {
+  font-family: NewAmsterdam;
+  font-size: 60px;
+  /* color: #100f9a; */
+  color: #ffffff;
+  line-height: 30px;
+  margin: 25px 0;
+  letter-spacing: 1px;
+}
+
+
+.agenda-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge */
+.agenda-scroll {
+  -ms-overflow-style: none;
+}
+
+/* For Firefox */
+.agenda-scroll {
+  scrollbar-width: none;
+}
+
+
+
+.agenda-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar */
+.agenda-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.agenda-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+.agenda-scroll::-webkit-scrollbar {
+  width: 0px;
+}
+
+.agenda-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+
+.Becameavolunteerbg-conclves {
+  background-image: url("/images/becameavolunteerbg.png");
+  background-size: cover;
+  /* Image full cover */
+  background-position: center;
+  /* Center align */
+  background-repeat: no-repeat;
+  /* Stop repeating */
+  padding-bottom: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.conclave-button {
+   font-family: "29LT Bukra SmBd";
+    font-size: 16px;
+    line-height: 26px;
+    color: #390f7f;
+    background: #fff;
+    border-radius: 50px;
+    padding: 7px 26px;
+    padding-top: 10px;
+    position: relative;
+    cursor: pointer;
+    width: max-content;
+}
+
+
+
+

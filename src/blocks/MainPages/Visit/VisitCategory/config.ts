@@ -14,7 +14,7 @@ const VisitCategory: Block = {
       name: 'title',
       type: 'text',
       required: true,
-      maxLength: 100,
+      // maxLength: 100,
       admin: {
         description: 'Maximum 100 characters allowed',
       },
@@ -22,7 +22,7 @@ const VisitCategory: Block = {
     {
       name: 'description',
       type: 'textarea',
-      maxLength: 800,
+      // maxLength: 800,
       admin: {
         description: 'Maximum 800 characters allowed',
       },
@@ -37,7 +37,7 @@ const VisitCategory: Block = {
           name: 'label',
           type: 'text',
           required: true,
-          maxLength: 200,
+          // maxLength: 200,
           admin: {
             description: 'Maximum 200 characters allowed',
           },
@@ -45,7 +45,7 @@ const VisitCategory: Block = {
         {
           name: 'description',
           type: 'textarea',
-          maxLength: 800,
+          // maxLength: 800,
           admin: {
             description: 'Maximum 800 characters allowed',
           },

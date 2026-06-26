@@ -27,6 +27,12 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from 'src/fields/slug'
 import introTextBlock from '@/blocks/InnerPage/SharedBlocks/IntroText/config'
+import { DetailsBlock } from '@/app/(frontend)/icon-of-the-month/blocks/EventsDetails/config'
+import AwardsBlock from '@/app/(frontend)/icon-of-the-month/blocks/AwardsBlock/config'
+import InspiresBlock from '@/app/(frontend)/icon-of-the-month/blocks/InspiresBlock/config'
+import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
+import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
+import FeatureListBlock from '@/app/(frontend)/icon-of-the-month/blocks/FeatureListBlock/config'
 
 export const IconOfMonth: CollectionConfig<'iconOfMonth'> = {
   slug: 'iconOfMonth',
@@ -47,6 +53,7 @@ export const IconOfMonth: CollectionConfig<'iconOfMonth'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
+    group: 'Main collections',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
@@ -90,7 +97,20 @@ export const IconOfMonth: CollectionConfig<'iconOfMonth'> = {
                   return [
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [Banner, Code, MediaBlock, introTextBlock] }),
+                    BlocksFeature({
+                      blocks: [
+                        Banner,
+                        Code,
+                        MediaBlock,
+                        introTextBlock,
+                        DetailsBlock,
+                        AwardsBlock,
+                        InspiresBlock,
+                        socialReelSlider,
+                        BecameAVolunteerBlock,
+                        FeatureListBlock,
+                      ],
+                    }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),
                     HorizontalRuleFeature(),
@@ -103,10 +123,129 @@ export const IconOfMonth: CollectionConfig<'iconOfMonth'> = {
           ],
           label: 'Content',
         },
+
         {
-          fields: [],
-          label: 'Meta',
+          fields: [
+            {
+              name: 'personName',
+              label: 'Person Name',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'designation',
+              label: 'Designation / Profession',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'profileImage',
+              label: 'Profile Image',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
+            },
+            {
+              name: 'coverImage',
+              label: 'Cover Image',
+              type: 'upload',
+              relationTo: 'media',
+            },
+            {
+              name: 'month',
+              label: 'Month',
+              type: 'select',
+              required: true,
+              options: [
+                { label: 'January', value: 'january' },
+                { label: 'February', value: 'february' },
+                { label: 'March', value: 'march' },
+                { label: 'April', value: 'april' },
+                { label: 'May', value: 'may' },
+                { label: 'June', value: 'june' },
+                { label: 'July', value: 'july' },
+                { label: 'August', value: 'august' },
+                { label: 'September', value: 'september' },
+                { label: 'October', value: 'october' },
+                { label: 'November', value: 'november' },
+                { label: 'December', value: 'december' },
+              ],
+            },
+            {
+              name: 'year',
+              label: 'Year',
+              type: 'number',
+              required: true,
+            },
+            {
+              name: 'category',
+              label: 'Category',
+              type: 'relationship',
+              relationTo: 'icon-month-categories',
+              required: true,
+            },
+            {
+              name: 'shortDescription',
+              label: 'Short Description',
+              type: 'textarea',
+              required: true,
+            },
+            {
+              name: 'quote',
+              label: 'Famous Quote',
+              type: 'textarea',
+            },
+            {
+              name: 'achievements',
+              label: 'Key Achievements',
+              type: 'array',
+              fields: [
+                {
+                  name: 'achievement',
+                  type: 'text',
+                  required: true,
+                },
+              ],
+            },
+            {
+              name: 'socialLinks',
+              label: 'Social Links',
+              type: 'group',
+              fields: [
+                {
+                  name: 'website',
+                  type: 'text',
+                },
+                {
+                  name: 'linkedin',
+                  type: 'text',
+                },
+                {
+                  name: 'twitter',
+                  type: 'text',
+                },
+                {
+                  name: 'instagram',
+                  type: 'text',
+                },
+              ],
+            },
+            {
+              name: 'featured',
+              label: 'Featured',
+              type: 'checkbox',
+              defaultValue: false,
+            },
+            {
+              name: 'ranking',
+              label: 'Display Order',
+              type: 'number',
+              defaultValue: 1,
+            },
+          ],
+          label: 'Icon of Month Details',
         },
+
         {
           name: 'meta',
           label: 'SEO',
@@ -125,10 +264,7 @@ export const IconOfMonth: CollectionConfig<'iconOfMonth'> = {
 
             MetaDescriptionField({}),
             PreviewField({
-              // if the `generateUrl` function is configured
               hasGenerateFn: true,
-
-              // field paths to match the target field for data
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
@@ -165,10 +301,6 @@ export const IconOfMonth: CollectionConfig<'iconOfMonth'> = {
       hasMany: true,
       relationTo: 'users',
     },
-
-    // This field is only used to populate the user data via the `populateAuthors` hook
-    // This is because the `user` collection has access control locked to protect user privacy
-    // GraphQL will also not return mutated user data that differs from the underlying schema
     {
       name: 'populatedAuthors',
       type: 'array',
@@ -200,7 +332,7 @@ export const IconOfMonth: CollectionConfig<'iconOfMonth'> = {
   versions: {
     drafts: {
       autosave: {
-        interval: 100, // We set this interval for optimal live preview
+        interval: 100,
       },
       schedulePublish: true,
     },
