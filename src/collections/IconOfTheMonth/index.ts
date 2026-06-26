@@ -177,13 +177,13 @@ export const IconOfMonth: CollectionConfig<'iconOfMonth'> = {
               type: 'number',
               required: true,
             },
-            {
-              name: 'category',
-              label: 'Category',
-              type: 'relationship',
-              relationTo: 'icon-month-categories',
-              required: true,
-            },
+            // {
+            //   name: 'category',
+            //   label: 'Category',
+            //   type: 'relationship',
+            //   relationTo: 'icon-month-categories',
+            //   required: true,
+            // },
             {
               name: 'shortDescription',
               label: 'Short Description',
