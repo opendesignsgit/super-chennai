@@ -18,7 +18,7 @@ const SortBy = () => {
   return (
     <>
       <div className="sort-by">
-        <label for="sort">Sort By:</label>
+        <label htmlFor="sort">Sort By:</label>
         <select id="sort" value={value} onChange={(e) => change(e.target.value)}>
           <option value="upcoming">Upcoming</option>
           <option value="past">Past</option>
