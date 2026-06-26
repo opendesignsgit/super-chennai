@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload'
 export const IconMonthCategories: CollectionConfig = {
   slug: 'icon-month-categories',
   admin: {
-    useAsTitle: 'title',
+    // useAsTitle: 'title',
     group: 'Settings',
   },
   fields: [
