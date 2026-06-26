@@ -95,7 +95,6 @@ export interface Config {
     propertylocations: Propertylocation;
     eventsCategories: EventsCategory;
     superchennaiContests: SuperchennaiContest;
-    iconOfMonth: IconOfMonth;
     contest: Contest;
     organizers: Organizer;
     venues: Venue;
@@ -123,6 +122,8 @@ export interface Config {
     arattai: Arattai;
     'arattai-registrations': ArattaiRegistration;
     'event-dashboard': EventDashboard;
+    iconOfMonth: IconOfMonth;
+    'icon-month-categories': IconMonthCategory;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -160,7 +161,6 @@ export interface Config {
     propertylocations: PropertylocationsSelect<false> | PropertylocationsSelect<true>;
     eventsCategories: EventsCategoriesSelect<false> | EventsCategoriesSelect<true>;
     superchennaiContests: SuperchennaiContestsSelect<false> | SuperchennaiContestsSelect<true>;
-    iconOfMonth: IconOfMonthSelect<false> | IconOfMonthSelect<true>;
     contest: ContestSelect<false> | ContestSelect<true>;
     organizers: OrganizersSelect<false> | OrganizersSelect<true>;
     venues: VenuesSelect<false> | VenuesSelect<true>;
@@ -188,6 +188,8 @@ export interface Config {
     arattai: ArattaiSelect<false> | ArattaiSelect<true>;
     'arattai-registrations': ArattaiRegistrationsSelect<false> | ArattaiRegistrationsSelect<true>;
     'event-dashboard': EventDashboardSelect<false> | EventDashboardSelect<true>;
+    iconOfMonth: IconOfMonthSelect<false> | IconOfMonthSelect<true>;
+    'icon-month-categories': IconMonthCategoriesSelect<false> | IconMonthCategoriesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -203,10 +205,12 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    iconOfMonthLandingPage: IconOfMonthLandingPage;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    iconOfMonthLandingPage: IconOfMonthLandingPageSelect<false> | IconOfMonthLandingPageSelect<true>;
   };
   locale: null;
   user: User & {
@@ -2466,51 +2470,6 @@ export interface SuperchennaiContest {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "iconOfMonth".
- */
-export interface IconOfMonth {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contest".
  */
 export interface Contest {
@@ -4360,6 +4319,103 @@ export interface EventDashboard {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iconOfMonth".
+ */
+export interface IconOfMonth {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  personName: string;
+  designation: string;
+  profileImage: number | Media;
+  coverImage?: (number | null) | Media;
+  month:
+    | 'january'
+    | 'february'
+    | 'march'
+    | 'april'
+    | 'may'
+    | 'june'
+    | 'july'
+    | 'august'
+    | 'september'
+    | 'october'
+    | 'november'
+    | 'december';
+  year: number;
+  category: number | IconMonthCategory;
+  shortDescription: string;
+  quote?: string | null;
+  achievements?:
+    | {
+        achievement: string;
+        id?: string | null;
+      }[]
+    | null;
+  socialLinks?: {
+    website?: string | null;
+    linkedin?: string | null;
+    twitter?: string | null;
+    instagram?: string | null;
+  };
+  featured?: boolean | null;
+  ranking?: number | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "icon-month-categories".
+ */
+export interface IconMonthCategory {
+  id: number;
+  title: string;
+  slug: string;
+  description?: string | null;
+  icon?: (number | null) | Media;
+  /**
+   * Hex color (#FF5722)
+   */
+  color?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -4818,10 +4874,6 @@ export interface PayloadLockedDocument {
         value: number | SuperchennaiContest;
       } | null)
     | ({
-        relationTo: 'iconOfMonth';
-        value: number | IconOfMonth;
-      } | null)
-    | ({
         relationTo: 'contest';
         value: number | Contest;
       } | null)
@@ -4928,6 +4980,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'event-dashboard';
         value: number | EventDashboard;
+      } | null)
+    | ({
+        relationTo: 'iconOfMonth';
+        value: number | IconOfMonth;
+      } | null)
+    | ({
+        relationTo: 'icon-month-categories';
+        value: number | IconMonthCategory;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -6486,35 +6546,6 @@ export interface SuperchennaiContestsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "iconOfMonth_select".
- */
-export interface IconOfMonthSelect<T extends boolean = true> {
-  title?: T;
-  heroImage?: T;
-  content?: T;
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
-      };
-  publishedAt?: T;
-  authors?: T;
-  populatedAuthors?:
-    | T
-    | {
-        id?: T;
-        name?: T;
-      };
-  slug?: T;
-  slugLock?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contest_select".
  */
 export interface ContestSelect<T extends boolean = true> {
@@ -7736,6 +7767,73 @@ export interface EventDashboardSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iconOfMonth_select".
+ */
+export interface IconOfMonthSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  personName?: T;
+  designation?: T;
+  profileImage?: T;
+  coverImage?: T;
+  month?: T;
+  year?: T;
+  category?: T;
+  shortDescription?: T;
+  quote?: T;
+  achievements?:
+    | T
+    | {
+        achievement?: T;
+        id?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        website?: T;
+        linkedin?: T;
+        twitter?: T;
+        instagram?: T;
+      };
+  featured?: T;
+  ranking?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "icon-month-categories_select".
+ */
+export interface IconMonthCategoriesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  description?: T;
+  icon?: T;
+  color?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
@@ -8090,6 +8188,33 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iconOfMonthLandingPage".
+ */
+export interface IconOfMonthLandingPage {
+  id: number;
+  title: string;
+  desktopImage: number | Media;
+  mobileImage: number | Media;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -8182,6 +8307,19 @@ export interface FooterSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "iconOfMonthLandingPage_select".
+ */
+export interface IconOfMonthLandingPageSelect<T extends boolean = true> {
+  title?: T;
+  desktopImage?: T;
+  mobileImage?: T;
+  content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "TaskSchedulePublish".
  */
 export interface TaskSchedulePublish {
@@ -8238,10 +8376,6 @@ export interface TaskSchedulePublish {
           value: number | SuperchennaiContest;
         } | null)
       | ({
-          relationTo: 'iconOfMonth';
-          value: number | IconOfMonth;
-        } | null)
-      | ({
           relationTo: 'contest';
           value: number | Contest;
         } | null)
@@ -8268,6 +8402,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'arattai';
           value: number | Arattai;
+        } | null)
+      | ({
+          relationTo: 'iconOfMonth';
+          value: number | IconOfMonth;
         } | null);
     global?: string | null;
     user?: (number | null) | User;

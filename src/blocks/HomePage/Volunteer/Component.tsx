@@ -44,7 +44,6 @@ export default function BecameAVolunteer({ heading, title, description, page, cu
           return
         }
 
-
         const allSlides = data.docs.map((item: any) => ({
           id: item.id || item._id,
           title: item['Voluenteer title'] || item.title || 'Untitled',

@@ -89,8 +89,8 @@ const blockComponents: {
   popupBanner: PopupBanner,
   cricketScoreBlock: CricketScoreBlock,
   GalleryBlock: GalleryBlockComponent,
-  // BLOG
-  // cta: CallToActionBlock,
+   
+  
 }
 
 export const RenderBlocks: React.FC<{

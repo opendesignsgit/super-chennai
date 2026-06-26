@@ -1,15 +1,23 @@
 import { renderText } from './renderText'
 
+import AwardsBlockComponent from '@/app/(frontend)/icon-of-the-month/blocks/AwardsBlock/Component'
+import IconOfMonthDetails from '@/app/(frontend)/icon-of-the-month/blocks/EventsDetails/Component'
+import InspiresBlockComponent from '@/app/(frontend)/icon-of-the-month/blocks/InspiresBlock/Component'
+import IntroTextLisingPage from '@/app/(frontend)/icon-of-the-month/blocks/IntroSection/Component'
+import SocialChennai from '@/blocks/HomePage/SocialChennai/Component'
+import IntroText from '@/blocks/InnerPage/SharedBlocks/IntroText/Components'
 import CodeBlock from './blocks/CodeBlock'
 import ImageBlock from './blocks/ImageBlock'
-import VideoBlock from './blocks/VideoBlock'
 import MediaBlock from './blocks/MediaBlock'
+import VideoBlock from './blocks/VideoBlock'
+import BecameAVolunteer from '@/blocks/HomePage/Volunteer/Component'
+import FeatureListBlockComponent from '@/app/(frontend)/icon-of-the-month/blocks/FeatureListBlock/Component'
 
 export function renderNode(node: any, idx: number): React.ReactNode {
   /* ------------------------------------------------
    DEBUG
   ------------------------------------------------ */
-  console.log('LEXICAL NODE =>', node)
+  // console.log('LEXICAL NODE =>', node)
 
   switch (node.type) {
     /* ------------------------------------------------
@@ -53,19 +61,19 @@ export function renderNode(node: any, idx: number): React.ReactNode {
       )
     }
 
-    /* ------------------------------------------------
+    /* -----------------------------------------------
      IMAGE / UPLOAD
     ------------------------------------------------ */
     case 'upload':
       return <ImageBlock key={idx} node={node} />
 
-    /* ------------------------------------------------
+    /* -----------------------------------------------
      BLOCKS
     ------------------------------------------------ */
     case 'block': {
       const blockType = node.fields?.blockType
 
-      console.log('BLOCK TYPE =>', blockType)
+      // console.log('BLOCK TYPE =>', blockType)
 
       /* ---------------- CODE BLOCK ---------------- */
       if (blockType === 'code' || blockType === 'codeBlock') {
@@ -82,8 +90,44 @@ export function renderNode(node: any, idx: number): React.ReactNode {
         return <MediaBlock key={idx} node={node} />
       }
 
+      /* =========================================================
+         NEW  BLOCK
+      ========================================================= */
+
+      if (blockType === 'detailsBlock') {
+        return <IconOfMonthDetails key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'introText') {
+        return <IntroText key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'introTextListingPage') {
+        return <IntroTextLisingPage key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'awardsBlock') {
+        return <AwardsBlockComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'inspiresBlock') {
+        return <InspiresBlockComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'socialReelSlider') {
+        return <SocialChennai key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'becameAVolunteer') {
+        return <BecameAVolunteer key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'featureListBlock') {
+        return <FeatureListBlockComponent key={idx} {...node.fields} />
+      }
+
       return null
-    }
+    } 
 
     /* ------------------------------------------------
      DEFAULT

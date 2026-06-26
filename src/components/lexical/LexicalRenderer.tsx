@@ -7,7 +7,7 @@ export default function LexicalRenderer({ content }: { content: any }) {
   if (!content?.root?.children) return null
 
   return (
-    <div className="lexical-content">
+    <div className="">
       {content.root.children.map((node: any, idx: number) => (
         <React.Fragment key={idx}>{renderNode(node, idx)}</React.Fragment>
       ))}

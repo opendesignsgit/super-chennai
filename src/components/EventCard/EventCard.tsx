@@ -28,41 +28,44 @@ export const EventCard: React.FC<{ doc: EventCardData }> = ({ doc }) => {
   const imageToUse = firstEvent?.image || heroImage
 
   const eventDate = firstEvent?.eventDates?.[0]?.date
+  const eventTime = firstEvent?.details?.eventTime
 
   const href = `/events/${slug}`
 
+  const formattedTime = eventTime
+    ? new Date(`1970-01-01T${eventTime}`).toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      })
+    : null
+
   return (
-    <article className="bg-white shadow hover:shadow-lg transition-all w-full max-w-[300px] rounded-lg"
->
+    <article className="eventsindividualcards bg-white shadow hover:shadow-lg transition-all w-full max-w-[300px] rounded-lg">
       {/* Image */}
       <div className="relative w-full aspect-[16/9]">
-        {imageToUse && (
-          <Media resource={imageToUse} className="object-cover w-full h-full" />
-        )}
+        {imageToUse && <Media resource={imageToUse} className="object-cover eventimageee" />}
       </div>
 
       {/* Content */}
-      <div className="p-4 space-y-2">
+      <div className="p-4 space-y-2 eventsinglecard">
         {eventDate && (
-          <p className="text-sm text-primary font-medium">
+          <span className="datimeContbox flex items-center text-sm text-gray-600 mb-2">
             {new Date(eventDate).toLocaleDateString()}
-          </p>
+            {formattedTime && ` | ${formattedTime}`}
+          </span>
         )}
 
-        <h3 className="font-semibold text-lg">
-          <Link href={href}>{title}</Link>
+        <h3 className="font-semibold text-lg eventheadingstyle">
+          <Link href={href}>{title.slice(0, 40)}....</Link>
         </h3>
 
         {firstEvent?.description && (
-          <p className="text-sm text-muted-foreground line-clamp-3">
+          <p className="text-sm text-muted-foreground line-clamp-3 eventpara">
             {firstEvent.description}
           </p>
         )}
 
-        <Link
-          href={href}
-          className="text-primary font-medium text-sm"
-        >
+        <Link href={href} className="text-primary font-medium text-sm viewwwwalll">
           View Event →
         </Link>
       </div>

@@ -1,17 +1,14 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import 'dotenv/config'
-
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import sharp from 'sharp' // sharp-import
 import { fileURLToPath } from 'url'
-
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Visits } from './collections/Visits'
-
 import { defaultLexical } from 'src/fields/defaultLexical'
 import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config'
 import { Events } from './collections/Events'
@@ -37,7 +34,6 @@ import Footer from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { getServerSideURL } from './utilities/getURL'
-// import Neighbourhoods from './collections/Neighbourhoods/Neighbourhoods'
 import { Ads } from './collections/Ads'
 import { Articles } from './collections/Articles'
 import { ArticleCategory } from './collections/Articles/option/Articlecategory'
@@ -69,6 +65,8 @@ import { IPLLanguages } from './collections/CricketScore/options/IPLLangauge'
 import { Arattai } from './collections/Arrattai'
 import { ArattaiRegistrations } from './collections/Arrattai/ArattaiRegistrations'
 import { EventDashboard } from './collections/EventDashboard'
+import { IconMonthCategories } from './collections/IconOfTheMonth/Options/icon-month-categories'
+import { IconOfMonthPage } from './collections/IconOfTheMonth/Options/CollectionPageData'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -76,15 +74,9 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   admin: {
     components: {
-      // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
       beforeLogin: ['@/components/BeforeLogin'],
-      // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
       beforeDashboard: ['@/components/BeforeDashboard'],
-      views: {
-       
-      },
+      views: {},
       graphics: {
         Logo: '@/components/admin/AdminLogo',
         Icon: '@/components/admin/AdminIcon',
@@ -124,7 +116,6 @@ export default buildConfig({
     pool: {
       max: 10, // max connections
       connectionString: process.env.DATABASE_URI,
-
       connectionTimeoutMillis: 300000, // 60 seconds
       idleTimeoutMillis: 300000, // 30 seconds 30000
     },
@@ -144,12 +135,10 @@ export default buildConfig({
     Volunteer,
     Innovate,
     VisitDetails,
-
     VolunteerSlidesCollection,
     SocialReelsCollection,
     InvestmentCategoriesCollection,
     VisitCategoryCollection,
-
     Properties,
     BhkTypes,
     PropertyTypes,
@@ -157,16 +146,14 @@ export default buildConfig({
     Amenities,
     ContactMessages,
     PropertyLocations,
-
     eventsCategories,
     SuperchennaiContests,
-    IconOfMonth,
+
     Contest,
     Organizers,
     Venues,
     MargazhiEventCategories,
     SabhaFoods,
-
     Articles,
     Ads,
     ArticleTypes,
@@ -174,7 +161,7 @@ export default buildConfig({
     ArticleCategory,
     Languages,
 
-    //########## NEIGHBOURHOODS #########
+    //########## NEIGHBOURHOODS ##############
 
     Neighbourhood,
     NeighbourhoodCategories,
@@ -193,13 +180,18 @@ export default buildConfig({
     IplLocations,
     IPLLanguages,
 
-    //####### ARATTAI THANI DEPARTMENT ###########
+    //####### ARATTAI THANI DEPARTMENT ##########
     Arattai,
     ArattaiRegistrations,
     EventDashboard,
+
+    //####### ICON OFTHE MONTH ##################
+
+    IconOfMonth,
+    IconMonthCategories,
   ],
 
-  //######### CUSTOME END POINT  ###############
+  //######### CUSTOME END POINT  ################
 
   endpoints: [
     {
@@ -219,7 +211,7 @@ export default buildConfig({
     'http://localhost:5174',
     getServerSideURL(),
   ].filter(Boolean),
-  globals: [Header, Footer],
+  globals: [Header, Footer, IconOfMonthPage],
   blocks: [ChennaiInvestmentsBlock],
   plugins: [...plugins],
   secret: process.env.PAYLOAD_SECRET,
@@ -230,12 +222,7 @@ export default buildConfig({
   jobs: {
     access: {
       run: ({ req }: { req: PayloadRequest }): boolean => {
-        // Allow logged in users to execute this endpoint (default)
         if (req.user) return true
-
-        // If there is no logged in user, then check
-        // for the Vercel Cron secret to be present as an
-        // Authorization header:
         const authHeader = req.headers.get('authorization')
         return authHeader === `Bearer ${process.env.CRON_SECRET}`
       },

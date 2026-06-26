@@ -32,12 +32,9 @@
 // }
 
 // export default async function Page({ searchParams }:
-  
-  
+
 //   Props) {
- 
- 
- 
+
 //   const payload = await getPayload({ config: configPromise })
 //   const categoriesRes = await payload.find({
 //     collection: 'eventsCategories',
@@ -90,20 +87,20 @@
 //             <EventFiltersSidebar
 //               categories={categories}
 //               languages={[
-                // { label: 'Tamil', value: 'tamil' },
-                // { label: 'Telugu', value: 'telugu' },
-                // { label: 'Malayalam', value: 'malayalam' },
-                // { label: 'Kannada', value: 'kannada' },
-                // { label: 'Hindi', value: 'hindi' },
-                // { label: 'Bengali', value: 'bengali' },
-                // { label: 'Marathi', value: 'marathi' },
-                // { label: 'Gujarati', value: 'gujarati' },
-                // { label: 'Punjabi', value: 'punjabi' },
-                // { label: 'Odia', value: 'odia' },
-                // { label: 'Urdu', value: 'urdu' },
-                // { label: 'Sanskrit', value: 'sanskrit' },
-                // { label: 'English', value: 'english' },
-                // { label: 'German', value: 'german' },
+// { label: 'Tamil', value: 'tamil' },
+// { label: 'Telugu', value: 'telugu' },
+// { label: 'Malayalam', value: 'malayalam' },
+// { label: 'Kannada', value: 'kannada' },
+// { label: 'Hindi', value: 'hindi' },
+// { label: 'Bengali', value: 'bengali' },
+// { label: 'Marathi', value: 'marathi' },
+// { label: 'Gujarati', value: 'gujarati' },
+// { label: 'Punjabi', value: 'punjabi' },
+// { label: 'Odia', value: 'odia' },
+// { label: 'Urdu', value: 'urdu' },
+// { label: 'Sanskrit', value: 'sanskrit' },
+// { label: 'English', value: 'english' },
+// { label: 'German', value: 'german' },
 //               ]}
 //             />
 //           </div>
@@ -157,6 +154,7 @@ import configPromise from '@/payload.config'
 import Image from 'next/image'
 import Link from 'next/link'
 import AccodomationBanner from '../../../assets/images/AccodomationBannerr.jpg'
+import './EventsCss.css'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -173,11 +171,7 @@ type SearchParams = {
   page?: string
 }
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: Promise<SearchParams>
-}) {
+export default async function Page({ searchParams }: { searchParams: Promise<SearchParams> }) {
   const params = await searchParams
 
   const payload = await getPayload({ config: configPromise })
@@ -202,11 +196,11 @@ export default async function Page({
   const events = await getEvents(filters, params?.sort)
 
   return (
-    <div className="pt-24 pb-24">
+    <div className="pt-24">
       <PageClient />
 
       <section className="accaodomationBannerSection relative">
-        <div className="relative w-full h-[300px]">
+        <div className="relative w-full h-[560px]">
           <Image
             src={AccodomationBanner}
             alt="Chennai Events"
@@ -227,50 +221,60 @@ export default async function Page({
         </div>
       </section>
 
-      <div className="container mx-auto mt-10">
-        <FilterTopbar categories={categories} />
-
-        <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-3 hidden lg:block">
-            <EventFiltersSidebar
-              categories={categories}
-              languages={[
-                { label: 'Tamil', value: 'tamil' },
-                { label: 'Telugu', value: 'telugu' },
-                { label: 'Malayalam', value: 'malayalam' },
-                { label: 'Kannada', value: 'kannada' },
-                { label: 'Hindi', value: 'hindi' },
-                { label: 'Bengali', value: 'bengali' },
-                { label: 'Marathi', value: 'marathi' },
-                { label: 'Gujarati', value: 'gujarati' },
-                { label: 'Punjabi', value: 'punjabi' },
-                { label: 'Odia', value: 'odia' },
-                { label: 'Urdu', value: 'urdu' },
-                { label: 'Sanskrit', value: 'sanskrit' },
-                { label: 'English', value: 'english' },
-                { label: 'German', value: 'german' },
-              ]}
-            />
+      <div className="bg-[#f4f5f7]">
+        <div className="container mx-auto">
+          <div className="Eventitlesec mb-[50px] text-center container max-w-7xl mx-auto">
+            <h2 className="text-[#a44294]">Events Calendar</h2>
+            <p className="paragraphpaddding">
+              Keeps you in the loop with the latest happenings in Chennai. From cultural festivals
+              and live performances to workshops and exhibitions, never miss an exciting event in
+              the city.
+            </p>
           </div>
+          <FilterTopbar categories={categories} />
 
-          <div className="col-span-12 lg:col-span-9">
-            <div className="flex justify-between mb-6">
-              <PageRange
-                collection="events"
-                currentPage={events.page}
-                limit={12}
-                totalDocs={events.totalDocs}
+          <div className="grid grid-cols-12 gap-6 eventsstarts">
+            <div className="col-span-3 hidden lg:block leftsidesectionevents">
+              <EventFiltersSidebar
+                categories={categories}
+                languages={[
+                  { label: 'Tamil', value: 'tamil' },
+                  { label: 'Telugu', value: 'telugu' },
+                  { label: 'Malayalam', value: 'malayalam' },
+                  { label: 'Kannada', value: 'kannada' },
+                  { label: 'Hindi', value: 'hindi' },
+                  { label: 'Bengali', value: 'bengali' },
+                  { label: 'Marathi', value: 'marathi' },
+                  { label: 'Gujarati', value: 'gujarati' },
+                  { label: 'Punjabi', value: 'punjabi' },
+                  { label: 'Odia', value: 'odia' },
+                  { label: 'Urdu', value: 'urdu' },
+                  { label: 'Sanskrit', value: 'sanskrit' },
+                  { label: 'English', value: 'english' },
+                  { label: 'German', value: 'german' },
+                ]}
               />
-
-              <SortBy />
             </div>
 
-            <EventArchive events={events.docs} />
+            <div className="col-span-12 lg:col-span-9 rightsidesectionevents">
+              <div className="flex justify-between mb-1">
+                <PageRange
+                  collection="events"
+                  currentPage={events.page}
+                  limit={12}
+                  totalDocs={events.totalDocs}
+                />
 
-            <div className="mt-10">
-              {events.totalPages > 1 && events.page && (
-                <Pagination page={events.page} totalPages={events.totalPages} />
-              )}
+                <SortBy />
+              </div>
+
+              <EventArchive events={events.docs} />
+
+              <div className="mt-10">
+                {events.totalPages > 1 && events.page && (
+                  <Pagination page={events.page} totalPages={events.totalPages} />
+                )}
+              </div>
             </div>
           </div>
         </div>
