@@ -56,7 +56,7 @@ export const EventCard: React.FC<{ doc: EventCardData }> = ({ doc }) => {
         )}
 
         <h3 className="font-semibold text-lg eventheadingstyle">
-          <Link href={href}>{title.slice(0, 40)}....</Link>
+          <Link href={href}>{title?.slice(0, 40)}....</Link>
         </h3>
 
         {firstEvent?.description && (
