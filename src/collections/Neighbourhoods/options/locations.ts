@@ -1,5 +1,4 @@
-
-import { CollectionConfig } from "payload"
+import { CollectionConfig } from 'payload'
 
 export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourhoodlocations'> = {
   slug: 'chennaiNeighbourhoodlocations',
@@ -115,6 +114,45 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
       },
     },
 
+    // --- ADDED DYNAMIC CARD METRICS FOR FRONTEND ---
+    {
+      type: 'row', // Neatly aligns them side-by-side in the admin panel UI
+      fields: [
+        {
+          name: 'schoolCount',
+          label: 'Schools Count/Text',
+          type: 'text',
+          required: false,
+          defaultValue: '10+',
+          admin: {
+            description: 'Displayed on card (e.g., "15+", "10+")',
+            width: '33%',
+          },
+        },
+        {
+          name: 'hospitalCount',
+          label: 'Hospitals Count/Text',
+          type: 'text',
+          required: false,
+          defaultValue: '5+',
+          admin: {
+            description: 'Displayed on card (e.g., "8+", "5+")',
+            width: '33%',
+          },
+        },
+        {
+          name: 'hasMetro',
+          label: 'Has Metro Access?',
+          type: 'checkbox',
+          defaultValue: false,
+          admin: {
+            description: 'Check if Metro is active. Unchecked renders "Connecting".',
+            width: '34%',
+          },
+        },
+      ],
+    },
+
     {
       name: 'overviewDescription',
       label: 'Overview Description',
@@ -164,33 +202,35 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
           name: 'label',
           type: 'text',
           required: true,
-          admin: { description: 'e.g., Nearest Metro, Top Hospital' }
+          admin: { description: 'e.g., Nearest Metro, Top Hospital' },
         },
         {
           name: 'name',
           type: 'text',
           required: true,
-          admin: { description: 'e.g., Central Station, Apollo Hospital' }
+          admin: { description: 'e.g., Central Station, Apollo Hospital' },
         },
         {
           name: 'detail',
           type: 'text',
           required: true,
-          admin: { description: 'e.g., 5 mins walk, 2.4 km' }
+          admin: { description: 'e.g., 5 mins walk, 2.4 km' },
         },
         {
           name: 'icon',
           type: 'upload',
           relationTo: 'media',
           required: false,
-          admin: { description: 'Upload custom icon/SVG (fallback is emoji).' }
+          admin: { description: 'Upload custom icon/SVG (fallback is emoji).' },
         },
         {
           name: 'fallbackEmoji',
           type: 'text',
-          admin: { description: 'Optional fallback emoji if no media icon is uploaded (e.g. 🚇, 🏥).' }
-        }
-      ]
+          admin: {
+            description: 'Optional fallback emoji if no media icon is uploaded (e.g. 🚇, 🏥).',
+          },
+        },
+      ],
     },
     {
       name: 'whyChoose',
@@ -204,8 +244,8 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
           name: 'reason',
           type: 'text',
           required: true,
-        }
-      ]
+        },
+      ],
     },
     {
       name: 'lifestyleScores',
@@ -219,20 +259,20 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
           name: 'label',
           type: 'text',
           required: true,
-          admin: { description: 'e.g., Connectivity, Education, Safety' }
+          admin: { description: 'e.g., Connectivity, Education, Safety' },
         },
         {
           name: 'score',
           type: 'number',
           required: true,
           admin: {
-            description: 'Rating score (e.g. 4.5, 5)'
+            description: 'Rating score (e.g. 4.5, 5)',
           },
           min: 0,
           max: 5,
-        }
-      ]
-    }
+        },
+      ],
+    },
   ],
 
   hooks: {
