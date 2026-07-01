@@ -115,43 +115,43 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
     },
 
     // --- ADDED DYNAMIC CARD METRICS FOR FRONTEND ---
-    // {
-    //   type: 'row', // Neatly aligns them side-by-side in the admin panel UI
-    //   fields: [
-    //     {
-    //       name: 'schoolCount',
-    //       label: 'Schools Count/Text',
-    //       type: 'text',
-    //       required: false,
-    //       defaultValue: '10+',
-    //       admin: {
-    //         description: 'Displayed on card (e.g., "15+", "10+")',
-    //         width: '33%',
-    //       },
-    //     },
-    //     {
-    //       name: 'hospitalCount',
-    //       label: 'Hospitals Count/Text',
-    //       type: 'text',
-    //       required: false,
-    //       defaultValue: '5+',
-    //       admin: {
-    //         description: 'Displayed on card (e.g., "8+", "5+")',
-    //         width: '33%',
-    //       },
-    //     },
-    //     {
-    //       name: 'hasMetro',
-    //       label: 'Has Metro Access?',
-    //       type: 'checkbox',
-    //       defaultValue: false,
-    //       admin: {
-    //         description: 'Check if Metro is active. Unchecked renders "Connecting".',
-    //         width: '34%',
-    //       },
-    //     },
-    //   ],
-    // },
+    {
+      type: 'row', 
+      fields: [
+        {
+          name: 'schoolCount',
+          label: 'Schools Count/Text',
+          type: 'text',
+          required: false,
+          defaultValue: '10+',
+          admin: {
+            description: 'Displayed on card (e.g., "15+", "10+")',
+            width: '33%',
+          },
+        },
+        {
+          name: 'hospitalCount',
+          label: 'Hospitals Count/Text',
+          type: 'text',
+          required: false,
+          defaultValue: '5+',
+          admin: {
+            description: 'Displayed on card (e.g., "8+", "5+")',
+            width: '33%',
+          },
+        },
+        {
+          name: 'hasMetro',
+          label: 'Has Metro Access?',
+          type: 'checkbox',
+          defaultValue: false,
+          admin: {
+            description: 'Check if Metro is active. Unchecked renders "Connecting".',
+            width: '34%',
+          },
+        },
+      ],
+    },
 
     {
       name: 'overviewDescription',
