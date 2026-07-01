@@ -3074,6 +3074,32 @@ export interface Neighbourhood {
   establishedYear?: number | null;
   isFeatured?: boolean | null;
   isActive?: boolean | null;
+  /**
+   * Add up to 4 quick highlights like Metro, Parking, Timings, etc.
+   */
+  quickAccessHighlights?:
+    | {
+        title: string;
+        desc: string;
+        sub?: string | null;
+        /**
+         * Upload SVG or Image icon
+         */
+        icon?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Horizontal banner badges displaying stats (e.g., Value: "90+", Label: "Malls")
+   */
+  neighborhoodStats?:
+    | {
+        value: string;
+        label: string;
+        icon?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   meta?: {
     title?: string | null;
     /**
@@ -3226,6 +3252,76 @@ export interface ChennaiNeighbourhoodlocation {
    * Unique slug, e.g. "chennai-omr"
    */
   value: string;
+  /**
+   * Dynamic paragraph text for the Overview section.
+   */
+  overviewDescription?: string | null;
+  /**
+   * Add dynamic bullet points with custom image/SVG icons for this location.
+   */
+  overviewPoints?:
+    | {
+        point: string;
+        /**
+         * Upload a custom icon or SVG for this specific highlight.
+         */
+        icon?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Key transit, healthcare, shopping hubs nearby.
+   */
+  quickAccess?:
+    | {
+        /**
+         * e.g., Nearest Metro, Top Hospital
+         */
+        label: string;
+        /**
+         * e.g., Central Station, Apollo Hospital
+         */
+        name: string;
+        /**
+         * e.g., 5 mins walk, 2.4 km
+         */
+        detail: string;
+        /**
+         * Upload custom icon/SVG (fallback is emoji).
+         */
+        icon?: (number | null) | Media;
+        /**
+         * Optional fallback emoji if no media icon is uploaded (e.g. 🚇, 🏥).
+         */
+        fallbackEmoji?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Key bullet reasons to select this neighborhood.
+   */
+  whyChoose?:
+    | {
+        reason: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Rate key livability factors from 1 to 5.
+   */
+  lifestyleScores?:
+    | {
+        /**
+         * e.g., Connectivity, Education, Safety
+         */
+        label: string;
+        /**
+         * Rating score (e.g. 4.5, 5)
+         */
+        score: number;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -6953,6 +7049,23 @@ export interface NeighbourhoodSelect<T extends boolean = true> {
   establishedYear?: T;
   isFeatured?: T;
   isActive?: T;
+  quickAccessHighlights?:
+    | T
+    | {
+        title?: T;
+        desc?: T;
+        sub?: T;
+        icon?: T;
+        id?: T;
+      };
+  neighborhoodStats?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        icon?: T;
+        id?: T;
+      };
   meta?:
     | T
     | {
@@ -7052,6 +7165,37 @@ export interface ChennaiNeighbourhoodlocationsSelect<T extends boolean = true> {
   iconSvg?: T;
   label?: T;
   value?: T;
+  overviewDescription?: T;
+  overviewPoints?:
+    | T
+    | {
+        point?: T;
+        icon?: T;
+        id?: T;
+      };
+  quickAccess?:
+    | T
+    | {
+        label?: T;
+        name?: T;
+        detail?: T;
+        icon?: T;
+        fallbackEmoji?: T;
+        id?: T;
+      };
+  whyChoose?:
+    | T
+    | {
+        reason?: T;
+        id?: T;
+      };
+  lifestyleScores?:
+    | T
+    | {
+        label?: T;
+        score?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

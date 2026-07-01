@@ -114,6 +114,125 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
         description: 'Unique slug, e.g. "chennai-omr"',
       },
     },
+
+    {
+      name: 'overviewDescription',
+      label: 'Overview Description',
+      type: 'textarea',
+      required: false,
+      admin: {
+        description: 'Dynamic paragraph text for the Overview section.',
+      },
+    },
+    {
+      name: 'overviewPoints',
+      label: 'Overview Points',
+      type: 'array',
+      admin: {
+        description: 'Add dynamic bullet points with custom image/SVG icons for this location.',
+      },
+      fields: [
+        {
+          name: 'point',
+          label: 'Point Text',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'icon',
+          label: 'Point Icon (Image/SVG)',
+          type: 'upload',
+          relationTo: 'media',
+          required: false,
+          admin: {
+            description: 'Upload a custom icon or SVG for this specific highlight.',
+          },
+        },
+      ],
+    },
+
+    // ... your existing fields
+    {
+      name: 'quickAccess',
+      label: 'Quick Access Points',
+      type: 'array',
+      admin: {
+        description: 'Key transit, healthcare, shopping hubs nearby.',
+      },
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          required: true,
+          admin: { description: 'e.g., Nearest Metro, Top Hospital' }
+        },
+        {
+          name: 'name',
+          type: 'text',
+          required: true,
+          admin: { description: 'e.g., Central Station, Apollo Hospital' }
+        },
+        {
+          name: 'detail',
+          type: 'text',
+          required: true,
+          admin: { description: 'e.g., 5 mins walk, 2.4 km' }
+        },
+        {
+          name: 'icon',
+          type: 'upload',
+          relationTo: 'media',
+          required: false,
+          admin: { description: 'Upload custom icon/SVG (fallback is emoji).' }
+        },
+        {
+          name: 'fallbackEmoji',
+          type: 'text',
+          admin: { description: 'Optional fallback emoji if no media icon is uploaded (e.g. 🚇, 🏥).' }
+        }
+      ]
+    },
+    {
+      name: 'whyChoose',
+      label: 'Why Choose Points',
+      type: 'array',
+      admin: {
+        description: 'Key bullet reasons to select this neighborhood.',
+      },
+      fields: [
+        {
+          name: 'reason',
+          type: 'text',
+          required: true,
+        }
+      ]
+    },
+    {
+      name: 'lifestyleScores',
+      label: 'Lifestyle Scores',
+      type: 'array',
+      admin: {
+        description: 'Rate key livability factors from 1 to 5.',
+      },
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          required: true,
+          admin: { description: 'e.g., Connectivity, Education, Safety' }
+        },
+        {
+          name: 'score',
+          type: 'number',
+          required: true,
+          admin: {
+            description: 'Rating score (e.g. 4.5, 5)'
+          },
+          min: 0,
+          max: 5,
+        }
+      ]
+    }
   ],
 
   hooks: {
