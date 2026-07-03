@@ -35,10 +35,11 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Custom Arrow Components
-  const PrevArrow = ({ onClick }) => <div onClick={onClick} className="ExplorePageLeftButton"></div>
+  const PrevArrow = ({ onClick }: { onClick?: React.MouseEventHandler<HTMLDivElement> }) => (
+    <div onClick={onClick} className="ExplorePageLeftButton"></div>
+  )
 
-  const NextArrow = ({ onClick }) => (
+  const NextArrow = ({ onClick }: { onClick?: React.MouseEventHandler<HTMLDivElement> }) => (
     <div className="ExplorePageRightButton" onClick={onClick}></div>
   )
 
