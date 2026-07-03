@@ -31,4 +31,8 @@ export type FooterSections = {
     url?: string
     alt?: string
   }
+
+  bottomRightLogos:any
+
+  floatingActionWidgets:any
 }

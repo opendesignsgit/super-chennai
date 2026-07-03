@@ -73,6 +73,71 @@ const Footer: GlobalConfig = {
             },
           ],
         },
+
+        // EVENTS LOFGOS
+        {
+          type: 'array',
+          name: 'bottomRightLogos',
+          label: 'Bottom Right Partner/Event Logos',
+          admin: {
+            description:
+              'Footer-ன் கீழ் வலதுபுறம் காட்டப்பட வேண்டிய கூடுதல் லோகோக்கள் (Events, Partners போன்றவை)',
+          },
+          fields: [
+            {
+              type: 'text',
+              name: 'title',
+              label: 'Logo/Event Name',
+              required: true,
+            },
+            {
+              type: 'upload',
+              name: 'logoImage',
+              label: 'Logo Image',
+              relationTo: 'media',
+              required: true,
+            },
+            {
+              type: 'text',
+              name: 'websiteLink',
+              label: 'Link URL (Optional)',
+            },
+          ],
+        },
+
+        //  SUPPORT
+        {
+          name: 'floatingActionWidgets',
+          label: 'Floating Action Widgets (WhatsApp / Bottom Corner)',
+          type: 'array',
+          admin: {
+            description:
+              'Add bottom-right floating components (e.g., WhatsApp Chat, Bot triggers, Support widgets). Appears below the event logos.',
+          },
+          fields: [
+            { name: 'title', type: 'text', required: true, label: 'Widget Title / Name' },
+            {
+              name: 'link',
+              type: 'text',
+              label: 'Action URL / WhatsApp Link (e.g. https://wa.me/...)',
+              required: true,
+            },
+            {
+              name: 'iconImage',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
+              label: 'Widget Icon / Sticker image',
+            },
+            {
+              name: 'openInNewTab',
+              type: 'checkbox',
+              label: 'Open in new tab',
+              defaultValue: true,
+            },
+          ],
+        },
+
         // FOOTER IMAGES AND TEXT####################
 
         {
