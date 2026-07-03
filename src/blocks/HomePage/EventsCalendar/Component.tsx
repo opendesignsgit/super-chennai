@@ -51,7 +51,7 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description, pag
   const [x, setX] = useState(0)
 
   const [allEvents, setAllEvents] = useState<EventType[]>([])
-  const [isFeaturedEvent, setIsFeaturedEvent] = useState<EventType | null>(null)
+  const [isFeaturedEvent, setIsFeaturedEvent] = useState<EventType | null | undefined>(null)
   const [loading, setLoading] = useState(true)
 
   const slide = (direction: 'left' | 'right') => {
@@ -117,7 +117,7 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description, pag
         const res = await fetch('/api/events')
         const data = await res.json()
 
-        console.log('Raw API data:', data)
+        console.log('Raw API data ----------------------:', data)
 
         if (!data?.docs?.length) {
           console.warn('No events found')
@@ -152,13 +152,55 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description, pag
         })
 
         console.log('Enriched events:', enrichedEvents)
-
         setAllEvents(enrichedEvents)
 
-        const featured = enrichedEvents.find(
+        // ==========================================
+        // FEATURED EVENT SELECTION LOGIC
+        // ==========================================
+
+        // 1. First, check if there is a manually forced featured event
+        const manualFeatured = enrichedEvents.find(
           (e) => e.isFeatured === true || e.isFeatured === 'true' || e.isFeatured === 1,
         )
-        setIsFeaturedEvent(featured || null)
+
+        if (manualFeatured) {
+          setIsFeaturedEvent(manualFeatured)
+        } else {
+          // 2. If no manual featured event, find the latest upcoming event in the current month
+          const now = new Date()
+          const currentYear = now.getFullYear()
+          const currentMonthName = now.toLocaleString('default', { month: 'long' }).toLowerCase()
+
+          // Filter events matching current month & year, and date is today or future
+          const currentMonthEvents = enrichedEvents.filter((e) => {
+            if (!e.eventDate || !e.year || !e.month || !e.date) return false
+
+            const eventDateTime = new Date(e.eventDate)
+            return (
+              e.year === currentYear &&
+              e.month === currentMonthName &&
+              eventDateTime.getTime() >= now.setHours(0, 0, 0, 0) // today or upcoming
+            )
+          })
+
+          if (currentMonthEvents.length > 0) {
+            currentMonthEvents.sort((a, b) => {
+              return new Date(a.eventDate!).getTime() - new Date(b.eventDate!).getTime()
+            })
+            setIsFeaturedEvent(currentMonthEvents[0])
+          } else {
+            // 3. Fallback: If no events this month, grab the closest upcoming event from any future month
+            const upcomingEvents = enrichedEvents
+              .filter(
+                (e) =>
+                  e.eventDate && new Date(e.eventDate).getTime() >= new Date().setHours(0, 0, 0, 0),
+              )
+              .sort((a, b) => new Date(a.eventDate!).getTime() - new Date(b.eventDate!).getTime())
+
+            setIsFeaturedEvent(upcomingEvents[0] || null)
+          }
+        }
+        // ==========================================
       } catch (error) {
         console.error('Failed to fetch events:', error)
         setAllEvents([])
