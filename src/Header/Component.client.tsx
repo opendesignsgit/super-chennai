@@ -119,7 +119,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         {/*#################### DESKTOP MENUE NAVBAR ########################### */}
         <nav className="Megamenunav HomePageStyle" onMouseLeave={handleMenuLeave}>
           <div className={`Megamenutop-bar ${activeMenu ? 'activeStateMegamenu' : ''}`}>
-            <Link href="/" aria-label="Home">
+            <Link href="/" aria-label="Home" className="z-[10]">
               {data?.logo && typeof data.logo === 'object' && 'filename' in data.logo && (
                 <Image
                   src={`/media/${data.logo.filename}`}
@@ -141,8 +141,18 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             </div>
             <ul className="Megamenumenudesktop">
               {menuItems.map((item, i) => (
-                <li key={i} className="Megamenumenuitem" onMouseEnter={() => handleMenuEnter(item)}>
-                  <Link href={item.link}>{item.label}</Link>
+                <li
+                  key={i}
+                  //  className="Megamenumenuitem"
+
+                  className={`Megamenumenuitem ${
+                    activeMenu?.label === item.label ? 'activeMegamenuSection' : ''
+                  }`}
+                  onMouseEnter={() => handleMenuEnter(item)}
+                >
+                  <span>
+                    {item.label} <p className="navitemsArrowpart"></p>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -264,40 +274,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         </div>
         {/*####################  MENUE HAMBURGER ########################### */}
 
-        <AnimatePresence>
-          {menuBar && (
-            <motion.div
-              initial={{ x: '100%', opacity: 0 }}
-              animate={{
-                x: '0%',
-                opacity: 1,
-                transition: { duration: 0.5, ease: 'easeOut' },
-              }}
-              exit={{
-                x: '100%',
-                opacity: 0,
-                transition: { duration: 0.4, ease: 'easeIn' },
-              }}
-              style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100vh',
-                zIndex: 100000000,
-                overflowY: 'auto',
-              }}
-            >
-              <MenuBar
-                setMenuBar={setMenuBar}
-                menuItems={menuItems}
-                drawerMenuItems={drawerMenuItems}
-                logo={draweLogo}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {/*#################### MOBILE MENUE HAMBURGER ########################### */}
 
         <AnimatePresence>
@@ -319,8 +295,41 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             </motion.div>
           )}
         </AnimatePresence>
-
       </header>
+
+      <AnimatePresence>
+        {menuBar && (
+          <motion.div
+            initial={{ x: '100%', opacity: 0 }}
+            animate={{
+              x: '0%',
+              opacity: 1,
+              transition: { duration: 0.5, ease: 'easeOut' },
+            }}
+            exit={{
+              x: '100%',
+              opacity: 0,
+              transition: { duration: 0.4, ease: 'easeIn' },
+            }}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100vh',
+              zIndex: 100000000,
+              overflowY: 'auto',
+            }}
+          >
+            <MenuBar
+              setMenuBar={setMenuBar}
+              menuItems={menuItems}
+              drawerMenuItems={drawerMenuItems}
+              logo={draweLogo}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
       {/* {socialLinks?.length > 0 && (
         <div className="stickyIconsContainer">
           {socialLinks.map((item: any, index: number) => (

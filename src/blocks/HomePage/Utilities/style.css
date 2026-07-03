@@ -1,4 +1,4 @@
-.utilitiesMainRow {
+/* .utilitiesMainRow {
   overflow: hidden;
   position: relative;
 }
@@ -9,7 +9,7 @@
   left: 0;
   white-space: nowrap;
   width: 200%;
-  /* animation: scrollText 20s linear infinite; */
+
   z-index: 0;
   opacity: 0.04;
   animation-duration: 15s;
@@ -149,9 +149,7 @@ ul.tabs li.active {
   display: none;
 }
 
-/* .Utilitiestab_container{
-  display: none;
-} */
+
 
 
 
@@ -219,4 +217,4 @@ ul.tabs li.active {
     line-height: 40px;
     font-weight: 500;
   }
-}
+} */

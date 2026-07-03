@@ -1,0 +1,210 @@
+.welcometochennaibanner {
+  background-color: #fff;
+  background-image: url("/public/images/HomePage-Images/bg-welcometochennai.jpg");
+  height: 900px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  margin-top: 100px;
+  background-size: contain;
+  height: 800px;
+}
+.welcometosuperchennairow {
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 7%;
+}
+
+.welcomePagefirst {
+  width: 40%;
+}
+.welcomePageSecond {
+  width: 50%;
+}
+
+.welcomeSecondPageDesign {
+  display: flex;
+  column-gap: 5%;
+}
+
+.welcomePageseconddesign h5 {
+  width: 95%;
+  padding: 15px;
+  margin-top: 0;
+  position: relative;
+}
+
+.welcomePageseconddesign h5::after {
+  content: "";
+  display: flex;
+  height: 1px;
+  width: 100%;
+  background: #e7e7ea;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.welcomePageseconddesign h5:nth-child(4)::before {
+  content: "";
+  display: flex;
+  height: 1px;
+  width: 100%;
+  background: #e7e7ea;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.welcometochennaibanner .volunteerSectionContent {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  margin-top: 53px;
+}
+
+.welcometochennaibanner .volunteerSectionContent a {
+  color: #000;
+  background: #f5f4f3;
+  border-bottom: 0;
+  border: 4px solid #e2c2dd;
+}
+
+.welcometochennaibanner .volunteerSectionContent a::after {
+  content: none;
+}
+
+.welcometochennaibanner .volunteerSectionContent a::before {
+  /* content: "";
+  position: absolute;
+  inset: 0; */
+}
+
+.heartWelcomesvg {
+  width: 20px;
+  margin-bottom: 7px;
+}
+
+.welcometochennaibanner .volunteerSectionContent a:hover {
+  background-color: #a44294;
+  color: #fff;
+}
+
+@media (max-width: 1600px) and (min-width: 1300px) {
+  .welcometochennaibanner {
+    height: 690px;
+  }
+  .chennaiInvestmentsHeading {
+    font-size: 65px;
+    line-height: 55px;
+  }
+
+  .welcomePageSecond {
+    width: 60%;
+  }
+
+  .welcomeSecondPageDesign {
+    column-gap: 1%;
+  }
+}
+
+@media (max-width: 1300px) and (min-width: 1100px) {
+  .welcometochennaibanner .volunteerSectionContent {
+    margin-top: 35px;
+  }
+  .chennaiInvestmentsHeadingSub {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .welcometochennaibanner {
+    height: 580px;
+  }
+  .chennaiInvestmentsHeading {
+    font-size: 65px;
+    line-height: 55px;
+  }
+
+  .welcomePageSecond {
+    width: 58%;
+  }
+
+  .welcomeSecondPageDesign {
+    column-gap: 1%;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 800px) {
+  .welcometochennaibanner .chennaiInvestmentsHeading {
+    text-align: center;
+  }
+  .welcometochennaibanner {
+    height: auto;
+    background: none;
+  }
+  .welcometosuperchennairow {
+    justify-content: center;
+    column-gap: 0;
+    flex-direction: column;
+  }
+  .welcomePagefirst {
+    width: 100%;
+  }
+
+  .welcomePageSecond {
+    width: 100%;
+  }
+  .welcomePageseconddesign {
+    width: 40%;
+  }
+  .welcomeSecondPageDesign {
+    display: flex;
+    column-gap: 3%;
+    justify-content: center;
+    margin-top: 41px;
+  }
+  .welcomePagefirst .chennaiInvestmentsHeadingSub {
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .welcometosuperchennairow {
+    flex-direction: column;
+    padding: 0 25px;
+  }
+
+  .welcomePagefirst {
+    width: 100%;
+  }
+
+  .welcomeSecondPageDesign {
+    flex-wrap: wrap;
+    column-gap: 0;
+    justify-content: center;
+  }
+
+  .welcomePageseconddesign h5 {
+    width: 100%;
+    padding-left: 0;
+  }
+  .welcomePageSecond {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .welcometochennaibanner {
+    height: auto;
+    background: none;
+    margin-top: 50px;
+  }
+  .welcometochennaibanner .volunteerSectionContent {
+    margin-top: 30px;
+  }
+
+  .welcomePagefirst .chennaiInvestmentsHeadingSub {
+    margin-top: 30px;
+  }
+}

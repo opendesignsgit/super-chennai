@@ -33,6 +33,7 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   -webkit-animation: scrollText 50s linear infinite;
+  z-index: -1;
 }
 
 .StartupTextBackground p {
@@ -241,6 +242,12 @@
   color: #fff;
 }
 
+@media(max-width:1200px) and (min-width:1000px){
+  .starupchennaiSection {
+    padding-bottom: 25px;
+}
+}
+
 @media (max-width: 768px) {
   .firstStarupSection {
     width: 50%;
@@ -290,6 +297,10 @@
   }
   .itsectorSection h4 {
     font-size: 20px;
+  }
+
+  .starupchennaiSection .startupChennaiMainContainer{
+    padding-left: 10px;
   }
 
   .itsectorSection p {

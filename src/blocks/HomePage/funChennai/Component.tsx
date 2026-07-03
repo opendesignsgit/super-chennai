@@ -67,12 +67,10 @@ export const FunChennaiBlockServer: React.FC<Props> = ({ heading, subheading, ca
   return (
     <div className="funchennaiBg">
       <div className="funchennaimainSection">
-        <div className="container">
-          <div className="funchennaiContainer max-w-6xl mx-auto px-4 space-y-10 funchennaiMainConatiner">
-            <div className="funchennaiText">
-              <h3>{heading}</h3>
-              <h4 dangerouslySetInnerHTML={{ __html: subheading }} />
-            </div>
+        <div className="funchennaiContainer max-w-6xl mx-auto px-4 space-y-10 funchennaiMainConatiner">
+          <div className="funchennaiText">
+            <h3>{heading}</h3>
+            <h4 dangerouslySetInnerHTML={{ __html: subheading }} />
           </div>
         </div>
 
@@ -83,11 +81,9 @@ export const FunChennaiBlockServer: React.FC<Props> = ({ heading, subheading, ca
               const href = getCardLink(card)
 
               const cardContent = (
-                <div className="cardImageSection">
+                <div className="cardImageSection block cursor-pointer">
                   <img src={imageUrl} alt={card.title} />
-                  <div className="titleFunChennaiDiv">
-                    <p className="titleFunChennai">{card.title}</p>
-                  </div>
+                  <p className="titleFunChennai">{card.title}</p>
                 </div>
               )
 

@@ -1,0 +1,10 @@
+.contactOut h2 {
+       font-family: NewAmsterdam;
+    font-size: 4vw;
+    line-height: 1;
+    margin-bottom: 10px;
+    color: #995098;
+}
+
+.contactOut a   { color:#000;}
+.contactOut a:hover  { color:#995098;}

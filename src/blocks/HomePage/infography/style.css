@@ -1,4 +1,4 @@
-.DiverseDelightsText {
+/* .DiverseDelightsText {
   color: #2b3889;
   font-family: "NewAmsterdam";
   font-size: 130px;
@@ -25,6 +25,7 @@
 .DiverseDelightsTextDiv img {
   height: 150px;
 }
+
 .FoodSectionDesignContainer {
   background-image: url("../../../assets/images/FoodImageSectionBg.png");
   display: flex;
@@ -62,7 +63,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-image: url("../../../assets/images/FoodImageSectionBg.png"); */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -71,6 +71,7 @@
 .foodSectionFirst .foodSectionConatiner {
   width: 400px;
 }
+
 .foodSectionThird .foodSectionConatiner {
   width: 400px;
 }
@@ -91,6 +92,7 @@
   margin-top: 30px;
   cursor: pointer;
 }
+
 .foodSectionConatiner h4 {
   font-family: "NewAmsterdam";
   color: #a1a1a1;
@@ -128,6 +130,7 @@
   top: 0px;
   left: 10%;
 }
+
 .foodSectionFirst .foodSectionConatiner:nth-child(2) {
   text-align: end;
   margin-right: 0;
@@ -135,6 +138,7 @@
   top: 20%;
   left: 0%;
 }
+
 .foodSectionFirst .foodSectionConatiner:nth-child(3) {
   text-align: end;
   margin-right: 0;
@@ -142,6 +146,7 @@
   top: 40%;
   left: -5%;
 }
+
 .foodSectionFirst .foodSectionConatiner:nth-child(4) {
   text-align: end;
   margin-right: 0;
@@ -149,6 +154,7 @@
   top: 60%;
   left: 0%;
 }
+
 .foodSectionFirst .foodSectionConatiner:nth-child(5) {
   text-align: end;
   margin-right: 0;
@@ -157,7 +163,7 @@
   left: 10%;
 }
 
-/* ////////////// */
+
 
 .foodSectionThird .foodSectionConatiner:first-child {
   text-align: left;
@@ -166,6 +172,7 @@
   top: 0px;
   right: 10%;
 }
+
 .foodSectionThird .foodSectionConatiner:nth-child(2) {
   text-align: left;
   margin-right: 0;
@@ -173,6 +180,7 @@
   top: 20%;
   right: 0%;
 }
+
 .foodSectionThird .foodSectionConatiner:nth-child(3) {
   text-align: left;
   margin-right: 0;
@@ -180,6 +188,7 @@
   top: 40%;
   right: -5%;
 }
+
 .foodSectionThird .foodSectionConatiner:nth-child(4) {
   text-align: left;
   margin-right: 0;
@@ -187,6 +196,7 @@
   top: 60%;
   right: 0%;
 }
+
 .foodSectionThird .foodSectionConatiner:nth-child(5) {
   text-align: left;
   margin-right: 0;
@@ -210,15 +220,12 @@
 }
 
 .DelightPageText p {
-  /* font-family: "29LT Bukra SmBd";
-  font-size: clamp(80px, 10vw, 280px);
-  line-height: clamp(100px, 12vw, 150px);
-  text-transform: uppercase; */
   font-family: "29LT Bukra SmBd";
   font-size: clamp(80px, 14vw, 280px);
   line-height: clamp(100px, 14vw, 230px);
   text-transform: uppercase;
 }
+
 .DelightPageTextscroll-left {
   animation-name: scrollLeftVolunteer;
 }
@@ -231,6 +238,7 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -240,6 +248,7 @@
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0%);
   }
@@ -249,6 +258,7 @@
   .foodSectionFirst .foodSectionConatiner:first-child {
     left: 6%;
   }
+
   .foodSectionThird .foodSectionConatiner:first-child {
     right: 6%;
   }
@@ -289,20 +299,22 @@
 @media (max-width: 1000px) and (min-width: 800px) {
 
   .foodSectionConatiner p {
-  
+
     font-size: 13px;
     line-height: 17px;
     width: 52%;
     margin-top: 6px;
-}
+  }
 
   .foodSectionConatiner h4 {
     font-size: 30px;
     line-height: 30px;
-}
+  }
+
   .foodSectionFirst .foodSectionConatiner:first-child {
     left: -1%;
   }
+
   .foodSectionThird .foodSectionConatiner:first-child {
     right: -1%;
   }
@@ -348,12 +360,14 @@
 
   .DelightPageText {
     top: 3%;
-}
+  }
+
   .paragarphTextDiverseFood {
     display: flex;
     justify-content: center;
     margin-bottom: 45px;
   }
+
   .DiverseDelightsText {
     font-size: 14vw;
   }
@@ -363,8 +377,7 @@
     overflow: hidden;
   }
 
-  .accordionTitle {
-  }
+  .accordionTitle {}
 
   .accordionTitle {
     display: flex;
@@ -388,9 +401,7 @@
     transition: max-height 0.4s ease-in-out;
   }
 
-  .accordionContent.open {
-    /* max-height is set inline in React based on state */
-  }
+  .accordionContent.open {}
 
   .accordionInnerContent {
     padding: 16px;
@@ -414,6 +425,7 @@
   .DiverseDelightsTextDiv img {
     height: 48px;
   }
+
   .paragarphTextDiverseFood p {
     width: 90%;
     text-align: center;
@@ -437,9 +449,7 @@
     line-height: 25px;
   }
 
-  /* .activeAccordion .accordionInnerContent p {
-    color: #2b3889;
-  } */
+
 
   .activeAccordion .accordionTitle h4 {
     color: #2b3889;
@@ -448,7 +458,8 @@
   .activeAccordion .accordionIcon {
     color: #2b3889;
   }
+
   .DiverseDelightsSectionContainer {
     padding-bottom: 30px;
   }
-}
+} */

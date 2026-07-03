@@ -1,0 +1,1235 @@
+:root {
+  --sc-blue: #5484da;
+  --sc-pink: #9d54a1;
+  --sc-dark: #1a1a1a;
+  --sc-gray: #555;
+}
+
+.sc-benefits-section {
+  padding: 60px 20px;
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
+  text-align: center;
+  background-color: #fff;
+  background-image: url("/public/images/genz/bg-second.jpeg");
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+.sc-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sc-header {
+  margin-bottom: 50px;
+}
+
+.sc-main-title {
+  font-size: 80px;
+  font-weight: 500;
+  line-height: 78px;
+  color: var(--sc-dark);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-family: "NewAmsterdam";
+}
+
+.sc-description {
+  color: var(--sc-gray);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #000;
+  font-family: "Poppins";
+}
+
+/* Helpers */
+.sc-text-blue {
+  color: var(--sc-blue);
+}
+.sc-text-pink {
+  color: var(--sc-pink);
+}
+.sc-bg-blue {
+  background-color: var(--sc-blue);
+}
+.sc-bg-pink {
+  background-color: var(--sc-pink);
+}
+.sc-accent-red {
+  color: #d63031;
+  font-weight: 500;
+}
+
+/* Grid Layout */
+.sc-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  padding-bottom: 100px;
+}
+
+/* Card Styling */
+.sc-card {
+  padding: 40px 25px;
+  border: 1.7px solid;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.sc-card:hover {
+  transform: translateY(-5px);
+}
+
+.sc-border-blue {
+  border-color: var(--sc-blue);
+}
+.sc-border-pink {
+  border-color: var(--sc-pink);
+}
+
+/* Icon Styling */
+.sc-icon-wrapper {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.sc-card-title {
+  font-size: 27px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  letter-spacing: -0.5px;
+  font-family: "NewAmsterdam";
+  letter-spacing: 0.9px;
+}
+
+.sc-card-text {
+  font-size: 0.95rem;
+  color: #000;
+  line-height: 1.5;
+  margin: 0;
+  font-family: "Poppins";
+  text-align: left;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sc-main-title {
+    font-size: 1.8rem;
+  }
+  .sc-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+:root {
+  --sc-blue: #5484da;
+  --sc-pink: #9d54a1;
+  --sc-dark: #1a1a1a;
+}
+
+.sc-join-section {
+  padding: 80px 20px;
+  background-color: #fcfcfc;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+  /* border-bottom: 2px solid rgb(221 221 221 / 20%);
+  border-top: 2px solid rgb(221 221 221 / 20%);
+  background-image: url("/public/images/genz/middle-frame.jpeg"); */
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  padding-top: 40px;
+  background-color: #f8f8f8;
+}
+
+.sc-join-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.sc-join-title {
+  font-size: 80px;
+  font-weight: 500;
+  color: var(--sc-dark);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-family: "NewAmsterdam";
+}
+
+.sc-join-accent {
+  color: var(--sc-pink);
+}
+
+.sc-join-timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  margin-top: 40px;
+}
+
+/* The Dotted Horizontal Line */
+.sc-join-line {
+  position: absolute;
+  top: 45px; /* Centers with the 90px circles */
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  border-top: 2px dotted var(--sc-pink);
+  z-index: 1;
+}
+
+.sc-join-step {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sc-join-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sc-join-bg-blue {
+  background-color: var(--sc-blue);
+}
+.sc-join-bg-pink {
+  background-color: var(--sc-pink);
+}
+
+.sc-join-step-num {
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin: 0 0 10px 0;
+}
+
+.sc-join-text-blue {
+  color: var(--sc-blue);
+}
+.sc-join-text-pink {
+  color: var(--sc-pink);
+}
+
+.sc-join-step-desc {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--sc-dark);
+  line-height: 1.3;
+}
+
+/* Responsive: Stack vertically on mobile */
+@media (max-width: 768px) {
+  .sc-join-timeline {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .sc-join-line {
+    display: none; /* Hide horizontal line on mobile */
+  }
+
+  .sc-join-title {
+    font-size: 2rem;
+  }
+}
+
+:root {
+  --sc-blue: #5484da;
+  --sc-pink: #9d54a1;
+  --sc-dark: #000000;
+  --sc-border-radius: 12px;
+}
+
+.sc-form-section {
+  padding: 80px 20px;
+  background-color: #fdfdff;
+  font-family: "Inter", sans-serif;
+  position: relative;
+  background-image: url("/public/images/genz/bg-one.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 0;
+}
+
+.sc-form-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 0px;
+  align-items: center;
+}
+
+/* Branding Column */
+.sc-form-main-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 0.9;
+  margin-bottom: 10px;
+  color: var(--sc-dark);
+
+  font-size: 80px;
+  font-weight: 500;
+  color: var(--sc-dark);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-family: "NewAmsterdam";
+}
+
+.sc-form-gradient-text {
+  background: linear-gradient(90deg, var(--sc-blue), var(--sc-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sc-form-squiggle {
+  width: 100px;
+  height: 6px;
+  background: var(--sc-pink);
+  border-radius: 10px;
+  margin-bottom: 25px;
+  /* You can replace this with the actual squiggle SVG for a better look */
+}
+
+.sc-form-subtext {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.5;
+  max-width: 400px;
+}
+
+.sc-form-image-wrapper {
+  margin-top: -60px;
+  position: relative;
+}
+
+.sc-form-hero-img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form Card Column */
+.sc-form-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+}
+
+.sc-form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.sc-form-input {
+  flex: 1;
+  padding: 15px 20px;
+  border: 1px solid #ddd;
+  border-radius: var(--sc-border-radius);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s;
+  font-family: "Poppins";
+}
+
+.sc-form-input:focus {
+  border-color: var(--sc-blue);
+}
+
+.sc-form-full-width {
+  width: 100%;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.sc-form-textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.sc-form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+}
+
+/* Checkbox Styling */
+.sc-form-checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.sc-form-checkbox {
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  accent-color: var(--sc-blue);
+}
+
+.sc-form-checkbox-label {
+  font-size: 0.85rem;
+  color: #000;
+  line-height: 1.4;
+  font-family: "Poppins";
+}
+
+/* Submit Button */
+.sc-form-submit-btn {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: var(--sc-border-radius);
+  background: linear-gradient(90deg, var(--sc-blue), var(--sc-pink));
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: opacity 0.3s;
+  font-weight: 500;
+}
+
+.sc-form-submit-btn.forminsidebutton {
+  width: 64px;
+  font-size: 14px;
+  padding: 18px 10px;
+}
+
+.geznzzzz .sc-phone-wrapper {
+  width: auto;
+}
+
+.sc-form-submit-btn:hover {
+  opacity: 0.9;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .sc-form-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .sc-form-branding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sc-form-row {
+    flex-direction: column;
+  }
+
+  .sc-form-main-title {
+    font-size: 2.8rem;
+  }
+}
+
+.newsectionnambaaagenx .sc-main-title {
+  text-transform: lowercase !important;
+  text-align: center;
+}
+.newsectionnambaaagenx h2 {
+  text-transform: lowercase !important;
+}
+
+.newsectionnambaaagenx .sc-description {
+  margin-left: 0;
+  margin-top: 20px;
+}
+
+.newflexconatinerrrr {
+  display: flex;
+  align-items: flex-start;
+  column-gap: 50px;
+}
+
+.newsectionnambaaagenx {
+  padding: 50px 0;
+  padding-top: 100px;
+  background-image: url("/public/images/genz/footeframe.jpeg");
+  border-bottom: 2px solid rgb(221 221 221 / 20%);
+  border-top: 2px solid rgb(221 221 221 / 20%);
+}
+
+.newsectionnambaaagenx .sc-description .sc-text-pink,
+.newsectionnambaaagenx .sc-description .sc-text-blue {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+@media (max-width: 1600px) and (min-width: 1301px) {
+  .sc-main-title {
+    font-size: 60px;
+    line-height: 65px;
+  }
+
+  .newflexconatinerrrr {
+    column-gap: 40px;
+  }
+
+  .newsectionnambaaagenx {
+    padding-top: 50px;
+    background-size: cover;
+  }
+
+  .newsectionnambaaagenx .sc-description {
+    font-size: 14px;
+    margin-top: 15px;
+  }
+
+  .newsectionnambaaagenx .sc-description .sc-text-pink,
+  .newsectionnambaaagenx .sc-description .sc-text-blue {
+    font-size: 15px;
+  }
+
+  .sc-benefits-sections {
+    padding-top: 40px;
+  }
+
+  .sc-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sc-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    padding-bottom: 0;
+  }
+
+  .sc-card-title {
+    font-size: 24px;
+  }
+
+  .sc-benefits-section {
+    padding-top: 30px;
+  }
+
+  .sc-join-title {
+    font-size: 60px;
+    line-height: 65px;
+  }
+
+  .sc-join-section {
+    padding-top: 25px;
+    padding-bottom: 50px;
+  }
+
+  .sc-join-circle {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 12px;
+  }
+
+  .sc-join-step-desc {
+    font-size: 14px;
+  }
+
+  .sc-form-main-title {
+    font-size: 60px;
+    line-height: 56px;
+    margin-bottom: 10px;
+  }
+
+  .sc-form-subtext {
+    font-size: 15px;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 1300px) and (min-width: 1101px) {
+  .sc-main-title {
+    font-size: 60px;
+    line-height: 65px;
+  }
+
+  .newflexconatinerrrr {
+    column-gap: 40px;
+  }
+
+  .newsectionnambaaagenx {
+    padding-top: 50px;
+    background-size: cover;
+  }
+
+  .newsectionnambaaagenx .sc-description {
+    font-size: 14px;
+    margin-top: 15px;
+  }
+
+  .newsectionnambaaagenx .sc-description .sc-text-pink,
+  .newsectionnambaaagenx .sc-description .sc-text-blue {
+    font-size: 15px;
+  }
+
+  .sc-benefits-sections {
+    padding-top: 40px;
+  }
+
+  .sc-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sc-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+    padding-bottom: 0;
+  }
+
+  .sc-card-title {
+    font-size: 24px;
+  }
+
+  .sc-benefits-section {
+    padding-top: 30px;
+  }
+
+  .sc-join-title {
+    font-size: 60px;
+    line-height: 65px;
+  }
+
+  .sc-join-section {
+    padding-top: 25px;
+    padding-bottom: 50px;
+  }
+
+  .sc-join-circle {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 12px;
+  }
+
+  .sc-join-step-desc {
+    font-size: 14px;
+  }
+
+  .sc-form-main-title {
+    font-size: 60px;
+    line-height: 56px;
+    margin-bottom: 10px;
+  }
+
+  .sc-form-subtext {
+    font-size: 15px;
+    max-width: 300px;
+  }
+
+  .sc-form-container {
+    max-width: 900px;
+    display: flex;
+    column-gap: 40px;
+  }
+
+  .sc-form-section {
+    padding-top: 60px;
+  }
+
+  .kslkskskskss .sc-form-card {
+    width: 48%;
+  }
+
+  .kslkskskskss .sc-form-branding {
+    width: 37%;
+  }
+
+  .sc-form-image-wrapper {
+    margin-top: 20px;
+  }
+
+  .sc-form-row {
+    flex-direction: column;
+  }
+
+  .sc-form-submit-btn {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .sc-main-title {
+    font-size: 60px;
+    line-height: 65px;
+  }
+
+  .newflexconatinerrrr {
+    column-gap: 40px;
+    flex-direction: column;
+  }
+
+  .newsectionnambaaagenx {
+    padding-top: 50px;
+    background-size: auto;
+    background-position: right;
+  }
+
+  .newsectionnambaaagenx .sc-description {
+    font-size: 14px;
+    margin-top: 15px;
+    width: 70%;
+    margin-left: auto;
+  }
+
+  .newsectionnambaaagenx .sc-description .sc-text-pink,
+  .newsectionnambaaagenx .sc-description .sc-text-blue {
+    font-size: 15px;
+  }
+
+  .sc-benefits-sections {
+    padding-top: 40px;
+  }
+
+  .sc-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sc-cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 0;
+  }
+
+  .sc-card {
+    width: 33%;
+  }
+
+  .sc-card-title {
+    font-size: 24px;
+  }
+
+  .sc-benefits-section {
+    padding-top: 30px;
+    background-position: left;
+    background-size: cover;
+  }
+
+  .sc-join-title {
+    font-size: 60px;
+    line-height: 65px;
+  }
+
+  .sc-join-section {
+    padding-top: 25px;
+    padding-bottom: 50px;
+  }
+
+  .sc-join-circle {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 12px;
+  }
+
+  .sc-join-step-desc {
+    font-size: 14px;
+  }
+
+  .sc-form-main-title {
+    font-size: 60px;
+    line-height: 56px;
+    margin-bottom: 10px;
+  }
+
+  .sc-form-subtext {
+    font-size: 15px;
+    max-width: 300px;
+    padding-left: 20px;
+  }
+
+  .sc-form-container {
+    max-width: 900px;
+    display: flex;
+    column-gap: 26px;
+  }
+
+  .sc-form-section {
+    padding-top: 60px;
+  }
+
+  .kslkskskskss .sc-form-card {
+    width: 50%;
+  }
+
+  .kslkskskskss .sc-form-branding {
+    width: 37%;
+  }
+
+  .sc-form-image-wrapper {
+    margin-top: 35px;
+  }
+
+  .sc-form-row {
+    flex-direction: column;
+  }
+
+  .sc-form-submit-btn {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 768px) {
+  .sc-main-title {
+    font-size: 60px;
+    line-height: 65px;
+  }
+
+  .kslkskskskss .accaodomationBannerSection img {
+    height: 284px !important;
+  }
+
+  .kslkskskskss .sc-phone-input {
+    width: 100%;
+  }
+
+  .newflexconatinerrrr {
+    column-gap: 40px;
+    flex-direction: column;
+  }
+
+  .newsectionnambaaagenx {
+    padding-top: 50px;
+    background-size: auto;
+    background-position: right;
+  }
+
+  .newsectionnambaaagenx .sc-description {
+    font-size: 14px;
+    margin-top: 15px;
+    width: 70%;
+    margin-left: auto;
+  }
+
+  .newsectionnambaaagenx .sc-description .sc-text-pink,
+  .newsectionnambaaagenx .sc-description .sc-text-blue {
+    font-size: 15px;
+  }
+
+  .sc-benefits-sections {
+    padding-top: 40px;
+  }
+
+  .sc-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sc-cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 0;
+  }
+
+  .sc-card {
+    width: 33%;
+  }
+
+  .sc-card-title {
+    font-size: 24px;
+  }
+
+  .sc-benefits-section {
+    padding-top: 30px;
+    background-position: left;
+    background-size: cover;
+  }
+
+  .sc-join-title {
+    font-size: 60px;
+    line-height: 65px;
+  }
+
+  .sc-join-section {
+    padding-top: 25px;
+    padding-bottom: 50px;
+  }
+
+  .sc-join-circle {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 12px;
+  }
+
+  .sc-join-step-desc {
+    font-size: 14px;
+  }
+
+  .sc-form-main-title {
+    font-size: 60px;
+    line-height: 56px;
+    margin-bottom: 10px;
+  }
+
+  .sc-form-subtext {
+    font-size: 15px;
+    max-width: 300px;
+    padding-left: 20px;
+  }
+
+  .sc-form-container {
+    max-width: 900px;
+    display: flex;
+    column-gap: 26px;
+    flex-direction: column;
+  }
+
+  .sc-form-section {
+    padding-top: 60px;
+  }
+
+  .kslkskskskss .sc-form-card {
+    width: 59%;
+    margin-top: 50px;
+  }
+
+  .kslkskskskss .sc-form-branding {
+    width: 60%;
+  }
+
+  .sc-form-image-wrapper {
+    margin-top: 35px;
+  }
+
+  .sc-form-row {
+    flex-direction: column;
+  }
+
+  .sc-form-submit-btn {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 601px) {
+  .sc-main-title {
+    font-size: 60px;
+    line-height: 65px;
+  }
+
+  .newflexconatinerrrr {
+    column-gap: 40px;
+    flex-direction: column;
+  }
+
+  .newsectionnambaaagenx {
+    padding-top: 50px;
+    background-size: auto;
+    background-position: right;
+  }
+
+  .newsectionnambaaagenx .sc-description {
+    font-size: 14px;
+    margin-top: 15px;
+    width: 70%;
+    margin-left: auto;
+  }
+
+  .newsectionnambaaagenx .sc-description .sc-text-pink,
+  .newsectionnambaaagenx .sc-description .sc-text-blue {
+    font-size: 15px;
+  }
+
+  .sc-benefits-sections {
+    padding-top: 40px;
+  }
+
+  .sc-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sc-cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 0;
+  }
+
+  .sc-card {
+    width: 50%;
+  }
+
+  .sc-card-title {
+    font-size: 24px;
+  }
+
+  .sc-benefits-section {
+    padding-top: 30px;
+    background-position: left;
+    background-size: cover;
+  }
+
+  .sc-join-title {
+    font-size: 60px;
+    line-height: 65px;
+  }
+
+  .sc-join-section {
+    padding-top: 25px;
+    padding-bottom: 50px;
+  }
+
+  .sc-join-circle {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 12px;
+  }
+
+  .sc-join-step-desc {
+    font-size: 14px;
+  }
+
+  .sc-form-main-title {
+    font-size: 60px;
+    line-height: 56px;
+    margin-bottom: 10px;
+  }
+
+  .sc-form-subtext {
+    font-size: 15px;
+    max-width: 300px;
+    padding-left: 20px;
+  }
+
+  .sc-form-container {
+    max-width: 900px;
+    display: flex;
+    column-gap: 26px;
+    flex-direction: column;
+  }
+
+  .sc-form-section {
+    padding-top: 60px;
+  }
+
+  .kslkskskskss .sc-form-card {
+    width: 77%;
+    margin-top: 50px;
+  }
+
+  .kslkskskskss .sc-form-branding {
+    width: 60%;
+  }
+
+  .sc-form-image-wrapper {
+    margin-top: 35px;
+  }
+
+  .sc-form-row {
+    flex-direction: column;
+  }
+
+  .sc-form-submit-btn {
+    font-size: 16px;
+  }
+
+  .kslkskskskss .accaodomationBannerSection img {
+    height: max-content;
+  }
+}
+
+@media (max-width: 600px) {
+  .sc-main-title {
+    font-size: 45px;
+    line-height: 40px;
+  }
+
+  .newflexconatinerrrr {
+    column-gap: 40px;
+    flex-direction: column;
+  }
+
+  .newsectionnambaaagenx {
+    padding-top: 0px;
+    background-size: auto;
+    background-position: left;
+    background-image: url("/public/images/genz/bg-mobile-1.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background: none;
+  }
+
+  .newsectionnambaaagenx .sc-description {
+    font-size: 15px;
+    margin-top: 15px;
+    width: 90%;
+    margin-left: auto;
+  }
+
+  .newsectionnambaaagenx .sc-description .sc-text-pink,
+  .newsectionnambaaagenx .sc-description .sc-text-blue {
+    font-size: 15px;
+  }
+
+  .sc-benefits-sections {
+    padding-top: 40px;
+  }
+
+  .sc-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sc-cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 0;
+  }
+
+  .sc-card {
+    width: 85%;
+  }
+
+  .sc-card-title {
+    font-size: 24px;
+  }
+
+  .sc-benefits-section {
+    padding-top: 30px;
+    background-position: left;
+    background-size: cover;
+    background-image: none;
+  }
+
+  .sc-join-title {
+    font-size: 45px;
+    line-height: 40px;
+  }
+
+  .sc-join-section {
+    padding-top: 25px;
+    padding-bottom: 50px;
+  }
+
+  .sc-join-circle {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 12px;
+  }
+
+  .sc-join-step-desc {
+    font-size: 14px;
+  }
+
+  .sc-form-main-title {
+    font-size: 45px;
+    line-height: 40px;
+    margin-bottom: 10px;
+  }
+
+  .sc-form-textarea {
+    height: 140px;
+    resize: vertical;
+  }
+
+  .sc-form-subtext {
+    font-size: 15px;
+    max-width: 300px;
+    padding-left: 20px;
+    padding-left: 0;
+  }
+
+  .sc-form-container {
+    max-width: 100%;
+    display: flex;
+    column-gap: 26px;
+    flex-direction: column;
+  }
+
+  .sc-join-timeline {
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+  }
+
+  .sc-form-section {
+    padding-top: 60px;
+    background-position: right;
+  }
+
+  .kslkskskskss .sc-form-card {
+    width: 100%;
+    padding: 40px 20px;
+    border-radius: 10px;
+  }
+
+  .kslkskskskss .sc-form-branding {
+    width: 100%;
+  }
+
+  .sc-form-image-wrapper {
+    margin-top: 10px;
+  }
+
+  .sc-form-row {
+    flex-direction: column;
+  }
+
+  .sc-form-submit-btn {
+    font-size: 14px;
+    padding: 14px 8px;
+  }
+  .geznzzzz .sc-phone-wrapper {
+    width: 100%;
+  }
+
+  .geznzzzz .sc-phone-input {
+    padding-right: 0 !important;
+    width: 100%;
+  }
+
+  .sc-form-submit-btn.forminsidebutton {
+    width: 100px;
+    font-size: 14px;
+    padding: 15px 9px;
+    min-width: 100px;
+    height: 36px;
+    margin-top: 4px;
+  }
+
+  .kslkskskskss .accaodomationBannerSection img {
+    height: max-content;
+        height: 650px;
+  }
+}

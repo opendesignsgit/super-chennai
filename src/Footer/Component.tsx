@@ -13,18 +13,59 @@ export default async function Footer() {
     const footerSections = response?.footerSections as FooterSections
     const {
       topSectionLinks = [],
-      socialLinks = [],
+      // socialLinks = [],
       mainFooterLogo,
       designByLogo,
       partnersLogo,
     } = footerSections
+
+    const socialLinks = [
+      {
+        href: 'https://www.linkedin.com/company/super-chennai',
+        image: '/images/Indeed.png',
+        alt: 'Linkedin',
+      },
+      {
+        href: 'https://www.instagram.com/super_chennai_/',
+        image: '/images/insta.png',
+        alt: 'Instagram',
+      },
+      {
+        href: 'https://www.facebook.com/share/1Hsb1ypGGE/',
+        image: '/images/fb.png',
+        alt: 'Facebook',
+      },
+      {
+        href: 'https://www.youtube.com/@Super_Chennai',
+        image: '/images/youtube.png',
+        alt: 'Youtube',
+      },
+      {
+        href: 'https://x.com/Super_Chennai_',
+        image: '/images/threads.png',
+        alt: 'Twitter',
+      },
+    ]
 
     return (
       <footer className="FooterBackground w-full bg-900 text-white py-8">
         <div className="SectionConatinerSecond max-w-7xl mx-auto px-4">
           <div className="containerSection">
             {/*################ TOP GRID SYSTEM MOBILE AND DESKTOP############ */}
-            {topSectionLinks.map((section) => (
+            {topSectionLinks.slice(0, 4).map((section) => (
+              <FooterAccordion
+                key={section.category}
+                heading={section.category}
+                items={section.links.map(({ label, link }) => ({ title: label, link }))}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="SectionConatinerSecond max-w-7xl mx-auto px-4">
+          <div className="containerSection">
+            {/*################ TOP GRID SYSTEM MOBILE AND DESKTOP############ */}
+            {topSectionLinks.slice(4, 7).map((section) => (
               <FooterAccordion
                 key={section.category}
                 heading={section.category}
@@ -52,13 +93,13 @@ export default async function Footer() {
                 <div className="iconsFlex flex gap-4 mt-2">
                   {socialLinks.map((social) => (
                     <a
-                      key={social.platform}
                       href={social.link?.startsWith('http') ? social.link : '#'}
+                      key={social.platform}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.platform}
                     >
-                      <img src={social.icon?.url ?? defaultImage.src} alt={social.platform} />
+                      <img src={social.image} alt={social.image} />
                     </a>
                   ))}
                 </div>

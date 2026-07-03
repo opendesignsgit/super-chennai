@@ -30,11 +30,31 @@ const FooterAccordion: React.FC<Props> = ({ heading, items }) => {
   }, [])
 
   return (
-    <div className="SectionLeft firstsectionwidth">
+    <div className="SectionLeft1">
       <h3 className="FooterHeading" onClick={() => setIsOpen(!isOpen)}>
         {heading}
         <span className="symbol">{isOpen ? '−' : '+'}</span>
       </h3>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="FooterSectionDiv"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+          >
+            <div>
+              {items.map((item, index) => (
+                <Link href={item.link} key={index}>
+                  <h5>{item.title}</h5>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {isOpen && (

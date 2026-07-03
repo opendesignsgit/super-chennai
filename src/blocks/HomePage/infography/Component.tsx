@@ -100,7 +100,7 @@ export default function InfographySection({ heading, headingSpan, description, f
         ) : (
           <div className="FoodSectionDesignContainer">
             <div className="foodSectionFirst">
-              {foodItems.slice(0, 5).map((item, index) => {
+              {foodItems.slice(0, 6).map((item, index) => {
                 const link = getLink(item)
                 return (
                   <div
@@ -130,7 +130,7 @@ export default function InfographySection({ heading, headingSpan, description, f
             </div>
 
             <div className="foodSectionThird">
-              {foodItems.slice(5, 10).map((item, index) => {
+              {foodItems.slice(6, 12).map((item, index) => {
                 const actualIndex = index + 5
                 const link = getLink(item)
                 return (

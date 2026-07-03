@@ -1,13 +1,17 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import './style.css'
+// import './style.css'
 import {
   ChennaiInvestmentsProps,
   ExtractedCategory,
   InvestmentAPIItem,
 } from 'src/models/investment'
 import Link from 'next/link'
+import Slider from 'react-slick'
+import { useRouter } from 'next/navigation'
+
+// import { Link, useNavigate } from 'react-router-dom'
 export default function ChennaiInvestments({ heading, subheading }: ChennaiInvestmentsProps) {
   const [extracted, setCategories] = useState<ExtractedCategory[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string>('')
@@ -30,6 +34,41 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Custom Arrow Components
+  const PrevArrow = ({ onClick }) => <div onClick={onClick} className="ExplorePageLeftButton"></div>
+
+  const NextArrow = ({ onClick }) => (
+    <div className="ExplorePageRightButton" onClick={onClick}></div>
+  )
+
+  const settings = {
+    dots: false,
+    autoplay: false,
+    autoplaySpeed: 2500,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: true,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
+    responsive: [
+      {
+        breakpoint: 1100,
+        settings: { slidesToShow: 3 },
+      },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 2 },
+      },
+      {
+        breakpoint: 480,
+        settings: { slidesToShow: 1 },
+      },
+    ],
+  }
+
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -60,7 +99,7 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
               })),
             ),
           }))
-         
+
           setCategories(extracted)
           setSelectedCategory(extracted[0]?.title || '')
         }
@@ -72,6 +111,8 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
   }, [])
   const activeCategory = extracted.find((cat) => cat.title === selectedCategory)
   const activeData = activeCategory?.investmentItems || []
+
+  const router = useRouter()
   return (
     <div className="chennaiInvestmentBg">
       <div className="container max-w-7xl mx-auto px-4 ChennaiInvestContainerdiv">
@@ -92,7 +133,7 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
           ))}
         </div>
 
-        <div className="buildingSectionFlex">
+        {/* <div className="buildingSectionFlex">
           {activeData.slice(0, 3).map((item, index) => (
             <Link href={item.link || '#'} key={index} className="bulidingSection">
               {index % 2 === 0 ? (
@@ -130,6 +171,95 @@ export default function ChennaiInvestments({ heading, subheading }: ChennaiInves
               )}
             </Link>
           ))}
+        </div> */}
+
+        {/* <div className="sliderInvestMentSection">
+          <Slider {...settings}>
+            {activeData.slice(0, 3).map((item, index) => (
+              <Link href={item.link || '#'} key={index} className="bulidingSection">
+                {index % 2 === 0 ? (
+                  <>
+                    <div className="builidngContent">
+                      <h3>{item.title}</h3>
+                      <h5>{item.description}</h5>
+                    </div>
+                    {item.image?.url && (
+                      <Image
+                        className="buildingImage"
+                        src={item.image.url}
+                        alt={item.image.alt || ''}
+                        width={500}
+                        height={300}
+                      />
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {item.image?.url && (
+                      <Image
+                        className="buildingImage1"
+                        src={item.image.url}
+                        alt={item.image.alt || ''}
+                        width={500}
+                        height={300}
+                      />
+                    )}
+                    <div className="builidngContent1">
+                      <h3>{item.title}</h3>
+                      <h5>{item.description}</h5>
+                    </div>
+                  </>
+                )}
+              </Link>
+            ))}{' '}
+          </Slider>
+        </div> */}
+
+        <div className="sliderInvestMentSection">
+          <Slider {...settings}>
+            {activeData.slice(0, 3).map((item, index) => (
+              <div
+                className="bulidingSection"
+                key={index}
+                onClick={() => {
+                  router.push(item.link)
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }}
+              >
+                {index % 2 === 0 ? (
+                  <>
+                    <div className="builidngContent">
+                      <h3>{item.title}</h3>
+                      <h5>{item.description}</h5>
+                      <a className="investLink">Read more</a>
+                    </div>
+                    {item.image?.url && (
+                      <img
+                        src={item.image.url}
+                        alt={item.image.alt || ''}
+                        className="buildingImage"
+                      />
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {item.image?.url && (
+                      <img
+                        src={item.image.url}
+                        alt={item.image.alt || ''}
+                        className="buildingImage1"
+                      />
+                    )}
+                    <div className="builidngContent1">
+                      <h3>{item.title}</h3>
+                      <h5>{item.description}</h5>
+                      <a className="investLink">Read more</a>
+                    </div>
+                  </>
+                )}
+              </div>
+            ))}{' '}
+          </Slider>
         </div>
       </div>
       <div

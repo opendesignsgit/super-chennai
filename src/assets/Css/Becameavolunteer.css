@@ -2,7 +2,7 @@
 @import "slick-carousel/slick/slick-theme.css";
 
 .Becameavolunteerbg {
-  background-image: url("../images/becameavolunteerbg.png");
+  /* background-image: url("../../../public/images/becameavolunteerbg.png"); */
   padding-bottom: 100px;
   position: relative;
   overflow: hidden;
@@ -163,19 +163,19 @@
 }
 
 .leftarrowVolunteer {
-  background-image: url("../images/icons/LeftArrow-Bg.svg");
+  background-image: url("../../../public/images/icons/LeftArrow-Bg.svg");
   background-size: contain;
 }
 .rightarrowVolunteer {
-  background-image: url("../images/icons/rightArrowsvg.svg");
+  background-image: url("../../../public/images/icons/rightArrowsvg.svg");
   background-size: contain;
 }
 
 .leftarrowVolunteer:hover {
-  background-image: url("../images/icons/LeftArrow.svg");
+  background-image: url("../../../public/images/icons/LeftArrow.svg");
 }
 .rightarrowVolunteer:hover {
-  background-image: url("../images/icons/RightArrow.svg");
+  background-image: url("../../../public/images/icons/RightArrow.svg");
 }
 
 .runningTextContainer {
@@ -216,6 +216,11 @@
 
 /* Media-Query */
 
+@media (max-width: 1660px) and (min-width:1600px) {
+  .runningText {
+    line-height: 211px !important;
+  }
+}
 @media (max-width: 1600px) and (min-width: 1200px) {
   .BecameavolunteerContent h2 {
     font-size: 100px;
@@ -243,12 +248,69 @@
   }
 }
 
+@media (max-width: 1600px) and (min-width:1500px) {
+  .runningText {
+    line-height: 195px !important;
+  }
+}
+
+
+@media (max-width: 1500px) and (min-width:1400px) {
+  .runningText {
+    line-height: 190px !important;
+  }
+}
+
+@media (max-width: 1400px) and (min-width:1300px) {
+  .runningText {
+    line-height: 180px !important;
+  }
+}
+@media (max-width: 1300px) and (min-width:1200px) {
+  .runningText {
+    line-height: 170px !important;
+  }
+}
+
 /* For screens larger than 1200px (desktops, large screens) */
 @media (min-width: 1200px) {
 }
 
 /* For screens smaller than 1200px but larger than 992px (tablets, medium screens) */
 @media (max-width: 1199px) and (min-width: 992px) {
+  .sliderControlsVolunteer {
+    right: 13px;
+  }
+
+  .volunteerSectionImage {
+    width: 40%;
+    z-index: 0;
+  }
+
+  .volunteerSectionContent {
+    width: 40%;
+  }
+
+  .volunteerContainer {
+    justify-content: center;
+  }
+
+  .volunteerSectionContent p {
+    font-size: clamp(16px, 2vw, 16px);
+    line-height: clamp(20px, 3vw, 24px);
+  }
+
+  .volunteerSectionContent h3 {
+    font-size: 30px;
+  }
+
+  .volunteerSectionContent h4 {
+    margin-top: 8px;
+  }
+
+  .linksContainer {
+    margin-top: 20px;
+  }
 }
 
 /* For screens smaller than 992px but larger than 768px (tablets and large phones) */
@@ -305,8 +367,15 @@
   }
 }
 
+
+
 /* For screens smaller than 768px (tablets and small phones) */
 @media (max-width: 767px) {
+  .Becameavolunteerbg {
+    background-position: center;
+    background-position: top;
+  }
+
   .volunteerContainer {
     flex-direction: column;
     row-gap: 30px;

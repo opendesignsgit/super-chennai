@@ -1,6 +1,7 @@
 import { HeaderClient } from './Component.client'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import React from 'react'
+import '../assets/Css/ExampleHeader.css'
 
 import type { Header } from '@/payload-types'
 

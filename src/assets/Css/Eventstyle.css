@@ -1,281 +1,1039 @@
 .SecPadblock12 {
-    padding-block: 12vh;
+  padding-block: 12vh;
+}
+
+.fontforstyle {
+  font-family: "29LT Bukra SmBd";
 }
 
 .Eventitlesec {
-    padding-inline: 10vw;
+  padding-inline: 10vw;
 }
-
 .Eventitlesec h2 {
-    font-family: "NewAmsterdam";
-    font-size: 5vw;
-    line-height: 79px;
-    color: #a44294;
+  font-family: "NewAmsterdam";
+  font-size: 5vw;
+  line-height: 79px;
+  color: #a44294;
 }
 
+
+.Eventitlesec h1 {
+  font-family: "NewAmsterdam";
+  font-size: 5vw;
+  line-height: 79px;
+  color: #a44294;
+}
 .EventsItems {
-    width: calc(25% - 16px);
-    margin: 10px 8px;
+  /* width: calc(25% - 16px);
+  margin: 10px 8px; */
+  width: calc(30% - 16px);
+  margin: 11px 20px;
 }
 
+.EventsItems-superchennai {
+  /* width: calc(25% - 16px);
+  margin: 10px 8px; */
+  width: calc(30% - 0px);
+  margin: 11px 10px;
+}
 .evntechnolg {
-    font-family: "29LT Bukra SmBd";
-    font-size: 12px;
-    line-height: 16px;
-    color: #f5dbe1;
-    background-color: #cf5772;
-    padding: 6px 10px;
-    border-radius: 5px;
+  font-family: "29LT Bukra SmBd";
+  font-size: 12px;
+  line-height: 16px;
+  color: #f5dbe1;
+  background-color: #cf5772;
+  padding: 6px 10px;
+  border-radius: 5px;
 }
-
 .EventsItemImg {
-    border-top-left-radius: 20px;
-    overflow: hidden;
+  border-top-left-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
-
 .EventsItemImg img {
-    aspect-ratio: 2 / 1.5;
+  aspect-ratio: 2 / 1.5;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  will-change: transform;
+}
+.newsLetterImage img {
+  object-fit: fill;
 }
 
+.reimaginePage hr {
+  color: #ba71b9;
+  color: #b8b8b8;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.EventsItemImg img:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
 .EventsIteCont {
-    padding-top: 20px;
+  padding-top: 20px;
+}
+.EventsIteCont h3 {
+  font-family: "29LT Bukra SmBd";
+
+  width: 80%;
+  max-width: fit-content;
+  margin-top: 14px;
+  font-weight: 600 !important;
 }
 
-.EventsIteCont h3 {
-    font-family: "29LT Bukra SmBd";
-    width: 80%;
-    max-width: fit-content;
-    margin-top: 14px;
+.nammaStoriesNewsLtter .EventsIteCont h3 {
+  font-family: "Poppins", sans-serif !important;
+}
+
+.NewsLetterPage .EventsIteCont h3 {
+  margin-top: 10px;
+  min-width: 100%;
 }
 
 .EventsIteCont h3:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-decoration-color: #995098;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #995098;
 }
 
+.titlePublished {
+  /* color: #995098;
+  color: #a44294;
+  font-family: "29LT Bukra SmBd";
+  font-size: 16px;
+  margin-top: 10px; */
+
+  color: #995098;
+  color: #ffffff;
+  font-family: "29LT Bukra SmBd";
+  font-size: 10px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  background: #995098;
+  padding: 4px 7px 1px 6px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+
+.YoutubeVideoSection .w-full {
+  position: relative;
+}
+
+.YoutubeVideoSection .w-full::before {
+  content: "";
+  background: url("/images/NewsLetter/youtube-svgrepo-com.svg");
+  position: absolute;
+  color: #fff;
+  font-size: 15px;
+  top: 39%;
+  left: 43%;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  z-index: 1;
+}
+
+.newsYoutubeSection .w-full {
+  position: relative;
+}
+
+.newsYoutubeSection .w-full::before {
+  content: "";
+  background: url("/images/NewsLetter/youtube-svgrepo-com.svg");
+  position: absolute;
+  color: #fff;
+  font-size: 15px;
+  top: 39%;
+  left: 43%;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  z-index: 1;
+}
+
+.NewsLetterPage .EventsIteCont h3:hover {
+  /* text-decoration: none; */
+}
 .datimeContbox {
-    display: flex;
-    column-gap: 5px;
-    background: #da644a;
-    border-radius: 5px;
-    padding: 5px 10px;
-    color: #ffffff;
-    font-weight: 600;
-    line-height: 1;
-    font-size: 14px;
-    text-transform: uppercase;
+  display: flex;
+  column-gap: 5px;
+  background: #da644a;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 1;
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
-.EventContBox {}
-
+.EventContBox {
+}
 .EventLeft {
-    width: 70%;
-    padding-right: 2vw;
+  width: 70%;
+  padding-right: 2vw;
 }
-
+.EventLeft h1 {
+  font-family: "NewAmsterdam";
+  font-size: 2.5vw;
+  line-height: 1;
+  color: #a44294;
+}
 .EventLeft h2 {
-    font-family: "NewAmsterdam";
-    font-size: 2.5vw;
-    line-height: 1;
-    color: #a44294;
+  font-family: "NewAmsterdam";
+  font-size: 2.5vw;
+  line-height: 1;
+  color: #a44294;
 }
-
 .EventLeft h3 {
-    font-family: "NewAmsterdam";
-    font-size: 1.6vw;
-    line-height: 1;
-    color: #000000;
-    margin-bottom: 10px;
+  font-family: "NewAmsterdam";
+  font-size: 1.6vw;
+  line-height: 1;
+  color: #000000;
+  margin-bottom: 10px;
 }
-
 .EventLeft p {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
-
 .EventLeft p:last-child {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
-
 .EventLeft .EventBanImg {
-    overflow: hidden;
-    border-radius: 20px;
-    margin-block: 20px 10px;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-block: 20px 10px;
 }
-
 .EventLeft .EventBanImg img {
-    width: 100%;
+  width: 100%;
 }
-
 .ebbmgiL h5 {
-    background: #a44294;
-    padding: 5px 15px;
-    border-radius: 5px;
-    margin-right: 15px;
-    line-height: 1;
-    letter-spacing: -0.5px;
-    color: #ffffff;
-    font-weight: 500;
+  background: #a44294;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin-right: 15px;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  font-weight: 500;
 }
-
 .ebbmgiR h5 {
-    font-weight: 500;
+  font-weight: 500;
 }
-
 .ebbmgiR button {
-    padding: 5px 15px;
-    margin-left: 10px;
-    border: 1px solid #d43b33;
-    border-radius: 5px;
-    line-height: 1;
-    cursor: pointer;
+  padding: 5px 15px;
+  margin-left: 10px;
+  border: 1px solid #d43b33;
+  border-radius: 5px;
+  line-height: 1;
+  cursor: pointer;
 }
-
 .ArtistsImg {
-    width: 10vw;
-    aspect-ratio: 1 / 1.5;
-    overflow: hidden;
-    border-radius: 10px;
-    margin-bottom: 5px;
+  width: 10vw;
+  aspect-ratio: 1 / 1.5;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 5px;
 }
-
 .ArtistsImg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-
-.ArtistsImg h4 {}
-
-.ArtistsImg h4 strong {}
-
-.ArtistsImg h4 small {}
+.ArtistsImg h4 {
+}
+.ArtistsImg h4 strong {
+}
+.ArtistsImg h4 small {
+}
 
 .EventRight {
-    width: 30%;
-    position: relative;
+  width: 30%;
+  position: relative;
 }
-
 .evderibox {
-    position: sticky;
-    top: 14vh;
-    border: 1px solid #d0d5e6;
-    border-radius: 15px;
+  position: sticky;
+  top: 14vh;
+  border: 1px solid #d0d5e6;
+  border-radius: 15px;
 }
-
 .evderListbox {
-    padding: 20px;
+  padding: 20px;
 }
-
 .evdPricbox {
-    padding: 20px;
-    border-top: 1px solid #d0d5e6;
+  padding: 20px;
+  border-top: 1px solid #d0d5e6;
 }
-
 .iconsssec {
-    width: 30px;
-    aspect-ratio: 1;
-    padding: 5px;
+  width: 30px;
+  aspect-ratio: 1;
+  padding: 5px;
 }
-
 .evderlinks {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
-
 .evderlinks p {
-    padding-left: 10px;
+  padding-left: 10px;
 }
-
 .evdPricbox h4 {
-    font-weight: 700;
-    font-size: 1.1vw;
-    letter-spacing: -0.5px;
+  font-weight: 700;
+  font-size: 1.1vw;
+  letter-spacing: -0.5px;
 }
-
 .evdPricbox h6 {
-    color: #2b3889;
-    font-weight: 700;
+  color: #2b3889;
+  font-weight: 700;
 }
-
 .evdPricbox button {
-    background: #a44294;
-    color: #ffffff;
-    padding: 0 20px;
-    line-height: 40px;
-    border-radius: 4px;
-    border: 1px solid #a44294;
-    font-weight: 600;
-    cursor: pointer;
+  background: #a44294;
+  color: #ffffff;
+  padding: 0 20px;
+  line-height: 40px;
+  border-radius: 4px;
+  border: 1px solid #a44294;
+  font-weight: 600;
+  cursor: pointer;
 }
-
 .evdPricbox button:hover {
-    background: #ffffff;
-    color: #a44294;
+  background: #ffffff;
+  color: #a44294;
 }
 
-@media screen and (max-width:600px) {
-    .Eventitlesec h2 {
-        font-size: 42px;
-        line-height: 1;
-    }
+/* NewsLetter */
 
-    .SecPadblock12 {
-        padding-block: 40px;
-    }
+.NewsLetterPage .EventsIteCont {
+  padding-top: 5px;
+}
 
-    .EventsBanSec {
-        padding-inline: 20px;
-    }
+.readMoreMainDiv {
+  margin-top: 30px;
+}
 
-    .EventContBox {
-        flex-direction: column;
-    }
+.newsLetterSection {
+  column-gap: 20px;
+  margin-bottom: 50px;
+}
 
-    .ebanimgbtn {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-bottom: 20px;
-    }
+.newsLetterButton {
+  background: #fff;
+  color: #a44294;
+  padding: 3px 13px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border: 1px solid #a44294;
+}
 
-    .EventLeft {
-        width: 100%;
-        padding-right: 0;
-        padding-bottom: 20px;
-    }
+.newsLetterButton.active {
+  background: #a44294;
+  border: 1px solid #a44294;
+  color: #fff;
+}
 
-    .EventRight {
-        width: 100%;
-        padding-top: 20px;
-    }
+.newsLetterButton:hover {
+  background: #a44294;
+  color: #fff;
+  border: 1px solid #a44294;
+}
 
-    .evdPricbox h4 {
-        font-size: 22px;
-    }
+.popupSection {
+  height: 600px;
+  width: auto;
+  overflow: hidden;
+  padding: 0;
+}
 
-    .EventLeft h2 {
-        font-size: 32px;
-    }
+.paddingSection {
+  padding: 30px;
+}
 
-    .ebbmgiL {
-        margin-bottom: 10px;
-    }
+.ReadmoreNewArticles {
+  color: #eb5858;
+  margin-left: 2px;
+  font-size: 14px;
+}
 
-    .EventLeft h3 {
-        font-size: 24px;
-    }
+.EventsItems:nth-child(1) .EveItemtitles a:first-child {
+  /* font-weight: 600 !important; */
+}
 
-    .ArtistsImg {
-        width: 60%;
-    }
+.EventsItems:nth-child(11) .readMoreMainDiv a:first-child {
+  font-weight: 500 !important;
+}
 
-    .EventsListSec {
-        padding-inline: 20px;
-    }
+.NewsLetterPage .EveItemtitles {
+  position: relative;
+  width: 100%;
+}
 
-    .EventsListboxs {}
+.NewsLetterPage .EveItemtitles ::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.04);
+  position: absolute;
+  left: 0;
+  top: 60%;
+}
 
-    .EventsItems {
-        width: 100%;
-        margin: 10px 0;
-    }
+.NewsLetterPage .EventsItems {
+  margin-bottom: 35px;
+}
+
+.YoutubeVideoSection {
+  margin-top: 50px;
+}
+
+.YoutubeVideoSection h4 {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.NewsLetterPage .youtubevideoSection ::before {
+  top: 50% !important;
+}
+
+.contactFormStyle {
+  background-color: #995098;
+  padding: 90px 0;
+  margin-top: 60px;
+}
+.contactFormStyle .container {
+  padding: 0 50px;
+}
+
+.contactFormStyle form label {
+  font-family: "29LT Bukra Regular";
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: clamp(22px, 2vw, 26px);
+  margin-top: clamp(12px, 2vh, 20px);
+  color: #fff;
+  padding: 25px 0;
+}
+
+.contactFormStyle form input,
+textarea {
+  margin-top: 15px;
+  color: #000;
+  background: white;
+  height: 54px;
+  padding-left: 20px;
+}
+
+.contactFormStyle form textarea {
+  height: 115px;
+  padding-top: 17px;
+}
+
+.contactFormStyle form input::placeholder {
+  font-family: "29LT Bukra Regular";
+  color: #000;
+  font-weight: 500;
+}
+
+.contactFormStyle form textarea::placeholder {
+  font-family: "29LT Bukra Regular";
+  color: #000;
+  font-weight: 500;
+}
+
+.contactFormStyle form input:focus-visible {
+  outline-color: #995098;
+  border: 1px !important;
+}
+.contactFormStyle form textarea:focus-visible {
+  outline-color: #995098;
+  border: 1px !important;
+}
+
+.buttonUploadButton {
+  width: 30%;
+  width: 100%;
+}
+
+.buttonUploadButton label {
+  height: 50px;
+}
+
+.buttonUploadButton svg {
+  height: 20px;
+  width: 20px;
+  margin-bottom: 3px;
+}
+.buttonUploadButton p {
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #000;
+}
+
+.uploadmainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  column-gap: 5%;
+  align-items: flex-start;
+  margin-top: 14px;
+}
+
+.contactFormStyle .container .grid {
+  margin-bottom: 25px;
+}
+
+.uploadmainContainer label {
+  margin-top: 0 !important;
+  margin-bottom: 0px;
+}
+
+.uploadyourVideotext {
+  margin-bottom: 14px !important;
+}
+
+.uploadtext {
+  line-height: 15px !important;
+}
+
+.contactFormStyle h2 {
+  font-family: "NewAmsterdam";
+  font-size: 3.5vw;
+  line-height: 76px;
+  color: #fff;
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+}
+
+.SubmitbuttonContact {
+  font-weight: 500;
+  font-family: "Poppins";
+  color: #995098;
+  /* width: 106px; */
+  width: auto;
+  font-size: 16px;
+  padding: 5px 12px;
+  margin-top: 25px;
+  border: 1px solid #fff;
+}
+.slectedVideo {
+  color: #ffffff;
+  margin-top: 12px;
+  margin-left: 3px;
+  font-weight: 500;
+}
+
+.SubmitbuttonContact:hover {
+  background-color: #995098;
+  color: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+.buttonUploadButton label {
+  /* display: flex;
+  justify-content: center;
+  align-items: end;
+  padding-right: 22px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 0;
+  border-radius: 5px;
+}
+
+/* NammaStoreies Video */
+
+.closeButtonSvg {
+  font-size: 30px;
+  margin-right: 5px;
+}
+.nammastoriesPopupIframe {
+  width: 100%;
+  height: 500px;
+  padding: 40px;
+}
+
+.NammaStoriesVideoDiv .EveItemtitles ::before {
+  content: none;
+}
+
+.NammaStoriesVideoDiv .readMoreMainDiv {
+  margin-top: 7px;
+}
+.nammaStoriesLikesCount {
+  color: #1d1d1d;
+  font-size: 14px;
+  line-height: 20px;
+}
+.NammaStoriesVideoDiv .EventsIteCont h3:hover {
+  text-decoration: none;
+}
+.NammaStoriesVideoDiv .popupSection {
+  width: 50%;
+  height: max-content;
+}
+
+.directorNameNammaStories {
+  color: #1d1d1d;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.MovieTitle {
+  display: block;
+  font-size: 22px;
+  line-height: 23px;
+  margin-top: 10px;
+}
+
+.NammaStoriesVideoDiv {
+  background-color: #f1f1f1;
+  padding: 100px 0 50px;
+  margin-top: 60px;
+  margin-top: 80px;
+}
+
+.NammaStoriesVideoDiv .EventsIteCont {
+  background: #f1f1f1;
+}
+
+.NammaStoriesVideoDiv .EventsItems {
+  background: #f1f1f1;
+}
+
+.NammaStoriesVideoDiv .ReadmoreNewArticles {
+  /* color: #a44294; */
+  font-weight: 600;
+}
+
+.NammaStoriesVideoDiv .Eventitlesec h2 {
+  font-size: 4vw;
+}
+
+.youtubeIConStyle {
+  position: relative;
+}
+
+.youtubeIConStyle::before {
+  content: "";
+  background: url("/images/NewsLetter/youtube-svgrepo-com.svg");
+  position: absolute;
+  color: #fff;
+  font-size: 15px;
+  top: 39%;
+  left: 43%;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  z-index: 1;
+}
+
+.NammaStoriesVideoDiv .EventsListboxs {
+  justify-content: flex-start;
+  column-gap: 0;
+  margin-left: 2%;
+}
+/* NammaStoreies Video */
+
+/* NammaStoreies Video- newUpdate */
+.nammaStoriesvideo-card {
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px #00000026;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.nammaStorieswinner-card {
+  width: 100%;
+  max-width: 700px;
+  border: 5px solid gold;
+  animation: pulseGlow 2.5s infinite alternate;
+}
+
+.nammaStoriesvideo-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 15px;
+}
+.nammaStorieslabel1 {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 25%;
+}
+
+.nammaStorieswinner,
+.nammaStorierunner-ups {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+.runner-up-card {
+  width: 100%;
+  max-width: 340px;
+}
+
+.nammaStoriesvideo-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px #0003;
+}
+.silver {
+  border: 4px solid silver;
+}
+.bronze {
+  border: 4px solid silver;
+}
+
+.runnerupStyle1:after {
+  background-size: contain;
+  z-index: 1;
+  content: "";
+  width: 37%;
+  height: 67px;
+  position: absolute;
+  background-repeat: no-repeat;
+  bottom: -31px;
+  left: 32%;
+  color: #fff;
+  background-image: url("/public/images/first-runner.jpg");
+  border-radius: 50px;
+}
+
+.nammaStorieslabel1 img {
+  border-radius: 50px;
+  height: 100px;
+}
+.runnerupStyle:after {
+  background-size: contain;
+  z-index: 1;
+  content: "";
+  width: 37%;
+  height: 67px;
+  position: absolute;
+  background-repeat: no-repeat;
+  bottom: -31px;
+  left: 32%;
+  color: #fff;
+  background-image: url("/public//images/second-runner.jpg");
+  border-radius: 50px;
+}
+
+/* NammaStoreies Video- newUpdate */
+
+/* Events New Section  */
+
+.superchennaiEventsSection {
+  width: 40%;
+  padding: 13px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.superchennaiEventsMainContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 5%;
+  row-gap: 50px;
+}
+
+.superchennaiEventsSection p {
+  font-family: "29LT Bukra SmBd";
+  font-size: 25px;
+  text-align: center;
+  width: 100%;
+  margin: 10px 0;
+  color: #995098;
+  line-height: 1.1;
+}
+
+.superchennaiEventsSection img {
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+}
+
+.superchennaiEventsSection img:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Events New Section  */
+
+.listtypesection {
+  list-style: disc;
+  margin-top: 10px;
+  padding-left: 30px;
+}
+
+.imageshowPupFunction {
+  display: flex;
+  justify-content: center;
+}
+.imageshowPupFunction button {
+  background: white;
+  padding: 9px 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.imageshowPupFunction button p {
+  font-size: 13px;
+}
+
+.reimaginePage .accaodomationBannerSection img {
+  object-position: 30% center;
+}
+
+  .popupStyleMainContainer button {
+    color: #fff;
+    background: #a44294;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    line-height: 40px;
+    top: 17px;
+    right: 17px;
+    padding-bottom: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+@media (max-width: 1600px) and (min-width: 1300px) {
+  .popupSection {
+    height: 70vh;
+    top: 9%;
+  }
+}
+
+@media (max-width: 1550px) and (min-width: 1300px) and (max-height: 750px) {
+  .pointcastSticky img {
+    width: 100px;
+  }
+   .pointcastSticky img {
+    width: 80px;
+  }
+
+  .stickyIconsContainer {
+    top: 20%;
+    right: 24px;
+  }
+
+  .pointcastSticky {
+    bottom: 90px;
+  }
+
+  .carRallylink {
+    bottom: 249px !important;
+  }
+
+  .nammaStorieslink {
+    bottom: 189px;
+  }
+}
+
+@media(min-width:801px){
+  .reimagineMobile{
+    display: none;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .reimagineDekstop {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .iconofthemonthbanner .eventsCalenderIamge {
+    object-position: right;
+  }
+  .superchennaiEventsMainContainer {
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .superchennaiEventsSection p {
+    font-size: 20px;
+  }
+
+  .superchennaiEventsSection {
+    width: 100%;
+  }
+  .popupStyleMainContainer button {
+    color: #fff;
+    background: #a44294;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    line-height: 40px;
+    top: 5px;
+    right: 3px;
+    padding-bottom: 6px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .popupStyleMainContainer {
+    padding: 15px;
+  }
+  .nammaStorieslabel1 img {
+    border-radius: 50px;
+    height: auto;
+  }
+
+  .runnerupStyle1:after {
+    top: 5%;
+    left: 5%;
+    width: 26%;
+    height: 46px;
+    border: 1px solid gold;
+  }
+
+  .runnerupStyle:after {
+    top: 5%;
+    left: 5%;
+    width: 26%;
+    height: 46px;
+    border: 1px solid gold;
+  }
+
+  .SubmitbuttonContact {
+    margin-top: 15px;
+  }
+
+  .contactFormStyle {
+    background-color: #995098;
+    padding: 50px 0;
+    margin-top: 41px;
+  }
+
+  .contactFormStyle h2 {
+    font-size: 40px;
+    line-height: 46px;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .contactFormStyle .container {
+    padding: 0 25px;
+  }
+
+  .contactFormStyle .container .grid {
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+
+  .popupSection {
+    height: auto;
+  }
+  .Eventitlesec h2 {
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  .SecPadblock12 {
+    padding-block: 40px;
+  }
+  .EventsBanSec {
+    padding-inline: 20px;
+  }
+  .EventContBox {
+    flex-direction: column;
+  }
+  .ebanimgbtn {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .EventLeft {
+    width: 100%;
+    padding-right: 0;
+    padding-bottom: 20px;
+  }
+  .EventRight {
+    width: 100%;
+    padding-top: 20px;
+  }
+  .evdPricbox h4 {
+    font-size: 22px;
+  }
+  .EventLeft h2 {
+    font-size: 32px;
+  }
+  .ebbmgiL {
+    margin-bottom: 10px;
+  }
+  .EventLeft h3 {
+    font-size: 24px;
+  }
+  .ArtistsImg {
+    width: 60%;
+  }
+  .EventsListSec {
+    padding-inline: 20px;
+  }
+  .EventsListboxs {
+  }
+  .EventsItems {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  /* NammaStoreies Video */
+
+  .NammaStoriesVideoDiv .EventsListboxs {
+    padding: 0 20px;
+  }
+
+  .NammaStoriesVideoDiv .Eventitlesec h2 {
+    font-size: 45px;
+    line-height: 0.9;
+  }
+
+  .NammaStoriesVideoDiv {
+    padding: 50px 0;
+  }
+
+  .NammaStoriesVideoDiv .Eventitlesec {
+    margin-bottom: 20px;
+  }
+  .NammaStoriesVideoDiv .popupSection {
+    width: 90%;
+    height: auto;
+  }
+
+  .nammastoriesPopupIframe {
+    width: 100%;
+    height: 340px;
+    padding: 50px 0px;
+  }
+
+  /* NammaStoreies Video */
+}
+
+.EventsIteCont h3 {
+  font-weight: 600 !important;
 }

@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import NoData from 'src/components/NoData'
-import './style.css'
+// import './style.css'
 
 type RichContent = {
   fields?: {
@@ -111,109 +111,65 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description, pag
     }
   }
 
-//   useEffect(() => {
-//     const fetchEvents = async () => {
-//       try {
-//         const res = await fetch('/api/events')
-//         const data = await res.json()
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch('/api/events')
+        const data = await res.json()
 
-//         if (!data?.docs?.length) {
-//           console.warn('No data found')
-//           return
-//         }
-//  console.log('Raw API data-----------------------------------------   :', data) 
-//         const enrichedEvents: EventType[] = data.docs.map((item: any) => {
-//           const dateParts = parseEventDate(item.event?.eventDate)
-//           return {
-//             id: item.id || item._id || undefined,
-//             title: item.title || item.event?.title || 'Untitled Event',
-//             description: item.event?.description || '',
-//             category: item.event?.category || 'General',
-//             address: item.event?.address || '',
-//             image: item.event?.image?.url || '',
-//             isFeatured: item.isFeatured,
-//             eventDate: item.event?.eventDate,
-//             content: item.content,
-//             ...dateParts,
-//             event: item.event, // keep original event object for detailed access
-//             link: item.slug ? `/events/${item.slug}` : '#',
-//           }
-//         })
+        console.log('Raw API data:', data)
 
-//         setAllEvents(enrichedEvents)
+        if (!data?.docs?.length) {
+          console.warn('No events found')
+          setAllEvents([])
+          setIsFeaturedEvent(null)
+          return
+        }
 
-//         const featured = enrichedEvents.find(
-//           (e) => e.isFeatured === true || e.isFeatured === 'true' || e.isFeatured === 1,
-//         )
-//         setIsFeaturedEvent(featured || null)
-//       } catch (error) {
-//         console.error('Failed to fetch events:', error)
-//       } finally {
-//         setLoading(false)
-//       }
-//     }
+        const enrichedEvents: EventType[] = data.docs.map((item: any) => {
+          // parse event date
+          const eventDateStr = item.event?.eventDates?.[0]?.date || item.event?.details?.eventTime
+          const dateParts = parseEventDate(eventDateStr)
 
-//     fetchEvents()
-//   }, [])
+          // pick the hero image first, fallback to event.image
+          const imageUrl = item.heroImage?.url || item.event?.image?.url || ''
 
-useEffect(() => {
-  const fetchEvents = async () => {
-    try {
-      const res = await fetch('/api/events')
-      const data = await res.json()
+          return {
+            id: item.id || item._id || undefined,
+            title: item.title || item.event?.title || 'Untitled Event',
+            description: item.description || item.event?.description || '',
+            category:
+              item.categories?.[0]?.title || item.event?.eventsCategory?.[0]?.title || 'General',
+            address: item.event?.address || item.event?.details?.location?.label || '',
+            image: imageUrl,
+            isFeatured: item.isFeatured,
+            eventDate: eventDateStr,
+            content: item.content || { root: { children: [] } },
+            ...dateParts,
+            event: item.event, // keep original event object
+            link: item.event?.link || `#`,
+          }
+        })
 
-      console.log('Raw API data:', data)
+        console.log('Enriched events:', enrichedEvents)
 
-      if (!data?.docs?.length) {
-        console.warn('No events found')
+        setAllEvents(enrichedEvents)
+
+        const featured = enrichedEvents.find(
+          (e) => e.isFeatured === true || e.isFeatured === 'true' || e.isFeatured === 1,
+        )
+        setIsFeaturedEvent(featured || null)
+      } catch (error) {
+        console.error('Failed to fetch events:', error)
         setAllEvents([])
         setIsFeaturedEvent(null)
-        return
+      } finally {
+        setLoading(false)
       }
-
-      const enrichedEvents: EventType[] = data.docs.map((item: any) => {
-        // parse event date
-        const eventDateStr = item.event?.eventDates?.[0]?.date || item.event?.details?.eventTime
-        const dateParts = parseEventDate(eventDateStr)
-
-        // pick the hero image first, fallback to event.image
-        const imageUrl = item.heroImage?.url || item.event?.image?.url || ''
-
-        return {
-          id: item.id || item._id || undefined,
-          title: item.title || item.event?.title || 'Untitled Event',
-          description: item.description || item.event?.description || '',
-          category: item.categories?.[0]?.title || item.event?.eventsCategory?.[0]?.title || 'General',
-          address: item.event?.address || item.event?.details?.location?.label || '',
-          image: imageUrl,
-          isFeatured: item.isFeatured,
-          eventDate: eventDateStr,
-          content: item.content || { root: { children: [] } },
-          ...dateParts,
-          event: item.event, // keep original event object
-          link: item.event?.link || `#`,
-        }
-      })
-
-      console.log('Enriched events:', enrichedEvents)
-
-      setAllEvents(enrichedEvents)
-
-      const featured = enrichedEvents.find(
-        (e) => e.isFeatured === true || e.isFeatured === 'true' || e.isFeatured === 1,
-      )
-      setIsFeaturedEvent(featured || null)
-    } catch (error) {
-      console.error('Failed to fetch events:', error)
-      setAllEvents([])
-      setIsFeaturedEvent(null)
-    } finally {
-      setLoading(false)
     }
-  }
 
-  fetchEvents()
-}, [])
+    fetchEvents()
+  }, [])
 
   const lastScrollY = useRef(0)
   const bgTextRef = useRef(null)
@@ -235,7 +191,6 @@ useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
 
   const pageSlug = page?.slug ?? undefined
   return (
@@ -332,6 +287,7 @@ useEffect(() => {
               drag="x"
               dragConstraints={{ right: 0, left: -1200 }}
               animate={{ x }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
               {allEvents.map((event, index) => (
                 <motion.div
@@ -364,7 +320,7 @@ useEffect(() => {
                     </div>
                     <h3 className="EventsCalendarTitlecss">{event.title}</h3>
 
-                    <h4 className="EventsCalendarContentcss">
+                    <h4 className="EventsCalendarContentcss line-clamp-4">
                       {typeof event.content === 'string' ? (
                         <p>{event.content}</p>
                       ) : event.content?.fields?.about ? (
