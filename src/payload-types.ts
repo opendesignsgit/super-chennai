@@ -8337,6 +8337,29 @@ export interface Footer {
           id?: string | null;
         }[]
       | null;
+    /**
+     * Footer-ன் கீழ் வலதுபுறம் காட்டப்பட வேண்டிய கூடுதல் லோகோக்கள் (Events, Partners போன்றவை)
+     */
+    bottomRightLogos?:
+      | {
+          title: string;
+          logoImage: number | Media;
+          websiteLink?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Add bottom-right floating components (e.g., WhatsApp Chat, Bot triggers, Support widgets). Appears below the event logos.
+     */
+    floatingActionWidgets?:
+      | {
+          title: string;
+          link: string;
+          iconImage: number | Media;
+          openInNewTab?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
     partnersLogo?: (number | null) | Media;
     mainFooterLogo?: (number | null) | Media;
     designByLogo: number | Media;
@@ -8453,6 +8476,23 @@ export interface FooterSelect<T extends boolean = true> {
               platform?: T;
               link?: T;
               icon?: T;
+              id?: T;
+            };
+        bottomRightLogos?:
+          | T
+          | {
+              title?: T;
+              logoImage?: T;
+              websiteLink?: T;
+              id?: T;
+            };
+        floatingActionWidgets?:
+          | T
+          | {
+              title?: T;
+              link?: T;
+              iconImage?: T;
+              openInNewTab?: T;
               id?: T;
             };
         partnersLogo?: T;
