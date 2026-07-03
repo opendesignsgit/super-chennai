@@ -33,6 +33,8 @@ export default function SocialChennai({
   const lastScrollY = useRef(0)
   const [playingId, setPlayingId] = useState<string | null>(null)
 
+  console.log("reels -=-=-=-=-",reels)
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
