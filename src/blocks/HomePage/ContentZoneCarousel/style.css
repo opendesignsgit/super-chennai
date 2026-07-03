@@ -1,4 +1,4 @@
-.chillZoneMainContainer {
+/* .chillZoneMainContainer {
     background-image: url("../../../assets/images/chennaiChilloutZone11.png");
   height: 700px;
   background-repeat: no-repeat;
@@ -19,7 +19,7 @@
   margin-top: 7%;
 }
 
-/* Left Section */
+
 .chillZonecarousel-static-content {
   flex: 1;
   max-width: 400px;
@@ -38,7 +38,7 @@
   margin-bottom: 20px;
 }
 
-/* Slider control buttons */
+
 .chillZonecarousel-buttons {
   display: flex;
   justify-content: end;
@@ -66,7 +66,7 @@
 .chilloutZoneButtonsRight:hover {
   background-image: url("../../../assets/images/icons/RightArrow.svg");
 }
-/* Right Section */
+
 .chillZonecarousel-container {
   flex: 2;
   position: relative;
@@ -171,13 +171,10 @@
   }
 }
 
-@media (max-width: 768px) {
-  /* .chillZonecarousel-buttons:first-child{
-    display: none !important;
-  } */
+
 
   .DesktopButtons {
-    /* display: none !important; */
+/
   }
   .chillZonecarousel-container {
     overflow: visible;
@@ -313,4 +310,4 @@
   .chillZonecarousel-buttons:nth-child(2) {
     display: none;
   }
-}
+} */

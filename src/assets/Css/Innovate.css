@@ -33,7 +33,7 @@
     rgb(130 18 70) 0%,
     rgb(174 64 56) 50%,
     rgb(130 42 8) 100%
-  );
+  ) !important;
 }
 
 @keyframes animateGradient {
@@ -71,13 +71,32 @@
   justify-content: center;
   align-items: center;
   padding-bottom: 65px;
+  padding-bottom: 0px;
 }
 
 .InnovateChennaiContent h3 {
-  font-family: NewAmsterdam;
+  /* font-family: NewAmsterdam;
   color: #995098;
   font-size: clamp(36px, 14vw, 100px);
-  line-height: clamp(44px, 9vw, 94px);
+  line-height: clamp(44px, 9vw, 94px); */
+  text-align: center;
+  font-family: NewAmsterdam;
+  font-size: 65px;
+  color: #995098;
+  line-height: 54px;
+  padding: 0 20px;
+}
+.InnovateChennaiContent h1 {
+  /* font-family: NewAmsterdam;
+  color: #995098;
+  font-size: clamp(36px, 14vw, 100px);
+  line-height: clamp(44px, 9vw, 94px); */
+  text-align: center;
+  font-family: NewAmsterdam;
+  font-size: 65px;
+  color: #995098;
+  line-height: 54px;
+  padding: 0 20px;
 }
 
 .InnovateChennaiContent h6 {

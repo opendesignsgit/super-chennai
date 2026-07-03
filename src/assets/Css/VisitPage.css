@@ -6,7 +6,7 @@
     rgb(25 28 129) 0%,
     rgb(118 60 167) 50%,
     rgb(73 14 117) 90%
-  );
+  ) !important;
 }
 
 @keyframes animateGradient {
@@ -39,27 +39,28 @@
 } */
 
 .visitIntroParaSection {
-    margin-top: 35px;
-    position: relative;
-    padding-bottom: 200px;
-    padding-top: 60px;
-    overflow: hidden;
-    background: url(/images/doted-bg.png) no-repeat top left;
+  margin-top: 35px;
+  position: relative;
+  padding-bottom: 200px;
+  padding-top: 60px;
+  overflow: hidden;
+  background: url(/images/doted-bg.png) no-repeat top left;
 }
 
 .VolunteeerTextBackground {
-    position: absolute;
-    top: 60%;
-    left: 0;
-    white-space: nowrap;
-    width: 200%;
-    /* animation: scrollText 20s linear infinite; */
-    z-index: 0;
-    opacity: 0.025;
-    animation-duration: 15s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    -webkit-animation: scrollText 50s linear infinite;
+  position: absolute;
+  top: 60%;
+  left: 0;
+  white-space: nowrap;
+  width: 200%;
+  /* animation: scrollText 20s linear infinite; */
+  z-index: 0;
+  opacity: 0.025;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation: scrollText 50s linear infinite;
+  z-index: -1 !important;
 }
 
 /* .VolunteeerTextBackground p {
@@ -388,7 +389,7 @@
   visibility: hidden;
   width: 50px;
   /* background-image: url(images/arrow.svg); */
-  background-image: url(../images/icons/arrow.svg);
+  background-image: url(../../../public/images/icons/arrow.svg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right 0;
@@ -435,26 +436,270 @@
 
 .visitslideImg .slick-prev {
   /* background-image: url(images/icons/LeftArrow-Bg.svg) !important; */
-  background-image: url(../images/icons/LeftArrow-Bg.svg);
+  background-image: url(../../../public/images/icons/LeftArrow-Bg.svg);
   background-size: contain !important;
   left: auto;
-  right: 50px;
+  right: 100px;
   top: 46%;
 }
 
 .visitslideImg .slick-next {
   /* background-image: url(images/icons/RightArrow-Bg.svg) !important; */
-  background-image: url(../images/icons/RightArrow-Bg.svg);
+  background-image: url(../../../public/images/icons/RightArrow-Bg.svg);
   background-size: contain !important;
-  right: 50px;
+  right: 100px;
 }
 .visitslideImg .slick-prev:before,
 .visitslideImg .slick-next:before {
   display: none;
 }
+.visitIntroParaSection {
+  padding-bottom: 60px;
+}
 /* Became a Volunteer  */
 
-@media (max-width: 768px) {
+/* New Update */
+
+.section-container {
+  display: flex;
+  /* max-width: 1200px; */
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  padding: 0;
+  margin-bottom: 70px;
+}
+
+.section-left-image {
+  width: 55%;
+  background-color: #e9ecf2;
+}
+
+.section-left-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section-right-content {
+  width: 60%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  gap: 0px;
+  justify-content: center;
+}
+
+.section-right-content-pillers {
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  gap: 0px;
+  justify-content: center;
+}
+.info-item-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 20px 0;
+}
+.info-item-block:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.info-item-block:first-child {
+  padding-top: 0;
+}
+
+.newupdatewhychennai {
+  font-size: 60px !important;
+  line-height: 45px !important;
+}
+
+.info-icon {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.info-text-block h3 {
+  margin: 0 0 6px;
+  font-size: 35px !important;
+  line-height: 1 !important;
+  font-family: NewAmsterdam;
+  color: #a44294;
+  text-align: left;
+}
+
+.info-text-block p {
+  margin: 0;
+  color: #000;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  width: auto !important;
+  text-align: left;
+  margin-top: 10px !important;
+}
+
+.newupdatewhychennai {
+  margin-top: 10px;
+}
+
+/* New Update */
+
+@media (max-width: 1600px) {
+  .visitContSlide .slick-list {
+    height: 80vh;
+    height: auto;
+  }
+  .visitslideImg .slick-slide .titleOut {
+    height: 82vh;
+  }
+  .visitslideImg .slick-prev {
+    top: 48%;
+  }
+}
+
+@media (max-width: 1500px) {
+  .visitContSlide .slick-slide.slick-current h3 {
+    font-size: 35px;
+  }
+  .visitContSlide .slick-slide h3 {
+    font-size: 30px;
+  }
+  .visitslideImg .slick-slide .titleOut {
+    font-size: 70px;
+  }
+  .visitslideImg .slick-slide h4 {
+    right: -475px;
+  }
+  .visitslideImg .slick-slide .titleOut {
+    height: 78vh;
+  }
+}
+
+@media (max-width: 1300px) {
+  .visitContSlide .slick-slide.slick-current h3 {
+    font-size: 30px;
+  }
+  .visitContSlide .slick-slide h3 {
+    font-size: 25px;
+  }
+  .visitslideImg .slick-slide .titleOut {
+    font-size: 55px;
+  }
+  .visitslideImg .slick-slide h4 {
+    right: -490px;
+  }
+  .visitslideImg .slick-slide .titleOut {
+    height: 75vh;
+  }
+  .visitContSlide .slick-list {
+    height: 68vh;
+    height: auto;
+  }
+  .visitContSlide .slick-slide.slick-current h3:after {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .visitContSlide .slick-slide.slick-current h3 {
+    font-size: 25px;
+  }
+  .visitContSlide .slick-slide h3 {
+    font-size: 20px;
+  }
+  .visitContSlide .slick-slide.slick-current h3:after {
+    height: 30px;
+    right: -66px;
+    width: 30px;
+  }
+  .visitContSlide .slick-slide h3 {
+    font-size: 15px;
+  }
+  .visitContSlide .slick-list {
+    height: 52vh;
+    height: auto;
+  }
+
+  .visitContSlide {
+    padding-left: 35px;
+  }
+  .visitslideImg .slick-slide .titleOut {
+    height: 55vh;
+    font-size: 55px;
+  }
+  .visitslideImg .slick-slide h4 {
+    right: -490px;
+  }
+  .visitslideImg .slick-prev {
+    top: 50%;
+  }
+}
+
+@media (max-width: 1050px) and (min-width: 1000px) {
+  .visitContSlide .slick-slide.slick-current h3:after {
+    right: -28px;
+  }
+}
+
+@media (max-width: 900px) {
+  .visitIntroParaSection {
+    background: none;
+  }
+
+  .nightlifesecIn {
+    padding-bottom: 0;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 999px) {
+  .info-text-block h3 {
+    margin: 0 0 6px;
+    font-size: 25px !important;
+    line-height: 1 !important;
+  }
+
+  .info-item-block {
+    flex-direction: column;
+    gap: 15px;
+
+    padding: 20px 0;
+  }
+  .section-container {
+    flex-direction: column;
+    padding: 0 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .info-icon {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+  }
+  .newupdatewhychennai {
+    font-size: 36px !important;
+    line-height: 36px !important;
+  }
+
+  .section-left-image,
+  .section-right-content {
+    width: 100%;
+  }
+
+  .section-right-content {
+    padding: 30px 20px;
+  }
   .visitContSlide {
     display: none;
   }
@@ -511,10 +756,16 @@
 
   .visitIntroParaSection {
     padding-top: 0;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
+    padding-bottom: 0px;
   }
 
   .visitslideTop p {
     margin-top: 20px;
+  }
+
+  .visitslideImg .slick-arrow:first-child {
+    right: 0;
+    left: 97px;
   }
 }

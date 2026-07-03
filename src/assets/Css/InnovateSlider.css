@@ -89,7 +89,7 @@
   pointer-events: auto;
   width: 50px;
   height: 50px;
-  background-image: url("../images/icons/LeftArrow-Bg.svg");
+  background-image: url("../../../public/images/icons/LeftArrow-Bg.svg");
   background-size: contain;
   margin-right: 20px;
 }
@@ -99,7 +99,7 @@
   pointer-events: auto;
   width: 50px;
   height: 50px;
-  background-image: url("../images/icons/RightArrow-Bg.svg");
+  background-image: url("../../../public/images/icons/RightArrow-Bg.svg");
   background-size: contain;
 }
 

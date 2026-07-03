@@ -25,8 +25,10 @@
 .DiverseDelightsTextDiv img {
   height: 150px;
 }
+
 .FoodSectionDesignContainer {
-  background-image: url("/public/images/FoodImageSectionBg.png");
+  /* background-image: url("/public/images/FoodImageSectionBg.png"); */
+  background-image: url("/images/FoodImageSectionBg.png");
   display: flex;
   align-items: center;
   position: relative;
@@ -51,7 +53,7 @@
 .paragarphTextDiverseFood p {
   font-family: "29LT Bukra Regular";
   width: 57%;
-
+  text-align: center;
   color: #000000;
   font-size: clamp(14px, 2vw, 16px);
   line-height: clamp(22px, 4vw, 26px);
@@ -63,6 +65,7 @@
   justify-content: center;
   align-items: center;
   /* background-image: url("/public/images/FoodImageSectionBg.png"); */
+  background-image: url("/images/FoodImageSectionBg.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -71,6 +74,7 @@
 .foodSectionFirst .foodSectionConatiner {
   width: 400px;
 }
+
 .foodSectionThird .foodSectionConatiner {
   width: 400px;
 }
@@ -91,11 +95,17 @@
   margin-top: 30px;
   cursor: pointer;
 }
+
 .foodSectionConatiner h4 {
   font-family: "NewAmsterdam";
   color: #a1a1a1;
-  font-size: clamp(24px, 5vw, 75px);
-  line-height: clamp(28px, 5vw, 70px);
+  font-size: 60px;
+  line-height: 60px;
+  transition: color 1s ease;
+  -webkit-transition: color 1s ease;
+  -moz-transition: color 1s ease;
+  -ms-transition: color 1s ease;
+  -o-transition: color 1s ease;
 }
 
 .activeDiverseSection h4 {
@@ -108,11 +118,11 @@
 
 .foodSectionConatiner p {
   font-family: "29LT Bukra Regular";
-  font-size: 17px;
+  font-size: 14px;
   color: #7e7e7e;
   width: 100%;
-  line-height: 25px;
-  width: 85%;
+  line-height: 19px;
+  width: 65%;
 }
 
 .foodSectionFirst .foodSectionConatiner {
@@ -126,35 +136,47 @@
   margin-right: 0;
   position: absolute;
   top: 0px;
-  left: 10%;
+  left: 12%;
 }
+
 .foodSectionFirst .foodSectionConatiner:nth-child(2) {
   text-align: end;
   margin-right: 0;
   position: absolute;
-  top: 20%;
+  top: 14%;
   left: 0%;
 }
+
 .foodSectionFirst .foodSectionConatiner:nth-child(3) {
   text-align: end;
   margin-right: 0;
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: -5%;
 }
+
 .foodSectionFirst .foodSectionConatiner:nth-child(4) {
   text-align: end;
   margin-right: 0;
   position: absolute;
-  top: 60%;
-  left: 0%;
+  top: 48%;
+  left: -7%;
 }
+
 .foodSectionFirst .foodSectionConatiner:nth-child(5) {
   text-align: end;
   margin-right: 0;
   position: absolute;
-  top: 80%;
-  left: 10%;
+  top: 68%;
+  left: -1%;
+}
+
+.foodSectionFirst .foodSectionConatiner:nth-child(6) {
+  text-align: end;
+  margin-right: 0;
+  position: absolute;
+  top: 83%;
+  left: 12%;
 }
 
 /* ////////////// */
@@ -164,35 +186,47 @@
   margin-right: 0;
   position: absolute;
   top: 0px;
-  right: 10%;
+  right: 12%;
 }
+
 .foodSectionThird .foodSectionConatiner:nth-child(2) {
   text-align: left;
   margin-right: 0;
   position: absolute;
-  top: 20%;
+  top: 14%;
   right: 0%;
 }
+
 .foodSectionThird .foodSectionConatiner:nth-child(3) {
   text-align: left;
   margin-right: 0;
   position: absolute;
-  top: 40%;
+  top: 30%;
   right: -5%;
 }
+
 .foodSectionThird .foodSectionConatiner:nth-child(4) {
   text-align: left;
   margin-right: 0;
   position: absolute;
-  top: 60%;
-  right: 0%;
+  top: 48%;
+  right: -7%;
 }
+
 .foodSectionThird .foodSectionConatiner:nth-child(5) {
   text-align: left;
   margin-right: 0;
   position: absolute;
-  top: 80%;
-  right: 10%;
+  top: 68%;
+  right: -1%;
+}
+
+.foodSectionThird .foodSectionConatiner:nth-child(6) {
+  text-align: left;
+  margin-right: 0;
+  position: absolute;
+  top: 83%;
+  right: 12%;
 }
 
 .DelightPageText {
@@ -219,6 +253,7 @@
   line-height: clamp(100px, 14vw, 230px);
   text-transform: uppercase;
 }
+
 .DelightPageTextscroll-left {
   animation-name: scrollLeftVolunteer;
 }
@@ -231,6 +266,7 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -240,69 +276,196 @@
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0%);
   }
 }
 
-@media (max-width: 1600px) and (min-width: 1000px) {
-  .foodSectionFirst .foodSectionConatiner:first-child {
-    left: 6%;
+.OverviewDiverseDelights {
+  background: #2b3889;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-family: poppins;
+  font-weight: 300;
+  margin: 10px 0;
+}
+
+@media (max-width: 1600px) and (min-width: 1250px) {
+  .FoodSectionDesignContainer {
+    height: 786px;
   }
+
+  .foodSectionConatiner h4 {
+    font-size: 48px;
+    line-height: 51px;
+  }
+
+  .foodSectionConatiner p {
+    font-size: 12px;
+    line-height: 14px;
+    width: 63%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:first-child {
+    left: 2%;
+    top: 9%;
+  }
+
   .foodSectionThird .foodSectionConatiner:first-child {
-    right: 6%;
+    right: 2%;
+    top: 9%;
   }
 
   .foodSectionFirst .foodSectionConatiner:nth-child(2) {
-    left: -4%;
+    left: -9%;
+    top: 22%;
   }
 
   .foodSectionThird .foodSectionConatiner:nth-child(2) {
-    right: -4%;
+    right: -9%;
+    top: 22%;
   }
 
   .foodSectionFirst .foodSectionConatiner:nth-child(3) {
-    left: -11%;
+    left: -14%;
+    top: 37%;
   }
 
   .foodSectionThird .foodSectionConatiner:nth-child(3) {
-    right: -11%;
+    right: -14%;
+    top: 37%;
   }
 
   .foodSectionFirst .foodSectionConatiner:nth-child(4) {
-    left: -4%;
+    left: -14%;
+    top: 52%;
   }
 
   .foodSectionThird .foodSectionConatiner:nth-child(4) {
-    right: -4%;
+    right: -14%;
+    top: 52%;
   }
 
   .foodSectionFirst .foodSectionConatiner:nth-child(5) {
-    left: 6%;
+    left: -9%;
+    top: 67%;
   }
 
   .foodSectionThird .foodSectionConatiner:nth-child(5) {
+    right: -9%;
+    top: 67%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(6) {
+    left: 6%;
+    top: 79%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(6) {
     right: 6%;
+    top: 79%;
   }
 }
 
-@media (max-width: 1000px) and (min-width: 800px) {
+@media (max-width: 1250px) and (min-width: 1000px) {
+  .foodSectionConatiner h4 {
+    font-size: 36px;
+    line-height: 40px;
+  }
 
   .foodSectionConatiner p {
-  
+    font-size: 11px;
+    line-height: 16px;
+    width: 58%;
+  }
+
+  .FoodSectionDesignContainer {
+    height: 550px;
+    margin: 70px 0;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:first-child {
+    left: 1%;
+    top: -12%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:first-child {
+    right: 1%;
+    top: -12%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(2) {
+    left: -11%;
+    top: 7%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(2) {
+    right: -11%;
+    top: 7%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(3) {
+    left: -14%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(3) {
+    right: -14%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(4) {
+    left: -14%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(4) {
+    right: -14%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(5) {
+    left: -11%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(5) {
+    right: -11%;
+  }
+
+  .foodSectionFirst .foodSectionConatiner:nth-child(6) {
+    left: 1%;
+  }
+
+  .foodSectionThird .foodSectionConatiner:nth-child(6) {
+    right: 1%;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 100px) {
+  /* .foodSectionFirst .foodSectionConatiner:first-child {
+    top: 35px;
+  }
+
+  .foodSectionThird .foodSectionConatiner:first-child {
+    top: 35px;
+  } */
+}
+
+@media (max-width: 1000px) and (min-width: 800px) {
+  .foodSectionConatiner p {
     font-size: 13px;
     line-height: 17px;
     width: 52%;
     margin-top: 6px;
-}
+  }
 
   .foodSectionConatiner h4 {
     font-size: 30px;
     line-height: 30px;
-}
+  }
+
   .foodSectionFirst .foodSectionConatiner:first-child {
     left: -1%;
   }
+
   .foodSectionThird .foodSectionConatiner:first-child {
     right: -1%;
   }
@@ -316,19 +479,19 @@
   }
 
   .foodSectionFirst .foodSectionConatiner:nth-child(3) {
-    left: -13%;
+    left: -16%;
   }
 
   .foodSectionThird .foodSectionConatiner:nth-child(3) {
-    right: -13%;
+    right: -16%;
   }
 
   .foodSectionFirst .foodSectionConatiner:nth-child(4) {
-    left: -9%;
+    left: -16%;
   }
 
   .foodSectionThird .foodSectionConatiner:nth-child(4) {
-    right: -9%;
+    right: -16%;
   }
 
   .foodSectionFirst .foodSectionConatiner:nth-child(5) {
@@ -338,33 +501,30 @@
   .foodSectionThird .foodSectionConatiner:nth-child(5) {
     right: -1%;
   }
-
-  .FoodSectionDesignContainer {
-    height: 590px;
-  }
 }
 
-@media (max-width: 800px) {
-
+@media (max-width: 900px) {
   .DelightPageText {
     top: 3%;
-}
+  }
+
   .paragarphTextDiverseFood {
     display: flex;
     justify-content: center;
     margin-bottom: 45px;
   }
+
   .DiverseDelightsText {
     font-size: 14vw;
   }
 
   .accordionItem {
     border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.09);
     overflow: hidden;
   }
 
-  .accordionTitle {
-  }
+  .accordionTitle {}
 
   .accordionTitle {
     display: flex;
@@ -395,6 +555,7 @@
   .accordionInnerContent {
     padding: 16px;
     background-color: white;
+    padding-top: 0;
   }
 
   .accordionInnerContent img {
@@ -414,6 +575,7 @@
   .DiverseDelightsTextDiv img {
     height: 48px;
   }
+
   .paragarphTextDiverseFood p {
     width: 90%;
     text-align: center;
@@ -431,10 +593,11 @@
 
   .accordionInnerContent p {
     font-family: "29LT Bukra Regular";
-    font-size: 17px;
+    font-size: 13px;
     color: #7e7e7e;
+    color: #3d3a3a;
     width: 100%;
-    line-height: 25px;
+    line-height: 20px;
   }
 
   /* .activeAccordion .accordionInnerContent p {
@@ -448,7 +611,43 @@
   .activeAccordion .accordionIcon {
     color: #2b3889;
   }
+
   .DiverseDelightsSectionContainer {
     padding-bottom: 30px;
+  }
+}
+
+@media (min-width: 900px) {}
+
+@media (max-width: 900px) and (min-width: 500px) {
+  .accordionContainer {
+    margin-top: 100px;
+  }
+
+  .accordionInnerContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .accordionInnerContent img {
+    width: 298px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 700px) {
+  .accordionItem {
+    width: 600px;
+  }
+
+  .accordionContainer {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

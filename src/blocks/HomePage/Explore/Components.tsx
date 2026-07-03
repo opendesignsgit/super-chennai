@@ -1,9 +1,8 @@
-
 'use client'
 import React from 'react'
 import Slider from 'react-slick'
 import { Media } from 'src/payload-types'
-import './style.css'
+// import './style.css'
 import ArrowImage from '@/assets/images/icons/rightArrowsvg.svg'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -68,23 +67,29 @@ export const ExploreBlockServer: React.FC<Props> = ({ heading, description, card
   }
 
   return (
-    <div className="relative w-full px-4 py-10 ExploreChennaiContainer">
-      <div className="container exploreChennaiContiner max-w-7xl mx-auto px-4 space-y-10">
-        <div className="ChennaiInvestMents">
-          <h1 className="chennaiInvestmentsHeading" style={{ textAlign: 'center' }}>
-            {heading || 'Explore Chennai'}
-          </h1>
+    // <div className="relative w-full px-4 py-10 ExploreChennaiContainer">
+    <div className="container max-w-7xl mx-auto px-4 ExploreInvestContainerdiv">
+      <div className="ChennaiInvestMents">
+        <h1 className="chennaiInvestmentsHeading" style={{ textAlign: 'center' }}>
+          {heading || 'Explore Chennaiss'}
+        </h1>
 
-          <h5 className="chennaiInvestmentsHeadingSub" style={{ textAlign: 'center' }}>
-            {description ||
-              'Explore restaurants, nightlife, sports, shopping, and entertainment in Super Chennai—where every moment is extraordinary.'}
-          </h5>
-        </div>
-        <div className="space-y-4">
-          <Slider {...settings}>{firstRow.map(renderCard)}</Slider>
-          <Slider {...settings}>{secondRow.map(renderCard)}</Slider>
+        <h5 className="chennaiInvestmentsHeadingSub" style={{ textAlign: 'center' }}>
+          {description ||
+            'Explore restaurants, nightlife, sports, shopping, and entertainment in Super Chennai—where every moment is extraordinary.'}
+        </h5>
+      </div>
+      <div className="relative w-full px-4 py-10 ExploreChennaiContainer">
+        <div className="container exploreChennaiContiner max-w-7xl mx-auto px-4 space-y-10">
+          <div className="space-y-4">
+            <Slider {...settings}>{firstRow.map(renderCard)}</Slider>
+          </div>
+          <div className="space-y-4 !mt-0">
+            <Slider {...settings}>{secondRow.map(renderCard)}</Slider>
+          </div>
         </div>
       </div>
     </div>
+    // </div>
   )
 }

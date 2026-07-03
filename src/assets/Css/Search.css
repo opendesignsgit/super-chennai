@@ -8,8 +8,7 @@
   position: relative;
 }
 
-.formssection {
-}
+
 .searchInputForm input {
   font-family: "29LT Bukra Medium";
   border: 2px solid #c9abcd;
@@ -19,6 +18,16 @@
   padding-left: 50px;
   font-size: 19px;
   background: white;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.searchInputForm input:focus-visible {
+  outline: none;
+  border-color: #c9abcd;
+  box-shadow: 0 0 0 4px rgba(201, 171, 205, 0.3); /* Optional glow effect */
+  box-shadow: 0 0 0 3px rgba(153, 80, 153, 0.1); /* Optional glow effect */
+
+  /* #995098 */
 }
 
 .searchInputForm input::placeholder {
@@ -102,6 +111,15 @@
     transform: rotate(360deg);
   }
 }
+
+.searchInputFormbanner{
+  display: none;
+}
+.mobileSearchContainer{
+  display: none;
+}
+
+
 
 @media (max-width: 1600px) and (min-width: 1300px) {
   .searchInputForm input {

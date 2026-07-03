@@ -1,7 +1,16 @@
 .FooterBackground {
+  /* background-color: #3b1d48; */
+  /* background-image:
+   url("../public/images/footer-background.png"),
+    url("../public/images/footer-background-image.png"); */
+  /* background-image: url("../../../public/images/footer-background-image.png"),
+    url("../../../public/images/footer-background.png"); */
+    position: relative;
+    z-index: 9;
+}
 
-  background-image: url("../images/footer-background-image.png"),
-    url("../images/footer-background.png");
+.credaiLogo img{
+     border-radius: 5px;
 }
 
 .FooterHeading {
@@ -35,7 +44,7 @@
 }
 
 .firstsectionwidth {
-  width: 23%;
+  width: 25%;
 }
 
 .containerSection {
@@ -155,7 +164,101 @@
   color: #a4a4a4;
 }
 
+@media (min-width: 1250px) and (max-width: 1400px) {
+  .FooterSectionDiv h5 {
+    font-size: 10px;
+    line-height: 20px;
+  }
+
+  .FooterHeading {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .SectionConatinerSecond {
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 50px;
+  }
+  .weather-widget {
+    /* top: -295px; */
+    bottom: 0;
+    right: 40px;
+  }
+
+  .SectionConatinerSecond1 {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 1000px) {
+  .FooterSectionDiv h5 {
+    font-size: 11px;
+    line-height: 24px;
+  }
+
+  .weather-widget {
+    /* top: -293px; */
+    bottom: 0;
+  }
+
+  .credaiLogo {
+    margin-left: -12px !important;
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 800px) {
+  .containerSection {
+    flex-wrap: wrap;
+    margin-left: 5%;
+    row-gap: 50px;
+  }
+
+  .SectionLeft1 {
+    width: 45%;
+  }
+}
+
+@media (max-width: 800px) and (min-width: 769px) {
+  .containerSection {
+    flex-wrap: wrap;
+    margin-left: 5%;
+    row-gap: 50px;
+  }
+
+  .SectionLeft1 {
+    width: 45%;
+  }
+
+  .LogoandFollow {
+    column-gap: 40px;
+  }
+
+  .iconsFlex img {
+    width: 35px;
+  }
+  .logoFooterimage img {
+    width: 100px;
+  }
+
+  .copyrights h5 {
+    font-size: 14px;
+  }
+
+  .copyrights h4 {
+    font-size: 14px;
+  }
+
+  .designBy img {
+    width: 30px;
+  }
+}
+
 @media (max-width: 768px) {
+  .credaiLogo {
+    margin-top: 25px;
+  }
   .SectionConatinerSecond {
     margin-top: 15px;
     padding-left: 35px;
@@ -184,7 +287,7 @@
   }
 
   .FooterSectionDiv h5 {
-     font-size: 14px;
+    font-size: 14px;
     line-height: 28px;
     text-align: center;
   }
@@ -209,13 +312,6 @@
     line-height: 24px;
   }
 
-  /* .FooterHeading::before {
-    content: "+";
-    right: 0;
-    position: absolute;
-    font-weight: 200;
-    font-size: 15px;
-  } */
   .FooterHeading {
     position: relative;
     padding-right: 20px;
@@ -306,8 +402,13 @@
   }
 }
 
-@media(min-width:768px){
-  .symbol{
+@media (min-width: 768px) {
+  .symbol {
     display: none;
+  }
+
+  .credaiLogo {
+    margin-top: 42px;
+    margin-left: -110px;
   }
 }

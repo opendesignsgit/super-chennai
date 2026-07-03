@@ -11,13 +11,14 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   -webkit-animation: scrollText 50s linear infinite;
+  z-index: -1;
 }
 
 .EventsCalenderBackground p {
-    font-family: "29LT Bukra SmBd";
-    font-size: clamp(80px, 14vw, 280px);
-    line-height: clamp(100px, 14vw, 230px);
-    text-transform: uppercase;
+  font-family: "29LT Bukra SmBd";
+  font-size: clamp(80px, 14vw, 280px);
+  line-height: clamp(100px, 14vw, 230px);
+  text-transform: uppercase;
 }
 .Utilitiesscroll-left {
   animation-name: scrollLeftVolunteer;
@@ -45,8 +46,7 @@
   }
 }
 
-
-.eventsCalenderMainRow{
+.eventsCalenderMainRow {
   overflow: hidden;
   position: relative;
 }
@@ -78,38 +78,39 @@
   column-gap: 120px;
   justify-content: center;
   margin-top: 30px;
+  margin-top: 100px;
 }
 
 .EventsCalenderLeftButton {
   width: 40px;
   height: 40px;
-  background-image: url("../images/icons/LeftArrow-Bg.svg");
+  background-image: url("../../../public/images/icons/LeftArrow-Bg.svg");
   background-size: cover;
   position: relative;
 }
 
 .EventsCalenderLeftButton:hover {
-  background-image: url("../images/icons/LeftArrow.svg");
+  background-image: url("../../../public/images/icons/LeftArrow.svg");
   cursor: pointer;
 }
 
 .EventsCalenderRightButton {
   width: 40px;
   height: 40px;
-  background-image: url("../images/icons/RightArrow-Bg.svg");
+  background-image: url("../../../public/images/icons/RightArrow-Bg.svg");
   background-size: cover;
 }
 
 .CalendarEventsFirst .eventsCalenderIamge {
   width: 50%;
-  object-fit: cover;
+  /* object-fit: cover; */
   border-top-left-radius: 20px;
 }
 .MainCalendarSectionEvent {
   width: 40%;
 }
 .EventsCalenderRightButton:hover {
-  background-image: url("../images/icons/RightArrow.svg");
+  background-image: url("../../../public/images/icons/RightArrow.svg");
   cursor: pointer;
 }
 
@@ -217,7 +218,7 @@
 }
 
 .EventsCalendarDateandTime {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -226,6 +227,18 @@
   width: 95px;
   height: 95px;
   border-radius: 10px;
+  padding: 10px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  background: #da644a;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  padding: 10px 15px;
+  padding-top: 20px;
 }
 
 .EventsCalendarDateandTime .dateEvents {
@@ -288,7 +301,7 @@
 
 .FindOutMore::before {
   content: "";
-  background-image: url("../images/icons/eventsCalendarArrow.svg");
+  background-image: url("../../../public/images/icons/eventsCalendarArrow.svg");
   position: absolute;
   width: 30px;
   height: 20px;
@@ -296,7 +309,32 @@
   right: -40px;
 }
 
+.cardMobileSection {
+  padding-bottom: 0;
+}
+
+@media (max-width: 1000px) and (min-width: 800px) {
+  .CalendarEventsFirst .eventsCalenderIamge {
+    width: 70%;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+  }
+  .CalendarEventsFirst {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .MainCalendarSectionEvent {
+    width: 70%;
+    margin-top: 30px;
+  }
+}
+
 @media (max-width: 768px) {
+  .EventsCalendarDateandTime .dayEvents {
+    font-size: 12px;
+    line-height: 17px;
+  }
   .EventsCalendarTitleMain h2 {
     font-size: 65px;
     line-height: 50px;
@@ -313,6 +351,7 @@
 
   .EventsCalenderButtons {
     margin-top: 25px;
+    margin-top: 75px;
   }
   .CalendarEventsFirst {
     flex-direction: column;

@@ -1,10 +1,10 @@
-.EventsCalenderBackground {
+/* .EventsCalenderBackground {
   position: absolute;
   top: 18%;
   left: 0;
   white-space: nowrap;
   width: 200%;
-  /* animation: scrollText 20s linear infinite; */
+
   z-index: 0;
   opacity: 0.024;
   animation-duration: 15s;
@@ -14,11 +14,12 @@
 }
 
 .EventsCalenderBackground p {
-    font-family: "29LT Bukra SmBd";
-    font-size: clamp(80px, 14vw, 280px);
-    line-height: clamp(100px, 14vw, 230px);
-    text-transform: uppercase;
+  font-family: "29LT Bukra SmBd";
+  font-size: clamp(80px, 14vw, 280px);
+  line-height: clamp(100px, 14vw, 230px);
+  text-transform: uppercase;
 }
+
 .Utilitiesscroll-left {
   animation-name: scrollLeftVolunteer;
 }
@@ -31,6 +32,7 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -40,18 +42,19 @@
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0%);
   }
 }
 
 
-.eventsCalenderMainRow{
+.eventsCalenderMainRow {
   overflow: hidden;
   position: relative;
 }
+
 .EventsCalendarMainSection {
-  /* background-color: #f7f7f7; */
   padding-top: 100px;
   position: relative;
   overflow: hidden;
@@ -105,9 +108,11 @@
   object-fit: cover;
   border-top-left-radius: 20px;
 }
+
 .MainCalendarSectionEvent {
   width: 40%;
 }
+
 .EventsCalenderRightButton:hover {
   background-image: url("../../../assets/images/icons/RightArrow.svg");
   cursor: pointer;
@@ -132,6 +137,7 @@
 .EventsCalendarCardSection {
   min-width: 330px;
 }
+
 .CalenderCategoryOverlay {
   font-family: "29LT Bukra SmBd";
   font-size: 12px;
@@ -145,6 +151,7 @@
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
+
 .EventsCalendarMonthtime {
   display: flex;
   column-gap: 5px;
@@ -168,12 +175,14 @@
   text-transform: uppercase;
   color: #fff;
 }
+
 .EventsCalendarTitlecss {
   font-family: "29LT Bukra SmBd";
   width: 80%;
   max-width: fit-content;
   margin-top: 14px;
 }
+
 .EventsCalendarContentcss {
   font-family: "29LT Bukra Regular";
   width: 90%;
@@ -195,6 +204,7 @@
   text-transform: uppercase;
   position: relative;
 }
+
 .MainCalendarSectionEvent h4::before {
   content: "";
   width: 100%;
@@ -203,6 +213,7 @@
   position: absolute;
   bottom: -10px;
 }
+
 .CalendarEventsFirst {
   display: flex;
   justify-content: flex-start;
@@ -247,11 +258,13 @@
   font-size: 30px;
   line-height: 40px;
 }
+
 .secondSectionEventsCalendar .eventspLACE {
   font-family: "29LT Bukra SmBd";
   font-size: 30px;
   line-height: 40px;
 }
+
 .thirdSectionCalendarContent p {
   font-family: "29LT Bukra Regular";
   font-size: 16px;
@@ -282,6 +295,7 @@
   position: relative;
   width: max-content;
 }
+
 .eventsCalendarMainSectionConatiner {
   margin-top: 50px;
 }
@@ -314,6 +328,7 @@
   .EventsCalenderButtons {
     margin-top: 25px;
   }
+
   .CalendarEventsFirst {
     flex-direction: column;
     align-items: center;
@@ -322,6 +337,7 @@
   .CalendarEventsFirst .eventsCalenderIamge {
     width: 100%;
   }
+
   .MainCalendarSectionEvent {
     width: 100%;
   }
@@ -392,7 +408,8 @@
   .eventsCalendarLinks a {
     font-size: 8px;
   }
+
   .eventsCalendarMainSectionConatiner {
     margin-top: 25px;
   }
-}
+} */
