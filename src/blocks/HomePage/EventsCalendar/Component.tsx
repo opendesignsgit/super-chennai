@@ -51,7 +51,7 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description, pag
   const [x, setX] = useState(0)
 
   const [allEvents, setAllEvents] = useState<EventType[]>([])
-  const [isFeaturedEvent, setIsFeaturedEvent] = useState<EventType | null>(null)
+  const [isFeaturedEvent, setIsFeaturedEvent] = useState<EventType | null | undefined>(null)
   const [loading, setLoading] = useState(true)
 
   const slide = (direction: 'left' | 'right') => {
@@ -110,66 +110,6 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description, pag
       time,
     }
   }
-
-  // useEffect(() => {
-  //   const fetchEvents = async () => {
-  //     try {
-  //       const res = await fetch('/api/events')
-  //       const data = await res.json()
-
-  //       console.log('Raw API data ----------------------:', data)
-
-  //       if (!data?.docs?.length) {
-  //         console.warn('No events found')
-  //         setAllEvents([])
-  //         setIsFeaturedEvent(null)
-  //         return
-  //       }
-
-  //       const enrichedEvents: EventType[] = data.docs.map((item: any) => {
-  //         // parse event date
-  //         const eventDateStr = item.event?.eventDates?.[0]?.date || item.event?.details?.eventTime
-  //         const dateParts = parseEventDate(eventDateStr)
-
-  //         // pick the hero image first, fallback to event.image
-  //         const imageUrl = item.heroImage?.url || item.event?.image?.url || ''
-
-  //         return {
-  //           id: item.id || item._id || undefined,
-  //           title: item.title || item.event?.title || 'Untitled Event',
-  //           description: item.description || item.event?.description || '',
-  //           category:
-  //             item.categories?.[0]?.title || item.event?.eventsCategory?.[0]?.title || 'General',
-  //           address: item.event?.address || item.event?.details?.location?.label || '',
-  //           image: imageUrl,
-  //           isFeatured: item.isFeatured,
-  //           eventDate: eventDateStr,
-  //           content: item.content || { root: { children: [] } },
-  //           ...dateParts,
-  //           event: item.event, // keep original event object
-  //           link: item.event?.link || `#`,
-  //         }
-  //       })
-
-  //       console.log('Enriched events:', enrichedEvents)
-
-  //       setAllEvents(enrichedEvents)
-
-  //       const featured = enrichedEvents.find(
-  //         (e) => e.isFeatured === true || e.isFeatured === 'true' || e.isFeatured === 1,
-  //       )
-  //       setIsFeaturedEvent(featured || null)
-  //     } catch (error) {
-  //       console.error('Failed to fetch events:', error)
-  //       setAllEvents([])
-  //       setIsFeaturedEvent(null)
-  //     } finally {
-  //       setLoading(false)
-  //     }
-  //   }
-
-  //   fetchEvents()
-  // }, [])
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -244,7 +184,6 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description, pag
           })
 
           if (currentMonthEvents.length > 0) {
-            // Sort to get the absolute nearest/latest upcoming event first
             currentMonthEvents.sort((a, b) => {
               return new Date(a.eventDate!).getTime() - new Date(b.eventDate!).getTime()
             })
