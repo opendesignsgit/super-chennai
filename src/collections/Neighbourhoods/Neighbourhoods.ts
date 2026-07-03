@@ -71,7 +71,7 @@ export const Neighbourhood: CollectionConfig<'neighbourhood'> = {
   admin: {
     // hidden: true,
     defaultColumns: ['title', 'slug', 'updatedAt'],
-       group: 'Main collections',
+    group: 'Main collections',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
@@ -487,6 +487,50 @@ export const Neighbourhood: CollectionConfig<'neighbourhood'> = {
               name: 'isActive',
               type: 'checkbox',
               defaultValue: true,
+            },
+
+            // NEW FILEDS ADDED
+
+            // Add these to your Payload fields array
+            {
+              name: 'quickAccessHighlights',
+              label: 'Quick Access Highlights (4-Grid Section)',
+              type: 'array',
+              maxRows: 4, // Keeps the design matching your 4-column layout
+              admin: {
+                description: 'Add up to 4 quick highlights like Metro, Parking, Timings, etc.',
+              },
+              fields: [
+                { name: 'title', type: 'text', required: true },
+                { name: 'desc', label: 'Primary Description', type: 'text', required: true },
+                { name: 'sub', label: 'Sub-text / Context', type: 'text' },
+                {
+                  name: 'icon',
+                  type: 'upload',
+                  relationTo: 'media',
+                  required: false,
+                  admin: { description: 'Upload SVG or Image icon' },
+                },
+              ],
+            },
+            {
+              name: 'neighborhoodStats',
+              label: 'Banner Stats (Horizontal Chips)',
+              type: 'array',
+              admin: {
+                description:
+                  'Horizontal banner badges displaying stats (e.g., Value: "90+", Label: "Malls")',
+              },
+              fields: [
+                { name: 'value', type: 'text', required: true },
+                { name: 'label', type: 'text', required: true },
+                {
+                  name: 'icon',
+                  type: 'upload',
+                  relationTo: 'media',
+                  required: false,
+                },
+              ],
             },
           ],
         },
