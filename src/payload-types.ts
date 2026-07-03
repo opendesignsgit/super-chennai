@@ -3253,6 +3253,18 @@ export interface ChennaiNeighbourhoodlocation {
    */
   value: string;
   /**
+   * Displayed on card (e.g., "15+", "10+")
+   */
+  schoolCount?: string | null;
+  /**
+   * Displayed on card (e.g., "8+", "5+")
+   */
+  hospitalCount?: string | null;
+  /**
+   * Check if Metro is active. Unchecked renders "Connecting".
+   */
+  hasMetro?: boolean | null;
+  /**
    * Dynamic paragraph text for the Overview section.
    */
   overviewDescription?: string | null;
@@ -7165,6 +7177,9 @@ export interface ChennaiNeighbourhoodlocationsSelect<T extends boolean = true> {
   iconSvg?: T;
   label?: T;
   value?: T;
+  schoolCount?: T;
+  hospitalCount?: T;
+  hasMetro?: T;
   overviewDescription?: T;
   overviewPoints?:
     | T
