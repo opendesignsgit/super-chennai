@@ -47,7 +47,7 @@ const Utilities: React.FC<Props> = ({ title, description, tabs }) => {
 
           <div className="utilitiCheCol ">
             <div className="utilitiCTabs flex">
-              <ul className="tabs flex flex-col items-start">
+              <ul className="tabs flex flex-col items-start tabsSectionFlex">
                 {tabs.map((tab, i) => (
                   <li
                     key={tab.tabTitle}
@@ -55,6 +55,7 @@ const Utilities: React.FC<Props> = ({ title, description, tabs }) => {
                       i === tabs.length - 1 ? 'tab_last' : ''
                     }`}
                     onClick={() => setActiveTab(tab.tabTitle)}
+                    style={{ transition: 'all 0.3s ease' }}
                   >
                     {tab.tabTitle}
                   </li>

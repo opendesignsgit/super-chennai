@@ -1,0 +1,89 @@
+.faqIn button {
+  padding: 20px 30px;
+  cursor: pointer;
+}
+.faqIn .active .answer {
+  padding: 0 30px 30px;
+  font-size: 18px;
+  border-bottom: 6px solid #a44294;
+}
+.faqIn .active button {
+  padding-bottom: 0;
+}
+.faqIn button h4 {
+  font-size: 20px;
+}
+.faqIn .active button h4 {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  color: #a44294;
+  background-color: transparent;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.faqIn button .plus {
+  font-size: 22px;
+}
+.faqIn .active button span {
+  /* font-weight: 600;
+  color: #a44294;
+  font-size: 28px; */
+  font-weight: 600;
+  color: #a44294;
+  font-size: 28px;
+  line-height: 0;
+  /* margin-top: -26px; */
+}
+.faqIn ul li {
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  position: relative;
+  padding-left: 15px;
+  list-style: none;
+}
+.faqIn ul li:before {
+  content: "";
+  position: absolute;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #a44294;
+  left: 0;
+  top: 7px;
+}
+
+@media (max-width: 1600px) {
+  .hoverRightimg img {
+    height: 80%;
+    position: relative;
+    top: -70px;
+  }
+  .workImageSection {
+    padding-bottom: 23px;
+  }
+}
+
+@media (max-width: 768px) {
+  .faqIn {
+    padding: 0;
+  }
+  .faqIn button {
+    padding: 15px 20px;
+    padding: 15px;
+  }
+  .faqIn .active .answer {
+    padding: 0 20px 20px;
+    font-size: 16px;
+  }
+  .faqIn button h4 {
+    font-size: 19px;
+    line-height: 21px;
+  }
+  .faqIn .active button h4 {
+    font-size: 19px;
+    line-height: 21px;
+    margin-bottom: 15px;
+  }
+}

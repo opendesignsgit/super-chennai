@@ -31,13 +31,13 @@ export default function MenuBar({
       <div className="menuBarFullSecondSection">
         <div className="closeButtonMenubar">
           <div className="SuperCehnnaiLogoImages">
-            {logo?.filename && (
+            {/* {logo?.filename && (
               <img
                 className="SuperCehnnaiLogoImages"
                 src={`/media/${logo.filename}`}
                 alt={logo.alt || 'Super Chennai Logo'}
               />
-            )}
+            )} */}
           </div>
 
           <img

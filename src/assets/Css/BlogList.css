@@ -1,0 +1,264 @@
+.blogSectionNew .blog-card {
+  width: 31%;
+}
+
+.blogSectionNew1 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  padding: 0 2%;
+  display: none;
+}
+
+.blogMainRow .workIntro {
+  padding: 0;
+}
+
+.blogSectionNew .blogSectionContiner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
+  row-gap: 50px;
+  width: 100%;
+}
+
+.blogSectionNew {
+  margin: 70px auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  margin-top: 60px;
+}
+
+.blog-description {
+}
+
+.blogSectionNew .blog-card {
+  background: #fff;
+  border: 1px solid #eee;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  border: 1px solid #a44294;
+  border-bottom: 9px solid #a44294;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+}
+
+.blog-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.blog-content h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+}
+
+.blog-content p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+/* Paginations style  */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.pagination-button {
+  background-color: #a44294;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #922d82;
+}
+
+.pagination-button:disabled {
+  background-color: #d6a7cd;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* DETAILS PAGE CSS  */
+
+.blog-detail-container {
+  max-width: 1000px;
+  padding: 4rem 3rem;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #ffffff;
+  color: #000;
+}
+
+.blogSectionContiner .blog-content {
+  padding: 10px 15px 30px;
+}
+
+.blogSectionContiner .blog-title {
+  font-size: 31px;
+  margin-bottom: 0;
+  color: #995098;
+  font-family: "NewAmsterdam";
+  line-height: 0.9;
+  margin-top: 30px;
+  padding: 0 15px;
+}
+
+.BlogDetailPageId {
+  /* display: none; */
+}
+
+.BlogDetailPageId .blog-detail-container h3 {
+  font-family: "29LT Bukra SmBd";
+  color: #a44294;
+  font-weight: 700 !important;
+}
+
+.bLogDetailBanner img {
+  width: 100%;
+}
+
+.blogSectionContiner .blog-image {
+  width: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  margin-bottom: 0;
+}
+
+.blog-content p {
+  font-family: "29LT Bukra Regular";
+  color: #000;
+  margin-top: 10px;
+  font-size: clamp(15px, 1.5vw, 16px);
+  line-height: clamp(24px, 2vw, 26px);
+  margin: 0;
+}
+
+.BlogDetailPageId .blog-content p {
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+/* .BlogDetailPageId .blog-content p span:first-child {
+  font-weight: 800;
+} */
+
+.blog-content a {
+  color: #995098;
+  margin-top: 9px;
+  margin-bottom: 0;
+  font-size: 17px;
+}
+
+.blog-content a:hover {
+  /* color: #0056b3; */
+}
+
+.blog-detail-loading,
+.blog-detail-error {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 5rem;
+}
+
+.back-link {
+  margin-top: 3rem;
+}
+
+.back-link a {
+  /* text-decoration: none;
+  color: #007bff;
+  font-weight: bold; */
+  font-family: "29LT Bukra SmBd";
+  color: #a44294;
+  font-weight: 700 !important;
+  letter-spacing: 1px;
+}
+
+.back-link a:hover {
+  color: #0056b3;
+}
+
+/* related BLOGS CARSOULS  */
+
+.related-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+}
+
+.related-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.related-carousel::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.related-card {
+  flex: 0 0 auto;
+  width: 300px;
+  scroll-snap-align: start;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.AuthourNameBlog {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 720px) {
+  .blog-detail-container {
+    padding: 1rem 2rem;
+  }
+  .back-link {
+    margin-top: 1rem;
+  }
+  .blogSectionNew .blog-card {
+    width: 100%;
+  }
+  .blogSectionNew .blogSectionContiner {
+    padding: 0 20px;
+  }
+  .blogSectionContiner .blog-content {
+    padding: 10px 15px 20px;
+  }
+  .blogSectionNew {
+    margin-top: 20px;
+  }
+}

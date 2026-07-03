@@ -48,6 +48,7 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   -webkit-animation: scrollText 50s linear infinite;
+  z-index: -1;
 }
 
 .SocialChennairunningTextBackground p {
@@ -94,9 +95,15 @@
   }
 }
 
+@media(max-width:1000px) and (min-width: 768px) {
+.socialChennaiContainer{
+  width: 100%;
+}
+}
+
 @media (max-width: 768px) {
   .socialChennaiContent h4 {
-    font-size: 68px;
+    font-size: 60px;
     line-height: 50px;
   }
 
@@ -108,13 +115,21 @@
     font-size: clamp(14px, 1.5vw, 16px);
     line-height: clamp(22px, 2vw, 26px);
     margin-top: 20px;
+    font-weight: 500;
   }
   .socialChnennaiMaincontainer {
+    margin-top: 50px;
+    margin-top: 80px;
     margin-top: 50px;
     margin-bottom: 50px;
   }
   .mobileSocialWidjet {
-    width: 222px;
-    height: auto;
+    width: 180px;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .reelsMarqueeSection .mt-18{
+    margin-top: 40px !important;
   }
 }

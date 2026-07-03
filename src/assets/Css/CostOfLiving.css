@@ -8,6 +8,9 @@
 
 /* ----------Running Text Section----------- */
 
+/* .chennaiHealthCarePage{
+  display: none;
+} */
 .CostOflivingBackground {
   position: absolute;
   bottom: 8%;
@@ -21,6 +24,7 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   -webkit-animation: scrollText 50s linear infinite;
+  z-index: -1;
 }
 
 .CostOflivingBackground p {
@@ -29,6 +33,7 @@
   font-size: clamp(60px, 22vw, 280px);
   line-height: clamp(80px, 12vw, 150px);
 }
+
 .scroll-leftCostofLiving {
   animation-name: scrollLeftInvestPage;
 }
@@ -41,6 +46,7 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -50,6 +56,7 @@
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0%);
   }
@@ -60,14 +67,18 @@
 .AccomodationInstaReel {
   padding-top: 0px;
 }
+
 .visitIntroParaSection.detailIntro {
   padding-bottom: 80px;
+  padding-bottom: 0px;
   /* margin-bottom: 46px; */
   margin-bottom: 0px;
 }
+
 .visitIntroParaSection.detailIntro .workdetailTextBackground {
   bottom: 0;
 }
+
 .visitIntroParaSection.detailIntro .workIntro h3 {
   font-family: "NewAmsterdam";
   font-size: 4vw;
@@ -75,16 +86,62 @@
   margin-bottom: 10px;
   color: #995098;
 }
+
+.visitIntroParaSection.detailIntro .workIntro1 h1 {
+  font-family: "NewAmsterdam";
+  font-size: 3vw;
+  line-height: 1;
+  margin-bottom: 10px;
+  color: #995098;
+}
+.visitIntroParaSection.detailIntro .workIntro1 h1 {
+  font-family: "NewAmsterdam";
+  font-size: 3vw;          /* default for desktop/tablet */
+  line-height: 1;
+  margin-bottom: 10px;
+  color: #995098;
+}
+
+/* Mobile (<= 640px) */
+@media (max-width: 640px) {
+  .visitIntroParaSection.detailIntro .workIntro1 h1 {
+    font-size: 7vw;        /* bigger on mobile */
+  }
+}
+
+/* Extra Small Phones (<= 400px) */
+@media (max-width: 400px) {
+  .visitIntroParaSection.detailIntro .workIntro1 h1 {
+    font-size: 8vw;        /* even bigger for tiny screens */
+  }
+}
+
+.visitIntroParaSection.detailIntro .workIntro h1 {
+  font-family: "NewAmsterdam";
+  font-size: 4vw;
+  line-height: 1;
+  margin-bottom: 10px;
+  color: #995098;
+}
+
 .visitIntroParaSection.unicorns {
   padding-bottom: 280px;
 }
+
 .visitIntroParaSection.unicorns .workdetailTextBackground {
   bottom: 0;
 }
+
 .clcSecscrl {
   padding-bottom: 12vh;
   position: relative;
 }
+
+#InvestMainPage .clcSecscrl {
+  padding-bottom: 3vh;
+  position: relative;
+}
+
 .clcSecscrl::before {
   content: "";
   position: absolute;
@@ -96,36 +153,46 @@
   background-size: 100%;
   pointer-events: none;
 }
+
 .clcSecscrl .clcscrlCol {
   width: 50%;
   position: relative;
 }
+
 .clcscrlinLBox {
 }
+
 .clcscrlRight {
   position: relative;
 }
+
 .clcscrLtitle {
   width: 65%;
   margin-left: auto;
   padding: 3vw;
   margin-top: -4vw;
 }
+
 .clcscrLtitle h2 {
   font-family: "29LT Bukra SmBd";
   color: #ffffff;
   font-size: 3.5vw;
   line-height: 1;
+  letter-spacing: 1px;
 }
+
 .clcscrLtitle h2 small {
   text-transform: uppercase;
   font-size: 1.6vw;
   margin-bottom: 10px;
 }
+
 .clcscrLtitle p {
   color: #f7f5f7;
   font-size: 1vw;
+  letter-spacing: 1px;
 }
+
 .clcscrLtitle .boxttlsec {
   position: absolute;
   bottom: -18px;
@@ -136,10 +203,12 @@
   line-height: 1;
   opacity: 0.03;
 }
+
 .clcscrlinRBox {
   padding-inline: 3vw 15vw;
   position: relative;
 }
+
 .clcboxItemss {
   padding: 40px;
   border: 2px solid #e0cae0;
@@ -149,9 +218,11 @@
   border-bottom-right-radius: 4vw;
   background: #ffffff;
 }
+
 .clcscrlinRBox .clcboxItemss:last-child {
   margin-bottom: 0;
 }
+
 .clcboxItemss .clcboxIImg {
   width: 6vw;
   aspect-ratio: 1;
@@ -170,24 +241,29 @@
   margin-left: -1vw;
   border: 1px solid transparent;
 }
+
 .clcboxItemss .clcboxIImg img {
   width: 100%;
   -webkit-filter: brightness(1) invert(0);
   filter: brightness(1) invert(0);
   opacity: 1;
 }
+
 .clcboxItemss .clcboxICont {
   padding-left: 2vw;
   width: calc(100% - 6vw);
 }
+
 .clcboxItemss .clcboxICont h3 {
   font-family: "29LT Bukra SmBd";
   color: #7f397e;
   letter-spacing: -0.5px;
   margin-bottom: 6px;
-  font-size: clamp(18px, 1.6vw, 32px);
+  font-size: clamp(18px, 1.8vw, 32px);
   line-height: 1;
+  line-height: 1.1;
 }
+
 .clcboxItemss .clcboxICont p {
   /* font-size: 18px; */
   font-family: "29LT Bukra Regular";
@@ -196,6 +272,7 @@
   font-size: clamp(15px, 1.5vw, 16px);
   line-height: clamp(24px, 2vw, 26px);
 }
+
 .clcboxItemss .clcboxICont p.linkpara {
   position: absolute;
   width: 2.5vw;
@@ -204,20 +281,25 @@
   right: 30px;
   opacity: 0.5;
 }
+
 .clcboxItemss .clcboxICont p.linkpara a {
   display: block;
 }
+
 .clcboxItemss .clcboxICont p.linkpara a img {
   display: block;
   width: 100%;
 }
+
 .clcboxItemss:hover .clcboxICont p.linkpara {
   opacity: 1;
 }
+
 .clcboxItemss:hover .clcboxIImg {
   background: #7f397e;
   border-color: #995098;
 }
+
 .clcboxItemss:hover .clcboxIImg img {
   -webkit-filter: brightness(0) invert(1);
   filter: brightness(0) invert(1);
@@ -236,10 +318,12 @@
   background-size: 100%;
   pointer-events: none;
 }
+
 .clcSecscrl.clcSecscrlTwo::before {
   -webkit-filter: brightness(0) invert(1);
   filter: brightness(0) invert(1);
 }
+
 .clcSecscrlTwo .clcscrlinRBox {
   padding-top: 40px;
 }
@@ -256,18 +340,23 @@
   background-size: 100%;
   pointer-events: none;
 }
+
 .clcSecscrlThree .clcscrlinRBox {
   padding-top: 40px;
 }
+
 .clcscrlCol.clcscrlLft .clcscrlinLBox {
   padding-right: 50px;
 }
+
 .colorbgsec .clcscrlinRBox {
   padding-top: 50px;
 }
+
 .pattern-c .clcscrlinRBox {
   padding-top: 50px;
 }
+
 .colorbgsec.clcSecscrl::before {
   background: url(/images/doted-bg-w.png) no-repeat top right;
   background-size: 100%;
@@ -283,24 +372,53 @@
   background: #ffffff;
   width: 56%;
 }
+
+#InvestMainPage .bottomList {
+  padding-left: 5%;
+}
+
+#InvestMainPage .bottomList {
+  position: relative;
+}
+#InvestMainPage .bottomList:last-child {
+  margin-bottom: 100px;
+}
+
+#InvestMainPage .tenanticonImageDiv {
+  position: absolute;
+  top: 30%;
+  left: -63px;
+  border: 1px solid #7f397e;
+  background: #7f397e;
+  padding: 10px;
+}
+
+#InvestMainPage .tenanticonImageDiv img {
+  width: 75px;
+  height: 75px;
+}
+
 .bottomList h4 {
   font-family: "29LT Bukra SmBd";
   color: #7f397e;
   font-size: 1.6vw;
-  line-height: 1;
+  line-height: 1.3;
   letter-spacing: -0.5px;
   margin-bottom: 6px;
 }
+
 .bottomList ul {
   padding: 0;
   margin: 0;
 }
+
 .bottomList ul li {
   padding: 0 0 5px 15px;
   margin: 0;
   list-style: none;
   position: relative;
 }
+
 .bottomList ul li::before {
   content: "";
   background: #83357a;
@@ -314,35 +432,58 @@
 .imgcontent {
   padding: 140px 10% 0;
 }
+
 .imgLeft {
   width: 50%;
 }
+
 .imgText {
   width: 30%;
 }
+
 .imgcolTitle {
   margin-left: -4vw;
   padding: 3vw;
   color: #fff;
   font-size: 18px;
 }
+.mainNewHealthcareSection .card a {
+  background-image: none;
+  color: rgb(164, 66, 148);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.newGridHealthcare {
+}
+
 .imgcolTitle h2 {
   font-family: "29LT Bukra SmBd";
   color: #ffffff;
   font-size: 3.5vw;
   line-height: 1;
 }
+
 .imgcolTitle h2 small {
   text-transform: uppercase;
   font-size: 1.6vw;
   margin-bottom: 10px;
 }
+
 .bottomListIcon {
   width: 70%;
 }
+
 .bottomListIcon .clcboxItemss {
   border: none;
 }
+
 .bottomListIcon ul li {
   padding: 0 0 10px 15px;
   margin: 0;
@@ -351,6 +492,7 @@
   color: #000;
   font-size: 18px;
 }
+
 .bottomListIcon ul li::before {
   content: "";
   background: #83357a;
@@ -499,12 +641,15 @@
 .foodlistsec .imgcontent {
   padding: 140px 10%;
 }
+
 .foodlistsec .imgcontent.pattern-a {
   padding-top: 0;
 }
+
 .foodListIcon {
   width: 80%;
 }
+
 .foodListIcon .clcboxItemss {
   border: none;
   border-right: none;
@@ -515,6 +660,7 @@
   width: 100%;
   margin: 0;
 }
+
 .foodListIcon .clcboxItemss::after {
   content: "";
   position: absolute;
@@ -523,6 +669,7 @@
   height: 90%;
   background: #ccc;
 }
+
 .foodListIcon div:nth-child(even) .clcboxItemss::after {
   background: none;
 }
@@ -533,12 +680,15 @@
   padding: 0;
   margin: 0;
 }
+
 .foodListIcon div .clcboxItemss .clcboxICont {
   margin: 0;
 }
+
 .foodListIcon.odd-count div:last-child .clcboxItemss::after {
   background: none;
 }
+
 .foodListIcon.odd-count div:last-child .clcboxItemss .clcboxICont p {
   min-height: auto;
 }
@@ -547,17 +697,24 @@
   width: 50%;
   margin: 0 0 40px;
 }
+
 .foodListIcon.odd-count div:last-child {
   width: 100%;
   border-top: solid 1px #ccc;
   padding-top: 40px;
+  margin-bottom: 0;
 }
+.foodListIcon.odd-count div:first-child {
+  border-top: none;
+}
+
 .foodListIcon ul li {
   padding: 0 0 5px 15px;
   margin: 0;
   list-style: none;
   position: relative;
 }
+
 .foodListIcon ul li::before {
   content: "";
   background: #83357a;
@@ -567,6 +724,7 @@
   left: 0;
   top: 11px;
 }
+
 .foodListIcon .clcboxItemss .clcboxICont p {
   margin-bottom: 30px;
   min-height: 100px;
@@ -579,14 +737,17 @@
   height: 100px;
   filter: inherit;
 }
+
 .foodListIcon .clcboxItemss:hover .clcboxIImg {
   background: transparent;
   border-color: transparent;
 }
+
 .foodListIcon .clcboxItemss:hover .clcboxIImg img {
   filter: inherit;
   opacity: 1;
 }
+
 .exploreMorebuttonVisitChennai a {
   width: 175px;
   text-align: center;
@@ -605,6 +766,7 @@
   border-radius: 50px;
   color: #000;
 }
+
 .exploreMorebuttonVisitChennai a:hover {
   background: rgb(127 57 126);
   color: #fff;
@@ -613,37 +775,46 @@
 .bottomListIcon .clcboxItemss .clcboxICont p {
   margin: 0 0 25px;
 }
+
 .imgcontent.pattern-a {
   padding-top: 0;
 }
+
 .bottomListIcon {
   background: transparent;
 }
+
 .bottomListIcon .clcboxItemss {
   background: transparent;
 }
+
 .bottomListIcon h5 {
   font-size: 22px;
   margin: 0px 0 15px;
   line-height: 22px;
+  line-height: 1.3;
 }
 
 .bottomListIcon ul li small {
   margin: 0 0 0 20px;
   font-size: 15px;
 }
+
 /* Today */
 .bottomListIcon .clcboxItemss {
   border-bottom: solid 1px #ccc;
   border-radius: 0;
 }
+
 .bottomListIcon div:last-child .clcboxItemss {
   border-bottom: none;
   border-radius: 0;
 }
+
 .pt0 {
   padding-top: 0 !important;
 }
+
 .iconImgdev .clcboxItemss .clcboxIImg {
   background: transparent;
   width: 10vw;
@@ -651,10 +822,12 @@
   margin-left: -4vw;
   padding: 0;
 }
+
 .iconImgdev .clcboxItemss:hover .clcboxIImg {
   background: transparent;
   border-color: transparent;
 }
+
 .iconImgdev .clcboxItemss .clcboxIImg img {
   filter: inherit;
   opacity: 1;
@@ -673,6 +846,7 @@
   margin: 0 0 60px;
   border: solid 1px #f1f1f1;
 }
+
 .detailapiSec ul li a {
   width: 175px;
   text-align: center;
@@ -691,39 +865,1611 @@
   border-radius: 50px;
   color: #000;
 }
+
 .detailapiSec ul li a:hover {
   background: rgb(127 57 126);
   color: #fff;
 }
+
 .detailapiSec h2 {
   font-size: 40px;
   padding: 30px;
 }
+
 .detailapiSec h3 {
   font-size: 25px;
 }
+
 .detailtextbox {
   padding: 30px;
 }
+
 .foodListIcon.odd-count div:last-child div {
   margin: 0 10px;
 }
 
 /* New Style */
 
+/*######### Restaurantsin chennai ############## */
+
+.detailapiSecRes {
+  padding: 0;
+  margin: 0 0 50px;
+  border: solid 1px #f1f1f1;
+}
+
+.detailapiSecRes h2 {
+  font-size: 50px;
+  padding: 40px 10px 10px 30px;
+  font-weight: 600;
+}
+
+.detailtextboxRes {
+  padding: 10px 10px 10px 30px;
+}
+
+.detailapiSecRes ul li {
+  list-style: none;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.detailapiSecRes ul li a {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  line-height: 37px;
+  background: #fff;
+  color: rgb(127 57 126);
+}
+
+.boldPointName {
+  font-weight: 700;
+  font-size: 25px;
+  color: #000;
+}
+
+.viewLocationLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #000000;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.SubDesc {
+  text-transform: capitalize;
+  line-height: 30px;
+}
+
+.FlatListRest {
+  font-size: 18px !important;
+  font-weight: 700;
+  color: #000 !important;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.FlatListRest:hover {
+  text-decoration: underline;
+  color: #7a267a;
+}
+
+/* new pages style start */
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 10px 16px 0 rgba(0, 0, 0, 0.2),
+    0 22px 10px 0 rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  margin: 0 10px 20px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.nightlifesecIn {
+  margin: 0 0 80px;
+  border-bottom: solid 1px #e7e7e7;
+  padding-bottom: 80px;
+}
+
+.nightlifesecIn:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.nightlife h1 {
+  font-family: "NewAmsterdam";
+  font-size: 4vw;
+  line-height: 1;
+  margin-bottom: 10px;
+  color: #995098;
+  font-weight: 500;
+}
+
+.nightlife h3 {
+  font-family: "NewAmsterdam";
+  font-size: 4vw;
+  line-height: 1;
+  margin-bottom: 10px;
+  color: #995098;
+  font-weight: 500;
+}
+
+.nightlife h2 {
+  font-family: "NewAmsterdam";
+  font-size: 3vw;
+  line-height: 1;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+  font-weight: 500;
+  margin: 0 0 30px;
+}
+
+.card h3 {
+  font-family: "29LT Bukra SmBd";
+  color: #a44294;
+  font-size: clamp(17px, 1.2vw + 0.5rem, 24px);
+  line-height: clamp(19px, 1.5vw + 0.5rem, 29px);
+  text-align: left;
+  width: 100%;
+  font-weight: 500;
+}
+
+.card h2 {
+  font-family: "29LT Bukra SmBd";
+  color: #a44294;
+  font-size: clamp(17px, 1.2vw + 0.5rem, 24px);
+  line-height: clamp(19px, 1.5vw + 0.5rem, 29px);
+  text-align: left;
+  width: 100%;
+  font-weight: 500;
+}
+
+.card p {
+  font-family: "Poppins", sans-serif;
+  color: #1d1d1d;
+  margin-top: 8px;
+  font-weight: 300;
+  font-size: clamp(14px, 2vw, 16px);
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: clamp(1.4, 1.5vw, 1.5);
+}
+
+.card a {
+  background: url(/images/loc-icon.svg) no-repeat 0 0;
+  padding: 0 0 0 22px;
+  color: #000;
+  font-weight: 600;
+}
+
+.investchennaisec table thead {
+  background-color: #a44294;
+  color: #fff;
+}
+
+.investchennaisec table thead th {
+  background-color: #a44294;
+  color: #fff;
+  font-size: 20px;
+  border-right: solid 1px #ccc;
+}
+
+.investchennaisec table td {
+  border-right: solid 1px #ccc;
+}
+
+.investchennaisec .card {
+  padding: 25px;
+}
+
+.investchennaisec blockquote {
+  color: #a44294;
+}
+
+.investchennaisec .bottomListIcon {
+  width: 100%;
+}
+
+.investchennaisec .card .clcboxIImg img {
+  width: 80px;
+  margin-bottom: 30px;
+}
+
+.investchennaisec .tableOut {
+  padding: 0 62px;
+  margin: 0 0 80px;
+}
+
+.investchennaisec .bottomListIcon .clcboxItemss .clcboxICont p {
+  margin: 0 0 10px;
+}
+
+.investchennaisec .listdatacontent {
+  margin-bottom: 50px;
+}
+.investchennaisec .listdatacontent ul li {
+  padding: 0 0 10px 15px;
+  margin: 0;
+  list-style: none;
+  position: relative;
+  color: #000;
+  font-size: 18px;
+}
+.investchennaisec .listdatacontent ul li::before {
+  content: "";
+  background: #83357a;
+  width: 8px;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  top: 11px;
+}
+/* new pages style end */
+
+/* TimeLine */
+.z5-timeline-wrapper {
+  background-color: #f5f5f5;
+  /* font-family: 'Poppins', sans-serif; */
+  padding: 60px 0;
+}
+
+.z5-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.z5-box {
+  position: relative;
+  width: 50%;
+  padding: 1rem 3rem;
+  opacity: 0;
+  animation: z5-animateBox 0.3s linear forwards;
+}
+
+@keyframes z5-animateBox {
+  0% {
+    opacity: 0.8;
+    transform: translateY(500px) scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.z5-box:nth-child(2) {
+  animation-delay: 0s;
+}
+
+.z5-box:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.z5-box:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.z5-box:nth-child(5) {
+  animation-delay: 0.9s;
+}
+
+.z5-box:nth-child(6) {
+  animation-delay: 1s;
+}
+
+.z5-box:nth-child(7) {
+  animation-delay: 1.2s;
+}
+
+.z5-box-left {
+  left: 0;
+}
+
+.z5-box-right {
+  left: 50%;
+}
+
+.z5-box i {
+  position: absolute;
+  background: linear-gradient(-311deg, #995098, #995098, #995098);
+  top: 30px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  border-radius: 50%;
+  right: -25px;
+  z-index: 10;
+}
+
+.z5-box-right i {
+  left: -25px;
+}
+
+.z5-box .z5-html,
+.z5-box .z5-css,
+.z5-box .z5-javascript,
+.z5-box .z5-react,
+.z5-box .z5-angular,
+.z5-box .z5-vue {
+  color: #995098;
+  border: 4px solid #995098;
+}
+
+.z5-info {
+  position: relative;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  background: #002124;
+  background: #995098;
+  color: #fafafa;
+  box-shadow: 0 5px 9px #f5f5f5;
+  border-bottom: 2px solid #fff;
+}
+
+.z5-info h2 {
+  font-family: "29LT Bukra SmBd";
+  color: #fff;
+  font-size: clamp(17px, 1.2vw + 0.5rem, 24px);
+  line-height: clamp(19px, 1.5vw + 0.5rem, 29px);
+  text-align: left;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.z5-info p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.z5-info a {
+  text-decoration: none;
+  color: #0098a9;
+  font-size: 1rem;
+  font-weight: 500;
+  display: none;
+}
+
+.z5-info::after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  width: 0;
+  height: 0;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 14px solid #995098;
+  right: -14px;
+  z-index: 10;
+}
+
+.z5-box-right .z5-info::after {
+  border-left: 0;
+  border-right: 14px solid #995098;
+  left: -14px;
+}
+
+.z5-vertical-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 6px;
+  height: 100%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  background: linear-gradient(45deg, #995098, #995098 186%);
+  animation: z5-animateLine 3s linear forwards;
+}
+
+@keyframes z5-animateLine {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 100%;
+  }
+}
+
+/* Updatestyle */
+
+
+/* RESTRO CARDS STYLE ###### */
+
+
+
+/* FoodDetailsStyle */
+
+.NewDesignPage .visitIntroParaSection.detailIntro {
+  padding: 20px;
+}
+
+.conatinerDetailsSection img {
+  height: auto !important;
+  margin-top: 5px;
+}
+
+.conatinerDetailsSection .detailapiSec h2 {
+  font-size: 23px;
+  padding: 10px;
+  line-height: 22px;
+  height: 71px;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  align-items: center;
+  margin-top: 8px;
+  padding-left: 20px;
+}
+
+.conatinerDetailsSection ul li {
+  display: flex;
+  column-gap: 12px;
+  justify-content: center;
+}
+.conatinerDetailsSection ul {
+  margin-top: -10px;
+}
+
+.conatinerDetailsSection {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2%;
+}
+
+.conatinerDetailsSection .detailapiSec {
+  width: 23.5%;
+}
+
+.conatinerDetailsSection .detailapiSec h3 {
+  font-size: 17px;
+}
+
+.conatinerDetailsSection .detailtextbox {
+  padding: 20px;
+  padding-bottom: 27px;
+}
+
+.conatinerDetailsSection .detailapiSec ul li a {
+  width: 50%;
+  font-size: 13px;
+  line-height: 29px;
+  margin-right: 0;
+}
+
+/* FoodDetailsStyle */
+
+/* live style */
+.mapingImage {
+  min-width: 60%;
+  margin: 60px auto 50px;
+}
+.mapingImage .small {
+  width: 80%;
+  margin: 0 auto;
+  object-fit: cover;
+  height: 400px;
+}
+.bigpop {
+  overflow: auto;
+  z-index: 9999;
+}
+.bigpopIn {
+  width: 100%;
+  max-width: 60%;
+  overflow: auto;
+  height: 600px;
+}
+.bigpopIn img {
+  width: 100%;
+  margin: 0 auto;
+}
+.popclose {
+  position: fixed;
+  right: 25px;
+  width: 80px;
+  top: 19px;
+  background: transparent;
+}
+.popclose img {
+  background: #fff;
+  border-radius: 100%;
+  padding: 5px;
+}
+.visitTable {
+  min-width: 60%;
+  margin: 30px auto 50px;
+}
+.visitTable table thead {
+  background-color: #a44294;
+  color: #fff;
+}
+
+.visitTable table thead th {
+  background-color: #a44294;
+  color: #fff;
+  font-size: 20px;
+  border-right: solid 1px #ccc;
+}
+
+.visitTable table td {
+  border-right: solid 1px #ccc;
+  border-bottom: solid 1px #ccc;
+}
+.clcboxItemss .clcboxICont ul li {
+  /* font-size: 18px; */
+  font-family: "29LT Bukra Regular";
+  color: #3d3d3d;
+  margin-top: 10px;
+  font-size: clamp(15px, 1.5vw, 16px);
+  line-height: clamp(24px, 2vw, 26px);
+  list-style: none;
+}
+
+.foodListIcon.odd-count .clcboxICont p p {
+  min-height: auto;
+}
+.foodListIcon.odd-count .clcboxICont p p {
+  margin-bottom: 10px;
+}
+.foodListIcon.odd-count .clcboxICont p p strong {
+  margin-right: 5px;
+}
+
+.foodListIcon .clcboxItemss .clcboxICont p p {
+  min-height: auto;
+  margin-bottom: 10px;
+}
+/* live style end */
+
+/* Weather */
+
+.weatherPageSection {
+  position: relative;
+}
+
+/* .weather-widget {
+  position: absolute;
+  top: -103px;
+  right: 40px;
+  width: 200px;
+  background: white;
+  width: 200px;
+  color: #a44294;
+  font-weight: 500;
+  border: 1px solid #a44294;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  border: 1px solid #898888;
+} */
+
+.weather-widget h3 {
+  /* font-family: "29LT Bukra SmBd"; */
+}
+.weather-widget {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  width: 100%;
+  color: #a44294;
+  font-weight: 500;
+  border: 1px solid #a44294;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  border: none;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background: #a44294;
+  z-index: 1000;
+}
+
+.weather-widget h3 {
+  margin: 0 10px 0 0;
+}
+
+.FormIframeSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 0;
+  row-gap: 60px;
+  background: #f1f1f1;
+}
+
+#newsletterId .embed-page-inner .publication-name {
+  display: none !important;
+}
+
+.NewsletterContent h4 {
+  text-align: center;
+}
+
+.NewsletterContent {
+  display: block !important;
+}
+
+.FormIframeSection iframe {
+  width: 555px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
+  padding-bottom: 15px;
+}
+
+.FormIframeSection .Heading h4 {
+  font-family: "NewAmsterdam";
+  font-size: 100px;
+  line-height: 79px;
+  color: #a44294;
+}
+
+/* funcheenai start */
+
+.funchennai .clcboxItemss .clcboxIImg {
+  height: 185px;
+  width: 400px;
+  object-fit: cover;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  padding: 0;
+}
+.funchennai .clcboxItemss:hover .clcboxIImg {
+  background: transparent;
+  border-color: transparent;
+}
+.funchennai .clcboxItemss:hover .clcboxIImg img {
+  -webkit-filter: inherit;
+  filter: inherit;
+  opacity: 1;
+}
+
+.conatinerDetailsSection ul li a:first-child {
+  display: none;
+}
+/* fun chennai style end */
+/* .chennaiHealthCarePage .imgcontent.pattern-b{
+  padding-bottom: 50px !important;
+} */
+
+/* .chennaiHealthCarePage .imgcontent:first-child {
+    padding-bottom: 0px !important;
+    display: none;
+} */
+/* .chennaiHealthCarePage .imgcontent {
+    padding-bottom: 50px;
+} */
+
+.SplitSectionHealthcare {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 4%;
+}
+
+.SplitSectionHealthcare .imgcontent {
+  padding: 0;
+  width: 48%;
+}
+
+.SplitSectionHealthcare .bottomListIcon {
+  width: 100%;
+}
+
+.SplitSectionHealthcare .clcboxItemss {
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 30px;
+  padding-right: 0;
+}
+
+.SplitSectionHealthcare .clcboxItemss .clcboxICont {
+  padding-left: 0;
+  width: 100%;
+  padding-right: 40px;
+}
+
+.SplitSectionHealthcare .clcboxItemss .clcboxIImg {
+  width: 100px;
+  height: 100px;
+  margin-left: 0;
+  background-color: #995098;
+}
+
+.SplitSectionHealthcare .imgcontent:first-child {
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* .SplitSectionHealthcare .clcboxItemss .clcboxIImg:hover{
+  background: none;
+} */
+
+.CulturePage .foodlistsec {
+  margin-top: 40px;
+}
+
+.stickyPositionContainer.fixed {
+  top: 116px;
+  height: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  transition: auto;
+  transition: all 0.3s ease;
+}
+
+.stickyPositionContainer.fixed .container {
+  display: flex;
+  margin-top: 0px;
+  padding-bottom: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.stickyPositionContainer.fixed .container .mb-6 {
+  margin-bottom: 0;
+}
+
+.popupImageBackground {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.EventsListboxs {
+  justify-content: center;
+}
+
+#InvestMainPage.QualityofLife .bottomList ul li::before {
+  content: none;
+}
+
+.RoundedSection {
+  border-top-right-radius: 50px;
+  background: white;
+  background: #7c15a0;
+  border: 1px solid #7f397e;
+  border-left: none;
+}
+
+.qualityoflifeheading {
+  /* font-family: "29LT Bukra SmBd"; */
+}
+
+.carryFormPage {
+  margin-top: 0;
+}
+
+.carryformPageSection {
+  padding: 50px;
+}
+
+.LeftSideImagePopup {
+  /* border-right: 4px solid #a44294; */
+}
+
+.popupStyleMainContainer {
+  padding: 40px;
+}
+
+/* Updatestyle */
+
+/* FutureForwardPage */
+
+.FutureGrowthDevelopmentpAGE .workIntro {
+  padding: 0 6%;
+}
+
+.wrapSectionFuture {
+  max-width: 1100px;
+  margin: 48px auto;
+  padding: 24px;
+  margin-top: 0;
+}
+
+.info-cardFuture ul {
+  list-style: unset;
+}
+
+.section-titleFuture {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+.section-titleFuture h1 {
+  /* font-size: 28px;
+  margin: 0;
+  font-weight: 700; */
+  font-family: "NewAmsterdam";
+  font-size: 50px;
+  margin: 0;
+  font-weight: 500;
+  color: #5c0158;
+  color: #682865;
+}
+.lead {
+  color: #6b7280;
+  margin-bottom: 28px;
+  font-size: 16px;
+  max-width: 900px;
+}
+
+.profileFuture {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.profileFuture.altFuture {
+  grid-template-columns: 2fr 1fr;
+  margin-top: 32px;
+}
+
+.profileFuture .img-wrapSectionFuture {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileFuture img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(16, 24, 40, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+}
+
+.profileFuture h3 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+.profileFuture p {
+  margin: 0;
+  color: #000;
+  font-size: 17px;
+}
+
+.info-cardFuture {
+  background: #f8fafc;
+  background: #682865;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.03);
+  margin-top: 8px;
+}
+
+.factsFuture {
+  margin-top: 14px;
+  padding-left: 18px;
+  color: #6b7280;
+}
+.factsFuture li {
+  margin-bottom: 8px;
+  font-family: "Poppins";
+  font-weight: 300;
+  color: #fff;
+}
+
+.educationalPageStyle .newsLetterButton {
+  border: 1px solid #dddddd;
+}
+
+.educationalPageStyle
+  .investchennaisec
+  .bottomListIcon
+  .clcboxItemss
+  .clcboxICont
+  p {
+  word-break: break-all;
+}
+.educationalPageStyle
+  .investchennaisec
+  .bottomListIcon
+  .clcboxItemss
+  .clcboxICont
+  li {
+  word-break: break-all;
+}
+
+.pridepfchennaisection {
+  padding-bottom: 60px;
+  padding-top: 40px;
+}
+
+.prideofchennairow {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  column-gap: 5%;
+  row-gap: 50px;
+}
+
+.prideofchennaicards {
+  /* width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.prideofchennaicards img {
+  border-radius: 0;
+  width: 100%;
+}
+
+.prideofchennaicards h3 {
+  font-family: NewAmsterdam;
+  font-family: "Poppins";
+  color: #995098;
+  font-size: 19px;
+  line-height: 1.1;
+  letter-spacing: 0px;
+  margin-top: 15px;
+  border-radius: 5px;
+  width: 100%;
+  letter-spacing: 0px;
+  font-weight: 600;
+}
+.pride-cards-image {
+  display: flex;
+  justify-content: flex-start;
+  justify-content: center;
+}
+
+.prideofchennaicards h5 {
+  font-family: "29LT Bukra SmBd";
+  /* color: #000; */
+  /* color: #a44294; */
+  letter-spacing: -0.5px;
+  margin-top: 11px;
+  font-size: 17px;
+  line-height: 1;
+  line-height: 1.1;
+  letter-spacing: 0.2px;
+  justify-self: flex-start;
+  align-self: flex-start;
+}
+
+.prideofchennaicards p {
+  font-family: "Poppins";
+  line-height: 1.3;
+  margin-top: 7px;
+  color: #626262;
+  font-weight: 400;
+  position: relative;
+  width: 100%;
+}
+
+.achievementsFonts {
+  font-size: 27px;
+  margin-bottom: 8px;
+}
+
+.prideofchennaicards p::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: -12px;
+}
+
+.prideofchennaicards a {
+  margin-top: 22px;
+  color: #eb5858;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.TablePopupView {
+  height: 100%;
+  /* padding: 20px 30px; */
+  overflow-y: scroll;
+}
+
+.TablePopupView .border-collapse {
+  height: 100%;
+}
+
+.popupTableCloseButton {
+  right: 20px;
+  top: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.prideofchennaipage .prideofchenaipopoupsection .popupSection {
+  height: auto;
+  /* overflow-y: scroll; */
+}
+
+.prideofchennaipage .prideofchenaipopoupsection ul li::marker {
+  color: #a44294;
+}
+
+body.popup-open {
+  overflow: hidden !important;
+}
+
+.prideofchennaipage .stickyPositionContainer.fixed {
+  top: 91px;
+  transition: auto;
+  transition: all 0.3s ease;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.pride-of-chennai-row {
+  height: 600px;
+  height: 50vh;
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+.sideBarChennaiApp {
+  width: 22%;
+  padding: 15px;
+  padding-bottom: 0;
+  background-color: #fff;
+  border: 1px solid #ced4dd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  position: sticky;
+  top: 120px;
+  align-self: flex-start;
+  height: max-content;
+}
+
+.sideBarChennaiApp ul li {
+  margin-bottom: 10px;
+}
+
+.chennaiAppTabContent {
+  padding-top: 0;
+}
+
+.chennaiAppTabContent .EventsIteCont {
+  padding-top: 5px;
+}
+
+.chennaiAppTabContent .readMoreMainDiv {
+  margin-top: 5px;
+}
+
+.chennaiAppTabContent .EventsItems {
+  margin-top: 0;
+}
+
+.chennaiAppTabContent .newsLetterImage img {
+  /* object-fit: scale-down; */
+}
+
+.chennaiAppTabContent .titlePublished {
+  font-size: 12px;
+  padding: 5px 8px 3px 7px;
+}
+
+.chennaiappscontainer .popupSection {
+  height: auto !important;
+  width: 510px;
+  /* overflow-y: scroll;
+    height: 450px !important; */
+}
+
+.relativeSectionchennaiApp {
+  overflow-y: scroll;
+  height: 450px;
+}
+.chennaiAppPopupContents1 {
+  padding: 10px;
+}
+
+.chennaiappscontainer .EventsIteCont h3 {
+  width: 100%;
+}
+
+.seoPurposeClass {
+  display: inline !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  color: inherit !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.paragraphstyleBlogUl {
+  font-weight: 700 !important;
+  color: #a44294 !important;
+  margin-left: 15px;
+  position: relative;
+  padding-left: 12px; /* space for bullet */
+}
+
+.paragraphstyleBlogUl::before {
+  content: "•";
+  color: #a44294;
+  position: absolute;
+  left: -3px;
+  top: -4px;
+}
+
+.BlogDetailPageId .blog-content figure {
+  display: flex;
+  justify-content: center;
+}
+
+
+@media (max-width: 880px) {
+  .prideofchennaipage .stickyPositionContainer.fixed {
+    top: 64px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+  }
+
+  .stickyPositionContainer.fixed .secondButtonFlexpRIDE {
+    margin-bottom: 15px;
+  }
+
+  .prideofchennaicards {
+    width: 100%;
+  }
+
+  .secondButtonFlexpRIDE {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    padding-bottom: 10px;
+    justify-content: flex-start;
+    padding-left: 42px;
+    padding-right: 30px;
+    margin-bottom: 10px;
+  }
+
+  .secondButtonFlexpRIDE button {
+    width: max-content;
+    flex-shrink: 0;
+    white-space: nowrap;
+    width: max-content;
+    font-size: 14px;
+    padding: 5px 15px;
+  }
+
+  .pridepfchennaisection {
+    padding-bottom: 60px;
+    padding-top: 13px;
+  }
+
+  .prideofchennaipage .chennaiInvestmentsButtons button {
+    width: max-content !important;
+    flex-shrink: 0;
+    white-space: nowrap;
+    width: max-content !important;
+    flex-shrink: 0;
+    font-size: 14px !important;
+    padding: 8px 20px !important;
+    height: 39px !important;
+  }
+
+  .prideofchennaipage .chennaiInvestmentsButtons {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    justify-content: flex-start;
+    padding-left: 20px;
+    padding-right: 10px;
+  }
+
+  .prideofchennaipage .prideofchenaipopoupsection .popupSection {
+    width: 90%;
+  }
+
+  .educationalPageStyle .container .mb-6 {
+    display: flex;
+    overflow-x: scroll;
+    margin-left: 0;
+    padding-left: 8px;
+    gap: 25px;
+    flex-wrap: nowrap;
+    padding-bottom: 10px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .educationalPageStyle .container .mb-6 button {
+    width: max-content;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .educationalPageStyle .chennaiInvestmentsButtons button {
+    width: 35%;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 39px;
+    padding: 0;
+  }
+
+  .educationalPageStyle .stickyPositionContainer .container {
+    padding-bottom: 0px;
+  }
+
+  .CulturePage .foodlistsec {
+    margin-top: 0;
+  }
+  .wrapSectionFuture {
+    padding: 18px;
+    margin: 28px auto;
+  }
+  .profileFuture,
+  .profileFuture.altFuture {
+    grid-template-columns: 1fr;
+  }
+  .profileFuture img {
+    height: 240px;
+    width: 100%;
+  }
+  .section-titleFuture h1 {
+    font-size: 22px;
+  }
+
+  .chennai-app-flex-container {
+    flex-direction: column;
+  }
+
+  .sideBarChennaiApp {
+    width: 100%;
+    top: 65px;
+    padding: 10px;
+    padding-bottom: 0;
+    z-index: 1000;
+  }
+
+  .sideBarChennaiApp ul {
+    display: flex !important;
+    flex-direction: row;
+    overflow-x: scroll;
+  }
+
+  .sideBarChennaiApp ul li {
+    flex-shrink: 0;
+  }
+
+  .sideBarChennaiApp ul li button {
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  .chennaiappscontainer .p-10 {
+    padding: 20px 10px 20px;
+  }
+
+  .chennaiAppTabContent {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* .section-containernewdesign {
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.section-containernewdesign h2 {
+
+  font-family: "NewAmsterdam";
+  font-size: 42px;
+  margin-bottom: 5px;
+  color: #995098;
+}
+
+.section-containernewdesign p.subtitlesectionnew {
+
+  font-family: "29LT Bukra Regular";
+  color: #000;
+  margin-top: 20px;
+  width: fit-content;
+  font-size: clamp(15px, 1.5vw, 16px);
+  line-height: clamp(24px, 2vw, 26px);
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.cards-gridnewdesignsection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+.cardnewPageSection {
+  display: flex;
+  align-items: center;
+  background: #f6f6f6;
+  border-radius: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: left;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.icon-boxnewdesignsection img {
+  width: 40px;
+}
+
+.icon-boxnewdesignsection {
+  background: #995098;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  flex-shrink: 0;
+  font-size: 24px;
+  color: #fff;
+}
+
+.cards-contentnewdesignsection h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cards-contentnewdesignsection p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #000;
+  line-height: 1.5;
+}
+
+
+@media (max-width: 768px) {
+  .cardnewPageSection {
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 20px;
+  }
+  .icon-boxnewdesignsection {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+} 
+
+/* FutureForwardPage */
+
+@media screen and (max-width: 775px) {
+  .checkoutForm {
+    height: auto;
+  }
+
+  .stickyPositionContainer.fixed {
+    top: 65px;
+    padding-top: 45px;
+    padding-bottom: 30px;
+  }
+  .SplitSectionHealthcare .imgcontent {
+    width: 100%;
+  }
+
+  .SplitSectionHealthcare {
+    margin-top: -80px;
+  }
+
+  .SplitSectionHealthcare .imgcontent:first-child {
+    border-right: 0;
+  }
+  .nightlife {
+    margin-top: 0 !important;
+  }
+  .conatinerDetailsSection {
+    margin-top: 30px;
+  }
+  .conatinerDetailsSection .detailapiSec h2 {
+    height: auto;
+  }
+
+  .z5-container {
+    margin: 40px auto;
+  }
+
+  .z5-vertical-line {
+    left: 60px;
+  }
+
+  .z5-box {
+    width: 100%;
+    padding-left: 109px;
+  }
+
+  .z5-box-left,
+  .z5-box-right {
+    left: 0;
+  }
+
+  .z5-box i {
+    left: 35px;
+  }
+
+  .z5-info::after {
+    left: -16px;
+  }
+
+  .z5-box-left .z5-info::after {
+    border-left: 0;
+    border-right: 14px solid #002124;
+    left: -14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .ImagePopupFlex a img {
+    height: 40vh;
+  }
+
+  .LeftSideImagePopup {
+    border-right: none;
+    /* border-bottom: 2px solid #a44294 ; */
+  }
+
+  .RightSideImagePopup {
+    /* border-top: 2px solid #a44294 ; */
+  }
+
+  .ImagePopupFlex a:first-child {
+    /* border: 2px solid #7a267a; */
+  }
+
+  .ImagePopupFlex {
+    display: flex;
+    flex-direction: column;
+  }
+  .z5-vertical-line {
+    left: 40px;
+  }
+
+  .z5-box {
+    padding-left: 85px;
+  }
+
+  .z5-box i {
+    left: 15px;
+  }
+}
+
+.z5-footer {
+  color: #fafafa;
+  font-size: 19px;
+  text-align: center;
+  margin-top: 40px;
+  background: #051919;
+  padding: 10px;
+}
+
+/* TimeLine */
+
+.linkIcon::before {
+  content: "";
+  position: absolute;
+  right: 30px;
+  background: url(/images/LinkArrowRightIcon.svg) no-repeat 0 0;
+  width: 28px;
+  height: 20px;
+}
+
+.foodlistsec .imgcontent {
+  padding: 140px 10% 80px;
+}
+
+.investLink {
+  color: rgb(164, 66, 148);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 0.75rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  text-align: left;
+  text-transform: capitalize;
+}
+
 /* ------------Resposive----------  */
+
+/* .accaodomationBannerSection.newbanner .accodoamationBannerContainer {
+  position: relative;
+    bottom: 50px;
+    width: 100%;
+}
+.accaodomationBannerSection.newbanner .accodoamationBannerText .breadCrum{color:#fff;}
+.accaodomationBannerSection.newbanner .accodoamationBannerText .breadCrum a:last-child{opacity: 0.5; cursor: default;} */
 
 @media (max-width: 1700px) and (min-width: 1600px) {
   .clcboxItemss .clcboxIImg {
     width: auto;
     height: 100px;
   }
+
   .visitIntroParaSection.detailIntro {
     padding-bottom: 0px;
   }
 }
 
 @media (max-width: 1600px) and (min-width: 1300px) {
+  .conatinerDetailsSection .detailapiSec ul li a {
+    width: 50%;
+    font-size: 10px;
+    line-height: 24px;
+  }
+
+  .conatinerDetailsSection .detailapiSec h2 {
+    height: 100px;
+  }
+
+  .conatinerDetailsSection .detailapiSec h3 {
+    font-size: 17px;
+    height: 70px;
+  }
   .clcscrlinRBox {
     padding-inline: 3vw 10vw;
   }
@@ -731,6 +2477,7 @@
   .visitIntroParaSection.detailIntro {
     padding-bottom: 0px;
   }
+
   .clcboxItemss .clcboxIImg {
     width: auto;
     height: 100px;
@@ -738,7 +2485,7 @@
 
   .workIntro h3 {
     font-size: clamp(36px, 7vw, 102px);
-    line-height: clamp(44px, 9vw, 94px);
+    line-height: clamp(44px, 9vw, 80px);
   }
 
   .imgcontent {
@@ -747,12 +2494,31 @@
 }
 
 @media (max-width: 1300px) and (min-width: 1000px) {
+  .conatinerDetailsSection .detailapiSec h2 {
+    height: 100px;
+  }
+  .conatinerDetailsSection .detailtextbox .ml-2 {
+    margin-left: 5px;
+  }
+
+  .conatinerDetailsSection .detailapiSec ul li a {
+    font-size: 9px;
+    line-height: 25px;
+  }
+
+  .conatinerDetailsSection .detailapiSec h3 {
+    font-size: 16px;
+    height: 65px;
+  }
+
   .clcscrlinRBox {
     padding-inline: 3vw 10vw;
   }
+
   .visitIntroParaSection.detailIntro {
     padding-bottom: 0px;
   }
+
   .imgcontent {
     padding: 140px 2% 0;
   }
@@ -763,6 +2529,20 @@
 }
 
 @media (max-width: 1000px) and (min-width: 900px) {
+  #InvestMainPage .bottomList {
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 28px;
+    padding-top: 20px;
+    padding-bottom: 0;
+    width: 70%;
+  }
+
+  #InvestMainPage .clcSecscrl {
+    align-items: center;
+  }
+
   .clcscrlinRBox {
     padding-inline: 3vw 5vw;
     padding-left: 20px;
@@ -771,9 +2551,11 @@
   .clcscrlCol.clcscrlLft .clcscrlinLBox {
     padding-right: 20px;
   }
+
   .visitIntroParaSection.detailIntro {
     padding-bottom: 0px;
   }
+
   .imgcontent {
     padding: 140px 0% 0;
   }
@@ -783,17 +2565,148 @@
   }
 }
 
+@media (max-width: 1680px) {
+  .imgcolTitle h2 {
+    line-height: 30px;
+  }
+  .clcboxItemss .clcboxICont h3 {
+    line-height: 33px;
+  }
+}
 @media (max-width: 1500px) {
   .clcboxItemss .clcboxIImg {
     width: auto;
     height: 100px;
   }
+
   .foodlistsec .imgcontent {
     padding: 140px 0% 80px;
   }
+  .nightlifesecIn {
+    margin: 0 0 40px;
+    padding-bottom: 40px;
+  }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) and (min-width: 1024px) {
+  .conatinerDetailsSection .detailapiSec {
+    width: 30% !important;
+  }
+
+  .clcscrLtitle p {
+    color: #f7f5f7;
+    font-size: 1.3vw;
+  }
+  .mapingImage .small {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 700px) {
+  .conatinerDetailsSection .detailapiSec {
+    width: 35% !important;
+    margin-bottom: 20px;
+  }
+
+  .conatinerDetailsSection {
+    column-gap: 2%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 999px) and (min-width: 500px) {
+  .iconImgdev .clcboxItemss .clcboxIImg {
+    width: 245px !important;
+    height: 170px;
+    margin-left: -15px;
+  }
+}
+
+@media (max-width: 780px) and (min-width: 600px) {
+  .conatinerDetailsSection .detailapiSec ul li a {
+    font-size: 10px;
+    line-height: 29px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 600px) {
+  #InvestMainPage .bottomList h4 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 999px) {
+  .accodoamationBannerText {
+    text-align: center;
+  }
+  .nightlife.investchennaisec {
+    margin-bottom: 50px;
+  }
+  .footerreached {
+    display: none;
+  }
+  .funchennai .clcboxItemss .clcboxIImg {
+    justify-content: flex-start;
+    background: none;
+  }
+
+  .NewsletterContent p {
+    padding: 0 20px;
+  }
+
+  .conatinerDetailsSection .detailapiSec {
+    width: 100%;
+  }
+
+  .FormIframeSection iframe {
+    width: 85%;
+  }
+
+  .investchennaisec .bottomListIcon {
+    width: 100%;
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+  }
+
+  .investchennaisec .py-12 {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .nightlife h1 {
+    font-size: 37px;
+  }
+  .card h3 {
+    line-height: 22px;
+  }
+
+  .visitIntroParaSection {
+    background: none;
+  }
+
+  .workIntro {
+    padding: 0 4%;
+  }
+
+  .clcboxItemss .clcboxICont h3 {
+    font-size: clamp(21px, 1.6vw, 32px);
+    margin-bottom: 30px;
+    margin-top: 20px;
+  }
+
+  .investchennaisec .bottomListIcon .clcboxItemss .clcboxICont p {
+    margin-bottom: 20px;
+  }
+  .nightlife h2 {
+    font-size: 30px;
+    line-height: 29px;
+    margin-top: 30px;
+  }
+
+  .CulturePage .nightlife h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
   .clcboxItemss .clcboxIImg {
     width: 100px;
     height: 98px;
@@ -806,17 +2719,28 @@
   .Tabs-wrapper {
     display: none;
   }
+
   /* After Banner Section */
   .visitIntroParaSection.detailIntro .workIntro h3 {
     font-size: clamp(30px, 4vw, 80px);
+    font-size: clamp(37px, 4vw, 80px);
+    line-height: 35px;
   }
+
+  .visitIntroParaSection.detailIntro .workIntro h1 {
+    font-size: clamp(30px, 4vw, 80px);
+    font-size: clamp(37px, 4vw, 80px);
+    line-height: 35px;
+  }
+
   .workIntro {
-    padding: 0 2%;
+    padding: 0 2% !important;
   }
 
   .CostOflivingBackground {
     bottom: 0%;
   }
+
   /* After Banner Section */
 
   /* Moving Section  */
@@ -824,9 +2748,11 @@
   .clcSecscrl {
     flex-direction: column;
   }
+
   .clcSecscrl .clcscrlCol {
     width: 100%;
   }
+
   .clcscrlCol.clcscrlLft .clcscrlinLBox {
     padding: 0px;
   }
@@ -834,11 +2760,13 @@
   .clcboxItemss .clcboxIImg img {
     width: 70%;
   }
+
   .clcboxItemss .clcboxIImg {
     width: 60px;
     height: 60px;
     padding: 0;
   }
+
   .clcboxItemss {
     padding: 20px;
     border: 2px solid #e0cae0;
@@ -852,6 +2780,7 @@
   .clcscrlinRBox {
     padding-left: 20px;
     padding-right: 20px;
+    padding-top: 20px;
   }
 
   .clcscrLtitle {
@@ -864,6 +2793,7 @@
   .clcscrLtitle h2 small {
     font-size: clamp(14px, 1.6vw, 32px);
   }
+
   .clcscrLtitle h2 {
     font-size: clamp(24px, 3.5vw, 64px);
   }
@@ -877,8 +2807,10 @@
     width: 7.5vw;
     top: 9px;
   }
+
   .visitIntroParaSection.detailIntro {
     padding-bottom: 30px;
+    padding-bottom: 0px;
     margin: 0px;
     padding-top: 35px;
   }
@@ -886,9 +2818,11 @@
   .MainSectionHovered {
     margin-top: 50px;
   }
+
   .workIntro p {
     margin-top: 20px;
   }
+
   .workMainContainer {
     background-image: none;
   }
@@ -899,9 +2833,15 @@
     flex-direction: column;
     padding: 24px 0;
   }
+
+  .CulturePage .foodlistsec .imgcontent.pattern-a {
+    padding-bottom: 10px !important;
+  }
+
   .imgText {
     width: 100%;
   }
+
   .imgLeft {
     width: 100%;
   }
@@ -915,6 +2855,7 @@
   .foodListIcon div {
     width: 100%;
   }
+
   .foodListIcon .clcboxItemss {
     padding-right: 0;
     margin: 0;
@@ -925,6 +2866,7 @@
     width: 75px;
     height: 75px;
   }
+
   .foodListIcon .clcboxItemss::after {
     content: none;
   }
@@ -934,6 +2876,7 @@
     font-size: 13px;
     line-height: 31px;
   }
+
   .foodListIcon .clcboxItemss .clcboxICont p {
     margin-bottom: 15px;
     min-height: auto;
@@ -969,6 +2912,7 @@
     padding: 1px;
     margin: 12px 12px 27px;
   }
+
   .clcboxItemss {
     padding-left: 20px;
     position: relative;
@@ -976,23 +2920,158 @@
     display: block;
     padding-bottom: 30px;
   }
+
   .foodListIcon .clcboxItemss .clcboxIImg {
-    background: #fcebfc;
+    background: #fcebfc !important;
   }
+
   .bottomListIcon {
     width: 100%;
   }
+
   .bottomListIcon .clcboxItemss {
     padding: 0 0 30px;
     margin-bottom: 46px;
   }
+
   .imgcontent {
     padding: 0;
   }
 
+  .iconImgdev .clcboxItemss .clcboxIImg {
+    width: 54vw;
+    height: 170px;
+  }
+  .visitIntroParaSection.detailIntro {
+    margin: 0 0 30px;
+  }
+  /* .stickyIconsContainer {
+    display: none;
+  } */
+  .conatinerDetailsSection .detailapiSec h2 {
+    text-align: center;
+  }
+
+  .weather-widget {
+    top: auto;
+    right: 0;
+    margin: 0 auto;
+    bottom: 0;
+  }
+
+  .mapingImage {
+    min-width: 100%;
+    margin: 60px auto 50px;
+  }
+  .visitTable {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    overflow: scroll;
+    width: 500px;
+    margin: 0 auto;
+  }
+
+  .visitTable table {
+    min-width: 600px; /* ensures horizontal scroll if screen is narrower */
+    border-collapse: collapse;
+    width: 100%; /* allows table to expand within container */
+  }
+  .bottomList {
+    width: 90%;
+    margin: 20px;
+  }
+  .foodListIcon.odd-count div:last-child div {
+    margin: 0 10px 30px;
+  }
+  .clcboxItemss .clcboxICont h3 {
+    margin-bottom: 10px;
+    line-height: 24px;
+  }
+  .nightlifesecIn {
+    padding-bottom: 0;
+    margin-bottom: 50px;
+    padding-bottom: 40px !important;
+  }
+  .foodListIcon.odd-count div:last-child {
+    border-top: none;
+    border-bottom: none;
+    padding-top: 0;
+  }
+  .foodListIcon.odd-count div:last-child div {
+    margin: 0 10px 30px;
+    border: none;
+  }
+
+  .foodListIcon.odd-count div {
+    border-bottom: solid 1px #ccc;
+  }
+  .imgText {
+    margin-bottom: 30px;
+  }
+  .CulturePage .imgText {
+    margin-bottom: 5px;
+  }
+
+  .clcscrLtitle h2 {
+    font-size: clamp(24px, 3.5vw, 64px);
+    line-height: clamp(25px, 5vw, 94px);
+  }
+  .nightlifesecIn {
+    margin: 0 0 40px;
+    padding-bottom: 40px;
+  }
+  .nightlifesecIn:last-child {
+    border-bottom: solid 1px #e7e7e7;
+  }
   /* New Style */
 }
 
+@media (max-width: 600px) {
+  .bottomList h4 {
+    font-family: "29LT Bukra SmBd";
+    font-size: clamp(21px, 1.6vw, 32px);
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .chennaiLifeEssentialHeading h3 {
+    font-size: clamp(40px, 14vw, 100px);
+    line-height: clamp(50px, 9vw, 94px);
+  }
+  .stickyIconsContainer {
+    display: none;
+  }
+  .mapingImage {
+    min-width: 80%;
+    margin: 20px;
+    padding: 0 20px;
+    width: 88%;
+  }
+  .mapingImage .small {
+    width: 100%;
+    height: 200px;
+  }
+
+  .visitTable {
+    width: 400px;
+  }
+  .visitTable table thead th {
+    font-size: 14px;
+  }
+  .pattern-b .clcscrlinRBox {
+    padding-top: 0;
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .visitTable {
+    width: 350px;
+  }
+  .clcscrLtitle p {
+    margin-top: 0;
+  }
+}
 /* Moving Section  */
 
 /* ------------Resposive----------  */

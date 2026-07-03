@@ -78,7 +78,7 @@
 }
 
 .trendingChennaiPrev {
-  background-image: url("../images/icons/LeftArrow-Bg.svg");
+  background-image: url("../../../public/images/icons/LeftArrow-Bg.svg");
   color: #a44294;
   background-size: contain;
   background-position: center;
@@ -88,11 +88,11 @@
   margin-right: 18px;
 }
 .trendingChennaiPrev:hover {
-  background-image: url("../images/icons/LeftArrow.svg");
+  background-image: url("../../../public/images/icons/LeftArrow.svg");
 }
 
 .trendingChennaiNext {
-  background-image: url("../images/icons/RightArrow-Bg.svg");
+  background-image: url("../../../public/images/icons/RightArrow-Bg.svg");
   color: #a44294;
   background-size: contain;
   background-position: center;
@@ -101,7 +101,7 @@
   height: 40px;
 }
 .trendingChennaiNext:hover {
-  background-image: url("../images/icons/RightArrow.svg");
+  background-image: url("../../../public/images/icons/RightArrow.svg");
 }
 
 .TrendingSectionImages {
@@ -113,7 +113,7 @@
 .trendingChennaiLink a::before {
   content: "";
   position: absolute;
-  background-image: url("../images/icons/rightArrowforDownload.svg");
+  background-image: url("../../../public/images/icons/rightArrowforDownload.svg");
   height: 20px;
   width: 20px;
   top: 0;
@@ -133,6 +133,7 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   -webkit-animation: scrollText 50s linear infinite;
+  z-index: -1;
 }
 .TrendingTextBackground p {
   font-family: "29LT Bukra SmBd";
@@ -220,7 +221,7 @@
   text-align: left;
   text-transform: uppercase;
   color: #ffffff;
-  padding-left: 10px;
+  /* padding-left: 10px; */
 }
 .hbintContin h4 {
   font-family: "29LT Bukra SmBd";
@@ -238,7 +239,31 @@
   text-transform: uppercase;
 }
 
+  .trendingChennaiCard {
+    /* transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.5s ease !important; */
+    /* will-change: transform !important; */
+  }
+
+  .trendingChennaiCard:hover {
+    /* transform: translateY(-10px) scale(1.1) !important;
+    -webkit-transform: translateY(-10px) scale(1.1) !important;
+    -moz-transform: translateY(-10px) scale(1.1) !important;
+    -ms-transform: translateY(-10px) scale(1.1) !important;
+    -o-transform: translateY(-10px) scale(1.1) !important; */
+}
+
+@media(max-width:1600px) and (min-width:1400px){
+  .buttonsTredingSections{
+    left: 72%;
+  }
+}
+
 @media (max-width: 1600px) and (min-width: 1300px) {
+
+    .buttonsTredingSections{
+    left: 73%;
+  }
   .tredingMainContainer {
     overflow: hidden;
     padding-top: 20px;
@@ -249,6 +274,12 @@
   }
   .TrendingTextBackground {
     top: 20%;
+  }
+}
+
+@media(max-width:1200px) and (min-width:1050px){
+  .buttonsTredingSections{
+    left: 77%;
   }
 }
 
@@ -273,7 +304,22 @@
   }
 }
 
+
+
 @media (max-width: 768px) {
+  
+  .trendingChennaiLink a::before{
+
+    height: 14px;
+    width: 14px;
+    top: -1px;
+    right: -19px;
+  }
+
+  .trendingChennaiLink a{
+    font-size: 10px;
+    line-height: 16px;
+  }
   .hbintContin {
     padding-left: 20px;
     padding-bottom: 35px;
@@ -282,6 +328,7 @@
   .hbintContin h3 {
     font-size: clamp(15px, 2.2vw, 20px);
     padding-left: 0px;
+    width: 68%;
   }
 
   .hbintContin p {
@@ -295,6 +342,7 @@
 
   .TrendCheniSec {
     padding-top: 90px;
+    padding-top: 50px;
   }
   .TrendingTextBackground {
     top: 20%;
@@ -302,7 +350,19 @@
 
   .trendingChennaiCard {
     height: 390px !important;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.5s ease !important;
+    will-change: transform !important;
   }
+
+  .trendingChennaiCard:hover {
+    transform: translateY(-12px) scale(1.02) !important;
+    -webkit-transform: translateY(-12px) scale(1.02) !important;
+    -moz-transform: translateY(-12px) scale(1.02) !important;
+    -ms-transform: translateY(-12px) scale(1.02) !important;
+    -o-transform: translateY(-12px) scale(1.02) !important;
+  }
+
   .tredingMainContainer {
     overflow: hidden;
     padding-top: 0px;
@@ -336,6 +396,7 @@
   .trendcLeft {
     width: 100%;
     padding-inline: 15px;
+    padding: 0 25px;
   }
   .trendcRight {
     width: 100%;

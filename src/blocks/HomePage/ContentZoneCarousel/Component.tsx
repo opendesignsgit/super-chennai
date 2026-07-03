@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import './style.css'
+// import './style.css'
 
 interface ImageData {
   url: string

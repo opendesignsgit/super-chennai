@@ -1,4 +1,4 @@
-.utilitiesMainRow{
+.utilitiesMainRow {
   overflow: hidden;
   position: relative;
 }
@@ -6,6 +6,8 @@
 .UtilitiesBackground {
   position: absolute;
   bottom: 8%;
+  bottom: -25px;
+  bottom: -10px;
   left: 0;
   white-space: nowrap;
   width: 200%;
@@ -52,7 +54,9 @@
 
 .utilitiCTabSec {
   background: url(/images/utilitiCTabsbg.jpg) no-repeat center center;
+  background: url(/images/utilitiCTabsbg.jpg) no-repeat center center;
   background-size: cover;
+  padding-bottom: 150px;
 }
 .utilitiCTabs {
   margin-top: -10vh;
@@ -76,13 +80,18 @@
   line-height: clamp(22px, 2vw, 26px);
 }
 
+.tabsSectionFlex {
+  justify-content: center;
+  row-gap: 15px;
+}
+
 ul.tabs {
   margin: 0;
   padding: 0;
   float: left;
   list-style: none;
   width: 40%;
-  padding-top: 8vh;
+  /* padding-top: 8vh; */
 }
 
 ul.tabs li {
@@ -147,21 +156,51 @@ ul.tabs li.active {
   display: none;
 } */
 
-
-
-@media(min-width:768px){
-.tab_drawer_heading{
-  display: none !important;
+.utilitiesContentmaps {
+  position: relative;
 }
+
+.utilitiesContentmaps button {
+  cursor: pointer;
+  position: absolute;
+  bottom: 59px;
+  left: 56%;
+  background: #a34493;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-family: poppins;
+}
+
+.utilitiesContentmaps button:hover{
+  background-color: pink;
+}
+
+@media (min-width: 768px) {
+
+
+  .tab_drawer_heading {
+    display: none !important;
+  }
 }
 
 @media screen and (max-width: 768px) {
+    .utilitiesContentmaps button{
+    bottom: 20px;
+  }
+  .UtilitiesBackground {
+    bottom: 5%;
+  }
 
+  .utilitiCTabSec {
+    padding-top: 50px;
+    padding-bottom: 130px;
+  }
   .tab-toggle-icon {
-  font-size: 1.25rem;
-  font-weight: bold;
-  transition: transform 0.3s ease;
-}
+    font-size: 1.25rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+  }
 
   .tabs {
     display: none;
@@ -197,15 +236,27 @@ ul.tabs li.active {
     width: 100%;
     overflow: auto;
     margin-top: 100px;
+    margin-top: 65px;
     padding-bottom: 50px;
+  }
+
+  .Utilitiestab_container .tab_content img {
+    width: 100%;
+    height: 338px;
+    object-fit: cover;
   }
 
   .utilitiTitle h2 {
     font-size: 65px;
     line-height: 50px;
     width: 71%;
+    width: 100%;
   }
-  .mapsFontSymbols{
+
+  .utilitiTitle {
+    padding-left: 15px;
+  }
+  .mapsFontSymbols {
     font-family: "NewAmsterdam";
     font-size: 36px;
     color: #7e7e7e;

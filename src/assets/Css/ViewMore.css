@@ -1,0 +1,33 @@
+/* Custom tiny vertical scrollbar for location list */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+.view-more-button {
+  color: rgb(164, 66, 148);
+  font-size: 0.875rem; 
+  font-weight: 500;    
+  margin-top: 0.75rem; /* mt-3 */
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.view-more-button:hover {
+  text-decoration: none;
+}

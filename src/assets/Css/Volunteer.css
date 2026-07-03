@@ -18,6 +18,13 @@
   text-align: center;
 }
 
+.septemberMonthStyle .voluntterContent {
+  top: -22%;
+  top: -13%;
+  font-size: 97px;
+  letter-spacing: 1px;
+}
+
 .VolunteerMainContainer {
   display: flex;
   justify-content: center;
@@ -58,7 +65,13 @@
   justify-content: center;
 }
 .VolunteerBannerImage img {
-  width: 90%;
+  width: 85%;
+  /* object-fit: cover; */
+  border-bottom-right-radius: 150px;
+}
+
+.VolunteerBannerImage video {
+  width: 85%;
   object-fit: cover;
   border-bottom-right-radius: 150px;
 }
@@ -199,6 +212,14 @@
   color: #fff;
 }
 
+
+.VolunteerBecameavolunteer-manifesto h3 {
+  font-family: NewAmsterdam;
+  font-size: clamp(48px, 8vw, 100px);
+  line-height: clamp(48px, 6vw, 94px);
+  color: #282424;
+}
+
 .VolunterPageBecameVolunteerBg {
   background: linear-gradient(
     90deg,
@@ -252,9 +273,11 @@
 }
 
 .DigitalSectionFLex img {
-  width: 49%;
-  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2),
-    0 22px 10px 0 rgba(0, 0, 0, 0.05);
+  /* width: 49%; */
+  /* box-shadow:
+    0 10px 16px 0 rgba(0, 0, 0, 0.2),
+    0 22px 10px 0 rgba(0, 0, 0, 0.05); */
+  width: 50%;
   border-radius: 20px;
 }
 
@@ -334,7 +357,7 @@
 }
 
 .DootedBannerSectionVolunteer {
-  background-image: url("../images/doted.png");
+  /* background-image: url("../../../public/images/doted.png"); */
   margin-top: 10%;
   margin-top: clamp(40px, 25vh, 50px);
   overflow: hidden;
@@ -353,12 +376,37 @@
 
 /* Media-Query */
 
+@media (max-width: 1600px) {
+  .VolunteerBannerImage img {
+    /* width: 75%; */
+  }
+
+  .VolunteerBannerImage video {
+    width: 75%;
+  }
+  .voluntterContent {
+    top: -13%;
+  }
+
+  .septemberMonthStyle .voluntterContent {
+    top: -19%;
+    top: -6%;
+  }
+}
+
 @media (max-width: 1600px) and (min-width: 1200px) {
   .VolunteerBgSection {
     height: auto;
   }
   .voluntterContent {
     font-size: 170px;
+  }
+
+  .septemberMonthStyle .voluntterContent {
+    font-size: 70px;
+    letter-spacing: 1px;
+    line-height: 1;
+    top: -7%;
   }
 
   .volunteeerMainContent h3 {
@@ -392,17 +440,35 @@
   } */
 }
 
-
-@media(max-width:1150px) and (min-width:1000px){
-
+@media (max-width: 1300px) and (min-width: 1200px) {
+  .voluntterContent {
+    top: -16.2%;
+  }
 }
-@media (max-width: 1200px) and (min-width: 800px) {
+
+@media (max-width: 1150px) and (min-width: 1000px) {
+}
+@media (max-width: 1200px) and (min-width: 700px) {
   .VolunteerBgSection {
     height: auto;
   }
 }
 
+@media (min-width: 789px) and (max-width: 1200px) {
+  .septemberMonthStyle .voluntterContent {
+    font-size: 48px !important;
+    line-height: 1;
+  }
+
+  .septemberMonthStyle .VolunteerMainContainer {
+    padding-top: 20%;
+  }
+}
+
 @media (max-width: 768px) {
+  .VolunteerMainContainer {
+    padding-top: 20% !important;
+  }
   .VolunteerBecameavolunteer p {
     width: 90%;
   }
@@ -459,6 +525,14 @@
 
   .VolunteerBannerImage img {
     width: 90%;
+    width: 95%;
+    object-fit: cover;
+    border-bottom-right-radius: 50px;
+  }
+
+  .VolunteerBannerImage video {
+    width: 90%;
+    width: 95%;
     object-fit: cover;
     border-bottom-right-radius: 50px;
   }
@@ -475,6 +549,13 @@
     text-align: center;
   }
 
+  .septemberMonthStyle .voluntterContent {
+    /* top: -18%; */
+    top: -9%;
+    font-size: 23px !important;
+    line-height: 1;
+  }
+
   .VolunteerBgSection {
     height: auto;
     margin-top: 65px;
@@ -482,6 +563,21 @@
 
   .DootedBannerSectionVolunteer {
     margin-top: 10%;
+  }
+}
+
+@media (max-width: 790px) and (min-width: 700px) {
+  .septemberMonthStyle .voluntterContent {
+    font-size: 48px !important;
+
+    font-size: 43px !important;
+    top: -27%;
+  }
+}
+
+@media (max-width: 700px) and (min-width: 450px) {
+  .septemberMonthStyle .voluntterContent {
+    font-size: 31px !important;
   }
 }
 

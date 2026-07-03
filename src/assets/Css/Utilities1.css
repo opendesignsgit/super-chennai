@@ -1,0 +1,305 @@
+.utilities1-main-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.utilities1-bg-text {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  white-space: nowrap;
+  width: 200%;
+  z-index: 0;
+  opacity: 0.04;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation: scrollText 50s linear infinite;
+}
+
+.utilities1-bg-text p {
+  font-family: "29LT Bukra SmBd";
+  font-size: clamp(80px, 10vw, 280px);
+  line-height: clamp(100px, 12vw, 150px);
+  text-transform: uppercase;
+}
+
+.utilities1-scroll-left {
+  animation-name: scrollLeftVolunteer;
+}
+
+.utilities1-scroll-right {
+  animation-name: scrollRightVolunteer;
+}
+
+@keyframes scrollLeftVolunteer {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRightVolunteer {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.utilities1-section {
+  /* background: url(/images/utilitiCTabsbg.jpg) no-repeat center center;
+  background-size: cover; */
+  background: #f5f5f5;
+}
+
+.utilities1-tabs-container {
+  margin-top: -10vh;
+}
+
+.utilities1-title h2 {
+  font-family: "NewAmsterdam";
+  color: #a44294;
+  text-transform: uppercase;
+  font-size: 5vw;
+  line-height: 1;
+}
+
+.utilities1-title p {
+  font-family: "29LT Bukra Regular";
+  color: #000;
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: clamp(22px, 2vw, 26px);
+}
+
+.utilities1-tabs {
+  margin: 0;
+  padding: 0;
+  float: left;
+  list-style: none;
+  width: 31%;
+  row-gap: 8px;
+  position: relative;
+}
+
+.utilities1-tabs::before {
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 1px;
+  background: #9b9b9b;
+  right: 53px;
+}
+
+.utilities1-tabs li {
+  margin: 0;
+  cursor: pointer;
+  padding: 1vh 0px;
+  line-height: 1.1;
+  color: #0f708f;
+  color: #000;
+  color: #626262;
+  position: relative;
+  font-family: "29LT Bukra SmBd";
+  font-size: 1.5vw;
+  text-transform: none;
+  letter-spacing: -2px;
+  font-size: 35px;
+}
+
+.utilities1-tabs li.utilities1-tab-active::before {
+  opacity: 1;
+}
+
+.utilities1-tabs li:hover {
+  color: #a34493;
+}
+
+.utilities1-tab-active {
+  line-height: 1;
+  font-size: 36px !important;
+  color: #a34493 !important;
+  font-family: "29LT Bukra SmBd";
+}
+
+.utilities1-tab-last {
+  margin-bottom: 0;
+}
+
+.utilities1-content-container {
+  clear: both;
+  width: 60%;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.utilities1-tab-content {
+  padding: 20px;
+  display: none;
+}
+
+.utilities1-tab-heading {
+  display: none;
+}
+
+.utilities1-column {
+  margin-top: 100px;
+}
+
+.InvestMainDivSection img {
+  width: 80px;
+}
+.investH3 {
+  margin-top: 12px;
+}
+
+.TabInvestSection h3 {
+  font-family: "NewAmsterdam";
+  font-size: 53px;
+  line-height: 53px;
+  color: #fff;
+  color: black !important;
+}
+
+.TabInvestSection a {
+  background: #a34493;
+  border: 3px solid #fff;
+  color: #fff;
+}
+
+@media (max-width: 1600px) and (min-width: 1100px) {
+  .utilities1-tabs::before {
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 1px;
+    background: #9b9b9b;
+    right: 15px;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 1000px) {
+  .utilities1-tabs li {
+    font-size: 30px;
+    padding-left: 55px;
+  }
+
+  .utilities1-tab-active {
+    font-size: 31px !important;
+  }
+
+  .TabInvestSection h3 {
+    font-size: 42px;
+    line-height: 43px;
+  }
+
+  .utilities1-tab-content {
+    margin-left: 50px;
+  }
+
+  .utilities1-tabs::before {
+    right: -10px;
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 769px) {
+  .utilities1-tabs li {
+    font-size: 24px;
+    padding-left: 22px;
+  }
+
+  .utilities1-tab-active {
+    font-size: 24px !important;
+  }
+
+  .TabInvestSection h3 {
+    font-size: 42px;
+    line-height: 43px;
+  }
+
+  .utilities1-tab-content {
+    margin-left: 50px;
+  }
+
+  .utilities1-tabs::before {
+    right: -10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .utilities1-tab-heading {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .utilities1-tab-content {
+    margin-top: 30px;
+  }
+
+  .TabInvestSection h3 {
+    font-size: 37px;
+    line-height: 35px;
+  }
+
+  .utilities1-tabs {
+    display: none;
+  }
+
+  .utilities1-title p {
+    width: 90%;
+  }
+
+  .utilities1-tab-heading {
+    width: 100%;
+    background-color: #ccc;
+    border-top: 1px solid #333;
+    padding: 5px 20px;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+    font-family: "NewAmsterdam";
+    font-size: 28px;
+    color: #7e7e7e;
+    line-height: 30px;
+    font-weight: 500;
+  }
+
+  .utilities1-heading-active {
+    background-color: #0c242c;
+    color: #fff;
+  }
+
+  .utilities1-content-container {
+    width: 100%;
+    overflow: auto;
+    margin-top: 0px;
+    padding-bottom: 10px;
+    flex-direction: column;
+  }
+
+  .utilities1-section {
+    padding-top: 40px;
+  }
+
+  .utilities1-title h2 {
+    font-size: 65px;
+    line-height: 50px;
+    width: 71%;
+  }
+
+  .utilities1-toggle-symbol {
+    font-family: "NewAmsterdam";
+    font-size: 36px;
+    color: #7e7e7e;
+    line-height: 40px;
+    font-weight: 500;
+  }
+}

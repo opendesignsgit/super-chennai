@@ -1,12 +1,23 @@
 .chillZoneMainContainer {
-  background-image: url("/public//images/HomePage-Images/chennaiChilloutZone.jpg");
-  height: 700px;
+  background-image: url("/images/chennaiChilloutZone.jpg");
+  height: 750px;
   background-repeat: no-repeat;
   display: flex;
   overflow: hidden;
   align-items: center;
   background-position: left;
   margin-top: -2px;
+  background-position: bottom;
+
+  /* background-image: url("/public/images/HomePage-Images/chennaiChilloutZone.jpg");
+  height: auto;
+  background-repeat: no-repeat;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  background-position: left;
+  margin-top: -62px;
+  background-size: contain; */
 }
 
 .carousel-section-container {
@@ -16,7 +27,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   margin-left: 17%;
-  margin-top: 7%;
+  margin-top: 4%;
 }
 
 /* Left Section */
@@ -47,24 +58,24 @@
 }
 
 .chilloutZoneButtonsleft {
-  background-image: url("../images/icons/LeftArrow-Bg.svg");
+  background-image: url("../../../public/images/icons/LeftArrow-Bg.svg");
   width: 40px;
   height: 40px;
   background-size: cover;
 }
 .chilloutZoneButtonsRight {
-  background-image: url("../images/icons/RightArrow-Bg.svg");
+  background-image: url("../../../public/images/icons/RightArrow-Bg.svg");
   width: 40px;
   height: 40px;
   background-size: cover;
 }
 
 .chilloutZoneButtonsleft:hover {
-  background-image: url("../images/icons/LeftArrow.svg");
+  background-image: url("../../../public/images/icons/LeftArrow.svg");
 }
 
 .chilloutZoneButtonsRight:hover {
-  background-image: url("../images/icons/RightArrow.svg");
+  background-image: url("../../../public/images/icons/RightArrow.svg");
 }
 /* Right Section */
 .chillZonecarousel-container {
@@ -84,6 +95,14 @@
   width: 300px;
   height: auto;
   object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s ease;
+  will-change: transform;
+}
+
+.chillZoneImageCard:hover {
+  transform: translateY(-12px) scale(1.02);
+  border-top-left-radius: 20px;
 }
 
 .carousel-card h3 {
@@ -162,16 +181,71 @@
   margin-top: 25px;
   padding-left: 60px;
   word-spacing: 3px;
-  text-shadow: 2px 2px 4px #4c4c4c;
+  /* text-shadow: 2px 2px 4px #4c4c4c; */
 }
 
 @media (max-width: 1700px) and (min-width: 1600px) {
   .chillZoneMainContainer {
     background-position: left;
   }
+  .carousel-section-container {
+    margin-top: 13%;
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 1200px) {
+  .chillZoneMainContainer {
+    height: 1000px;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-position: left;
+    
+    background-size: inherit;
+  }
+
+  .carousel-section-container {
+    margin-left: 10%;
+    margin-top: 19%;
+}
+}
+
+
+@media(max-width:1200px) and (min-width:1100px){
+  .chillZoneMainContainer {
+    margin-top: -2px;
+    background-position: left;
+    background-size: cover;
+}
+
+.carousel-section-container {
+
+    margin-left: 30%;
+    margin-top: 18%;
+}
+}
+
+@media(max-width:1050px) and (min-width:1000px){
+  .chillZoneMainContainer {
+    background-position: left;
+    background-size: cover;
+}
+
+.carousel-section-container {
+    margin-left: 15%;
+    margin-top: 19%;
+}
+}
+@media (max-width: 800px) and (min-width: 700px) {
+  .carousel-section-container {
+    margin-left: -4%;
+  }
 }
 
 @media (max-width: 768px) {
+
+  .EventsCalendarTitleMain{
+    padding-left: 25px;
+  }
   /* .chillZonecarousel-buttons:first-child{
     display: none !important;
   } */
@@ -285,7 +359,7 @@
     align-items: center;
     background-position: bottom;
     margin-top: -55px;
-    background-color: #a24c8d;
+    /* background-color: #a24c8d; */
     background-image: url("/public/images/HomePage-Images/Mobile-Bg-ChillOut.png");
     background-position: top;
     background-size: contain;
@@ -293,6 +367,19 @@
 
   .chillZonecarousel-container .carousel-track {
     margin-left: 2%;
+  }
+  .chillZonecarousel-container::before{
+    content: "";
+    width: 100%;
+    height: 450px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    background: #a24c8d;
+    background-size: 200% 100%;
+    background-position: 0% 0%;
   }
 
   .EventsCalendarTitleMain p {
@@ -312,5 +399,15 @@
 @media (min-width: 768px) {
   .chillZonecarousel-buttons:nth-child(2) {
     display: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .carousel-section-container {
+    gap: 200px;
+    padding-bottom: 70px;
+
+
+
   }
 }

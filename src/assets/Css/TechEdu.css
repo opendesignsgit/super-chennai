@@ -8,15 +8,15 @@
   border-right: 6px solid white;
   position: relative;
 }
-.techEduImage1 img {
-}
+
+.techEduImage1 img {}
+
 .techEduImage2 {
   width: 50%;
   border-left: 6px solid white;
 }
 
-.techEduImage2 img {
-}
+.techEduImage2 img {}
 
 .techEduMainRow {
   border-bottom: 13px solid white;
@@ -41,7 +41,8 @@
 }
 
 .techEdu1Content1 p {
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
+  font-family: "Poppins", sans-serif;
   color: #afafaf;
   font-size: clamp(9px, 1.5vw, 16px);
   line-height: clamp(11px, 2vw, 26px);
@@ -49,12 +50,14 @@
   width: 100%;
   font-weight: 300;
 }
+
 .techEdu1Content2 {
   position: absolute;
   bottom: 5%;
   right: 2%;
   width: 24%;
 }
+
 .techEdu1Content2 h4 {
   font-family: "NewAmsterdam";
   color: #fff;
@@ -67,7 +70,7 @@
 
 .techEdu1Content2 p {
   font-family: "29LT-Bukra-Light";
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
   color: #afafaf;
   font-size: clamp(9px, 1.5vw, 16px);
   line-height: clamp(11px, 2vw, 26px);
@@ -164,9 +167,21 @@
 
   .techEdu1Content1 p {
     width: 90%;
+    width: 100%;
+    color: #fff;
+    font-size: 9px;
+    line-height: 12px;
+    font-weight: 200;
+    letter-spacing: 0.2px;
   }
 
   .techEdu1Content2 p {
     width: 90%;
+    width: 100%;
+    color: #fff;
+    font-size: 9px;
+    line-height: 12px;
+    font-weight: 200;
+    letter-spacing: 0.2px;
   }
 }

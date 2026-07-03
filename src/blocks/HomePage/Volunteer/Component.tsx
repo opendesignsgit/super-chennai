@@ -129,6 +129,15 @@ export default function BecameAVolunteer({ heading, title, description, page, cu
                   {current?.subtitle && <h4>{current.subtitle}</h4>}
                   {current?.description && <p>{current.description}</p>}
 
+                  <div className="linksContainer">
+                    <a
+                      // href={slides[currentSlide].link}
+                      className="exploreMoreLink"
+                    >
+                      Explore More
+                    </a>
+                  </div>
+
                   {finalLink && (
                     <div className="linksContainer">
                       <Link href={finalLink} className="exploreMoreLink">

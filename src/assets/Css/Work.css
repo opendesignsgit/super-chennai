@@ -2,7 +2,7 @@
 
 .workMainContainer {
   overflow: hidden;
-  background-image: url("../images/doted.png");
+  /* background-image: url("../../../public/images/doted.png"); */
 }
 .volunteerSectionBanner {
   position: relative;
@@ -62,10 +62,25 @@
 }
 
 .workIntro h3 {
-  font-family: NewAmsterdam;
+  /* font-family: NewAmsterdam;
   color: #995098;
   font-size: clamp(36px, 14vw, 100px);
-  line-height: clamp(44px, 9vw, 94px);
+  line-height: clamp(44px, 9vw, 80px); */
+  font-family: NewAmsterdam;
+  color: #995098;
+  font-size: 68px;
+  line-height: 56px;
+}
+
+.workIntro h1 {
+  /* font-family: NewAmsterdam;
+  color: #995098;
+  font-size: clamp(36px, 14vw, 100px);
+  line-height: clamp(44px, 9vw, 80px); */
+  font-family: NewAmsterdam;
+  color: #995098;
+  font-size: 68px;
+  line-height: 56px;
 }
 
 .workIntro p {
@@ -79,12 +94,13 @@
 
 .detailIntro .workIntro {
   padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 
 .workIntroParaSection {
   margin-top: 35px;
   position: relative;
-  padding-bottom: 140px;
+  padding-bottom: 100px;
   padding-top: 60px;
 }
 
@@ -175,6 +191,7 @@
 }
 .workimgIn li {
   margin: 0 0 25px;
+  position: relative;
 }
 .workimgIn li a {
   font-size: 45px;
@@ -192,7 +209,7 @@
   line-height: 1;
 }
 .workimgIn li.active a {
-  font-size: 80px;
+  font-size: 70px;
   letter-spacing: -1px;
   font-weight: 600;
   line-height: 1;
@@ -280,7 +297,27 @@
   }
 }
 
+@media (max-width: 1600px) {
+  .hoverRightimg img {
+    height: 80%;
+    position: relative;
+    top: -70px;
+  }
+  .workImageSection {
+    padding-bottom: 23px;
+  }
+}
+
 @media (max-width: 768px) {
+  .workIntro h3 {
+    font-size: 36px;
+    line-height: 30px;
+  }
+
+    .workIntro h1 {
+    font-size: 36px;
+    line-height: 30px;
+  }
   .workIntroParaSection {
     padding-bottom: 0px;
     padding-top: 0;
