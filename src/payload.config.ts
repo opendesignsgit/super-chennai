@@ -113,25 +113,18 @@ export default buildConfig({
   editor: defaultLexical,
 
   db: postgresAdapter({
-    // pool: {
-    //   max: 10, // max connections
-    //   connectionString: process.env.DATABASE_URI,
-    //   connectionTimeoutMillis: 300000, // 60 seconds
-    //   idleTimeoutMillis: 300000, // 30 seconds 30000
-    // },
+    pool: {
+      max: 10, // max connections
+      connectionString: process.env.DATABASE_URI,
+      connectionTimeoutMillis: 300000, // 60 seconds
+      idleTimeoutMillis: 300000, // 30 seconds 30000
+    },
     // pool: {
     //   max: 10,
     //   connectionString: process.env.DATABASE_URI,
     //   connectionTimeoutMillis: 1800000, // 30 minutes
     //   idleTimeoutMillis: 1800000, // 30 minutes
     // },
-    pool: {
-      max: 10,
-      connectionString: process.env.DATABASE_URI,
-
-      connectionTimeoutMillis: 5000, // 5 sec
-      idleTimeoutMillis: 30000, // 30 sec (NOT minutes)
-    },
   }),
 
   collections: [
