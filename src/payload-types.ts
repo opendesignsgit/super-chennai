@@ -206,11 +206,13 @@ export interface Config {
     header: Header;
     footer: Footer;
     iconOfMonthLandingPage: IconOfMonthLandingPage;
+    settings: Setting;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     iconOfMonthLandingPage: IconOfMonthLandingPageSelect<false> | IconOfMonthLandingPageSelect<true>;
+    settings: SettingsSelect<false> | SettingsSelect<true>;
   };
   locale: null;
   user: User & {
@@ -8397,6 +8399,23 @@ export interface IconOfMonthLandingPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings".
+ */
+export interface Setting {
+  id: number;
+  /**
+   * The ID of the Facebook Page connected to your Instagram Business account.
+   */
+  facebookPageId: string;
+  /**
+   * Paste your fresh or extended Page Access Token here when it expires.
+   */
+  instagramAccessToken: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -8513,6 +8532,17 @@ export interface IconOfMonthLandingPageSelect<T extends boolean = true> {
   desktopImage?: T;
   mobileImage?: T;
   content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings_select".
+ */
+export interface SettingsSelect<T extends boolean = true> {
+  facebookPageId?: T;
+  instagramAccessToken?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

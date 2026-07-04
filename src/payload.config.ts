@@ -67,6 +67,7 @@ import { ArattaiRegistrations } from './collections/Arrattai/ArattaiRegistration
 import { EventDashboard } from './collections/EventDashboard'
 import { IconMonthCategories } from './collections/IconOfTheMonth/Options/icon-month-categories'
 import { IconOfMonthPage } from './collections/IconOfTheMonth/Options/CollectionPageData'
+import { Settings } from './collections/Globals/Settings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -217,7 +218,7 @@ export default buildConfig({
     'http://localhost:5174',
     getServerSideURL(),
   ].filter(Boolean),
-  globals: [Header, Footer, IconOfMonthPage],
+  globals: [Header, Footer, IconOfMonthPage,Settings],
   blocks: [ChennaiInvestmentsBlock],
   plugins: [...plugins],
   secret: process.env.PAYLOAD_SECRET,
