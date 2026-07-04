@@ -67,6 +67,7 @@ import { ArattaiRegistrations } from './collections/Arrattai/ArattaiRegistration
 import { EventDashboard } from './collections/EventDashboard'
 import { IconMonthCategories } from './collections/IconOfTheMonth/Options/icon-month-categories'
 import { IconOfMonthPage } from './collections/IconOfTheMonth/Options/CollectionPageData'
+import { Settings } from './collections/Globals/Settings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -113,18 +114,18 @@ export default buildConfig({
   editor: defaultLexical,
 
   db: postgresAdapter({
-    // pool: {
-    //   max: 10, // max connections
-    //   connectionString: process.env.DATABASE_URI,
-    //   connectionTimeoutMillis: 300000, // 60 seconds
-    //   idleTimeoutMillis: 300000, // 30 seconds 30000
-    // },
     pool: {
-      max: 10,
+      max: 10, // max connections
       connectionString: process.env.DATABASE_URI,
-      connectionTimeoutMillis: 1800000, // 30 minutes
-      idleTimeoutMillis: 1800000, // 30 minutes
+      connectionTimeoutMillis: 300000, // 60 seconds
+      idleTimeoutMillis: 300000, // 30 seconds 30000
     },
+    // pool: {
+    //   max: 10,
+    //   connectionString: process.env.DATABASE_URI,
+    //   connectionTimeoutMillis: 1800000, // 30 minutes
+    //   idleTimeoutMillis: 1800000, // 30 minutes
+    // },
   }),
 
   collections: [
@@ -217,7 +218,7 @@ export default buildConfig({
     'http://localhost:5174',
     getServerSideURL(),
   ].filter(Boolean),
-  globals: [Header, Footer, IconOfMonthPage],
+  globals: [Header, Footer, IconOfMonthPage,Settings],
   blocks: [ChennaiInvestmentsBlock],
   plugins: [...plugins],
   secret: process.env.PAYLOAD_SECRET,
