@@ -318,7 +318,7 @@ export const EventsCalendarBlock: React.FC<Props> = ({ heading, description, pag
       </div>
 
       {allEvents.length > 0 ? (
-        <div className="overflow-hidden py-17 cardMobileSection">
+        <div className="overflow-hidden py-17 cardMobileSection ">
           <div className="relative">
             <div className="absolute top-0 left-0 h-full w-16 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
             <div className="absolute top-0 right-0 h-full w-16 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
