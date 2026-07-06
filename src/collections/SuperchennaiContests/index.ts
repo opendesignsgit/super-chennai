@@ -48,7 +48,7 @@ export const SuperchennaiContests: CollectionConfig<'superchennaiContests'> = {
   admin: {
     hidden: true,
     defaultColumns: ['title', 'slug', 'updatedAt'],
-       group: 'Main collections',
+       group: '🏙️ Chennai Content',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({

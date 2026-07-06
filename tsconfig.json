@@ -53,7 +53,7 @@
 , "src/Header/test.jsx",
 "next-env.d.ts", "**/*.ts", "**/*.tsx", "custom.d.ts"
 , "src/utilities/emailComponents"
-  ],
+, "src/declarations.d.ts"  ],
   "exclude": [
     "node_modules"
   ]

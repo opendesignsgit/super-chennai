@@ -8,7 +8,7 @@ export const ArattaiRegistrations: CollectionConfig = {
 
     defaultColumns: ['name', 'email', 'status', 'thankYouMailSent', 'createdAt'],
 
-    group: 'USER RESGISTARTIONS',
+    group: '⚙️ Site Administration',
   },
 
   access: {

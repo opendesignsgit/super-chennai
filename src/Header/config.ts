@@ -7,6 +7,9 @@ export const Header: GlobalConfig = {
   access: {
     read: () => true,
   },
+  admin: {
+    group: '🌐 Site Builder',
+  },
   fields: [
     // #################### LOGO FIELD #######################
     {
@@ -118,8 +121,6 @@ export const Header: GlobalConfig = {
         },
       ],
     },
-
-    
   ],
   hooks: {
     afterChange: [revalidateHeader],

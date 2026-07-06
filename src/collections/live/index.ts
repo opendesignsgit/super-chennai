@@ -54,7 +54,7 @@ export const Live: CollectionConfig<'live'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
-       group: 'Main collections',
+       group: '🏙️ Chennai Content',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({

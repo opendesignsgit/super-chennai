@@ -6,6 +6,9 @@ const Footer: GlobalConfig = {
   access: {
     read: () => true,
   },
+  admin: {
+    group: '🌐 Site Builder',
+  },
   fields: [
     {
       type: 'group',
