@@ -24,7 +24,7 @@ export default async function Footer() {
     return (
       <>
         {/* ================= FIXED RIGHT-SIDE VERTICAL SOCIAL BAR ================= */}
-        <div className="fixed right-4 top-1/3 -translate-y-1/4 z-50 flex flex-col gap-3 p-2  rounded-full shadow-lg border border-white/10">
+        <div className="stickyIconsContainer">
           {socialLinks.map((social) => {
             const iconUrl =
               typeof social.icon === 'object' && social.icon?.url
@@ -38,12 +38,12 @@ export default async function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.platform}
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#a44294] transition-all duration-300 transform hover:scale-110 shadow"
+                className="linkedin-sc"
               >
                 <img
                   src={iconUrl}
                   alt={`${social.platform} Icon`}
-                  className="w-5 h-5 object-contain"
+                  // className="w-5 h-5 object-contain"
                 />
               </a>
             )
