@@ -6,7 +6,7 @@ import { GlobalConfig } from 'payload'
 export const IconOfMonthPage: GlobalConfig = {
   slug: 'iconOfMonthLandingPage',
   admin: {
-    group: 'Collection Landing page Content',
+    group: '🗂️ Landing Page Assets',
   },
 
   fields: [

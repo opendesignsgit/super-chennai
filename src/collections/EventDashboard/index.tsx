@@ -4,7 +4,7 @@ export const EventDashboard: CollectionConfig = {
   slug: 'event-dashboard',
 
   admin: {
-    group: 'Arattai Management',
+    group: '⚙️ Site Administration',
 
     components: {
       views: {

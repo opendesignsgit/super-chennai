@@ -206,12 +206,14 @@ export interface Config {
     header: Header;
     footer: Footer;
     iconOfMonthLandingPage: IconOfMonthLandingPage;
+    articlesLandingPage: ArticlesLandingPage;
     settings: Setting;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     iconOfMonthLandingPage: IconOfMonthLandingPageSelect<false> | IconOfMonthLandingPageSelect<true>;
+    articlesLandingPage: ArticlesLandingPageSelect<false> | ArticlesLandingPageSelect<true>;
     settings: SettingsSelect<false> | SettingsSelect<true>;
   };
   locale: null;
@@ -8399,6 +8401,33 @@ export interface IconOfMonthLandingPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articlesLandingPage".
+ */
+export interface ArticlesLandingPage {
+  id: number;
+  title: string;
+  desktopImage: number | Media;
+  mobileImage: number | Media;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "settings".
  */
 export interface Setting {
@@ -8528,6 +8557,19 @@ export interface FooterSelect<T extends boolean = true> {
  * via the `definition` "iconOfMonthLandingPage_select".
  */
 export interface IconOfMonthLandingPageSelect<T extends boolean = true> {
+  title?: T;
+  desktopImage?: T;
+  mobileImage?: T;
+  content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articlesLandingPage_select".
+ */
+export interface ArticlesLandingPageSelect<T extends boolean = true> {
   title?: T;
   desktopImage?: T;
   mobileImage?: T;

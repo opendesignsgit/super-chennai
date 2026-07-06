@@ -71,7 +71,7 @@ export const Neighbourhood: CollectionConfig<'neighbourhood'> = {
   admin: {
     // hidden: true,
     defaultColumns: ['title', 'slug', 'updatedAt'],
-    group: 'Main collections',
+    group: '📖 Guides & Stories',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
