@@ -95,7 +95,7 @@ export default function TrendingChennaiClient({ title, description, events }: Pr
 
       {/* SECTION ################################ */}
       <section className="TrendCheniSec">
-        <div className="container mx-auto flex mainContainerFlexTrending">
+        <div className="container max-w-7xl mx-auto flex mainContainerFlexTrending">
           {/* LEFT CONTENT ######################## */}
           <div className="trendccol trendcLeft">
             <h2>{title || 'Trending Chennai'}</h2>
@@ -104,8 +104,8 @@ export default function TrendingChennaiClient({ title, description, events }: Pr
           </div>
 
           {/* RIGHT SLIDER ######################## */}
-<div className="trendccol trendcRight relative">
-              <div className="overflow-hidden h-[60vh]">
+          <div className="trendccol trendcRight relative">
+            <div className="overflow-hidden h-[60vh]">
               <div
                 className="flex transition-transform duration-500"
                 style={{

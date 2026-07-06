@@ -120,7 +120,7 @@
   animation: parachuteFloat 6s ease-in-out infinite alternate;
 }
 .funchennaiMainConatiner {
-  margin-left: 28%;
+  margin-left: 32%;
 }
 
 @keyframes parachuteFloat {
