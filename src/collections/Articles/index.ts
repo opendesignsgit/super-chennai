@@ -49,7 +49,7 @@ export const Articles: CollectionConfig<'articles'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
-    group: 'Main collections',
+    group: '📖 Guides & Stories',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({

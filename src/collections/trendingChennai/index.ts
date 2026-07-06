@@ -156,7 +156,7 @@ export const trendingChennai: CollectionConfig<'trendingChennai'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
-       group: 'Main collections',
+    group: '📖 Guides & Stories',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
@@ -259,7 +259,6 @@ export const trendingChennai: CollectionConfig<'trendingChennai'> = {
               }),
               label: false,
               required: true,
-             
             },
           ],
           label: 'Content',
@@ -311,7 +310,7 @@ export const trendingChennai: CollectionConfig<'trendingChennai'> = {
             {
               name: 'description',
               type: 'textarea',
-             
+
               // maxLength: 500,
               admin: {
                 description: 'Maximum 500 characters allowed',
@@ -633,7 +632,7 @@ export const trendingChennai: CollectionConfig<'trendingChennai'> = {
                 description: 'Paste valid JSON-LD schema (Event schema for SEO)',
               },
             },
-            SEOFieldSchema
+            SEOFieldSchema,
           ],
         },
       ],

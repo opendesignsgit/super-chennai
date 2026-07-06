@@ -46,7 +46,7 @@ export const Ads: CollectionConfig<'ads'> = {
 
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
-    group: 'Main collections',
+    group: '📖 Guides & Stories',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
@@ -83,20 +83,7 @@ export const Ads: CollectionConfig<'ads'> = {
               required: true,
             },
 
-            // {
-            //   name: 'adType',
-            //   type: 'select',
-            //   options: [
-            //     'banner',
-            //     'sidebar',
-            //     'inline',
-            //     'popup',
-            //     'video',
-            //     'interstitial',
-            //     'sponsored',
-            //   ],
-            // },
-
+           
             {
               name: 'Adsstatus',
               type: 'select',

@@ -53,7 +53,7 @@ export const IconOfMonth: CollectionConfig<'iconOfMonth'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
-    group: 'Main collections',
+    group: '🎪 Community',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({

@@ -64,6 +64,7 @@ export const Pages: CollectionConfig<'pages'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
+    group: '🌐 Home Builder ',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({

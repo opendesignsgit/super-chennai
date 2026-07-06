@@ -3,10 +3,10 @@ import { GlobalConfig } from 'payload'
 export const Settings: GlobalConfig = {
   slug: 'settings',
   access: {
-    read: () => true, // Allows your frontend API route to read the token
+    read: () => true, 
   },
   admin: {
-    group: 'Global Settings',
+    group: '⚙️ Site Administration',
   },
   fields: [
     {

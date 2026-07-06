@@ -3,6 +3,7 @@ import { sendFormEmail } from 'src/utilities/sendFormEmail'
 
 const ContactMessages: CollectionConfig = {
   slug: 'contactMessages',
+
   fields: [
     { name: 'name', type: 'text', required: true },
     { name: 'email', type: 'email', required: true },
@@ -18,9 +19,14 @@ const ContactMessages: CollectionConfig = {
 
     { name: 'publishedAt', type: 'date' },
   ],
+  labels: {
+    singular: 'Property Enquiry',
+    plural: 'Property Enquiries',
+  },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'email', 'phone', 'propertyType', 'builderName', 'publishedAt'],
+    group: '⚙️ Site Administration',
   },
   access: {
     create: () => true,
