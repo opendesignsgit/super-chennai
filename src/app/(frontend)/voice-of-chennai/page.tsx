@@ -4,19 +4,48 @@ import Link from 'next/link'
 import type { Metadata } from 'next/types'
 import { getPayload } from 'payload'
 import PageClient from './page.client'
+import ArticleListingClientLayout from './Components/ArticleListingClientLayout'
 import LexicalRenderer from '@/components/lexical/LexicalRenderer'
-import { ArticlesArchive } from './Components/CardArchive'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
-export default async function ArticlesRootPage() {
+export default async function ArticleListPage() {
   const payload = await getPayload({ config: configPromise })
 
   const articlesRes = await payload.find({
     collection: 'articles',
-    limit: 12, // Standard initial screen grid sizing
+    limit: 100,
     sort: '-publishedAt',
+    depth: 2,
+  })
+  const allArticles = articlesRes.docs || []
+
+  const adsRes = await payload.find({
+    collection: 'ads',
+    limit: 100,
+    where: {
+      showOnArticles: {
+        equals: true,
+      },
+      Adsstatus: {
+        equals: 'active',
+      },
+    },
+    depth: 2,
+  })
+  const rawAds = adsRes.docs || []
+
+  const [todayIso = ''] = new Date().toISOString().split('T')
+
+  const activeAds = rawAds.filter((ad: any) => {
+    const start = ad.startDate ? ad.startDate.split('T')[0] : null
+    const end = ad.endDate ? ad.endDate.split('T')[0] : null
+
+    if (start && todayIso < start) return false
+    if (end && todayIso > end) return false
+
+    return true
   })
 
   const pageSettings = await payload.findGlobal({
@@ -34,10 +63,9 @@ export default async function ArticlesRootPage() {
       : null
 
   return (
-    <div className="pb-24">
+    <>
       <PageClient />
 
-      {/* Modern Overlay Banner Section */}
       <section className="accaodomationBannerSection relative">
         <div className="relative w-full h-[400px]">
           {desktopImage && (
@@ -70,21 +98,19 @@ export default async function ArticlesRootPage() {
         </div>
       </section>
 
-      {/* Lexical Framework Rendering Injection */}
       <div className="container mx-auto mt-8">
         <LexicalRenderer content={pageSettings?.content} />
       </div>
 
-      {/* Grid Elements Engine Wrapper */}
-      <div className="mx-auto mt-6">
-        <ArticlesArchive articles={articlesRes.docs} />
-      </div>
-    </div>
+      <ArticleListingClientLayout articles={allArticles} ads={activeAds} />
+    </>
   )
 }
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Articles, Guides & Stories | Super Chennai',
+    title: 'Voice of Chennai: Stories, Insights & Articles That Define the City',
+    description:
+      'From neighborhoods to innovation, explore Chennai’s journey through curated articles that capture its true voice, cultural depth & evolving urban transformation.',
   }
 }

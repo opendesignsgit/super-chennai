@@ -3338,6 +3338,33 @@ export interface ChennaiNeighbourhoodlocation {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Manage the FAQs specific to this location.
+   */
+  faqSection?: {
+    /**
+     * e.g., Frequently Asked Questions
+     */
+    subHeading?: string | null;
+    /**
+     * e.g., Everything You Want to Know About T. Nagar
+     */
+    heading?: string | null;
+    /**
+     * Quick paragraph explaining the FAQ section.
+     */
+    description?: string | null;
+    /**
+     * Add multiple dynamic questions and answers for this locality.
+     */
+    faqs?:
+      | {
+          question: string;
+          answer: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -7214,6 +7241,20 @@ export interface ChennaiNeighbourhoodlocationsSelect<T extends boolean = true> {
         label?: T;
         score?: T;
         id?: T;
+      };
+  faqSection?:
+    | T
+    | {
+        subHeading?: T;
+        heading?: T;
+        description?: T;
+        faqs?:
+          | T
+          | {
+              question?: T;
+              answer?: T;
+              id?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;
