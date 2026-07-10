@@ -32,7 +32,7 @@ export default async function ArticlePage({ params: paramsPromise }: Args) {
       <PageClient />
       <PayloadRedirects disableNotFound url={url} />
       {draft && <LivePreviewListener />}
-      {/* <ArticleDetails data={articleData} /> */}
+      <ArticleDetails data={articleData} />
     </article>
   )
 }
@@ -46,7 +46,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 
   return generateMeta({
     doc: articleData as any,
-    // collection: 'articles',
+    collection: 'articles',
   })
 }
 
