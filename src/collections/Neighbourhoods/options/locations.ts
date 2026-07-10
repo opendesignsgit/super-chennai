@@ -116,7 +116,7 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
 
     // --- ADDED DYNAMIC CARD METRICS FOR FRONTEND ---
     {
-      type: 'row', 
+      type: 'row',
       fields: [
         {
           name: 'schoolCount',
@@ -270,6 +270,67 @@ export const ChennaiNeighbourhoodlocations: CollectionConfig<'chennaiNeighbourho
           },
           min: 0,
           max: 5,
+        },
+      ],
+    },
+    // Add this block inside your fields array in ChennaiNeighbourhoodlocations config
+    {
+      name: 'faqSection',
+      label: 'FAQ Section Settings',
+      type: 'group',
+      admin: {
+        description: 'Manage the FAQs specific to this location.',
+      },
+      fields: [
+        {
+          name: 'subHeading',
+          label: 'Section Sub-Heading (Top Span Text)',
+          type: 'text',
+          required: false,
+          defaultValue: 'Frequently Asked Questions',
+          admin: {
+            description: 'e.g., Frequently Asked Questions',
+          },
+        },
+        {
+          name: 'heading',
+          label: 'Section Main Heading',
+          type: 'text',
+          required: false,
+          admin: {
+            description: 'e.g., Everything You Want to Know About T. Nagar',
+          },
+        },
+        {
+          name: 'description',
+          label: 'Section Description',
+          type: 'textarea',
+          required: false,
+          admin: {
+            description: 'Quick paragraph explaining the FAQ section.',
+          },
+        },
+        {
+          name: 'faqs',
+          label: 'FAQs List',
+          type: 'array',
+          admin: {
+            description: 'Add multiple dynamic questions and answers for this locality.',
+          },
+          fields: [
+            {
+              name: 'question',
+              label: 'Question',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'answer',
+              label: 'Answer',
+              type: 'textarea',
+              required: true,
+            },
+          ],
         },
       ],
     },
