@@ -178,7 +178,7 @@
 }
 
 .DootedBannerSectionLive {
-  /* background-image: url("../../../public/images/doted.png"); */
+  background-image: url("/images/doted.png");
   overflow: hidden;
 }
 

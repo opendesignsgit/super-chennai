@@ -4,7 +4,7 @@
 import MenuBar from '@/components/MenueBar'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 //######################## ASSETS  #############################################
 import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
@@ -113,11 +113,29 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   }, [])
 
   //#################### RENDER UI#################################################
+
+  const pathname = usePathname()
+
+  useEffect(() => {
+    const body = document.body
+
+    // Remove old classes
+    body.classList.remove('Megamenunav', 'HomePageStyle')
+
+    // Common class for all pages
+    body.classList.add('Megamenunav')
+
+    // Home page only
+    if (pathname === '/') {
+      body.classList.add('HomePageStyle')
+    }
+  }, [pathname])
+
   return (
     <div className="mainMegamenuContainers">
       <header className={`mainMegamenuContainer ${scrolled ? 'scrolled' : ''}`}>
         {/*#################### DESKTOP MENUE NAVBAR ########################### */}
-        <nav className="Megamenunav HomePageStyle" onMouseLeave={handleMenuLeave}>
+        <nav className="Megamenunav" onMouseLeave={handleMenuLeave}>
           <div className={`Megamenutop-bar ${activeMenu ? 'activeStateMegamenu' : ''}`}>
             <Link href="/" aria-label="Home" className="z-[10]">
               {data?.logo && typeof data.logo === 'object' && 'filename' in data.logo && (

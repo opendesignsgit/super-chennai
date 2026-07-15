@@ -25,12 +25,12 @@ export const DefaultHeroBanner: React.FC<Props> = ({ heading, image, backgroundC
 
   return (
     <div className={` VolunteerBgSection InvestBgSection notHome ${bgClass}`}>
-      <div className="InvestMainContainer">
-        <div className="InvestSectionBanner">
-          <div className="InvestBannerImage">
+      <div className="VolunteerMainContainer">
+        <div className="volunteerSectionBanner">
+          <div className="VolunteerBannerImage">
             <img src={imageUrl || defaultImage.src} alt="Banner" />
           </div>
-          <h3 className="InvestContent">{heading || 'Welcome'}</h3>
+          <h3 className="voluntterContent">{heading || 'Welcome'}</h3>
         </div>
       </div>
       <div className="notHomePageSearch">
