@@ -37,10 +37,26 @@ export const TextHoverImageSection = ({ title, items }: { title: string; items: 
     return item.customLink || (item.page?.slug ? `/work/${item.page.slug}` : '#')
   }
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (tooltipRef.current) {
+        tooltipRef.current.style.top = `${e.clientY + 20}px`
+        tooltipRef.current.style.left = `${e.clientX + 20}px`
+      }
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
   return (
     <>
       {/* Desktop Hover Version */}
-      <div className="hidden md:block workImageSection">
+      <div
+        className="hidden md:block workImageSection"
+        style={{
+          backgroundImage: 'linear-gradient(to right,#191c81,#763ca7 50%,#490e75 90%)',
+        }}
+      >
         <h4 dangerouslySetInnerHTML={{ __html: title.replace(' ', '<br />') }} />
         <div className="container max-w-7xl mx-auto px-4">
           <div className="workimgIn flex">
