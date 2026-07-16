@@ -33,6 +33,8 @@ import InspiresBlock from '@/app/(frontend)/icon-of-the-month/blocks/InspiresBlo
 import { socialReelSlider } from '@/blocks/HomePage/SocialChennai/config'
 import BecameAVolunteerBlock from '@/blocks/HomePage/Volunteer/config'
 import FeatureListBlock from '@/app/(frontend)/icon-of-the-month/blocks/FeatureListBlock/config'
+import { NaturalsBlock } from '@/app/(frontend)/icon-of-the-month/blocks/NaturalsSection/config'
+import { IconofMonthGallerySliderBlock } from '@/app/(frontend)/icon-of-the-month/blocks/GallerySliderBlock/config'
 
 export const IconOfMonth: CollectionConfig<'iconOfMonth'> = {
   slug: 'iconOfMonth',
@@ -109,6 +111,8 @@ export const IconOfMonth: CollectionConfig<'iconOfMonth'> = {
                         socialReelSlider,
                         BecameAVolunteerBlock,
                         FeatureListBlock,
+                        NaturalsBlock,
+                        IconofMonthGallerySliderBlock,
                       ],
                     }),
                     FixedToolbarFeature(),

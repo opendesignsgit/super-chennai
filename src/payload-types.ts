@@ -8420,8 +8420,8 @@ export interface Footer {
 export interface IconOfMonthLandingPage {
   id: number;
   title: string;
-  desktopImage: number | Media;
-  mobileImage: number | Media;
+  desktopImage?: (number | null) | Media;
+  mobileImage?: (number | null) | Media;
   content?: {
     root: {
       type: string;
