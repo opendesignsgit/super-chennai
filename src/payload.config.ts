@@ -69,6 +69,7 @@ import { IconMonthCategories } from './collections/IconOfTheMonth/Options/icon-m
 import { IconOfMonthPage } from './collections/IconOfTheMonth/Options/CollectionPageData'
 import { Settings } from './collections/Globals/Settings'
 import { ArticlesLandingPage } from './collections/Articles/option/CollectionPageData'
+import { ArattaiFormFields } from './collections/Arrattai/options/formFeilds'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -115,18 +116,18 @@ export default buildConfig({
   editor: defaultLexical,
 
   db: postgresAdapter({
-    pool: {
-      max: 10, // max connections
-      connectionString: process.env.DATABASE_URI,
-      connectionTimeoutMillis: 300000, // 60 seconds
-      idleTimeoutMillis: 300000, // 30 seconds 30000
-    },
     // pool: {
-    //   max: 10,
+    //   max: 10, // max connections
     //   connectionString: process.env.DATABASE_URI,
-    //   connectionTimeoutMillis: 1800000, // 30 minutes
-    //   idleTimeoutMillis: 1800000, // 30 minutes
+    //   connectionTimeoutMillis: 300000, // 60 seconds
+    //   idleTimeoutMillis: 300000, // 30 seconds 30000
     // },
+    pool: {
+      max: 10,
+      connectionString: process.env.DATABASE_URI,
+      connectionTimeoutMillis: 1800000, // 30 minutes
+      idleTimeoutMillis: 1800000, // 30 minutes
+    },
   }),
 
   collections: [
@@ -192,6 +193,7 @@ export default buildConfig({
     Arattai,
     ArattaiRegistrations,
     EventDashboard,
+    ArattaiFormFields,
 
     //####### ICON OFTHE MONTH ##################
 

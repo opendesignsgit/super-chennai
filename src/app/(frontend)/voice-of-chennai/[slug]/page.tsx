@@ -43,12 +43,9 @@ export default async function ArticlePage({ params: paramsPromise }: Args) {
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = '' } = await paramsPromise
   const articleData = await queryArticleBySlug({ slug })
-
-  return generateMeta({
-    doc: articleData as any,
-    collection: 'articles',
-  })
+  return generateMeta({ doc: articleData })
 }
+
 
 /* =========================================================
    SERVER ACCELERATED CONTROLLER

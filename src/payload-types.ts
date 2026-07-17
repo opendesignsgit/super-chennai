@@ -122,6 +122,7 @@ export interface Config {
     arattai: Arattai;
     'arattai-registrations': ArattaiRegistration;
     'event-dashboard': EventDashboard;
+    'arattai-form-fields': ArattaiFormField;
     iconOfMonth: IconOfMonth;
     'icon-month-categories': IconMonthCategory;
     redirects: Redirect;
@@ -188,6 +189,7 @@ export interface Config {
     arattai: ArattaiSelect<false> | ArattaiSelect<true>;
     'arattai-registrations': ArattaiRegistrationsSelect<false> | ArattaiRegistrationsSelect<true>;
     'event-dashboard': EventDashboardSelect<false> | EventDashboardSelect<true>;
+    'arattai-form-fields': ArattaiFormFieldsSelect<false> | ArattaiFormFieldsSelect<true>;
     iconOfMonth: IconOfMonthSelect<false> | IconOfMonthSelect<true>;
     'icon-month-categories': IconMonthCategoriesSelect<false> | IconMonthCategoriesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
@@ -3777,523 +3779,6 @@ export interface Arattai {
     };
     [k: string]: unknown;
   };
-  layout?:
-    | (
-        | {
-            heading: string;
-            description?: string | null;
-            cards: {
-              /**
-               * Maximum 15 characters allowed
-               */
-              title: string;
-              /**
-               * Maximum 100 characters allowed
-               */
-              place: string;
-              image: number | Media;
-              page?: (number | null) | Visit;
-              /**
-               * This will override the selected page link if provided.
-               */
-              customLink?: string | null;
-              id?: string | null;
-            }[];
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'explore';
-          }
-        | {
-            /**
-             * Maximum 100 characters allowed
-             */
-            heading: string;
-            /**
-             * Maximum 500 characters allowed
-             */
-            subheading: string;
-            cards: {
-              /**
-               * Maximum 100 characters allowed
-               */
-              title: string;
-              /**
-               * Maximum 100 characters allowed
-               */
-              place?: string | null;
-              image: number | Media;
-              page?: (number | null) | Visit;
-              /**
-               * This will override the selected page link if provided.
-               */
-              customLink?: string | null;
-              id?: string | null;
-            }[];
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'funChennai';
-          }
-        | {
-            /**
-             * Maximum 30 characters allowed
-             */
-            heading?: string | null;
-            /**
-             * Maximum 400 characters allowed
-             */
-            description?: string | null;
-            images?:
-              | {
-                  image?: (number | null) | Media;
-                  /**
-                   * Maximum 20 characters allowed
-                   */
-                  title: string;
-                  /**
-                   * Maximum 50 characters allowed
-                   */
-                  description?: string | null;
-                  page?: (number | null) | Investment;
-                  /**
-                   * This will override the selected page link if provided.
-                   */
-                  customLink?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'startupChennai';
-          }
-        | {
-            /**
-             * Maximum 30 characters allowed
-             */
-            heading: string;
-            /**
-             * Maximum 400 characters allowed
-             */
-            subheading?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'chennaiInvestments';
-          }
-        | {
-            /**
-             * Maximum 100 characters allowed
-             */
-            heading?: string | null;
-            /**
-             * Maximum 400 characters allowed
-             */
-            description?: string | null;
-            /**
-             * Select whether to display videos or images in the slider
-             */
-            contentType: 'video' | 'image';
-            /**
-             * If enabled, videos will be shown as thumbnails only without autoplay/play buttons.
-             */
-            showVideoThumbnailOnly?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'socialReelSlider';
-          }
-        | {
-            /**
-             * Short heading (max 100 characters)
-             */
-            heading?: string | null;
-            /**
-             * Main title (max 100 characters)
-             */
-            title?: string | null;
-            /**
-             * Short description (max 600 characters)
-             */
-            description?: string | null;
-            page?: (number | null) | Page;
-            /**
-             * This will override the selected page link if provided.
-             */
-            customLink?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'becameAVolunteer';
-          }
-        | {
-            /**
-             * Maximum 100 characters allowed
-             */
-            title: string;
-            /**
-             * Maximum 800 characters allowed
-             */
-            description?: string | null;
-            items?:
-              | {
-                  /**
-                   * Maximum 200 characters allowed
-                   */
-                  label: string;
-                  /**
-                   * Maximum 800 characters allowed
-                   */
-                  description?: string | null;
-                  image: number | Media;
-                  page?: (number | null) | Visit;
-                  /**
-                   * This will override the selected page link if provided.
-                   */
-                  customLink?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'visitcategory';
-          }
-        | {
-            /**
-             * Maximum 200 characters allowed
-             */
-            sectionTitle: string;
-            /**
-             * Maximum 600 characters allowed
-             */
-            sectionDescription: string;
-            buttonText: string;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'volunteerBecameSection';
-          }
-        | {
-            /**
-             * Maximum 100 characters allowed
-             */
-            heading: string;
-            /**
-             * Maximum 100 characters allowed
-             */
-            headingSpan: string;
-            /**
-             * Maximum 500 characters allowed
-             */
-            description: string;
-            foodItems: {
-              /**
-               * Maximum 100 characters allowed
-               */
-              title: string;
-              /**
-               * Maximum 500 characters allowed
-               */
-              description: string;
-              image: number | Media;
-              /**
-               * 📄 Select the Visits page to link to. This will be used in the URL.
-               */
-              page?: (number | null) | Visit;
-              /**
-               * 🔗 This will scroll to a section within the selected page. Must exactly match a title in the "featureSectionSplit" block of that page. Final URL becomes: /visits/[page]/#[FoodTitle]
-               */
-              foodSectionTitle?: string | null;
-              /**
-               * This will override the selected page link if provided.
-               */
-              customLink?: string | null;
-              id?: string | null;
-            }[];
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'infography';
-          }
-        | {
-            techImage: number | Media;
-            /**
-             * Maximum 30 characters allowed
-             */
-            techTitle: string;
-            /**
-             * Maximum 200 characters allowed
-             */
-            techDescription: string;
-            eduImage: number | Media;
-            /**
-             * Maximum 30 characters allowed
-             */
-            eduTitle: string;
-            /**
-             * Maximum 200 characters allowed
-             */
-            eduDescription: string;
-            techLink?: {
-              url?: string | null;
-              page?: (number | null) | Page;
-            };
-            eduLink?: {
-              url?: string | null;
-              page?: (number | null) | Page;
-            };
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'twoColumnFeatureBlock';
-          }
-        | {
-            /**
-             * Maximum 15 characters allowed
-             */
-            heading: string;
-            /**
-             * Maximum 15 characters allowed
-             */
-            subheading?: string | null;
-            /**
-             * Maximum 200 characters allowed
-             */
-            description?: string | null;
-            cards: {
-              title: string;
-              /**
-               * Maximum 200 characters allowed
-               */
-              description?: string | null;
-              image: number | Media;
-              /**
-               * Optional external URL. If "Page Link" is also set, it will be ignored.
-               */
-              url?: string | null;
-              id?: string | null;
-            }[];
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'contentZoneCarousel';
-          }
-        | {
-            /**
-             * Maximum 20 characters allowed
-             */
-            heading: string;
-            /**
-             * Maximum 500 characters allowed
-             */
-            description: string;
-            link?: string | null;
-            items?:
-              | {
-                  /**
-                   * Maximum 15 characters allowed
-                   */
-                  name: string;
-                  /**
-                   * Maximum 15 characters allowed
-                   */
-                  subtitle?: string | null;
-                  /**
-                   * Maximum 200 characters allowed
-                   */
-                  para?: string | null;
-                  image: number | Media;
-                  page?: (number | null) | Event;
-                  /**
-                   * This will override the selected page link if provided.
-                   */
-                  customLink?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'spotlightGallery';
-          }
-        | {
-            /**
-             * Maximum 15 characters allowed
-             */
-            title: string;
-            /**
-             * Maximum 400 characters allowed
-             */
-            description?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'allevents';
-          }
-        | {
-            /**
-             * Maximum 50 characters allowed
-             */
-            heading: string;
-            imagePosition: 'left' | 'right';
-            image: number | Media;
-            /**
-             * Maximum 500 characters allowed
-             */
-            paraZeroLiveSection: string;
-            /**
-             * Maximum 500 characters allowed
-             */
-            paraoneLiveSection: string;
-            /**
-             * Maximum 500 characters allowed
-             */
-            paraTwoLiveSection: string;
-            showMarquee?: boolean | null;
-            /**
-             * Maximum 200 characters allowed
-             */
-            marqueeText?: string | null;
-            marqueeTextSize?: ('sm' | 'lg') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'liveIntrorSection';
-          }
-        | {
-            /**
-             * Maximum 15 characters allowed
-             */
-            heading: string;
-            /**
-             * Maximum 500 characters allowed
-             */
-            description: string;
-            essentials?:
-              | {
-                  /**
-                   * Maximum 500 characters allowed
-                   */
-                  text: string;
-                  page?: (number | null) | Live;
-                  image: number | Media;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'chennaiLifeEssentials';
-          }
-        | {
-            items: {
-              /**
-               * Maximum 30 characters allowed
-               */
-              title: string;
-              /**
-               * Maximum 30 characters allowed
-               */
-              subtitle?: string | null;
-              /**
-               * Maximum 400 characters allowed
-               */
-              description?: string | null;
-              /**
-               * Upload an SVG file only.
-               */
-              image?: (number | null) | Media;
-              link?: string | null;
-              id?: string | null;
-            }[];
-            backgroundImage?: (number | null) | Media;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'investmentCategoryList';
-          }
-        | {
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'innovateSlider';
-          }
-        | {
-            /**
-             * Maximum 100 characters allowed
-             */
-            title: string;
-            items: {
-              /**
-               * Maximum 100 characters allowed
-               */
-              label: string;
-              page?: (number | null) | Work;
-              /**
-               * This will override the selected page link if provided.
-               */
-              customLink?: string | null;
-              image: number | Media;
-              id?: string | null;
-            }[];
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'textHoverImageSection';
-          }
-        | {
-            title?: string | null;
-            description?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'trendingChennaiSlider';
-          }
-        | {
-            heading: string;
-            subHeading: string;
-            firstColumn?:
-              | {
-                  highlight: string;
-                  content: string;
-                  id?: string | null;
-                }[]
-              | null;
-            secondColumn?:
-              | {
-                  highlight: string;
-                  content: string;
-                  id?: string | null;
-                }[]
-              | null;
-            buttonText?: string | null;
-            buttonLink?: string | null;
-            icon?: (number | null) | Media;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'secondSection';
-          }
-        | {
-            enablePopup?: boolean | null;
-            isGlobal?: boolean | null;
-            /**
-             * Choose pages where popup should appear
-             */
-            selectedPages?: (number | Page)[] | null;
-            popupImage: number | Media;
-            redirectLink?: string | null;
-            openInNewTab?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'popupBanner';
-          }
-        | {
-            title?: string | null;
-            description?: string | null;
-            IPLimage: number | Media;
-            pointsTable?:
-              | {
-                  teamName: string;
-                  teamLogo: number | Media;
-                  played?: number | null;
-                  won?: number | null;
-                  loss?: number | null;
-                  noResult?: number | null;
-                  netRunRate?: string | null;
-                  points?: number | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'cricketScoreBlock';
-          }
-        | GalleryBlockType
-      )[]
-    | null;
   Arattai: {
     title: string;
     shortDescription?: string | null;
@@ -4341,6 +3826,16 @@ export interface Arattai {
   };
   relatedevents?: (number | Event)[] | null;
   categories?: (number | Category)[] | null;
+  formSettings?: {
+    regSettings?: {
+      isRegistrationOpen?: boolean | null;
+      enableOTP?: boolean | null;
+      maxRegistrations?: number | null;
+      showOrganisationField?: boolean | null;
+      thankYouMessage?: string | null;
+    };
+    customFields?: (number | ArattaiFormField)[] | null;
+  };
   meta?: {
     title?: string | null;
     /**
@@ -4398,20 +3893,24 @@ export interface Arattai {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "GalleryBlockType".
+ * via the `definition` "arattai-form-fields".
  */
-export interface GalleryBlockType {
-  title?: string | null;
-  description?: string | null;
-  galleryImages?:
+export interface ArattaiFormField {
+  id: number;
+  label: string;
+  name: string;
+  type?: ('text' | 'email' | 'number' | 'textarea' | 'select' | 'radio' | 'checkbox' | 'file') | null;
+  placeholder?: string | null;
+  required?: boolean | null;
+  options?:
     | {
-        image: number | Media;
+        label?: string | null;
+        value?: string | null;
         id?: string | null;
       }[]
     | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'galleryBlock';
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -5119,6 +4618,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'event-dashboard';
         value: number | EventDashboard;
+      } | null)
+    | ({
+        relationTo: 'arattai-form-fields';
+        value: number | ArattaiFormField;
       } | null)
     | ({
         relationTo: 'iconOfMonth';
@@ -7492,348 +6995,6 @@ export interface ArattaiSelect<T extends boolean = true> {
   heroImage?: T;
   mobileImage?: T;
   content?: T;
-  layout?:
-    | T
-    | {
-        explore?:
-          | T
-          | {
-              heading?: T;
-              description?: T;
-              cards?:
-                | T
-                | {
-                    title?: T;
-                    place?: T;
-                    image?: T;
-                    page?: T;
-                    customLink?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        funChennai?:
-          | T
-          | {
-              heading?: T;
-              subheading?: T;
-              cards?:
-                | T
-                | {
-                    title?: T;
-                    place?: T;
-                    image?: T;
-                    page?: T;
-                    customLink?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        startupChennai?:
-          | T
-          | {
-              heading?: T;
-              description?: T;
-              images?:
-                | T
-                | {
-                    image?: T;
-                    title?: T;
-                    description?: T;
-                    page?: T;
-                    customLink?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        chennaiInvestments?:
-          | T
-          | {
-              heading?: T;
-              subheading?: T;
-              id?: T;
-              blockName?: T;
-            };
-        socialReelSlider?:
-          | T
-          | {
-              heading?: T;
-              description?: T;
-              contentType?: T;
-              showVideoThumbnailOnly?: T;
-              id?: T;
-              blockName?: T;
-            };
-        becameAVolunteer?:
-          | T
-          | {
-              heading?: T;
-              title?: T;
-              description?: T;
-              page?: T;
-              customLink?: T;
-              id?: T;
-              blockName?: T;
-            };
-        visitcategory?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              items?:
-                | T
-                | {
-                    label?: T;
-                    description?: T;
-                    image?: T;
-                    page?: T;
-                    customLink?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        volunteerBecameSection?:
-          | T
-          | {
-              sectionTitle?: T;
-              sectionDescription?: T;
-              buttonText?: T;
-              id?: T;
-              blockName?: T;
-            };
-        infography?:
-          | T
-          | {
-              heading?: T;
-              headingSpan?: T;
-              description?: T;
-              foodItems?:
-                | T
-                | {
-                    title?: T;
-                    description?: T;
-                    image?: T;
-                    page?: T;
-                    foodSectionTitle?: T;
-                    customLink?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        twoColumnFeatureBlock?:
-          | T
-          | {
-              techImage?: T;
-              techTitle?: T;
-              techDescription?: T;
-              eduImage?: T;
-              eduTitle?: T;
-              eduDescription?: T;
-              techLink?:
-                | T
-                | {
-                    url?: T;
-                    page?: T;
-                  };
-              eduLink?:
-                | T
-                | {
-                    url?: T;
-                    page?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        contentZoneCarousel?:
-          | T
-          | {
-              heading?: T;
-              subheading?: T;
-              description?: T;
-              cards?:
-                | T
-                | {
-                    title?: T;
-                    description?: T;
-                    image?: T;
-                    url?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        spotlightGallery?:
-          | T
-          | {
-              heading?: T;
-              description?: T;
-              link?: T;
-              items?:
-                | T
-                | {
-                    name?: T;
-                    subtitle?: T;
-                    para?: T;
-                    image?: T;
-                    page?: T;
-                    customLink?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        allevents?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              id?: T;
-              blockName?: T;
-            };
-        liveIntrorSection?:
-          | T
-          | {
-              heading?: T;
-              imagePosition?: T;
-              image?: T;
-              paraZeroLiveSection?: T;
-              paraoneLiveSection?: T;
-              paraTwoLiveSection?: T;
-              showMarquee?: T;
-              marqueeText?: T;
-              marqueeTextSize?: T;
-              id?: T;
-              blockName?: T;
-            };
-        chennaiLifeEssentials?:
-          | T
-          | {
-              heading?: T;
-              description?: T;
-              essentials?:
-                | T
-                | {
-                    text?: T;
-                    page?: T;
-                    image?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        investmentCategoryList?:
-          | T
-          | {
-              items?:
-                | T
-                | {
-                    title?: T;
-                    subtitle?: T;
-                    description?: T;
-                    image?: T;
-                    link?: T;
-                    id?: T;
-                  };
-              backgroundImage?: T;
-              id?: T;
-              blockName?: T;
-            };
-        innovateSlider?:
-          | T
-          | {
-              id?: T;
-              blockName?: T;
-            };
-        textHoverImageSection?:
-          | T
-          | {
-              title?: T;
-              items?:
-                | T
-                | {
-                    label?: T;
-                    page?: T;
-                    customLink?: T;
-                    image?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        trendingChennaiSlider?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              id?: T;
-              blockName?: T;
-            };
-        secondSection?:
-          | T
-          | {
-              heading?: T;
-              subHeading?: T;
-              firstColumn?:
-                | T
-                | {
-                    highlight?: T;
-                    content?: T;
-                    id?: T;
-                  };
-              secondColumn?:
-                | T
-                | {
-                    highlight?: T;
-                    content?: T;
-                    id?: T;
-                  };
-              buttonText?: T;
-              buttonLink?: T;
-              icon?: T;
-              id?: T;
-              blockName?: T;
-            };
-        popupBanner?:
-          | T
-          | {
-              enablePopup?: T;
-              isGlobal?: T;
-              selectedPages?: T;
-              popupImage?: T;
-              redirectLink?: T;
-              openInNewTab?: T;
-              id?: T;
-              blockName?: T;
-            };
-        cricketScoreBlock?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              IPLimage?: T;
-              pointsTable?:
-                | T
-                | {
-                    teamName?: T;
-                    teamLogo?: T;
-                    played?: T;
-                    won?: T;
-                    loss?: T;
-                    noResult?: T;
-                    netRunRate?: T;
-                    points?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        galleryBlock?: T | GalleryBlockTypeSelect<T>;
-      };
   Arattai?:
     | T
     | {
@@ -7889,6 +7050,20 @@ export interface ArattaiSelect<T extends boolean = true> {
       };
   relatedevents?: T;
   categories?: T;
+  formSettings?:
+    | T
+    | {
+        regSettings?:
+          | T
+          | {
+              isRegistrationOpen?: T;
+              enableOTP?: T;
+              maxRegistrations?: T;
+              showOrganisationField?: T;
+              thankYouMessage?: T;
+            };
+        customFields?: T;
+      };
   meta?:
     | T
     | {
@@ -7928,22 +7103,6 @@ export interface ArattaiSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "GalleryBlockType_select".
- */
-export interface GalleryBlockTypeSelect<T extends boolean = true> {
-  title?: T;
-  description?: T;
-  galleryImages?:
-    | T
-    | {
-        image?: T;
-        id?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "arattai-registrations_select".
  */
 export interface ArattaiRegistrationsSelect<T extends boolean = true> {
@@ -7966,6 +7125,26 @@ export interface ArattaiRegistrationsSelect<T extends boolean = true> {
  * via the `definition` "event-dashboard_select".
  */
 export interface EventDashboardSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "arattai-form-fields_select".
+ */
+export interface ArattaiFormFieldsSelect<T extends boolean = true> {
+  label?: T;
+  name?: T;
+  type?: T;
+  placeholder?: T;
+  required?: T;
+  options?:
+    | T
+    | {
+        label?: T;
+        value?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

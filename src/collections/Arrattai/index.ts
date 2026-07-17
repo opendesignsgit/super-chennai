@@ -49,6 +49,7 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 import { GalleryBlock } from '@/blocks/MediaHighlights/config'
+import { EventRegistrationFormBlock } from './components/RegistrationForm/config'
 
 export const Arattai: CollectionConfig<'arattai'> = {
   slug: 'arattai',
@@ -122,13 +123,12 @@ export const Arattai: CollectionConfig<'arattai'> = {
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({
-                      blocks: [
-                        // ############################ INSER WA WAITING DETAIL PGE BLOCKS ##################
-
+                      blocks: [                    
                         Banner,
                         Code,
                         MediaBlock,
                         VideoBlock,
+                        EventRegistrationFormBlock
                       ],
                     }),
                     FixedToolbarFeature(),
@@ -140,38 +140,7 @@ export const Arattai: CollectionConfig<'arattai'> = {
               label: false,
               required: true,
             },
-            {
-              name: 'layout',
-              type: 'blocks',
-              blocks: [
-                ExploreBlock,
-                FunChennaiBlock,
-                StartupChennaiBlock,
-                ChennaiInvestmentsBlock,
-                socialReelSlider,
-                BecameAVolunteerBlock,
-                VisitCategory,
-                volunteerBecameListBlock,
-                Infography,
-                TwoColumnFeatureBlock,
-                ContentZoneCarousel,
-                SpotlightGallery,
-                AllEvents,
-                liveIntrorSection,
-                ChennaiLifeEssentialSection,
-                investmentCategoryListBlock,
-                innovateSlider,
-                TextHoverImageSection,
-                TrendingChennaiSlider,
-                SecondSectionBlock,
-                PopupBannerBlock,
-                CricketScoreBlock,
-                GalleryBlock,
-              ],
-              admin: {
-                initCollapsed: true,
-              },
-            },
+          
           ],
           label: 'Content',
         },
@@ -471,6 +440,7 @@ export const Arattai: CollectionConfig<'arattai'> = {
                 },
               ],
             },
+
           ],
         },
         {
@@ -502,6 +472,64 @@ export const Arattai: CollectionConfig<'arattai'> = {
             },
           ],
           label: 'Meta',
+        },
+
+              {
+          name: 'formSettings',
+          label: 'formSettings',
+
+          fields: [
+            /* =========================================================
+                REGISTRATION SETTINGS
+             ========================================================= */
+
+            {
+              name: 'regSettings',
+              type: 'group',
+
+              fields: [
+                {
+                  name: 'isRegistrationOpen',
+                  type: 'checkbox',
+                  defaultValue: true,
+                },
+
+                {
+                  name: 'enableOTP',
+                  type: 'checkbox',
+                  defaultValue: true,
+                },
+
+                {
+                  name: 'maxRegistrations',
+                  type: 'number',
+                },
+
+                {
+                  name: 'showOrganisationField',
+                  type: 'checkbox',
+                  defaultValue: true,
+                },
+
+                {
+                  name: 'thankYouMessage',
+                  type: 'textarea',
+                },
+              ],
+            },
+
+            /* =========================================================
+            DYNAMIC FORM FIELDS
+            ========================================================= */
+
+            {
+              name: 'customFields',
+              label: 'Custom Form Fields',
+              type: 'relationship',
+              relationTo: 'arattai-form-fields',
+              hasMany: true,
+            },
+          ],
         },
 
         {

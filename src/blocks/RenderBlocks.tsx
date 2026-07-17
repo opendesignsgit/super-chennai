@@ -5,6 +5,7 @@ import type { Page } from 'src/payload-types'
 import MargazhiEventsSectionComponent from './Contest/Component'
 import ContestFoodBlockComponent from './Contest/FoodBlock/Component'
 import { ContentZoneCarousel } from './HomePage/ContentZoneCarousel/Component'
+import CricketScoreBlock from './HomePage/CricketScoreBlock/server'
 import { EventsCalendarBlock } from './HomePage/EventsCalendar/Component'
 import { ExploreBlockServer } from './HomePage/Explore/Components'
 import { FunChennaiBlockServer } from './HomePage/funChennai/Component'
@@ -14,6 +15,7 @@ import ChennaiInvestments from './HomePage/Investments/Components'
 import SpotlightGallerySection from './HomePage/leftContentRightSlider/Components'
 import socialReelSlider from './HomePage/SocialChennai/Component'
 import { StartupChennaiBlockServer } from './HomePage/StartupChennai/Component'
+import TrendingChennaiBlock from './HomePage/TrendingChennaiSlider/server'
 import TwoColumnFeatureBlock from './HomePage/TwoColumnFeatureBlock/Components'
 import Utilities from './HomePage/Utilities/Component'
 import BecameAVolunteer from './HomePage/Volunteer/Component'
@@ -35,14 +37,12 @@ import LiveIntroTextSection from './MainPages/SharedBlocks/IntroTextWithImage/Co
 import { VisitCategory } from './MainPages/Visit/VisitCategory/Component'
 import VolunteerBecameSection from './MainPages/Volunteer/Volunteers/Components'
 import { TextHoverImageSection } from './MainPages/Work/Works/Components'
+import GalleryBlockComponent from './MediaHighlights/Component'
 import HeroSliderBlock from './PageBanners/Home/Component'
 import { VisitBanner } from './PageBanners/VisitBanner/Component'
-import TrendingChennaiBlock from './HomePage/TrendingChennaiSlider/server'
-import { VideoBlockComponent } from './VideoBlock/Component'
 import PopupBanner from './Popup/component'
-import CricketScoreBlockComponent from './HomePage/CricketScoreBlock/Component'
-import CricketScoreBlock from './HomePage/CricketScoreBlock/server'
-import GalleryBlockComponent from './MediaHighlights/Component'
+import { VideoBlockComponent } from './VideoBlock/Component'
+import ArattaiBlockComponent from '@/collections/Arrattai/components/RegistrationForm/coponents'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -89,8 +89,7 @@ const blockComponents: {
   popupBanner: PopupBanner,
   cricketScoreBlock: CricketScoreBlock,
   GalleryBlock: GalleryBlockComponent,
-   
-  
+  eventRegistrationFormBlock: ArattaiBlockComponent,
 }
 
 export const RenderBlocks: React.FC<{
