@@ -42,33 +42,29 @@ export default async function Page() {
     <div className="pb-24">
       <PageClient />
 
-      <section className="accaodomationBannerSection relative">
-        <div className="relative w-full h-[400px]">
-         
+      <section className="accaodomationBannerSection iconofthemonthbanner">
+        <div>
           {desktopImage && typeof desktopImage !== 'string' && (
-            <Image
+            <img
               src={desktopImage.url || ''}
               alt={desktopImage.alt || pageSettings.title}
-              fill
-              priority
-              className="hidden md:block object-cover"
+              className="eventsCalenderIamge"
             />
-          )}
-      
-          {mobileImage && typeof mobileImage !== 'string' && (
-            <Image
-              src={mobileImage.url || ''}
-              alt={mobileImage.alt || pageSettings.title}
-              fill
-              priority
-              className="block md:hidden object-cover"
-            />
-          )}
-
+          )}{' '}
         </div>
 
+        {mobileImage && typeof mobileImage !== 'string' && (
+          <Image
+            src={mobileImage.url || ''}
+            alt={mobileImage.alt || pageSettings.title}
+            fill
+            priority
+            className="block md:hidden object-cover"
+          />
+        )}
+
         <div className="accodoamationBannerContainer absolute flex items-center">
-          <div className="accodoamationBannerText container mx-auto">
+          <div className="accodoamationBannerText container">
             <h3>{pageSettings?.title}</h3>
             <div className="breadCrum">
               <Link href="/">Home</Link> -{' '}

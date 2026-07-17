@@ -3,8 +3,8 @@ import { Block } from 'payload'
 export const FeatureListBlock: Block = {
   slug: 'featureListBlock',
   labels: {
-    singular: 'Feature List Block',
-    plural: 'Feature List Blocks',
+    singular: 'Icon of the Month Second Section',
+    plural: 'Icon of the Month Second Sections',
   },
   fields: [
     {

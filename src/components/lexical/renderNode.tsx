@@ -12,6 +12,8 @@ import MediaBlock from './blocks/MediaBlock'
 import VideoBlock from './blocks/VideoBlock'
 import BecameAVolunteer from '@/blocks/HomePage/Volunteer/Component'
 import FeatureListBlockComponent from '@/app/(frontend)/icon-of-the-month/blocks/FeatureListBlock/Component'
+import NaturalsBlockComponent from '@/app/(frontend)/icon-of-the-month/blocks/NaturalsSection/Component'
+import GallerySliderComponent from '@/app/(frontend)/icon-of-the-month/blocks/GallerySliderBlock/Component'
 
 export function renderNode(node: any, idx: number): React.ReactNode {
   /* ------------------------------------------------
@@ -126,8 +128,16 @@ export function renderNode(node: any, idx: number): React.ReactNode {
         return <FeatureListBlockComponent key={idx} {...node.fields} />
       }
 
+      if (blockType === 'naturals-block') {
+        return <NaturalsBlockComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'gallery-slider-block') {
+        return <GallerySliderComponent key={idx} {...node.fields} />
+      }
+
       return null
-    } 
+    }
 
     /* ------------------------------------------------
      DEFAULT

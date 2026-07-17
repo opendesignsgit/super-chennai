@@ -33,8 +33,12 @@ export default function AwardsBlockComponent({ title, image, awardsList }: Award
       animationFrameId = requestAnimationFrame(scrollList)
     }
 
-    const handleMouseEnter = () => { isPaused = true }
-    const handleMouseLeave = () => { isPaused = false }
+    const handleMouseEnter = () => {
+      isPaused = true
+    }
+    const handleMouseLeave = () => {
+      isPaused = false
+    }
 
     list.addEventListener('mouseenter', handleMouseEnter)
     list.addEventListener('mouseleave', handleMouseLeave)
@@ -46,26 +50,18 @@ export default function AwardsBlockComponent({ title, image, awardsList }: Award
       list.removeEventListener('mouseleave', handleMouseLeave)
     }
   }, [awardsList])
-  
 
   return (
     <section className="awards-section">
       <h2 className="awards-title">{title}</h2>
       <p className="awards-subtitle"></p>
-      <div className="awards-container flex flex-col md:flex-row gap-6 items-center">
-        <div className="relative w-full md:w-1/2 h-[350px]">
-          {imageUrl && (
-            <Image 
-              src={imageUrl} 
-              alt="Awards compilation" 
-              fill 
-              className="object-cover rounded"
-            />
-          )}
-        </div>
+      <div className="awards-container ">
+        {/* {imageUrl && <Image src={imageUrl} alt="Awards compilation" fill />} */}
+        {imageUrl && <img src={imageUrl} />}
+
         <div
           ref={listRef}
-          className="awards-list max-h-140 overflow-y-auto w-full md:w-1/2"
+          className="awards-list max-h-140 overflow-y-auto"
           style={{ scrollbarWidth: 'thin' }}
         >
           {awardsList?.map((award) => (

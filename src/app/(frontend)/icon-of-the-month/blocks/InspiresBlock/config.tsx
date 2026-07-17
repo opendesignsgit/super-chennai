@@ -3,8 +3,8 @@ import { Block } from 'payload'
 export const InspiresBlock: Block = {
   slug: 'inspiresBlock',
   labels: {
-    singular: 'Inspires Section',
-    plural: 'Inspires Sections',
+    singular: 'Icon of the Month Pink Backgorund Section',
+    plural: 'Icon of the Month Pink Backgorund Sections',
   },
   fields: [
     {

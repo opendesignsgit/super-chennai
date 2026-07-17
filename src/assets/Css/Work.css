@@ -88,7 +88,7 @@
   color: #000;
   margin-top: 20px;
   width: fit-content;
-  font-size: clamp(15px, 1.5vw, 16px);
+  font-size: clamp(15px, 1.5vw, 18px);
   line-height: clamp(24px, 2vw, 26px);
 }
 
