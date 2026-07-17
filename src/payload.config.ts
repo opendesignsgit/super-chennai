@@ -69,6 +69,7 @@ import { IconMonthCategories } from './collections/IconOfTheMonth/Options/icon-m
 import { IconOfMonthPage } from './collections/IconOfTheMonth/Options/CollectionPageData'
 import { Settings } from './collections/Globals/Settings'
 import { ArticlesLandingPage } from './collections/Articles/option/CollectionPageData'
+import { ArattaiFormFields } from './collections/Arrattai/options/formFeilds'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -192,6 +193,7 @@ export default buildConfig({
     Arattai,
     ArattaiRegistrations,
     EventDashboard,
+    ArattaiFormFields,
 
     //####### ICON OFTHE MONTH ##################
 

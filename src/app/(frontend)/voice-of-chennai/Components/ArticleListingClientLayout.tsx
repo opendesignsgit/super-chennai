@@ -239,7 +239,7 @@ export default function ArticleListingClientLayout({ articles, ads }: ClientProp
             {/* HERO POST CONTAINER FEATURED BLOCK */}
             {featuredEventArticle && (
               <Link
-                href={`/articles/${featuredEventArticle.slug}`}
+                href={`/voice-of-chennai/${featuredEventArticle.slug}`}
                 className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12 items-center bg-white p-4 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition"
               >
                 <div className="space-y-3">
@@ -275,7 +275,7 @@ export default function ArticleListingClientLayout({ articles, ads }: ClientProp
                 return (
                   <React.Fragment key={a.id}>
                     <Link
-                      href={`/articles/${a.slug}`}
+                      href={`/voice-of-chennai/${a.slug}`}
                       className="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col h-full"
                     >
                       <div className="h-48 w-full overflow-hidden">
@@ -332,7 +332,7 @@ export default function ArticleListingClientLayout({ articles, ads }: ClientProp
                   {mostViewedArticles.map((a) => (
                     <Link
                       key={a.id}
-                      href={`/articles/${a.slug}`}
+                      href={`/voice-of-chennai/${a.slug}`}
                       className="flex flex-col md:flex-row gap-4 bg-white p-3 rounded-xl border border-slate-100 hover:shadow-sm transition"
                     >
                       <img
@@ -384,7 +384,7 @@ export default function ArticleListingClientLayout({ articles, ads }: ClientProp
                   {popularArticles.map((a) => (
                     <Link
                       key={a.id}
-                      href={`/articles/${a.slug}`}
+                      href={`/voice-of-chennai/${a.slug}`}
                       className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:shadow-sm transition flex flex-col justify-between h-full"
                     >
                       <div>
