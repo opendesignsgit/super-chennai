@@ -42,10 +42,15 @@
    Default (Desktop Large)
 ================================= */
 .formheadingtheme-article {
+  /* font-family: "NewAmsterdam";
+  color: #a44294;
+  font-size: 50px;
+  line-height: 1.1; */
+
   font-family: "NewAmsterdam";
   color: #a44294;
   font-size: 50px;
-  line-height: 1.1;
+  line-height: 44px;
 }
 
 .formheadingtheme-article h4 {
@@ -185,9 +190,9 @@
   }
 }
 
-   .heightofthwcomponenet img {
-    height: 345px;
-   }
+.heightofthwcomponenet img {
+  height: 345px;
+}
 
 @media (max-width: 768px) {
 

@@ -5,7 +5,7 @@ import { PayloadRedirects } from 'src/components/PayloadRedirects'
 import configPromise from 'src/payload.config'
 import { LivePreviewListener } from 'src/components/LivePreviewListener'
 import { generateMeta } from 'src/utilities/generateMeta'
-import PageClient from './page.client' 
+import PageClient from './page.client'
 import ArticleDetails from '../Components/Details'
 
 export const dynamic = 'force-dynamic'
@@ -43,11 +43,7 @@ export default async function ArticlePage({ params: paramsPromise }: Args) {
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = '' } = await paramsPromise
   const articleData = await queryArticleBySlug({ slug })
-
-  return generateMeta({
-    doc: articleData as any,
-    collection: 'articles',
-  })
+  return generateMeta({ doc: articleData })
 }
 
 /* =========================================================
@@ -56,7 +52,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 const queryArticleBySlug = async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode()
   const payload = await getPayload({ config: configPromise })
-  
+
   const result = await payload.find({
     collection: 'articles',
     draft,

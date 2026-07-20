@@ -3,8 +3,8 @@ import { Block } from 'payload'
 export const AwardsBlock: Block = {
   slug: 'awardsBlock',
   labels: {
-    singular: 'Awards Block',
-    plural: 'Awards Blocks',
+    singular: 'Icon of the Month Awards & Acheivements Section',
+    plural: 'Icon of the Month Awards & Acheivements Sections',
   },
   fields: [
     {

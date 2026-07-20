@@ -210,7 +210,7 @@ export default function ArticleListingClientLayout({ articles, ads }: ClientProp
   }
 
   return (
-    <div className="w-full pb-20">
+    <div className="w-full pb-20 articlesmainpagesections">
       {/* Top Billboard Row */}
       {topAds.length > 0 && (
         <div className="max-w-7xl mx-auto px-4 mt-6">
@@ -223,7 +223,7 @@ export default function ArticleListingClientLayout({ articles, ads }: ClientProp
       )}
 
       {/* Main Container Layout */}
-      <div className={`mx-auto px-4 mt-10 mb-10 ${hasSideAds ? 'max-w-[1400px]' : 'max-w-6xl'}`}>
+      <div className="container max-w-6xl mx-auto px-4 mt-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* LEFT SIDEBAR ADS BAR */}
           {hasLeft && (
@@ -239,31 +239,28 @@ export default function ArticleListingClientLayout({ articles, ads }: ClientProp
             {/* HERO POST CONTAINER FEATURED BLOCK */}
             {featuredEventArticle && (
               <Link
-                href={`/articles/${featuredEventArticle.slug}`}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12 items-center bg-white p-4 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition"
+                href={`/voice-of-chennai/${featuredEventArticle.slug}`}
+                className="grid lg:grid-cols-2 gap-6 mb-10 items-center "
               >
                 <div className="space-y-3">
-                  <p className="text-pink-600 text-xs font-bold uppercase tracking-wider">
+                  <p className="text-pink-600 text-sm font-semibold">
                     {featuredEventArticle.Articlecategory?.name || 'Featured'}
                   </p>
-                  <h1 className="text-2xl font-extrabold text-slate-900 leading-tight">
+                  <h1 className="themelink-color formheadingtheme-article ">
                     {featuredEventArticle.title}
                   </h1>
-                  <p className="text-sm text-slate-600 line-clamp-3 font-light leading-relaxed">
-                    {featuredEventArticle.excerpt}
-                  </p>
+                  <p className=" mt-3">{featuredEventArticle.excerpt}</p>
                 </div>
-                <div className="h-[280px] w-full overflow-hidden rounded-lg">
-                  <img
-                    src={
-                      featuredEventArticle.heroImage?.url ||
-                      featuredEventArticle.thumbnailImage?.url ||
-                      '/images/placeholder.jpg'
-                    }
-                    alt={featuredEventArticle.title}
-                    className="w-full h-full object-cover hover:scale-101 transition-transform duration-300"
-                  />
-                </div>
+
+                <img
+                  src={
+                    featuredEventArticle.heroImage?.url ||
+                    featuredEventArticle.thumbnailImage?.url ||
+                    '/images/placeholder.jpg'
+                  }
+                  alt={featuredEventArticle.title}
+                  className="rounded-lg w-full h-[320px] object-cover"
+                />
               </Link>
             )}
 
@@ -274,25 +271,29 @@ export default function ArticleListingClientLayout({ articles, ads }: ClientProp
                   a.thumbnailImage?.url || a.heroImage?.url || '/images/placeholder.jpg'
                 return (
                   <React.Fragment key={a.id}>
-                    <Link
-                      href={`/articles/${a.slug}`}
-                      className="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col h-full"
-                    >
-                      <div className="h-48 w-full overflow-hidden">
-                        <img src={imgSource} alt={a.title} className="w-full h-full object-cover" />
-                      </div>
-                      <div className="p-4 flex-1 flex flex-col justify-between">
-                        <div>
-                          <p className="text-pink-600 text-xs font-bold tracking-wider uppercase mb-1">
-                            {a.Articlecategory?.name}
-                          </p>
-                          <h2 className="text-base font-bold text-slate-900 line-clamp-2 mb-2">
-                            {a.title}
-                          </h2>
-                          <p className="text-xs text-slate-600 line-clamp-3 font-light leading-relaxed">
-                            {a.excerpt}
-                          </p>
-                        </div>
+                    <Link href={`/voice-of-chennai/${a.slug}`} className="contents">
+                      <div className="bg-white rounded-md overflow-hidden">
+                        <img
+                          src={imgSource}
+                          alt={a.title}
+                          className="rounded-lg w-full h-[320px] object-cover"
+                        />
+
+                        <p className="text-pink-600 text-sm mt-2 font-semibold">
+                          {a.Articlecategory?.name}
+                        </p>
+                        <h1
+                          className=" themelink-color formheadingtheme-article-cards mt-2"
+                          // style={{
+                          //   width: '80%',
+                          //   lineHeight: '0.9',
+                          //   margin: '0 auto',
+                          //   textAlign: 'center',
+                          // }}
+                        >
+                          {a.title}
+                        </h1>
+                        <p className=" mt-3">{a.excerpt}</p>
                       </div>
                     </Link>
 
@@ -308,7 +309,7 @@ export default function ArticleListingClientLayout({ articles, ads }: ClientProp
             </div>
 
             {/* Pagination Controls Row */}
-            {totalPages > 1 && (
+            {/* {totalPages > 1 && (
               <div className="flex justify-center gap-2 mt-8">
                 {Array.from({ length: totalPages }).map((_, i) => (
                   <button
@@ -320,38 +321,82 @@ export default function ArticleListingClientLayout({ articles, ads }: ClientProp
                   </button>
                 ))}
               </div>
+            )} */}
+
+            {totalPages > 1 && (
+              <div className="flex justify-center mt-12">
+                <div className="flex items-center gap-1 rounded-full bg-white shadow px-2 py-2">
+                  {/* PREV */}
+                  <button
+                    onClick={() => handleScrollReset(setPage, page - 1)}
+                    disabled={page === 1}
+                    className="cursor-pointer px-3 py-2 rounded-full text-sm
+          disabled:text-gray-300 disabled:cursor-not-allowed
+          hover:bg-gray-100"
+                  >
+                    ←
+                  </button>
+
+                  {/* PAGE NUMBERS */}
+                  {Array.from({ length: totalPages }).map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => handleScrollReset(setPage, i + 1)}
+                      className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium transition ${
+                        page === i + 1
+                          ? 'bg-pink-600 text-white shadow'
+                          : 'text-gray-600 hover:bg-gray-100'
+                      }`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+
+                  {/* NEXT */}
+                  <button
+                    onClick={() => handleScrollReset(setPage, page + 1)}
+                    disabled={page === totalPages}
+                    className="cursor-pointer px-3 py-2 rounded-full text-sm
+          disabled:text-gray-300 disabled:cursor-not-allowed
+          hover:bg-gray-100"
+                  >
+                    →
+                  </button>
+                </div>
+              </div>
             )}
 
             {/* MOST VIEWED SECTION BLOCK */}
             {mostViewedArticles.length > 0 && (
-              <div className="mt-16 space-y-6">
-                <h3 className="text-xl font-extrabold text-slate-900 border-b pb-2 border-slate-100">
-                  Most Viewed Articles
-                </h3>
-                <div className="space-y-4">
+              <div className="max-w-7xl mx-auto px-4 mt-20 conclevesSectionHeading">
+                <h3 className="mb-8">Most Viewed Articles</h3>
+                <div className="space-y-6">
                   {mostViewedArticles.map((a) => (
                     <Link
                       key={a.id}
-                      href={`/articles/${a.slug}`}
-                      className="flex flex-col md:flex-row gap-4 bg-white p-3 rounded-xl border border-slate-100 hover:shadow-sm transition"
+                      href={`/voice-of-chennai/${a.slug}`}
+                      className="flex flex-col md:flex-row gap-6 bg-white
+                       rounded-xl overflow-hidden hover:shadow-lg transition"
                     >
                       <img
                         src={a.thumbnailImage?.url || a.heroImage?.url || '/images/placeholder.jpg'}
                         alt={a.title}
-                        className="w-full md:w-48 h-32 object-cover rounded-lg shrink-0"
+                        className="w-full md:w-64 h-48 object-cover"
                       />
-                      <div className="flex-1 space-y-1 py-1">
-                        <p className="text-pink-600 text-xs font-bold uppercase">
+                      <div className="flex-1 p-4">
+                        <p className="text-pink-600 text-xs font-semibold">
                           {a.Articlecategory?.name}
                         </p>
-                        <h4 className="text-base font-bold text-slate-900">{a.title}</h4>
-                        <p className="text-xs text-slate-600 line-clamp-2 font-light">
-                          {a.excerpt}
-                        </p>
+                        <div className="formheadingtheme-article-cards">
+                          <h4 className="">{a.title}</h4>
+                        </div>
+                        <p className=" text-sm mt-2 line-clamp-3">{a.excerpt}</p>
                         {a.views > 0 && (
-                          <span className="text-[11px] text-slate-400 block pt-1">
-                            👁 {a.views} views
-                          </span>
+                          <div className="flex gap-6 text-xs text-gray-500 mt-4">
+                            <span className="text-[11px] text-slate-400 block pt-1">
+                              👁 {a.views} views
+                            </span>
+                          </div>
                         )}
                       </div>
                     </Link>
@@ -361,72 +406,97 @@ export default function ArticleListingClientLayout({ articles, ads }: ClientProp
             )}
 
             {totalMostViewedPages > 1 && (
-              <div className="flex justify-center gap-1.5 mt-6">
-                {Array.from({ length: totalMostViewedPages }).map((_, i) => (
+              <div className="flex justify-center mt-12">
+                <div className="flex items-center gap-1 rounded-full bg-white shadow px-2 py-2">
+                  {/* PREV */}
                   <button
-                    key={i}
-                    onClick={() => setMostViewedPage(i + 1)}
-                    className={`w-7 h-7 text-xs rounded border flex items-center justify-center font-semibold ${mostViewedPage === i + 1 ? 'bg-slate-800 text-white border-slate-800' : 'bg-white text-slate-500 hover:bg-slate-50'}`}
+                    onClick={() => setMostViewedPage(mostViewedPage - 1)}
+                    disabled={mostViewedPage === 1}
+                    className="cursor-pointer px-3 py-2 rounded-full text-sm
+          disabled:text-gray-300 disabled:cursor-not-allowed
+          hover:bg-gray-100"
                   >
-                    {i + 1}
+                    ←
                   </button>
-                ))}
+
+                  {/* PAGE NUMBERS */}
+                  {Array.from({ length: totalMostViewedPages }).map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setMostViewedPage(i + 1)}
+                      className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium transition ${
+                        mostViewedPage === i + 1
+                          ? 'bg-pink-600 text-white shadow'
+                          : 'text-gray-600 hover:bg-gray-100'
+                      }`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+
+                  {/* NEXT */}
+                  <button
+                    onClick={() => setMostViewedPage(mostViewedPage + 1)}
+                    disabled={mostViewedPage === totalMostViewedPages}
+                    className="cursor-pointer px-3 py-2 rounded-full text-sm
+          disabled:text-gray-300 disabled:cursor-not-allowed
+          hover:bg-gray-100"
+                  >
+                    →
+                  </button>
+                </div>
               </div>
             )}
 
             {/* POPULAR ARTICLES CARDS MATRIX */}
             {popularArticles.length > 0 && (
-              <div className="mt-16 space-y-6">
-                <h3 className="text-xl font-extrabold text-slate-900 border-b pb-2 border-slate-100">
-                  Popular Articles
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {popularArticles.map((a) => (
-                    <Link
-                      key={a.id}
-                      href={`/articles/${a.slug}`}
-                      className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:shadow-sm transition flex flex-col justify-between h-full"
-                    >
-                      <div>
+              <div className="mt-20 conclevesSectionHeading">
+                <div className="mt-16 space-y-6">
+                  <h3 className="mb-8">Popular Articles</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {popularArticles.map((a) => (
+                      <Link
+                        key={a.id}
+                        href={`/voice-of-chennai/${a.slug}`}
+                        className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition block"
+                      >
                         <img
                           src={
                             a.thumbnailImage?.url || a.heroImage?.url || '/images/placeholder.jpg'
                           }
                           alt={a.title}
-                          className="w-full h-40 object-cover"
+                          className="w-full h-48 object-cover"
                         />
                         <div className="p-4">
-                          <p className="text-pink-600 text-xs font-bold uppercase mb-1">
+                          <p className="text-pink-600 text-xs font-semibold">
                             {a.Articlecategory?.name}
                           </p>
-                          <h4 className="text-sm font-bold text-slate-900 line-clamp-2">
-                            {a.title}
-                          </h4>
-                          <p className="text-xs text-slate-600 line-clamp-2 font-light mt-1">
-                            {a.excerpt}
-                          </p>
+                          <div className="formheadingtheme-article-cards">
+                            <h4 className="">{a.title}</h4>
+                          </div>
+                          <p className=" text-sm mt-2 line-clamp-3">{a.excerpt}</p>
                         </div>
-                      </div>
 
-                      {/* Spring Framer Motion Like Counter animation row */}
-                      {a.likes > 0 && (
-                        <div className="px-4 pb-4 pt-1 flex items-center gap-1.5 text-xs font-bold text-rose-500">
-                          <motion.span
-                            animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 3 }}
-                          >
-                            ❤️
-                          </motion.span>
-                          <span>{a.likes} Likes</span>
-                        </div>
-                      )}
-                    </Link>
-                  ))}
+                        {/* Spring Framer Motion Like Counter animation row */}
+                        {a.likes > 0 && (
+                          <div className="px-4 pb-4 pt-1 flex items-center gap-1.5 text-xs font-bold text-rose-500">
+                            <motion.span
+                              animate={{ scale: [1, 1.2, 1] }}
+                              transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 3 }}
+                            >
+                              ❤️
+                            </motion.span>
+                            <span>{a.likes} Likes</span>
+                          </div>
+                        )}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
 
-            {totalPopularPages > 1 && (
+            {/* {totalPopularPages > 1 && (
               <div className="flex justify-center gap-1.5 mt-6">
                 {Array.from({ length: totalPopularPages }).map((_, i) => (
                   <button
@@ -437,6 +507,49 @@ export default function ArticleListingClientLayout({ articles, ads }: ClientProp
                     {i + 1}
                   </button>
                 ))}
+              </div>
+            )} */}
+
+            {totalPopularPages > 1 && (
+              <div className="flex justify-center mt-12">
+                <div className="flex items-center gap-1 rounded-full bg-white shadow px-2 py-2">
+                  {/* PREV */}
+                  <button
+                    onClick={() => setPopularPage(popularPage - 1)}
+                    disabled={popularPage === 1}
+                    className="cursor-pointer px-3 py-2 rounded-full text-sm
+          disabled:text-gray-300 disabled:cursor-not-allowed
+          hover:bg-gray-100"
+                  >
+                    ←
+                  </button>
+
+                  {/* PAGE NUMBERS */}
+                  {Array.from({ length: totalPopularPages }).map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setPopularPage(i + 1)}
+                      className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium transition ${
+                        popularPage === i + 1
+                          ? 'bg-pink-600 text-white shadow'
+                          : 'text-gray-600 hover:bg-gray-100'
+                      }`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+
+                  {/* NEXT */}
+                  <button
+                    onClick={() => setPopularPage(popularPage + 1)}
+                    disabled={popularPage === totalPopularPages}
+                    className="cursor-pointer px-3 py-2 rounded-full text-sm
+          disabled:text-gray-300 disabled:cursor-not-allowed
+          hover:bg-gray-100"
+                  >
+                    →
+                  </button>
+                </div>
               </div>
             )}
           </div>

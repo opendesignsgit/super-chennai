@@ -20,14 +20,14 @@ export const IconOfMonthPage: GlobalConfig = {
       name: 'desktopImage',
       type: 'upload',
       relationTo: 'media',
-      required: true,
+      required: false,
     },
 
     {
       name: 'mobileImage',
       type: 'upload',
       relationTo: 'media',
-      required: true,
+      required: false,
     },
 
     {
