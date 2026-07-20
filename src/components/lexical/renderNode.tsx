@@ -137,10 +137,8 @@ export function renderNode(node: any, idx: number, arattaiData?: any): React.Rea
         return <GallerySliderComponent key={idx} {...node.fields} />
       }
 
-       if (blockType === 'eventRegistrationFormBlock') {
-        return (
-          <ArattaiBlockComponent key={idx} block={node.fields} arattaiData={arattaiData} />
-        )
+      if (blockType === 'eventRegistrationFormBlock') {
+        return <ArattaiBlockComponent key={idx} block={node.fields} arattaiData={arattaiData} />
       }
 
       return null
