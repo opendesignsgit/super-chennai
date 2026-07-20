@@ -67,7 +67,7 @@ export default async function ArticleListPage() {
       <PageClient />
 
       <section className="accaodomationBannerSection relative">
-        <div className="relative w-full h-[400px]">
+        <div className="relative w-full h-[600px]">
           {desktopImage && (
             <Image
               src={desktopImage.url || ''}
@@ -89,7 +89,7 @@ export default async function ArticleListPage() {
         </div>
 
         <div className="accodoamationBannerContainer absolute flex items-center">
-          <div className="accodoamationBannerText container mx-auto">
+          <div className="accodoamationBannerText container">
             <h3>{pageSettings?.title}</h3>
             <div className="breadCrum">
               <Link href="/">Home</Link> - <Link href="/articles">{pageSettings?.title}</Link>
@@ -98,8 +98,10 @@ export default async function ArticleListPage() {
         </div>
       </section>
 
-      <div className="container mx-auto mt-8">
-        <LexicalRenderer content={pageSettings?.content} />
+      <div className="container max-w-7xl mx-auto px-4 mt-5">
+        <div className="workIntro p-20">
+          <LexicalRenderer content={pageSettings?.content} />
+        </div>
       </div>
 
       <ArticleListingClientLayout articles={allArticles} ads={activeAds} />

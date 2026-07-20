@@ -5,7 +5,7 @@ import { PayloadRedirects } from 'src/components/PayloadRedirects'
 import configPromise from 'src/payload.config'
 import { LivePreviewListener } from 'src/components/LivePreviewListener'
 import { generateMeta } from 'src/utilities/generateMeta'
-import PageClient from './page.client' 
+import PageClient from './page.client'
 import ArticleDetails from '../Components/Details'
 
 export const dynamic = 'force-dynamic'
@@ -46,14 +46,13 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   return generateMeta({ doc: articleData })
 }
 
-
 /* =========================================================
    SERVER ACCELERATED CONTROLLER
 ========================================================= */
 const queryArticleBySlug = async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode()
   const payload = await getPayload({ config: configPromise })
-  
+
   const result = await payload.find({
     collection: 'articles',
     draft,
