@@ -2,6 +2,10 @@ import { Block } from 'payload'
 
 const InnerPageBanner: Block = {
   slug: 'Banner',
+  labels: {
+    singular: 'Inner Page Banner',
+    plural: 'Inner Page Banners',
+  },
   fields: [
     {
       name: 'heading',

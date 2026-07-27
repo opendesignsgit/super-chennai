@@ -1,6 +1,6 @@
 declare module '*.css' {
-  const content: { [className: string]: string };
-  export default content;
+  const content: { [className: string]: string }
+  export default content
 }
 
 // For SCSS files (since you are using sass in Payload)
