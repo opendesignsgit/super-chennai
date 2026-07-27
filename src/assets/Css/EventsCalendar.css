@@ -284,6 +284,14 @@
   margin-right: 10px;
 }
 
+.eventsCalendarLinks span {
+  font-family: "29LT Bukra SmBd";
+  background-color: #cf5772;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
 .FindOutMore {
   font-family: "29LT Bukra SmBd";
   font-size: 15px;
