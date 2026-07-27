@@ -43,6 +43,19 @@ import { VisitBanner } from './PageBanners/VisitBanner/Component'
 import PopupBanner from './Popup/component'
 import { VideoBlockComponent } from './VideoBlock/Component'
 import ArattaiBlockComponent from '@/collections/Arrattai/components/RegistrationForm/coponents'
+import ConclaveSuperChennaiBlockComponent from './InnerPage/ConclavePage/ConclaveSuperchennaiBlock/component'
+import ConclaveAboutComponent from './InnerPage/ConclavePage/ConclaveAboutBlock/component'
+import ConclaveAgendaComponent from './InnerPage/ConclavePage/ConclaveAgendaBlock/component'
+import ConclaveSpeakersComponent from './InnerPage/ConclavePage/ConclaveSpeakersBlock/component'
+import ConclaveFivePillarsComponent from './InnerPage/ConclavePage/ConclaveFivePillarsBlock/component'
+import ConclaveCtaComponent from './InnerPage/ConclavePage/ConclaveCtaBlock/component'
+import ConclavePartnersComponent from './InnerPage/ConclavePage/ConclavePartnersBlock/component'
+import ConclaveGalleryComponent from './InnerPage/ConclavePage/ConclaveGalleryBlock/component'
+import Banner from './InnerPage/SharedBlocks/Banners/Components'
+import InnerPageHeroBannerComponent from './InnerPage/SharedBlocks/InnerPageBanner/component'
+import FaqSectionComponent from './InnerPage/FAQPage/component'
+import AboutIntroBlockComponent from './InnerPage/AboutPage/AboutIntroBlock/component'
+import AboutWelcomeSuperChennaiComponent from './InnerPage/AboutPage/AboutWelcomeSection/component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -53,6 +66,9 @@ const blockComponents: {
   explore: ExploreBlockServer,
   funChennai: FunChennaiBlockServer,
   startupChennai: StartupChennaiBlockServer,
+
+  InnerPageBanner: Banner,
+  InnerPageHeroBannerBlock: InnerPageHeroBannerComponent,
   chennaiInvestments: ChennaiInvestments,
   socialReelSlider: socialReelSlider,
   becameAVolunteer: BecameAVolunteer,
@@ -90,6 +106,32 @@ const blockComponents: {
   cricketScoreBlock: CricketScoreBlock,
   GalleryBlock: GalleryBlockComponent,
   eventRegistrationFormBlock: ArattaiBlockComponent,
+
+  // Conclave Page-------------------
+
+  ConclaveSuperChennaiBlock: ConclaveSuperChennaiBlockComponent,
+  ConclaveAboutBlock: ConclaveAboutComponent,
+  ConclaveAgendaBlock: ConclaveAgendaComponent,
+  ConclaveSpeakersBlock: ConclaveSpeakersComponent,
+  ConclaveFivePillarsBlock: ConclaveFivePillarsComponent,
+  ConclaveCtaBlock: ConclaveCtaComponent,
+  ConclavePartnersBlock: ConclavePartnersComponent,
+  ConclaveGalleryBlock: ConclaveGalleryComponent,
+
+  // Conclave Page-------------------
+
+  // Faq Page-----------------
+
+  FaqSectionBlock: FaqSectionComponent,
+
+  // Faq Page-----------------
+
+  // About Page-----------------
+
+  AboutIntroBlock: AboutIntroBlockComponent,
+  AboutWelcomeSuperChennaiBlock: AboutWelcomeSuperChennaiComponent,
+
+  // About Page-----------------
 }
 
 export const RenderBlocks: React.FC<{

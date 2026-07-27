@@ -553,13 +553,6 @@ export interface Page {
         blockType: 'volunteerBecameSection';
       }
     | {
-        heading: string;
-        image: number | Media;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'Banner';
-      }
-    | {
         /**
          * Maximum 50 characters allowed
          */
@@ -969,6 +962,248 @@ export interface Page {
         id?: string | null;
         blockName?: string | null;
         blockType: 'cricketScoreBlock';
+      }
+    | {
+        title: string;
+        /**
+         * Supports HTML tags like <strong> or <br /> if styling adjustments are needed.
+         */
+        description: string;
+        metaItems?:
+          | {
+              icon: number | Media;
+              label: string;
+              value: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ConclaveSuperChennaiBlock';
+      }
+    | {
+        /**
+         * This text will repeat and scroll dynamically in the background layer.
+         */
+        backgroundTickerText?: string | null;
+        image: number | Media;
+        title: string;
+        paragraphs?:
+          | {
+              /**
+               * Supports HTML tags like <strong> or <br /> to make text bold.
+               */
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ConclaveAboutBlock';
+      }
+    | {
+        sectionHeading: string;
+        /**
+         * How many items should display before clicking the "Read More" trigger.
+         */
+        initialVisibleRows?: number | null;
+        agendaItems?:
+          | {
+              displayId: string;
+              startTime: string;
+              endTime: string;
+              title: string;
+              speakers?:
+                | {
+                    name: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ConclaveAgendaBlock';
+      }
+    | {
+        sectionHeading: string;
+        speakers?:
+          | {
+              name: string;
+              designation: string;
+              image: number | Media;
+              /**
+               * This profile text shows up inside the animation modal when clicked.
+               */
+              description: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ConclaveSpeakersBlock';
+      }
+    | {
+        sectionHeading: string;
+        sectionSubheading: string;
+        pillars?:
+          | {
+              icon: number | Media;
+              title: string;
+              paragraphs?:
+                | {
+                    /**
+                     * Supports HTML tags like <strong> or <br /> to bold phrases.
+                     */
+                    text: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ConclaveFivePillarsBlock';
+      }
+    | {
+        backgroundImage: number | Media;
+        logoImage: number | Media;
+        dateText: string;
+        timeText: string;
+        /**
+         * e.g., ITC Welcome Hotel, Chennai. Leave blank if not needed.
+         */
+        venueText?: string | null;
+        enableRegisterButton?: boolean | null;
+        buttonText?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ConclaveCtaBlock';
+      }
+    | {
+        sectionHeading: string;
+        partners?:
+          | {
+              image: number | Media;
+              /**
+               * Image to show in popup or detailed view.
+               */
+              description?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ConclavePartnersBlock';
+      }
+    | {
+        marqueeText: string;
+        sectionTitle: string;
+        sectionDescription?: string | null;
+        featuredEvent: {
+          linkUrl?: string | null;
+          image: number | Media;
+          dateNumber?: string | null;
+          dayName?: string | null;
+          title?: string | null;
+          description?: string | null;
+          tag?: string | null;
+        };
+        galleryItems?:
+          | {
+              image: number | Media;
+              title?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ConclaveGalleryBlock';
+      }
+    | {
+        heading: string;
+        image: number | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'Banner';
+      }
+    | {
+        bannerImage: number | Media;
+        title: string;
+        smallTitleText?: string | null;
+        /**
+         * Leave empty if the banner should not be clickable.
+         */
+        bannerLink?: string | null;
+        breadcrumbs?:
+          | {
+              label: string;
+              url: string;
+              /**
+               * Optional small tag inside breadcrumb link e.g. "s" for FAQ<small>s</small>
+               */
+              smallText?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        enableSearch?: boolean | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'InnerPageHeroBannerBlock';
+      }
+    | {
+        title: string;
+        smallTitleText?: string | null;
+        description?: string | null;
+        faqList?:
+          | {
+              question: string;
+              answer: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'FaqSectionBlock';
+      }
+    | {
+        title: string;
+        paragraphs?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        marqueeText: string;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'AboutIntroBlock';
+      }
+    | {
+        heading: string;
+        subheading: string;
+        images?:
+          | {
+              image: number | Media;
+              id?: string | null;
+            }[]
+          | null;
+        columns?:
+          | {
+              items?:
+                | {
+                    text: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'WelcomeChennaiBlock';
       }
   )[];
   meta?: {
@@ -4883,14 +5118,6 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        Banner?:
-          | T
-          | {
-              heading?: T;
-              image?: T;
-              id?: T;
-              blockName?: T;
-            };
         mainPageBanner?:
           | T
           | {
@@ -5181,6 +5408,233 @@ export interface PagesSelect<T extends boolean = true> {
                     noResult?: T;
                     netRunRate?: T;
                     points?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ConclaveSuperChennaiBlock?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              metaItems?:
+                | T
+                | {
+                    icon?: T;
+                    label?: T;
+                    value?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ConclaveAboutBlock?:
+          | T
+          | {
+              backgroundTickerText?: T;
+              image?: T;
+              title?: T;
+              paragraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ConclaveAgendaBlock?:
+          | T
+          | {
+              sectionHeading?: T;
+              initialVisibleRows?: T;
+              agendaItems?:
+                | T
+                | {
+                    displayId?: T;
+                    startTime?: T;
+                    endTime?: T;
+                    title?: T;
+                    speakers?:
+                      | T
+                      | {
+                          name?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ConclaveSpeakersBlock?:
+          | T
+          | {
+              sectionHeading?: T;
+              speakers?:
+                | T
+                | {
+                    name?: T;
+                    designation?: T;
+                    image?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ConclaveFivePillarsBlock?:
+          | T
+          | {
+              sectionHeading?: T;
+              sectionSubheading?: T;
+              pillars?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                    paragraphs?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ConclaveCtaBlock?:
+          | T
+          | {
+              backgroundImage?: T;
+              logoImage?: T;
+              dateText?: T;
+              timeText?: T;
+              venueText?: T;
+              enableRegisterButton?: T;
+              buttonText?: T;
+              id?: T;
+              blockName?: T;
+            };
+        ConclavePartnersBlock?:
+          | T
+          | {
+              sectionHeading?: T;
+              partners?:
+                | T
+                | {
+                    image?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ConclaveGalleryBlock?:
+          | T
+          | {
+              marqueeText?: T;
+              sectionTitle?: T;
+              sectionDescription?: T;
+              featuredEvent?:
+                | T
+                | {
+                    linkUrl?: T;
+                    image?: T;
+                    dateNumber?: T;
+                    dayName?: T;
+                    title?: T;
+                    description?: T;
+                    tag?: T;
+                  };
+              galleryItems?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        Banner?:
+          | T
+          | {
+              heading?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        InnerPageHeroBannerBlock?:
+          | T
+          | {
+              bannerImage?: T;
+              title?: T;
+              smallTitleText?: T;
+              bannerLink?: T;
+              breadcrumbs?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                    smallText?: T;
+                    id?: T;
+                  };
+              enableSearch?: T;
+              id?: T;
+              blockName?: T;
+            };
+        FaqSectionBlock?:
+          | T
+          | {
+              title?: T;
+              smallTitleText?: T;
+              description?: T;
+              faqList?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        AboutIntroBlock?:
+          | T
+          | {
+              title?: T;
+              paragraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              marqueeText?: T;
+              id?: T;
+              blockName?: T;
+            };
+        WelcomeChennaiBlock?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              columns?:
+                | T
+                | {
+                    items?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
                     id?: T;
                   };
               id?: T;

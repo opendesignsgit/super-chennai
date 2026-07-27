@@ -46,6 +46,18 @@ import { TrendingChennaiSlider } from '@/blocks/HomePage/TrendingChennaiSlider/c
 import SecondSectionBlock from '@/blocks/HomePage/WelcomeSction/config'
 import { PopupBannerBlock } from '@/blocks/Popup/config'
 import { CricketScoreBlock } from '@/blocks/HomePage/CricketScoreBlock/config'
+import { ConclaveSuperChennaiBlock } from '@/blocks/InnerPage/ConclavePage/ConclaveSuperchennaiBlock/config'
+import { ConclaveAboutBlock } from '@/blocks/InnerPage/ConclavePage/ConclaveAboutBlock/config'
+import { ConclaveAgendaBlock } from '@/blocks/InnerPage/ConclavePage/ConclaveAgendaBlock/config'
+import { ConclaveSpeakersBlock } from '@/blocks/InnerPage/ConclavePage/ConclaveSpeakersBlock/config'
+import { ConclaveFivePillarsBlock } from '@/blocks/InnerPage/ConclavePage/ConclaveFivePillarsBlock/config'
+import { ConclaveCtaBlock } from '@/blocks/InnerPage/ConclavePage/ConclaveCtaBlock/config'
+import { ConclavePartnersBlock } from '@/blocks/InnerPage/ConclavePage/ConclavePartnersBlock/config'
+import { ConclaveGalleryBlock } from '@/blocks/InnerPage/ConclavePage/ConclaveGalleryBlock/config'
+import { InnerPageHeroBannerBlock } from '@/blocks/InnerPage/SharedBlocks/InnerPageBanner/config'
+import { FaqSectionBlock } from '@/blocks/InnerPage/FAQPage/config'
+import { AboutIntroBlock } from '@/blocks/InnerPage/AboutPage/AboutIntroBlock/config'
+import { AboutWelcomeSuperChennaiBlock } from '@/blocks/InnerPage/AboutPage/AboutWelcomeSection/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -116,7 +128,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 HotelsInChennaiBlock,
                 volunteerBecameListBlock,
                 // REUSABLE BLOCK
-                InnerPageBanner,
+
                 // RESUSABLE BLOCK NEW #####################
                 mainPageBannerBlock,
                 IntroTextBlock,
@@ -139,6 +151,35 @@ export const Pages: CollectionConfig<'pages'> = {
                 SecondSectionBlock,
                 PopupBannerBlock,
                 CricketScoreBlock,
+
+                // Conclave Pages
+
+                ConclaveSuperChennaiBlock,
+                ConclaveAboutBlock,
+                ConclaveAgendaBlock,
+                ConclaveSpeakersBlock,
+                ConclaveFivePillarsBlock,
+                ConclaveCtaBlock,
+                ConclavePartnersBlock,
+                ConclaveGalleryBlock,
+
+                // Conclave Pages
+
+                InnerPageBanner,
+                InnerPageHeroBannerBlock,
+
+                // Faq Page
+
+                FaqSectionBlock,
+
+                // Faq Page
+
+                // About Page
+
+                AboutIntroBlock,
+                AboutWelcomeSuperChennaiBlock,
+
+                // About Page
               ],
               required: true,
               admin: {
