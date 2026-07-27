@@ -31,7 +31,15 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({ data }) => {
     likes,
   } = data
 
-  const heroMedia = typeof heroImage === 'object' && heroImage !== null ? heroImage : undefined
+  // const heroMedia = typeof heroImage === 'object' && heroImage !== null ? heroImage : undefined
+
+
+  const heroMedia =
+  typeof heroImage === 'object' && heroImage !== null ? heroImage : undefined
+
+const thumbnailMedia =
+  typeof thumbnailImage === 'object' && thumbnailImage !== null ? thumbnailImage : undefined
+
 
   const articleCategory =
     typeof Articlecategory === 'object' && Articlecategory !== null ? Articlecategory : undefined
@@ -76,13 +84,14 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({ data }) => {
         <div className="grid grid-cols-1 gap-10">
           {thumbnailType && thumbnailType !== 'none' && (
             <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-              {thumbnailType === 'image' && thumbnailImage?.url && (
+              {thumbnailType === 'image' && thumbnailMedia?.url && (
                 <img
-                  src={thumbnailImage.url}
+                  src={thumbnailMedia.url}
                   alt={title}
                   className="w-full h-auto max-h-[450px] object-cover rounded-lg"
                 />
               )}
+
               {thumbnailType === 'video' && thumbnailVideoUrl && (
                 <div className="aspect-video rounded-lg overflow-hidden">
                   <iframe
