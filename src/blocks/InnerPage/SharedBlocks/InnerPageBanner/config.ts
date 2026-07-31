@@ -6,6 +6,8 @@ export const InnerPageHeroBannerBlock: Block = {
     singular: 'Inner Page Hero Banner',
     plural: 'Inner Page Hero Banners',
   },
+
+  imageURL: '/images/sections-image/herobanner.jpg',
   fields: [
     {
       name: 'bannerImage',

@@ -9,6 +9,8 @@ const BecameAVolunteerBlock: Block = {
   admin: {
     group: 'Homepage Sections',
   },
+
+  imageURL: '/images/sections-image/Volunteer.png',
   fields: [
     {
       name: 'heading',

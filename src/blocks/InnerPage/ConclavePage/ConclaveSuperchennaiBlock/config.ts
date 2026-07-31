@@ -6,6 +6,12 @@ export const ConclaveSuperChennaiBlock: Block = {
     singular: 'Conclave Super Chennai Meta',
     plural: 'Conclave Super Chennai Metas',
   },
+
+  admin: {
+    group: 'Conclave Page',
+  },
+
+  imageURL: '/images/sections-image/ConclaveSuperChennaiBlock.jpg',
   fields: [
     {
       name: 'title',

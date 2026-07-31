@@ -10,6 +10,8 @@ const EventsCalendarBlock: Block = {
   admin: {
     group: 'Homepage Sections',
   },
+
+  imageURL: '/images/sections-image/EventsCalendar.png',
   fields: [
     {
       name: 'heading',

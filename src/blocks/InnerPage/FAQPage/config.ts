@@ -6,6 +6,12 @@ export const FaqSectionBlock: Block = {
     singular: 'FAQ Section',
     plural: 'FAQ Sections',
   },
+  admin: {
+    group: 'Faq Page',
+  },
+
+  imageURL: '/images/sections-image/faqsection.jpg',
+
   fields: [
     {
       name: 'title',

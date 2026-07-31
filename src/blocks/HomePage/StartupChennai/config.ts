@@ -10,6 +10,8 @@ export const StartupChennaiBlock: Block = {
     group: 'Homepage Sections',
   },
 
+  imageURL: '/images/sections-image/StartupChennaiBlock.jpg',
+
   fields: [
     {
       name: 'heading',
