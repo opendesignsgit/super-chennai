@@ -6,6 +6,12 @@ export const ConclaveCtaBlock: Block = {
     singular: 'Conclave CTA / Hero Banner',
     plural: 'Conclave CTA / Hero Banners',
   },
+
+  admin: {
+    group: 'Conclave Page',
+  },
+
+  imageURL: '/images/sections-image/ConclaveCtaBlock.jpg',
   fields: [
     {
       name: 'backgroundImage',

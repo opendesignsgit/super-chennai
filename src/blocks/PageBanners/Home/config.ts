@@ -1,39 +1,40 @@
-import { Block } from "payload";
+import { Block } from 'payload'
 
 const HeroSlider: Block = {
-  slug: "heroSliderBlock",
+  slug: 'heroSliderBlock',
   labels: {
-    singular: "Hero Slider",
-    plural: "Hero Sliders",
+    singular: 'Hero Slider',
+    plural: 'Hero Sliders',
   },
+  imageURL: '/images/sections-image/HeroSlider.jpg',
   admin: {
-    group: "Homepage Sections",
+    group: 'Homepage Sections',
   },
   fields: [
     {
-      name: "slides",
-      type: "array",
+      name: 'slides',
+      type: 'array',
       required: true,
-      label: "Slides",
+      label: 'Slides',
       fields: [
         {
-          name: "image",
-          type: "upload",
-          relationTo: "media",
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
           required: true,
         },
-        
+
         {
-          name: "title",
-          type: "text",
+          name: 'title',
+          type: 'text',
         },
         {
-          name: "description",
-          type: "textarea",
+          name: 'description',
+          type: 'textarea',
         },
       ],
     },
   ],
-};
+}
 
-export default HeroSlider;
+export default HeroSlider

@@ -6,6 +6,11 @@ export const ConclaveSpeakersBlock: Block = {
     singular: 'Conclave Speakers Section',
     plural: 'Conclave Speakers Sections',
   },
+
+  admin: {
+    group: 'Conclave Page',
+  },
+  imageURL: '/images/sections-image/ConclaveSpeakersBlock.jpg',
   fields: [
     {
       name: 'sectionHeading',

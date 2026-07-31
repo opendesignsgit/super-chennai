@@ -6,6 +6,8 @@ export const ExploreBlock: Block = {
     singular: 'Explore Cards',
     plural: 'Explore Cards',
   },
+
+  imageURL: '/images/sections-image/ExploreCards.jpg',
   admin: {
     group: 'Homepage Sections',
   },

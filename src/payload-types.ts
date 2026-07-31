@@ -1212,6 +1212,174 @@ export interface Page {
         blockName?: string | null;
         blockType: 'WelcomeChennaiBlock';
       }
+    | {
+        tenantInfoSections?:
+          | {
+              title: string;
+              iconImage: number | Media;
+              imgAlt?: string | null;
+              points?:
+                | {
+                    text: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'InvestPageBorderSection';
+      }
+    | {
+        tabs?:
+          | {
+              tabTitle: string;
+              icon: number | Media;
+              heading: string;
+              description: string;
+              buttonText?: string | null;
+              buttonLink: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'InvestPageTabBlock';
+      }
+    | {
+        slides?:
+          | {
+              title: string;
+              category?: string | null;
+              description: string;
+              image: number | Media;
+              imgAlt?: string | null;
+              link: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'InvestPageSliderBlock';
+      }
+    | {
+        slides?:
+          | {
+              title: string;
+              content: string;
+              image: number | Media;
+              imgAlt?: string | null;
+              link: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'InnovatePageSliderBlock';
+      }
+    | {
+        mainImage: number | Media;
+        imgAlt?: string | null;
+        /**
+         * Choose whether the main image appears on the Left or Right side.
+         */
+        imagePosition?: ('left' | 'right') | null;
+        infoData?:
+          | {
+              title: string;
+              desc: string;
+              icon: number | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'InnovateInfoSectionBlock';
+      }
+    | {
+        sectionTitle?: string | null;
+        mainImage: number | Media;
+        contentBlocks?:
+          | {
+              type?: ('paragraph' | 'list') | null;
+              paragraphText?: string | null;
+              listItems?:
+                | {
+                    itemText?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ImagewithContent';
+      }
+    | {
+        mainTitle?: string | null;
+        paragraphBlocks?:
+          | {
+              text?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        cards?:
+          | {
+              cardTitle: string;
+              bulletPoints?:
+                | {
+                    pointText?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ImageWithoutContentBlock';
+      }
+    | {
+        mainTitle?: string | null;
+        subTitle?: string | null;
+        headers?:
+          | {
+              title: string;
+              id?: string | null;
+            }[]
+          | null;
+        rows?:
+          | {
+              columns?:
+                | {
+                    text?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'TableSectionBlock';
+      }
+    | {
+        mainTitle?: string | null;
+        subTitle?: string | null;
+        slides?:
+          | {
+              title: string;
+              link: string;
+              image: number | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'InnerPageSliderBlock';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -5649,6 +5817,180 @@ export interface PagesSelect<T extends boolean = true> {
                           text?: T;
                           id?: T;
                         };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        InvestPageBorderSection?:
+          | T
+          | {
+              tenantInfoSections?:
+                | T
+                | {
+                    title?: T;
+                    iconImage?: T;
+                    imgAlt?: T;
+                    points?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        InvestPageTabBlock?:
+          | T
+          | {
+              tabs?:
+                | T
+                | {
+                    tabTitle?: T;
+                    icon?: T;
+                    heading?: T;
+                    description?: T;
+                    buttonText?: T;
+                    buttonLink?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        InvestPageSliderBlock?:
+          | T
+          | {
+              slides?:
+                | T
+                | {
+                    title?: T;
+                    category?: T;
+                    description?: T;
+                    image?: T;
+                    imgAlt?: T;
+                    link?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        InnovatePageSliderBlock?:
+          | T
+          | {
+              slides?:
+                | T
+                | {
+                    title?: T;
+                    content?: T;
+                    image?: T;
+                    imgAlt?: T;
+                    link?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        InnovateInfoSectionBlock?:
+          | T
+          | {
+              mainImage?: T;
+              imgAlt?: T;
+              imagePosition?: T;
+              infoData?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    icon?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ImagewithContent?:
+          | T
+          | {
+              sectionTitle?: T;
+              mainImage?: T;
+              contentBlocks?:
+                | T
+                | {
+                    type?: T;
+                    paragraphText?: T;
+                    listItems?:
+                      | T
+                      | {
+                          itemText?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ImageWithoutContentBlock?:
+          | T
+          | {
+              mainTitle?: T;
+              paragraphBlocks?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    cardTitle?: T;
+                    bulletPoints?:
+                      | T
+                      | {
+                          pointText?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        TableSectionBlock?:
+          | T
+          | {
+              mainTitle?: T;
+              subTitle?: T;
+              headers?:
+                | T
+                | {
+                    title?: T;
+                    id?: T;
+                  };
+              rows?:
+                | T
+                | {
+                    columns?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        InnerPageSliderBlock?:
+          | T
+          | {
+              mainTitle?: T;
+              subTitle?: T;
+              slides?:
+                | T
+                | {
+                    title?: T;
+                    link?: T;
+                    image?: T;
                     id?: T;
                   };
               id?: T;

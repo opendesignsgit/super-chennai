@@ -5,6 +5,8 @@ const liveIntrorSection: Block = {
     singular: 'Intro Section with Image',
     plural: 'Intro Section with Image',
   },
+
+  imageURL: '/images/sections-image/introsectionwithimage.jpg',
   admin: {
     group: 'Main Page Sections',
   },

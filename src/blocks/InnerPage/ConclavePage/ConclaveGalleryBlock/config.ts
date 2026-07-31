@@ -6,6 +6,12 @@ export const ConclaveGalleryBlock: Block = {
     singular: 'Conclave Gallery Section',
     plural: 'Conclave Gallery Sections',
   },
+
+  admin: {
+    group: 'Conclave Page',
+  },
+
+  imageURL: '/images/sections-image/ConclaveGalleryBlock.jpg',
   fields: [
     {
       name: 'marqueeText',

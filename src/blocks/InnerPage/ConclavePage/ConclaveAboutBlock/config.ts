@@ -6,6 +6,11 @@ export const ConclaveAboutBlock: Block = {
     singular: 'Conclave About Section',
     plural: 'Conclave About Sections',
   },
+  admin: {
+    group: 'Conclave Page',
+  },
+
+  imageURL: '/images/sections-image/ConclaveAboutBlock.jpg',
   fields: [
     {
       name: 'backgroundTickerText',

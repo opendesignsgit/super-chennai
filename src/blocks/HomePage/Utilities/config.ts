@@ -9,6 +9,9 @@ const Utilities: Block = {
   admin: {
     group: 'Homepage Sections',
   },
+
+  imageURL: '/images/sections-image/Utilities.jpg',
+
   fields: [
     {
       name: 'title',
