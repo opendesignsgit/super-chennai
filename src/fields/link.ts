@@ -181,5 +181,28 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
     },
   })
 
+  // ########################### GALLERY ARRAY ###################################
+
+  linkResult.fields.push({
+    name: 'gallery',
+    label: 'Header Gallery Images (Slider)',
+    type: 'array',
+    maxRows: 10,
+    fields: [
+      {
+        name: 'image',
+        label: 'Gallery Image',
+        type: 'upload',
+        relationTo: 'media',
+        required: true,
+      },
+      {
+        name: 'caption',
+        label: 'Caption/Title (Optional)',
+        type: 'text',
+      },
+    ],
+  })
+
   return deepMerge(linkResult, overrides)
 }
