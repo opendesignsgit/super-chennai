@@ -317,6 +317,13 @@ export interface Page {
                   id?: string | null;
                 }[]
               | null;
+            gallery?:
+              | {
+                  image: number | Media;
+                  caption?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
           };
           id?: string | null;
         }[]
@@ -4962,6 +4969,13 @@ export interface PagesSelect<T extends boolean = true> {
                           link?: T;
                           id?: T;
                         };
+                    gallery?:
+                      | T
+                      | {
+                          image?: T;
+                          caption?: T;
+                          id?: T;
+                        };
                   };
               id?: T;
             };
@@ -7961,6 +7975,13 @@ export interface Header {
                 id?: string | null;
               }[]
             | null;
+          gallery?:
+            | {
+                image: number | Media;
+                caption?: string | null;
+                id?: string | null;
+              }[]
+            | null;
         };
         id?: string | null;
       }[]
@@ -8141,6 +8162,13 @@ export interface HeaderSelect<T extends boolean = true> {
                     title?: T;
                     desc?: T;
                     link?: T;
+                    id?: T;
+                  };
+              gallery?:
+                | T
+                | {
+                    image?: T;
+                    caption?: T;
                     id?: T;
                   };
             };
