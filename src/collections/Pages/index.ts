@@ -58,6 +58,15 @@ import { InnerPageHeroBannerBlock } from '@/blocks/InnerPage/SharedBlocks/InnerP
 import { FaqSectionBlock } from '@/blocks/InnerPage/FAQPage/config'
 import { AboutIntroBlock } from '@/blocks/InnerPage/AboutPage/AboutIntroBlock/config'
 import { AboutWelcomeSuperChennaiBlock } from '@/blocks/InnerPage/AboutPage/AboutWelcomeSection/config'
+import { InvestPageBorderSection } from '@/blocks/InvestPageBorderSection/config'
+import { InvestPageTabBlock } from '@/blocks/InvestPageTabSection/config'
+import { InvestPageSliderBlock } from '@/blocks/InvestPageSlider/config'
+import { InnovatePageSliderBlock } from '@/blocks/InnovatePage/MainPage/InnovateMainPageSlider/config'
+import { InnovateInfoSectionBlock } from '@/blocks/InnovatePage/MainPage/InnovateInfoSection/config'
+import { ImagewithContent } from '@/blocks/InnerPage/SharedBlocks/ImagewithContent/config'
+import { ImageWithoutContentBlock } from '@/blocks/InnerPage/SharedBlocks/ImageWithoutContent/config'
+import { TableSectionBlock } from '@/blocks/InnerPage/SharedBlocks/TableSection/config'
+import { InnerPageSliderBlock } from '@/blocks/InnerPage/SharedBlocks/InnerPageSlider/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -180,6 +189,23 @@ export const Pages: CollectionConfig<'pages'> = {
                 AboutWelcomeSuperChennaiBlock,
 
                 // About Page
+
+                // InvestPages,
+
+                InvestPageBorderSection,
+                InvestPageTabBlock,
+                InvestPageSliderBlock,
+
+                // InvestPages,
+
+                InnovatePageSliderBlock,
+                InnovateInfoSectionBlock,
+
+                ImagewithContent,
+                ImageWithoutContentBlock,
+
+                TableSectionBlock,
+                InnerPageSliderBlock,
               ],
               required: true,
               admin: {

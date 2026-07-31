@@ -9,6 +9,8 @@ const TwoColumnFeatureBlock: Block = {
   admin: {
     group: 'Homepage Sections',
   },
+
+  imageURL: '/images/sections-image/TwoColumnFeatureBlock.png',
   fields: [
     {
       name: 'techImage',

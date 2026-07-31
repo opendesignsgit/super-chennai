@@ -56,6 +56,15 @@ import InnerPageHeroBannerComponent from './InnerPage/SharedBlocks/InnerPageBann
 import FaqSectionComponent from './InnerPage/FAQPage/component'
 import AboutIntroBlockComponent from './InnerPage/AboutPage/AboutIntroBlock/component'
 import AboutWelcomeSuperChennaiComponent from './InnerPage/AboutPage/AboutWelcomeSection/component'
+import InvestPageBorderSectionComponent from './InvestPageBorderSection/component'
+import InvestPageTabComponent from './InvestPageTabSection/component'
+import InvestPageSliderComponent from './InvestPageSlider/component'
+import InnovatePageSliderComponent from './InnovatePage/MainPage/InnovateMainPageSlider/component'
+import InnovateInfoSectionComponent from './InnovatePage/MainPage/InnovateInfoSection/component'
+import ImagewithContentComponent from './InnerPage/SharedBlocks/ImagewithContent/component'
+import ImageWithoutComponent from './InnerPage/SharedBlocks/ImageWithoutContent/component'
+import TableSectionComponent from './InnerPage/SharedBlocks/TableSection/component'
+import InnerPageSliderComponent from './InnerPage/SharedBlocks/InnerPageSlider/component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -132,6 +141,21 @@ const blockComponents: {
   AboutWelcomeSuperChennaiBlock: AboutWelcomeSuperChennaiComponent,
 
   // About Page-----------------
+
+  // Invest Page-----------------
+
+  InvestPageBorderSection: InvestPageBorderSectionComponent,
+  InvestPageTabBlock: InvestPageTabComponent,
+  InvestPageSliderBlock: InvestPageSliderComponent,
+
+  // Invest Page-----------------
+
+  InnovatePageSliderBlock: InnovatePageSliderComponent,
+  InnovateInfoSectionBlock: InnovateInfoSectionComponent,
+  ImagewithContent: ImagewithContentComponent,
+  ImageWithoutContentBlock: ImageWithoutComponent,
+  TableSectionBlock: TableSectionComponent,
+  InnerPageSliderBlock: InnerPageSliderComponent,
 }
 
 export const RenderBlocks: React.FC<{

@@ -9,6 +9,9 @@ const ChennaiInvestmentsBlock: Block = {
   admin: {
     group: 'Homepage Sections',
   },
+
+  imageURL: '/images/sections-image/ChennaiInvestmentsBlock.jpg',
+
   fields: [
     {
       name: 'heading',

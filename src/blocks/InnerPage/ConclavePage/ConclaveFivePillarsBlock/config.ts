@@ -6,6 +6,12 @@ export const ConclaveFivePillarsBlock: Block = {
     singular: 'Conclave Pillars Section',
     plural: 'Conclave Pillars Sections',
   },
+
+  admin: {
+    group: 'Conclave Page',
+  },
+
+  imageURL: '/images/sections-image/ConclaveFivePillarsBlock.jpg',
   fields: [
     {
       name: 'sectionHeading',

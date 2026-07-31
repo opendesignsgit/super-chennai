@@ -9,6 +9,8 @@ export const FunChennaiBlock: Block = {
   admin: {
     group: 'Homepage Sections',
   },
+
+  imageURL: '/images/sections-image/FunChennaiBlock.jpg',
   fields: [
     {
       name: 'heading',
