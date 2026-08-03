@@ -43,7 +43,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<Sea
         },
       },
       depth: 2,
-      limit: 100,
+      limit: 1000,
       sort: '-priorityRank',
     })
     neighbourhoodData = res.docs

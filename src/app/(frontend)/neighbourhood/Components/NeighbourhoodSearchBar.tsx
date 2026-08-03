@@ -1,38 +1,82 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react'
-import Search from './Search'
-import Fuse from 'fuse.js'
+'use client'
+
 import { AnimatePresence, motion } from 'framer-motion'
-const API_BASE_URL_API_TEST_DEV = 'http://localhost:3000/'
-import { useRouter, useParams } from 'next/navigation'
+import Fuse from 'fuse.js'
+import { useRouter } from 'next/navigation'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import Search from './Search'
+
+const API_BASE_URL_API_TEST_DEV = 'http://localhost:3000'
+
+interface LocationItem {
+  id: string | number
+  locality?: string
+  title?: string
+  name?: string
+  label?: string
+}
+
+interface SubCategory {
+  id: string | number
+  title: string
+  slug: string
+}
+
+interface Category {
+  title: string
+}
+
+interface DataItem {
+  id: string | number
+  name?: string
+  title?: string
+  slug?: string
+  description?: string
+  category?: Category
+  subCategories?: SubCategory[]
+  locations?: LocationItem
+  content?: any
+  FeaturedImage?: {
+    url?: string
+  }
+}
+
+interface NeighbourhoodSearchBarProps {
+  data?: DataItem[]
+  locations?: LocationItem[]
+  locationId?: string
+  onSearch?: (query: string) => void
+  showExplore?: boolean
+}
 
 export function NeighbourhoodSearchBar({
   data = [],
   locations = [],
-  locationId,
+  locationId = '',
   onSearch,
   showExplore = true,
-}) {
+}: NeighbourhoodSearchBarProps) {
   const router = useRouter()
   const [search, setSearch] = useState('')
 
   const [openLocationsModal, setOpenLocationsModal] = useState(false)
   const [open, setOpen] = useState(false)
-  const [activeCategory, setActiveCategory] = useState(null)
-  const [searchResults, setSearchResults] = useState([])
+  const [activeCategory, setActiveCategory] = useState<string | null>(null)
+  const [searchResults, setSearchResults] = useState<DataItem[]>([])
   const [openSearchModal, setOpenSearchModal] = useState(false)
 
   // ####################################################################################################################
   // ################## ADVANCE SEARCH ALGORITHMS DONT CHANGE ANYTHING DONT REWRITE WITH AI TOOL #########################
   // ####################################################################################################################
 
-  function extractTextFromLexical(content) {
+  function extractTextFromLexical(content: any): string {
     if (!content?.root?.children) return ''
 
     let text = ''
 
-    content.root.children.forEach((node) => {
+    content.root.children.forEach((node: any) => {
       if (node.children) {
-        node.children.forEach((child) => {
+        node.children.forEach((child: any) => {
           if (child.text) {
             text += ' ' + child.text
           }
@@ -74,6 +118,7 @@ export function NeighbourhoodSearchBar({
     const finalResults = fuseResults.map((r) => r.item)
     setSearchResults(finalResults)
     setOpenSearchModal(true)
+    if (onSearch) onSearch(query)
   }
 
   const location = data?.[0]?.locations
@@ -86,7 +131,7 @@ export function NeighbourhoodSearchBar({
 
   const grouped = useMemo(() => {
     return (
-      data?.reduce((acc, item) => {
+      data?.reduce<Record<string, DataItem[]>>((acc, item) => {
         const cat = item?.category?.title || 'Others'
         if (!acc[cat]) acc[cat] = []
         acc[cat].push(item)
@@ -96,7 +141,7 @@ export function NeighbourhoodSearchBar({
   }, [data])
 
   const subCategoriesByCategory = useMemo(() => {
-    const result = {}
+    const result: Record<string, Record<string | number, SubCategory>> = {}
 
     data?.forEach((item) => {
       const cat = item?.category?.title || 'Others'
@@ -112,14 +157,19 @@ export function NeighbourhoodSearchBar({
   }, [data])
 
   const categories = Object.keys(grouped)
-  const activeCat = activeCategory || categories?.[0]
+  const activeCat = activeCategory || categories?.[0] || 'Others'
 
-  const getSubCategorySlug = (item) => {
-    if (item?.subCategories?.length > 0) {
+  const getSubCategorySlug = (item: DataItem) => {
+    if (item?.subCategories && item.subCategories.length > 0) {
       return item.subCategories[0]?.slug || 'all'
     }
     return 'all'
   }
+
+  const currentSubCategories = useMemo(() => {
+    const catMap = subCategoriesByCategory?.[activeCat] || {}
+    return Object.values(catMap).sort((a, b) => a.title.localeCompare(b.title))
+  }, [subCategoriesByCategory, activeCat])
 
   return (
     <>
@@ -135,7 +185,7 @@ export function NeighbourhoodSearchBar({
             <select
               className="w-full bg-transparent border-none outline-none text-gray-600 font-medium cursor-pointer appearance-none pr-4 text-sm md:text-base capitalize"
               value={locationId}
-              onChange={(e) => router(`/neighbourhood/${e.target.value}`)}
+              onChange={(e) => router.push(`/neighbourhood/${e.target.value}`)}
             >
               {sameLetterLocations?.map((loc) => (
                 <option key={loc.id} value={loc.locality}>
@@ -160,6 +210,9 @@ export function NeighbourhoodSearchBar({
             className="flex-1 bg-transparent border-none outline-none text-gray-700 placeholder-gray-400 text-sm md:text-base pr-2 text-[14px] inputseachhhssssss"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') handleSearch()
+            }}
           />
         </div>
 
@@ -169,6 +222,7 @@ export function NeighbourhoodSearchBar({
         >
           Search
         </button>
+
         {showExplore && (
           <button
             onClick={() => setOpen(true)}
@@ -197,8 +251,8 @@ export function NeighbourhoodSearchBar({
             </div>
             <div className="animate-slide-up">
               <Search
-                onSearch={(q) => {
-                  router(`/neighbourhood?search=${encodeURIComponent(q)}`)
+                onSearch={(q: string) => {
+                  router.push(`/neighbourhood?search=${encodeURIComponent(q)}`)
                   setOpenLocationsModal(false)
                 }}
               />
@@ -207,6 +261,7 @@ export function NeighbourhoodSearchBar({
         </div>
       )}
 
+      {/* EXPLORE MODAL */}
       <AnimatePresence>
         {open && (
           <div className="fixed inset-0 z-[9999] bg-black/50 flex items-center justify-center">
@@ -235,6 +290,7 @@ export function NeighbourhoodSearchBar({
                     ))}
                   </div>
                 </div>
+
                 <div className="col-span-8 p-6 relative rightsidepopup sisss">
                   <button
                     onClick={() => setOpen(false)}
@@ -244,32 +300,27 @@ export function NeighbourhoodSearchBar({
                   </button>
 
                   <div className="popuprightsidecontent">
-                    {Object.values(subCategoriesByCategory?.[activeCat] || {}).length === 0 ? (
+                    {currentSubCategories.length === 0 ? (
                       <div className="text-gray-500 text-center mt-10">
                         We couldn’t find anything here. Try exploring other categories.
                       </div>
                     ) : (
-                      Object.values(subCategoriesByCategory?.[activeCat])
-                        .sort((a, b) => a.title.localeCompare(b.title))
-                        .map((sub) => (
-                          <div
-                            key={sub.id}
-                            onClick={() => {
-                              router(
-                                `/neighbourhood/${locationId}/${activeCat
-                                  .toLowerCase()
-                                  .replace(/\s+/g, '-')}/${sub.slug}`,
-                              )
-                              setOpen(false)
-                            }}
-                            className="border butoonsearchbutton cursor-pointer hover:bg-gray-100 transition"
-                          >
-                            <div className="iconsimagelocation">
-                              <img src="https://dev.opendesignsin.com/svg-icon.svg" alt="" />
-                              {sub.title}
-                            </div>
+                      currentSubCategories.map((sub) => (
+                        <div
+                          key={sub.id}
+                          onClick={() => {
+                            const safeCategory = activeCat.toLowerCase().replace(/\s+/g, '-')
+                            router.push(`/neighbourhood/${locationId}/${safeCategory}/${sub.slug}`)
+                            setOpen(false)
+                          }}
+                          className="border butoonsearchbutton cursor-pointer hover:bg-gray-100 transition"
+                        >
+                          <div className="iconsimagelocation flex items-center gap-2">
+                            <img src="https://dev.opendesignsin.com/svg-icon.svg" alt="" />
+                            {sub.title}
                           </div>
-                        ))
+                        </div>
+                      ))
                     )}
                   </div>
                 </div>
@@ -279,6 +330,7 @@ export function NeighbourhoodSearchBar({
         )}
       </AnimatePresence>
 
+      {/* SEARCH RESULTS MODAL */}
       {openSearchModal && (
         <div className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm flex items-center justify-center searchpopupdivmain">
           <div className="bg-white w-[95%] max-w-4xl rounded-2xl shadow-2xl relative overflow-hidden">
@@ -305,64 +357,69 @@ export function NeighbourhoodSearchBar({
                   <p className="text-sm text-gray-500 mt-2">Try different keywords or spelling</p>
                 </div>
               ) : (
-                searchResults.map((item) => (
-                  <div
-                    key={item.id}
-                    onClick={() => {
-                      const subSlug = getSubCategorySlug(item)
+                searchResults.map((item) => {
+                  const imageUrl = item?.FeaturedImage?.url
+                    ? item.FeaturedImage.url.startsWith('/')
+                      ? `${API_BASE_URL_API_TEST_DEV}${item.FeaturedImage.url}`
+                      : `${API_BASE_URL_API_TEST_DEV}/${item.FeaturedImage.url}`
+                    : '/images/locationdefult.png'
 
-                      router(
-                        `/neighbourhood/${locationId}/${item.category.title
+                  return (
+                    <div
+                      key={item.id}
+                      onClick={() => {
+                        const subSlug = getSubCategorySlug(item)
+                        const safeCat = (item.category?.title || 'others')
                           .toLowerCase()
-                          .replace(/\s+/g, '-')}/${subSlug}/${item.slug}`,
-                      )
-                      setOpenSearchModal(false)
-                    }}
-                    className="flex items-center gap-4 p-3 rounded-xl hover:shadow-lg hover:bg-gray-50 cursor-pointer transition-all duration-200 cardlocation"
-                  >
-                    <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100 imagesecriorrss">
-                      <img
-                        src={
-                          item?.FeaturedImage?.url
-                            ? `${API_BASE_URL_API_TEST_DEV}/${item.FeaturedImage.url}`
-                            : '/images/locationdefult.png'
-                        }
-                        alt={item.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition"
-                      />
-                    </div>
+                          .replace(/\s+/g, '-')
 
-                    <div className="flex-1 w-[100%]">
-                      <h3 className="font-semibold text-gray-800 group-hover:text-purple-600 transition">
-                        {item.name}
-                      </h3>
+                        router.push(
+                          `/neighbourhood/${locationId}/${safeCat}/${subSlug}/${item.slug}`,
+                        )
+                        setOpenSearchModal(false)
+                      }}
+                      className="flex items-center gap-4 p-3 rounded-xl hover:shadow-lg hover:bg-gray-50 cursor-pointer transition-all duration-200 cardlocation"
+                    >
+                      <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100 imagesecriorrss">
+                        <img
+                          src={imageUrl}
+                          alt={item.name || 'Location image'}
+                          className="w-full h-full object-cover group-hover:scale-105 transition"
+                        />
+                      </div>
 
-                      <h3 className="text-xs !text-[#000] leading-relaxed mb-3 neighbourtwoparagraph mt-2">
-                        {item?.description && `${item.description.slice(0, 50)} ....`}
-                      </h3>
+                      <div className="flex-1 w-[100%]">
+                        <h3 className="font-semibold text-gray-800 group-hover:text-purple-600 transition">
+                          {item.name}
+                        </h3>
 
-                      <div className="flex gap-2 mt-2">
-                        {item?.locations?.locality && (
-                          <div className="flex gap-0.5 items-center itemslocatioss">
-                            <img
-                              className="locationimagess w-5 h-5"
-                              src="/images/location-map-1.svg"
-                              alt=""
-                            />
+                        <h3 className="text-xs !text-[#000] leading-relaxed mb-3 neighbourtwoparagraph mt-2">
+                          {item?.description && `${item.description.slice(0, 50)} ....`}
+                        </h3>
 
-                            <h3 className="font-semibold text-gray-800 group-hover:text-purple-600 transition !mb-0">
-                              {item.locations.locality}
-                            </h3>
+                        <div className="flex gap-2 mt-2">
+                          {item?.locations?.locality && (
+                            <div className="flex gap-0.5 items-center itemslocatioss">
+                              <img
+                                className="locationimagess w-5 h-5"
+                                src="/images/location-map-1.svg"
+                                alt=""
+                              />
+
+                              <h3 className="font-semibold text-gray-800 group-hover:text-purple-600 transition !mb-0">
+                                {item.locations.locality}
+                              </h3>
+                            </div>
+                          )}
+
+                          <div className="text-gray-400 group-hover:text-purple-600 transition">
+                            <img className="imagepopupnws" src="/images/location-arrow.svg" alt="" />
                           </div>
-                        )}
-
-                        <div className="text-gray-400 group-hover:text-purple-600 transition">
-                          <img className="imagepopupnws" src="/images/location-arrow.svg" alt="" />
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))
+                  )
+                })
               )}
             </div>
           </div>
@@ -372,11 +429,16 @@ export function NeighbourhoodSearchBar({
   )
 }
 
-export function SearchChennai({ onSearch, dataaa }) {
+interface SearchChennaiProps {
+  onSearch?: (query: string) => void
+  dataaa?: DataItem[]
+}
+
+export function SearchChennai({ onSearch, dataaa }: SearchChennaiProps) {
   const [value, setValue] = useState('')
-  const [isTop, setIsTop] = useState(false)
+  const [, setIsTop] = useState(false)
   const [activeTab, setActiveTab] = useState('search')
-  const sectionRef = useRef(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const getHeaderHeight = () => {
@@ -407,7 +469,7 @@ export function SearchChennai({ onSearch, dataaa }) {
     }
   }
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
   }
 
@@ -418,7 +480,7 @@ export function SearchChennai({ onSearch, dataaa }) {
     }
   }
 
-  const handleTagClick = (tagName) => {
+  const handleTagClick = (tagName: string) => {
     setValue(tagName)
     if (onSearch) {
       onSearch(tagName)
@@ -428,7 +490,7 @@ export function SearchChennai({ onSearch, dataaa }) {
   const getDynamicTags = () => {
     const fallbackTags = ['T Nagar', 'Anna Nagar', 'OMR', 'Velachery', 'Adyar']
     if (!dataaa || !Array.isArray(dataaa)) return fallbackTags
-    const uniqueTags = new Set()
+    const uniqueTags = new Set<string>()
     dataaa.forEach((item) => {
       const locationObj = item?.locations
       if (locationObj) {

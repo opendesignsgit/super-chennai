@@ -20,7 +20,16 @@ const nextConfig = {
       }),
       {
         protocol: 'https',
+        hostname: 'www.superchennai.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'demo.superchennai.com',
+      },
+       {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3000',
       },
       // Instagram video thumbnail and video CDN domains
       {
