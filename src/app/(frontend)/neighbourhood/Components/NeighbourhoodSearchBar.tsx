@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
@@ -5,8 +6,6 @@ import Fuse from 'fuse.js'
 import { useRouter } from 'next/navigation'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Search from './Search'
-
-const API_BASE_URL_API_TEST_DEV = 'http://localhost:3000'
 
 interface LocationItem {
   id: string | number
@@ -145,10 +144,12 @@ export function NeighbourhoodSearchBar({
 
     data?.forEach((item) => {
       const cat = item?.category?.title || 'Others'
-      if (!result[cat]) result[cat] = {}
+
+      const categoryMap = result[cat] ?? (result[cat] = {})
+
       item?.subCategories?.forEach((sub) => {
-        if (sub && sub.id && !result[cat][sub.id]) {
-          result[cat][sub.id] = sub
+        if (sub?.id && !categoryMap[sub.id]) {
+          categoryMap[sub.id] = sub
         }
       })
     })
@@ -360,8 +361,8 @@ export function NeighbourhoodSearchBar({
                 searchResults.map((item) => {
                   const imageUrl = item?.FeaturedImage?.url
                     ? item.FeaturedImage.url.startsWith('/')
-                      ? `${API_BASE_URL_API_TEST_DEV}${item.FeaturedImage.url}`
-                      : `${API_BASE_URL_API_TEST_DEV}/${item.FeaturedImage.url}`
+                      ? `${item.FeaturedImage.url}`
+                      : `/${item.FeaturedImage.url}`
                     : '/images/locationdefult.png'
 
                   return (
@@ -413,7 +414,11 @@ export function NeighbourhoodSearchBar({
                           )}
 
                           <div className="text-gray-400 group-hover:text-purple-600 transition">
-                            <img className="imagepopupnws" src="/images/location-arrow.svg" alt="" />
+                            <img
+                              className="imagepopupnws"
+                              src="/images/location-arrow.svg"
+                              alt=""
+                            />
                           </div>
                         </div>
                       </div>

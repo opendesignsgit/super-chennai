@@ -3,7 +3,6 @@ import { getPayload } from 'payload'
 import configPromise from 'src/payload.config'
 import { notFound } from 'next/navigation'
 import NeighbourhoodItemDetailClient from '../NeighbourhoodItemDetailClient'
-// import NeighbourhoodItemDetailClient from './NeighbourhoodItemDetailClient'
 
 export const dynamic = 'force-dynamic'
 
@@ -66,13 +65,13 @@ export default async function Page({ params }: PageProps) {
       },
     },
     depth: 2,
-    limit: 500,
+    limit: 100000,
   })
 
   // 3. Fetch All Locations (For SearchBar)
   const allLocationsRes = await payload.find({
     collection: 'chennaiNeighbourhoodlocations',
-    limit: 500,
+    limit: 100000,
   })
 
   console.log(`✅ Loaded item: ${item.name || item.title}`)

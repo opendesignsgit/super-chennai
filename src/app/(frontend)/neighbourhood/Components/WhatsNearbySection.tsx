@@ -8,10 +8,9 @@ import { calculateDistance, formatDistance, formatTravelTime } from '../lib/dist
 
 interface WhatsNearbySectionProps {
   data: any[]
-  apiBaseUrl: string
 }
 
-export const WhatsNearbySection: React.FC<WhatsNearbySectionProps> = ({ data, apiBaseUrl }) => {
+export const WhatsNearbySection: React.FC<WhatsNearbySectionProps> = ({ data}) => {
   const [userLocation, setUserLocation] = useState<{ latitude: number; longitude: number } | null>(
     null,
   )
@@ -27,7 +26,7 @@ export const WhatsNearbySection: React.FC<WhatsNearbySectionProps> = ({ data, ap
           })
         },
         () => {
-          // Default fallback location (Chennai)
+          
           setUserLocation({ latitude: 13.0827, longitude: 80.2707 })
         },
       )
@@ -95,11 +94,11 @@ export const WhatsNearbySection: React.FC<WhatsNearbySectionProps> = ({ data, ap
         <Slider {...settings}>
           {sortedPlaces.map((place, idx) => {
             const imageUrl = place.FeaturedImage?.url
-              ? `${apiBaseUrl}${place.FeaturedImage.url}`
+              ? `${place.FeaturedImage.url}`
               : 'https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=400&auto=format&fit=crop'
 
             const categoryIconUrl = place.category?.icon?.url
-              ? `${apiBaseUrl}${place.category.icon.url}`
+              ? `${place.category.icon.url}`
               : null
 
             const readableDistance = formatDistance(place.computedDistance)

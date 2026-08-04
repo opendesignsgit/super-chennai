@@ -1,7 +1,7 @@
 import type { Metadata } from 'next/types'
 import { getPayload } from 'payload'
 import configPromise from 'src/payload.config'
-import ChennaiNeighbourhoodClient from './ChennaiNeighbourhoodClient'
+import ChennaiNeighbourhoodMainPage from './ChennaiNeighbourhoodMainPage'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -30,7 +30,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<Sea
   const locationsRes = await payload.find({
     collection: 'chennaiNeighbourhoodlocations',
     where: whereConditions,
-    limit: 1000,
+    limit: 100000,
   })
 
   let neighbourhoodData: any[] = []
@@ -43,14 +43,14 @@ export default async function Page({ searchParams }: { searchParams: Promise<Sea
         },
       },
       depth: 2,
-      limit: 1000,
+      limit: 100000,
       sort: '-priorityRank',
     })
     neighbourhoodData = res.docs
   }
 
   return (
-    <ChennaiNeighbourhoodClient
+    <ChennaiNeighbourhoodMainPage
       locations={locationsRes.docs}
       neighbourhoodData={neighbourhoodData}
     />

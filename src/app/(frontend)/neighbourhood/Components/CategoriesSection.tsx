@@ -9,14 +9,14 @@ interface CategoriesSectionProps {
   locationId: string
   data: any[]
   location?: any
-  apiBaseUrl: string
+ 
 }
 
 export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
   locationId,
   data = [],
   location,
-  apiBaseUrl,
+ 
 }) => {
   const transformedSlides = useMemo(() => {
     return Object.values(
@@ -132,7 +132,7 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
             <span className="flex items-center gap-2">
               {cat.icon && typeof cat.icon === 'object' && cat.icon.url ? (
                 <img
-                  src={`${apiBaseUrl}${cat.icon.url}`}
+                  src={`${cat.icon.url}`}
                   alt={cat.icon.alt || cat.category}
                   className="w-5 h-5 object-contain"
                 />
@@ -160,7 +160,7 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
                       <a key={index} href={`/neighbourhood/${locationId}/${safeCat}`}>
                         <div className="relative h-[360px] w-full overflow-hidden group">
                           <img
-                            src={imgUrl.startsWith('http') ? imgUrl : `${apiBaseUrl}${imgUrl}`}
+                            src={imgUrl.startsWith('http') ? imgUrl : `${imgUrl}`}
                             alt={slide.title}
                             className="w-full h-[360px] object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                           />
@@ -206,7 +206,7 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
                               item={item}
                               locationId={locationId}
                               safeCat={safeCat}
-                              apiBaseUrl={apiBaseUrl}
+                             
                             />
                           </div>
                         ))}
@@ -219,7 +219,7 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
                             item={item}
                             locationId={locationId}
                             safeCat={safeCat}
-                            apiBaseUrl={apiBaseUrl}
+                            // apiBaseUrl={apiBaseUrl}
                           />
                         ))}
                       </div>

@@ -14,7 +14,6 @@ import { FaqSection } from '../Components/FaqSection'
 import { NearbyLocalitiesSection } from '../Components/NearbyLocalitiesSection'
 import { NeighbourhoodSearchBar } from '../Components/NeighbourhoodSearchBar'
 
-const API_BASE_URL = 'http://localhost:3000/'
 
 interface NeighbourhoodDetailClientProps {
   locationData: any
@@ -24,7 +23,7 @@ interface NeighbourhoodDetailClientProps {
   faqDataProps?: any
 }
 
-export default function NeighbourhoodDetailClient({
+export default function NeighbourhoodLocationDetailPage({
   locationData,
   allLocations = [],
   neighbourhoodDocs = [],
@@ -112,11 +111,11 @@ export default function NeighbourhoodDetailClient({
         locationId={locationId}
         data={neighbourhoodDocs}
         location={locationData}
-        apiBaseUrl={API_BASE_URL}
+       
       />
 
       {/* 3. WHAT'S NEARBY SECTION */}
-      <WhatsNearbySection data={neighbourhoodDocs} apiBaseUrl={API_BASE_URL} />
+      <WhatsNearbySection data={neighbourhoodDocs}  />
 
       {/* 4. PROPERTIES PROMO BANNER */}
       <PropertiesBanner />

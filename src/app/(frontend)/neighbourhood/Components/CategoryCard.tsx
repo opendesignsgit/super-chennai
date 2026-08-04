@@ -5,17 +5,17 @@ interface CategoryCardProps {
   item: any
   locationId: string
   safeCat: string
-  apiBaseUrl: string
+  // apiBaseUrl: string
 }
 
 export const CategoryCard: React.FC<CategoryCardProps> = ({
   item,
   locationId,
   safeCat,
-  apiBaseUrl,
+  // apiBaseUrl,
 }) => {
   const imageUrl = item?.FeaturedImage?.url
-    ? `${apiBaseUrl}${item.FeaturedImage.url}`
+    ? `${item.FeaturedImage.url}`
     : 'https://www.superchennai.com/images/restaurants-banner.jpg'
 
   return (

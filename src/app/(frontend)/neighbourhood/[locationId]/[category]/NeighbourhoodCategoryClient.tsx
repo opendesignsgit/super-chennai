@@ -9,7 +9,6 @@ import { PropertiesBanner } from '../../Components/PropertiesBanner'
 import { NeighbourhoodSearchBar } from '../../Components/NeighbourhoodSearchBar'
 import { ChevronDown, MapPinIcon, StarIcon } from '../../ui/Icons'
 
-const API_BASE_URL = 'http://localhost:3000'
 
 interface ClientProps {
   data?: any[]
@@ -50,9 +49,7 @@ export default function NeighbourhoodCategoryClient({
   const params = useParams()
   const router = useRouter()
   const [sortBy, setSortBy] = useState('highToLow')
-
   const subcategory = (params?.subcategory as string) || ''
-
   const normalize = (text?: string) => text?.toLowerCase().trim().replace(/\s+/g, '-') || ''
 
   const filtered =
@@ -95,7 +92,6 @@ export default function NeighbourhoodCategoryClient({
 
   const currentCategoryTitle = filtered[0]?.category?.title || category || 'Explore'
   const currentLocality = locationDetails?.locality || locationId || 'Chennai'
-
   const safeCategory = normalize(category)
   const safeSubcategory = subcategory ? normalize(subcategory) : safeCategory
 
@@ -107,7 +103,7 @@ export default function NeighbourhoodCategoryClient({
           <img
             src={
               filtered[0]?.category?.FeaturedImage?.url
-                ? `${API_BASE_URL}${filtered[0].category.FeaturedImage.url}`
+                ? `${filtered[0].category.FeaturedImage.url}`
                 : 'https://www.superchennai.com/images/restaurants-banner.jpg'
             }
             alt="Category Background"
@@ -148,11 +144,7 @@ export default function NeighbourhoodCategoryClient({
             </p>
 
             {/* Direct props pass */}
-            <NeighbourhoodSearchBar
-              data={data}
-              locations={locations}
-              locationId={locationId}
-            />
+            <NeighbourhoodSearchBar data={data} locations={locations} locationId={locationId} />
 
             {/* DYNAMIC STATS */}
             <div className="flex flex-wrap gap-4 mb-6 mt-10">
@@ -165,7 +157,7 @@ export default function NeighbourhoodCategoryClient({
                     <span className="w-6 h-6 flex items-center justify-center">
                       {s?.icon?.url ? (
                         <img
-                          src={`${API_BASE_URL}${s.icon.url}`}
+                          src={`${s.icon.url}`}
                           alt={s.label}
                           className="w-full h-full object-contain"
                         />
@@ -185,6 +177,7 @@ export default function NeighbourhoodCategoryClient({
                 </div>
               )}
             </div>
+
           </div>
         </div>
       </section>
@@ -234,7 +227,7 @@ export default function NeighbourhoodCategoryClient({
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     src={
                       item?.FeaturedImage?.url
-                        ? `${API_BASE_URL}${item.FeaturedImage.url}`
+                        ? `${item.FeaturedImage.url}`
                         : '/images/no-image.png'
                     }
                     alt={item.name || ''}
@@ -279,7 +272,7 @@ export default function NeighbourhoodCategoryClient({
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       src={
                         item?.FeaturedImage?.url
-                          ? `${API_BASE_URL}${item.FeaturedImage.url}`
+                          ? `${item.FeaturedImage.url}`
                           : '/images/no-image.png'
                       }
                       alt={item.name || ''}
@@ -342,7 +335,7 @@ export default function NeighbourhoodCategoryClient({
                     <Image
                       src={
                         item?.FeaturedImage?.url
-                          ? `${API_BASE_URL}${item.FeaturedImage.url}`
+                          ? `${item.FeaturedImage.url}`
                           : 'https://www.superchennai.com/images/restaurants-banner.jpg'
                       }
                       alt={item.name || ''}

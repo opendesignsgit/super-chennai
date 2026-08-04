@@ -1,34 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 
-import React, { useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import Image from 'next/image'
 import {
-  MapPin,
-  Tag,
-  Phone,
-  Globe,
-  IndianRupee,
-  Clock,
-  Map as MapIcon,
-  Layers,
-  Sparkles,
-  Milestone,
   ArrowRight,
-  X,
   ChevronLeft,
   ChevronRight,
+  Clock,
+  Globe,
+  IndianRupee,
+  Layers,
+  Map as MapIcon,
+  MapPin,
+  Milestone,
+  Phone,
+  Sparkles,
+  Tag,
+  X,
 } from 'lucide-react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import NeighbourhoodSearchBar from '../../../Components/NeighbourhoodSearchBar'
 import { PropertiesBanner } from '../../../Components/PropertiesBanner'
 import { MapPinIcon, StarIcon } from '../../../ui/Icons'
-// import { NeighbourhoodSearchBar } from '../../../../Components/NeighbourhoodSearchBar'
-// import { PropertiesBanner } from '../../../../Components/PropertiesBanner'
-// import { StarIcon, MapPinIcon } from '../../../../ui/Icons'
-
-const API_BASE_URL = 'http://localhost:3000'
 
 interface ClientProps {
   item: any
@@ -101,17 +95,10 @@ export default function NeighbourhoodItemDetailClient({
     ) || []
 
   const hoursConfig = item?.businessHours?.[0]
-  const formattedHours =
-    hoursConfig && (hoursConfig.openTime || hoursConfig.closeTime)
-      ? `${hoursConfig.openTime || ''} - ${hoursConfig.closeTime || ''}`
-      : '10:00 AM - 9:30 PM'
 
   const galleryImages =
     item?.gallery?.map((g: any) => ({
-      url:
-        typeof g.image === 'object' && g.image?.url
-          ? `${API_BASE_URL}${g.image.url}`
-          : `${API_BASE_URL}${g.image}`,
+      url: typeof g.image === 'object' && g.image?.url ? `${g.image.url}` : `${g.image}`,
       alt: g.alt || item.name || item.title || 'Gallery Image',
       caption: g.caption || '',
     })) || []
@@ -140,7 +127,7 @@ export default function NeighbourhoodItemDetailClient({
         <img
           src={
             item?.FeaturedImage?.url
-              ? `${API_BASE_URL}${item.FeaturedImage.url}`
+              ? `${item.FeaturedImage.url}`
               : 'https://www.superchennai.com/images/restaurants-banner.jpg'
           }
           alt={itemTitle}
@@ -307,9 +294,7 @@ export default function NeighbourhoodItemDetailClient({
               <Clock className="w-5 h-5 text-[#5d32a8]" />
             </div>
             <div className="flex flex-col gap-0.5">
-              <span className="text-gray-400 text-xs font-medium tracking-wide">
-                Timing Block
-              </span>
+              <span className="text-gray-400 text-xs font-medium tracking-wide">Timing Block</span>
               <span className="text-[#1a2332] text-sm font-semibold leading-snug">
                 {hoursConfig?.openTime || 'Open 24 hrs'}
               </span>
@@ -344,7 +329,7 @@ export default function NeighbourhoodItemDetailClient({
                         <div className="p-2 bg-[#F5F3FF] text-[#a44294] rounded-lg flex-shrink-0">
                           {hl?.icon?.url ? (
                             <img
-                              src={`${API_BASE_URL}${hl.icon.url}`}
+                              src={`${hl.icon.url}`}
                               alt=""
                               className="w-[18px] h-[18px] object-contain"
                             />
@@ -353,9 +338,7 @@ export default function NeighbourhoodItemDetailClient({
                           )}
                         </div>
                         <div>
-                          <h4 className="font-semibold text-gray-900 text-sm mb-0.5">
-                            {hl.title}
-                          </h4>
+                          <h4 className="font-semibold text-gray-900 text-sm mb-0.5">{hl.title}</h4>
                           <p className="text-xs text-gray-600 leading-normal">
                             {hl.desc} {hl.sub && `• ${hl.sub}`}
                           </p>
@@ -554,7 +537,7 @@ export default function NeighbourhoodItemDetailClient({
                     <img
                       src={
                         store?.FeaturedImage?.url
-                          ? `${API_BASE_URL}${store.FeaturedImage.url}`
+                          ? `${store.FeaturedImage.url}`
                           : 'https://www.superchennai.com/images/restaurants-banner.jpg'
                       }
                       alt={store.name || store.title || ''}
@@ -582,7 +565,9 @@ export default function NeighbourhoodItemDetailClient({
                         </span>
                         <span className="flex items-center gap-1 text-gray-500">
                           <MapPinIcon className="w-3 h-3" />
-                          <span className="text-gray-800">{store?.locations?.city || 'Chennai'}</span>
+                          <span className="text-gray-800">
+                            {store?.locations?.city || 'Chennai'}
+                          </span>
                         </span>
                       </div>
 
