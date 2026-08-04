@@ -6,6 +6,8 @@ const TextHoverImageSection: Block = {
     singular: 'Work in Chennai Section',
     plural: 'Work in Chennai Sections',
   },
+
+  imageURL: '/images/sections-image/Work-Leftsideheading-rightsidemage-slider.png',
   admin: {
     group: 'Main Page Sections',
   },

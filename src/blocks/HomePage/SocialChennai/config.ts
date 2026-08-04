@@ -9,6 +9,8 @@ export const socialReelSlider: Block = {
   admin: {
     group: 'Homepage Sections',
   },
+
+  imageURL: '/images/sections-image/InstaReels-SocialChennai.png',
   fields: [
     {
       name: 'heading',

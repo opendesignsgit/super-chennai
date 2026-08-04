@@ -6,6 +6,9 @@ const ChennaiLifeEssentialSection: Block = {
     singular: 'Chennai Life Essentials',
     plural: 'Chennai Life Essentials Sections',
   },
+
+  imageURL: '/images/sections-image/Live-Chennai-Essential-Section.png',
+
   admin: {
     group: 'Main Page Sections',
   },

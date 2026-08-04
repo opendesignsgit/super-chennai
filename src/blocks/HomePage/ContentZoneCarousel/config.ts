@@ -9,6 +9,7 @@ const ContentZoneCarousel: Block = {
   admin: {
     group: 'Homepage Sections',
   },
+  imageURL: '/images/sections-image/ChennaiChillsOut.png',
   fields: [
     {
       name: 'heading',

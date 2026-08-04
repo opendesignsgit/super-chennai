@@ -6,9 +6,13 @@ export const TrendingChennaiSlider: Block = {
     singular: 'Trending Chennai Slider',
     plural: 'Trending Chennai Sliders',
   },
-    admin: {
-    group: 'trending chennai',
+  imageURL: '/images/sections-image/TrendingChennaiSlider.jpg',
+
+  admin: {
+    // group: 'trending chennai',
+    group: 'Homepage Sections',
   },
+
   fields: [
     {
       name: 'title',

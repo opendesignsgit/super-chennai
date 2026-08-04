@@ -15,6 +15,57 @@ import iconSearch from '../assets/images/HomePage-Images/Icons/mobile-Header-Sea
 //######################## TYPES  #############################################
 import { HeaderClientProps, DrawerItem, MenuItem } from '@/models/Header'
 import Image from 'next/image'
+import Slider from 'react-slick'
+
+//######################## SLIDER & ANIMATION CONFIG ###########################
+const sliderSettings = {
+  dots: false,
+  arrows: true,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  autoplay: false,
+  autoplaySpeed: 3000,
+  responsive: [
+    {
+      breakpoint: 850,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+}
+
+const slideInFromLeft = {
+  hidden: {
+    opacity: 0,
+    x: -200,
+    scale: 0.95,
+    filter: "blur(8px)",
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    x: -100,
+    scale: 0.95,
+    filter: "blur(4px)",
+    transition: {
+      duration: 0.4,
+      ease: "easeInOut",
+    },
+  },
+}
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   //##################### STATE  ##############################################
@@ -34,44 +85,50 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   let menuTimeout: NodeJS.Timeout
 
   //##################### INITIALIZATION #######################################
-  useEffect(() => {
-    const fetchMenuItems = async () => {
-      try {
-        setMenuItems(
-          (data?.navItems || []).map((item: any) => ({
-            label: item.link.label,
-            link: item.link.reference?.value?.slug
-              ? `/${item.link.reference.value.slug}`
-              : item.link.url || '#',
-            content: Array.isArray(item?.link?.content)
-              ? item.link.content.filter((block: any) => block.title && block.desc && block.link)
-              : [],
-            contentImage: item?.link?.contentImage
-              ? {
-                  filename: item.link.contentImage.filename,
-                  mimeType: item.link.contentImage.mimeType,
-                  url: `/media/${item.link.contentImage.filename}`,
-                }
-              : undefined,
-          })),
-        )
-        setDraweLogo(data?.logo)
-        setDrawerMenuItems(data?.drawerMenu || [])
-        setSocialLinks(data?.socialLinks || [])
-      } catch (error) {
-        console.error('Failed to fetch menu items', error)
-      }
-    }
+   useEffect(() => {
+     const fetchMenuItems = async () => {
+       try {
+         setMenuItems(
+           (data?.navItems || []).map((item: any) => ({
+             label: item.link.label,
+             link: item.link.reference?.value?.slug
+               ? `/${item.link.reference.value.slug}`
+               : item.link.url || '#',
+             content: Array.isArray(item?.link?.content)
+               ? item.link.content.filter((block: any) => block.title && block.desc && block.link)
+               : [],
+             gallery: Array.isArray(item?.link?.gallery)
+               ? item.link.gallery.map((g: any) => ({
+                   url: g.image?.url ?? `/media/${g.image?.filename}`,
+                   alt: g.caption || 'Gallery Image',
+                 }))
+               : [],
+             contentImage: item?.link?.contentImage
+               ? {
+                   filename: item.link.contentImage.filename,
+                   mimeType: item.link.contentImage.mimeType,
+                   url: `/media/${item.link.contentImage.filename}`,
+                 }
+               : undefined,
+           })),
+         )
+         setDraweLogo(data?.logo)
+         setDrawerMenuItems(data?.drawerMenu || [])
+         setSocialLinks(data?.socialLinks || [])
+       } catch (error) {
+         console.error('Failed to fetch menu items', error)
+       }
+     }
 
-    fetchMenuItems()
-    setPointCast(data?.pointCast || null)
-  }, [data])
+     fetchMenuItems()
+     setPointCast(data?.pointCast || null)
+   }, [data])
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+   useEffect(() => {
+     const handleScroll = () => setScrolled(window.scrollY > 50)
+     window.addEventListener('scroll', handleScroll)
+     return () => window.removeEventListener('scroll', handleScroll)
+   }, [])
   //############################# HELPER FUNCTIONS ###############################
   const handleMenuEnter = (item: MenuItem) => {
     clearTimeout(menuTimeout)
@@ -131,6 +188,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     }
   }, [pathname])
 
+  
+
   return (
     <div className="mainMegamenuContainers">
       <header className={`mainMegamenuContainer ${scrolled ? 'scrolled' : ''}`}>
@@ -157,16 +216,22 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                 {mobileMenuOpen ? '✖' : '☰'}
               </button>
             </div>
+
             <ul className="Megamenumenudesktop">
               {menuItems.map((item, i) => (
                 <li
                   key={i}
-                  //  className="Megamenumenuitem"
-
                   className={`Megamenumenuitem ${
                     activeMenu?.label === item.label ? 'activeMegamenuSection' : ''
                   }`}
                   onMouseEnter={() => handleMenuEnter(item)}
+                  onClick={() => {
+                    if (item.link && item.link !== '#') {
+                      router.push(item.link)
+                      setActiveMenu(null)
+                    }
+                  }}
+                  style={{ cursor: 'pointer' }}
                 >
                   <span>
                     {item.label} <p className="navitemsArrowpart"></p>
@@ -240,12 +305,31 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                       </motion.div>
                     ))}
                   </div>
+                  {/*##### SINGLE IMAGE ##### */}
                   {activeMenu?.contentImage?.url && (
                     <img
                       className="megamenuMainImage"
                       src={activeMenu.contentImage.url}
                       alt="Menu Content"
                     />
+                  )}
+                  {/*#### GALERRRY ##### */}
+                  {activeMenu?.gallery && activeMenu.gallery.length > 0 && (
+                    <div className="megamenuGallerySlider w-[400px]">
+                      <Slider {...sliderSettings}>
+                        {activeMenu.gallery.map((item: any, imgIdx: number) => (
+                          <div key={imgIdx} className="px-2">
+                            <div className="rounded-lg overflow-hidden h-[200px] relative">
+                              <img
+                                src={item.url}
+                                alt={item.alt}
+                                className="w-full h-full object-cover rounded-md"
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </Slider>
+                    </div>
                   )}
                 </motion.div>
               </motion.div>
@@ -348,21 +432,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           </motion.div>
         )}
       </AnimatePresence>
-      {/* {socialLinks?.length > 0 && (
-        <div className="stickyIconsContainer">
-          {socialLinks.map((item: any, index: number) => (
-            <a key={index} href={item.url} target="_blank" rel="noopener noreferrer">
-              <img
-                src={item.icon?.url ?? `/media/${item.icon?.filename}`}
-                alt={item.platform}
-                width={30}
-                height={30}
-                style={{ objectFit: 'contain' }}
-              />
-            </a>
-          ))}
-        </div>
-      )} */}
 
       {/* STICKY SOCIAL ################################## */}
       {socialLinks?.length > 0 && (
