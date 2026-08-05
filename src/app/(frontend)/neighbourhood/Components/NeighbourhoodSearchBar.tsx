@@ -264,16 +264,17 @@ export function NeighbourhoodSearchBar({
 
       {/* EXPLORE MODAL */}
       <AnimatePresence>
-        {open && (
+         {open && (
           <div className="fixed inset-0 z-[9999] bg-black/50 flex items-center justify-center">
             <motion.div
               className="bg-white w-[95%] max-w-6xl overflow-hidden locationpopupmain"
               layout
-              transition={{ layout: { duration: 0.3, ease: 'easeInOut' } }}
+              transition={{ layout: { duration: 0.3, ease: "easeInOut" } }}
             >
               <div className="grid grid-cols-12 popupneigbhbourh">
                 <div className="col-span-4 bg-purple-600 text-white p-6 leftsidepopup">
-                  <h2 className="text-2xl font-bold mb-6 locationname">{location?.locality}</h2>
+                  <h2 className="text-2xl font-bold mb-6 locationname">
+                    {location?.locality}</h2>
 
                   <div className="space-y-3 leftsidescrolll">
                     {categories.map((cat) => (
