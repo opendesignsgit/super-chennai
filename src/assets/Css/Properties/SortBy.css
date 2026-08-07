@@ -1,0 +1,82 @@
+.sort-by {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  /* padding: 0.35rem 0.9rem; */
+  transition: all 0.25s ease;
+}
+
+.sort-by:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.sort-by label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.sort-by select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0.4rem 2rem 0.4rem 0.75rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: #a44294; /* selected text color PINK */
+
+  background-image: url("data:image/svg+xml;utf8,<svg fill='none' stroke='%236b7280' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+
+  --selected-color: #a44294;
+}
+
+.sort-by select option:checked {
+  color: var(--selected-color) !important;
+  font-weight: 600;
+}
+
+.sort-by select:hover {
+  border-color: #6d1084;
+}
+
+.sort-by select:focus {
+  outline: none;
+  border-color: #6d1084;
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.3);
+}
+
+.sort-by option {
+  color: #111827;
+  font-weight: 400;
+}
+
+@media (max-width: 480px) {
+
+  .sort-by {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sort-by label {
+    font-size: 0.8rem;
+  }
+
+  .sort-by select {
+    font-size: 0.8rem;
+    padding: 0.35rem 1.6rem 0.35rem 0.6rem;
+    background-size: 0.9rem;
+    background-position: right 0.55rem center;
+
+    /* ensure proper alignment on small screens */
+    max-width: 120px;
+  }
+}

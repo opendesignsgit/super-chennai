@@ -43,7 +43,6 @@ export default async function Footer() {
                 <img
                   src={iconUrl}
                   alt={`${social.platform} Icon`}
-                  // className="w-5 h-5 object-contain"
                 />
               </a>
             )

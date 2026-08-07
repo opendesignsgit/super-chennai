@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import React, { useState, useEffect, useMemo } from 'react'
 import Slider from 'react-slick'
+import { ChevronRight } from 'lucide-react'
 import { NextArrow, PrevArrow } from '../ui/SliderArrows'
 import { CategoryCard } from './CategoryCard'
 
@@ -9,14 +11,12 @@ interface CategoriesSectionProps {
   locationId: string
   data: any[]
   location?: any
- 
 }
 
 export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
   locationId,
   data = [],
   location,
- 
 }) => {
   const transformedSlides = useMemo(() => {
     return Object.values(
@@ -58,7 +58,9 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
     ).map((slide: any) => {
       slide.count = `${slide.lists.length}+ ${slide.category} Nearby`
       if (slide.imagelist.length === 0) {
-        slide.imagelist = ['https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80']
+        slide.imagelist = [
+          'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80',
+        ]
       }
       return slide
     })
@@ -68,20 +70,47 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
     () => transformedSlides[0]?.category || '',
   )
 
+  // Tab toggle state for accordion sub-menu
+  const [open, setOpen] = useState<boolean>(true)
+
   useEffect(() => {
     if (transformedSlides.length > 0 && !activeCategory) {
       setActiveCategory(transformedSlides[0].category)
     }
   }, [transformedSlides, activeCategory])
 
+  // Map sub-categories grouped by main category
+  const subCategoriesByCategory = useMemo(() => {
+    const result: Record<string, Record<string, any>> = {}
+
+    data?.forEach((item) => {
+      const cat: string = item?.category?.title || 'Others'
+
+      if (!result[cat]) {
+        result[cat] = {}
+      }
+
+      // Store reference to guarantee non-undefined type safety
+      const currentCategoryGroup = result[cat]
+
+      item?.subCategories?.forEach((sub: any) => {
+        if (sub?.id && currentCategoryGroup) {
+          if (!currentCategoryGroup[sub.id]) {
+            currentCategoryGroup[sub.id] = sub
+          }
+        }
+      })
+    })
+
+    return result
+  }, [data])
+
   const categoriesList = transformedSlides.map((item: any) => ({
     category: item.category,
     icon: item.icon,
   }))
 
-  const filteredSlides = transformedSlides.filter(
-    (slide: any) => slide.category === activeCategory,
-  )
+  const filteredSlides = transformedSlides.filter((slide: any) => slide.category === activeCategory)
 
   const bannerSliderSettings = {
     dots: true,
@@ -117,33 +146,96 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
 
   return (
     <div className="flex flex-col md:flex-row gap-8 p-6 max-w-7xl mx-auto items-start">
-      {/* Category Sidebar */}
+      {/* Category Sidebar with Accordion */}
       <div className="w-full md:w-60 space-y-2 flex-shrink-0">
-        {categoriesList.map((cat: any) => (
-          <button
-            key={cat.category}
-            onClick={() => setActiveCategory(cat.category)}
-            className={`cursor-pointer w-full flex items-center justify-between px-4 py-3 rounded-lg text-[16px] transition-all ${
-              activeCategory === cat.category
-                ? 'bg-[#a44294] text-white font-medium shadow-md'
-                : 'bg-white border border-gray-200 text-[#000] hover:bg-purple-50'
-            }`}
-          >
-            <span className="flex items-center gap-2">
-              {cat.icon && typeof cat.icon === 'object' && cat.icon.url ? (
-                <img
-                  src={`${cat.icon.url}`}
-                  alt={cat.icon.alt || cat.category}
-                  className="w-5 h-5 object-contain"
-                />
-              ) : (
-                <span>{cat.icon || '📍'}</span>
+        {categoriesList.map((cat: any) => {
+          const isActive = activeCategory === cat.category
+          const currentSubCategories = Object.values(subCategoriesByCategory?.[cat.category] || {})
+
+          return (
+            <React.Fragment key={cat.category}>
+              <button
+                onClick={() => {
+                  if (activeCategory === cat.category) {
+                    setOpen((prev) => !prev)
+                  } else {
+                    setActiveCategory(cat.category)
+                    setOpen(true)
+                  }
+                }}
+                className={`cursor-pointer w-full flex items-center justify-between px-4 py-3 rounded-lg text-[16px] transition-all ${
+                  isActive
+                    ? 'bg-[#a44294] text-white font-medium shadow-md'
+                    : 'bg-white border border-gray-200 text-[#000] hover:bg-purple-50'
+                }`}
+              >
+                <span className="flex items-center gap-2 text-left">
+                  {cat.icon && typeof cat.icon === 'object' && cat.icon.url ? (
+                    <img
+                      src={cat.icon.url}
+                      alt={cat.icon.alt || cat.category}
+                      className="w-5 h-5 object-contain"
+                    />
+                  ) : (
+                    <span>{cat.icon || '📍'}</span>
+                  )}
+                  <span>{cat.category}</span>
+                </span>
+                <span>
+                  <ChevronRight
+                    size={20}
+                    strokeWidth={2.5}
+                    className={`transition-transform duration-300 ease-in-out ${
+                      isActive && open ? 'rotate-90' : ''
+                    }`}
+                  />
+                </span>
+              </button>
+
+              {/* Accordion Sub-category List */}
+              {open && isActive && (
+                <div className="pl-4 my-2 relative">
+                  {currentSubCategories.length === 0 ? (
+                    <div className="text-gray-500 text-center py-2 text-sm pl-6">
+                      We couldn’t find anything here.
+                    </div>
+                  ) : (
+                    <ul className="space-y-1 relative">
+                      {currentSubCategories
+                        .sort((a: any, b: any) => a.title.localeCompare(b.title))
+                        .slice(0, 5)
+                        .map((sub: any) => {
+                          const subUrl = `/neighbourhood/${locationId}/${cat.category
+                            .toLowerCase()
+                            .replace(/\s+/g, '-')}/${sub.slug}`
+
+                          return (
+                            <li key={sub.id} className="relative flex items-center group pl-2 py-1">
+                              <div className="flex items-center gap-2 w-full text-sm">
+                                {sub.icon?.url && (
+                                  <img
+                                    src={sub.icon.url}
+                                    alt={sub.title}
+                                    className="w-4 h-4 object-contain flex-shrink-0"
+                                  />
+                                )}
+                                <a
+                                  href={subUrl}
+                                  className="text-gray-700 hover:text-[#a44294] hover:font-bold transition-all"
+                                >
+                                  → {sub.title}
+                                </a>
+                              </div>
+                            </li>
+                          )
+                        })}
+                    </ul>
+                  )}
+                </div>
               )}
-              {cat.category}
-            </span>
-            <span>›</span>
-          </button>
-        ))}
+            </React.Fragment>
+          )
+        })}
       </div>
 
       {/* Main Content Area */}
@@ -202,12 +294,7 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
                       <Slider {...itemsSliderSettings}>
                         {slide.lists.map((item: any, i: number) => (
                           <div key={item.slug || item.name || i} className="outline-none px-3">
-                            <CategoryCard
-                              item={item}
-                              locationId={locationId}
-                              safeCat={safeCat}
-                             
-                            />
+                            <CategoryCard item={item} locationId={locationId} safeCat={safeCat} />
                           </div>
                         ))}
                       </Slider>
@@ -219,7 +306,6 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
                             item={item}
                             locationId={locationId}
                             safeCat={safeCat}
-                            // apiBaseUrl={apiBaseUrl}
                           />
                         ))}
                       </div>

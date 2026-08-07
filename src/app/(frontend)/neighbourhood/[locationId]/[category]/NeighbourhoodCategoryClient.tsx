@@ -1,59 +1,29 @@
 /* eslint-disable @next/next/no-img-element */
-
 'use client'
-
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 import { PropertiesBanner } from '../../Components/PropertiesBanner'
 import { NeighbourhoodSearchBar } from '../../Components/NeighbourhoodSearchBar'
 import { ChevronDown, MapPinIcon, StarIcon } from '../../ui/Icons'
+import { QuickAccessSection } from '../../Components/QuickAccessSection'
+
+// Helper Function Imports
+import {
+  getMediaUrl,
+  normalizeText,
+  getItemDetailUrl,
+  groupDocsByCategory,
+  getCategoryStats,
+  getCategoryIcon,
+} from '../../utils/neighbourhoodHelpers'
 
 interface ClientProps {
   data?: any[]
   locations?: any[]
   locationId: string
   category: string
-}
-
-const getMediaUrl = (imageField: any, fallbackUrl = '/images/no-image.png') => {
-  if (!imageField) return fallbackUrl
-
-  if (typeof imageField === 'string') {
-    return imageField.trim() || fallbackUrl
-  }
-
-  if (imageField?.url && typeof imageField.url === 'string') {
-    return imageField.url.trim() || fallbackUrl
-  }
-
-  return fallbackUrl
-}
-
-/**
- * Clean URL Helper - Fixes Empty Slug & Subcategory route conflict
- */
-const getItemDetailUrl = ({
-  locationId,
-  category,
-  subcategory,
-  slug,
-}: {
-  locationId?: string
-  category?: string
-  subcategory?: string
-  slug?: string
-}) => {
-  const normalize = (text?: string) => text?.toLowerCase().trim().replace(/\s+/g, '-') || ''
-  const safeLoc = normalize(locationId) || 'chennai'
-  const safeCat = normalize(category) || 'all'
-  const safeSubCat = subcategory ? normalize(subcategory) : ''
-  const safeSlug = normalize(slug)
-  if (safeSubCat && safeSubCat !== safeCat) {
-    return `/neighbourhood/${safeLoc}/${safeCat}/${safeSubCat}/${safeSlug}`
-  }
-  return `/neighbourhood/${safeLoc}/${safeCat}/${safeSlug}`
 }
 
 function EmptyState({
@@ -90,31 +60,32 @@ export default function NeighbourhoodCategoryClient({
   const [sortBy, setSortBy] = useState('highToLow')
   const subcategory = (params?.subcategory as string) || ''
 
-  const normalize = (text?: string) => text?.toLowerCase().trim().replace(/\s+/g, '-') || ''
-  const filtered =
-    data?.filter((item) => {
-      const matchCategory = normalize(item?.category?.title) === normalize(category)
-      if (!subcategory) return matchCategory
-      const matchSubCategory = item?.subCategories?.some(
-        (sub: any) => normalize(sub?.slug) === normalize(subcategory),
-      )
-      return matchCategory && matchSubCategory
-    }) || []
+  // Using Helpers
+  const categoryStats = useMemo(() => getCategoryStats(data), [data])
+  const groupedData = useMemo(() => groupDocsByCategory(data), [data])
+  const categoriesList = Object.keys(groupedData)
 
-  const grouped =
-    data?.reduce((acc: Record<string, any[]>, item: any) => {
-      const cat = item?.category?.title || 'Others'
-      if (!acc[cat]) acc[cat] = []
-      acc[cat].push(item)
-      return acc
-    }, {}) || {}
+  const filtered = useMemo(() => {
+    return (
+      data?.filter((item) => {
+        const matchCategory = normalizeText(item?.category?.title) === normalizeText(category)
+        if (!subcategory) return matchCategory
+        const matchSubCategory = item?.subCategories?.some(
+          (sub: any) => normalizeText(sub?.slug) === normalizeText(subcategory),
+        )
+        return matchCategory && matchSubCategory
+      }) || []
+    )
+  }, [data, category, subcategory])
 
-  const categoriesList = Object.keys(grouped)
-  const sortedAndFiltered = [...filtered].sort((a, b) => {
-    const ratingA = parseFloat(a?.googleData?.googleRating) || 0
-    const ratingB = parseFloat(b?.googleData?.googleRating) || 0
-    return sortBy === 'highToLow' ? ratingB - ratingA : ratingA - ratingB
-  })
+  const sortedAndFiltered = useMemo(() => {
+    return [...filtered].sort((a, b) => {
+      const ratingA = parseFloat(a?.googleData?.googleRating) || 0
+      const ratingB = parseFloat(b?.googleData?.googleRating) || 0
+      return sortBy === 'highToLow' ? ratingB - ratingA : ratingA - ratingB
+    })
+  }, [filtered, sortBy])
+
   const locationDetails = filtered[0]?.locations || data?.[0]?.locations
 
   if (!locationDetails && data.length === 0) {
@@ -130,6 +101,12 @@ export default function NeighbourhoodCategoryClient({
   const currentCategoryTitle = filtered[0]?.category?.title || category || 'Explore'
   const currentLocality = locationDetails?.locality || locationId || 'Chennai'
 
+  const quickAccessData =
+    locationDetails?.quickAccess ||
+    filtered[0]?.locations?.quickAccess ||
+    data?.[0]?.locations?.quickAccess ||
+    []
+
   return (
     <div id="poppinsssFamily" className="w-full">
       {/* 1. HERO BANNER */}
@@ -141,9 +118,8 @@ export default function NeighbourhoodCategoryClient({
               'https://www.superchennai.com/images/restaurants-banner.jpg',
             )}
             alt="Category Background"
-            className="w-full h-full object-cover opacity-0"
+            className="w-full h-full object-cover opacity-30"
           />
-          {/* <div className="absolute inset-0 bg-gradient-to-r from-gray-300/95 via-gray-900/70 to-gray-900/40" /> */}
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 pt-8 pb-10 w-full flex flex-col justify-center">
@@ -158,7 +134,7 @@ export default function NeighbourhoodCategoryClient({
               </Link>
               <span>›</span>
               <Link
-                href={`/neighbourhood/${normalize(currentLocality)}`}
+                href={`/neighbourhood/${normalizeText(currentLocality)}`}
                 className="hover:text-white transition-colors capitalize"
               >
                 {currentLocality}
@@ -179,36 +155,30 @@ export default function NeighbourhoodCategoryClient({
 
             <NeighbourhoodSearchBar data={data} locations={locations} locationId={locationId} />
 
-            <div className="flex flex-wrap gap-4 mb-6 mt-10">
-              {filtered[0]?.neighborhoodStats && filtered[0].neighborhoodStats.length > 0 ? (
-                filtered[0].neighborhoodStats.map((s: any, i: number) => (
-                  <div
-                    key={s.label || i}
-                    className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-white/5"
-                  >
-                    <span className="w-6 h-6 flex items-center justify-center">
-                      {s?.icon ? (
-                        <img
-                          src={getMediaUrl(s.icon)}
-                          alt={s.label || 'Stat icon'}
-                          className="w-full h-full object-contain"
-                        />
-                      ) : (
-                        <span className="text-white text-sm">📍</span>
-                      )}
-                    </span>
-                    <div>
-                      <div className="text-white text-base font-bold leading-tight">{s.value}</div>
-                      <div className="text-gray-300 text-xs mt-0.5">{s.label}</div>
+            {/* Helper Managed Category Count Bar */}
+            {categoryStats.length > 0 && (
+              <div className="flex flex-wrap items-center gap-y-4 gap-x-6 mt-8 pt-4">
+                {categoryStats.map((stat, i) => {
+                  const icon = getCategoryIcon(stat.name, stat.iconUrl)
+                  return (
+                    <div key={stat.name || i} className="flex items-center gap-3">
+                      {i > 0 && <div className="hidden sm:block w-px h-8 bg-white/20 mr-1" />}
+                      <span className="text-2xl flex items-center">
+                        {icon.startsWith('http') || icon.startsWith('/') ? (
+                          <img src={icon} alt="" className="w-6 h-6 object-contain inline-block" />
+                        ) : (
+                          icon
+                        )}
+                      </span>
+                      <div>
+                        <div className="text-gray-200 text-xs font-medium">{stat.name}</div>
+                        <div className="text-white text-sm font-bold">{stat.count}+</div>
+                      </div>
                     </div>
-                  </div>
-                ))
-              ) : (
-                <div className="text-white/40 text-xs italic">
-                  Local neighborhood parameters loading...
-                </div>
-              )}
-            </div>
+                  )
+                })}
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -221,9 +191,9 @@ export default function NeighbourhoodCategoryClient({
             {categoriesList.map((cat) => (
               <Link
                 key={cat}
-                href={`/neighbourhood/${normalize(currentLocality)}/${normalize(cat)}`}
+                href={`/neighbourhood/${normalizeText(currentLocality)}/${normalizeText(cat)}`}
                 className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  normalize(category) === normalize(cat)
+                  normalizeText(category) === normalizeText(cat)
                     ? 'bg-[#a44294] text-white shadow-md shadow-violet-200'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
@@ -442,6 +412,10 @@ export default function NeighbourhoodCategoryClient({
             </div>
           </div>
         </section>
+
+        {quickAccessData && quickAccessData.length > 0 && (
+          <QuickAccessSection quickAccess={quickAccessData} />
+        )}
 
         {/* 6. PROMOTIONAL PROPERTIES BANNER */}
         <PropertiesBanner />

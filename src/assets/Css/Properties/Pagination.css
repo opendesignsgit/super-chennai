@@ -1,0 +1,65 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+  user-select: none;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  border: none;
+  background: #ffffff;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #a44294;
+  box-shadow: 0 2px 6px rgba(13, 110, 253, 0.15);
+  transition: 
+    background-color 0.3s ease, 
+    color 0.3s ease, 
+    box-shadow 0.3s ease,
+    transform 0.15s ease;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination button:hover:not(:disabled):not(.active) {
+  background-color: #e7f0ff;
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.25);
+  transform: translateY(-2px);
+}
+
+.pagination button.active {
+  background: linear-gradient(135deg, #a44294, #a44294);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(8, 66, 152, 0.6);
+  cursor: default;
+  transform: translateY(-1px);
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+  background: #f5f5f5;
+  color: #999;
+  transform: none;
+}
+
+/* Optional: Add subtle arrow icons for Prev/Next */
+.pagination button:first-child::before {
+  content: "«";
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+.pagination button:last-child::after {
+  content: "»";
+  margin-left: 6px;
+  font-weight: 700;
+}
