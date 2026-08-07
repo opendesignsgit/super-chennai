@@ -84,7 +84,7 @@ export const WhatsNearbySection: React.FC<WhatsNearbySectionProps> = ({ data}) =
       <div className="max-w-7xl mx-auto relative">
         <div className="text-center mb-12">
           <span className="text-[#a44294] font-semibold text-lg">Getting Around</span>
-          <h2 className="text-2xl font-bold text-gray-900 mb-1">What's Nearby?</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-1">Whats Nearby?</h2>
           <p className="text-gray-500 text-sm">
             Everything you need is just minutes away. <br />
             Well-connected and easy to reach, always.

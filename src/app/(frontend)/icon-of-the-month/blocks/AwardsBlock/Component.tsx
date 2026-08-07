@@ -56,9 +56,7 @@ export default function AwardsBlockComponent({ title, image, awardsList }: Award
       <h2 className="awards-title">{title}</h2>
       <p className="awards-subtitle"></p>
       <div className="awards-container ">
-        {/* {imageUrl && <Image src={imageUrl} alt="Awards compilation" fill />} */}
-        {imageUrl && <img src={imageUrl} />}
-
+        {imageUrl && <Image src={imageUrl} alt="Awards compilation" />}
         <div
           ref={listRef}
           className="awards-list max-h-140 overflow-y-auto"

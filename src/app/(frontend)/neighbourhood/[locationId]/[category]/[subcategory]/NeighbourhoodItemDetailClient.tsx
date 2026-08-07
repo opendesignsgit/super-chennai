@@ -20,6 +20,7 @@ import {
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+
 import NeighbourhoodSearchBar from '../../../Components/NeighbourhoodSearchBar'
 import { PropertiesBanner } from '../../../Components/PropertiesBanner'
 import { MapPinIcon, StarIcon } from '../../../ui/Icons'
@@ -136,10 +137,10 @@ export default function NeighbourhoodItemDetailClient({
 
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'linear-gradient(to bottom, rgba(10,5,30,0.5) 0%, rgba(10,5,30,0.75) 60%, rgba(10,5,30,0.92) 100%)',
-          }}
+          // style={{
+          //   background:
+          //     'linear-gradient(to bottom, rgba(10,5,30,0.5) 0%, rgba(10,5,30,0.75) 60%, rgba(10,5,30,0.92) 100%)',
+          // }}
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 w-full pb-0">

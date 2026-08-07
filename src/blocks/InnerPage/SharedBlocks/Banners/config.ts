@@ -20,23 +20,23 @@ const InnerPageBanner: Block = {
       relationTo: 'media',
       required: true,
     },
-    // {
-    //   name: 'breadcrumb',
-    //   type: 'array',
-    //   label: 'Breadcrumb Items',
-    //   fields: [
-    //     {
-    //       name: 'label',
-    //       type: 'text',
-    //       required: true,
-    //     },
-    //     {
-    //       name: 'url',
-    //       type: 'text',
-    //       required: true,
-    //     },
-    //   ],
-    // },
+    {
+      name: 'breadcrumb',
+      type: 'array',
+      label: 'Breadcrumb Items',
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'url',
+          type: 'text',
+          required: true,
+        },
+      ],
+    },
   ],
 }
 
