@@ -6,6 +6,13 @@ export const AboutIntroBlock: Block = {
     singular: 'About Intro Section',
     plural: 'About Intro Sections',
   },
+
+  admin: {
+    group: 'About Page',
+  },
+
+  imageURL: '/images/sections-image/aboutintrosection.jpg',
+
   fields: [
     {
       name: 'title',

@@ -6,6 +6,11 @@ const ZigZagContentBlock: Block = {
     singular: 'ZigZagContent ',
     plural: 'ZigZagContent',
   },
+
+  imageURL: '/images/sections-image/zigzagcontent.png',
+  admin: {
+    group: 'Common Blocks',
+  },
   fields: [
     {
       name: 'sections',

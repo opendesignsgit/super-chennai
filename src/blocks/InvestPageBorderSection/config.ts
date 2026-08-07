@@ -8,6 +8,10 @@ export const InvestPageBorderSection: Block = {
     plural: 'Invest Page Border Sections',
   },
 
+  admin: {
+    group: 'Common Blocks',
+  },
+
   imageURL: '/images/sections-image/investbordersection.jpg',
   fields: [
     {

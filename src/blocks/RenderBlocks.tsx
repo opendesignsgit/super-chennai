@@ -65,6 +65,21 @@ import ImagewithContentComponent from './InnerPage/SharedBlocks/ImagewithContent
 import ImageWithoutComponent from './InnerPage/SharedBlocks/ImageWithoutContent/component'
 import TableSectionComponent from './InnerPage/SharedBlocks/TableSection/component'
 import InnerPageSliderComponent from './InnerPage/SharedBlocks/InnerPageSlider/component'
+import VisionMissionComponent from './InnerPage/AboutPage/AboutVissionMisson/component'
+import AboutFoundationsComponent from './InnerPage/AboutPage/AboutFoundations/component'
+import AboutNammaChennaiComponent from './InnerPage/AboutPage/AboutNammaChennaiSection/component'
+import GallerySliderWithPopupComponent from './InnerPage/SharedBlocks/GallerySliderWithPopup/component'
+import AboutWhyChennaiComponent from './InnerPage/AboutPage/AboutWhyChennai/component'
+import AboutWelcomeSuperChennaiComponentNew from './InnerPage/AboutPage/AboutWelcomeSuperChennai/component'
+import LeftImageRightSectionComponent from './InnerPage/SharedBlocks/LeftImageRightSection/component'
+import ImageOverlaySectionWithPointsComponent from './InnerPage/SharedBlocks/ImageOverlaySectionWithPoints/component'
+import BenefitSectionsComponent from './InnerPage/SharedBlocks/BenefitSection/component'
+import BenefitSectionsRoseComponent from './InnerPage/SharedBlocks/BenefitSectionRoseBg/component'
+import IntroPinkTextWithComponent from './InnerPage/SharedBlocks/IntroPinkTextWithContent/component'
+import VisitImageListSectionComponent from './InnerPage/SharedBlocks/VisitImageListSection/component'
+import WorkNetworkSectionComponent from './InnerPage/SharedBlocks/WorkNetworkSection/component'
+import WorkPageImageSectionComponent from './InnerPage/SharedBlocks/WorkPageImageSection/component'
+import HealthcareInChennaiComponent from './InnerPage/SharedBlocks/HealthCareBlocks/component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -76,8 +91,8 @@ const blockComponents: {
   funChennai: FunChennaiBlockServer,
   startupChennai: StartupChennaiBlockServer,
 
-  InnerPageBanner: Banner,
-  InnerPageHeroBannerBlock: InnerPageHeroBannerComponent,
+  // InnerPageBanner: Banner,
+  // InnerPageHeroBannerBlock: InnerPageHeroBannerComponent,
   chennaiInvestments: ChennaiInvestments,
   socialReelSlider: socialReelSlider,
   becameAVolunteer: BecameAVolunteer,
@@ -139,6 +154,11 @@ const blockComponents: {
 
   AboutIntroBlock: AboutIntroBlockComponent,
   AboutWelcomeSuperChennaiBlock: AboutWelcomeSuperChennaiComponent,
+  VisionMissionBlock: VisionMissionComponent,
+  AboutFoundationsBlock: AboutFoundationsComponent,
+  AboutNammaChennaiBlock: AboutNammaChennaiComponent,
+  AboutWhyChennaiBlock: AboutWhyChennaiComponent,
+  AboutWelcomeSuperChennaiBlockNew: AboutWelcomeSuperChennaiComponentNew,
 
   // About Page-----------------
 
@@ -156,6 +176,21 @@ const blockComponents: {
   ImageWithoutContentBlock: ImageWithoutComponent,
   TableSectionBlock: TableSectionComponent,
   InnerPageSliderBlock: InnerPageSliderComponent,
+
+  // common Blocks
+
+  GallerySliderWithPopupBlock: GallerySliderWithPopupComponent,
+  LeftImageRightSectionBlock: LeftImageRightSectionComponent,
+  BenefitSectionsBlock: BenefitSectionsComponent,
+  // BenefitSectionsRoseBlock: BenefitSectionsRoseComponent,
+  IntroPinkTextWithContentBlock: IntroPinkTextWithComponent,
+
+  VisitImageListSectionBlock: VisitImageListSectionComponent,
+
+  WorkNetworkSectionBlock: WorkNetworkSectionComponent,
+  WorkPageImageSectionBlock: WorkPageImageSectionComponent,
+
+  // HealthcareInChennaiBlock: HealthcareInChennaiComponent,
 }
 
 export const RenderBlocks: React.FC<{

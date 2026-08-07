@@ -14,7 +14,8 @@
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "dev:web": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev"
+    "dev:original_prod": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "dev": "cross-env NODE_OPTIONS=--max-old-space-size=8192 next dev --turbo"
   },
   "dependencies": {
     "@payloadcms/admin-bar": "3.33.0",
