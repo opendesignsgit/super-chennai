@@ -67,6 +67,21 @@ import { ImagewithContent } from '@/blocks/InnerPage/SharedBlocks/ImagewithConte
 import { ImageWithoutContentBlock } from '@/blocks/InnerPage/SharedBlocks/ImageWithoutContent/config'
 import { TableSectionBlock } from '@/blocks/InnerPage/SharedBlocks/TableSection/config'
 import { InnerPageSliderBlock } from '@/blocks/InnerPage/SharedBlocks/InnerPageSlider/config'
+import { VisionMissionBlock } from '@/blocks/InnerPage/AboutPage/AboutVissionMisson/config'
+import { AboutFoundationsBlock } from '@/blocks/InnerPage/AboutPage/AboutFoundations/config'
+import { AboutNammaChennaiBlock } from '@/blocks/InnerPage/AboutPage/AboutNammaChennaiSection/config'
+import { GallerySliderWithPopupBlock } from '@/blocks/InnerPage/SharedBlocks/GallerySliderWithPopup/config'
+import { AboutWhyChennaiBlock } from '@/blocks/InnerPage/AboutPage/AboutWhyChennai/config'
+import { AboutWelcomeSuperChennaiBlockNew } from '@/blocks/InnerPage/AboutPage/AboutWelcomeSuperChennai/config'
+import { LeftImageRightSectionBlock } from '@/blocks/InnerPage/SharedBlocks/LeftImageRightSection/config'
+import { ImageOverlaySectionWithPointsBlock } from '@/blocks/InnerPage/SharedBlocks/ImageOverlaySectionWithPoints/config'
+import { BenefitSectionsBlock } from '@/blocks/InnerPage/SharedBlocks/BenefitSection/config'
+import { BenefitSectionsRoseBlock } from '@/blocks/InnerPage/SharedBlocks/BenefitSectionRoseBg/config'
+import { IntroPinkTextWithContentBlock } from '@/blocks/InnerPage/SharedBlocks/IntroPinkTextWithContent/config'
+import { VisitImageListSectionBlock } from '@/blocks/InnerPage/SharedBlocks/VisitImageListSection/config'
+import { WorkNetworkSectionBlock } from '@/blocks/InnerPage/SharedBlocks/WorkNetworkSection/config'
+import { WorkPageImageSectionBlock } from '@/blocks/InnerPage/SharedBlocks/WorkPageImageSection/config'
+import { HealthcareInChennaiBlock } from '@/blocks/InnerPage/SharedBlocks/HealthCareBlocks/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -186,7 +201,12 @@ export const Pages: CollectionConfig<'pages'> = {
                 // About Page
 
                 AboutIntroBlock,
+                AboutWelcomeSuperChennaiBlockNew,
                 AboutWelcomeSuperChennaiBlock,
+                VisionMissionBlock,
+                AboutFoundationsBlock,
+                AboutNammaChennaiBlock,
+                AboutWhyChennaiBlock,
 
                 // About Page
 
@@ -206,6 +226,19 @@ export const Pages: CollectionConfig<'pages'> = {
 
                 TableSectionBlock,
                 InnerPageSliderBlock,
+
+                // common blocks
+                GallerySliderWithPopupBlock,
+                LeftImageRightSectionBlock,
+                BenefitSectionsBlock,
+                // BenefitSectionsRoseBlock,
+
+                IntroPinkTextWithContentBlock,
+                VisitImageListSectionBlock,
+
+                WorkNetworkSectionBlock,
+                WorkPageImageSectionBlock,
+                // HealthcareInChennaiBlock,
               ],
               required: true,
               admin: {

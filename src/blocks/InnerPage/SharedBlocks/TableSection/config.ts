@@ -6,7 +6,10 @@ export const TableSectionBlock: Block = {
     singular: 'Table Section Block',
     plural: 'Table Section Blocks',
   },
-  // imageURL: '/images/sections-image/EVTableBlock.jpg',
+
+  admin: {
+    group: 'Common Blocks',
+  },
   imageURL: '/images/sections-image/tablesection.jpg',
   imageAltText: 'EV Zones Table Section Preview',
   fields: [

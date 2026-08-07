@@ -7,6 +7,10 @@ export const InnerPageHeroBannerBlock: Block = {
     plural: 'Inner Page Hero Banners',
   },
 
+  admin: {
+    group: 'Common Blocks',
+  },
+
   imageURL: '/images/sections-image/herobanner.jpg',
   fields: [
     {

@@ -1132,6 +1132,13 @@ export interface Page {
     | {
         heading: string;
         image: number | Media;
+        breadcrumb?:
+          | {
+              label: string;
+              url: string;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'Banner';
@@ -1189,6 +1196,20 @@ export interface Page {
         blockType: 'AboutIntroBlock';
       }
     | {
+        heading?: string | null;
+        subheading?: string | null;
+        image?: (number | null) | Media;
+        columns?:
+          | {
+              paragraphs?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'AboutWelcomeSuperChennaiBlockNew';
+      }
+    | {
         heading: string;
         subheading: string;
         images?:
@@ -1199,18 +1220,76 @@ export interface Page {
           | null;
         columns?:
           | {
-              items?:
-                | {
-                    text: string;
-                    id?: string | null;
-                  }[]
-                | null;
+              /**
+               * Use line breaks for multiple paragraphs
+               */
+              col1?: string | null;
+              col2?: string | null;
+              col3?: string | null;
               id?: string | null;
             }[]
           | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'WelcomeChennaiBlock';
+      }
+    | {
+        cards?:
+          | {
+              title: string;
+              description: string;
+              icon: number | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'VisionMissionBlock';
+      }
+    | {
+        title: string;
+        image: number | Media;
+        paragraph1?: string | null;
+        paragraph2?: string | null;
+        highlightText?: string | null;
+        points?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'AboutFoundationsBlock';
+      }
+    | {
+        sectionId?: string | null;
+        mainHeader?: string | null;
+        subHeader?: string | null;
+        paragraph1?: string | null;
+        paragraph2?: string | null;
+        tagline?: string | null;
+        footerHeading?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'AboutNammaChennaiBlock';
+      }
+    | {
+        heading?: string | null;
+        subheading?: string | null;
+        description?: string | null;
+        tabs?:
+          | {
+              tabPrefix?: string | null;
+              tabTitle?: string | null;
+              image?: (number | null) | Media;
+              points?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'AboutWhyChennaiBlock';
       }
     | {
         tenantInfoSections?:
@@ -1379,6 +1458,144 @@ export interface Page {
         id?: string | null;
         blockName?: string | null;
         blockType: 'InnerPageSliderBlock';
+      }
+    | {
+        heading: string;
+        images: (number | Media)[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'GallerySliderWithPopupBlock';
+      }
+    | {
+        title?: string | null;
+        description?: string | null;
+        image?: (number | null) | Media;
+        imageAlt?: string | null;
+        themePattern?: ('pattern-a' | 'pattern-b') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'LImgRSecBlock';
+      }
+    | {
+        benefitSections?:
+          | {
+              sectionTitleLine1?: string | null;
+              sectionTitleLine2?: string | null;
+              sectionDesc?: string | null;
+              label?: string | null;
+              image: number | Media;
+              benefits?:
+                | {
+                    title: string;
+                    para?: string | null;
+                    imgs?: (number | null) | Media;
+                    linkUrl?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'BenefitSectionsBlock';
+      }
+    | {
+        backgroundWatermarkText?: string | null;
+        title: string;
+        paragraphs?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'IntroPinkTextWithContentBlock';
+      }
+    | {
+        sections?:
+          | {
+              sectionTitle: string;
+              sectionDesc?: string | null;
+              image: number | Media;
+              imgAlt?: string | null;
+              tenantSections?:
+                | {
+                    points?:
+                      | {
+                          title: string;
+                          para?: string | null;
+                          imgs?: (number | null) | Media;
+                          imgAlt?: string | null;
+                          link?: string | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'VisitImageListBlock';
+      }
+    | {
+        mainTitle?: string | null;
+        networkData?:
+          | {
+              category: string;
+              places?:
+                | {
+                    name: string;
+                    desc?: string | null;
+                    locations?:
+                      | {
+                          name: string;
+                          link?: string | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'WorkNetworkSectionBlock';
+      }
+    | {
+        sections?:
+          | {
+              sectionTitle: string;
+              sectionDesc?: string | null;
+              image: number | Media;
+              imgAlt?: string | null;
+              points?:
+                | {
+                    title: string;
+                    desc?: string | null;
+                    para?:
+                      | {
+                          point: string;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    imgs?: (number | null) | Media;
+                    imgAlt?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'WorkPageImageSectionBlock';
       }
   )[];
   meta?: {
@@ -5745,6 +5962,13 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               heading?: T;
               image?: T;
+              breadcrumb?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };
@@ -5797,6 +6021,21 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        AboutWelcomeSuperChennaiBlockNew?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              image?: T;
+              columns?:
+                | T
+                | {
+                    paragraphs?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         WelcomeChennaiBlock?:
           | T
           | {
@@ -5811,12 +6050,71 @@ export interface PagesSelect<T extends boolean = true> {
               columns?:
                 | T
                 | {
-                    items?:
-                      | T
-                      | {
-                          text?: T;
-                          id?: T;
-                        };
+                    col1?: T;
+                    col2?: T;
+                    col3?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        VisionMissionBlock?:
+          | T
+          | {
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    icon?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        AboutFoundationsBlock?:
+          | T
+          | {
+              title?: T;
+              image?: T;
+              paragraph1?: T;
+              paragraph2?: T;
+              highlightText?: T;
+              points?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        AboutNammaChennaiBlock?:
+          | T
+          | {
+              sectionId?: T;
+              mainHeader?: T;
+              subHeader?: T;
+              paragraph1?: T;
+              paragraph2?: T;
+              tagline?: T;
+              footerHeading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        AboutWhyChennaiBlock?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              description?: T;
+              tabs?:
+                | T
+                | {
+                    tabPrefix?: T;
+                    tabTitle?: T;
+                    image?: T;
+                    points?: T;
                     id?: T;
                   };
               id?: T;
@@ -5991,6 +6289,151 @@ export interface PagesSelect<T extends boolean = true> {
                     title?: T;
                     link?: T;
                     image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        GallerySliderWithPopupBlock?:
+          | T
+          | {
+              heading?: T;
+              images?: T;
+              id?: T;
+              blockName?: T;
+            };
+        LImgRSecBlock?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              image?: T;
+              imageAlt?: T;
+              themePattern?: T;
+              id?: T;
+              blockName?: T;
+            };
+        BenefitSectionsBlock?:
+          | T
+          | {
+              benefitSections?:
+                | T
+                | {
+                    sectionTitleLine1?: T;
+                    sectionTitleLine2?: T;
+                    sectionDesc?: T;
+                    label?: T;
+                    image?: T;
+                    benefits?:
+                      | T
+                      | {
+                          title?: T;
+                          para?: T;
+                          imgs?: T;
+                          linkUrl?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        IntroPinkTextWithContentBlock?:
+          | T
+          | {
+              backgroundWatermarkText?: T;
+              title?: T;
+              paragraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        VisitImageListBlock?:
+          | T
+          | {
+              sections?:
+                | T
+                | {
+                    sectionTitle?: T;
+                    sectionDesc?: T;
+                    image?: T;
+                    imgAlt?: T;
+                    tenantSections?:
+                      | T
+                      | {
+                          points?:
+                            | T
+                            | {
+                                title?: T;
+                                para?: T;
+                                imgs?: T;
+                                imgAlt?: T;
+                                link?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        WorkNetworkSectionBlock?:
+          | T
+          | {
+              mainTitle?: T;
+              networkData?:
+                | T
+                | {
+                    category?: T;
+                    places?:
+                      | T
+                      | {
+                          name?: T;
+                          desc?: T;
+                          locations?:
+                            | T
+                            | {
+                                name?: T;
+                                link?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        WorkPageImageSectionBlock?:
+          | T
+          | {
+              sections?:
+                | T
+                | {
+                    sectionTitle?: T;
+                    sectionDesc?: T;
+                    image?: T;
+                    imgAlt?: T;
+                    points?:
+                      | T
+                      | {
+                          title?: T;
+                          desc?: T;
+                          para?:
+                            | T
+                            | {
+                                point?: T;
+                                id?: T;
+                              };
+                          imgs?: T;
+                          imgAlt?: T;
+                          id?: T;
+                        };
                     id?: T;
                   };
               id?: T;

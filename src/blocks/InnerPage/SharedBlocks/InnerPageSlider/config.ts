@@ -6,6 +6,10 @@ export const InnerPageSliderBlock: Block = {
     singular: 'Inner Page Slider Block',
     plural: 'Inner Page Slider Blocks',
   },
+
+  admin: {
+    group: 'Common Blocks',
+  },
   imageURL: '/images/sections-image/sliderimage.jpg',
   imageAltText: 'Inner Page Slider Section Preview',
   fields: [

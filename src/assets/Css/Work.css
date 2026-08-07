@@ -355,3 +355,8 @@
 .cmssectionss .imgcontent {
   padding-top: 0;
 }
+
+
+.visitIntroParaSection.detailIntro.paddingbottommmm {
+  padding-bottom: 0 !important;
+}

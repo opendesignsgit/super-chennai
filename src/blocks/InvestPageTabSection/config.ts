@@ -7,6 +7,10 @@ export const InvestPageTabBlock: Block = {
     plural: 'Invest Page Tab Blocks',
   },
 
+  admin: {
+    group: 'Invest Page',
+  },
+
   imageURL: '/images/sections-image/invest-tab-page.jpg',
   fields: [
     {
