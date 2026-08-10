@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState } from 'react'
 
-  
 // ==========================================
 // 1. CONTACT FORM COMPONENT
 // ==========================================
@@ -11,9 +10,9 @@ export function ContactForm({
   title = 'Contact Agent',
 }) {
   const [formData, setFormData] = useState({
-    name: entity?.[contactField]?.name || '',
-    email: entity?.[contactField]?.email || '',
-    phone: entity?.[contactField]?.phone || '',
+    name: entity?.name || '',
+    email: entity?.email || '',
+    phone: entity?.phone || '',
     message: '',
   })
 

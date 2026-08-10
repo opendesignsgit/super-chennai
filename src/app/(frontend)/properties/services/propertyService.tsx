@@ -2,66 +2,66 @@ export async function fetchProperties(
   filters: any = {},
   sortBy: string = '-createdAt',
   page: number = 1,
-  limit: number = 10
+  limit: number = 10,
 ) {
-  const whereConditions: any[] = []
+  const queryParams = new URLSearchParams()
 
-  // 1. Property Locations
-  if (filters.propertylocations && filters.propertylocations.length > 0) {
-    whereConditions.push({
-      location: { in: filters.propertylocations },
-    })
-  }
+  queryParams.set('sort', sortBy || '-createdAt')
+  queryParams.set('page', String(page))
+  queryParams.set('limit', String(limit))
+  queryParams.set('depth', '2')
 
-  // 2. Property Types
+  // ########## PROPERTY TYPES  #####################
   if (filters.propertyTypes && filters.propertyTypes.length > 0) {
-    whereConditions.push({
-      propertyType: { in: filters.propertyTypes },
+    filters.propertyTypes.forEach((type: string) => {
+      // Direct relationship value/slug match
+      queryParams.append('where[propertyType.value][in]', type)
     })
   }
 
-  // 3. BHK
+  
+  // ########## PROPERTY LOCATION #####################
+
+  if (filters.propertylocations && filters.propertylocations.length > 0) {
+    filters.propertylocations.forEach((locId: string | number) => {
+      queryParams.append('where[propertyLocation.id][in]', String(locId))
+    })
+  }
+
+  // 3. BHK (where[bhk][in]=2)
   if (filters.bhk && filters.bhk.length > 0) {
-    whereConditions.push({
-      bhk: { in: filters.bhk },
+    filters.bhk.forEach((bhkVal: string) => {
+      queryParams.append('where[bhk][in]', bhkVal)
     })
   }
 
-  // 4. Purpose
+  // 4. Purpose (where[purpose][in]=buy)
   if (filters.purpose && filters.purpose.length > 0) {
-    whereConditions.push({
-      purpose: { in: filters.purpose },
+    filters.purpose.forEach((p: string) => {
+      queryParams.append('where[purpose][in]', p)
     })
   }
 
-  // 5. Furnishing
+  // 5. Furnishing (where[furnishing][in]=fully-furnished)
   if (filters.furnishing && filters.furnishing.length > 0) {
-    whereConditions.push({
-      furnishing: { in: filters.furnishing },
+    filters.furnishing.forEach((f: string) => {
+      queryParams.append('where[furnishing][in]', f)
     })
   }
 
-  // 6. Budget
-  if (filters.minBudget !== undefined || filters.maxBudget !== undefined) {
-    whereConditions.push({
-      price: {
-        greater_than_equal: filters.minBudget || 0,
-        less_than_equal: filters.maxBudget || 100000000,
-      },
-    })
+  // 6. Budget Range (where[price][greater_than_equal]=10000)
+  if (filters.minBudget && Number(filters.minBudget) > 0) {
+    queryParams.set('where[price][greater_than_equal]', String(filters.minBudget))
+  }
+  if (filters.maxBudget && Number(filters.maxBudget) > 0) {
+    queryParams.set('where[price][less_than_equal]', String(filters.maxBudget))
   }
 
-  const queryWhere = whereConditions.length > 0 ? { and: whereConditions } : {}
+  // Resulting URL Format:
+  // /api/properties?sort=-createdAt&page=1&limit=10&depth=2&where[propertyType.value][in]=villa
+  const url = `/api/properties?${queryParams.toString()}`
 
-  const queryParams = new URLSearchParams({
-    where: JSON.stringify(queryWhere),
-    sort: sortBy || '-createdAt',
-    page: String(page),
-    limit: String(limit),
-    depth: '2',
-  })
-
-  const res = await fetch(`/api/properties?${queryParams.toString()}`, {
+  const res = await fetch(url, {
     cache: 'no-store',
   })
 
@@ -71,7 +71,6 @@ export async function fetchProperties(
 
   return res.json()
 }
-
 export async function fetchPropertyById(id: string) {
   const res = await fetch(`/api/properties/${id}?depth=2`)
   if (!res.ok) throw new Error('Property not found')

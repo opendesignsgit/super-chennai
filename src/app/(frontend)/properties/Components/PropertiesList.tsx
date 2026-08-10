@@ -140,11 +140,7 @@ export default function PropertiesList({
         </div>
       ) : properties.length === 0 ? (
         <div className="bg-white rounded-xl border border-gray-100 p-12 text-center my-6">
-          <img
-            src="/images/no-results.svg"
-            alt="No Properties Found"
-            className="w-32 h-32 mx-auto mb-4 opacity-70"
-          />
+          
           <h3 className="text-lg font-bold text-gray-800 mb-1">No Properties Found</h3>
           <p className="text-xs text-gray-500 mb-4">
             Try adjusting your search or resetting your filters to view more listings.

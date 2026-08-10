@@ -3,50 +3,49 @@
 'use client'
 
 import {
-    ArrowLeftIcon,
-    ArrowRight,
-    ArrowRightIcon,
-    Banknote,
-    Bath,
-    Battery,
-    Bed,
-    BookOpen,
-    Boxes,
-    Building,
-    Building2,
-    Car,
-    ChevronDown,
-    ChevronUp,
-    CreditCard,
-    DoorClosed,
-    Droplet,
-    Flame,
-    HandCoins,
-    Handshake,
-    HelpCircle,
-    Home,
-    Layers,
-    Layout,
-    MapPin,
-    Microwave,
-    Palette,
-    ShowerHead,
-    Sofa,
-    Sparkles,
-    Sun,
-    Tv,
-    User,
-    Users,
-    UtensilsCrossed,
-    Wallet,
-    WashingMachine,
-    Wind,
-    Wrench,
-    Zap
+  ArrowLeftIcon,
+  ArrowRight,
+  ArrowRightIcon,
+  Banknote,
+  Bath,
+  Battery,
+  Bed,
+  BookOpen,
+  Boxes,
+  Building,
+  Building2,
+  Car,
+  ChevronDown,
+  ChevronUp,
+  CreditCard,
+  DoorClosed,
+  Droplet,
+  Flame,
+  HandCoins,
+  Handshake,
+  HelpCircle,
+  Home,
+  Layers,
+  Layout,
+  MapPin,
+  Microwave,
+  Palette,
+  ShowerHead,
+  Sofa,
+  Sparkles,
+  Sun,
+  Tv,
+  User,
+  Users,
+  UtensilsCrossed,
+  Wallet,
+  WashingMachine,
+  Wind,
+  Wrench,
+  Zap,
 } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { ContactForm } from '../Components/ContactForm'
-// import ContactForm from '../Components/ContactForm'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || ''
 const defaultImage = '/images/default-hero.jpg'
@@ -173,7 +172,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsProps
   const availabilityStatus = property?.availabilityStatus ?? null
   const validMoreAmenities = property?.moreAmenities?.filter((item: any) => item?.name) || []
 
-  const applianceIcons = {
+  const applianceIcons: Record<string, typeof Wind> = {
     acUnits: Wind,
     fridgeCount: Microwave,
     microwaveCount: Microwave,
@@ -252,9 +251,6 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsProps
     )
   }
 
-
-
-
   return (
     <>
       <div>
@@ -266,7 +262,8 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsProps
               alt={title}
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#a34493]/60 to-[#8b3c82]/90"></div>
+            {/* Dark Obsidian Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-gray-950/30 via-slate-900/75 to-gray-950/95"></div>
           </div>
           <div className="accodoamationBannerContainer absolute inset-0 flex items-center justify-center">
             <div className="accodoamationBannerText text-center text-white">
@@ -275,14 +272,14 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsProps
                 baseSize={60}
                 minSize={40}
                 maxChars={40}
-                className="accodoamationBannerText font-bold text-3xl sm:text-5xl"
+                className="accodoamationBannerText text-3xl sm:text-5xl drop-shadow-md"
               />
-              <div className="breadCrum mt-2 text-sm text-gray-200">
-                <a href="/" className="hover:underline">
+              <div className="breadCrum mt-3 text-sm text-gray-300 font-medium">
+                <a href="/" className="hover:text-white transition-colors">
                   Home
                 </a>{' '}
-                -{' '}
-                <a href="/properties" className="hover:underline">
+                <span className="text-gray-500 mx-1">•</span>{' '}
+                <a href="/properties" className="hover:text-white transition-colors">
                   Properties
                 </a>
               </div>
@@ -291,7 +288,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsProps
         </div>
 
         {/* Main Details Container */}
-        <div className="max-w-5xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-sm p-6 space-y-6 my-10">
+        <div className="max-w-7xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-sm p-6 space-y-6 my-10">
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-2xl font-semibold text-[#a34493]">{title}</h2>
             <div className="flex gap-2">
@@ -1182,7 +1179,6 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsProps
               Contact Agent
             </button>
           </div>
-
 
           {/* 2. ADDED: Contact Form Modal Section */}
           {isContactModalOpen && (

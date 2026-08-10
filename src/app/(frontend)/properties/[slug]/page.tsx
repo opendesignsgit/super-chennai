@@ -38,11 +38,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const property = await fetchPropertyDataBySlug(slug)
 
+  const imageUrl =
+    property?.heroImage && typeof property.heroImage === 'object' && 'url' in property.heroImage
+      ? (property.heroImage.url as string)
+      : '/images/default-hero.jpg'
+
   return {
     title: property?.meta?.title || property?.title || 'Property Details',
     description: property?.meta?.description || 'View details for this property listing.',
     openGraph: {
-      images: [property?.heroImage?.url || '/images/default-hero.jpg'],
+      images: [imageUrl],
     },
   }
 }

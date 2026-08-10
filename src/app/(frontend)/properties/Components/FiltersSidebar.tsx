@@ -13,7 +13,6 @@ export const propertyTypeFiltersMap = {
   commercial: ['furnishing', 'parking', 'amenities', 'facing'],
 }
 
-// Collapsible Filter Accordion
 const FilterSection = ({ title, children, defaultExpanded = true }: any) => {
   const [expanded, setExpanded] = useState(defaultExpanded)
 
@@ -78,10 +77,8 @@ export default function FiltersSidebar({
 
   if (loading) return <FiltersSidebarSkeleton />
 
-  // 1. Clean Locality Name (Removes redundant City / State names)
   const formatLocalityName = (loc: any) => {
     const rawName = loc.locality || loc.label || loc.value || loc.name || ''
-    // "Manapakkam, Chennai" -> "Manapakkam"
     const cleanName = rawName.split(',')[0].trim()
     return cleanName || rawName
   }
@@ -221,6 +218,7 @@ export default function FiltersSidebar({
           initialCount={5}
           renderItem={(loc: any) => {
             const cleanLocality = formatLocalityName(loc)
+            // const isChecked = filters.propertylocations.includes(loc.id)
             const isChecked = filters.propertylocations.includes(loc.id)
 
             return (
@@ -232,6 +230,7 @@ export default function FiltersSidebar({
                   <input
                     type="checkbox"
                     checked={isChecked}
+                    // onChange={() => onCheckboxChange('propertylocations', loc.id)}
                     onChange={() => onCheckboxChange('propertylocations', loc.id)}
                     className="rounded text-[#a44294] focus:ring-[#a44294] w-3.5 h-3.5 accent-[#a44294]"
                   />

@@ -33,10 +33,10 @@ export function useFiltersData(): FiltersData {
     let isMounted = true
 
     async function loadFilterOptions() {
-      try {    
+      try {
         const [locRes, typeRes] = await Promise.allSettled([
-          fetch('/api/locations?limit=100'),
-          fetch('/api/property-types?limit=100'),
+          fetch('/api/propertylocations?limit=100000'),
+          fetch('/api/property-types?limit=100000'),
         ])
 
         let fetchedLocations: FilterOption[] = []
