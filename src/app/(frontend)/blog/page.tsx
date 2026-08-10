@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import type { Metadata } from 'next/types'
 
 import { getPayload } from 'payload'
@@ -6,6 +7,8 @@ import { Pagination } from 'src/components/Pagination'
 import configPromise from 'src/payload.config'
 import PageClient from './page.client'
 import { CollectionArchive } from '@/components/CollectionArchive'
+import Image from 'next/image'
+import AccodomationBanner from '../../../assets/images/neighbourhood-main-image.jpeg'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -30,23 +33,22 @@ export default async function Page() {
   })
 
   return (
-    <div className="pt-24 pb-24">
-      <PageClient />
-      <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+    <div>
+      <div className="accaodomationBannerSection">
+        <div>
+          <Image src={AccodomationBanner} alt="Chennai Properties" priority />
+        </div>
+        <div className="accodoamationBannerContainer">
+          <div className="accodoamationBannerText">
+            <h3>Blogs</h3>
+            <div className="breadCrum">
+              <a href="/">Home</a> - <a href="#">Properties</a>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="container mb-8">
-        <PageRange
-          collection="posts"
-          currentPage={posts.page}
-          limit={12}
-          totalDocs={posts.totalDocs}
-        />
-      </div>
-
+    
       <CollectionArchive
         posts={posts.docs.map((post: any) => ({
           ...post,
@@ -69,7 +71,3 @@ export function generateMetadata(): Metadata {
     title: `Super Chennai EverthinkPost`,
   }
 }
-
-
-
-

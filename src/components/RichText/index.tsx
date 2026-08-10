@@ -199,6 +199,7 @@ export default function RichText(props: Props) {
     <ConvertRichText
       converters={jsxConverters({ pageData })}
       className={cn(
+        'blog',
         {
           container: enableGutter,
           '': !enableGutter,
