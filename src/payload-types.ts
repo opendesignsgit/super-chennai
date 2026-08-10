@@ -1597,6 +1597,105 @@ export interface Page {
         blockName?: string | null;
         blockType: 'WorkPageImageSectionBlock';
       }
+    | {
+        mainTitle?: string | null;
+        categories?:
+          | {
+              category: string;
+              categoryParaGraph?: string | null;
+              places?:
+                | {
+                    name: string;
+                    desc?: string | null;
+                    locations?:
+                      | {
+                          name: string;
+                          link?: string | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'HealthCareHospitalsBlock';
+      }
+    | {
+        imgSecs?:
+          | {
+              sectionTitle: string;
+              sectionDesc?: string | null;
+              image: number | Media;
+              imageAlt?: string | null;
+              tntSecs?:
+                | {
+                    points?:
+                      | {
+                          title: string;
+                          para?: string | null;
+                          imgs?: (number | null) | Media;
+                          altTitle?: string | null;
+                          link?: string | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        dtlSecs?:
+          | {
+              title?: string | null;
+              points?:
+                | {
+                    name: string;
+                    description?: string | null;
+                    subDescription?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'chnLivBlock';
+      }
+    | {
+        sections?:
+          | {
+              sectionTitle: string;
+              sectionDesc?: string | null;
+              image: number | Media;
+              imgAlt?: string | null;
+              tenants?:
+                | {
+                    points?:
+                      | {
+                          title: string;
+                          para?: string | null;
+                          imgs?: (number | null) | Media;
+                          imgAlt?: string | null;
+                          link?: string | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'thingstodoPage';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -6432,6 +6531,108 @@ export interface PagesSelect<T extends boolean = true> {
                               };
                           imgs?: T;
                           imgAlt?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        HealthCareHospitalsBlock?:
+          | T
+          | {
+              mainTitle?: T;
+              categories?:
+                | T
+                | {
+                    category?: T;
+                    categoryParaGraph?: T;
+                    places?:
+                      | T
+                      | {
+                          name?: T;
+                          desc?: T;
+                          locations?:
+                            | T
+                            | {
+                                name?: T;
+                                link?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        chnLivBlock?:
+          | T
+          | {
+              imgSecs?:
+                | T
+                | {
+                    sectionTitle?: T;
+                    sectionDesc?: T;
+                    image?: T;
+                    imageAlt?: T;
+                    tntSecs?:
+                      | T
+                      | {
+                          points?:
+                            | T
+                            | {
+                                title?: T;
+                                para?: T;
+                                imgs?: T;
+                                altTitle?: T;
+                                link?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              dtlSecs?:
+                | T
+                | {
+                    title?: T;
+                    points?:
+                      | T
+                      | {
+                          name?: T;
+                          description?: T;
+                          subDescription?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        thingstodoPage?:
+          | T
+          | {
+              sections?:
+                | T
+                | {
+                    sectionTitle?: T;
+                    sectionDesc?: T;
+                    image?: T;
+                    imgAlt?: T;
+                    tenants?:
+                      | T
+                      | {
+                          points?:
+                            | T
+                            | {
+                                title?: T;
+                                para?: T;
+                                imgs?: T;
+                                imgAlt?: T;
+                                link?: T;
+                                id?: T;
+                              };
                           id?: T;
                         };
                     id?: T;
