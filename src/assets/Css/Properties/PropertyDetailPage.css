@@ -1,0 +1,379 @@
+/* Property Detail Wrapper */
+
+
+
+
+
+
+/* Ultra-thin horizontal scrollbar */
+.thin-scroll::-webkit-scrollbar {
+  height: 2px; /* VERY THIN */
+}
+
+.thin-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.thin-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.property-detail {
+  width: 100%;
+  color: var(--text-color);
+}
+
+/* Loader & Not Found */
+.loader,
+.not-found {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 4rem 0;
+  color: var(--text-muted);
+}
+
+/* Hero Section */
+.property-hero {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  box-shadow:
+    8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+  cursor: pointer;
+  transition: transform var(--transition-speed);
+}
+
+.property-hero:hover {
+  transform: scale(1.02);
+}
+
+.property-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75);
+  transition: filter var(--transition-speed);
+  border-radius: var(--border-radius);
+}
+
+.property-hero:hover img {
+  filter: brightness(1);
+}
+
+.property-hero .overlay {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  max-width: 70%;
+}
+
+.property-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.property-hero .location {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* Info Grid */
+.info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 55%;
+  height: max-content;
+}
+
+.info-item {
+  background: var(--card-bg);
+  padding: 1.2rem 1.5rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  box-shadow:
+    8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+  transition: all var(--transition-speed);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* .info-item:hover {
+  box-shadow:
+    4px 4px 12px var(--shadow-dark),
+    -4px -4px 12px var(--shadow-light);
+  transform: translateY(-6px);
+} */
+
+.info-item h4 {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.info-item p {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--text-color);
+  user-select: text;
+}
+
+.info-item .price {
+  font-size: 1.3rem;
+  /* color: #d32f2f; */
+  font-weight: 800;
+}
+
+/* Section Titles */
+.property-info > div {
+  margin-bottom: 3rem;
+}
+
+.property-info h2 {
+  font-family: "29LT Bukra SmBd";
+  color: #7f397e;
+  letter-spacing: 0;
+  font-size: clamp(18px, 1.8vw, 32px);
+  line-height: 1;
+  line-height: 1.1;
+}
+
+/* Lists */
+.amenities ul,
+.nearby-places ul,
+.green-features ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-left: 0;
+}
+
+.amenities li,
+.green-features li,
+.nearby-places li {
+  background: var(--primary-color-light);
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow:
+    inset 2px 2px 5px rgba(255 255 255 / 0.7),
+    2px 2px 5px rgba(0 0 0 / 0.1);
+  user-select: none;
+  transition: background-color var(--transition-speed);
+}
+
+.amenities li:hover,
+.green-features li:hover,
+.nearby-places li:hover {
+  background: var(--primary-color);
+  color: #fff;
+  cursor: default;
+}
+
+/* FAQ Section */
+.faq-section .faq-item {
+  background: var(--card-bg);
+  padding: 1.2rem 1.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1.2rem;
+  box-shadow:
+    8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+  transition: all var(--transition-speed);
+  cursor: default;
+}
+
+.faq-section .faq-item:hover {
+  box-shadow:
+    4px 4px 12px var(--shadow-dark),
+    -4px -4px 12px var(--shadow-light);
+}
+
+.faq-section strong {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Map Section */
+.map-view iframe {
+  border-radius: var(--border-radius);
+  margin-top: 1.5rem;
+  box-shadow:
+    8px 8px 20px var(--shadow-dark),
+    -8px -8px 20px var(--shadow-light);
+  transition: box-shadow var(--transition-speed);
+}
+
+.map-view iframe:hover {
+  box-shadow:
+    4px 4px 12px var(--shadow-dark),
+    -4px -4px 12px var(--shadow-light);
+}
+
+/* Paragraph styles for details */
+.plot-details p,
+.interiors p,
+.financial-details p,
+.rent-details p,
+.building-amenities p,
+.appliances p,
+.bathroom-features p,
+.semi-rooms p,
+.parking-details p {
+  background: var(--card-bg);
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.7rem;
+  box-shadow:
+    inset 2px 2px 5px rgba(255 255 255 / 0.7),
+    2px 2px 5px rgba(0 0 0 / 0.1);
+  font-weight: 600;
+  color: var(--text-color);
+  user-select: text;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .property-hero {
+    height: 320px;
+  }
+
+  .property-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .property-hero .location {
+    font-size: 1.1rem;
+  }
+
+  .info-grid {
+  }
+}
+
+@media (max-width: 480px) {
+  .property-hero {
+    height: 250px;
+  }
+
+  .property-hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .info-grid {
+  }
+}
+
+/* Dhinesh Style  */
+
+.basic-infoProperty {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  column-gap: 22px;
+}
+
+.property-info .info-item {
+  padding: 10px;
+  display: flex;
+  height: 35px;
+  border-right: 1px solid #a7a7a7;
+}
+
+.property-info .info-item:last-child {
+  border-right: none;
+}
+
+.property-info .info-item h4 {
+  display: flex;
+  margin-bottom: 0;
+  line-height: 10px;
+  font-size: 16px;
+  font-family: "poppins", sans-serif;
+  font-weight: 600;
+  color: #7f397e;
+}
+
+.property-info .info-item p {
+  display: flex;
+  margin-bottom: 0;
+  line-height: 10px;
+  font-size: 16px;
+  font-family: "poppins", sans-serif;
+  font-weight: 400;
+  margin-left: 5px;
+}
+
+.proeprtyPageImage {
+  width: 40%;
+}
+
+.society-infoDiv {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  row-gap: 10px;
+}
+
+.society-infoDiv p {
+  font-family: "29LT Bukra Medium";
+  background: var(--card-bg);
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+  margin-bottom: 0.7rem;
+  box-shadow:    inset 2px 2px 5px rgba(255 255 255 / 0.7),    2px 2px 5px rgba(0 0 0 / 0.1);
+  font-weight: 500;
+  color: var(--text-color);
+  user-select: text;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.society-infoDiv strong {
+  font-weight: 500;
+  color: #7f397e;
+}
+.map-container iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0.5rem;
+  border: none;
+}
+

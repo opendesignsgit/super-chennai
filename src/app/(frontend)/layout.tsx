@@ -55,8 +55,21 @@ import '@/assets/Css/lexicalCustome.css'
 import '@/assets/Css/IconOfTheMonth.css'
 import '@/assets/Css/faq.css'
 import '@/assets/Css/neighbourhood2_0.css'
+import '@/assets/Css/Properties/BudgetSlider.css'
+import '@/assets/Css/Properties/FiltersSidebar.css'
+import '@/assets/Css/Properties/FiltersTopbar.css'
+import '@/assets/Css/Properties/Pagination.css'
+import '@/assets/Css/Properties/PropertiesPage.css'
+import '@/assets/Css/Properties/PropertyCard.css'
+import '@/assets/Css/Properties/PropertyDetailPage copy.css'
+import '@/assets/Css/Properties/PropertyDetailPage.css'
+import '@/assets/Css/Properties/PropertyDetailPage.css'
+import '@/assets/Css/Properties/skelton.css'
+import '@/assets/Css/Properties/SortBy.css'
+import '@/assets/Css/ViewMore.css'
 
 import { Preloader } from '@/components/Loader/Preloader'
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
@@ -74,11 +87,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               preview: isEnabled,
             }}
           />
-          {/* <Preloader> */}
-          <Header />
-          {children}
-          <Footer />
-          {/* </Preloader> */}
+          <Preloader>
+            <Header />
+            {children}
+            <Footer />
+          </Preloader>
         </Providers>
       </body>
     </html>

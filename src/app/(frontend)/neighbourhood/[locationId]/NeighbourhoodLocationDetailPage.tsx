@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
-import React from 'react'
+import React, { useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -30,6 +30,20 @@ export default function NeighbourhoodLocationDetailPage({
   faqDataProps,
 }: NeighbourhoodDetailClientProps) {
   const router = useRouter()
+
+  const grouped = useMemo(() => {
+    return (
+      neighbourhoodDocs?.reduce((acc: Record<string, any[]>, item: any) => {
+        const cat = item?.category?.title || item?.category?.name || 'Others'
+        if (!acc[cat]) acc[cat] = []
+        acc[cat].push(item)
+        return acc
+      }, {}) || {}
+    )
+  }, [neighbourhoodDocs])
+
+  const categories = Object.keys(grouped)
+
   if (!locationData) {
     return (
       <div className="text-center py-20 bg-white">
@@ -55,7 +69,26 @@ export default function NeighbourhoodLocationDetailPage({
     }
     return fallbackUrl
   }
-  const mapSearchQuery = locationData?.locality || locationData?.value || locationId || 'Chennai'
+  const mapSearchQuery = locationData?.locality || locationData?.value || locationId || ''
+
+  const getIcon = (name: string) => {
+    const icons: Record<string, string> = {
+      Schools: '🏫',
+      Hospitals: '🏥',
+      Shopping: '🛍️',
+      Banks: '🏦',
+      Colleges: '🎓',
+      'Real Estate': '🏢',
+      'Co-working-Space': '💻',
+    }
+
+    const dynamicIcon = grouped[name]?.[0]?.category?.icon
+    if (dynamicIcon && typeof dynamicIcon === 'object' && dynamicIcon.url) {
+      return <img src={dynamicIcon.url} className="w-6 h-6 object-contain inline-block" alt="" />
+    }
+
+    return icons[name] || '📍'
+  }
   return (
     <div id="poppinsssFamily">
       {/* 1. HERO BANNER SECTION */}
@@ -106,6 +139,31 @@ export default function NeighbourhoodLocationDetailPage({
               locationId={locationId}
             />
           </div>
+          {/* ADDED MISSING SECTION: CATEGORY COUNTS BANNER */}
+          {categories.length > 0 && (
+            <div className="text-white mt-8 pt-4">
+              <div className="max-w-7xl mx-auto flex items-center justify-start gap-y-4 gap-x-6 flex-wrap">
+                {categories.slice(0, 5).map((s, i) => {
+                  const totalCount = grouped[s]?.length || 0
+                  return (
+                    <div key={s || i} className="flex items-center gap-3">
+                      {i > 0 && <div className="hidden sm:block w-px h-8 bg-white/20 mr-3" />}
+
+                      <span className="text-2xl flex items-center">{getIcon(s)}</span>
+                      <div>
+                        <div className="text-[#f9f9f9] text-xs font-medium neighbourtwoparagraph">
+                          {s}
+                        </div>
+                        <div className="text-white text-sm font-bold ml-[3px] neighbourtwoparagraph">
+                          {totalCount}+
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
       {/* 2. MAP & OVERVIEW SECTION */}
@@ -172,15 +230,16 @@ export default function NeighbourhoodLocationDetailPage({
       <QuickAccessSection quickAccess={locationData?.quickAccess} />
       {/* 4. WHY CHOOSE US & LIFESTYLE SCORE SECTION */}
       <WhyChooseAndLifestyleSection locationData={locationData} />
-      {/* 4. WHAT'S NEARBY SECTION */}
-      <WhatsNearbySection data={neighbourhoodDocs} />
-      {/* 6. FAQ SECTION */}
-      <FaqSection faqDataProps={faqDataProps} />
-      {/* 7. NEARBY LOCALITIES CAROUSEL */}
+       {/* NEARBY LOCALITIES CAROUSEL */}
       <NearbyLocalitiesSection
         currentLocality={locationData?.locality}
         allLocations={allLocations}
       />
+      {/* 4. WHAT'S NEARBY SECTION */}
+      <WhatsNearbySection data={neighbourhoodDocs} />
+      {/* 6. FAQ SECTION */}
+      <FaqSection faqDataProps={faqDataProps} />
+     
       {/* 5. PROPERTIES PROMO BANNER */}
       <PropertiesBanner />
     </div>

@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+
 /* eslint-disable @next/next/no-img-element */
 'use client'
 
@@ -19,11 +21,21 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 
 import NeighbourhoodSearchBar from '../../../Components/NeighbourhoodSearchBar'
 import { PropertiesBanner } from '../../../Components/PropertiesBanner'
 import { MapPinIcon, StarIcon } from '../../../ui/Icons'
+
+// Helper Function Imports
+import {
+  getMediaUrl,
+  normalizeText,
+  parseGalleryImages,
+  formatWebsiteUrl,
+  formatBusinessHours,
+  getRelatedItems,
+} from '../../../utils/neighbourhoodHelpers'
 
 interface ClientProps {
   item: any
@@ -81,28 +93,58 @@ export default function NeighbourhoodItemDetailClient({
     )
   }
 
-  const normalize = (text?: string) => text?.toLowerCase().trim().replace(/\s+/g, '-') || ''
-
   const safeCategory = category?.toLowerCase()
   const safeSubcategory = subcategory && subcategory !== 'undefined' ? subcategory : safeCategory
 
-  const relatedItems =
-    allNeighbourhoodData?.filter(
-      (i) =>
-        i.slug !== slug &&
-        (subcategory && subcategory !== 'undefined'
-          ? i.subCategories?.some((sub: any) => normalize(sub.slug) === normalize(subcategory))
-          : normalize(i.category?.slug || i.category?.title) === normalize(category)),
-    ) || []
+  // Helpers utilization via useMemo
+
+  const relatedItems = useMemo(() => {
+    if (!allNeighbourhoodData || !Array.isArray(allNeighbourhoodData)) return []
+
+    const result = getRelatedItems({
+      items: allNeighbourhoodData,
+      currentSlug: slug || item?.slug || '',
+      category: category || item?.category?.slug || item?.category?.title || '',
+      subcategory: subcategory !== 'undefined' ? subcategory : '',
+    })
+
+    if (result.length === 0) {
+      const currentCatSlug = (
+        typeof item?.category === 'object'
+          ? item?.category?.slug || item?.category?.title
+          : item?.category || category
+      )
+        ?.toString()
+        ?.toLowerCase()
+        ?.trim()
+
+      return allNeighbourhoodData.filter((i: any) => {
+        if (i.slug === slug || i.slug === item?.slug) return false
+
+        const iCat = (
+          typeof i?.category === 'object' ? i?.category?.slug || i?.category?.title : i?.category
+        )
+          ?.toString()
+          ?.toLowerCase()
+          ?.trim()
+
+        return iCat === currentCatSlug
+      })
+    }
+
+    return result
+  }, [allNeighbourhoodData, slug, category, subcategory, item])
+
+const itemTitle = item.name || item.title || 'Neighbourhood Detail'
+  const galleryImages = useMemo(
+    () => parseGalleryImages(item?.gallery, itemTitle),
+    [item?.gallery, itemTitle],
+  )
 
   const hoursConfig = item?.businessHours?.[0]
-
-  const galleryImages =
-    item?.gallery?.map((g: any) => ({
-      url: typeof g.image === 'object' && g.image?.url ? `${g.image.url}` : `${g.image}`,
-      alt: g.alt || item.name || item.title || 'Gallery Image',
-      caption: g.caption || '',
-    })) || []
+  const itemLocality = item?.locations?.locality || locationId || 'Local Area'
+  const itemCity = item?.locations?.city || 'Chennai'
+  const categoryTitle = item?.category?.title || category
 
   const handlePrevSlide = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -116,32 +158,20 @@ export default function NeighbourhoodItemDetailClient({
     )
   }
 
-  const itemTitle = item.name || item.title || 'Neighbourhood Detail'
-  const itemLocality = item?.locations?.locality || locationId || 'Local Area'
-  const itemCity = item?.locations?.city || 'Chennai'
-  const categoryTitle = item?.category?.title || category
-
   return (
     <div id="poppinsssFamily" className="w-full">
       {/* 1. HERO BANNER */}
       <div className="relative h-[600px] flex flex-col justify-center pb-10 px-8 overflow-hidden bg-gray-900">
         <img
-          src={
-            item?.FeaturedImage?.url
-              ? `${item.FeaturedImage.url}`
-              : 'https://www.superchennai.com/images/restaurants-banner.jpg'
-          }
+          src={getMediaUrl(
+            item?.FeaturedImage,
+            'https://www.superchennai.com/images/restaurants-banner.jpg',
+          )}
           alt={itemTitle}
           className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none opacity-40"
         />
 
-        <div
-          className="absolute inset-0 pointer-events-none"
-          // style={{
-          //   background:
-          //     'linear-gradient(to bottom, rgba(10,5,30,0.5) 0%, rgba(10,5,30,0.75) 60%, rgba(10,5,30,0.92) 100%)',
-          // }}
-        />
+        <div className="absolute inset-0 pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 w-full pb-0">
           <nav className="text-gray-400 text-xs mb-5">
@@ -155,7 +185,7 @@ export default function NeighbourhoodItemDetailClient({
               </Link>
               <span>›</span>
               <Link
-                href={`/neighbourhood/${normalize(itemLocality)}`}
+                href={`/neighbourhood/${normalizeText(itemLocality)}`}
                 className="hover:text-white transition-colors capitalize"
               >
                 {itemLocality}
@@ -204,11 +234,7 @@ export default function NeighbourhoodItemDetailClient({
 
               {item?.contactInfo?.website && (
                 <a
-                  href={
-                    item.contactInfo.website?.startsWith('http')
-                      ? item.contactInfo.website
-                      : `https://${item.contactInfo.website}`
-                  }
+                  href={formatWebsiteUrl(item.contactInfo.website)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 bg-white hover:bg-gray-50 text-[#a44294] px-5 py-3 rounded-[10px] font-semibold text-sm transition-colors shadow-sm border border-transparent"
@@ -330,7 +356,7 @@ export default function NeighbourhoodItemDetailClient({
                         <div className="p-2 bg-[#F5F3FF] text-[#a44294] rounded-lg flex-shrink-0">
                           {hl?.icon?.url ? (
                             <img
-                              src={`${hl.icon.url}`}
+                              src={getMediaUrl(hl.icon)}
                               alt=""
                               className="w-[18px] h-[18px] object-contain"
                             />
@@ -367,9 +393,9 @@ export default function NeighbourhoodItemDetailClient({
                 <div className="flex flex-wrap gap-2.5">
                   {item.subCategories.map((s: any) => (
                     <Link
-                      href={`/neighbourhood/${normalize(locationId)}/${normalize(
+                      href={`/neighbourhood/${normalizeText(locationId)}/${normalizeText(
                         category,
-                      )}/${normalize(s.slug)}`}
+                      )}/${normalizeText(s.slug)}`}
                       key={s.id || s.slug}
                       className="inline-flex items-center bg-[#F5F3FF] text-[#a44294] px-4 py-2.5 rounded-full text-xs font-medium hover:bg-[#a44294] hover:text-white transition-colors"
                     >
@@ -388,10 +414,7 @@ export default function NeighbourhoodItemDetailClient({
               <div className="flex flex-col gap-3 mt-3">
                 {item?.businessHours && item.businessHours.length > 0 ? (
                   item.businessHours.map((hours: any, index: number) => {
-                    const formattedTime =
-                      hours && (hours.openTime || hours.closeTime)
-                        ? `${hours.openTime || ''} - ${hours.closeTime || ''}`
-                        : '10:00 AM - 9:30 PM'
+                    const formattedTime = formatBusinessHours(hours)
 
                     return (
                       <div
@@ -511,16 +534,16 @@ export default function NeighbourhoodItemDetailClient({
         </div>
       )}
 
-      {/* 5. RELATED ITEMS SECTION */}
+      {/* RELATED ITEMS SECTION */}
       {relatedItems && relatedItems.length > 0 && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-12">
           <section className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm mb-10">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-[#a44294] font-semibold text-[18px]">
-                Explore More {categoryTitle} in {itemLocality}
+                Explore More {item?.category?.title || categoryTitle} in {itemLocality}
               </h2>
               <Link
-                href={`/neighbourhood/${normalize(itemLocality)}/${safeCategory}`}
+                href={`/neighbourhood/${normalizeText(itemLocality)}/${safeCategory}`}
                 className="flex items-center gap-1 text-[14px] font-semibold text-[#a44294] hover:text-purple-900 transition-colors"
               >
                 View All <ArrowRight size={16} />
@@ -528,57 +551,61 @@ export default function NeighbourhoodItemDetailClient({
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {relatedItems.slice(0, 6).map((store: any) => (
-                <Link
-                  key={store.id || store.slug}
-                  href={`/neighbourhood/${normalize(locationId)}/${safeCategory}/${safeSubcategory}/${store.slug}`}
-                  className="bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between group cursor-pointer hover:shadow-md transition-shadow duration-200"
-                >
-                  <div className="relative h-48 w-full overflow-hidden bg-gray-100">
-                    <img
-                      src={
-                        store?.FeaturedImage?.url
-                          ? `${store.FeaturedImage.url}`
-                          : 'https://www.superchennai.com/images/restaurants-banner.jpg'
-                      }
-                      alt={store.name || store.title || ''}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
+              {relatedItems.map((store: any) => {
+                // Flexible Image URL Handler (Works for both Payload Media & API Test URL)
+                const storeImg = getMediaUrl(
+                  store?.FeaturedImage || store?.heroImage,
+                  'https://www.superchennai.com/images/restaurants-banner.jpg',
+                )
 
-                  <div className="p-4 flex flex-col flex-grow justify-between">
-                    <div>
-                      <h3 className="font-bold text-gray-900 text-base mb-1">
-                        {store.name || store.title}
-                      </h3>
-                      <p className="mb-2 text-gray-600 text-sm line-clamp-2">
-                        {store.description || ''}
-                      </p>
+                return (
+                  <Link
+                    key={store.id || store.slug}
+                    href={`/neighbourhood/${normalizeText(locationId)}/${safeCategory}/${store.slug}`}
+                    className="bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between group cursor-pointer hover:shadow-md transition-shadow duration-200"
+                  >
+                    <div className="relative h-48 w-full overflow-hidden bg-gray-100">
+                      <img
+                        src={storeImg}
+                        alt={store.name || store.title || 'Store Image'}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
 
-                    <div className="flex justify-between items-center mt-auto pt-2 border-t border-gray-50">
-                      <div className="flex items-center gap-2 text-xs font-medium text-gray-600">
-                        <span className="flex items-center gap-1 text-amber-500">
-                          <StarIcon />
-                          <span className="text-gray-800">
-                            {store?.googleData?.googleRating || 0}
-                          </span>
-                        </span>
-                        <span className="flex items-center gap-1 text-gray-500">
-                          <MapPinIcon className="w-3 h-3" />
-                          <span className="text-gray-800">
-                            {store?.locations?.city || 'Chennai'}
-                          </span>
-                        </span>
+                    <div className="p-4 flex flex-col flex-grow justify-between">
+                      <div>
+                        <h3 className="font-bold text-gray-900 text-base mb-1">
+                          {store.name || store.title}
+                        </h3>
+                        <p className="mb-2 text-gray-600 text-sm line-clamp-2">
+                          {store.description ? `${store.description.slice(0, 80)}...` : ''}
+                        </p>
                       </div>
 
-                      <button className="p-2 bg-purple-100 text-purple-700 rounded-full group-hover:bg-[#a44294] group-hover:text-white transition-colors duration-200">
-                        <ArrowRight size={16} />
-                      </button>
+                      <div className="flex justify-between items-center mt-auto pt-2 border-t border-gray-50">
+                        <div className="flex items-center gap-2 text-xs font-medium text-gray-600">
+                          <span className="flex items-center gap-1 text-amber-500">
+                            <StarIcon />
+                            <span className="text-gray-800">
+                              {store?.googleData?.totalGoogleReviews || store?.totalReviews || 0}
+                            </span>
+                          </span>
+                          <span className="flex items-center gap-1 text-gray-500">
+                            <MapPinIcon className="w-3 h-3" />
+                            <span className="text-gray-800">
+                              {store?.locations?.city || itemCity}
+                            </span>
+                          </span>
+                        </div>
+
+                        <button className="p-2 bg-purple-100 text-purple-700 rounded-full group-hover:bg-[#a44294] group-hover:text-white transition-colors duration-200">
+                          <ArrowRight size={16} />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                )
+              })}
             </div>
           </section>
 
@@ -608,8 +635,8 @@ export default function NeighbourhoodItemDetailClient({
 
             <div className="w-full h-full flex items-center justify-center select-none">
               <img
-                src={galleryImages[currentImageIndex].url}
-                alt={galleryImages[currentImageIndex].alt}
+                src={galleryImages[currentImageIndex]?.url || '/images/no-image.png'}
+                alt={galleryImages[currentImageIndex]?.alt || 'Gallery Image'}
                 className="max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-all duration-300"
               />
             </div>
@@ -625,7 +652,7 @@ export default function NeighbourhoodItemDetailClient({
 
           <div className="mt-4 text-center text-white/80 max-w-xl px-4">
             <p className="text-sm font-medium tracking-wide">
-              {galleryImages[currentImageIndex].caption || galleryImages[currentImageIndex].alt}
+              {galleryImages[currentImageIndex]?.caption || galleryImages[currentImageIndex]?.alt}
             </p>
             <span className="text-xs text-white/40 block mt-1">
               {currentImageIndex + 1} / {galleryImages.length}
