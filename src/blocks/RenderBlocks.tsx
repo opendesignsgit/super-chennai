@@ -80,6 +80,12 @@ import VisitImageListSectionComponent from './InnerPage/SharedBlocks/VisitImageL
 import WorkNetworkSectionComponent from './InnerPage/SharedBlocks/WorkNetworkSection/component'
 import WorkPageImageSectionComponent from './InnerPage/SharedBlocks/WorkPageImageSection/component'
 import HealthcareInChennaiComponent from './InnerPage/SharedBlocks/HealthCareBlocks/component'
+import ChennaiHealthCareComponent from './InnerPage/SharedBlocks/ChennaiHealthCareSection/component'
+import EyeHospitals from './InnerPage/SharedBlocks/ChennaiHospitals/component'
+import HealthCareHospitalsComponent from './InnerPage/SharedBlocks/HealthCareHospitals/component'
+import LiveSplitImageFeatureComponent from './InnerPage/SharedBlocks/LiveSplitImageFeatureBlock/component'
+import ChennaiLivingSectionComponent from './InnerPage/SharedBlocks/LiveSplitImageFeatureBlock/component'
+import ThingsToDoComponent from './InnerPage/SharedBlocks/ThingsToDo/component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -191,6 +197,13 @@ const blockComponents: {
   WorkPageImageSectionBlock: WorkPageImageSectionComponent,
 
   // HealthcareInChennaiBlock: HealthcareInChennaiComponent,
+
+  ChennaiHealthCareSectionBlock: ChennaiHealthCareComponent,
+  EyeHospitalsBlock: EyeHospitals,
+
+  HealthCareHospitalsBlock: HealthCareHospitalsComponent,
+  chnLivBlock: ChennaiLivingSectionComponent,
+  thingstodoPage: ThingsToDoComponent,
 }
 
 export const RenderBlocks: React.FC<{

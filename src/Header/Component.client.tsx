@@ -43,13 +43,13 @@ const slideInFromLeft = {
     opacity: 0,
     x: -200,
     scale: 0.95,
-    filter: "blur(8px)",
+    filter: 'blur(8px)',
   },
   visible: {
     opacity: 1,
     x: 0,
     scale: 1,
-    filter: "blur(0px)",
+    filter: 'blur(0px)',
     transition: {
       duration: 0.6,
       ease: [0.22, 1, 0.36, 1],
@@ -59,10 +59,10 @@ const slideInFromLeft = {
     opacity: 0,
     x: -100,
     scale: 0.95,
-    filter: "blur(4px)",
+    filter: 'blur(4px)',
     transition: {
       duration: 0.4,
-      ease: "easeInOut",
+      ease: 'easeInOut',
     },
   },
 }
@@ -85,50 +85,50 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   let menuTimeout: NodeJS.Timeout
 
   //##################### INITIALIZATION #######################################
-   useEffect(() => {
-     const fetchMenuItems = async () => {
-       try {
-         setMenuItems(
-           (data?.navItems || []).map((item: any) => ({
-             label: item.link.label,
-             link: item.link.reference?.value?.slug
-               ? `/${item.link.reference.value.slug}`
-               : item.link.url || '#',
-             content: Array.isArray(item?.link?.content)
-               ? item.link.content.filter((block: any) => block.title && block.desc && block.link)
-               : [],
-             gallery: Array.isArray(item?.link?.gallery)
-               ? item.link.gallery.map((g: any) => ({
-                   url: g.image?.url ?? `/media/${g.image?.filename}`,
-                   alt: g.caption || 'Gallery Image',
-                 }))
-               : [],
-             contentImage: item?.link?.contentImage
-               ? {
-                   filename: item.link.contentImage.filename,
-                   mimeType: item.link.contentImage.mimeType,
-                   url: `/media/${item.link.contentImage.filename}`,
-                 }
-               : undefined,
-           })),
-         )
-         setDraweLogo(data?.logo)
-         setDrawerMenuItems(data?.drawerMenu || [])
-         setSocialLinks(data?.socialLinks || [])
-       } catch (error) {
-         console.error('Failed to fetch menu items', error)
-       }
-     }
+  useEffect(() => {
+    const fetchMenuItems = async () => {
+      try {
+        setMenuItems(
+          (data?.navItems || []).map((item: any) => ({
+            label: item.link.label,
+            link: item.link.reference?.value?.slug
+              ? `/${item.link.reference.value.slug}`
+              : item.link.url || '#',
+            content: Array.isArray(item?.link?.content)
+              ? item.link.content.filter((block: any) => block.title && block.desc && block.link)
+              : [],
+            gallery: Array.isArray(item?.link?.gallery)
+              ? item.link.gallery.map((g: any) => ({
+                  url: g.image?.url ?? `/media/${g.image?.filename}`,
+                  alt: g.caption || 'Gallery Image',
+                }))
+              : [],
+            contentImage: item?.link?.contentImage
+              ? {
+                  filename: item.link.contentImage.filename,
+                  mimeType: item.link.contentImage.mimeType,
+                  url: `/media/${item.link.contentImage.filename}`,
+                }
+              : undefined,
+          })),
+        )
+        setDraweLogo(data?.logo)
+        setDrawerMenuItems(data?.drawerMenu || [])
+        setSocialLinks(data?.socialLinks || [])
+      } catch (error) {
+        console.error('Failed to fetch menu items', error)
+      }
+    }
 
-     fetchMenuItems()
-     setPointCast(data?.pointCast || null)
-   }, [data])
+    fetchMenuItems()
+    setPointCast(data?.pointCast || null)
+  }, [data])
 
-   useEffect(() => {
-     const handleScroll = () => setScrolled(window.scrollY > 50)
-     window.addEventListener('scroll', handleScroll)
-     return () => window.removeEventListener('scroll', handleScroll)
-   }, [])
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
   //############################# HELPER FUNCTIONS ###############################
   const handleMenuEnter = (item: MenuItem) => {
     clearTimeout(menuTimeout)
@@ -187,8 +187,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       body.classList.add('HomePageStyle')
     }
   }, [pathname])
-
-  
 
   return (
     <div className="mainMegamenuContainers">
@@ -314,21 +312,22 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                     />
                   )}
                   {/*#### GALERRRY ##### */}
+
                   {activeMenu?.gallery && activeMenu.gallery.length > 0 && (
-                    <div className="megamenuGallerySlider w-[400px]">
-                      <Slider {...sliderSettings}>
-                        {activeMenu.gallery.map((item: any, imgIdx: number) => (
-                          <div key={imgIdx} className="px-2">
-                            <div className="rounded-lg overflow-hidden h-[200px] relative">
-                              <img
-                                src={item.url}
-                                alt={item.alt}
-                                className="w-full h-full object-cover rounded-md"
-                              />
-                            </div>
-                          </div>
-                        ))}
-                      </Slider>
+                    <div className="Newmegamenuinner flexcontainer">
+                      <div className="newarratai">
+                        <div className="arattai-slider-wrapper">
+                          <Slider {...sliderSettings}>
+                            {activeMenu.gallery.map((item: any, imgIdx: number) => (
+                              <div key={imgIdx}>
+                                <div className="arattai-slide">
+                                  <img src={item.url} alt={item.alt} className="arattai-image" />
+                                </div>
+                              </div>
+                            ))}
+                          </Slider>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </motion.div>
