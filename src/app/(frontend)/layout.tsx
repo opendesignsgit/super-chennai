@@ -67,6 +67,7 @@ import '@/assets/Css/Properties/PropertyDetailPage.css'
 import '@/assets/Css/Properties/skelton.css'
 import '@/assets/Css/Properties/SortBy.css'
 import '@/assets/Css/ViewMore.css'
+import '@/assets/Css/ritch-text.css'
 
 import { Preloader } from '@/components/Loader/Preloader'
 

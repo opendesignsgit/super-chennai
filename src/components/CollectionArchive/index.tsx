@@ -10,7 +10,7 @@ export type Props = {
 
 export const CollectionArchive: React.FC<Props> = ({
   posts,
-  relationTo = 'posts',
+  relationTo = 'blog',
 }) => {
   if (!posts || posts.length === 0) {
     return (
@@ -25,7 +25,6 @@ export const CollectionArchive: React.FC<Props> = ({
 
   return (
     <section className="container mx-auto px-4 py-8 mt-10">
-      {/* Grid: 3 columns per row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post, index) => (
           <Card
@@ -33,7 +32,7 @@ export const CollectionArchive: React.FC<Props> = ({
             className="h-full w-full"
             doc={post}
             relationTo={relationTo}
-            showCategories
+           
           />
         ))}
       </div>

@@ -43,7 +43,7 @@ type Args = {
 export default async function Post({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
-  const url = '/posts/' + slug
+  const url = '/blog/' + slug
   const post = await queryPostBySlug({ slug })
 
   if (!post) return <PayloadRedirects url={url} />
@@ -52,12 +52,10 @@ export default async function Post({ params: paramsPromise }: Args) {
     <article className="">
       <PageClient />
 
-      {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
 
-      {/* <PostHero post={post} /> */}
       <Suspense fallback={null}>
         <PostHero post={post} />
       </Suspense>
@@ -65,12 +63,6 @@ export default async function Post({ params: paramsPromise }: Args) {
       <div className="flex flex-col items-center gap-4 pt-8">
         <div className="container">
           <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
-          {/* {post.relatedPosts && post.relatedPosts.length > 0 && (
-            <RelatedPosts
-              className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
-              docs={post.relatedPosts.filter((post) => typeof post === 'object')}
-            />
-          )} */}
         </div>
       </div>
     </article>
@@ -80,15 +72,12 @@ export default async function Post({ params: paramsPromise }: Args) {
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = '' } = await paramsPromise
   const post = await queryPostBySlug({ slug })
-
   return generateMeta({ doc: post })
 }
 
 const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode()
-
   const payload = await getPayload({ config: configPromise })
-
   const result = await payload.find({
     collection: 'posts',
     draft,
