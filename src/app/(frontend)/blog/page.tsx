@@ -8,7 +8,7 @@ import configPromise from 'src/payload.config'
 import PageClient from './page.client'
 import { CollectionArchive } from '@/components/CollectionArchive'
 import Image from 'next/image'
-import AccodomationBanner from '../../../assets/images/neighbourhood-main-image.jpeg'
+import AccodomationBanner from '../../../assets/images/main-blog.jpg'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -19,7 +19,7 @@ export default async function Page() {
   const posts = await payload.find({
     collection: 'posts',
     depth: 1,
-    limit: 12,
+    limit: 10000,
     overrideAccess: false,
     select: {
       title: true,
@@ -42,13 +42,12 @@ export default async function Page() {
           <div className="accodoamationBannerText">
             <h3>Blogs</h3>
             <div className="breadCrum">
-              <a href="/">Home</a> - <a href="#">Properties</a>
+              <a href="/">Home</a> - <a href="#">Blogs</a>
             </div>
           </div>
         </div>
       </div>
 
-    
       <CollectionArchive
         posts={posts.docs.map((post: any) => ({
           ...post,
@@ -56,12 +55,6 @@ export default async function Page() {
           className: '',
         }))}
       />
-
-      <div className="container">
-        {posts.totalPages > 1 && posts.page && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
-        )}
-      </div>
     </div>
   )
 }
