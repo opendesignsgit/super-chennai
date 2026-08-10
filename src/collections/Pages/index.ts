@@ -82,6 +82,11 @@ import { VisitImageListSectionBlock } from '@/blocks/InnerPage/SharedBlocks/Visi
 import { WorkNetworkSectionBlock } from '@/blocks/InnerPage/SharedBlocks/WorkNetworkSection/config'
 import { WorkPageImageSectionBlock } from '@/blocks/InnerPage/SharedBlocks/WorkPageImageSection/config'
 import { HealthcareInChennaiBlock } from '@/blocks/InnerPage/SharedBlocks/HealthCareBlocks/config'
+import { ChennaiHealthCareSectionBlock } from '@/blocks/InnerPage/SharedBlocks/ChennaiHealthCareSection/config'
+import EyeHospitalsBlock from '@/blocks/InnerPage/SharedBlocks/ChennaiHospitals/config'
+import { HealthCareHospitalsBlock } from '@/blocks/InnerPage/SharedBlocks/HealthCareHospitals/config'
+import { ChennaiLivingSectionBlock } from '@/blocks/InnerPage/SharedBlocks/LiveSplitImageFeatureBlock/config'
+import { ThingsToDoBlock } from '@/blocks/InnerPage/SharedBlocks/ThingsToDo/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -91,9 +96,7 @@ export const Pages: CollectionConfig<'pages'> = {
     read: authenticatedOrPublished,
     update: authenticated,
   },
-  // This config controls what's populated by default when a page is referenced
-  // https://payloadcms.com/docs/queries/select#defaultpopulate-collection-config-property
-  // Type safe if the collection slug generic is passed to `CollectionConfig` - `CollectionConfig<'pages'>
+
   defaultPopulate: {
     title: true,
     slug: true,
@@ -239,6 +242,17 @@ export const Pages: CollectionConfig<'pages'> = {
                 WorkNetworkSectionBlock,
                 WorkPageImageSectionBlock,
                 // HealthcareInChennaiBlock,
+
+                // ChennaiHealthCareSectionBlock,
+                // EyeHospitalsBlock,
+
+                // -------------Live Detail Page Section
+
+                HealthCareHospitalsBlock,
+                ChennaiLivingSectionBlock,
+                ThingsToDoBlock,
+
+                // -------------Live Detail Page Section
               ],
               required: true,
               admin: {
