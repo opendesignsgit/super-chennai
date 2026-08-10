@@ -1,0 +1,269 @@
+.filters-sidebar {
+  flex: 0 0 260px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+
+  position: sticky;
+  top: 140px;
+  align-self: flex-start;
+}
+
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.filters-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  border-bottom: none;
+  /* remove inner border */
+  margin: 0;
+}
+
+.filters-header button {
+  font-size: 13px;
+  font-weight: 500;
+  color: #a44294;
+  background: #f9f2fb;
+  border: 1px solid #e7c7f1;
+  padding: 4px 10px;
+  transition: all 0.2s ease;
+  border-radius: 9999px;
+  margin-bottom: 10px;
+
+}
+
+.filters-header button:hover {
+  background: #a44294;
+  color: #fff;
+}
+
+.filters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+
+
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter-checkbox input[type="checkbox"] {
+  accent-color: #a44294;
+  width: 16px;
+  height: 16px;
+}
+
+
+/* FiltersSidebar.css */
+.filters-sidebar {
+  width: 280px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.filters-title {
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Filter Section */
+.filter-section {
+  margin-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 8px;
+}
+
+.filter-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.filter-section-header h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.filter-section-content {
+  margin-top: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Checkbox Styles */
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter-checkbox input {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+/* More Filters Button */
+.more-filters-btn {
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  margin: 12px 0;
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.more-filters-btn:hover {
+  background: #eaeaea;
+}
+
+.more-filters-btn.active {
+  background: #dcdcdc;
+}
+
+/* Arrow Rotation (for img inside header) */
+.filter-section-header img {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+
+
+.property-types-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.badge:hover {
+  background-color: #e0e0e0;
+}
+
+.badge.selected {
+  background-color: #007acc;
+  color: #fff;
+}
+
+.more-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #a44294;
+  border: 1px solid #a44294;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.plot-dimensions-inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.plot-dimensions-inputs label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+.plot-dimensions-inputs input {
+  width: 100%;
+  /* make input fill its label */
+  padding: 5px 10px;
+  /* nice spacing inside */
+  border: 1px solid #ccc;
+  /* light gray border */
+  border-radius: 6px;
+  /* smooth rounded corners */
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.plot-dimensions-inputs input:focus {
+  border-color: #8e0d83;
+  /* blue border on focus */
+}
+
+
+
+
+.selected-filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.selected-badge {
+  background: #a44294;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.selected-badge:hover {
+  opacity: 0.8;
+}
+
+.clear-all-btn {
+  background: transparent;
+  border: none;
+  color: #a44294;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 6px;
+  text-decoration: underline;
+}
+
+
+.selected-badge .close-btn {
+  margin-left: 18px;
+}

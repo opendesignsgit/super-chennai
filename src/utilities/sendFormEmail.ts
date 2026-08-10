@@ -29,7 +29,7 @@ export async function sendFormEmail(data: SendFormEmailData): Promise<boolean> {
 
     // send to admin
     await transporter.sendMail({
-      from: `"Website Contact" <${SMTP_USER}>`,
+      from: `"Contact" <${SMTP_USER}>`,
       to: FORM_RECEIVER_EMAIL,
       cc: FORM_CC_EMAIL || '',
       subject: data.subject || `New Form Message from ${data.name}`,
@@ -73,4 +73,3 @@ export async function sendFormEmail(data: SendFormEmailData): Promise<boolean> {
     return false
   }
 }
-

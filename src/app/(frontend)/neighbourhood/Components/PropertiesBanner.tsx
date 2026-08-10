@@ -18,7 +18,7 @@ export const PropertiesBanner: React.FC = () => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://www.superchennai.com/properties"
+            href="/properties"
             className="group inline-flex items-center justify-between bg-white text-[#a44294] font-semibold text-sm px-6 py-3.5 rounded-xl shadow-md hover:bg-purple-50 transition-all"
           >
             <span>Explore Properties</span>
