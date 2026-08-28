@@ -2,14 +2,14 @@ import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
-import { seoPlugin } from '@payloadcms/plugin-seo'
 import { searchPlugin } from '@payloadcms/plugin-search'
-import { Plugin } from 'payload'
-import { revalidateRedirects } from 'src/hooks/revalidateRedirects'
+import { seoPlugin } from '@payloadcms/plugin-seo'
 import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
-import { searchFields } from 'src/search/fieldOverrides'
+import { Plugin } from 'payload'
+import { revalidateRedirects } from 'src/hooks/revalidateRedirects'
 import { beforeSyncWithSearch } from 'src/search/beforeSync'
+import { searchFields } from 'src/search/fieldOverrides'
 
 import { Page, Post } from 'src/payload-types'
 import { getServerSideURL } from 'src/utilities/getURL'
@@ -28,6 +28,9 @@ export const plugins: Plugin[] = [
   redirectsPlugin({
     collections: ['pages', 'posts'],
     overrides: {
+      admin: {
+        hidden: () => true,
+      },
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
@@ -59,7 +62,15 @@ export const plugins: Plugin[] = [
     fields: {
       payment: false,
     },
+    formSubmissionOverrides: {
+      admin: {
+        hidden: () => true,
+      },
+    },
     formOverrides: {
+      admin: {
+        hidden: () => true,
+      },
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
           if ('name' in field && field.name === 'confirmationMessage') {
@@ -82,9 +93,12 @@ export const plugins: Plugin[] = [
     },
   }),
   searchPlugin({
-    collections: ['pages', 'visits', 'work'],
+    collections: ['pages'],
     beforeSync: beforeSyncWithSearch,
     searchOverrides: {
+      admin: {
+        hidden: () => true,
+      },
       fields: ({ defaultFields }) => {
         return [...defaultFields, ...searchFields]
       },
