@@ -82,6 +82,14 @@ import IntroTextBlock from 'src/blocks/MainPages/SharedBlocks/IntroText/config'
 import VisitCategory from 'src/blocks/MainPages/Visit/VisitCategory/config'
 import volunteerBecameListBlock from 'src/blocks/MainPages/Volunteer/Volunteers/config'
 import HeroSlider from 'src/blocks/PageBanners/Home/config'
+import { ChennaiNeighbourhoodBlock } from '@/blocks/InnerPage/SharedBlocks/ChennaiNeighbourhood/config'
+import { QualityOfLifeBlock } from '@/blocks/InnerPage/SharedBlocks/QualityOfLife/config'
+import { VisitWellnessSectionBlock } from '@/blocks/InnerPage/SharedBlocks/VisitWellness/config'
+import { ContactBlock } from '@/blocks/InnerPage/ContactPage/config'
+import { ChennaiAppsBlock } from '@/blocks/InnerPage/ChennaiApps/config'
+import { PlacesSectionBlock } from '@/blocks/InnerPage/SharedBlocks/PlaceofWorship/config'
+import { LearningLivePageBlock } from '@/blocks/InnerPage/SharedBlocks/LearningLivePage/config'
+// import { ChennaiAppsBlock } from '@/blocks/InnerPage/ChennaiApps/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -246,8 +254,25 @@ export const Pages: CollectionConfig<'pages'> = {
                 HealthCareHospitalsBlock,
                 ChennaiLivingSectionBlock,
                 ThingsToDoBlock,
+                ChennaiNeighbourhoodBlock,
+                QualityOfLifeBlock,
 
                 // -------------Live Detail Page Section
+
+                // -------------Visit Detail Page Section
+
+                VisitWellnessSectionBlock,
+                // -------------Visit Detail Page Section
+
+                ContactBlock,
+
+                // ChennaiAppsBlock,
+
+                ChennaiAppsBlock,
+
+                PlacesSectionBlock,
+
+                LearningLivePageBlock,
               ],
               required: true,
               admin: {

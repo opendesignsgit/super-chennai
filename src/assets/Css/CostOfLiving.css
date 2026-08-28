@@ -272,7 +272,7 @@
   font-family: "29LT Bukra Regular";
   color: #3d3d3d;
   margin-top: 10px;
-  font-size: clamp(15px, 1.5vw, 16px);
+  font-size: clamp(15px, 1.5vw, 16px) !important;
   line-height: clamp(24px, 2vw, 26px);
 }
 
@@ -848,6 +848,11 @@
   opacity: 1;
 }
 
+.iconImgdev .clcboxItemss:hover .clcboxIImg img {
+  filter: inherit !important;
+  opacity: 1 !important;
+}
+
 .pattern-b .clcscrlinRBox {
   padding-top: 50px;
 }
@@ -900,7 +905,7 @@
 }
 
 .foodListIcon.odd-count div:last-child div {
-  margin: 0 10px;
+  margin: 0 10px !important;
 }
 
 /* New Style */
@@ -3153,3 +3158,7 @@ body.popup-open {
 /* Moving Section  */
 
 /* ------------Resposive----------  */
+
+
+
+

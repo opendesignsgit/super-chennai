@@ -4,6 +4,7 @@
   overflow: hidden;
   /* background-image: url("../../../public/images/doted.png"); */
 }
+
 .volunteerSectionBanner {
   position: relative;
   display: flex;
@@ -17,22 +18,22 @@
 }
 
 .WorkBgSection::before {
-  background: linear-gradient(
-    90deg,
-    rgba(19, 50, 132, 1) 10%,
-    rgba(90, 66, 161, 1) 40%,
-    rgba(57, 8, 121, 1) 90%
-  );
+  background: linear-gradient(90deg,
+      rgba(19, 50, 132, 1) 10%,
+      rgba(90, 66, 161, 1) 40%,
+      rgba(57, 8, 121, 1) 90%);
 }
 
 @keyframes animateGradient {
   0% {
     background-position: 0% 0%;
   }
+
   100% {
     background-position: 100% 0%;
   }
 }
+
 .VolunteerBannerImage {
   display: flex;
   justify-content: center;
@@ -49,8 +50,7 @@
 
 /* / Banner Voluteer / */
 
-.volunteeerMainContent {
-}
+.volunteeerMainContent {}
 
 .workIntro {
   display: flex;
@@ -131,6 +131,7 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -140,6 +141,7 @@
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0%);
   }
@@ -149,18 +151,17 @@
 
 .workImageSection {
   background: #2a7b9b;
-  background: linear-gradient(
-    90deg,
-    rgba(19, 50, 132, 1) 10%,
-    rgba(90, 66, 161, 1) 50%,
-    rgba(57, 8, 121, 1) 90%
-  );
+  background: linear-gradient(90deg,
+      rgba(19, 50, 132, 1) 10%,
+      rgba(90, 66, 161, 1) 50%,
+      rgba(57, 8, 121, 1) 90%);
   padding-top: 125px;
   margin-bottom: 100px;
   padding-bottom: 100px;
   position: relative;
   overflow: hidden;
 }
+
 .workImageSection h4 {
   position: absolute;
   top: 30%;
@@ -189,10 +190,12 @@
   border-radius: 8px;
   transition: opacity 0.5s ease-in-out;
 }
+
 .workimgIn li {
   margin: 0 0 25px;
   position: relative;
 }
+
 .workimgIn li a {
   font-size: 45px;
   display: block;
@@ -202,22 +205,26 @@
   position: relative;
   line-height: 1;
 }
+
 .workimgIn li a:hover {
   font-size: 80px;
   letter-spacing: -1px;
   font-weight: 600;
   line-height: 1;
 }
+
 .workimgIn li.active a {
   font-size: 70px;
   letter-spacing: -1px;
   font-weight: 600;
   line-height: 1;
 }
+
 .workimgIn li.active a::before {
   width: 10%;
   transition: all 0.5s ease;
 }
+
 .workimgIn li a::before {
   content: "";
   position: absolute;
@@ -230,10 +237,12 @@
   right: 0;
   top: 50%;
 }
+
 .workimgIn li a:hover::before {
   width: 10%;
   transition: all 0.5s ease;
 }
+
 /* .workimgIn li a::after {
   content: "Explore More";
   position: absolute;
@@ -283,15 +292,18 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
 /* Became a Volunteer  */
 
 @media (max-width: 1600px) and (min-width: 1000px) {
   .workimgIn li.active a {
     font-size: 50px;
   }
+
   .workimgIn li a {
     font-size: 35px;
   }
+
   .workimgIn li a:hover {
     font-size: 50px;
   }
@@ -303,6 +315,7 @@
     position: relative;
     top: -70px;
   }
+
   .workImageSection {
     padding-bottom: 23px;
   }
@@ -314,22 +327,21 @@
     line-height: 30px;
   }
 
-    .workIntro h1 {
+  .workIntro h1 {
     font-size: 36px;
     line-height: 30px;
   }
+
   .workIntroParaSection {
     padding-bottom: 0px;
     padding-top: 0;
   }
 
   .mobileCardsWork {
-    background: linear-gradient(
-      90deg,
-      rgba(19, 50, 132, 1) 10%,
-      rgba(90, 66, 161, 1) 50%,
-      rgba(57, 8, 121, 1) 90%
-    );
+    background: linear-gradient(90deg,
+        rgba(19, 50, 132, 1) 10%,
+        rgba(90, 66, 161, 1) 50%,
+        rgba(57, 8, 121, 1) 90%);
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 8px 0 rgba(0, 0, 0, 0.05);
   }
 
@@ -345,6 +357,7 @@
     color: #fff;
     text-transform: none;
   }
+
   .mobileCardsWorkMainContainer {
     /* display: block; */
   }
@@ -359,4 +372,9 @@
 
 .visitIntroParaSection.detailIntro.paddingbottommmm {
   padding-bottom: 0 !important;
+}
+
+
+.foodlistsec.wellnessss .clcboxItemss:after {
+  background: none
 }

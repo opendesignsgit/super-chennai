@@ -170,7 +170,9 @@ export default function HealthCareHospitalsComponent(props: HealthCareHospitalsP
 
   return (
     <div className="container max-w-7xl mx-auto px-4 py-4 pb-[50px] nightlife cmssectionss my-8">
-      {props.mainTitle && <h1 className="text-3xl font-bold mb-8">{props.mainTitle}</h1>}
+      {props.mainTitle && (
+        <h1 className="text-3xl font-bold mb-8 text-center">{props.mainTitle}</h1>
+      )}
 
       {activeCategories.map((section, sectionIdx) => (
         <HospitalCategoryBlock key={section.id || sectionIdx} section={section} />
