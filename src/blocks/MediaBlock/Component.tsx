@@ -52,7 +52,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
   return (
     <div
       className={cn(
-        '',
+        'blog-media-wrapper my-6',
         {
           container: enableGutter,
         },

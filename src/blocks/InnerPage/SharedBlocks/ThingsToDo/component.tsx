@@ -150,14 +150,16 @@ export default function ThingsToDoComponent(props: any) {
                                 <h3>{item.title}</h3>
                                 {paraContent && <p>{paraContent}</p>}
 
-                                <div className="exploreMorebuttonVisitChennai mt-2">
-                                  <Link
-                                    href={item.link || '#'}
-                                    className="text-blue-600 hover:underline text-sm font-medium"
-                                  >
-                                    Explore More
-                                  </Link>
-                                </div>
+                                {item.link && (
+                                  <div className="exploreMorebuttonVisitChennai mt-2">
+                                    <Link
+                                      href={item.link || '#'}
+                                      className="text-blue-600 hover:underline text-sm font-medium"
+                                    >
+                                      Explore More
+                                    </Link>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           </div>

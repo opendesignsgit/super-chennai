@@ -3,14 +3,14 @@ import { Block } from 'payload'
 export const HealthCareHospitalsBlock: Block = {
   slug: 'HealthCareHospitalsBlock',
   labels: {
-    singular: 'Health Care Hospital Block',
-    plural: 'Health Care Hospital Blocks',
+    singular: 'Location Section Block',
+    plural: 'Location Section Blocks',
   },
   imageURL: '/images/sections-image/healthcare-section.jpg',
   imageAltText: 'Health Care Hospitals Section Preview',
 
   admin: {
-    group: 'Live Detail Page ',
+    group: 'Common Blocks',
   },
   fields: [
     {

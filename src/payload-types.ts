@@ -1696,6 +1696,251 @@ export interface Page {
         blockName?: string | null;
         blockType: 'thingstodoPage';
       }
+    | {
+        sections?:
+          | {
+              sectionTitle: string;
+              sectionDesc?: string | null;
+              image: number | Media;
+              imgAlt?: string | null;
+              benefits?:
+                | {
+                    title: string;
+                    para?: string | null;
+                    imgs?: (number | null) | Media;
+                    imgAlt?: string | null;
+                    link?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'chennaiNeighbourhoodBlock';
+      }
+    | {
+        sections?:
+          | {
+              title: string;
+              title1?: string | null;
+              description: string;
+              image: number | Media;
+              imgAlt?: string | null;
+              buttonText?: string | null;
+              buttonLink?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'qualityOfLifeBlock';
+      }
+    | {
+        sections?:
+          | {
+              sectionTitle: string;
+              sectionDesc?: string | null;
+              image: number | Media;
+              imgAlt?: string | null;
+              tenants?:
+                | {
+                    points?:
+                      | {
+                          title: string;
+                          imgs?: (number | null) | Media;
+                          imgAlt?: string | null;
+                          link?: string | null;
+                          listItems?:
+                            | {
+                                boldText?: string | null;
+                                text?: string | null;
+                                id?: string | null;
+                              }[]
+                            | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'visitWellnessBlock';
+      }
+    | {
+        title?: string | null;
+        description?: string | null;
+        logo?: (number | null) | Media;
+        logoAlt?: string | null;
+        addressLines?:
+          | {
+              line?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        email?: string | null;
+        mapLink?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'contactBlock';
+      }
+    | {
+        tabs?:
+          | {
+              tabLabel: string;
+              tabIcon?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        allApps?:
+          | {
+              company: string;
+              appDescription?: string | null;
+              appImage?: (number | null) | Media;
+              appImageAlt?: string | null;
+              /**
+               * Enter the exact category tab name created above. Example: Travel, Food, Sports.
+               */
+              assignedTabs?:
+                | {
+                    assignedTabName: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              features?:
+                | {
+                    featureItem?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              services?:
+                | {
+                    serviceItem?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              websiteLink?: string | null;
+              androidLink?: string | null;
+              iosLink?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'chennaiAppsBlock';
+      }
+    | {
+        regions?:
+          | {
+              regionName: string;
+              heroImage?: (number | null) | Media;
+              categories?:
+                | {
+                    categoryName: string;
+                    categoryDesc?: string | null;
+                    places?:
+                      | {
+                          name: string;
+                          desc?: string | null;
+                          locations?:
+                            | {
+                                name: string;
+                                link?: string | null;
+                                id?: string | null;
+                              }[]
+                            | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'placesSectionBlock';
+      }
+    | {
+        regions?:
+          | {
+              regionName: string;
+              heroImage?: (number | null) | Media;
+              contentLayout?:
+                | (
+                    | {
+                        title: string;
+                        icon?: (number | null) | Media;
+                        description?: string | null;
+                        points?:
+                          | {
+                              point?: string | null;
+                              id?: string | null;
+                            }[]
+                          | null;
+                        id?: string | null;
+                        blockName?: string | null;
+                        blockType: 'infoSectionBlock';
+                      }
+                    | {
+                        tableTitle: string;
+                        headers?:
+                          | {
+                              headerName?: string | null;
+                              id?: string | null;
+                            }[]
+                          | null;
+                        rows?:
+                          | {
+                              cells?:
+                                | {
+                                    value?: string | null;
+                                    id?: string | null;
+                                  }[]
+                                | null;
+                              id?: string | null;
+                            }[]
+                          | null;
+                        id?: string | null;
+                        blockName?: string | null;
+                        blockType: 'tableBlock';
+                      }
+                    | {
+                        categoryName: string;
+                        categoryDesc?: string | null;
+                        items?:
+                          | {
+                              name: string;
+                              desc?: string | null;
+                              locations?:
+                                | {
+                                    name: string;
+                                    link?: string | null;
+                                    id?: string | null;
+                                  }[]
+                                | null;
+                              id?: string | null;
+                            }[]
+                          | null;
+                        id?: string | null;
+                        blockName?: string | null;
+                        blockType: 'categoryBlock';
+                      }
+                  )[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'llpBlock';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -2245,6 +2490,18 @@ export interface Event {
      */
     image?: (number | null) | Media;
     description?: string | null;
+    /**
+     * Paste valid JSON-LD schema (Event schema for Google SEO)
+     */
+    schema?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
@@ -3839,6 +4096,18 @@ export interface Neighbourhood {
      */
     image?: (number | null) | Media;
     description?: string | null;
+    /**
+     * Paste valid JSON-LD schema (Event schema for Google SEO)
+     */
+    schema?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   structuredData?: {
     schemaType?:
@@ -5005,19 +5274,10 @@ export interface Search {
   id: number;
   title?: string | null;
   priority?: number | null;
-  doc:
-    | {
-        relationTo: 'pages';
-        value: number | Page;
-      }
-    | {
-        relationTo: 'visits';
-        value: number | Visit;
-      }
-    | {
-        relationTo: 'work';
-        value: number | Work;
-      };
+  doc: {
+    relationTo: 'pages';
+    value: number | Page;
+  };
   slug?: string | null;
   meta?: {
     title?: string | null;
@@ -6640,6 +6900,258 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        chennaiNeighbourhoodBlock?:
+          | T
+          | {
+              sections?:
+                | T
+                | {
+                    sectionTitle?: T;
+                    sectionDesc?: T;
+                    image?: T;
+                    imgAlt?: T;
+                    benefits?:
+                      | T
+                      | {
+                          title?: T;
+                          para?: T;
+                          imgs?: T;
+                          imgAlt?: T;
+                          link?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        qualityOfLifeBlock?:
+          | T
+          | {
+              sections?:
+                | T
+                | {
+                    title?: T;
+                    title1?: T;
+                    description?: T;
+                    image?: T;
+                    imgAlt?: T;
+                    buttonText?: T;
+                    buttonLink?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        visitWellnessBlock?:
+          | T
+          | {
+              sections?:
+                | T
+                | {
+                    sectionTitle?: T;
+                    sectionDesc?: T;
+                    image?: T;
+                    imgAlt?: T;
+                    tenants?:
+                      | T
+                      | {
+                          points?:
+                            | T
+                            | {
+                                title?: T;
+                                imgs?: T;
+                                imgAlt?: T;
+                                link?: T;
+                                listItems?:
+                                  | T
+                                  | {
+                                      boldText?: T;
+                                      text?: T;
+                                      id?: T;
+                                    };
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        contactBlock?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              logo?: T;
+              logoAlt?: T;
+              addressLines?:
+                | T
+                | {
+                    line?: T;
+                    id?: T;
+                  };
+              email?: T;
+              mapLink?: T;
+              id?: T;
+              blockName?: T;
+            };
+        chennaiAppsBlock?:
+          | T
+          | {
+              tabs?:
+                | T
+                | {
+                    tabLabel?: T;
+                    tabIcon?: T;
+                    id?: T;
+                  };
+              allApps?:
+                | T
+                | {
+                    company?: T;
+                    appDescription?: T;
+                    appImage?: T;
+                    appImageAlt?: T;
+                    assignedTabs?:
+                      | T
+                      | {
+                          assignedTabName?: T;
+                          id?: T;
+                        };
+                    features?:
+                      | T
+                      | {
+                          featureItem?: T;
+                          id?: T;
+                        };
+                    services?:
+                      | T
+                      | {
+                          serviceItem?: T;
+                          id?: T;
+                        };
+                    websiteLink?: T;
+                    androidLink?: T;
+                    iosLink?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        placesSectionBlock?:
+          | T
+          | {
+              regions?:
+                | T
+                | {
+                    regionName?: T;
+                    heroImage?: T;
+                    categories?:
+                      | T
+                      | {
+                          categoryName?: T;
+                          categoryDesc?: T;
+                          places?:
+                            | T
+                            | {
+                                name?: T;
+                                desc?: T;
+                                locations?:
+                                  | T
+                                  | {
+                                      name?: T;
+                                      link?: T;
+                                      id?: T;
+                                    };
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        llpBlock?:
+          | T
+          | {
+              regions?:
+                | T
+                | {
+                    regionName?: T;
+                    heroImage?: T;
+                    contentLayout?:
+                      | T
+                      | {
+                          infoSectionBlock?:
+                            | T
+                            | {
+                                title?: T;
+                                icon?: T;
+                                description?: T;
+                                points?:
+                                  | T
+                                  | {
+                                      point?: T;
+                                      id?: T;
+                                    };
+                                id?: T;
+                                blockName?: T;
+                              };
+                          tableBlock?:
+                            | T
+                            | {
+                                tableTitle?: T;
+                                headers?:
+                                  | T
+                                  | {
+                                      headerName?: T;
+                                      id?: T;
+                                    };
+                                rows?:
+                                  | T
+                                  | {
+                                      cells?:
+                                        | T
+                                        | {
+                                            value?: T;
+                                            id?: T;
+                                          };
+                                      id?: T;
+                                    };
+                                id?: T;
+                                blockName?: T;
+                              };
+                          categoryBlock?:
+                            | T
+                            | {
+                                categoryName?: T;
+                                categoryDesc?: T;
+                                items?:
+                                  | T
+                                  | {
+                                      name?: T;
+                                      desc?: T;
+                                      locations?:
+                                        | T
+                                        | {
+                                            name?: T;
+                                            link?: T;
+                                            id?: T;
+                                          };
+                                      id?: T;
+                                    };
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -6938,6 +7450,7 @@ export interface EventsSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
+        schema?: T;
       };
   publishedAt?: T;
   authors?: T;
@@ -8072,6 +8585,7 @@ export interface NeighbourhoodSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
+        schema?: T;
       };
   structuredData?:
     | T

@@ -616,16 +616,15 @@ export const Events: CollectionConfig<'events'> = {
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
-            //  {
-            //   name: 'schema',
-            //   type: 'json',
-            //   label: 'Structured Data (JSON-LD)',
-            //   admin: {
-            //     description:
-            //       'Paste valid JSON-LD schema (Event schema for SEO)',
-            //   },
-
-            // },
+             {
+              name: 'schema',
+              type: 'json',
+              label: 'Structured Data (JSON-LD)',
+              admin: {
+                description: 'Paste valid JSON-LD schema (Event schema for Google SEO)',
+              },
+            },
+           
           ],
         },
       ],
