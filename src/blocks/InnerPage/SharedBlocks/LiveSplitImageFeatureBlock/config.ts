@@ -11,7 +11,7 @@ export const ChennaiLivingSectionBlock: Block = {
   imageAltText: 'Chennai Living Section Preview',
 
   admin: {
-    group: 'Live Detail Page ',
+    group: 'Live Detail Page',
   },
   fields: [
     {

@@ -80,6 +80,13 @@ import HeroSliderBlock from './PageBanners/Home/Component'
 import { VisitBanner } from './PageBanners/VisitBanner/Component'
 import PopupBanner from './Popup/component'
 import { VideoBlockComponent } from './VideoBlock/Component'
+import ChennaiNeighbourhoodComponent from './InnerPage/SharedBlocks/ChennaiNeighbourhood/component'
+import QualityOfLifeComponent from './InnerPage/SharedBlocks/QualityOfLife/component'
+import VisitWellnessSectionComponent from './InnerPage/SharedBlocks/VisitWellness/component'
+import ContactComponent from './InnerPage/ContactPage/component'
+import ChennaiAppsComponent from './InnerPage/ChennaiApps/component'
+import PlacesSectionComponent from './InnerPage/SharedBlocks/PlaceofWorship/component'
+import LearningLivePageComponent from './InnerPage/SharedBlocks/LearningLivePage/component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -198,6 +205,18 @@ const blockComponents: {
   HealthCareHospitalsBlock: HealthCareHospitalsComponent,
   chnLivBlock: ChennaiLivingSectionComponent,
   thingstodoPage: ThingsToDoComponent,
+  chennaiNeighbourhoodBlock: ChennaiNeighbourhoodComponent,
+  qualityOfLifeBlock: QualityOfLifeComponent,
+
+  visitWellnessBlock: VisitWellnessSectionComponent,
+
+  contactBlock: ContactComponent,
+
+  chennaiAppsBlock: ChennaiAppsComponent,
+
+  placesSectionBlock: PlacesSectionComponent,
+
+  llpBlock: LearningLivePageComponent,
 }
 
 export const RenderBlocks: React.FC<{
