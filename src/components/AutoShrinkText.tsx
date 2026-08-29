@@ -1,4 +1,10 @@
-import React, { useRef, useLayoutEffect, useState, HTMLAttributes } from 'react';
+'use client'
+
+import React, { useRef, useEffect, useLayoutEffect, useState, HTMLAttributes } from 'react';
+
+// SSR Safe LayoutEffect (Prevents Next.js SSR warnings)
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 export interface AutoShrinkTextProps extends HTMLAttributes<HTMLDivElement> {
   text: string;
@@ -29,7 +35,7 @@ export const AutoShrinkText: React.FC<AutoShrinkTextProps> = ({
   const [fontSize, setFontSize] = useState<number>(maxFontSize);
   const [isCalculated, setIsCalculated] = useState<boolean>(false);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const container = containerRef.current;
     const textNode = textRef.current;
 
@@ -76,9 +82,9 @@ export const AutoShrinkText: React.FC<AutoShrinkTextProps> = ({
   }, [text, maxFontSize, minFontSize, maxLines, step]);
 
   // Recalculate on container resize
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+    if (!container || typeof window === 'undefined') return;
 
     const resizeObserver = new ResizeObserver(() => {
       setIsCalculated(false);

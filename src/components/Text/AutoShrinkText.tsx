@@ -1,5 +1,6 @@
+'use client'
+
 import React from 'react'
-import './TextStyle.css'
 
 interface AutoShrinkTextProps {
   text?: string
@@ -14,9 +15,9 @@ interface AutoShrinkTextProps {
 
 const AutoShrinkText: React.FC<AutoShrinkTextProps> = ({
   text = '',
-  baseSize = 60,
-  minSize = 18,
-  maxChars = 40,
+  baseSize = 72, // 👈 60-la irundhu 72-kku increase panni irukkom (Big Banner Headings)
+  minSize = 42,  // 👈 34-la irundhu 42-kku increase panni irukkom (Always Big & Legible)
+  maxChars = 20, // 👈 Reduced from 25 so it scales gently for long titles
   className = '',
   maxLines = 2,
   width = '100%',
@@ -24,24 +25,36 @@ const AutoShrinkText: React.FC<AutoShrinkTextProps> = ({
 }) => {
   const length = text?.length || 0
 
-  const ratio = length > maxChars ? maxChars / length : 1
+  const calculateFontSize = () => {
+    if (length <= maxChars) {
+      return baseSize
+    }
 
-  const fontSize = Math.max(minSize, baseSize * ratio * 1.1)
+    // Gentle linear reduction (1px drop per 2 extra characters)
+    const excessLength = length - maxChars
+    const reduction = Math.floor(excessLength / 2)
+    const calculatedSize = baseSize - reduction
+
+    // Enforce bounds: Never go below minSize (42px)
+    return Math.max(minSize, calculatedSize)
+  }
+
+  const fontSize = calculateFontSize()
 
   return (
     <h3
-      className={`autoShrinkText ${className}`}
-      style={
-        {
-          '--dynamic-font-size': `${fontSize}px`,
-          width,
-          lineHeight: '0.9',
-          margin: '0 auto',
-          textAlign: align,
-          whiteSpace: length < maxChars / 1.5 ? 'nowrap' : 'normal',
-          WebkitLineClamp: maxLines,
-        } as React.CSSProperties
-      }
+      className={`autoShrinkText overflow-hidden transition-all duration-200 ${className}`}
+      style={{
+        fontSize: `${fontSize}px`,
+        width,
+        lineHeight: 1.15,
+        margin: '0 auto',
+        textAlign: align,
+        display: '-webkit-box',
+        WebkitLineClamp: maxLines,
+        WebkitBoxOrient: 'vertical',
+        wordBreak: 'break-word',
+      }}
       title={text}
     >
       {text}

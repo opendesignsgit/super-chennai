@@ -46,6 +46,7 @@ import {
 } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { ContactForm } from '../Components/ContactForm'
+import AutoShrinkText from '@/components/Text/AutoShrinkText'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || ''
 const defaultImage = '/images/default-hero.jpg'
@@ -54,9 +55,6 @@ const formatPrice = (val: number) => val?.toLocaleString('en-IN') || val
 const formatLabel = (str: string) =>
   str ? str.replace(/([A-Z])/g, ' $1').replace(/^./, (s) => s.toUpperCase()) : ''
 
-const AutoShrinkText = ({ text, className }: { text: string; [key: string]: any }) => (
-  <h1 className={className}>{text}</h1>
-)
 
 interface PropertyDetailsProps {
   property: Record<string, any>

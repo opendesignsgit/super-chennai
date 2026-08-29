@@ -30,7 +30,7 @@ export const EventCard: React.FC<{ doc: EventCardData }> = ({ doc }) => {
   const eventDate = firstEvent?.eventDates?.[0]?.date
   const eventTime = firstEvent?.details?.eventTime
 
-  const href = `/events/${slug}`
+  const href = `/events-in-chennai/${slug}`
 
   const formattedTime = eventTime
     ? new Date(`1970-01-01T${eventTime}`).toLocaleTimeString([], {

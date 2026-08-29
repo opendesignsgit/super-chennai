@@ -2490,6 +2490,18 @@ export interface Event {
      */
     image?: (number | null) | Media;
     description?: string | null;
+    /**
+     * Paste valid JSON-LD schema (Event schema for Google SEO)
+     */
+    schema?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
@@ -4084,6 +4096,18 @@ export interface Neighbourhood {
      */
     image?: (number | null) | Media;
     description?: string | null;
+    /**
+     * Paste valid JSON-LD schema (Event schema for Google SEO)
+     */
+    schema?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   structuredData?: {
     schemaType?:
@@ -5250,19 +5274,10 @@ export interface Search {
   id: number;
   title?: string | null;
   priority?: number | null;
-  doc:
-    | {
-        relationTo: 'pages';
-        value: number | Page;
-      }
-    | {
-        relationTo: 'visits';
-        value: number | Visit;
-      }
-    | {
-        relationTo: 'work';
-        value: number | Work;
-      };
+  doc: {
+    relationTo: 'pages';
+    value: number | Page;
+  };
   slug?: string | null;
   meta?: {
     title?: string | null;
@@ -7435,6 +7450,7 @@ export interface EventsSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
+        schema?: T;
       };
   publishedAt?: T;
   authors?: T;
@@ -8569,6 +8585,7 @@ export interface NeighbourhoodSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
+        schema?: T;
       };
   structuredData?:
     | T
