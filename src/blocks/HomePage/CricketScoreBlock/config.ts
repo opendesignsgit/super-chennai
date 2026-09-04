@@ -9,8 +9,10 @@ export const CricketScoreBlock: Block = {
   },
 
   admin: {
-    group: 'Sports',
+    group: 'Homepage Sections',
   },
+
+  imageURL: '/images/sections-image/cricketbloack.jpg',
 
   fields: [
     {

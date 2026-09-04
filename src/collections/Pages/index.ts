@@ -15,7 +15,7 @@ import { AboutFoundationsBlock } from '@/blocks/InnerPage/AboutPage/AboutFoundat
 import { AboutIntroBlock } from '@/blocks/InnerPage/AboutPage/AboutIntroBlock/config'
 import { AboutNammaChennaiBlock } from '@/blocks/InnerPage/AboutPage/AboutNammaChennaiSection/config'
 import { VisionMissionBlock } from '@/blocks/InnerPage/AboutPage/AboutVissionMisson/config'
-import { AboutWelcomeSuperChennaiBlock } from '@/blocks/InnerPage/AboutPage/AboutWelcomeSection/config'
+// import { AboutWelcomeSuperChennaiBlock } from '@/blocks/InnerPage/AboutPage/AboutWelcomeSection/config'
 import { AboutWelcomeSuperChennaiBlockNew } from '@/blocks/InnerPage/AboutPage/AboutWelcomeSuperChennai/config'
 import { AboutWhyChennaiBlock } from '@/blocks/InnerPage/AboutPage/AboutWhyChennai/config'
 import { ConclaveAboutBlock } from '@/blocks/InnerPage/ConclavePage/ConclaveAboutBlock/config'
@@ -168,7 +168,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 TwoColumnFeatureBlock,
                 Utilities,
                 ContentZoneCarousel,
-                SpotlightGallery,
+                // SpotlightGallery,
                 AllEvents,
                 liveIntrorSection,
                 ChennaiLifeEssentialSection,
@@ -195,7 +195,7 @@ export const Pages: CollectionConfig<'pages'> = {
 
                 // Conclave Pages
 
-                InnerPageBanner,
+                // InnerPageBanner,
                 InnerPageHeroBannerBlock,
 
                 // Faq Page
@@ -208,7 +208,7 @@ export const Pages: CollectionConfig<'pages'> = {
 
                 AboutIntroBlock,
                 AboutWelcomeSuperChennaiBlockNew,
-                AboutWelcomeSuperChennaiBlock,
+                // AboutWelcomeSuperChennaiBlock,
                 VisionMissionBlock,
                 AboutFoundationsBlock,
                 AboutNammaChennaiBlock,
