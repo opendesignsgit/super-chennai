@@ -20,9 +20,6 @@ import { HeadingFeatureClient as HeadingFeatureClient_e70f5e05f09f93e00b997edb1e
 import { default as default_1d496f20114e5cca465010ec59baf237 } from '@/collections/Arrattai/components/RegistrationViewer'
 import { default as default_7599c37600b17adcf282f308a3dfc12e } from '@/collections/Arrattai/components/SendThankYouButton'
 import { default as default_07aa055610e5eeae7e8d00fe02b3754c } from '@/collections/EventDashboard/components/Dashboard'
-import { LinkToDoc as LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
-import { ReindexButton as ReindexButton_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
-import { RowLabel as RowLabel_ec255a65fa6fa8d1faeb09cf35284224 } from '@/Header/RowLabel'
 import { UploadFeatureClient as UploadFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { BlockquoteFeatureClient as BlockquoteFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { RelationshipFeatureClient as RelationshipFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
@@ -35,6 +32,10 @@ import { InlineCodeFeatureClient as InlineCodeFeatureClient_e70f5e05f09f93e00b99
 import { SuperscriptFeatureClient as SuperscriptFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { SubscriptFeatureClient as SubscriptFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { StrikethroughFeatureClient as StrikethroughFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
+import { default as default_72f236443857182b62e778926f237a6c } from '@/collections/GoluContest/GoluDashboard/Dashboard'
+import { LinkToDoc as LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
+import { ReindexButton as ReindexButton_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
+import { RowLabel as RowLabel_ec255a65fa6fa8d1faeb09cf35284224 } from '@/Header/RowLabel'
 import { default as default_d500ae2ad98a0a33d640ae0ac1a3417c } from '@/components/admin/AdminIcon'
 import { default as default_b80a86fce1072afc84cd6a430a965697 } from '@/components/admin/AdminLogo'
 import { default as default_1a7510af427896d367a49dbf838d2de6 } from '@/components/BeforeDashboard'
@@ -63,9 +64,6 @@ export const importMap = {
   "@/collections/Arrattai/components/RegistrationViewer#default": default_1d496f20114e5cca465010ec59baf237,
   "@/collections/Arrattai/components/SendThankYouButton#default": default_7599c37600b17adcf282f308a3dfc12e,
   "@/collections/EventDashboard/components/Dashboard#default": default_07aa055610e5eeae7e8d00fe02b3754c,
-  "@payloadcms/plugin-search/client#LinkToDoc": LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634,
-  "@payloadcms/plugin-search/client#ReindexButton": ReindexButton_aead06e4cbf6b2620c5c51c9ab283634,
-  "@/Header/RowLabel#RowLabel": RowLabel_ec255a65fa6fa8d1faeb09cf35284224,
   "@payloadcms/richtext-lexical/client#UploadFeatureClient": UploadFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#BlockquoteFeatureClient": BlockquoteFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#RelationshipFeatureClient": RelationshipFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
@@ -78,6 +76,10 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#SuperscriptFeatureClient": SuperscriptFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#SubscriptFeatureClient": SubscriptFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#StrikethroughFeatureClient": StrikethroughFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
+  "@/collections/GoluContest/GoluDashboard/Dashboard#default": default_72f236443857182b62e778926f237a6c,
+  "@payloadcms/plugin-search/client#LinkToDoc": LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634,
+  "@payloadcms/plugin-search/client#ReindexButton": ReindexButton_aead06e4cbf6b2620c5c51c9ab283634,
+  "@/Header/RowLabel#RowLabel": RowLabel_ec255a65fa6fa8d1faeb09cf35284224,
   "@/components/admin/AdminIcon#default": default_d500ae2ad98a0a33d640ae0ac1a3417c,
   "@/components/admin/AdminLogo#default": default_b80a86fce1072afc84cd6a430a965697,
   "@/components/BeforeDashboard#default": default_1a7510af427896d367a49dbf838d2de6,

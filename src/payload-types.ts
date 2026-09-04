@@ -125,6 +125,12 @@ export interface Config {
     'arattai-form-fields': ArattaiFormField;
     iconOfMonth: IconOfMonth;
     'icon-month-categories': IconMonthCategory;
+    'whats-ap-chennai': WhatsApChennai;
+    'whatsapp-chennai-locations': WhatsappChennaiLocation;
+    'golu-submissions': GoluSubmission;
+    'golu-users': GoluUser;
+    participants: Participant;
+    'golu-dashboard-view': GoluDashboardView;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -192,6 +198,12 @@ export interface Config {
     'arattai-form-fields': ArattaiFormFieldsSelect<false> | ArattaiFormFieldsSelect<true>;
     iconOfMonth: IconOfMonthSelect<false> | IconOfMonthSelect<true>;
     'icon-month-categories': IconMonthCategoriesSelect<false> | IconMonthCategoriesSelect<true>;
+    'whats-ap-chennai': WhatsApChennaiSelect<false> | WhatsApChennaiSelect<true>;
+    'whatsapp-chennai-locations': WhatsappChennaiLocationsSelect<false> | WhatsappChennaiLocationsSelect<true>;
+    'golu-submissions': GoluSubmissionsSelect<false> | GoluSubmissionsSelect<true>;
+    'golu-users': GoluUsersSelect<false> | GoluUsersSelect<true>;
+    participants: ParticipantsSelect<false> | ParticipantsSelect<true>;
+    'golu-dashboard-view': GoluDashboardViewSelect<false> | GoluDashboardViewSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -210,6 +222,7 @@ export interface Config {
     iconOfMonthLandingPage: IconOfMonthLandingPage;
     articlesLandingPage: ArticlesLandingPage;
     settings: Setting;
+    'golu-contest-settings': GoluContestSetting;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -217,6 +230,7 @@ export interface Config {
     iconOfMonthLandingPage: IconOfMonthLandingPageSelect<false> | IconOfMonthLandingPageSelect<true>;
     articlesLandingPage: ArticlesLandingPageSelect<false> | ArticlesLandingPageSelect<true>;
     settings: SettingsSelect<false> | SettingsSelect<true>;
+    'golu-contest-settings': GoluContestSettingsSelect<false> | GoluContestSettingsSelect<true>;
   };
   locale: null;
   user: User & {
@@ -5002,6 +5016,310 @@ export interface IconMonthCategory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "whats-ap-chennai".
+ */
+export interface WhatsApChennai {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  FeaturedImage?: (number | null) | Media;
+  mobileImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  details?: {
+    duration?: string | null;
+    eventTime?: string | null;
+    ageLimit?: string | null;
+    /**
+     * Select one or more languages spoken or used in this event
+     */
+    language?:
+      | (
+          | 'tamil'
+          | 'telugu'
+          | 'malayalam'
+          | 'kannada'
+          | 'hindi'
+          | 'bengali'
+          | 'marathi'
+          | 'gujarati'
+          | 'punjabi'
+          | 'odia'
+          | 'urdu'
+          | 'sanskrit'
+          | 'english'
+          | 'spanish'
+          | 'french'
+          | 'german'
+          | 'italian'
+          | 'portuguese'
+          | 'russian'
+          | 'chinese'
+          | 'japanese'
+          | 'korean'
+          | 'arabic'
+          | 'turkish'
+          | 'persian'
+          | 'hebrew'
+          | 'thai'
+          | 'vietnamese'
+          | 'indonesian'
+          | 'filipino'
+          | 'malay'
+          | 'swahili'
+          | 'dutch'
+          | 'greek'
+          | 'polish'
+          | 'swedish'
+          | 'norwegian'
+          | 'finnish'
+          | 'danish'
+          | 'czech'
+          | 'hungarian'
+          | 'romanian'
+          | 'ukrainian'
+          | 'bulgarian'
+          | 'serbian'
+          | 'croatian'
+          | 'slovak'
+          | 'slovenian'
+          | 'latvian'
+          | 'lithuanian'
+          | 'estonian'
+          | 'icelandic'
+          | 'irish'
+          | 'welsh'
+          | 'scottish_gaelic'
+          | 'albanian'
+          | 'bosnian'
+          | 'macedonian'
+          | 'armenian'
+          | 'georgian'
+          | 'kazakh'
+          | 'uzbek'
+          | 'turkmen'
+          | 'tajik'
+          | 'nepali'
+          | 'sinhala'
+          | 'burmese'
+          | 'khmer'
+          | 'lao'
+          | 'mongolian'
+          | 'pashto'
+          | 'somali'
+          | 'amharic'
+          | 'yoruba'
+          | 'hausa'
+          | 'zulu'
+          | 'afrikaans'
+          | 'maori'
+          | 'samoan'
+          | 'tongan'
+          | 'fijian'
+        )[]
+      | null;
+    /**
+     * Select the Chennai location
+     */
+    location?: (number | null) | WhatsappChennaiLocation;
+    /**
+     * Check if this event has free entry (no ticket required).
+     */
+    isFree?: boolean | null;
+    /**
+     * Check if this event is suitable for families/children.
+     */
+    familyFriendly?: boolean | null;
+    /**
+     * Add one or more dates for the event (example: show multiple dates if the event happens on different days)
+     */
+    eventDates?:
+      | {
+          date?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+    /**
+     * Paste valid JSON-LD schema (Event schema for Google SEO)
+     */
+    schema?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "whatsapp-chennai-locations".
+ */
+export interface WhatsappChennaiLocation {
+  id: number;
+  /**
+   * State name (e.g. Tamil Nadu)
+   */
+  state: string;
+  /**
+   * City name (e.g. Chennai)
+   */
+  city: string;
+  /**
+   * Locality / Area (e.g. OMR, ECR, Anna Nagar)
+   */
+  locality: string;
+  /**
+   * Display label (e.g. OMR, Chennai)
+   */
+  label: string;
+  /**
+   * Unique location slug (e.g. chennai-omr)
+   */
+  value: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "golu-submissions".
+ */
+export interface GoluSubmission {
+  id: number;
+  participant: number | GoluUser;
+  goluPhotographs: {
+    image: number | Media;
+    sortOrder?: number | null;
+    id?: string | null;
+  }[];
+  superChennaiCornerPhotographs: {
+    image: number | Media;
+    sortOrder?: number | null;
+    id?: string | null;
+  }[];
+  aboutYourGolu?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  status?: ('pendingReview' | 'approved' | 'rejected' | 'shortlisted' | 'finalist' | 'winner') | null;
+  /**
+   * Internal admin notes - strictly hidden from participants.
+   */
+  internalNotes?: string | null;
+  actionHistory?:
+    | {
+        action: string;
+        performedBy: string;
+        performedAt: string;
+        notes?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "golu-users".
+ */
+export interface GoluUser {
+  id: number;
+  fullName: string;
+  /**
+   * 10-digit Indian Mobile Number
+   */
+  mobileNumber: string;
+  email: string;
+  localityArea: string;
+  instagramHandle?: string | null;
+  registrationDate?: string | null;
+  termsAccepted: boolean;
+  termsAcceptedAt?: string | null;
+  isVerified?: boolean | null;
+  submission?: (number | null) | GoluSubmission;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "participants".
+ */
+export interface Participant {
+  id: number;
+  fullName: string;
+  /**
+   * Formatted 10-digit Indian Mobile Number
+   */
+  mobileNumber: string;
+  email: string;
+  localityArea: string;
+  instagramHandle?: string | null;
+  registrationDate?: string | null;
+  termsAccepted: boolean;
+  termsAcceptedAt?: string | null;
+  isVerified?: boolean | null;
+  submission?: (number | null) | GoluSubmission;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "golu-dashboard-view".
+ */
+export interface GoluDashboardView {
+  id: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -5569,6 +5887,30 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'icon-month-categories';
         value: number | IconMonthCategory;
+      } | null)
+    | ({
+        relationTo: 'whats-ap-chennai';
+        value: number | WhatsApChennai;
+      } | null)
+    | ({
+        relationTo: 'whatsapp-chennai-locations';
+        value: number | WhatsappChennaiLocation;
+      } | null)
+    | ({
+        relationTo: 'golu-submissions';
+        value: number | GoluSubmission;
+      } | null)
+    | ({
+        relationTo: 'golu-users';
+        value: number | GoluUser;
+      } | null)
+    | ({
+        relationTo: 'participants';
+        value: number | Participant;
+      } | null)
+    | ({
+        relationTo: 'golu-dashboard-view';
+        value: number | GoluDashboardView;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -9098,6 +9440,147 @@ export interface IconMonthCategoriesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "whats-ap-chennai_select".
+ */
+export interface WhatsApChennaiSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  FeaturedImage?: T;
+  mobileImage?: T;
+  content?: T;
+  details?:
+    | T
+    | {
+        duration?: T;
+        eventTime?: T;
+        ageLimit?: T;
+        language?: T;
+        location?: T;
+        isFree?: T;
+        familyFriendly?: T;
+        eventDates?:
+          | T
+          | {
+              date?: T;
+              id?: T;
+            };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+        schema?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "whatsapp-chennai-locations_select".
+ */
+export interface WhatsappChennaiLocationsSelect<T extends boolean = true> {
+  state?: T;
+  city?: T;
+  locality?: T;
+  label?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "golu-submissions_select".
+ */
+export interface GoluSubmissionsSelect<T extends boolean = true> {
+  participant?: T;
+  goluPhotographs?:
+    | T
+    | {
+        image?: T;
+        sortOrder?: T;
+        id?: T;
+      };
+  superChennaiCornerPhotographs?:
+    | T
+    | {
+        image?: T;
+        sortOrder?: T;
+        id?: T;
+      };
+  aboutYourGolu?: T;
+  status?: T;
+  internalNotes?: T;
+  actionHistory?:
+    | T
+    | {
+        action?: T;
+        performedBy?: T;
+        performedAt?: T;
+        notes?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "golu-users_select".
+ */
+export interface GoluUsersSelect<T extends boolean = true> {
+  fullName?: T;
+  mobileNumber?: T;
+  email?: T;
+  localityArea?: T;
+  instagramHandle?: T;
+  registrationDate?: T;
+  termsAccepted?: T;
+  termsAcceptedAt?: T;
+  isVerified?: T;
+  submission?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "participants_select".
+ */
+export interface ParticipantsSelect<T extends boolean = true> {
+  fullName?: T;
+  mobileNumber?: T;
+  email?: T;
+  localityArea?: T;
+  instagramHandle?: T;
+  registrationDate?: T;
+  termsAccepted?: T;
+  termsAcceptedAt?: T;
+  isVerified?: T;
+  submission?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "golu-dashboard-view_select".
+ */
+export interface GoluDashboardViewSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
@@ -9553,6 +10036,93 @@ export interface Setting {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "golu-contest-settings".
+ */
+export interface GoluContestSetting {
+  id: number;
+  contestName?: string | null;
+  contestSlug?: string | null;
+  contestYear?: number | null;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  heroDescription?: string | null;
+  heroImage?: (number | null) | Media;
+  registrationStartDate?: string | null;
+  registrationEndDate?: string | null;
+  submissionStartDate?: string | null;
+  submissionEndDate?: string | null;
+  goluMinImages?: number | null;
+  goluMaxImages?: number | null;
+  superChennaiMinImages?: number | null;
+  superChennaiMaxImages?: number | null;
+  maxImageSizeMB?: number | null;
+  termsAndConditions?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  contestRules?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  registrationSuccessMessage?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  submissionSuccessMessage?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  registrationEnabled?: boolean | null;
+  submissionEnabled?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -9706,6 +10276,37 @@ export interface SettingsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "golu-contest-settings_select".
+ */
+export interface GoluContestSettingsSelect<T extends boolean = true> {
+  contestName?: T;
+  contestSlug?: T;
+  contestYear?: T;
+  heroTitle?: T;
+  heroSubtitle?: T;
+  heroDescription?: T;
+  heroImage?: T;
+  registrationStartDate?: T;
+  registrationEndDate?: T;
+  submissionStartDate?: T;
+  submissionEndDate?: T;
+  goluMinImages?: T;
+  goluMaxImages?: T;
+  superChennaiMinImages?: T;
+  superChennaiMaxImages?: T;
+  maxImageSizeMB?: T;
+  termsAndConditions?: T;
+  contestRules?: T;
+  registrationSuccessMessage?: T;
+  submissionSuccessMessage?: T;
+  registrationEnabled?: T;
+  submissionEnabled?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "TaskSchedulePublish".
  */
 export interface TaskSchedulePublish {
@@ -9792,6 +10393,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'iconOfMonth';
           value: number | IconOfMonth;
+        } | null)
+      | ({
+          relationTo: 'whats-ap-chennai';
+          value: number | WhatsApChennai;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
@@ -9879,6 +10484,33 @@ export interface InvestCategoryBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'InvestCategoryBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutTrendingBlock".
+ */
+export interface AboutTrendingBlock {
+  badgeText?: string | null;
+  heading: string;
+  paragraphs?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  quote?: string | null;
+  cta?: {
+    label?: string | null;
+    url?: string | null;
+  };
+  imageGroup: {
+    image: number | Media;
+    caption?: string | null;
+    imageLink?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'aboutTrending';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

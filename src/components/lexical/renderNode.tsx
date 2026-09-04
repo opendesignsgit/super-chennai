@@ -15,6 +15,8 @@ import FeatureListBlockComponent from '@/app/(frontend)/icon-of-the-month/blocks
 import NaturalsBlockComponent from '@/app/(frontend)/icon-of-the-month/blocks/NaturalsSection/Component'
 import GallerySliderComponent from '@/app/(frontend)/icon-of-the-month/blocks/GallerySliderBlock/Component'
 import ArattaiBlockComponent from '@/collections/Arrattai/components/RegistrationForm/coponents'
+import { AboutTrendingComponent } from '@/collections/WhatsupChennai/blocks/AboutTrending/Component'
+import EventQuickDetailsComponent from '@/blocks/EventQuickDetails/Component'
 
 export function renderNode(node: any, idx: number, arattaiData?: any): React.ReactNode {
   /* ------------------------------------------------
@@ -140,6 +142,16 @@ export function renderNode(node: any, idx: number, arattaiData?: any): React.Rea
       if (blockType === 'eventRegistrationFormBlock') {
         return <ArattaiBlockComponent key={idx} block={node.fields} arattaiData={arattaiData} />
       }
+
+      if (blockType === 'aboutTrending') {
+        return <AboutTrendingComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'eventQuickDetails') {
+        return <EventQuickDetailsComponent key={idx} {...node.fields} />
+      }
+
+      
 
       return null
     }
