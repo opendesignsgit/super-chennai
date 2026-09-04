@@ -87,6 +87,7 @@ import ContactComponent from './InnerPage/ContactPage/component'
 import ChennaiAppsComponent from './InnerPage/ChennaiApps/component'
 import PlacesSectionComponent from './InnerPage/SharedBlocks/PlaceofWorship/component'
 import LearningLivePageComponent from './InnerPage/SharedBlocks/LearningLivePage/component'
+import InnerPageHeroBannerComponent from './InnerPage/SharedBlocks/InnerPageBanner/component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -99,7 +100,7 @@ const blockComponents: {
   startupChennai: StartupChennaiBlockServer,
 
   // InnerPageBanner: Banner,
-  // InnerPageHeroBannerBlock: InnerPageHeroBannerComponent,
+  InnerPageHeroBannerBlock: InnerPageHeroBannerComponent,
   chennaiInvestments: ChennaiInvestments,
   socialReelSlider: socialReelSlider,
   becameAVolunteer: BecameAVolunteer,
@@ -109,11 +110,11 @@ const blockComponents: {
   infography: InfographySection,
   twoColumnFeatureBlock: TwoColumnFeatureBlock,
   utilities: Utilities,
-  spotlightGallery: SpotlightGallerySection,
+  // spotlightGallery: SpotlightGallerySection,
   introTextBlock: PageIntroText,
   visitcategory: VisitCategory,
   ZigZagContent: ZigZagContentSection,
-  mainPageBanner: mainPageBanner,
+  // mainPageBanner: mainPageBanner,
   formPopup: FormPopupComponent,
   volunteerBecameSection: VolunteerBecameSection,
   contentZoneCarousel: ContentZoneCarousel,

@@ -750,43 +750,6 @@ export interface Page {
       }
     | {
         /**
-         * Maximum 20 characters allowed
-         */
-        heading: string;
-        /**
-         * Maximum 500 characters allowed
-         */
-        description: string;
-        link?: string | null;
-        items?:
-          | {
-              /**
-               * Maximum 15 characters allowed
-               */
-              name: string;
-              /**
-               * Maximum 15 characters allowed
-               */
-              subtitle?: string | null;
-              /**
-               * Maximum 200 characters allowed
-               */
-              para?: string | null;
-              image: number | Media;
-              page?: (number | null) | Event;
-              /**
-               * This will override the selected page link if provided.
-               */
-              customLink?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'spotlightGallery';
-      }
-    | {
-        /**
          * Maximum 15 characters allowed
          */
         title: string;
@@ -1130,27 +1093,21 @@ export interface Page {
         blockType: 'ConclaveGalleryBlock';
       }
     | {
-        heading: string;
-        image: number | Media;
-        breadcrumb?:
-          | {
-              label: string;
-              url: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'Banner';
-      }
-    | {
         bannerImage: number | Media;
-        title: string;
+        /**
+         * If left empty, the desktop image will be used on mobile screens as fallback.
+         */
+        mobileBannerImage?: (number | null) | Media;
+        title?: string | null;
         smallTitleText?: string | null;
         /**
          * Leave empty if the banner should not be clickable.
          */
         bannerLink?: string | null;
+        /**
+         * Check this box to open the link in a new tab. Unchecked opens in the same tab.
+         */
+        openInNewTab?: boolean | null;
         breadcrumbs?:
           | {
               label: string;
@@ -1208,30 +1165,6 @@ export interface Page {
         id?: string | null;
         blockName?: string | null;
         blockType: 'AboutWelcomeSuperChennaiBlockNew';
-      }
-    | {
-        heading: string;
-        subheading: string;
-        images?:
-          | {
-              image: number | Media;
-              id?: string | null;
-            }[]
-          | null;
-        columns?:
-          | {
-              /**
-               * Use line breaks for multiple paragraphs
-               */
-              col1?: string | null;
-              col2?: string | null;
-              col3?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'WelcomeChennaiBlock';
       }
     | {
         cards?:
@@ -1868,71 +1801,91 @@ export interface Page {
         blockType: 'placesSectionBlock';
       }
     | {
-        regions?:
+        mainTabs?:
           | {
-              regionName: string;
-              heroImage?: (number | null) | Media;
-              contentLayout?:
-                | (
-                    | {
-                        title: string;
-                        icon?: (number | null) | Media;
-                        description?: string | null;
-                        points?:
+              tabTitle: string;
+              regions?:
+                | {
+                    regionName: string;
+                    heroImage?: (number | null) | Media;
+                    contentLayout?:
+                      | (
                           | {
-                              point?: string | null;
+                              sectionTitle: string;
+                              image: number | Media;
+                              imgAlt?: string | null;
                               id?: string | null;
-                            }[]
-                          | null;
-                        id?: string | null;
-                        blockName?: string | null;
-                        blockType: 'infoSectionBlock';
-                      }
-                    | {
-                        tableTitle: string;
-                        headers?:
+                              blockName?: string | null;
+                              blockType: 'imageTitleBlock';
+                            }
                           | {
-                              headerName?: string | null;
-                              id?: string | null;
-                            }[]
-                          | null;
-                        rows?:
-                          | {
-                              cells?:
+                              title: string;
+                              icon?: (number | null) | Media;
+                              /**
+                               * Supports HTML tags like <strong>bold text</strong> and <br/> for line breaks.
+                               */
+                              description?: string | null;
+                              points?:
                                 | {
-                                    value?: string | null;
+                                    /**
+                                     * Supports HTML tags like <strong>bold text</strong> and <br/> for line breaks.
+                                     */
+                                    point?: string | null;
                                     id?: string | null;
                                   }[]
                                 | null;
                               id?: string | null;
-                            }[]
-                          | null;
-                        id?: string | null;
-                        blockName?: string | null;
-                        blockType: 'tableBlock';
-                      }
-                    | {
-                        categoryName: string;
-                        categoryDesc?: string | null;
-                        items?:
+                              blockName?: string | null;
+                              blockType: 'infoSectionBlock';
+                            }
                           | {
-                              name: string;
-                              desc?: string | null;
-                              locations?:
+                              tableTitle: string;
+                              headers?:
+                                | {
+                                    headerName?: string | null;
+                                    id?: string | null;
+                                  }[]
+                                | null;
+                              rows?:
+                                | {
+                                    cells?:
+                                      | {
+                                          value?: string | null;
+                                          id?: string | null;
+                                        }[]
+                                      | null;
+                                    id?: string | null;
+                                  }[]
+                                | null;
+                              id?: string | null;
+                              blockName?: string | null;
+                              blockType: 'tableBlock';
+                            }
+                          | {
+                              categoryName: string;
+                              categoryDesc?: string | null;
+                              items?:
                                 | {
                                     name: string;
-                                    link?: string | null;
+                                    desc?: string | null;
+                                    locations?:
+                                      | {
+                                          name: string;
+                                          link?: string | null;
+                                          id?: string | null;
+                                        }[]
+                                      | null;
                                     id?: string | null;
                                   }[]
                                 | null;
                               id?: string | null;
-                            }[]
-                          | null;
-                        id?: string | null;
-                        blockName?: string | null;
-                        blockType: 'categoryBlock';
-                      }
-                  )[]
+                              blockName?: string | null;
+                              blockType: 'categoryBlock';
+                            }
+                        )[]
+                      | null;
+                    id?: string | null;
+                  }[]
                 | null;
               id?: string | null;
             }[]
@@ -2310,6 +2263,108 @@ export interface Investment {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "live".
+ */
+export interface Live {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  /**
+   * This image will be used as the featured image for Slides.
+   */
+  FeaturedImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedlive?: (number | Live)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "work".
+ */
+export interface Work {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  /**
+   * This image will be used as the featured image for Slides.
+   */
+  FeaturedImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedwork?: (number | Work)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "events".
  */
 export interface Event {
@@ -2560,108 +2615,6 @@ export interface EventsCategory {
   description?: string | null;
   updatedAt: string;
   createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "live".
- */
-export interface Live {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  /**
-   * This image will be used as the featured image for Slides.
-   */
-  FeaturedImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedlive?: (number | Live)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "work".
- */
-export interface Work {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  /**
-   * This image will be used as the featured image for Slides.
-   */
-  FeaturedImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedwork?: (number | Work)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -6006,26 +5959,6 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        spotlightGallery?:
-          | T
-          | {
-              heading?: T;
-              description?: T;
-              link?: T;
-              items?:
-                | T
-                | {
-                    name?: T;
-                    subtitle?: T;
-                    para?: T;
-                    image?: T;
-                    page?: T;
-                    customLink?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
         allevents?:
           | T
           | {
@@ -6316,28 +6249,15 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        Banner?:
-          | T
-          | {
-              heading?: T;
-              image?: T;
-              breadcrumb?:
-                | T
-                | {
-                    label?: T;
-                    url?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
         InnerPageHeroBannerBlock?:
           | T
           | {
               bannerImage?: T;
+              mobileBannerImage?: T;
               title?: T;
               smallTitleText?: T;
               bannerLink?: T;
+              openInNewTab?: T;
               breadcrumbs?:
                 | T
                 | {
@@ -6390,28 +6310,6 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     paragraphs?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        WelcomeChennaiBlock?:
-          | T
-          | {
-              heading?: T;
-              subheading?: T;
-              images?:
-                | T
-                | {
-                    image?: T;
-                    id?: T;
-                  };
-              columns?:
-                | T
-                | {
-                    col1?: T;
-                    col2?: T;
-                    col3?: T;
                     id?: T;
                   };
               id?: T;
@@ -7077,75 +6975,90 @@ export interface PagesSelect<T extends boolean = true> {
         llpBlock?:
           | T
           | {
-              regions?:
+              mainTabs?:
                 | T
                 | {
-                    regionName?: T;
-                    heroImage?: T;
-                    contentLayout?:
+                    tabTitle?: T;
+                    regions?:
                       | T
                       | {
-                          infoSectionBlock?:
+                          regionName?: T;
+                          heroImage?: T;
+                          contentLayout?:
                             | T
                             | {
-                                title?: T;
-                                icon?: T;
-                                description?: T;
-                                points?:
+                                imageTitleBlock?:
                                   | T
                                   | {
-                                      point?: T;
+                                      sectionTitle?: T;
+                                      image?: T;
+                                      imgAlt?: T;
                                       id?: T;
+                                      blockName?: T;
                                     };
-                                id?: T;
-                                blockName?: T;
-                              };
-                          tableBlock?:
-                            | T
-                            | {
-                                tableTitle?: T;
-                                headers?:
+                                infoSectionBlock?:
                                   | T
                                   | {
-                                      headerName?: T;
-                                      id?: T;
-                                    };
-                                rows?:
-                                  | T
-                                  | {
-                                      cells?:
+                                      title?: T;
+                                      icon?: T;
+                                      description?: T;
+                                      points?:
                                         | T
                                         | {
-                                            value?: T;
+                                            point?: T;
                                             id?: T;
                                           };
                                       id?: T;
+                                      blockName?: T;
                                     };
-                                id?: T;
-                                blockName?: T;
-                              };
-                          categoryBlock?:
-                            | T
-                            | {
-                                categoryName?: T;
-                                categoryDesc?: T;
-                                items?:
+                                tableBlock?:
                                   | T
                                   | {
-                                      name?: T;
-                                      desc?: T;
-                                      locations?:
+                                      tableTitle?: T;
+                                      headers?:
+                                        | T
+                                        | {
+                                            headerName?: T;
+                                            id?: T;
+                                          };
+                                      rows?:
+                                        | T
+                                        | {
+                                            cells?:
+                                              | T
+                                              | {
+                                                  value?: T;
+                                                  id?: T;
+                                                };
+                                            id?: T;
+                                          };
+                                      id?: T;
+                                      blockName?: T;
+                                    };
+                                categoryBlock?:
+                                  | T
+                                  | {
+                                      categoryName?: T;
+                                      categoryDesc?: T;
+                                      items?:
                                         | T
                                         | {
                                             name?: T;
-                                            link?: T;
+                                            desc?: T;
+                                            locations?:
+                                              | T
+                                              | {
+                                                  name?: T;
+                                                  link?: T;
+                                                  id?: T;
+                                                };
                                             id?: T;
                                           };
                                       id?: T;
+                                      blockName?: T;
                                     };
-                                id?: T;
-                                blockName?: T;
                               };
+                          id?: T;
                         };
                     id?: T;
                   };
