@@ -23,9 +23,9 @@ import GoluFirstSectionBlockComponent from '@/collections/GoluContest/blocks/Gol
 import GoluWhyCornerBlockComponent from '@/collections/GoluContest/blocks/GoluWhySuperChennai/Component'
 import GoluHowItWorksBlockComponent from '@/collections/GoluContest/blocks/GoluHowItWorks/component'
 import GoluCreateBlockComponent from '@/collections/GoluContest/blocks/GoluHowItWorks/component'
-import GoluJudgingBlockComponent from '@/collections/GoluContest/blocks/GoluJudging/component'
 import GoluCtaBannerBlockComponent from '@/collections/GoluContest/blocks/GoluCtaBanner/component'
 import GoluHeroBannerBlockComponent from '@/collections/GoluContest/blocks/GoluHeroBanner/component'
+import GoluJudgingBlockComponent from '@/collections/GoluContest/blocks/GoluJudgingBlock/component'
 
 export function renderNode(node: any, idx: number, arattaiData?: any): React.ReactNode {
   /* ------------------------------------------------
@@ -183,9 +183,9 @@ export function renderNode(node: any, idx: number, arattaiData?: any): React.Rea
         return <GoluCreateBlockComponent key={idx} {...node.fields} />
       }
 
-      if (blockType === 'goluJudging') {
-        return <GoluJudgingBlockComponent key={idx} {...node.fields} />
-      }
+      // if (blockType === 'goluJudging') {
+      //   return <GoluJudgingBlockComponent key={idx} {...node.fields} />
+      // }
 
       if (blockType === 'goluCtaBanner') {
         return <GoluCtaBannerBlockComponent key={idx} {...node.fields} />
@@ -198,6 +198,12 @@ export function renderNode(node: any, idx: number, arattaiData?: any): React.Rea
       if (blockType === 'GoluHowItWorksBlock') {
         return <GoluHowItWorksBlockComponent key={idx} {...node.fields} />
       }
+
+      if (blockType === 'goluJudging') {
+        return <GoluJudgingBlockComponent key={idx} {...node.fields} />
+      }
+
+      
 
       return null
     }
