@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import GlobalSearch from '@/blocks/HomePage/GlobalSearch/Component'
 import { CollectionSlug, getPayload } from 'payload'
 import { Suspense } from 'react'
