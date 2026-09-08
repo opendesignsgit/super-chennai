@@ -2,7 +2,7 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import 'dotenv/config'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
-import sharp from 'sharp'; // sharp-import
+import sharp from 'sharp' // sharp-import
 import { defaultLexical } from 'src/fields/defaultLexical'
 import { fileURLToPath } from 'url'
 import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config'
@@ -77,6 +77,8 @@ import Footer from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { getServerSideURL } from './utilities/getURL'
+import { GoluContest } from './collections/GoluContest/GoluContest'
+import { GoluLandingPage } from './collections/GoluContest/GoluLandingPage'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -211,11 +213,12 @@ export default buildConfig({
     WhatsAppChennaiLocations,
 
     // GLOU CONTEST
-  
+
     GoluSubmissions,
     GoluUsers,
     Participants,
-    GoluDashboardCollection
+    GoluDashboardCollection,
+    GoluContest,
   ],
 
   //######### CUSTOME END POINT  ################
@@ -239,7 +242,15 @@ export default buildConfig({
     'http://localhost:3000',
     getServerSideURL(),
   ].filter(Boolean),
-  globals: [Header, Footer, IconOfMonthPage, ArticlesLandingPage, Settings,  ContestSettings,],
+  globals: [
+    Header,
+    Footer,
+    IconOfMonthPage,
+    ArticlesLandingPage,
+    Settings,
+    ContestSettings,
+    GoluLandingPage,
+  ],
   blocks: [ChennaiInvestmentsBlock],
   plugins: [...plugins],
   secret: process.env.PAYLOAD_SECRET,

@@ -131,6 +131,7 @@ export interface Config {
     'golu-users': GoluUser;
     participants: Participant;
     'golu-dashboard-view': GoluDashboardView;
+    'golu-contest': GoluContest;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -204,6 +205,7 @@ export interface Config {
     'golu-users': GoluUsersSelect<false> | GoluUsersSelect<true>;
     participants: ParticipantsSelect<false> | ParticipantsSelect<true>;
     'golu-dashboard-view': GoluDashboardViewSelect<false> | GoluDashboardViewSelect<true>;
+    'golu-contest': GoluContestSelect<false> | GoluContestSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -223,6 +225,7 @@ export interface Config {
     articlesLandingPage: ArticlesLandingPage;
     settings: Setting;
     'golu-contest-settings': GoluContestSetting;
+    goluLandingPage: GoluLandingPage;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -231,6 +234,7 @@ export interface Config {
     articlesLandingPage: ArticlesLandingPageSelect<false> | ArticlesLandingPageSelect<true>;
     settings: SettingsSelect<false> | SettingsSelect<true>;
     'golu-contest-settings': GoluContestSettingsSelect<false> | GoluContestSettingsSelect<true>;
+    goluLandingPage: GoluLandingPageSelect<false> | GoluLandingPageSelect<true>;
   };
   locale: null;
   user: User & {
@@ -5320,6 +5324,65 @@ export interface GoluDashboardView {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "golu-contest".
+ */
+export interface GoluContest {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  FeaturedImage?: (number | null) | Media;
+  mobileImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+    /**
+     * Paste valid JSON-LD schema (Event schema for Google SEO)
+     */
+    schema?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -5911,6 +5974,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'golu-dashboard-view';
         value: number | GoluDashboardView;
+      } | null)
+    | ({
+        relationTo: 'golu-contest';
+        value: number | GoluContest;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -9581,6 +9648,38 @@ export interface GoluDashboardViewSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "golu-contest_select".
+ */
+export interface GoluContestSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  FeaturedImage?: T;
+  mobileImage?: T;
+  content?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+        schema?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
@@ -10122,6 +10221,55 @@ export interface GoluContestSetting {
   createdAt?: string | null;
 }
 /**
+ * Manage main landing page content, banners, blocks, and SEO for Golu Contest.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "goluLandingPage".
+ */
+export interface GoluLandingPage {
+  id: number;
+  title: string;
+  desktopImage?: (number | null) | Media;
+  mobileImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+    /**
+     * Paste valid JSON-LD schema (Event schema for Google SEO)
+     */
+    schema?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
@@ -10307,6 +10455,27 @@ export interface GoluContestSettingsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "goluLandingPage_select".
+ */
+export interface GoluLandingPageSelect<T extends boolean = true> {
+  title?: T;
+  desktopImage?: T;
+  mobileImage?: T;
+  content?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+        schema?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "TaskSchedulePublish".
  */
 export interface TaskSchedulePublish {
@@ -10397,6 +10566,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'whats-ap-chennai';
           value: number | WhatsApChennai;
+        } | null)
+      | ({
+          relationTo: 'golu-contest';
+          value: number | GoluContest;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
