@@ -11,7 +11,7 @@ export const GoluDashboardCollection: CollectionConfig = {
     read: () => true,
   },
   admin: {
-    group: 'Golu Contest',
+    group: '🪔 Golu Contest',
     hidden: false,
     components: {
       views: {

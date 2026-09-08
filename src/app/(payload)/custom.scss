@@ -336,199 +336,6 @@
 }
 
 
-
-/* =========================================================
-   PAYLOAD CMS SIDEBAR NAV - PREMIUM DARK MINIMALIST (V2)
-   CLEAN, FIXED BORDERS, MODERN DEVELOPER EXPERIENCE
-========================================================= */
-
-:root {
-  --nav-brand: #a44294;        /* Primary Accent Color */
-  --sidebar-bg: #0f172a;       /* Slate Dark Deep Background */
-  --group-header-text: #94a3b8;/* Light Muted Grey for Headings */
-  --link-text: #cbd5e1;        /* Readable Off-White Text */
-  --link-hover-bg: #1e293b;    /* Slightly lighter Slate on hover */
-  --sidebar-border: #1e293b;   /* Seamless dividing borders */
-}
-
-/* =========================================================
-   SIDEBAR SCROLL WRAPPER
-========================================================= */
-.nav__scroll {
-  background: var(--sidebar-bg) !important;
-  padding: 24px 16px;
-  border-right: 1px solid var(--sidebar-border);
-  scrollbar-width: thin;
-}
-
-/* Custom Minimal Scrollbar */
-.nav__scroll::-webkit-scrollbar {
-  width: 4px;
-}
-.nav__scroll::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 4px;
-}
-
-/* =========================================================
-   BRAND LOGO HEADER
-========================================================= */
-.nav__header {
-  padding-bottom: 24px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--sidebar-border);
-  display: flex;
-  align-items: center;
-}
-
-/* Enavu brand logo light colored-a use panna super-a sync aagum */
-.nav__header a img {
-  max-height: 38px !important;
-  width: auto;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-}
-
-/* =========================================================
-   MAIN GROUP TITLES (SHARP & STRUCTURAL)
-========================================================= */
-.nav-group {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  margin-bottom: 18px;
-}
-
-.nav-group__toggle {
-  width: 100%;
-  min-height: 28px;
-  padding: 0 6px;
-  background: transparent !important;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  margin-bottom: 6px;
-}
-
-/* Main title bolding & spacing */
-.nav-group__label {
-  color: var(--group-header-text) !important;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-}
-
-/* Chevron arrow style */
-.nav-group__indicator {
-  width: 12px;
-  height: 12px;
-  color: #475569;
-  transition: color 0.2s ease;
-}
-
-.nav-group__toggle:hover .nav-group__indicator {
-  color: var(--link-text);
-}
-
-/* =========================================================
-   NAV LINKS (FLAT FLAT INTERACTION)
-========================================================= */
-.nav__link {
-  position: relative;
-  display: flex;
-  align-items: center;
-  min-height: 38px;
-  padding: 0 12px;
-  margin-bottom: 4px;
-  border-radius: 6px !important; /* Soft corners for elements */
-  color: var(--link-text) !important;
-  text-decoration: none !important;
-  font-size: 13px;
-  font-weight: 500;
-  transition: background-color 0.15s ease, color 0.15s ease;
-}
-
-/* Hover State */
-.nav__link:hover {
-  background-color: var(--link-hover-bg) !important;
-  color: #ffffff !important;
-}
-
-/* =========================================================
-   ACTIVE LINK STATE (LEFT GLOW BAR)
-========================================================= */
-.nav__link--active,
-.nav__link.active,
-.nav__link[aria-current='page'] {
-  background: #1e1b4b !important; /* Deep Indigo tint */
-  color: #ffffff !important;
-  font-weight: 600;
-  box-shadow: none !important;
-}
-
-.nav__link--active .nav__link-label,
-.nav__link.active .nav__link-label,
-.nav__link[aria-current='page'] .nav__link-label {
-  color: #ffffff !important;
-}
-
-/* Clean vertical line indicator on the left edge */
-.nav__link--active::after,
-.nav__link.active::after,
-.nav__link[aria-current='page']::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 8px;
-  bottom: 8px;
-  width: 3px;
-  background-color: var(--nav-brand); /* Uses your core theme brand color */
-  border-radius: 0 2px 2px 0;
-}
-
-.nav__link-indicator {
-  display: none !important; /* Kill default dot components */
-}
-
-/* =========================================================
-   LOGOUT AREA & CONTROLS
-========================================================= */
-.nav__controls {
-  margin-top: auto;
-  padding: 20px 4px 0 4px;
-  border-top: 1px solid var(--sidebar-border);
-}
-
-.nav__log-out {
-  width: 100%;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px !important;
-  background: transparent !important;
-  border: 1px solid #312e81 !important; /* Deep blue-grey outline */
-  transition: all 0.15s ease;
-}
-
-.nav__log-out .icon {
-  width: 16px;
-  height: 16px;
-  color: #f87171; /* Smooth neon red */
-}
-
-.nav__log-out:hover {
-  background: #7f1d1d !important; /* Corporate dark red warning background */
-  border-color: #ef4444 !important;
-}
-
-.nav__log-out:hover .icon {
-  color: #ffffff !important;
-}
-
-
 // DSHBORAD BEFORE STYELE 
 .before-dashboard {
   margin-bottom: 32px;
@@ -724,3 +531,368 @@
     }
   }
 }
+
+
+
+/* =========================================================
+   PAYLOAD CMS SIDEBAR NAV - MODERN SVG & DEEP GLOW (V4)
+========================================================= */
+
+:root {
+  --nav-brand: #a44294;        /* Primary Accent */
+  --nav-brand-glow: rgba(164, 66, 148, 0.35);
+  --sidebar-bg: #0b0f19;       /* Deep Midnight Slate Dark */
+  --group-header-text: #64748b;/* Crisp Muted Grey */
+  --link-text: #cbd5e1;        /* Off-White Text */
+  --link-hover-bg: #151d2f;    /* Interactive Tint Hover */
+  --sidebar-border: #1e293b;   /* Border Divider */
+}
+
+/* --- SIDEBAR SCROLL WRAPPER (WITH SVG MESH BG) --- */
+.nav__scroll {
+  background-color: var(--sidebar-bg) !important;
+  /* SVG Geometric Grid Overlay */
+  background-image: radial-gradient(#1e293b 0.75px, transparent 0.75px);
+  background-size: 12px 12px;
+  padding: 16px 10px;
+  border-right: 1px solid var(--sidebar-border);
+  scrollbar-width: thin;
+}
+
+.nav__scroll::-webkit-scrollbar {
+  width: 3px;
+}
+.nav__scroll::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+
+/* --- BRAND LOGO HEADER --- */
+.nav__header {
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--sidebar-border);
+  display: flex;
+  align-items: center;
+}
+
+.nav__header a img {
+  max-height: 28px !important;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* --- GROUP TITLES --- */
+.nav-group {
+  background: transparent !important;
+  border: none !important;
+  margin-bottom: 12px;
+}
+
+.nav-group__toggle {
+  width: 100%;
+  min-height: 22px;
+  padding: 0 4px;
+  background: transparent !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+.nav-group__label {
+  color: var(--group-header-text) !important;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.nav-group__indicator {
+  width: 10px;
+  height: 10px;
+  color: #475569;
+}
+
+/* --- NAV LINKS --- */
+.nav__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  margin-bottom: 3px;
+  border-radius: 6px !important;
+  color: var(--link-text) !important;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+}
+
+.nav__link:hover {
+  background-color: var(--link-hover-bg) !important;
+  color: #ffffff !important;
+  transform: translateX(2px);
+}
+
+/* --- ACTIVE LINK (SVG ACCENT BAR) --- */
+.nav__link--active,
+.nav__link.active,
+.nav__link[aria-current='page'] {
+  background: linear-gradient(90deg, rgba(164, 66, 148, 0.18) 0%, rgba(15, 23, 42, 0) 100%) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.nav__link--active::after,
+.nav__link.active::after,
+.nav__link[aria-current='page']::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  bottom: 5px;
+  width: 3px;
+  background-color: var(--nav-brand);
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 0 10px var(--nav-brand-glow);
+}
+
+.nav__link-indicator {
+  display: none !important;
+}
+
+/* --- LOGOUT AREA --- */
+.nav__controls {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--sidebar-border);
+}
+
+.nav__log-out {
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px !important;
+  background: transparent !important;
+  border: 1px solid #1e293b !important;
+  transition: all 0.15s ease;
+}
+
+.nav__log-out .icon {
+  width: 14px;
+  height: 14px;
+  color: #f87171;
+}
+
+.nav__log-out:hover {
+  background: #7f1d1d !important;
+  border-color: #ef4444 !important;
+}
+
+
+/* =========================================================
+   DASHBOARD BEFORE SECTION - MODERN SVG GRAPHICS & GLOW
+========================================================= */
+.before-dashboard {
+  margin-bottom: 20px;
+
+  /* Sleek Minimal Welcome Status Pill */
+  .dynamic-welcome-banner {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 20px !important;
+    border: 1px solid rgba(34, 197, 94, 0.25) !important;
+    background: rgba(34, 197, 94, 0.08) !important;
+    padding: 4px 12px !important;
+    margin-bottom: 14px;
+
+    .banner-content-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h4 {
+      margin: 0 !important;
+      color: #4ade80 !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.3px;
+    }
+
+    .pulse-indicator {
+      width: 6px;
+      height: 6px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+      animation: pulse 2s infinite;
+    }
+  }
+
+  /* SVG Embedded Modern Hero Banner Card */
+  .accommodation-hero-wrapper {
+    position: relative;
+    width: 100%;
+    height: 170px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #090d16;
+
+    /* Background Geometric Glowing Circles via SVG */
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 80% 20%, rgba(164, 66, 148, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.1) 0%, transparent 40%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-image-pane {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+
+      img.hero-bg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        opacity: 0.45;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+
+      .hero-gradient-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg, 
+          #090d16 0%, 
+          rgba(9, 13, 22, 0.75) 50%, 
+          rgba(9, 13, 22, 0.2) 100%
+        );
+        z-index: 2;
+      }
+    }
+
+    &:hover img.hero-bg {
+      transform: scale(1.03);
+      opacity: 0.55;
+    }
+
+    /* Content Layout */
+    .hero-content-overlay {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 24px;
+      max-width: 480px;
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        align-self: flex-start;
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        color: #e2e8f0;
+
+        /* Built-in Dynamic Micro SVG Icon */
+        &::before {
+          content: '';
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          background-color: var(--nav-brand);
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'%3E%3C/polygon%3E%3C/svg%3E") no-repeat center / contain;
+          -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'%3E%3C/polygon%3E%3C/svg%3E") no-repeat center / contain;
+        }
+      }
+
+      .hero-title {
+        font-size: 19px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        margin: 0 0 4px 0;
+        color: #ffffff;
+      }
+
+      .hero-subtitle {
+        font-size: 12px;
+        line-height: 1.4;
+        color: #94a3b8;
+        margin: 0 0 12px 0;
+      }
+
+      /* Compact Micro-Stats */
+      .hero-quick-stats {
+        display: flex;
+        gap: 8px;
+
+        .stat-pill {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          background: rgba(15, 23, 42, 0.75);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 4px 10px;
+          border-radius: 6px;
+          font-size: 11px;
+          font-weight: 500;
+          color: #f1f5f9;
+
+          .stat-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            
+            &.green { background-color: #22c55e; box-shadow: 0 0 6px rgba(34, 197, 94, 0.6); }
+            &.purple { background-color: #a44294; box-shadow: 0 0 6px rgba(164, 66, 148, 0.6); }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+@media (max-width: 640px) {
+  .before-dashboard .accommodation-hero-wrapper {
+    height: 155px;
+    .hero-content-overlay {
+      padding: 0 16px;
+      .hero-title { font-size: 16px; }
+      .hero-subtitle { font-size: 11px; margin-bottom: 8px; }
+    }
+  }
+}
+
