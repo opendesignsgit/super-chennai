@@ -6,8 +6,21 @@ import Link from 'next/link'
 import { cn } from '@/utilities/ui'
 import useClickableCard from '@/utilities/useClickableCard'
 
+// export type CardPostData = {
+//   id?: string
+//   slug?: string
+//   categories?: any[]
+//   meta?: any
+//   title?: string
+//   heroImage?: any
+//   FeaturedImage?: any
+//   content?: any
+//   views?: number
+//   likes?: number
+// }
 export type CardPostData = {
   id?: string
+  collection?: string 
   slug?: string
   categories?: any[]
   meta?: any
@@ -15,6 +28,7 @@ export type CardPostData = {
   heroImage?: any
   FeaturedImage?: any
   content?: any
+  layout?: any
   views?: number
   likes?: number
 }

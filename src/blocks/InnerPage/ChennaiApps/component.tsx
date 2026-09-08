@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import React, { useState, useRef } from 'react'
@@ -144,7 +145,7 @@ export default function ChennaiAppsComponent(props: ChennaiAppsProps) {
         <div className="w-full md:w-4/5 p-4" ref={topRef}>
           {activeCards.length === 0 ? (
             <div className="p-8 text-center text-gray-500">
-              No apps assigned to "{activeTab?.tabLabel}" tab yet.
+              No apps assigned to {activeTab?.tabLabel} tab yet.
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
