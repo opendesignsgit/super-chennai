@@ -16,13 +16,19 @@ const dirname = path.dirname(filename)
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  // access: {
+  //   create: authenticated,
+  //   delete: authenticated,
+  //   read: anyone,
+  //   update: authenticated,
+  // },
   access: {
-    create: authenticated,
+    create: anyone,
     delete: authenticated,
     read: anyone,
     update: authenticated,
   },
-   admin: {
+  admin: {
     group: '⚙️ Site Administration',
   },
   fields: [
@@ -46,7 +52,7 @@ export const Media: CollectionConfig = {
     staticDir: path.resolve(dirname, '../../public/media'),
     adminThumbnail: 'thumbnail',
     focalPoint: true,
-    mimeTypes: ['image/*', 'image/svg+xml'], 
+    mimeTypes: ['image/*', 'image/svg+xml'],
     imageSizes: [
       {
         name: 'thumbnail',

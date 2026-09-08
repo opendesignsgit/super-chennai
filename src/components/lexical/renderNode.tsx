@@ -15,6 +15,17 @@ import FeatureListBlockComponent from '@/app/(frontend)/icon-of-the-month/blocks
 import NaturalsBlockComponent from '@/app/(frontend)/icon-of-the-month/blocks/NaturalsSection/Component'
 import GallerySliderComponent from '@/app/(frontend)/icon-of-the-month/blocks/GallerySliderBlock/Component'
 import ArattaiBlockComponent from '@/collections/Arrattai/components/RegistrationForm/coponents'
+import { AboutTrendingComponent } from '@/collections/WhatsupChennai/blocks/AboutTrending/Component'
+import EventQuickDetailsComponent from '@/blocks/EventQuickDetails/Component'
+import { GoluFormBlockComponent } from '@/collections/GoluContest/GoluDashboard/blocks/GoluSubmission/Component'
+import { GoluContestBlockComponent } from '@/collections/GoluContest/GoluDashboard/blocks/GoluContestMainForm/Component'
+import GoluFirstSectionBlockComponent from '@/collections/GoluContest/blocks/GoluIntroSection/Component'
+import GoluWhyCornerBlockComponent from '@/collections/GoluContest/blocks/GoluWhySuperChennai/Component'
+import GoluHowItWorksBlockComponent from '@/collections/GoluContest/blocks/GoluHowItWorks/component'
+import GoluCreateBlockComponent from '@/collections/GoluContest/blocks/GoluHowItWorks/component'
+import GoluCtaBannerBlockComponent from '@/collections/GoluContest/blocks/GoluCtaBanner/component'
+import GoluHeroBannerBlockComponent from '@/collections/GoluContest/blocks/GoluHeroBanner/component'
+import GoluJudgingBlockComponent from '@/collections/GoluContest/blocks/GoluJudgingBlock/component'
 
 export function renderNode(node: any, idx: number, arattaiData?: any): React.ReactNode {
   /* ------------------------------------------------
@@ -140,6 +151,59 @@ export function renderNode(node: any, idx: number, arattaiData?: any): React.Rea
       if (blockType === 'eventRegistrationFormBlock') {
         return <ArattaiBlockComponent key={idx} block={node.fields} arattaiData={arattaiData} />
       }
+
+      if (blockType === 'aboutTrending') {
+        return <AboutTrendingComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'eventQuickDetails') {
+        return <EventQuickDetailsComponent key={idx} {...node.fields} />
+      }
+      if (blockType === 'goluFormBlock') {
+        return <GoluFormBlockComponent key={idx} block={node.fields} />
+      }
+
+      if (blockType === 'goluContestBlock') {
+        return <GoluContestBlockComponent key={idx} block={node.fields} />
+      }
+
+      if (blockType === 'goluFirstSection') {
+        return <GoluFirstSectionBlockComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'goluWhyCorner') {
+        return <GoluWhyCornerBlockComponent key={idx} {...node.fields} />
+      }
+
+      // if (blockType === 'goluHowItWorks') {
+      //   return <GoluHowItWorksBlockComponent key={idx} {...node.fields} />
+      // }
+
+      if (blockType === 'goluCreate') {
+        return <GoluCreateBlockComponent key={idx} {...node.fields} />
+      }
+
+      // if (blockType === 'goluJudging') {
+      //   return <GoluJudgingBlockComponent key={idx} {...node.fields} />
+      // }
+
+      if (blockType === 'goluCtaBanner') {
+        return <GoluCtaBannerBlockComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'goluHeroBanner') {
+        return <GoluHeroBannerBlockComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'GoluHowItWorksBlock') {
+        return <GoluHowItWorksBlockComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'goluJudging') {
+        return <GoluJudgingBlockComponent key={idx} {...node.fields} />
+      }
+
+      
 
       return null
     }

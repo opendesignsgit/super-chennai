@@ -1,15 +1,36 @@
+// 'use client'
+
+// import React from 'react'
+// import { renderNode } from './renderNode'
+
+// export default function LexicalRenderer({ content }: { content: any }) {
+//   if (!content?.root?.children) return null
+
+//   return (
+//     <div className="">
+//       {content.root.children.map((node: any, idx: number) => (
+//         <React.Fragment key={idx}>{renderNode(node, idx)}</React.Fragment>
+//       ))}
+//     </div>
+//   )
+// }
 'use client'
 
 import React from 'react'
 import { renderNode } from './renderNode'
 
-export default function LexicalRenderer({ content }: { content: any }) {
+interface LexicalRendererProps {
+  content: any
+  contest?: any
+}
+
+export default function LexicalRenderer({ content, contest }: LexicalRendererProps) {
   if (!content?.root?.children) return null
 
   return (
     <div className="">
       {content.root.children.map((node: any, idx: number) => (
-        <React.Fragment key={idx}>{renderNode(node, idx)}</React.Fragment>
+        <React.Fragment key={idx}>{renderNode(node, idx, contest)}</React.Fragment>
       ))}
     </div>
   )

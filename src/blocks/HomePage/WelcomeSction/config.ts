@@ -6,6 +6,12 @@ const SecondSectionBlock: Block = {
     singular: 'Welcome To Super Chennai',
     plural: 'Welcome To Super Chennai',
   },
+  admin: {
+    group: 'Homepage Sections',
+  },
+
+  imageURL: '/images/sections-image/welcometosupechennaihome.jpg',
+
   fields: [
     {
       name: 'heading',
