@@ -24,6 +24,7 @@ import { GoluCreateBlock } from './blocks/GoluHowItWorks/config'
 import { GoluFirstSectionBlock } from './blocks/GoluIntroSection/config'
 import { GoluWhyCornerBlock } from './blocks/GoluWhySuperChennai/config'
 import { GoluHowItWorksBlock } from './blocks/GoluHowItWorksBlock/config'
+import { GoluJudgingBlock } from './blocks/GoluJudgingBlock/config'
 
 export const GoluLandingPage: GlobalConfig = {
   slug: 'goluLandingPage',
@@ -79,6 +80,8 @@ export const GoluLandingPage: GlobalConfig = {
                       GoluCtaBannerBlock,
                       GoluHeroBannerBlock,
                       GoluHowItWorksBlock,
+                      GoluJudgingBlock
+                      
                     ],
                   }),
                   FixedToolbarFeature(),
