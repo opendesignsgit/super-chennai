@@ -9,7 +9,8 @@ export const GoluUsers: CollectionConfig<'golu-users'> = {
   },
   access: {
     create: () => true, // Allowed via registration endpoint / public API
-    read: authenticated, // Only admin can list directly
+    // read: authenticated, // Only admin can list directly   read: () => true,
+    read: () => true,
     update: authenticated,
     delete: authenticated,
   },
