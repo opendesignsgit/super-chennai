@@ -1,3 +1,4 @@
+import { FixedToolbarFeature, HorizontalRuleFeature, InlineToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import type { Block } from 'payload'
 
 export const GoluFirstSectionBlock: Block = {
@@ -93,9 +94,19 @@ export const GoluFirstSectionBlock: Block = {
               name: 'segments',
               type: 'array',
               fields: [
+               
                 {
                   name: 'text',
-                  type: 'text',
+                  type: 'richText',
+                  editor: lexicalEditor({
+                    features: ({ rootFeatures }) => [
+                      ...rootFeatures,                    
+                      FixedToolbarFeature(),
+                      InlineToolbarFeature(),
+                      HorizontalRuleFeature(),
+                    ],
+                  }),
+                  required: true,
                 },
                 {
                   name: 'highlight',
