@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import { getPayload } from 'payload'
 import config from '@payload-config'
@@ -11,18 +10,39 @@ interface PageProps {
   }>
 }
 
+// export async function generateStaticParams() {
+//   try {
+//     const payload = await getPayload({ config })
+//     const contests = await payload.find({
+//       collection: 'golu-contest',
+//       limit: 100,
+//     })
+
+//     return contests.docs.map((doc) => ({
+//       slug: doc.slug,
+//     }))
+//   } catch {
+//     return []
+//   }
+// }
+
 export async function generateStaticParams() {
   try {
     const payload = await getPayload({ config })
+
     const contests = await payload.find({
       collection: 'golu-contest',
       limit: 100,
+      depth: 0,
     })
 
-    return contests.docs.map((doc) => ({
-      slug: doc.slug,
-    }))
-  } catch {
+    return contests.docs
+      .filter((doc) => typeof doc.slug === 'string' && doc.slug.length > 0)
+      .map((doc) => ({
+        slug: doc.slug,
+      }))
+  } catch (error) {
+    console.error('generateStaticParams error:', error)
     return []
   }
 }
