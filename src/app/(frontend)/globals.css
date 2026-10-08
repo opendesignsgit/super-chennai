@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities; */
 
+
+
 @import "tailwindcss";
+
 
 html {
   scroll-behavior: smooth;
@@ -11,6 +14,7 @@ html {
 /* .container {
   max-width: 1050px;
 } */
+
 
 @font-face {
   font-family: 'Poppinsthin';

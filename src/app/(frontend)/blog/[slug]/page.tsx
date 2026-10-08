@@ -31,14 +31,15 @@ export default async function Post({ params: paramsPromise }: Args) {
   const authorObj =
     post.populatedAuthors?.[0] || (typeof post.authors?.[0] === 'object' ? post.authors[0] : null)
   const authorName = authorObj?.name || 'Admin'
-const authorProfile = authorObj && typeof authorObj === 'object' ? (authorObj as Record<string, any>) : null
+  const authorProfile =
+    authorObj && typeof authorObj === 'object' ? (authorObj as Record<string, any>) : null
 
-const authorImage =
-  authorProfile?.profileImage &&
-  typeof authorProfile.profileImage === 'object' &&
-  authorProfile.profileImage.url
-    ? authorProfile.profileImage.url
-    : null
+  const authorImage =
+    authorProfile?.profileImage &&
+    typeof authorProfile.profileImage === 'object' &&
+    authorProfile.profileImage.url
+      ? authorProfile.profileImage.url
+      : null
   const publishedDate = post.publishedAt
     ? new Date(post.publishedAt).toLocaleDateString('en-GB', {
         day: '2-digit',
@@ -52,8 +53,8 @@ const authorImage =
     typeof post.heroImage === 'object' && post.heroImage?.url
       ? post.heroImage.url
       : typeof post.meta?.image === 'object' && post.meta?.image?.url
-      ? post.meta.image.url
-      : null
+        ? post.meta.image.url
+        : null
 
   return (
     <article className="min-h-screen bg-white dark:bg-slate-950 pb-20">
@@ -80,8 +81,13 @@ const authorImage =
             </div>
           )}
 
-          <div className="accodoamationBannerContainer absolute inset-0 flex items-center justify-center">
+          <div className="accodoamationBannerContainer">
             <div className="accodoamationBannerText text-center text-white">
+              <div className="breadCrum mb-4">
+                <a href="/blog" className="!cursor-pointer">
+                  Blog
+                </a>
+              </div>
               <AutoShrinkText
                 text={post.title}
                 baseSize={80}
@@ -89,16 +95,6 @@ const authorImage =
                 maxChars={2}
                 className="accodoamationBannerText text-3xl sm:text-5xl drop-shadow-md"
               />
-
-              <div className="breadCrum mt-3 text-sm text-gray-300 font-medium">
-                <a href="/" className="hover:text-white transition-colors">
-                  Home
-                </a>{' '}
-                <span className="text-gray-500 mx-1">•</span>{' '}
-                <a href="/properties" className="hover:text-white transition-colors">
-                  Blog
-                </a>
-              </div>
             </div>
           </div>
         </div>

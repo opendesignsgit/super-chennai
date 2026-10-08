@@ -9,6 +9,7 @@
 .Eventitlesec {
   padding-inline: 10vw;
 }
+
 .Eventitlesec h2 {
   font-family: "NewAmsterdam";
   font-size: 5vw;
@@ -23,6 +24,7 @@
   line-height: 79px;
   color: #a44294;
 }
+
 .EventsItems {
   /* width: calc(25% - 16px);
   margin: 10px 8px; */
@@ -36,6 +38,7 @@
   width: calc(30% - 0px);
   margin: 11px 10px;
 }
+
 .evntechnolg {
   font-family: "29LT Bukra SmBd";
   font-size: 12px;
@@ -45,11 +48,13 @@
   padding: 6px 10px;
   border-radius: 5px;
 }
+
 .EventsItemImg {
   border-top-left-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 .EventsItemImg img {
   aspect-ratio: 2 / 1.5;
   -webkit-transition: all 0.5s ease-in-out;
@@ -60,6 +65,7 @@
   transform: scale(1);
   will-change: transform;
 }
+
 .newsLetterImage img {
   object-fit: fill;
 }
@@ -75,9 +81,11 @@
   transform: scale(1.05);
   transition: all 0.3s ease-in-out;
 }
+
 .EventsIteCont {
   padding-top: 20px;
 }
+
 .EventsIteCont h3 {
   font-family: "29LT Bukra SmBd";
 
@@ -128,6 +136,7 @@
 .YoutubeVideoSection .w-full::before {
   content: "";
   background: url("/images/NewsLetter/youtube-svgrepo-com.svg");
+  background: url("/images/icons/youtube-svgrepo-com.svg");
   position: absolute;
   color: #fff;
   font-size: 15px;
@@ -146,6 +155,7 @@
 .newsYoutubeSection .w-full::before {
   content: "";
   background: url("/images/NewsLetter/youtube-svgrepo-com.svg");
+  background: url("/images/icons/youtube-svgrepo-com.svg");
   position: absolute;
   color: #fff;
   font-size: 15px;
@@ -160,6 +170,7 @@
 .NewsLetterPage .EventsIteCont h3:hover {
   /* text-decoration: none; */
 }
+
 .datimeContbox {
   display: flex;
   column-gap: 5px;
@@ -173,24 +184,27 @@
   text-transform: uppercase;
 }
 
-.EventContBox {
-}
+.EventContBox {}
+
 .EventLeft {
   width: 70%;
   padding-right: 2vw;
 }
+
 .EventLeft h1 {
   font-family: "NewAmsterdam";
   font-size: 2.5vw;
   line-height: 1;
   color: #a44294;
 }
+
 .EventLeft h2 {
   font-family: "NewAmsterdam";
   font-size: 2.5vw;
   line-height: 1;
   color: #a44294;
 }
+
 .EventLeft h3 {
   font-family: "NewAmsterdam";
   font-size: 1.6vw;
@@ -198,20 +212,25 @@
   color: #000000;
   margin-bottom: 10px;
 }
+
 .EventLeft p {
   margin-bottom: 15px;
 }
+
 .EventLeft p:last-child {
   margin-bottom: 0px;
 }
+
 .EventLeft .EventBanImg {
   overflow: hidden;
   border-radius: 20px;
   margin-block: 20px 10px;
 }
+
 .EventLeft .EventBanImg img {
   width: 100%;
 }
+
 .ebbmgiL h5 {
   background: #a44294;
   padding: 5px 15px;
@@ -222,9 +241,11 @@
   color: #ffffff;
   font-weight: 500;
 }
+
 .ebbmgiR h5 {
   font-weight: 500;
 }
+
 .ebbmgiR button {
   padding: 5px 15px;
   margin-left: 10px;
@@ -233,6 +254,7 @@
   line-height: 1;
   cursor: pointer;
 }
+
 .ArtistsImg {
   width: 10vw;
   aspect-ratio: 1 / 1.5;
@@ -240,55 +262,65 @@
   border-radius: 10px;
   margin-bottom: 5px;
 }
+
 .ArtistsImg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.ArtistsImg h4 {
-}
-.ArtistsImg h4 strong {
-}
-.ArtistsImg h4 small {
-}
+
+.ArtistsImg h4 {}
+
+.ArtistsImg h4 strong {}
+
+.ArtistsImg h4 small {}
 
 .EventRight {
   width: 30%;
   position: relative;
 }
+
 .evderibox {
   position: sticky;
   top: 14vh;
   border: 1px solid #d0d5e6;
   border-radius: 15px;
 }
+
 .evderListbox {
   padding: 20px;
 }
+
 .evdPricbox {
   padding: 20px;
   border-top: 1px solid #d0d5e6;
 }
+
 .iconsssec {
   width: 30px;
   aspect-ratio: 1;
   padding: 5px;
 }
+
 .evderlinks {
   margin-bottom: 5px;
 }
+
 .evderlinks p {
   padding-left: 10px;
 }
+
 .evdPricbox h4 {
   font-weight: 700;
   font-size: 1.1vw;
   letter-spacing: -0.5px;
 }
+
 .evdPricbox h6 {
   color: #2b3889;
   font-weight: 700;
 }
+
 .evdPricbox button {
   background: #a44294;
   color: #ffffff;
@@ -299,6 +331,7 @@
   font-weight: 600;
   cursor: pointer;
 }
+
 .evdPricbox button:hover {
   background: #ffffff;
   color: #a44294;
@@ -404,6 +437,7 @@
   padding: 90px 0;
   margin-top: 60px;
 }
+
 .contactFormStyle .container {
   padding: 0 50px;
 }
@@ -447,6 +481,7 @@ textarea {
   outline-color: #995098;
   border: 1px !important;
 }
+
 .contactFormStyle form textarea:focus-visible {
   outline-color: #995098;
   border: 1px !important;
@@ -466,6 +501,7 @@ textarea {
   width: 20px;
   margin-bottom: 3px;
 }
+
 .buttonUploadButton p {
   margin-bottom: 0;
   font-size: 12px;
@@ -518,6 +554,7 @@ textarea {
   margin-top: 25px;
   border: 1px solid #fff;
 }
+
 .slectedVideo {
   color: #ffffff;
   margin-top: 12px;
@@ -550,6 +587,7 @@ textarea {
   font-size: 30px;
   margin-right: 5px;
 }
+
 .nammastoriesPopupIframe {
   width: 100%;
   height: 500px;
@@ -563,14 +601,17 @@ textarea {
 .NammaStoriesVideoDiv .readMoreMainDiv {
   margin-top: 7px;
 }
+
 .nammaStoriesLikesCount {
   color: #1d1d1d;
   font-size: 14px;
   line-height: 20px;
 }
+
 .NammaStoriesVideoDiv .EventsIteCont h3:hover {
   text-decoration: none;
 }
+
 .NammaStoriesVideoDiv .popupSection {
   width: 50%;
   height: max-content;
@@ -620,6 +661,7 @@ textarea {
 .youtubeIConStyle::before {
   content: "";
   background: url("/images/NewsLetter/youtube-svgrepo-com.svg");
+  background: url("/images/icons/youtube-svgrepo-com.svg");
   position: absolute;
   color: #fff;
   font-size: 15px;
@@ -636,6 +678,7 @@ textarea {
   column-gap: 0;
   margin-left: 2%;
 }
+
 /* NammaStoreies Video */
 
 /* NammaStoreies Video- newUpdate */
@@ -662,6 +705,7 @@ textarea {
   display: block;
   border-radius: 15px;
 }
+
 .nammaStorieslabel1 {
   position: absolute;
   top: 5%;
@@ -677,6 +721,7 @@ textarea {
   margin-bottom: 60px;
   flex-wrap: wrap;
 }
+
 .runner-up-card {
   width: 100%;
   max-width: 340px;
@@ -686,9 +731,11 @@ textarea {
   transform: scale(1.05);
   box-shadow: 0 20px 40px #0003;
 }
+
 .silver {
   border: 4px solid silver;
 }
+
 .bronze {
   border: 4px solid silver;
 }
@@ -712,6 +759,7 @@ textarea {
   border-radius: 50px;
   height: 100px;
 }
+
 .runnerupStyle:after {
   background-size: contain;
   z-index: 1;
@@ -788,12 +836,14 @@ textarea {
   display: flex;
   justify-content: center;
 }
+
 .imageshowPupFunction button {
   background: white;
   padding: 9px 10px;
   border-radius: 5px;
   margin-top: 10px;
 }
+
 .imageshowPupFunction button p {
   font-size: 13px;
 }
@@ -802,22 +852,23 @@ textarea {
   object-position: 30% center;
 }
 
-  .popupStyleMainContainer button {
-    color: #fff;
-    background: #a44294;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    line-height: 40px;
-    top: 17px;
-    right: 17px;
-    padding-bottom: 8px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
+.popupStyleMainContainer button {
+  color: #fff;
+  background: #a44294;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  line-height: 40px;
+  top: 17px;
+  right: 17px;
+  padding-bottom: 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 @media (max-width: 1600px) and (min-width: 1300px) {
   .popupSection {
     height: 70vh;
@@ -829,7 +880,8 @@ textarea {
   .pointcastSticky img {
     width: 100px;
   }
-   .pointcastSticky img {
+
+  .pointcastSticky img {
     width: 80px;
   }
 
@@ -851,8 +903,8 @@ textarea {
   }
 }
 
-@media(min-width:801px){
-  .reimagineMobile{
+@media(min-width:801px) {
+  .reimagineMobile {
     display: none;
   }
 }
@@ -868,6 +920,7 @@ textarea {
   .iconofthemonthbanner .eventsCalenderIamge {
     object-position: right;
   }
+
   .superchennaiEventsMainContainer {
     flex-wrap: wrap;
     gap: 40px;
@@ -880,6 +933,7 @@ textarea {
   .superchennaiEventsSection {
     width: 100%;
   }
+
   .popupStyleMainContainer button {
     color: #fff;
     background: #a44294;
@@ -896,9 +950,11 @@ textarea {
     padding-bottom: 6px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
+
   .popupStyleMainContainer {
     padding: 15px;
   }
+
   .nammaStorieslabel1 img {
     border-radius: 50px;
     height: auto;
@@ -937,6 +993,7 @@ textarea {
     letter-spacing: 1px;
     margin-bottom: 20px;
   }
+
   .contactFormStyle .container {
     padding: 0 25px;
   }
@@ -949,6 +1006,7 @@ textarea {
   .popupSection {
     height: auto;
   }
+
   .Eventitlesec h2 {
     font-size: 42px;
     line-height: 1;
@@ -957,46 +1015,58 @@ textarea {
   .SecPadblock12 {
     padding-block: 40px;
   }
+
   .EventsBanSec {
     padding-inline: 20px;
   }
+
   .EventContBox {
     flex-direction: column;
   }
+
   .ebanimgbtn {
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 20px;
   }
+
   .EventLeft {
     width: 100%;
     padding-right: 0;
     padding-bottom: 20px;
   }
+
   .EventRight {
     width: 100%;
     padding-top: 20px;
   }
+
   .evdPricbox h4 {
     font-size: 22px;
   }
+
   .EventLeft h2 {
     font-size: 32px;
   }
+
   .ebbmgiL {
     margin-bottom: 10px;
   }
+
   .EventLeft h3 {
     font-size: 24px;
   }
+
   .ArtistsImg {
     width: 60%;
   }
+
   .EventsListSec {
     padding-inline: 20px;
   }
-  .EventsListboxs {
-  }
+
+  .EventsListboxs {}
+
   .EventsItems {
     width: 100%;
     margin: 10px 0;
@@ -1020,6 +1090,7 @@ textarea {
   .NammaStoriesVideoDiv .Eventitlesec {
     margin-bottom: 20px;
   }
+
   .NammaStoriesVideoDiv .popupSection {
     width: 90%;
     height: auto;
@@ -1036,4 +1107,15 @@ textarea {
 
 .EventsIteCont h3 {
   font-weight: 600 !important;
+}
+
+
+#poppinsssFamily p {
+  font-family: "poppins";
+}
+
+.atagsss a {
+  color: #155dfc;
+  display: inline;
+  padding-left: 3px;
 }

@@ -1912,6 +1912,207 @@ export interface Page {
         blockName?: string | null;
         blockType: 'llpBlock';
       }
+    | {
+        categories?:
+          | {
+              categoryTabLabel: string;
+              categoryHeadingTitle: string;
+              categorySummaryText: string;
+              investCards2026?:
+                | {
+                    cardTitle: string;
+                    cardDescription: string;
+                    cardMedia: number | Media;
+                    cardMediaAltText?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ChenzInvest2026Block';
+      }
+    | {
+        eventsCards2026?:
+          | {
+              title: string;
+              linkUrl: string;
+              cardMedia: number | Media;
+              altText?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'EventsList2026Block';
+      }
+    | {
+        title: string;
+        description: string;
+        buttonText: string;
+        pdfFile: number | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'InfraBoom2026Block';
+      }
+    | {
+        topHeaderTitle: string;
+        mainHeading: string;
+        paragraph1?: string | null;
+        subHeading?: string | null;
+        paragraph2?: string | null;
+        highlightText?: string | null;
+        buttonText?: string | null;
+        sliderImages?:
+          | {
+              image: number | Media;
+              altText?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ManifestoSectionBlock';
+      }
+    | {
+        sectionHeading: string;
+        tvcCards?:
+          | {
+              company: string;
+              eventsCalendarTitle: string;
+              image: number | Media;
+              link: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'TvCommercials2026Block';
+      }
+    | {
+        sectionTitle: string;
+        sectionDescription?: string | null;
+        newsArticle?:
+          | {
+              Company: string;
+              EventsCalendarTitle: string;
+              image: number | Media;
+              link: string;
+              id?: string | null;
+            }[]
+          | null;
+        newsPhotos?:
+          | {
+              Company: string;
+              EventsCalendarTitle: string;
+              title?: string | null;
+              image: number | Media;
+              image1: number | Media;
+              description?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        youtubeChannel?:
+          | {
+              Company: string;
+              EventsCalendarTitle: string;
+              title?: string | null;
+              image: number | Media;
+              link: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'MediaCoverageBlockMainPage';
+      }
+    | {
+        featuredImage: number | Media;
+        title: string;
+        subtitle?: string | null;
+        paragraphs?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        quoteText?: string | null;
+        features?:
+          | {
+              title: string;
+              iconType?: ('music' | 'train' | 'clock' | 'location' | 'star') | null;
+              customIcon?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'MetroMadrasBlock';
+      }
+    | {
+        sectionTitle: string;
+        details?:
+          | {
+              value: string;
+              label: string;
+              iconType?: ('calendar' | 'clock' | 'location' | 'ticket' | 'users') | null;
+              customIcon?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'MetroTheDetailsBlock';
+      }
+    | {
+        leftTitle: string;
+        highlights?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        checkSvgCode?: string | null;
+        rightTitle: string;
+        whoCanJoinParagraph1?: string | null;
+        whoCanJoinParagraph2?: string | null;
+        enableButton?: boolean | null;
+        buttonText?: string | null;
+        buttonTargetId?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'MetroExperienceBlock';
+      }
+    | {
+        sectionTitle: string;
+        guidelines?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        checkSvgCode?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'MetroGuidelinesBlock';
+      }
+    | {
+        sectionId: string;
+        featuredImage: number | Media;
+        status: 'closed' | 'open';
+        badgeText?: string | null;
+        title: string;
+        description?: string | null;
+        infoBoxTitle?: string | null;
+        infoBoxDescription?: string | null;
+        buttonText?: string | null;
+        statusSvgCode?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'MetroRegistrationBlock';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -7471,6 +7672,218 @@ export interface PagesSelect<T extends boolean = true> {
                         };
                     id?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        ChenzInvest2026Block?:
+          | T
+          | {
+              categories?:
+                | T
+                | {
+                    categoryTabLabel?: T;
+                    categoryHeadingTitle?: T;
+                    categorySummaryText?: T;
+                    investCards2026?:
+                      | T
+                      | {
+                          cardTitle?: T;
+                          cardDescription?: T;
+                          cardMedia?: T;
+                          cardMediaAltText?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        EventsList2026Block?:
+          | T
+          | {
+              eventsCards2026?:
+                | T
+                | {
+                    title?: T;
+                    linkUrl?: T;
+                    cardMedia?: T;
+                    altText?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        InfraBoom2026Block?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              buttonText?: T;
+              pdfFile?: T;
+              id?: T;
+              blockName?: T;
+            };
+        ManifestoSectionBlock?:
+          | T
+          | {
+              topHeaderTitle?: T;
+              mainHeading?: T;
+              paragraph1?: T;
+              subHeading?: T;
+              paragraph2?: T;
+              highlightText?: T;
+              buttonText?: T;
+              sliderImages?:
+                | T
+                | {
+                    image?: T;
+                    altText?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        TvCommercials2026Block?:
+          | T
+          | {
+              sectionHeading?: T;
+              tvcCards?:
+                | T
+                | {
+                    company?: T;
+                    eventsCalendarTitle?: T;
+                    image?: T;
+                    link?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        MediaCoverageBlockMainPage?:
+          | T
+          | {
+              sectionTitle?: T;
+              sectionDescription?: T;
+              newsArticle?:
+                | T
+                | {
+                    Company?: T;
+                    EventsCalendarTitle?: T;
+                    image?: T;
+                    link?: T;
+                    id?: T;
+                  };
+              newsPhotos?:
+                | T
+                | {
+                    Company?: T;
+                    EventsCalendarTitle?: T;
+                    title?: T;
+                    image?: T;
+                    image1?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              youtubeChannel?:
+                | T
+                | {
+                    Company?: T;
+                    EventsCalendarTitle?: T;
+                    title?: T;
+                    image?: T;
+                    link?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        MetroMadrasBlock?:
+          | T
+          | {
+              featuredImage?: T;
+              title?: T;
+              subtitle?: T;
+              paragraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              quoteText?: T;
+              features?:
+                | T
+                | {
+                    title?: T;
+                    iconType?: T;
+                    customIcon?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        MetroTheDetailsBlock?:
+          | T
+          | {
+              sectionTitle?: T;
+              details?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    iconType?: T;
+                    customIcon?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        MetroExperienceBlock?:
+          | T
+          | {
+              leftTitle?: T;
+              highlights?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              checkSvgCode?: T;
+              rightTitle?: T;
+              whoCanJoinParagraph1?: T;
+              whoCanJoinParagraph2?: T;
+              enableButton?: T;
+              buttonText?: T;
+              buttonTargetId?: T;
+              id?: T;
+              blockName?: T;
+            };
+        MetroGuidelinesBlock?:
+          | T
+          | {
+              sectionTitle?: T;
+              guidelines?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              checkSvgCode?: T;
+              id?: T;
+              blockName?: T;
+            };
+        MetroRegistrationBlock?:
+          | T
+          | {
+              sectionId?: T;
+              featuredImage?: T;
+              status?: T;
+              badgeText?: T;
+              title?: T;
+              description?: T;
+              infoBoxTitle?: T;
+              infoBoxDescription?: T;
+              buttonText?: T;
+              statusSvgCode?: T;
               id?: T;
               blockName?: T;
             };

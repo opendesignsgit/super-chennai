@@ -89,6 +89,17 @@ import { ContactBlock } from '@/blocks/InnerPage/ContactPage/config'
 import { ChennaiAppsBlock } from '@/blocks/InnerPage/ChennaiApps/config'
 import { PlacesSectionBlock } from '@/blocks/InnerPage/SharedBlocks/PlaceofWorship/config'
 import { LearningLivePageBlock } from '@/blocks/InnerPage/SharedBlocks/LearningLivePage/config'
+import { ChenzInvest2026Block } from '@/blocks/InnerPage/SharedBlocks/InvestSliderWithTab/config'
+import { EventsList2026Block } from '@/blocks/InnerPage/SharedBlocks/ContentList/config'
+import { InfraBoom2026Block } from '@/blocks/InnerPage/SharedBlocks/ManifestoReport/config'
+import { TvCommercials2026Block } from '@/blocks/InnerPage/SharedBlocks/TVCommercials/config'
+import { MediaCoverageBlockMainPage } from '@/blocks/InnerPage/SharedBlocks/MediaCoverageBlockMainPage/config'
+import { MetroMadrasBlock } from '@/blocks/InnerPage/SharedBlocks/MetroMadrasBlock/config'
+import { MetroTheDetailsBlock } from '@/blocks/InnerPage/SharedBlocks/MetroTheDetails/config'
+import { MetroExperienceBlock } from '@/blocks/InnerPage/SharedBlocks/MetroExperience/config'
+import { MetroGuidelinesBlock } from '@/blocks/InnerPage/SharedBlocks/MetroGuidelines/config'
+import { MetroRegistrationBlock } from '@/blocks/InnerPage/SharedBlocks/MetroRegistration/config'
+import { ManifestoSectionBlock } from '@/blocks/InnerPage/SharedBlocks/ManifestoSection/config'
 // import { ChennaiAppsBlock } from '@/blocks/InnerPage/ChennaiApps/config'
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -273,6 +284,27 @@ export const Pages: CollectionConfig<'pages'> = {
                 PlacesSectionBlock,
 
                 LearningLivePageBlock,
+                ChenzInvest2026Block,
+
+                EventsList2026Block,
+
+                // Manifesto Page
+
+                InfraBoom2026Block,
+                ManifestoSectionBlock,
+
+                // Manifesto Page
+                TvCommercials2026Block,
+                MediaCoverageBlockMainPage,
+
+                //------------------Singe Alone Metro page
+                MetroMadrasBlock,
+                MetroTheDetailsBlock,
+                MetroExperienceBlock,
+                MetroGuidelinesBlock,
+                MetroRegistrationBlock,
+
+                //------------------Singe Alone Metro page
               ],
               required: true,
               admin: {

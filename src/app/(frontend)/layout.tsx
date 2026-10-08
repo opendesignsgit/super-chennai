@@ -55,6 +55,8 @@ import '@/assets/Css/Welcometosuperchennai.css'
 import '@/assets/Css/lexicalCustome.css'
 import '@/assets/Css/IconOfTheMonth.css'
 import '@/assets/Css/faq.css'
+import '@/assets/Css/BlogList.css'
+
 import '@/assets/Css/neighbourhood2_0.css'
 import '@/assets/Css/Properties/BudgetSlider.css'
 import '@/assets/Css/Properties/FiltersSidebar.css'
@@ -69,6 +71,7 @@ import '@/assets/Css/Properties/skelton.css'
 import '@/assets/Css/Properties/SortBy.css'
 import '@/assets/Css/ViewMore.css'
 import '@/assets/Css/ritch-text.css'
+import '@/assets/Css/singealone.css'
 
 import { Preloader } from '@/components/Loader/Preloader'
 
@@ -81,6 +84,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.ico" rel="icon" type="image/svg+xml" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>
         <Providers>

@@ -22,7 +22,7 @@
 }
 
 .rightsidesectionevents {
-  width: 80%;
+  /* width: 80%; */
 }
 
 .eventsindividualcards img {
@@ -190,6 +190,7 @@
 .YoutubeVideoSection .w-full::before {
   content: "";
   background: url("/images/NewsLetter/youtube-svgrepo-com.svg");
+  background: url("/images/icons/youtube-svgrepo-com.svg");
   position: absolute;
   color: #fff;
   font-size: 15px;
@@ -714,6 +715,7 @@ textarea {
 .youtubeIConStyle::before {
   content: "";
   background: url("/images/NewsLetter/youtube-svgrepo-com.svg");
+  background: url("/images/icons/youtube-svgrepo-com.svg");
   position: absolute;
   color: #fff;
   font-size: 15px;
@@ -976,7 +978,11 @@ textarea {
 
 .eventsinglecard {
   padding-bottom: 25px;
-  padding-top: 25px;
+  padding-top: 20px;
+}
+
+.bordertranspertant {
+  border: #0000001f 1px solid;
 }
 
 .viewwwwalll {
@@ -1048,6 +1054,12 @@ textarea {
 @media (max-width: 800px) {
   .reimagineDekstop {
     display: none;
+  }
+}
+
+@media (max-width:640px) {
+  .evenetsssmaincontainer {
+  justify-content: center;
   }
 }
 

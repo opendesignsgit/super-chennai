@@ -88,6 +88,17 @@ import ChennaiAppsComponent from './InnerPage/ChennaiApps/component'
 import PlacesSectionComponent from './InnerPage/SharedBlocks/PlaceofWorship/component'
 import LearningLivePageComponent from './InnerPage/SharedBlocks/LearningLivePage/component'
 import InnerPageHeroBannerComponent from './InnerPage/SharedBlocks/InnerPageBanner/component'
+import ChenzInvest2026Component from './InnerPage/SharedBlocks/InvestSliderWithTab/component'
+import EventsList2026Component from './InnerPage/SharedBlocks/ContentList/component'
+import InfraBoom2026Component from './InnerPage/SharedBlocks/ManifestoReport/component'
+import TvCommercials2026Component from './InnerPage/SharedBlocks/TVCommercials/component'
+import MediaCoverageBlockMainPageComponent from './InnerPage/SharedBlocks/MediaCoverageBlockMainPage/component'
+import MetroMadrasComponent from './InnerPage/SharedBlocks/MetroMadrasBlock/component'
+import MetroTheDetailsComponent from './InnerPage/SharedBlocks/MetroTheDetails/component'
+import MetroExperienceComponent from './InnerPage/SharedBlocks/MetroExperience/component'
+import MetroGuidelinesComponent from './InnerPage/SharedBlocks/MetroGuidelines/component'
+import MetroRegistrationComponent from './InnerPage/SharedBlocks/MetroRegistration/component'
+import ManifestoSectionComponent from './InnerPage/SharedBlocks/ManifestoSection/component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -218,6 +229,24 @@ const blockComponents: {
   placesSectionBlock: PlacesSectionComponent,
 
   llpBlock: LearningLivePageComponent,
+  ChenzInvest2026Block: ChenzInvest2026Component,
+
+  EventsList2026Block: EventsList2026Component,
+  InfraBoom2026Block: InfraBoom2026Component,
+
+  TvCommercials2026Block: TvCommercials2026Component,
+  MediaCoverageBlockMainPage: MediaCoverageBlockMainPageComponent,
+  MetroMadrasBlock: MetroMadrasComponent,
+
+  // sing alone metro page
+
+  MetroTheDetailsBlock: MetroTheDetailsComponent,
+  MetroExperienceBlock: MetroExperienceComponent,
+  MetroGuidelinesBlock: MetroGuidelinesComponent,
+  MetroRegistrationBlock: MetroRegistrationComponent,
+  ManifestoSectionBlock: ManifestoSectionComponent,
+
+  // sing alone metro page
 }
 
 export const RenderBlocks: React.FC<{

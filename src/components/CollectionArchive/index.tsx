@@ -1,5 +1,3 @@
-
-
 import React from 'react'
 import { Card, CardPostData } from '@/components/Card'
 
@@ -8,10 +6,7 @@ export type Props = {
   relationTo?: string
 }
 
-export const CollectionArchive: React.FC<Props> = ({
-  posts,
-  relationTo = 'blog',
-}) => {
+export const CollectionArchive: React.FC<Props> = ({ posts, relationTo = 'blog' }) => {
   if (!posts || posts.length === 0) {
     return (
       <div className="flex items-center justify-center py-20 text-center">
@@ -24,18 +19,29 @@ export const CollectionArchive: React.FC<Props> = ({
   }
 
   return (
-    <section className="container mx-auto px-4 py-8 mt-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {posts.map((post, index) => (
-          <Card
-            key={index}
-            className="h-full w-full"
-            doc={post}
-            relationTo={relationTo}
-           
-          />
-        ))}
+    <>
+      <div className="visitIntroParaSection detailIntro !pb-0">
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="CostOflivingBackground scroll-leftCostofLiving">
+            <p>Blog &nbsp; in Chennai &nbsp; Blog &nbsp; in Chennai</p>
+          </div>
+          <div className="workIntro">
+            <h3>Blog</h3>
+            <p>
+              Chennai’s startup ecosystem is booming, backed by skilled talent, strong industry
+              knowledge, and rising investor interest, paving the way for global success stories.
+            </p>
+          </div>
+        </div>
       </div>
-    </section>
+
+      <div className="container max-w-7xl mx-auto blogSectionNew">
+        <div className="blog-grid-container blogSectionContiner">
+          {posts.map((post, index) => (
+            <Card key={index} className="h-full w-full" doc={post} relationTo={relationTo} />
+          ))}
+        </div>
+      </div>
+    </>
   )
 }

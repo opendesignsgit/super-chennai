@@ -159,51 +159,49 @@ export function renderNode(node: any, idx: number, arattaiData?: any): React.Rea
       if (blockType === 'eventQuickDetails') {
         return <EventQuickDetailsComponent key={idx} {...node.fields} />
       }
-      if (blockType === 'goluFormBlock') {
-        return <GoluFormBlockComponent key={idx} block={node.fields} />
-      }
+      // if (blockType === 'goluFormBlock') {
+      //   return <GoluFormBlockComponent key={idx} block={node.fields} />
+      // }
 
-      if (blockType === 'goluContestBlock') {
-        return <GoluContestBlockComponent key={idx} block={node.fields} />
-      }
+      // if (blockType === 'goluContestBlock') {
+      //   return <GoluContestBlockComponent key={idx} block={node.fields} />
+      // }
 
-      if (blockType === 'goluFirstSection') {
-        return <GoluFirstSectionBlockComponent key={idx} {...node.fields} />
-      }
+      // if (blockType === 'goluFirstSection') {
+      //   return <GoluFirstSectionBlockComponent key={idx} {...node.fields} />
+      // }
 
-      if (blockType === 'goluWhyCorner') {
-        return <GoluWhyCornerBlockComponent key={idx} {...node.fields} />
-      }
+      // if (blockType === 'goluWhyCorner') {
+      //   return <GoluWhyCornerBlockComponent key={idx} {...node.fields} />
+      // }
 
       // if (blockType === 'goluHowItWorks') {
       //   return <GoluHowItWorksBlockComponent key={idx} {...node.fields} />
       // }
 
-      if (blockType === 'goluCreate') {
-        return <GoluCreateBlockComponent key={idx} {...node.fields} />
-      }
+      // if (blockType === 'goluCreate') {
+      //   return <GoluCreateBlockComponent key={idx} {...node.fields} />
+      // }
 
       // if (blockType === 'goluJudging') {
       //   return <GoluJudgingBlockComponent key={idx} {...node.fields} />
       // }
 
-      if (blockType === 'goluCtaBanner') {
-        return <GoluCtaBannerBlockComponent key={idx} {...node.fields} />
-      }
+      // if (blockType === 'goluCtaBanner') {
+      //   return <GoluCtaBannerBlockComponent key={idx} {...node.fields} />
+      // }
 
-      if (blockType === 'goluHeroBanner') {
-        return <GoluHeroBannerBlockComponent key={idx} {...node.fields} />
-      }
+      // if (blockType === 'goluHeroBanner') {
+      //   return <GoluHeroBannerBlockComponent key={idx} {...node.fields} />
+      // }
 
-      if (blockType === 'GoluHowItWorksBlock') {
-        return <GoluHowItWorksBlockComponent key={idx} {...node.fields} />
-      }
+      // if (blockType === 'GoluHowItWorksBlock') {
+      //   return <GoluHowItWorksBlockComponent key={idx} {...node.fields} />
+      // }
 
-      if (blockType === 'goluJudging') {
-        return <GoluJudgingBlockComponent key={idx} {...node.fields} />
-      }
-
-      
+      // if (blockType === 'goluJudging') {
+      //   return <GoluJudgingBlockComponent key={idx} {...node.fields} />
+      // }
 
       return null
     }
