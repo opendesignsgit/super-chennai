@@ -5438,6 +5438,10 @@ export interface GoluSubmission {
     sortOrder?: number | null;
     id?: string | null;
   }[];
+  /**
+   * Paste your Google Drive, OneDrive, or any cloud storage link.
+   */
+  photoDriveLink?: string | null;
   aboutYourGolu?: {
     root: {
       type: string;
@@ -10000,6 +10004,7 @@ export interface GoluSubmissionsSelect<T extends boolean = true> {
         sortOrder?: T;
         id?: T;
       };
+  photoDriveLink?: T;
   aboutYourGolu?: T;
   status?: T;
   internalNotes?: T;

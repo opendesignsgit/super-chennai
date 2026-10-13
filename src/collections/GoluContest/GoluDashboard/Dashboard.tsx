@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 
 'use client'
 
@@ -28,6 +29,7 @@ interface SubmissionDoc {
   participant: Participant
   goluPhotographs: MediaItem[]
   superChennaiCornerPhotographs: MediaItem[]
+    photoDriveLink?: string
   status: 'pendingReview' | 'approved' | 'shortlisted' | 'rejected'
   createdAt: string
   aboutYourGolu?: {
@@ -104,8 +106,10 @@ export default function GoluDashboard() {
       Email: sub.participant?.email || 'N/A',
       'Locality Area': sub.participant?.localityArea || 'N/A',
       Instagram: sub.participant?.instagramHandle || 'N/A',
+      'Google Drive / OneDrive Link': sub.photoDriveLink || 'N/A',
       Status: sub.status,
       'Submission Date': new Date(sub.createdAt).toLocaleDateString(),
+      
     }))
 
     const worksheet = XLSX.utils.json_to_sheet(dataToExport)
@@ -161,8 +165,6 @@ export default function GoluDashboard() {
         .filter((sub) => selectedParticipantIds.includes(sub.id))
         .map((sub) => sub.participant?.email)
         .filter(Boolean)
-
-      // const res = await fetch('/api/golu-submissions/bulk-email', {
       const res = await fetch('/api/golu/bulk-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -297,7 +299,11 @@ export default function GoluDashboard() {
                 const isChecked = selectedParticipantIds.includes(sub.id)
 
                 return (
-                  <div key={sub.id} className="submissionCard" style={{ borderLeft: isChecked ? '4px solid #7c3aed' : '1px solid #e2e8f0' }}>
+                  <div
+                    key={sub.id}
+                    className="submissionCard"
+                    style={{ borderLeft: isChecked ? '4px solid #7c3aed' : '1px solid #e2e8f0' }}
+                  >
                     <div className="cardHeader">
                       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
                         {/* Custom Select Checkbox on Left */}
@@ -305,17 +311,34 @@ export default function GoluDashboard() {
                           type="checkbox"
                           checked={isChecked}
                           onChange={() => toggleSelectOne(sub.id)}
-                          style={{ width: '18px', height: '18px', marginTop: '4px', cursor: 'pointer' }}
+                          style={{
+                            width: '18px',
+                            height: '18px',
+                            marginTop: '4px',
+                            cursor: 'pointer',
+                          }}
                         />
                         <div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-                            <h2 className="participantName">{sub.participant?.fullName || 'Unknown'}</h2>
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '12px',
+                              flexWrap: 'wrap',
+                            }}
+                          >
+                            <h2 className="participantName">
+                              {sub.participant?.fullName || 'Unknown'}
+                            </h2>
                             <span className={`statusBadge ${badgeClass}`}>{sub.status}</span>
                           </div>
                           <p className="participantMeta">
-                            📱 +91 {sub.participant?.mobileNumber} | ✉️ {sub.participant?.email} | 📍{' '}
-                            <span className="participantLocality">{sub.participant?.localityArea}</span> |
-                            IG: {sub.participant?.instagramHandle || 'N/A'}
+                            📱 +91 {sub.participant?.mobileNumber} | ✉️ {sub.participant?.email} |
+                            📍{' '}
+                            <span className="participantLocality">
+                              {sub.participant?.localityArea}
+                            </span>{' '}
+                            | IG: {sub.participant?.instagramHandle || 'N/A'}
                           </p>
                         </div>
                       </div>
@@ -338,6 +361,23 @@ export default function GoluDashboard() {
                     <div className="descriptionBox">
                       <strong className="descriptionTitle">About Golu:</strong>
                       {extractAboutText(sub.aboutYourGolu)}
+                    </div>
+
+                    <div className="descriptionBox">
+                      <strong className="descriptionTitle">Google Drive / OneDrive Link:</strong>
+
+                      {sub.photoDriveLink ? (
+                        <a
+                          href={sub.photoDriveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 underline break-all ml-2"
+                        >
+                          {sub.photoDriveLink}
+                        </a>
+                      ) : (
+                        <span className="ml-2 text-gray-500">Not provided</span>
+                      )}
                     </div>
 
                     <div className="photosGrid">

@@ -74,6 +74,17 @@ export const GoluSubmissions: CollectionConfig<'golu-submissions'> = {
         },
       ],
     },
+
+    {
+      name: 'photoDriveLink',
+      type: 'text',
+      label: 'Google Drive / OneDrive Link',
+      required: false,
+      admin: {
+        description: 'Paste your Google Drive, OneDrive, or any cloud storage link.',
+      },
+    },
+
     {
       name: 'aboutYourGolu',
       type: 'richText',
