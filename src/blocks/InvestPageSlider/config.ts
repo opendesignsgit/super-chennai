@@ -8,6 +8,11 @@ export const InvestPageSliderBlock: Block = {
     singular: 'Investment Slider Section',
     plural: 'Investment Slider Sections',
   },
+
+  admin: {
+    group: 'Invest Page',
+  },
+
   fields: [
     {
       name: 'slides',

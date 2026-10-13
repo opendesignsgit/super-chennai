@@ -6,7 +6,7 @@ export const EventArchive = ({ events }: { events: any[] }) => {
 
   return (
     <section className="container py-5 evenetscontainer">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 eventscardflex">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center">
         {events.map((event, i) => (
           <EventCard key={i} doc={event} />
         ))}
