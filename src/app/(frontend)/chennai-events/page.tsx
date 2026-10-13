@@ -1,3 +1,201 @@
+// // 'use client'
+
+// import type { Metadata } from 'next/types'
+// import PageClient from './page.client'
+// import { Pagination } from '@/components/Pagination'
+// import { PageRange } from '@/components/PageRange'
+// import { getEvents } from '@/lib/getEvents'
+// import FilterTopbar from '@/components/EventCard/FilterTopbar'
+// import SortBy from '@/components/EventCard/SortDropdown'
+// import { EventArchive } from '@/components/EventCard/EventArchive'
+// import { EventFiltersSidebar } from '@/components/EventCard/EventFilters'
+// // import { SidebarModal } from '@/components/EventCard/EventFilters'
+
+// import { getPayload } from 'payload'
+// import configPromise from '@/payload.config'
+// import Image from 'next/image'
+// import Link from 'next/link'
+// import AccodomationBanner from '../../../assets/images/AccodomationBannerr.jpg'
+// import './EventsCss.css'
+// import SideBarSliderMobile from '@/components/EventCard/SideBarSliderMobile'
+
+// export const dynamic = 'force-dynamic'
+// export const revalidate = 0
+
+// type SearchParams = {
+//   category?: string
+//   language?: string
+//   location?: string
+//   free?: string
+//   family?: string
+//   startDate?: string
+//   endDate?: string
+//   sort?: string
+//   page?: string
+// }
+
+// export default async function Page({ searchParams }: { searchParams: Promise<SearchParams> }) {
+//   const params = await searchParams
+
+//   // const [showSidebar, setShowSidebar] = useState(false)
+
+//   const payload = await getPayload({ config: configPromise })
+
+//   const categoriesRes = await payload.find({
+//     collection: 'eventsCategories',
+//     limit: 100,
+//   })
+
+//   const categories = categoriesRes.docs
+
+//   const filters = {
+//     categories: params?.category?.split(','),
+//     languages: params?.language?.split(','),
+//     locations: params?.location?.split(','),
+//     freeEntry: params?.free === 'true',
+//     familyFriendly: params?.family === 'true',
+//     startDate: params?.startDate,
+//     endDate: params?.endDate,
+//   }
+
+//   const events = await getEvents(filters, params?.sort)
+
+//   return (
+//     <div className="">
+//       <PageClient />
+
+//       <section className="accaodomationBannerSection">
+//         <div className="">
+//           <img src={AccodomationBanner.src} alt="Chennai Events" className="object-cover" />
+//         </div>
+
+//         <div className="accodoamationBannerContainer ">
+//           <div className="accodoamationBannerText container mx-auto">
+//             <h3>Chennai Events</h3>
+
+//             <div className="breadCrum">
+//               <Link href="/">Home</Link> - <Link href="/events">Events</Link>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* <section className="accaodomationBannerSection relative">
+//         <div className="relative w-full h-[580px]">
+//           <Image
+//             src={AccodomationBanner}
+//             alt="Chennai Events"
+//             fill
+//             className="object-cover"
+//             priority
+//           />
+//         </div>
+
+//         <div className="accodoamationBannerContainer absolute inset-0 flex items-center">
+//           <div className="accodoamationBannerText container mx-auto">
+//             <h3>Chennai Events</h3>
+
+//             <div className="breadCrum">
+//               <Link href="/">Home</Link> - <Link href="/events">Events</Link>
+//             </div>
+//           </div>
+//         </div>
+//       </section> */}
+
+//       <div className="bg-[#f4f5f7]">
+//         <div className="container mx-auto">
+//           <div className="Eventitlesec mb-[50px] text-center container max-w-7xl mx-auto">
+//             <h2 className="text-[#a44294]">Events Calendar</h2>
+//             <p className="paragraphpaddding">
+//               Keeps you in the loop with the latest happenings in Chennai. From cultural festivals
+//               and live performances to workshops and exhibitions, never miss an exciting event in
+//               the city.
+//             </p>
+//           </div>
+//           <FilterTopbar categories={categories} />
+//           <div className="mx-auto w-full max-w-[1300px] flex flex-row gap-6 p-2 pt-8 evenetsssmaincontainer">
+//             <div className="col-span-3 hidden lg:block leftsidesectionevents">
+//               <EventFiltersSidebar
+//                 categories={categories}
+//                 languages={[
+//                   { label: 'Tamil', value: 'tamil' },
+//                   { label: 'Telugu', value: 'telugu' },
+//                   { label: 'Malayalam', value: 'malayalam' },
+//                   { label: 'Kannada', value: 'kannada' },
+//                   { label: 'Hindi', value: 'hindi' },
+//                   { label: 'Bengali', value: 'bengali' },
+//                   { label: 'Marathi', value: 'marathi' },
+//                   { label: 'Gujarati', value: 'gujarati' },
+//                   { label: 'Punjabi', value: 'punjabi' },
+//                   { label: 'Odia', value: 'odia' },
+//                   { label: 'Urdu', value: 'urdu' },
+//                   { label: 'Sanskrit', value: 'sanskrit' },
+//                   { label: 'English', value: 'english' },
+//                   { label: 'German', value: 'german' },
+//                 ]}
+//               />
+//             </div>
+
+//             <div className="col-span-12 lg:col-span-9 rightsidesectionevents">
+//               <div className="flex justify-between mb-1">
+//                 <PageRange
+//                   collection="events"
+//                   currentPage={events.page}
+//                   limit={12}
+//                   totalDocs={events.totalDocs}
+//                 />
+
+//                 <SideBarSliderMobile
+//                   categories={categories}
+//                   languages={[
+//                     { label: 'Tamil', value: 'tamil' },
+//                     { label: 'Telugu', value: 'telugu' },
+//                     { label: 'Malayalam', value: 'malayalam' },
+//                     { label: 'Kannada', value: 'kannada' },
+//                     { label: 'Hindi', value: 'hindi' },
+//                     { label: 'Bengali', value: 'bengali' },
+//                     { label: 'Marathi', value: 'marathi' },
+//                     { label: 'Gujarati', value: 'gujarati' },
+//                     { label: 'Punjabi', value: 'punjabi' },
+//                     { label: 'Odia', value: 'odia' },
+//                     { label: 'Urdu', value: 'urdu' },
+//                     { label: 'Sanskrit', value: 'sanskrit' },
+//                     { label: 'English', value: 'english' },
+//                     { label: 'German', value: 'german' },
+//                   ]}
+//                 />
+
+//                 <SortBy />
+//               </div>
+
+//               <EventArchive events={events.docs} />
+
+//               <div className="mt-10">
+//                 {events.totalPages > 1 && events.page && (
+//                   <Pagination page={events.page} totalPages={events.totalPages} />
+//                 )}
+//               </div>
+//             </div>
+//           </div>
+
+//           {/* <SideBarSliderMobile
+//             open={showSidebar}
+//             onClose={() => setShowSidebar(false)}
+//             filters={filters}
+//             setFilters={setFilters}
+//           /> */}
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+
+// export function generateMetadata(): Metadata {
+//   return {
+//     title: 'Chennai Events | Super Chennai',
+//   }
+// }
+
 import type { Metadata } from 'next/types'
 import PageClient from './page.client'
 import { Pagination } from '@/components/Pagination'
@@ -7,9 +205,10 @@ import FilterTopbar from '@/components/EventCard/FilterTopbar'
 import SortBy from '@/components/EventCard/SortDropdown'
 import { EventArchive } from '@/components/EventCard/EventArchive'
 import { EventFiltersSidebar } from '@/components/EventCard/EventFilters'
+import SideBarSliderMobile from '@/components/EventCard/SideBarSliderMobile'
+
 import { getPayload } from 'payload'
 import configPromise from '@/payload.config'
-import Image from 'next/image'
 import Link from 'next/link'
 import AccodomationBanner from '../../../assets/images/AccodomationBannerr.jpg'
 import './EventsCss.css'
@@ -28,6 +227,23 @@ type SearchParams = {
   sort?: string
   page?: string
 }
+
+const LANGUAGES_DATA = [
+  { label: 'Tamil', value: 'tamil' },
+  { label: 'Telugu', value: 'telugu' },
+  { label: 'Malayalam', value: 'malayalam' },
+  { label: 'Kannada', value: 'kannada' },
+  { label: 'Hindi', value: 'hindi' },
+  { label: 'Bengali', value: 'bengali' },
+  { label: 'Marathi', value: 'marathi' },
+  { label: 'Gujarati', value: 'gujarati' },
+  { label: 'Punjabi', value: 'punjabi' },
+  { label: 'Odia', value: 'odia' },
+  { label: 'Urdu', value: 'urdu' },
+  { label: 'Sanskrit', value: 'sanskrit' },
+  { label: 'English', value: 'english' },
+  { label: 'German', value: 'german' },
+]
 
 export default async function Page({ searchParams }: { searchParams: Promise<SearchParams> }) {
   const params = await searchParams
@@ -54,21 +270,15 @@ export default async function Page({ searchParams }: { searchParams: Promise<Sea
   const events = await getEvents(filters, params?.sort)
 
   return (
-    <div className="">
+    <div>
       <PageClient />
 
-      <section className="accaodomationBannerSection relative">
-        <div className="relative w-full h-[560px]">
-          <Image
-            src={AccodomationBanner}
-            alt="Chennai Events"
-            fill
-            className="object-cover"
-            priority
-          />
+      <section className="accaodomationBannerSection">
+        <div>
+          <img src={AccodomationBanner.src} alt="Chennai Events" className="object-cover" />
         </div>
 
-        <div className="accodoamationBannerContainer absolute inset-0 flex items-center">
+        <div className="accodoamationBannerContainer">
           <div className="accodoamationBannerText container mx-auto">
             <h3>Chennai Events</h3>
 
@@ -81,7 +291,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<Sea
 
       <div className="bg-[#f4f5f7]">
         <div className="container mx-auto">
-          <div className="Eventitlesec mb-[50px] text-center container max-w-7xl mx-auto">
+          <div className="Eventitlesec mb-[50px] sm:mb-[20px] text-center container max-w-7xl mx-auto">
             <h2 className="text-[#a44294]">Events Calendar</h2>
             <p className="paragraphpaddding">
               Keeps you in the loop with the latest happenings in Chennai. From cultural festivals
@@ -89,39 +299,27 @@ export default async function Page({ searchParams }: { searchParams: Promise<Sea
               the city.
             </p>
           </div>
+
           <FilterTopbar categories={categories} />
 
-          <div className="grid grid-cols-12 gap-6 eventsstarts">
-            <div className="col-span-3 hidden lg:block leftsidesectionevents">
-              <EventFiltersSidebar
-                categories={categories}
-                languages={[
-                  { label: 'Tamil', value: 'tamil' },
-                  { label: 'Telugu', value: 'telugu' },
-                  { label: 'Malayalam', value: 'malayalam' },
-                  { label: 'Kannada', value: 'kannada' },
-                  { label: 'Hindi', value: 'hindi' },
-                  { label: 'Bengali', value: 'bengali' },
-                  { label: 'Marathi', value: 'marathi' },
-                  { label: 'Gujarati', value: 'gujarati' },
-                  { label: 'Punjabi', value: 'punjabi' },
-                  { label: 'Odia', value: 'odia' },
-                  { label: 'Urdu', value: 'urdu' },
-                  { label: 'Sanskrit', value: 'sanskrit' },
-                  { label: 'English', value: 'english' },
-                  { label: 'German', value: 'german' },
-                ]}
-              />
+          <div className="mx-auto w-full max-w-[1300px] flex flex-col lg:flex-row gap-6 p-2 pt-8 evenetsssmaincontainer">
+            {/* Desktop Sticky Left Sidebar */}
+            <div className="hidden lg:block leftsidesectionevents shrink-0">
+              <EventFiltersSidebar categories={categories} languages={LANGUAGES_DATA} />
             </div>
 
-            <div className="col-span-12 lg:col-span-9 rightsidesectionevents">
-              <div className="flex justify-between mb-1">
+            {/* Content Section Right Side */}
+            <div className="flex-1 rightsidesectionevents">
+              <div className="flex justify-around sm:justify-between items-center mb-4 gap-2">
                 <PageRange
                   collection="events"
                   currentPage={events.page}
                   limit={12}
                   totalDocs={events.totalDocs}
                 />
+
+                {/* Mobile Filter Toggle Button Component */}
+                <SideBarSliderMobile categories={categories} languages={LANGUAGES_DATA} />
 
                 <SortBy />
               </div>

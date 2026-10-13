@@ -40,9 +40,9 @@ export default async function Page() {
         </div>
         <div className="accodoamationBannerContainer">
           <div className="accodoamationBannerText">
-            <h3>Blogs</h3>
+            <h3>Blog</h3>
             <div className="breadCrum">
-              <a href="/">Home</a> - <a href="#">Blogs</a>
+              <a href="/">Home</a> - <a href="#">Blog</a>
             </div>
           </div>
         </div>

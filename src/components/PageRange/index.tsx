@@ -6,12 +6,11 @@ const defaultLabels = {
 }
 
 const defaultCollectionLabels = {
-
   posts: {
     plural: 'Visits',
     singular: 'visits',
   },
-   events: {
+  events: {
     plural: 'Events',
     singular: 'event',
   },
@@ -50,7 +49,7 @@ export const PageRange: React.FC<{
     {}
 
   return (
-    <div className={[className, 'font-semibold'].filter(Boolean).join(' ')}>
+    <div className={[className, 'font-semibold hidden md:inline'].filter(Boolean).join(' ')}>
       {(typeof totalDocs === 'undefined' || totalDocs === 0) && 'Search produced no results.'}
       {typeof totalDocs !== 'undefined' &&
         totalDocs > 0 &&

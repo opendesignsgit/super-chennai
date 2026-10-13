@@ -1,0 +1,43 @@
+.headingsection {
+    font-family: "NewAmsterdam";
+    letter-spacing: 0.2px;
+    font-weight: 500;
+    font-size: 50px;
+    line-height: 42px;
+}
+
+.contactssssform input::placeholder,
+.contactssssform textarea::placeholder,
+.contactssssform select::placeholder {
+    color: #000;
+    font-family: "poppins";
+    font-size: 14px !important;
+}
+
+.contactssssform select {
+    color: #000;
+    font-family: "poppins";
+    font-size: 14px !important;
+}
+
+.contactssssform input,
+.contactssssform span {
+    color: #000;
+    font-family: "poppins";
+    font-size: 14px !important;
+}
+
+.paddingsectionntop {
+    padding-top: 100px;
+}
+
+.paddingbtoomm {
+    padding-bottom: 100px;
+}
+
+/* padding-bottom: 50px; */
+
+
+.poppinsfamilyyy p {
+    font-family: "poppins";
+}
