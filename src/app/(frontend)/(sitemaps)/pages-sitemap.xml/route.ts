@@ -40,6 +40,72 @@ const getPagesSitemap = unstable_cache(
         loc: `${SITE_URL}/posts`,
         lastmod: dateFallback,
       },
+      {
+        loc: `${SITE_URL}/icon-of-the-month`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/ads`,
+        lastmod: dateFallback,
+      },
+
+      {
+        loc: `${SITE_URL}/arattai`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/articles`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/contest`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/cricketScore`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/events`,
+        lastmod: dateFallback,
+      },
+
+      {
+        loc: `${SITE_URL}/goluLandingPage`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/golu-contest`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/innovate`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/investments`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/live`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/neighbourhood`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/properties`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/trendingChennai`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/whats-ap-chennai`,
+        lastmod: dateFallback,
+      },
     ]
 
     const sitemap = results.docs

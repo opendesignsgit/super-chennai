@@ -74,6 +74,16 @@ export const GoluSubmissions: CollectionConfig<'golu-submissions'> = {
         },
       ],
     },
+    {
+      name: 'goluVideo',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
+      label: 'Golu Video',
+      admin: {
+        description: 'Upload an optional Golu contest video.',
+      },
+    },
 
     {
       name: 'photoDriveLink',
