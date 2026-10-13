@@ -85,9 +85,17 @@ export default function ChenzInvest2026Component({
   const accordionRefs2026 = useRef<(HTMLDivElement | null)[]>([])
 
   // Set initial active tab safely on load
+  // useEffect(() => {
+  //   if (categories && categories.length > 0) {
+  //     setActiveTab2026(categories[0]?.categoryTabLabel)
+  //   }
+  // }, [categories])
+
   useEffect(() => {
-    if (categories && categories.length > 0) {
-      setActiveTab2026(categories[0].categoryTabLabel)
+    const firstCategory = categories?.[0]
+
+    if (firstCategory?.categoryTabLabel) {
+      setActiveTab2026(firstCategory.categoryTabLabel)
     }
   }, [categories])
 
