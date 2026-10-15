@@ -99,6 +99,11 @@ import MetroExperienceComponent from './InnerPage/SharedBlocks/MetroExperience/c
 import MetroGuidelinesComponent from './InnerPage/SharedBlocks/MetroGuidelines/component'
 import MetroRegistrationComponent from './InnerPage/SharedBlocks/MetroRegistration/component'
 import ManifestoSectionComponent from './InnerPage/SharedBlocks/ManifestoSection/component'
+import KiteFestivalAboutComponent from './InnerPage/SharedBlocks/KiteFestivalAboutBlock/component'
+import KiteFestivalHighlightsComponent from './InnerPage/SharedBlocks/KiteFestivalHighlights/component'
+import KiteFestivalFAQComponent from './InnerPage/SharedBlocks/KiteFestivalFAQSection/component'
+import KiteFestivalHeroComponent from './InnerPage/SharedBlocks/KiteHeader/component'
+import KiteFestivalNewFaqComponent from './InnerPage/SharedBlocks/KiteFestivalNewFaq/component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -247,6 +252,17 @@ const blockComponents: {
   ManifestoSectionBlock: ManifestoSectionComponent,
 
   // sing alone metro page
+
+  // Kite Festival Page
+
+  KiteFestivalHeroBlock: KiteFestivalHeroComponent,
+  KiteFestivalAbout: KiteFestivalAboutComponent,
+  KiteFestivalHighlights: KiteFestivalHighlightsComponent,
+  KiteFestivalNewFaq: KiteFestivalNewFaqComponent,
+
+  // KiteFestivalFAQBlock: KiteFestivalFAQComponent,
+
+  // Kite Festival Page
 }
 
 export const RenderBlocks: React.FC<{

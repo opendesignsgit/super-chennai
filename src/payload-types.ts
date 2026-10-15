@@ -7,6 +7,17 @@
  */
 
 /**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "KiteFestivalNewFAQItem".
+ */
+export type KiteFestivalNewFAQItem =
+  | {
+      question: string;
+      answer: string;
+      id?: string | null;
+    }[]
+  | null;
+/**
  * Supported timezones in IANA format.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2112,6 +2123,73 @@ export interface Page {
         id?: string | null;
         blockName?: string | null;
         blockType: 'MetroRegistrationBlock';
+      }
+    | {
+        announcementText?: string | null;
+        locationSubtitle?: string | null;
+        topBadge?: string | null;
+        mainHeading?: string | null;
+        description?: string | null;
+        dateText?: string | null;
+        locationText?: string | null;
+        primaryCtaText?: string | null;
+        primaryCtaUrl?: string | null;
+        secondaryCtaText?: string | null;
+        secondaryCtaUrl?: string | null;
+        cardBadge?: string | null;
+        nationsText?: string | null;
+        stat1Number?: string | null;
+        stat1Label?: string | null;
+        stat2Number?: string | null;
+        stat2Label?: string | null;
+        venueBoxTitle?: string | null;
+        venueBoxSubtitle?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'KiteFestivalHeroBlock';
+      }
+    | {
+        featuredImage: number | Media;
+        tagText: string;
+        mainHeading: string;
+        paragraph1?: string | null;
+        paragraph2?: string | null;
+        paragraph3?: string | null;
+        boxTitle?: string | null;
+        boxDescription?: string | null;
+        boxSvgCode?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'KiteFestivalAbout';
+      }
+    | {
+        tagText: string;
+        mainHeading: string;
+        description?: string | null;
+        highlightsList?:
+          | {
+              title: string;
+              desc: string;
+              svgCode: string;
+              id?: string | null;
+            }[]
+          | null;
+        bannerTitle?: string | null;
+        bannerDescription?: string | null;
+        badgeText?: string | null;
+        badgeSvgCode?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'KiteFestivalHighlights';
+      }
+    | {
+        tagText: string;
+        mainHeading: string;
+        description?: string | null;
+        faqsList?: KiteFestivalNewFAQItem;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'KiteFestivalNewFaq';
       }
   )[];
   meta?: {
@@ -7895,6 +7973,77 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        KiteFestivalHeroBlock?:
+          | T
+          | {
+              announcementText?: T;
+              locationSubtitle?: T;
+              topBadge?: T;
+              mainHeading?: T;
+              description?: T;
+              dateText?: T;
+              locationText?: T;
+              primaryCtaText?: T;
+              primaryCtaUrl?: T;
+              secondaryCtaText?: T;
+              secondaryCtaUrl?: T;
+              cardBadge?: T;
+              nationsText?: T;
+              stat1Number?: T;
+              stat1Label?: T;
+              stat2Number?: T;
+              stat2Label?: T;
+              venueBoxTitle?: T;
+              venueBoxSubtitle?: T;
+              id?: T;
+              blockName?: T;
+            };
+        KiteFestivalAbout?:
+          | T
+          | {
+              featuredImage?: T;
+              tagText?: T;
+              mainHeading?: T;
+              paragraph1?: T;
+              paragraph2?: T;
+              paragraph3?: T;
+              boxTitle?: T;
+              boxDescription?: T;
+              boxSvgCode?: T;
+              id?: T;
+              blockName?: T;
+            };
+        KiteFestivalHighlights?:
+          | T
+          | {
+              tagText?: T;
+              mainHeading?: T;
+              description?: T;
+              highlightsList?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    svgCode?: T;
+                    id?: T;
+                  };
+              bannerTitle?: T;
+              bannerDescription?: T;
+              badgeText?: T;
+              badgeSvgCode?: T;
+              id?: T;
+              blockName?: T;
+            };
+        KiteFestivalNewFaq?:
+          | T
+          | {
+              tagText?: T;
+              mainHeading?: T;
+              description?: T;
+              faqsList?: T | KiteFestivalNewFAQItemSelect<T>;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -7909,6 +8058,15 @@ export interface PagesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "KiteFestivalNewFAQItem_select".
+ */
+export interface KiteFestivalNewFAQItemSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
+  id?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

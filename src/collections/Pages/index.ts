@@ -100,6 +100,11 @@ import { MetroExperienceBlock } from '@/blocks/InnerPage/SharedBlocks/MetroExper
 import { MetroGuidelinesBlock } from '@/blocks/InnerPage/SharedBlocks/MetroGuidelines/config'
 import { MetroRegistrationBlock } from '@/blocks/InnerPage/SharedBlocks/MetroRegistration/config'
 import { ManifestoSectionBlock } from '@/blocks/InnerPage/SharedBlocks/ManifestoSection/config'
+import { KiteFestivalAboutBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalAboutBlock/config'
+import { KiteFestivalHighlightsBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalHighlights/config'
+import { KiteFestivalHeroBlock } from '@/blocks/InnerPage/SharedBlocks/KiteHeader/config'
+import { KiteFestivalNewFaqBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalNewFaq/config'
+// import { KiteFestivalFAQBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalFAQSection/config'
 // import { ChennaiAppsBlock } from '@/blocks/InnerPage/ChennaiApps/config'
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -305,6 +310,15 @@ export const Pages: CollectionConfig<'pages'> = {
                 MetroRegistrationBlock,
 
                 //------------------Singe Alone Metro page
+
+                //------------------Kite Festival Page
+
+                KiteFestivalHeroBlock,
+                KiteFestivalAboutBlock,
+                KiteFestivalHighlightsBlock,
+                KiteFestivalNewFaqBlock,
+
+                //------------------Kite Festival Page
               ],
               required: true,
               admin: {
