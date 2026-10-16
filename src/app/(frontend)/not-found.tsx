@@ -15,7 +15,7 @@ export default function NotFound() {
 
   return (
     <div 
-      className="relative flex min-h-[85vh] w-full items-center justify-center overflow-hidden px-4 py-20 text-white rounded-3xl my-4"
+      className="relative flex min-h-[85vh] w-full items-center justify-center overflow-hidden px-4  text-white "
       style={{
         background: `radial-gradient(circle at center, ${SECONDARY_COLOR} 0%, #1a0817 100%)`,
       }}

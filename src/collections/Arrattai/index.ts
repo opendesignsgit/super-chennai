@@ -128,7 +128,7 @@ export const Arattai: CollectionConfig<'arattai'> = {
                         Code,
                         MediaBlock,
                         VideoBlock,
-                        EventRegistrationFormBlock
+                        EventRegistrationFormBlock,
                       ],
                     }),
                     FixedToolbarFeature(),

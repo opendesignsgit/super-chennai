@@ -104,6 +104,7 @@ import { KiteFestivalAboutBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFest
 import { KiteFestivalHighlightsBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalHighlights/config'
 import { KiteFestivalHeroBlock } from '@/blocks/InnerPage/SharedBlocks/KiteHeader/config'
 import { KiteFestivalNewFaqBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalNewFaq/config'
+import { EventRegistrationFormBlock } from '../RegistrationSettings/blocks/EventRegistrationForm/config'
 // import { KiteFestivalFAQBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalFAQSection/config'
 // import { ChennaiAppsBlock } from '@/blocks/InnerPage/ChennaiApps/config'
 
@@ -317,6 +318,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 KiteFestivalAboutBlock,
                 KiteFestivalHighlightsBlock,
                 KiteFestivalNewFaqBlock,
+                // EventRegistrationFormBlock
 
                 //------------------Kite Festival Page
               ],
