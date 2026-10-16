@@ -26,6 +26,7 @@ import GoluCreateBlockComponent from '@/collections/GoluContest/blocks/GoluHowIt
 import GoluCtaBannerBlockComponent from '@/collections/GoluContest/blocks/GoluCtaBanner/component'
 import GoluHeroBannerBlockComponent from '@/collections/GoluContest/blocks/GoluHeroBanner/component'
 import GoluJudgingBlockComponent from '@/collections/GoluContest/blocks/GoluJudgingBlock/component'
+import EventRegistrationBlockComponent from '@/collections/RegistrationSettings/blocks/EventRegistrationForm/components'
 
 export function renderNode(node: any, idx: number, arattaiData?: any): React.ReactNode {
   /* ------------------------------------------------
@@ -159,6 +160,13 @@ export function renderNode(node: any, idx: number, arattaiData?: any): React.Rea
       if (blockType === 'eventQuickDetails') {
         return <EventQuickDetailsComponent key={idx} {...node.fields} />
       }
+
+        if (blockType === 'EventRegistrationFormBlock') {
+          return <EventRegistrationBlockComponent key={idx} {...node.fields} />
+        }
+
+    
+
       // if (blockType === 'goluFormBlock') {
       //   return <GoluFormBlockComponent key={idx} block={node.fields} />
       // }

@@ -2196,6 +2196,21 @@ export interface Page {
         blockType: 'KiteFestivalNewFaq';
       }
   )[];
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   meta?: {
     title?: string | null;
     /**
@@ -8096,6 +8111,7 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  content?: T;
   meta?:
     | T
     | {
@@ -11244,6 +11260,25 @@ export interface TaskSchedulePublish {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock".
+ */
+export interface VideoBlock {
+  source: 'youtube' | 'instagram' | 'mp4';
+  /**
+   * Paste YouTube / Instagram / mp4 URL
+   */
+  url: string;
+  autoplay?: boolean | null;
+  /**
+   * Optional: Add a cover image for Instagram posts
+   */
+  thumbnail?: (number | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'videoBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BannerBlock".
  */
 export interface BannerBlock {
@@ -11295,25 +11330,6 @@ export interface MediaBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "VideoBlock".
- */
-export interface VideoBlock {
-  source: 'youtube' | 'instagram' | 'mp4';
-  /**
-   * Paste YouTube / Instagram / mp4 URL
-   */
-  url: string;
-  autoplay?: boolean | null;
-  /**
-   * Optional: Add a cover image for Instagram posts
-   */
-  thumbnail?: (number | null) | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'videoBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

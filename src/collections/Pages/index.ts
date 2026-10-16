@@ -105,6 +105,8 @@ import { KiteFestivalHighlightsBlock } from '@/blocks/InnerPage/SharedBlocks/Kit
 import { KiteFestivalHeroBlock } from '@/blocks/InnerPage/SharedBlocks/KiteHeader/config'
 import { KiteFestivalNewFaqBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalNewFaq/config'
 import { EventRegistrationFormBlock } from '../RegistrationSettings/blocks/EventRegistrationForm/config'
+import { BlocksFeature, FixedToolbarFeature, HeadingFeature, HorizontalRuleFeature, InlineToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
+import { VideoBlock } from '@/blocks/VideoBlock/config'
 // import { KiteFestivalFAQBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalFAQSection/config'
 // import { ChennaiAppsBlock } from '@/blocks/InnerPage/ChennaiApps/config'
 
@@ -326,6 +328,26 @@ export const Pages: CollectionConfig<'pages'> = {
               admin: {
                 initCollapsed: true,
               },
+            },
+            {
+              name: 'content',
+              type: 'richText',
+              editor: lexicalEditor({
+                features: ({ rootFeatures }) => {
+                  return [
+                    ...rootFeatures,
+                    HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                    BlocksFeature({
+                      blocks: [VideoBlock, EventRegistrationFormBlock],
+                    }),
+                    FixedToolbarFeature(),
+                    InlineToolbarFeature(),
+                    HorizontalRuleFeature(),
+                  ]
+                },
+              }),
+              label: false,
+              required: true,
             },
           ],
           label: 'Content',
