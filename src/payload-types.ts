@@ -5517,6 +5517,10 @@ export interface GoluSubmission {
     id?: string | null;
   }[];
   /**
+   * Upload an optional Golu contest video.
+   */
+  goluVideo?: (number | null) | Media;
+  /**
    * Paste your Google Drive, OneDrive, or any cloud storage link.
    */
   photoDriveLink?: string | null;
@@ -10162,6 +10166,7 @@ export interface GoluSubmissionsSelect<T extends boolean = true> {
         sortOrder?: T;
         id?: T;
       };
+  goluVideo?: T;
   photoDriveLink?: T;
   aboutYourGolu?: T;
   status?: T;

@@ -23,12 +23,19 @@ interface MediaItem {
     filename?: string
   }
 }
+interface MediaFile {
+  id: string | number
+  url?: string
+  filename?: string
+  mimeType?: string
+}
 
 interface SubmissionDoc {
   id: number | string
   participant: Participant
   goluPhotographs: MediaItem[]
   superChennaiCornerPhotographs: MediaItem[]
+  goluVideo?: MediaFile | string | number | null
     photoDriveLink?: string
   status: 'pendingReview' | 'approved' | 'shortlisted' | 'rejected'
   createdAt: string
@@ -70,7 +77,7 @@ export default function GoluDashboard() {
   const fetchSubmissions = async () => {
     try {
       setLoading(true)
-      const res = await fetch('/api/golu-submissions?depth=2&limit=200')
+      const res = await fetch('/api/golu-submissions?depth=2&limit=200000')
       const data = await res.json()
       if (data && data.docs) {
         setSubmissions(data.docs)
@@ -261,11 +268,34 @@ export default function GoluDashboard() {
           </div>
 
           {/* SELECT ALL CONTROLS */}
-          <div style={{ marginBottom: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#fff', padding: '12px 16px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
-            <label style={{ fontSize: '13px', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div
+            style={{
+              marginBottom: '16px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              background: '#fff',
+              padding: '12px 16px',
+              borderRadius: '10px',
+              border: '1px solid #e2e8f0',
+            }}
+          >
+            <label
+              style={{
+                fontSize: '13px',
+                fontWeight: 600,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+              }}
+            >
               <input
                 type="checkbox"
-                checked={filteredSubmissions.length > 0 && selectedParticipantIds.length === filteredSubmissions.length}
+                checked={
+                  filteredSubmissions.length > 0 &&
+                  selectedParticipantIds.length === filteredSubmissions.length
+                }
                 onChange={toggleSelectAll}
                 style={{ width: '16px', height: '16px', cursor: 'pointer' }}
               />
@@ -274,7 +304,16 @@ export default function GoluDashboard() {
             {selectedParticipantIds.length > 0 && (
               <button
                 onClick={() => setActiveTab('broadcast')}
-                style={{ background: '#7c3aed', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, cursor: 'pointer' }}
+                style={{
+                  background: '#7c3aed',
+                  color: '#fff',
+                  border: 'none',
+                  padding: '6px 12px',
+                  borderRadius: '6px',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                }}
               >
                 Send Mail to Selected ({selectedParticipantIds.length}) →
               </button>
@@ -425,6 +464,33 @@ export default function GoluDashboard() {
                         </div>
                       </div>
                     </div>
+
+                    {typeof sub.goluVideo === 'object' && sub.goluVideo?.url && (
+                      <div className="descriptionBox">
+                        <strong className="descriptionTitle">Golu Video:</strong>
+
+                        <video
+                          controls
+                          preload="metadata"
+                          playsInline
+                          style={{
+                            display: 'block',
+                            width: '100%',
+                            maxWidth: '600px',
+                            maxHeight: '400px',
+                            marginTop: '12px',
+                            borderRadius: '10px',
+                            background: '#000',
+                          }}
+                        >
+                          <source
+                            src={getFullMediaUrl(sub.goluVideo.url)}
+                            type={sub.goluVideo.mimeType || 'video/mp4'}
+                          />
+                          Your browser does not support video playback.
+                        </video>
+                      </div>
+                    )}
                   </div>
                 )
               })
@@ -438,7 +504,9 @@ export default function GoluDashboard() {
             ✉️ Custom Email Broadcast Center
           </h2>
           <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '20px' }}>
-            You have selected <strong style={{ color: '#7c3aed' }}>{selectedParticipantIds.length}</strong> participants to email.
+            You have selected{' '}
+            <strong style={{ color: '#7c3aed' }}>{selectedParticipantIds.length}</strong>{' '}
+            participants to email.
           </p>
 
           {emailStatusMsg && (
@@ -458,7 +526,15 @@ export default function GoluDashboard() {
 
           <form onSubmit={handleSendBroadcast}>
             <div style={{ marginBottom: '16px' }}>
-              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: '#334155' }}>
+              <label
+                style={{
+                  display: 'block',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  marginBottom: '6px',
+                  color: '#334155',
+                }}
+              >
                 Email Subject
               </label>
               <input
@@ -472,7 +548,15 @@ export default function GoluDashboard() {
             </div>
 
             <div style={{ marginBottom: '20px' }}>
-              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: '#334155' }}>
+              <label
+                style={{
+                  display: 'block',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  marginBottom: '6px',
+                  color: '#334155',
+                }}
+              >
                 Email Message Content
               </label>
               <textarea
@@ -499,9 +583,14 @@ export default function GoluDashboard() {
                 type="submit"
                 disabled={sendingEmail || selectedParticipantIds.length === 0}
                 className="exportBtn"
-                style={{ opacity: sendingEmail || selectedParticipantIds.length === 0 ? 0.6 : 1, cursor: 'pointer' }}
+                style={{
+                  opacity: sendingEmail || selectedParticipantIds.length === 0 ? 0.6 : 1,
+                  cursor: 'pointer',
+                }}
               >
-                {sendingEmail ? 'Sending Emails...' : `🚀 Send Mail to ${selectedParticipantIds.length} Users`}
+                {sendingEmail
+                  ? 'Sending Emails...'
+                  : `🚀 Send Mail to ${selectedParticipantIds.length} Users`}
               </button>
               <button
                 type="button"

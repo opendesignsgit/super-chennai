@@ -12,11 +12,11 @@ export async function GET(request: NextRequest) {
   const path = searchParams.get('path')
   const collection = searchParams.get('collection') as CollectionSlug
   const slug = searchParams.get('slug')
-  const previewSecret = searchParams.get('previewSecret')
+  // const previewSecret = searchParams.get('previewSecret')
 
-  if (previewSecret !== process.env.PREVIEW_SECRET) {
-    return new Response('You are not allowed to preview this page', { status: 403 })
-  }
+  // if (previewSecret !== process.env.PREVIEW_SECRET) {
+  //   return new Response('You are not allowed to preview this page', { status: 403 })
+  // }
 
   if (!path || !collection || !slug) {
     return new Response('Insufficient search params', { status: 404 })
