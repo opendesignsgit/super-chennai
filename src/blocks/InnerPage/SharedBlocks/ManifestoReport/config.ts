@@ -52,6 +52,8 @@ export const InfraBoom2026Block: Block = {
     singular: 'Infra Boom 2026 Section',
     plural: 'Infra Boom 2026 Sections',
   },
+
+  imageURL: '/images/sections-image/manifestoboom.jpg',
   admin: {
     group: 'Manifesto Page',
   },

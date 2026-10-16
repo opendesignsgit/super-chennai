@@ -134,10 +134,10 @@ export default buildConfig({
     pool: {
       max: 10,
       connectionString: process.env.DATABASE_URI,
-      connectionTimeoutMillis: 1800000, // 30 minutes
-      idleTimeoutMillis: 1800000, // 30 minutes
+      connectionTimeoutMillis: 10000, // 30 minutes
+      idleTimeoutMillis: 10000, // 30 minutes
     },
-    push: true,
+    push: false,
   }),
 
   collections: [
