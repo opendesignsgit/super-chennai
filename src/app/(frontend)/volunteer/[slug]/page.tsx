@@ -54,27 +54,25 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-    <Suspense fallback={null}>
-      <PostHero
-        post={{
-          ...post,
-          content: post.content ?? {
-            root: {
-              type: 'root',
-              children: [],
-              direction: null,
-              format: '',
-              indent: 0,
-              version: 1,
+      <Suspense fallback={null}>
+        <PostHero
+          post={{
+            ...post,
+            content: post.content ?? {
+              root: {
+                type: 'root',
+                children: [],
+                direction: null,
+                format: '',
+                indent: 0,
+                version: 1,
+              },
             },
-          },
-        }}
-      />
+          }}
+        />
       </Suspense>
 
       <div>
-        {/* <RichText data={post.content} enableGutter={false} /> */}
-
         <RichText
           data={
             post.content ?? {
@@ -90,12 +88,6 @@ export default async function Post({ params: paramsPromise }: Args) {
           }
           enableGutter={false}
         />
-        {/* {post.relatedvolunteer && post.relatedvolunteer.length > 0 && (
-          <Relatedvolunteer
-            className=""
-            docs={post.relatedvolunteer.filter((post) => typeof post === 'object')}
-          />
-        )} */}
       </div>
     </div>
   )
@@ -105,7 +97,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   const { slug = '' } = await paramsPromise
   const post = await queryPostBySlug({ slug })
 
-  return generateMeta({ doc: post })
+  return generateMeta({ doc: post as any })
 }
 
 const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {

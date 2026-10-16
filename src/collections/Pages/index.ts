@@ -100,6 +100,21 @@ import { MetroExperienceBlock } from '@/blocks/InnerPage/SharedBlocks/MetroExper
 import { MetroGuidelinesBlock } from '@/blocks/InnerPage/SharedBlocks/MetroGuidelines/config'
 import { MetroRegistrationBlock } from '@/blocks/InnerPage/SharedBlocks/MetroRegistration/config'
 import { ManifestoSectionBlock } from '@/blocks/InnerPage/SharedBlocks/ManifestoSection/config'
+import { KiteFestivalAboutBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalAboutBlock/config'
+import { KiteFestivalHighlightsBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalHighlights/config'
+import { KiteFestivalHeroBlock } from '@/blocks/InnerPage/SharedBlocks/KiteHeader/config'
+import { KiteFestivalNewFaqBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalNewFaq/config'
+import { EventRegistrationFormBlock } from '../RegistrationSettings/blocks/EventRegistrationForm/config'
+import {
+  BlocksFeature,
+  FixedToolbarFeature,
+  HeadingFeature,
+  HorizontalRuleFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
+import { VideoBlock } from '@/blocks/VideoBlock/config'
+// import { KiteFestivalFAQBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalFAQSection/config'
 // import { ChennaiAppsBlock } from '@/blocks/InnerPage/ChennaiApps/config'
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -169,7 +184,6 @@ export const Pages: CollectionConfig<'pages'> = {
                 HotelsInChennaiBlock,
                 volunteerBecameListBlock,
                 // REUSABLE BLOCK
-
                 // RESUSABLE BLOCK NEW #####################
                 mainPageBannerBlock,
                 IntroTextBlock,
@@ -186,15 +200,12 @@ export const Pages: CollectionConfig<'pages'> = {
                 investmentCategoryListBlock,
                 innovateSlider,
                 TextHoverImageSection,
-
                 // TRENDINGCHENNAI@#########
                 TrendingChennaiSlider,
                 SecondSectionBlock,
                 PopupBannerBlock,
                 CricketScoreBlock,
-
                 // Conclave Pages
-
                 ConclaveSuperChennaiBlock,
                 ConclaveAboutBlock,
                 ConclaveAgendaBlock,
@@ -203,20 +214,13 @@ export const Pages: CollectionConfig<'pages'> = {
                 ConclaveCtaBlock,
                 ConclavePartnersBlock,
                 ConclaveGalleryBlock,
-
                 // Conclave Pages
-
                 // InnerPageBanner,
                 InnerPageHeroBannerBlock,
-
                 // Faq Page
-
                 FaqSectionBlock,
-
                 // Faq Page
-
                 // About Page
-
                 AboutIntroBlock,
                 AboutWelcomeSuperChennaiBlockNew,
                 // AboutWelcomeSuperChennaiBlock,
@@ -224,50 +228,37 @@ export const Pages: CollectionConfig<'pages'> = {
                 AboutFoundationsBlock,
                 AboutNammaChennaiBlock,
                 AboutWhyChennaiBlock,
-
                 // About Page
-
                 // InvestPages,
-
                 InvestPageBorderSection,
                 InvestPageTabBlock,
                 InvestPageSliderBlock,
-
                 // InvestPages,
-
                 InnovatePageSliderBlock,
                 InnovateInfoSectionBlock,
-
                 ImagewithContent,
                 ImageWithoutContentBlock,
-
                 TableSectionBlock,
                 InnerPageSliderBlock,
-
                 // common blocks
                 GallerySliderWithPopupBlock,
                 LeftImageRightSectionBlock,
                 BenefitSectionsBlock,
                 // BenefitSectionsRoseBlock,
-
                 IntroPinkTextWithContentBlock,
                 VisitImageListSectionBlock,
-
                 WorkNetworkSectionBlock,
                 WorkPageImageSectionBlock,
                 // HealthcareInChennaiBlock,
-
                 // ChennaiHealthCareSectionBlock,
                 // EyeHospitalsBlock,
 
                 // -------------Live Detail Page Section
-
                 HealthCareHospitalsBlock,
                 ChennaiLivingSectionBlock,
                 ThingsToDoBlock,
                 ChennaiNeighbourhoodBlock,
                 QualityOfLifeBlock,
-
                 // -------------Live Detail Page Section
 
                 // -------------Visit Detail Page Section
@@ -276,40 +267,185 @@ export const Pages: CollectionConfig<'pages'> = {
                 // -------------Visit Detail Page Section
 
                 ContactBlock,
-
                 // ChennaiAppsBlock,
-
                 ChennaiAppsBlock,
-
                 PlacesSectionBlock,
-
                 LearningLivePageBlock,
                 ChenzInvest2026Block,
-
                 EventsList2026Block,
-
                 // Manifesto Page
-
                 InfraBoom2026Block,
                 ManifestoSectionBlock,
-
                 // Manifesto Page
                 TvCommercials2026Block,
                 MediaCoverageBlockMainPage,
-
                 //------------------Singe Alone Metro page
                 MetroMadrasBlock,
                 MetroTheDetailsBlock,
                 MetroExperienceBlock,
                 MetroGuidelinesBlock,
                 MetroRegistrationBlock,
-
                 //------------------Singe Alone Metro page
+
+                //------------------Kite Festival Page
+
+                KiteFestivalHeroBlock,
+                KiteFestivalAboutBlock,
+                KiteFestivalHighlightsBlock,
+                KiteFestivalNewFaqBlock,
+                // EventRegistrationFormBlock
+
+                //------------------Kite Festival Page
               ],
-              required: true,
+              // required: true,
               admin: {
                 initCollapsed: true,
               },
+            },
+            {
+              name: 'content',
+              type: 'richText',
+              editor: lexicalEditor({
+                features: ({ rootFeatures }) => {
+                  return [
+                    ...rootFeatures,
+                    HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                    BlocksFeature({
+                      blocks: [
+                        VideoBlock,
+                        EventRegistrationFormBlock,
+                        ExploreBlock,
+                        FunChennaiBlock,
+                        StartupChennaiBlock,
+                        ChennaiInvestmentsBlock,
+                        socialReelSlider,
+                        BecameAVolunteerBlock,
+                        EventsCalendarBlock,
+                        HeroSlider,
+                        //###### INNER BLOCKS #############
+                        VisitCategory,
+                        HotelsInChennaiBlock,
+                        volunteerBecameListBlock,
+                        // REUSABLE BLOCK
+                        // RESUSABLE BLOCK NEW #####################
+                        mainPageBannerBlock,
+                        IntroTextBlock,
+                        GlobalSearchBlock,
+                        FormPopup,
+                        Infography,
+                        TwoColumnFeatureBlock,
+                        Utilities,
+                        ContentZoneCarousel,
+                        // SpotlightGallery,
+                        AllEvents,
+                        liveIntrorSection,
+                        ChennaiLifeEssentialSection,
+                        investmentCategoryListBlock,
+                        innovateSlider,
+                        TextHoverImageSection,
+                        // TRENDINGCHENNAI@#########
+                        TrendingChennaiSlider,
+                        SecondSectionBlock,
+                        PopupBannerBlock,
+                        CricketScoreBlock,
+                        // Conclave Pages
+                        ConclaveSuperChennaiBlock,
+                        ConclaveAboutBlock,
+                        ConclaveAgendaBlock,
+                        ConclaveSpeakersBlock,
+                        ConclaveFivePillarsBlock,
+                        ConclaveCtaBlock,
+                        ConclavePartnersBlock,
+                        ConclaveGalleryBlock,
+                        // Conclave Pages
+                        // InnerPageBanner,
+                        InnerPageHeroBannerBlock,
+                        // Faq Page
+                        FaqSectionBlock,
+                        // Faq Page
+                        // About Page
+                        AboutIntroBlock,
+                        AboutWelcomeSuperChennaiBlockNew,
+                        // AboutWelcomeSuperChennaiBlock,
+                        VisionMissionBlock,
+                        AboutFoundationsBlock,
+                        AboutNammaChennaiBlock,
+                        AboutWhyChennaiBlock,
+                        // About Page
+                        // InvestPages,
+                        InvestPageBorderSection,
+                        InvestPageTabBlock,
+                        InvestPageSliderBlock,
+                        // InvestPages,
+                        InnovatePageSliderBlock,
+                        InnovateInfoSectionBlock,
+                        ImagewithContent,
+                        ImageWithoutContentBlock,
+                        TableSectionBlock,
+                        InnerPageSliderBlock,
+                        // common blocks
+                        GallerySliderWithPopupBlock,
+                        LeftImageRightSectionBlock,
+                        BenefitSectionsBlock,
+                        // BenefitSectionsRoseBlock,
+                        IntroPinkTextWithContentBlock,
+                        VisitImageListSectionBlock,
+                        WorkNetworkSectionBlock,
+                        WorkPageImageSectionBlock,
+                        // HealthcareInChennaiBlock,
+                        // ChennaiHealthCareSectionBlock,
+                        // EyeHospitalsBlock,
+
+                        // -------------Live Detail Page Section
+                        HealthCareHospitalsBlock,
+                        ChennaiLivingSectionBlock,
+                        ThingsToDoBlock,
+                        ChennaiNeighbourhoodBlock,
+                        QualityOfLifeBlock,
+                        // -------------Live Detail Page Section
+
+                        // -------------Visit Detail Page Section
+
+                        VisitWellnessSectionBlock,
+                        // -------------Visit Detail Page Section
+
+                        ContactBlock,
+                        // ChennaiAppsBlock,
+                        ChennaiAppsBlock,
+                        PlacesSectionBlock,
+                        LearningLivePageBlock,
+                        ChenzInvest2026Block,
+                        EventsList2026Block,
+                        // Manifesto Page
+                        InfraBoom2026Block,
+                        ManifestoSectionBlock,
+                        // Manifesto Page
+                        TvCommercials2026Block,
+                        MediaCoverageBlockMainPage,
+                        //------------------Singe Alone Metro page
+                        MetroMadrasBlock,
+                        MetroTheDetailsBlock,
+                        MetroExperienceBlock,
+                        MetroGuidelinesBlock,
+                        MetroRegistrationBlock,
+                        //------------------Singe Alone Metro page
+
+                        //------------------Kite Festival Page
+
+                        KiteFestivalHeroBlock,
+                        KiteFestivalAboutBlock,
+                        KiteFestivalHighlightsBlock,
+                        KiteFestivalNewFaqBlock,
+                      ],
+                    }),
+                    FixedToolbarFeature(),
+                    InlineToolbarFeature(),
+                    HorizontalRuleFeature(),
+                  ]
+                },
+              }),
+              label: false,
+              required: true,
             },
           ],
           label: 'Content',

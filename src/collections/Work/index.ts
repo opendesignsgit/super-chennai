@@ -52,7 +52,7 @@ export const work: CollectionConfig<'work'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
-       group: '🏙️ Chennai Content',
+    group: '🏙️ Chennai Content',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({

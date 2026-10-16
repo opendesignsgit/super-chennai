@@ -1,22 +1,22 @@
+import PageBody from '@/components/Page/PageBody'
 import type { Metadata } from 'next'
-
-import { PayloadRedirects } from 'src/components/PayloadRedirects'
-import configPromise from 'src/payload.config'
-import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
 import { draftMode } from 'next/headers'
-import React, { cache } from 'react'
-
+import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
+import { cache } from 'react'
 import { RenderBlocks } from 'src/blocks/RenderBlocks'
+import { LivePreviewListener } from 'src/components/LivePreviewListener'
+import { PayloadRedirects } from 'src/components/PayloadRedirects'
 import { RenderHero } from 'src/heros/RenderHero'
+import configPromise from 'src/payload.config'
 import { generateMeta } from 'src/utilities/generateMeta'
 import PageClient from './page.client'
-import { LivePreviewListener } from 'src/components/LivePreviewListener'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const pages = await payload.find({
     collection: 'pages',
     draft: false,
+    depth: 2,
     limit: 1000,
     overrideAccess: false,
     pagination: false,
@@ -55,7 +55,6 @@ export default async function Page({ params: paramsPromise }: Args) {
   })
 
   if (!page && slug === 'home') {
- 
   }
 
   if (!page) {
@@ -71,12 +70,17 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <RenderHero hero={{
-        ...hero,
-        heading: hero?.heading ?? undefined,
-        backgroundColor: hero?.backgroundColor ?? undefined
-      }} slug={''} />
-      <RenderBlocks blocks={layout} />
+      <RenderHero
+        hero={{
+          ...hero,
+          heading: hero?.heading ?? undefined,
+          backgroundColor: hero?.backgroundColor ?? undefined,
+        }}
+        slug={''}
+      />
+      <RenderBlocks blocks={layout ?? []} />
+
+      <div>{page.content && <PageBody content={page.content} />}</div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import ArattaiBlockComponent from '@/collections/Arrattai/components/RegistrationForm/coponents'
+import EventRegistrationBlockComponent from '@/collections/RegistrationSettings/blocks/EventRegistrationForm/components'
 import React, { Fragment } from 'react'
 import { FormBlock } from 'src/blocks/Form/Component'
 import { MediaBlock } from 'src/blocks/MediaBlock/Component'
@@ -13,7 +13,6 @@ import { FunChennaiBlockServer } from './HomePage/funChennai/Component'
 import GlobalSearch from './HomePage/GlobalSearch/Component'
 import InfographySection from './HomePage/infography/Component'
 import ChennaiInvestments from './HomePage/Investments/Components'
-import SpotlightGallerySection from './HomePage/leftContentRightSlider/Components'
 import socialReelSlider from './HomePage/SocialChennai/Component'
 import { StartupChennaiBlockServer } from './HomePage/StartupChennai/Component'
 import TrendingChennaiBlock from './HomePage/TrendingChennaiSlider/server'
@@ -28,6 +27,7 @@ import VisionMissionComponent from './InnerPage/AboutPage/AboutVissionMisson/com
 import AboutWelcomeSuperChennaiComponent from './InnerPage/AboutPage/AboutWelcomeSection/component'
 import AboutWelcomeSuperChennaiComponentNew from './InnerPage/AboutPage/AboutWelcomeSuperChennai/component'
 import AboutWhyChennaiComponent from './InnerPage/AboutPage/AboutWhyChennai/component'
+import ChennaiAppsComponent from './InnerPage/ChennaiApps/component'
 import ConclaveAboutComponent from './InnerPage/ConclavePage/ConclaveAboutBlock/component'
 import ConclaveAgendaComponent from './InnerPage/ConclavePage/ConclaveAgendaBlock/component'
 import ConclaveCtaComponent from './InnerPage/ConclavePage/ConclaveCtaBlock/component'
@@ -36,25 +36,47 @@ import ConclaveGalleryComponent from './InnerPage/ConclavePage/ConclaveGalleryBl
 import ConclavePartnersComponent from './InnerPage/ConclavePage/ConclavePartnersBlock/component'
 import ConclaveSpeakersComponent from './InnerPage/ConclavePage/ConclaveSpeakersBlock/component'
 import ConclaveSuperChennaiBlockComponent from './InnerPage/ConclavePage/ConclaveSuperchennaiBlock/component'
+import ContactComponent from './InnerPage/ContactPage/component'
 import FaqSectionComponent from './InnerPage/FAQPage/component'
 import BenefitSectionsComponent from './InnerPage/SharedBlocks/BenefitSection/component'
 import ChennaiHealthCareComponent from './InnerPage/SharedBlocks/ChennaiHealthCareSection/component'
 import EyeHospitals from './InnerPage/SharedBlocks/ChennaiHospitals/component'
+import ChennaiNeighbourhoodComponent from './InnerPage/SharedBlocks/ChennaiNeighbourhood/component'
+import EventsList2026Component from './InnerPage/SharedBlocks/ContentList/component'
 import GallerySliderWithPopupComponent from './InnerPage/SharedBlocks/GallerySliderWithPopup/component'
 import HealthCareHospitalsComponent from './InnerPage/SharedBlocks/HealthCareHospitals/component'
 import ImagewithContentComponent from './InnerPage/SharedBlocks/ImagewithContent/component'
 import ImageWithoutComponent from './InnerPage/SharedBlocks/ImageWithoutContent/component'
+import InnerPageHeroBannerComponent from './InnerPage/SharedBlocks/InnerPageBanner/component'
 import InnerPageSliderComponent from './InnerPage/SharedBlocks/InnerPageSlider/component'
 import IntroPinkTextWithComponent from './InnerPage/SharedBlocks/IntroPinkTextWithContent/component'
 import IntroText from './InnerPage/SharedBlocks/IntroText/Components'
 import InvestCategory from './InnerPage/SharedBlocks/InvestCategory/Components'
+import ChenzInvest2026Component from './InnerPage/SharedBlocks/InvestSliderWithTab/component'
+import KiteFestivalAboutComponent from './InnerPage/SharedBlocks/KiteFestivalAboutBlock/component'
+import KiteFestivalHighlightsComponent from './InnerPage/SharedBlocks/KiteFestivalHighlights/component'
+import KiteFestivalNewFaqComponent from './InnerPage/SharedBlocks/KiteFestivalNewFaq/component'
+import KiteFestivalHeroComponent from './InnerPage/SharedBlocks/KiteHeader/component'
+import LearningLivePageComponent from './InnerPage/SharedBlocks/LearningLivePage/component'
 import LeftImageRightSectionComponent from './InnerPage/SharedBlocks/LeftImageRightSection/component'
 import ChennaiLivingSectionComponent from './InnerPage/SharedBlocks/LiveSplitImageFeatureBlock/component'
+import InfraBoom2026Component from './InnerPage/SharedBlocks/ManifestoReport/component'
+import ManifestoSectionComponent from './InnerPage/SharedBlocks/ManifestoSection/component'
+import MediaCoverageBlockMainPageComponent from './InnerPage/SharedBlocks/MediaCoverageBlockMainPage/component'
+import MetroExperienceComponent from './InnerPage/SharedBlocks/MetroExperience/component'
+import MetroGuidelinesComponent from './InnerPage/SharedBlocks/MetroGuidelines/component'
+import MetroMadrasComponent from './InnerPage/SharedBlocks/MetroMadrasBlock/component'
+import MetroRegistrationComponent from './InnerPage/SharedBlocks/MetroRegistration/component'
+import MetroTheDetailsComponent from './InnerPage/SharedBlocks/MetroTheDetails/component'
+import PlacesSectionComponent from './InnerPage/SharedBlocks/PlaceofWorship/component'
+import QualityOfLifeComponent from './InnerPage/SharedBlocks/QualityOfLife/component'
 import RestaurantsCategoriesComponent from './InnerPage/SharedBlocks/Restaurants/Components'
 import StickyImageScroll from './InnerPage/SharedBlocks/StickyImageScroll/Component'
 import TableSectionComponent from './InnerPage/SharedBlocks/TableSection/component'
 import ThingsToDoComponent from './InnerPage/SharedBlocks/ThingsToDo/component'
+import TvCommercials2026Component from './InnerPage/SharedBlocks/TVCommercials/component'
 import VisitImageListSectionComponent from './InnerPage/SharedBlocks/VisitImageListSection/component'
+import VisitWellnessSectionComponent from './InnerPage/SharedBlocks/VisitWellness/component'
 import FeatureSections from './InnerPage/SharedBlocks/VisualAndKeyPoints/Components'
 import WorkNetworkSectionComponent from './InnerPage/SharedBlocks/WorkNetworkSection/component'
 import WorkPageImageSectionComponent from './InnerPage/SharedBlocks/WorkPageImageSection/component'
@@ -68,7 +90,6 @@ import { EventsHomeBlock } from './MainPages/Events/AllEvents'
 import { InnovateSliderBlock } from './MainPages/Innovate/TabWithSlider/Component'
 import InvestmentCategoryListSection from './MainPages/Invest/InvestCategory/Component'
 import ChennaiLifeEssentials from './MainPages/Live/ChennaiLifeEssentials/Components'
-import mainPageBanner from './MainPages/SharedBlocks/Banner/Component'
 import { FormPopupComponent } from './MainPages/SharedBlocks/FormPopup/Components'
 import { PageIntroText } from './MainPages/SharedBlocks/IntroText/Component'
 import LiveIntroTextSection from './MainPages/SharedBlocks/IntroTextWithImage/Component'
@@ -80,25 +101,7 @@ import HeroSliderBlock from './PageBanners/Home/Component'
 import { VisitBanner } from './PageBanners/VisitBanner/Component'
 import PopupBanner from './Popup/component'
 import { VideoBlockComponent } from './VideoBlock/Component'
-import ChennaiNeighbourhoodComponent from './InnerPage/SharedBlocks/ChennaiNeighbourhood/component'
-import QualityOfLifeComponent from './InnerPage/SharedBlocks/QualityOfLife/component'
-import VisitWellnessSectionComponent from './InnerPage/SharedBlocks/VisitWellness/component'
-import ContactComponent from './InnerPage/ContactPage/component'
-import ChennaiAppsComponent from './InnerPage/ChennaiApps/component'
-import PlacesSectionComponent from './InnerPage/SharedBlocks/PlaceofWorship/component'
-import LearningLivePageComponent from './InnerPage/SharedBlocks/LearningLivePage/component'
-import InnerPageHeroBannerComponent from './InnerPage/SharedBlocks/InnerPageBanner/component'
-import ChenzInvest2026Component from './InnerPage/SharedBlocks/InvestSliderWithTab/component'
-import EventsList2026Component from './InnerPage/SharedBlocks/ContentList/component'
-import InfraBoom2026Component from './InnerPage/SharedBlocks/ManifestoReport/component'
-import TvCommercials2026Component from './InnerPage/SharedBlocks/TVCommercials/component'
-import MediaCoverageBlockMainPageComponent from './InnerPage/SharedBlocks/MediaCoverageBlockMainPage/component'
-import MetroMadrasComponent from './InnerPage/SharedBlocks/MetroMadrasBlock/component'
-import MetroTheDetailsComponent from './InnerPage/SharedBlocks/MetroTheDetails/component'
-import MetroExperienceComponent from './InnerPage/SharedBlocks/MetroExperience/component'
-import MetroGuidelinesComponent from './InnerPage/SharedBlocks/MetroGuidelines/component'
-import MetroRegistrationComponent from './InnerPage/SharedBlocks/MetroRegistration/component'
-import ManifestoSectionComponent from './InnerPage/SharedBlocks/ManifestoSection/component'
+import Banner from './InnerPage/SharedBlocks/Banners/Components'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -109,8 +112,7 @@ const blockComponents: {
   explore: ExploreBlockServer,
   funChennai: FunChennaiBlockServer,
   startupChennai: StartupChennaiBlockServer,
-
-  // InnerPageBanner: Banner,
+  InnerPageBanner: Banner,
   InnerPageHeroBannerBlock: InnerPageHeroBannerComponent,
   chennaiInvestments: ChennaiInvestments,
   socialReelSlider: socialReelSlider,
@@ -148,10 +150,6 @@ const blockComponents: {
   popupBanner: PopupBanner,
   cricketScoreBlock: CricketScoreBlock,
   GalleryBlock: GalleryBlockComponent,
-  eventRegistrationFormBlock: ArattaiBlockComponent,
-
-  // Conclave Page-------------------
-
   ConclaveSuperChennaiBlock: ConclaveSuperChennaiBlockComponent,
   ConclaveAboutBlock: ConclaveAboutComponent,
   ConclaveAgendaBlock: ConclaveAgendaComponent,
@@ -160,17 +158,7 @@ const blockComponents: {
   ConclaveCtaBlock: ConclaveCtaComponent,
   ConclavePartnersBlock: ConclavePartnersComponent,
   ConclaveGalleryBlock: ConclaveGalleryComponent,
-
-  // Conclave Page-------------------
-
-  // Faq Page-----------------
-
   FaqSectionBlock: FaqSectionComponent,
-
-  // Faq Page-----------------
-
-  // About Page-----------------
-
   AboutIntroBlock: AboutIntroBlockComponent,
   AboutWelcomeSuperChennaiBlock: AboutWelcomeSuperChennaiComponent,
   VisionMissionBlock: VisionMissionComponent,
@@ -178,79 +166,57 @@ const blockComponents: {
   AboutNammaChennaiBlock: AboutNammaChennaiComponent,
   AboutWhyChennaiBlock: AboutWhyChennaiComponent,
   AboutWelcomeSuperChennaiBlockNew: AboutWelcomeSuperChennaiComponentNew,
-
-  // About Page-----------------
-
-  // Invest Page-----------------
-
   InvestPageBorderSection: InvestPageBorderSectionComponent,
   InvestPageTabBlock: InvestPageTabComponent,
   InvestPageSliderBlock: InvestPageSliderComponent,
-
-  // Invest Page-----------------
-
   InnovatePageSliderBlock: InnovatePageSliderComponent,
   InnovateInfoSectionBlock: InnovateInfoSectionComponent,
   ImagewithContent: ImagewithContentComponent,
   ImageWithoutContentBlock: ImageWithoutComponent,
   TableSectionBlock: TableSectionComponent,
   InnerPageSliderBlock: InnerPageSliderComponent,
-
-  // common Blocks
-
   GallerySliderWithPopupBlock: GallerySliderWithPopupComponent,
   LeftImageRightSectionBlock: LeftImageRightSectionComponent,
   BenefitSectionsBlock: BenefitSectionsComponent,
   // BenefitSectionsRoseBlock: BenefitSectionsRoseComponent,
   IntroPinkTextWithContentBlock: IntroPinkTextWithComponent,
-
   VisitImageListSectionBlock: VisitImageListSectionComponent,
-
   WorkNetworkSectionBlock: WorkNetworkSectionComponent,
   WorkPageImageSectionBlock: WorkPageImageSectionComponent,
-
   // HealthcareInChennaiBlock: HealthcareInChennaiComponent,
-
   ChennaiHealthCareSectionBlock: ChennaiHealthCareComponent,
   EyeHospitalsBlock: EyeHospitals,
-
   HealthCareHospitalsBlock: HealthCareHospitalsComponent,
   chnLivBlock: ChennaiLivingSectionComponent,
   thingstodoPage: ThingsToDoComponent,
   chennaiNeighbourhoodBlock: ChennaiNeighbourhoodComponent,
   qualityOfLifeBlock: QualityOfLifeComponent,
-
   visitWellnessBlock: VisitWellnessSectionComponent,
-
   contactBlock: ContactComponent,
-
   chennaiAppsBlock: ChennaiAppsComponent,
-
   placesSectionBlock: PlacesSectionComponent,
-
   llpBlock: LearningLivePageComponent,
   ChenzInvest2026Block: ChenzInvest2026Component,
-
   EventsList2026Block: EventsList2026Component,
   InfraBoom2026Block: InfraBoom2026Component,
-
   TvCommercials2026Block: TvCommercials2026Component,
   MediaCoverageBlockMainPage: MediaCoverageBlockMainPageComponent,
   MetroMadrasBlock: MetroMadrasComponent,
-
-  // sing alone metro page
-
   MetroTheDetailsBlock: MetroTheDetailsComponent,
   MetroExperienceBlock: MetroExperienceComponent,
   MetroGuidelinesBlock: MetroGuidelinesComponent,
   MetroRegistrationBlock: MetroRegistrationComponent,
   ManifestoSectionBlock: ManifestoSectionComponent,
-
-  // sing alone metro page
+  KiteFestivalHeroBlock: KiteFestivalHeroComponent,
+  KiteFestivalAbout: KiteFestivalAboutComponent,
+  KiteFestivalHighlights: KiteFestivalHighlightsComponent,
+  KiteFestivalNewFaq: KiteFestivalNewFaqComponent,
+  EventRegistrationFormBlock: EventRegistrationBlockComponent,
+  // KiteFestivalFAQBlock: KiteFestivalFAQComponent,
 }
 
 export const RenderBlocks: React.FC<{
-  blocks: Page['layout'][0][]
+  blocks: NonNullable<Page['layout']>
 }> = (props) => {
   const { blocks } = props
 

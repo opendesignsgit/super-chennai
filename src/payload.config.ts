@@ -2,14 +2,11 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import 'dotenv/config'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
-import sharp from 'sharp' // sharp-import
+import sharp from 'sharp'; // sharp-import
 import { defaultLexical } from 'src/fields/defaultLexical'
 import { fileURLToPath } from 'url'
 import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config'
 import { Ads } from './collections/Ads'
-import { Arattai } from './collections/Arrattai'
-import { ArattaiRegistrations } from './collections/Arrattai/ArattaiRegistrations'
-import { ArattaiFormFields } from './collections/Arrattai/options/formFeilds'
 import { Articles } from './collections/Articles'
 import { ArticleCategory } from './collections/Articles/option/Articlecategory'
 import { ArticleTypes } from './collections/Articles/option/ArticleTypes'
@@ -26,12 +23,13 @@ import { CricketScore } from './collections/CricketScore'
 import { IPLCategories } from './collections/CricketScore/options/IPLCategoriesCategories'
 import { IPLLanguages } from './collections/CricketScore/options/IPLLangauge'
 import { IplLocations } from './collections/CricketScore/options/IPLLocations'
-import { EventDashboard } from './collections/EventDashboard'
 import { Events } from './collections/Events'
 import { eventsCategories } from './collections/Events/options/Categories'
 import { Settings } from './collections/Globals/Settings'
 import { ContestSettings } from './collections/GoluContest/ContestSettings'
+import { GoluContest } from './collections/GoluContest/GoluContest'
 import { GoluDashboardCollection } from './collections/GoluContest/GoluDashboard/golu-dashboard'
+import { GoluLandingPage } from './collections/GoluContest/GoluLandingPage'
 import { GoluSubmissions } from './collections/GoluContest/GoluSubmissions'
 import { GoluUsers } from './collections/GoluContest/GoluUsers'
 import { Participants } from './collections/GoluContest/Participants'
@@ -56,6 +54,8 @@ import { BhkTypes } from './collections/Properties/options/BhkTypes'
 import { Locations } from './collections/Properties/options/Locations'
 import { PropertyLocations } from './collections/Properties/options/propertyLocation'
 import { PropertyTypes } from './collections/Properties/options/PropertyTypes'
+import { EventFormFields } from './collections/RegistrationSettings/options/EventFormFields'
+import { RegistrationSettings } from './collections/RegistrationSettings/RegistrationSettings'
 import InvestmentCategoriesCollection from './collections/RelationSchema/Investments/Investments'
 import VisitCategoryCollection from './collections/RelationSchema/main-pages/visit-page/visit-catogory/schema'
 import SocialReelsCollection from './collections/RelationSchema/SocialReels/SocialReels'
@@ -77,8 +77,6 @@ import Footer from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { getServerSideURL } from './utilities/getURL'
-import { GoluContest } from './collections/GoluContest/GoluContest'
-import { GoluLandingPage } from './collections/GoluContest/GoluLandingPage'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -134,10 +132,10 @@ export default buildConfig({
     pool: {
       max: 10,
       connectionString: process.env.DATABASE_URI,
-      connectionTimeoutMillis: 1800000, // 30 minutes
-      idleTimeoutMillis: 1800000, // 30 minutes
+      connectionTimeoutMillis: 10000, // 30 minutes
+      idleTimeoutMillis: 10000, // 30 minutes
     },
-    push: true,
+    push: false,
   }),
 
   collections: [
@@ -199,12 +197,6 @@ export default buildConfig({
     IplLocations,
     IPLLanguages,
 
-    //####### ARATTAI THANI DEPARTMENT ##########
-    Arattai,
-    ArattaiRegistrations,
-    EventDashboard,
-    ArattaiFormFields,
-
     //####### ICON OFTHE MONTH ##################
 
     IconOfMonth,
@@ -213,16 +205,21 @@ export default buildConfig({
     WhatsApChennai,
     WhatsAppChennaiLocations,
 
-    // GLOU CONTEST
+    //############## GLOU CONTEST#################
 
     GoluSubmissions,
     GoluUsers,
     Participants,
     GoluDashboardCollection,
     GoluContest,
+
+    //######### GENTRAL EMAIL SETTINGS @###########
+
+    RegistrationSettings,
+    EventFormFields,
   ],
 
-  //######### CUSTOME END POINT  ################
+  //######### CUSTOME END POINT  ###################
 
   endpoints: [
     {
