@@ -115,7 +115,6 @@ const blockComponents: {
   explore: ExploreBlockServer,
   funChennai: FunChennaiBlockServer,
   startupChennai: StartupChennaiBlockServer,
-
   // InnerPageBanner: Banner,
   InnerPageHeroBannerBlock: InnerPageHeroBannerComponent,
   chennaiInvestments: ChennaiInvestments,
@@ -155,9 +154,7 @@ const blockComponents: {
   cricketScoreBlock: CricketScoreBlock,
   GalleryBlock: GalleryBlockComponent,
   eventRegistrationFormBlock: ArattaiBlockComponent,
-
   // Conclave Page-------------------
-
   ConclaveSuperChennaiBlock: ConclaveSuperChennaiBlockComponent,
   ConclaveAboutBlock: ConclaveAboutComponent,
   ConclaveAgendaBlock: ConclaveAgendaComponent,
@@ -166,17 +163,11 @@ const blockComponents: {
   ConclaveCtaBlock: ConclaveCtaComponent,
   ConclavePartnersBlock: ConclavePartnersComponent,
   ConclaveGalleryBlock: ConclaveGalleryComponent,
-
   // Conclave Page-------------------
-
   // Faq Page-----------------
-
   FaqSectionBlock: FaqSectionComponent,
-
   // Faq Page-----------------
-
   // About Page-----------------
-
   AboutIntroBlock: AboutIntroBlockComponent,
   AboutWelcomeSuperChennaiBlock: AboutWelcomeSuperChennaiComponent,
   VisionMissionBlock: VisionMissionComponent,
@@ -184,93 +175,65 @@ const blockComponents: {
   AboutNammaChennaiBlock: AboutNammaChennaiComponent,
   AboutWhyChennaiBlock: AboutWhyChennaiComponent,
   AboutWelcomeSuperChennaiBlockNew: AboutWelcomeSuperChennaiComponentNew,
-
   // About Page-----------------
-
   // Invest Page-----------------
-
   InvestPageBorderSection: InvestPageBorderSectionComponent,
   InvestPageTabBlock: InvestPageTabComponent,
   InvestPageSliderBlock: InvestPageSliderComponent,
-
   // Invest Page-----------------
-
   InnovatePageSliderBlock: InnovatePageSliderComponent,
   InnovateInfoSectionBlock: InnovateInfoSectionComponent,
   ImagewithContent: ImagewithContentComponent,
   ImageWithoutContentBlock: ImageWithoutComponent,
   TableSectionBlock: TableSectionComponent,
   InnerPageSliderBlock: InnerPageSliderComponent,
-
   // common Blocks
-
   GallerySliderWithPopupBlock: GallerySliderWithPopupComponent,
   LeftImageRightSectionBlock: LeftImageRightSectionComponent,
   BenefitSectionsBlock: BenefitSectionsComponent,
   // BenefitSectionsRoseBlock: BenefitSectionsRoseComponent,
   IntroPinkTextWithContentBlock: IntroPinkTextWithComponent,
-
   VisitImageListSectionBlock: VisitImageListSectionComponent,
-
   WorkNetworkSectionBlock: WorkNetworkSectionComponent,
   WorkPageImageSectionBlock: WorkPageImageSectionComponent,
-
   // HealthcareInChennaiBlock: HealthcareInChennaiComponent,
-
   ChennaiHealthCareSectionBlock: ChennaiHealthCareComponent,
   EyeHospitalsBlock: EyeHospitals,
-
   HealthCareHospitalsBlock: HealthCareHospitalsComponent,
   chnLivBlock: ChennaiLivingSectionComponent,
   thingstodoPage: ThingsToDoComponent,
   chennaiNeighbourhoodBlock: ChennaiNeighbourhoodComponent,
   qualityOfLifeBlock: QualityOfLifeComponent,
-
   visitWellnessBlock: VisitWellnessSectionComponent,
-
   contactBlock: ContactComponent,
-
   chennaiAppsBlock: ChennaiAppsComponent,
-
   placesSectionBlock: PlacesSectionComponent,
-
   llpBlock: LearningLivePageComponent,
   ChenzInvest2026Block: ChenzInvest2026Component,
-
   EventsList2026Block: EventsList2026Component,
   InfraBoom2026Block: InfraBoom2026Component,
-
   TvCommercials2026Block: TvCommercials2026Component,
   MediaCoverageBlockMainPage: MediaCoverageBlockMainPageComponent,
   MetroMadrasBlock: MetroMadrasComponent,
-
   // sing alone metro page
-
   MetroTheDetailsBlock: MetroTheDetailsComponent,
   MetroExperienceBlock: MetroExperienceComponent,
   MetroGuidelinesBlock: MetroGuidelinesComponent,
   MetroRegistrationBlock: MetroRegistrationComponent,
   ManifestoSectionBlock: ManifestoSectionComponent,
-
   // sing alone metro page
-
   // Kite Festival Page
-
   KiteFestivalHeroBlock: KiteFestivalHeroComponent,
   KiteFestivalAbout: KiteFestivalAboutComponent,
   KiteFestivalHighlights: KiteFestivalHighlightsComponent,
   KiteFestivalNewFaq: KiteFestivalNewFaqComponent,
-  EventRegistrationFormBlock:EventRegistrationBlockComponent
-
-  
-
+  EventRegistrationFormBlock: EventRegistrationBlockComponent,
   // KiteFestivalFAQBlock: KiteFestivalFAQComponent,
-
   // Kite Festival Page
 }
 
 export const RenderBlocks: React.FC<{
-  blocks: Page['layout'][0][]
+  blocks: NonNullable<Page['layout']>
 }> = (props) => {
   const { blocks } = props
 

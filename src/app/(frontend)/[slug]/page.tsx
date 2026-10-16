@@ -1,22 +1,22 @@
+import PageBody from '@/components/Page/PageBody'
 import type { Metadata } from 'next'
-import { PayloadRedirects } from 'src/components/PayloadRedirects'
-import configPromise from 'src/payload.config'
-import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
 import { draftMode } from 'next/headers'
-import React, { cache } from 'react'
+import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
+import { cache } from 'react'
 import { RenderBlocks } from 'src/blocks/RenderBlocks'
+import { LivePreviewListener } from 'src/components/LivePreviewListener'
+import { PayloadRedirects } from 'src/components/PayloadRedirects'
 import { RenderHero } from 'src/heros/RenderHero'
+import configPromise from 'src/payload.config'
 import { generateMeta } from 'src/utilities/generateMeta'
 import PageClient from './page.client'
-import { LivePreviewListener } from 'src/components/LivePreviewListener'
-import { RichText } from '@payloadcms/richtext-lexical/react'
-import PageBody from '@/components/Page/PageBody'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const pages = await payload.find({
     collection: 'pages',
     draft: false,
+    depth: 2,
     limit: 1000,
     overrideAccess: false,
     pagination: false,
@@ -78,16 +78,9 @@ export default async function Page({ params: paramsPromise }: Args) {
         }}
         slug={''}
       />
-      <RenderBlocks blocks={layout} />
-      {page.content && (
-        <div className="lexical-content">
-          <RichText data={page.content} />
-        </div>
-      )}
+      <RenderBlocks blocks={layout ?? []} />
 
-      <div>
-      {page.content && <PageBody content={page.content} />}
-      </div>
+      <div>{page.content && <PageBody content={page.content} />}</div>
     </div>
   )
 }
