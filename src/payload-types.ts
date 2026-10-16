@@ -143,6 +143,8 @@ export interface Config {
     participants: Participant;
     'golu-dashboard-view': GoluDashboardView;
     'golu-contest': GoluContest;
+    'registration-settings': RegistrationSetting;
+    'event-form-fields': EventFormField;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -217,6 +219,8 @@ export interface Config {
     participants: ParticipantsSelect<false> | ParticipantsSelect<true>;
     'golu-dashboard-view': GoluDashboardViewSelect<false> | GoluDashboardViewSelect<true>;
     'golu-contest': GoluContestSelect<false> | GoluContestSelect<true>;
+    'registration-settings': RegistrationSettingsSelect<false> | RegistrationSettingsSelect<true>;
+    'event-form-fields': EventFormFieldsSelect<false> | EventFormFieldsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -5670,6 +5674,45 @@ export interface GoluContest {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-settings".
+ */
+export interface RegistrationSetting {
+  id: number;
+  name: string;
+  isRegistrationOpen?: boolean | null;
+  enableOTP?: boolean | null;
+  /**
+   * Leave empty for unlimited registrations.
+   */
+  maxRegistrations?: number | null;
+  showOrganisationField?: boolean | null;
+  thankYouMessage?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "event-form-fields".
+ */
+export interface EventFormField {
+  id: number;
+  label: string;
+  name: string;
+  type?: ('text' | 'email' | 'number' | 'textarea' | 'select' | 'radio' | 'checkbox' | 'file') | null;
+  placeholder?: string | null;
+  required?: boolean | null;
+  options?:
+    | {
+        label?: string | null;
+        value?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -6265,6 +6308,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'golu-contest';
         value: number | GoluContest;
+      } | null)
+    | ({
+        relationTo: 'registration-settings';
+        value: number | RegistrationSetting;
+      } | null)
+    | ({
+        relationTo: 'event-form-fields';
+        value: number | EventFormField;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -10258,6 +10309,40 @@ export interface GoluContestSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-settings_select".
+ */
+export interface RegistrationSettingsSelect<T extends boolean = true> {
+  name?: T;
+  isRegistrationOpen?: T;
+  enableOTP?: T;
+  maxRegistrations?: T;
+  showOrganisationField?: T;
+  thankYouMessage?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "event-form-fields_select".
+ */
+export interface EventFormFieldsSelect<T extends boolean = true> {
+  label?: T;
+  name?: T;
+  type?: T;
+  placeholder?: T;
+  required?: T;
+  options?:
+    | T
+    | {
+        label?: T;
+        value?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

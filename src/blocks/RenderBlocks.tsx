@@ -104,6 +104,7 @@ import KiteFestivalHighlightsComponent from './InnerPage/SharedBlocks/KiteFestiv
 import KiteFestivalFAQComponent from './InnerPage/SharedBlocks/KiteFestivalFAQSection/component'
 import KiteFestivalHeroComponent from './InnerPage/SharedBlocks/KiteHeader/component'
 import KiteFestivalNewFaqComponent from './InnerPage/SharedBlocks/KiteFestivalNewFaq/component'
+import EventRegistrationBlockComponent from '@/collections/RegistrationSettings/blocks/EventRegistrationForm/components'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -259,6 +260,9 @@ const blockComponents: {
   KiteFestivalAbout: KiteFestivalAboutComponent,
   KiteFestivalHighlights: KiteFestivalHighlightsComponent,
   KiteFestivalNewFaq: KiteFestivalNewFaqComponent,
+  EventRegistrationFormBlock:EventRegistrationBlockComponent
+
+  
 
   // KiteFestivalFAQBlock: KiteFestivalFAQComponent,
 

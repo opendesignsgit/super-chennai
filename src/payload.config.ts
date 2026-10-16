@@ -79,6 +79,8 @@ import { plugins } from './plugins'
 import { getServerSideURL } from './utilities/getURL'
 import { GoluContest } from './collections/GoluContest/GoluContest'
 import { GoluLandingPage } from './collections/GoluContest/GoluLandingPage'
+import { EventFormFields } from './collections/RegistrationSettings/options/EventFormFields'
+import { RegistrationSettings } from './collections/RegistrationSettings/RegistrationSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -213,16 +215,21 @@ export default buildConfig({
     WhatsApChennai,
     WhatsAppChennaiLocations,
 
-    // GLOU CONTEST
+    //############## GLOU CONTEST#################
 
     GoluSubmissions,
     GoluUsers,
     Participants,
     GoluDashboardCollection,
     GoluContest,
+
+    //######### GENTRAL EMAIL SETTINGS @###########
+
+    RegistrationSettings,
+    EventFormFields,
   ],
 
-  //######### CUSTOME END POINT  ################
+  //######### CUSTOME END POINT  ###################
 
   endpoints: [
     {
