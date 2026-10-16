@@ -86,7 +86,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       )}
 
       <div>
-        <PageBody content={page.content} />
+      {page.content && <PageBody content={page.content} />}
       </div>
     </div>
   )
