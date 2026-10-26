@@ -2,7 +2,7 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import 'dotenv/config'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
-import sharp from 'sharp'; // sharp-import
+import sharp from 'sharp' // sharp-import
 import { defaultLexical } from 'src/fields/defaultLexical'
 import { fileURLToPath } from 'url'
 import ChennaiInvestmentsBlock from './blocks/HomePage/Investments/config'
@@ -77,6 +77,7 @@ import Footer from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { getServerSideURL } from './utilities/getURL'
+import { EventRegistrationSubmissions } from './collections/RegistrationSettings/EventRegistrationSubmissions'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -123,19 +124,13 @@ export default buildConfig({
   editor: defaultLexical,
 
   db: postgresAdapter({
-    // pool: {
-    //   max: 10, // max connections
-    //   connectionString: process.env.DATABASE_URI,
-    //   connectionTimeoutMillis: 300000, // 60 seconds
-    //   idleTimeoutMillis: 300000, // 30 seconds 30000
-    // },
     pool: {
       max: 10,
       connectionString: process.env.DATABASE_URI,
       connectionTimeoutMillis: 10000, // 30 minutes
       idleTimeoutMillis: 10000, // 30 minutes
     },
-    push: false,
+    // push: false,
   }),
 
   collections: [
@@ -215,6 +210,7 @@ export default buildConfig({
 
     //######### GENTRAL EMAIL SETTINGS @###########
 
+    EventRegistrationSubmissions,
     RegistrationSettings,
     EventFormFields,
   ],

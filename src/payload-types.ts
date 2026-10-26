@@ -139,6 +139,7 @@ export interface Config {
     participants: Participant;
     'golu-dashboard-view': GoluDashboardView;
     'golu-contest': GoluContest;
+    'registration-submissions': RegistrationSubmission;
     'registration-settings': RegistrationSetting;
     'event-form-fields': EventFormField;
     redirects: Redirect;
@@ -211,6 +212,7 @@ export interface Config {
     participants: ParticipantsSelect<false> | ParticipantsSelect<true>;
     'golu-dashboard-view': GoluDashboardViewSelect<false> | GoluDashboardViewSelect<true>;
     'golu-contest': GoluContestSelect<false> | GoluContestSelect<true>;
+    'registration-submissions': RegistrationSubmissionsSelect<false> | RegistrationSubmissionsSelect<true>;
     'registration-settings': RegistrationSettingsSelect<false> | RegistrationSettingsSelect<true>;
     'event-form-fields': EventFormFieldsSelect<false> | EventFormFieldsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
@@ -5483,6 +5485,37 @@ export interface GoluContest {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-submissions".
+ */
+export interface RegistrationSubmission {
+  id: number;
+  title: string;
+  eventName?: string | null;
+  eventId?: string | null;
+  eventSlug?: string | null;
+  registrationSettings: number | RegistrationSetting;
+  values:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  attachments?:
+    | {
+        file: number | Media;
+        fieldName: string;
+        id?: string | null;
+      }[]
+    | null;
+  status?: ('pending' | 'approved' | 'rejected') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "registration-settings".
  */
 export interface RegistrationSetting {
@@ -6101,6 +6134,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'golu-contest';
         value: number | GoluContest;
+      } | null)
+    | ({
+        relationTo: 'registration-submissions';
+        value: number | RegistrationSubmission;
       } | null)
     | ({
         relationTo: 'registration-settings';
@@ -9941,6 +9978,28 @@ export interface GoluContestSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-submissions_select".
+ */
+export interface RegistrationSubmissionsSelect<T extends boolean = true> {
+  title?: T;
+  eventName?: T;
+  eventId?: T;
+  eventSlug?: T;
+  registrationSettings?: T;
+  values?: T;
+  attachments?:
+    | T
+    | {
+        file?: T;
+        fieldName?: T;
+        id?: T;
+      };
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

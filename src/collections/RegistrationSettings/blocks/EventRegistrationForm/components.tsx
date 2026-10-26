@@ -239,9 +239,27 @@ const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
         />,
       )
 
+      // const payload = new FormData()
+      // if (eventData?.id != null) payload.append('eventId', String(eventData.id))
+      // if (eventData?.slug) payload.append('slug', String(eventData.slug))
+      // payload.append('emailTemplate', emailHtml)
+
       const payload = new FormData()
-      if (eventData?.id != null) payload.append('eventId', String(eventData.id))
-      if (eventData?.slug) payload.append('slug', String(eventData.slug))
+
+      if (eventData?.id != null) {
+        payload.append('eventId', String(eventData.id))
+      }
+
+      if (eventData?.slug) {
+        payload.append('slug', String(eventData.slug))
+      }
+
+      payload.append('eventName', String(eventData?.title || 'Event'))
+
+      if (registrationSettings?.id != null) {
+        payload.append('registrationSettingsId', String(registrationSettings.id))
+      }
+
       payload.append('emailTemplate', emailHtml)
 
       const serializedValues: Record<string, any> = {}
@@ -258,7 +276,7 @@ const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
 
       payload.append('values', JSON.stringify(serializedValues))
 
-      await axios.post('/api/summer-registration', payload)
+      await axios.post('/api/registration', payload)
       toast.success('Registration submitted successfully')
       setShowSuccessModal(true)
       setFormData({})
