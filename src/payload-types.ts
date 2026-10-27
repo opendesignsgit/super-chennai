@@ -142,6 +142,7 @@ export interface Config {
     'registration-submissions': RegistrationSubmission;
     'registration-settings': RegistrationSetting;
     'event-form-fields': EventFormField;
+    'registration-dashboard': RegistrationDashboard;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -215,6 +216,7 @@ export interface Config {
     'registration-submissions': RegistrationSubmissionsSelect<false> | RegistrationSubmissionsSelect<true>;
     'registration-settings': RegistrationSettingsSelect<false> | RegistrationSettingsSelect<true>;
     'event-form-fields': EventFormFieldsSelect<false> | EventFormFieldsSelect<true>;
+    'registration-dashboard': RegistrationDashboardSelect<false> | RegistrationDashboardSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -5555,6 +5557,15 @@ export interface EventFormField {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-dashboard".
+ */
+export interface RegistrationDashboard {
+  id: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -6146,6 +6157,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'event-form-fields';
         value: number | EventFormField;
+      } | null)
+    | ({
+        relationTo: 'registration-dashboard';
+        value: number | RegistrationDashboard;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -10032,6 +10047,14 @@ export interface EventFormFieldsSelect<T extends boolean = true> {
         value?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-dashboard_select".
+ */
+export interface RegistrationDashboardSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
 }

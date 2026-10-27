@@ -30,6 +30,7 @@ import { SuperscriptFeatureClient as SuperscriptFeatureClient_e70f5e05f09f93e00b
 import { SubscriptFeatureClient as SubscriptFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { StrikethroughFeatureClient as StrikethroughFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { default as default_72f236443857182b62e778926f237a6c } from '@/collections/GoluContest/GoluDashboard/Dashboard'
+import { default as default_9dc78518b1c1d81f73fc7b94cf00a1a7 } from '@/collections/RegistrationSettings/components/Dashboard'
 import { LinkToDoc as LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { ReindexButton as ReindexButton_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { RowLabel as RowLabel_ec255a65fa6fa8d1faeb09cf35284224 } from '@/Header/RowLabel'
@@ -71,6 +72,7 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#SubscriptFeatureClient": SubscriptFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#StrikethroughFeatureClient": StrikethroughFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@/collections/GoluContest/GoluDashboard/Dashboard#default": default_72f236443857182b62e778926f237a6c,
+  "@/collections/RegistrationSettings/components/Dashboard#default": default_9dc78518b1c1d81f73fc7b94cf00a1a7,
   "@payloadcms/plugin-search/client#LinkToDoc": LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634,
   "@payloadcms/plugin-search/client#ReindexButton": ReindexButton_aead06e4cbf6b2620c5c51c9ab283634,
   "@/Header/RowLabel#RowLabel": RowLabel_ec255a65fa6fa8d1faeb09cf35284224,

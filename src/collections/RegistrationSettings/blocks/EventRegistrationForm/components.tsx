@@ -358,7 +358,7 @@ const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
           />
         )
 
-              case 'radio':
+      case 'radio':
         return (
           <div className="mt-3 space-y-3">
             {field.options?.map((option, index) => (
@@ -385,8 +385,7 @@ const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
         return field.options?.length ? (
           <div className="mt-3 space-y-3">
             {field.options.map((option, index) => {
-              const selectedValues: string[] =
-                getFieldValue(formData, field.name) || []
+              const selectedValues: string[] = getFieldValue(formData, field.name) || []
 
               return (
                 <label
@@ -401,9 +400,7 @@ const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
                     onChange={(e) => {
                       const updatedValues = e.target.checked
                         ? [...selectedValues, option.value]
-                        : selectedValues.filter(
-                            (value) => value !== option.value,
-                          )
+                        : selectedValues.filter((value) => value !== option.value)
 
                       handleChange(field.name, updatedValues)
                     }}
@@ -421,9 +418,7 @@ const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
               name={fieldName}
               checked={Boolean(getFieldValue(formData, field.name))}
               required={field.required}
-              onChange={(e) =>
-                handleChange(field.name, e.target.checked)
-              }
+              onChange={(e) => handleChange(field.name, e.target.checked)}
               className="h-4 w-4 rounded accent-orange-500"
             />
             <span>{field.placeholder || field.label}</span>
@@ -446,7 +441,6 @@ const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
   }
 
   if (!block?.showForm || !isRegistrationOpen) return null
-
 
   return (
     <>
