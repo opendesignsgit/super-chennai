@@ -27,31 +27,20 @@ interface CustomField {
 type Props = {
   block?: any
   eventData?: any
-  // Supports the alternate usage where fields are passed directly as props.
   [key: string]: any
 }
 
 const normalizeFieldName = (name?: string) => name?.trim().toLowerCase() || ''
-
 const getFieldValue = (formData: Record<string, any>, fieldName: string) =>
   formData[normalizeFieldName(fieldName)]
-
 const setFieldValue = (prev: Record<string, any>, fieldName: string, value: any) => ({
   ...prev,
   [normalizeFieldName(fieldName)]: value,
 })
 
-const WaveDecoration = () => (
-  <span className="mx-2 inline-block font-serif text-lg tracking-widest text-[#007A87] opacity-60">
-    ~~~
-  </span>
-)
-
 const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
-  // Supports both <Component block={node.fields} /> and <Component {...node.fields} />.
   const block = props.block ?? props
   const eventData = props.eventData ?? props.arattaiData ?? null
-
   const [formData, setFormData] = useState<Record<string, any>>({})
   const [loading, setLoading] = useState(false)
   const [otp, setOtp] = useState('')
@@ -68,8 +57,7 @@ const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
       : {}
 
   const rawCustomFields = Array.isArray(block?.customFields) ? block.customFields : []
-
-  // Lexical relationship values may arrive as populated objects or as IDs.
+  console.log('eventData', eventData)
   useEffect(() => {
     let cancelled = false
 
@@ -138,7 +126,6 @@ const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
   }, [JSON.stringify(rawCustomFields)])
 
   const customFields = useMemo(() => resolvedCustomFields, [resolvedCustomFields])
-
   const title = eventData?.title || 'Event'
   const sectionSubTitle = block?.sectionSubTitle || ''
   const sectionDescription = block?.sectionDescription || ''
@@ -156,8 +143,14 @@ const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
   const validateForm = () => {
     for (const field of customFields) {
       const value = getFieldValue(formData, field.name)
-
-      if (field.required && (value === undefined || value === null || value === '')) {
+      if (
+        field.required &&
+        (value === undefined ||
+          value === null ||
+          value === '' ||
+          value === false ||
+          (Array.isArray(value) && value.length === 0))
+      ) {
         toast.error(`${field.label} is required`)
         return false
       }
@@ -365,6 +358,78 @@ const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
           />
         )
 
+              case 'radio':
+        return (
+          <div className="mt-3 space-y-3">
+            {field.options?.map((option, index) => (
+              <label
+                key={`${option.value}-${index}`}
+                className="flex cursor-pointer items-center gap-3 text-sm text-gray-700"
+              >
+                <input
+                  type="radio"
+                  name={fieldName}
+                  value={option.value}
+                  checked={getFieldValue(formData, field.name) === option.value}
+                  required={field.required && index === 0}
+                  onChange={() => handleChange(field.name, option.value)}
+                  className="h-4 w-4 accent-orange-500"
+                />
+                <span>{option.label}</span>
+              </label>
+            ))}
+          </div>
+        )
+
+      case 'checkbox':
+        return field.options?.length ? (
+          <div className="mt-3 space-y-3">
+            {field.options.map((option, index) => {
+              const selectedValues: string[] =
+                getFieldValue(formData, field.name) || []
+
+              return (
+                <label
+                  key={`${option.value}-${index}`}
+                  className="flex cursor-pointer items-center gap-3 text-sm text-gray-700"
+                >
+                  <input
+                    type="checkbox"
+                    name={fieldName}
+                    value={option.value}
+                    checked={selectedValues.includes(option.value)}
+                    onChange={(e) => {
+                      const updatedValues = e.target.checked
+                        ? [...selectedValues, option.value]
+                        : selectedValues.filter(
+                            (value) => value !== option.value,
+                          )
+
+                      handleChange(field.name, updatedValues)
+                    }}
+                    className="h-4 w-4 rounded accent-orange-500"
+                  />
+                  <span>{option.label}</span>
+                </label>
+              )
+            })}
+          </div>
+        ) : (
+          <label className="mt-3 flex cursor-pointer items-center gap-3 text-sm text-gray-700">
+            <input
+              type="checkbox"
+              name={fieldName}
+              checked={Boolean(getFieldValue(formData, field.name))}
+              required={field.required}
+              onChange={(e) =>
+                handleChange(field.name, e.target.checked)
+              }
+              className="h-4 w-4 rounded accent-orange-500"
+            />
+            <span>{field.placeholder || field.label}</span>
+          </label>
+        )
+
       default:
         return (
           <input
@@ -382,6 +447,7 @@ const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
 
   if (!block?.showForm || !isRegistrationOpen) return null
 
+
   return (
     <>
       <ToastContainer position="top-center" />
@@ -390,9 +456,7 @@ const EventRegistrationBlockComponent: React.FC<Props> = (props) => {
         <div className="relative z-10">
           <div className="mb-10 text-center">
             <h2 className="festmainheadingsss flex items-center justify-center gap-2 text-sm font-extrabold uppercase tracking-widest text-[#005B70]">
-              <WaveDecoration />
               {block?.sectionTitle || 'Register For This Event'}
-              <WaveDecoration />
             </h2>
             <div className="mt-3 flex items-center justify-center">
               <div className="h-1 w-20 rounded bg-[#FCBA13]" />
