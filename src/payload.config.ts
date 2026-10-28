@@ -78,6 +78,7 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { getServerSideURL } from './utilities/getURL'
 import { EventRegistrationSubmissions } from './collections/RegistrationSettings/EventRegistrationSubmissions'
+import { RegistrationDashboardCollection } from './collections/RegistrationSettings/RegistrationDashboardCollection'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -126,10 +127,10 @@ export default buildConfig({
     pool: {
       max: 10,
       connectionString: process.env.DATABASE_URI,
-      connectionTimeoutMillis: 30000, 
-      idleTimeoutMillis: 30000, 
+      connectionTimeoutMillis: 120000, 
+      idleTimeoutMillis: 120000, 
     },
-    push: false,
+    // push: false,
   }),
 
   collections: [
@@ -212,6 +213,7 @@ export default buildConfig({
     EventRegistrationSubmissions,
     RegistrationSettings,
     EventFormFields,
+    RegistrationDashboardCollection
   ],
 
   //######### CUSTOME END POINT  ###################
