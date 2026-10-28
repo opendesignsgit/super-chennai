@@ -127,10 +127,10 @@ export default buildConfig({
     pool: {
       max: 10,
       connectionString: process.env.DATABASE_URI,
-      connectionTimeoutMillis: 60000, 
-      idleTimeoutMillis: 60000, 
+      connectionTimeoutMillis: 120000, 
+      idleTimeoutMillis: 120000, 
     },
-    push: false,
+    // push: false,
   }),
 
   collections: [
