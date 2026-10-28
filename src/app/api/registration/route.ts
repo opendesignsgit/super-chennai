@@ -97,8 +97,13 @@ export async function POST(req: Request) {
     }
 
     // 4. Upload files to Payload Media
+    // const uploadedAttachments: {
+    //   file: string | number
+    //   fieldName: string
+    // }[] = []
+
     const uploadedAttachments: {
-      file: string | number
+      file: number
       fieldName: string
     }[] = []
 
