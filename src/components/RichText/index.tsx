@@ -41,6 +41,7 @@ import type {
 } from 'src/payload-types'
 import { cn } from 'src/utilities/ui'
 import GalleryBlockComponent from '@/blocks/MediaHighlights/Component'
+import EventRegistrationBlockComponent from '@/collections/RegistrationSettings/blocks/EventRegistrationForm/components'
 // import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 
 type NodeTypes =
@@ -179,6 +180,10 @@ const jsxConverters = ({ pageData }: { pageData?: any }): JSXConvertersFunction<
         ),
         GalleryBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
           <GalleryBlockComponent {...node.fields} />
+        ),
+
+        EventRegistrationFormBlock: ({ node }: { node: SerializedBlockNode<any> }) => (
+          <EventRegistrationBlockComponent {...node.fields} />
         ),
       },
     }

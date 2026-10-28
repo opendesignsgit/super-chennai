@@ -7,6 +7,17 @@
  */
 
 /**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "KiteFestivalNewFAQItem".
+ */
+export type KiteFestivalNewFAQItem =
+  | {
+      question: string;
+      answer: string;
+      id?: string | null;
+    }[]
+  | null;
+/**
  * Supported timezones in IANA format.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -119,10 +130,6 @@ export interface Config {
     iplCategories: IplCategory;
     iplLocations: IplLocation;
     iplLanguages: IplLanguage;
-    arattai: Arattai;
-    'arattai-registrations': ArattaiRegistration;
-    'event-dashboard': EventDashboard;
-    'arattai-form-fields': ArattaiFormField;
     iconOfMonth: IconOfMonth;
     'icon-month-categories': IconMonthCategory;
     'whats-ap-chennai': WhatsApChennai;
@@ -132,6 +139,10 @@ export interface Config {
     participants: Participant;
     'golu-dashboard-view': GoluDashboardView;
     'golu-contest': GoluContest;
+    'registration-submissions': RegistrationSubmission;
+    'registration-settings': RegistrationSetting;
+    'event-form-fields': EventFormField;
+    'registration-dashboard': RegistrationDashboard;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -193,10 +204,6 @@ export interface Config {
     iplCategories: IplCategoriesSelect<false> | IplCategoriesSelect<true>;
     iplLocations: IplLocationsSelect<false> | IplLocationsSelect<true>;
     iplLanguages: IplLanguagesSelect<false> | IplLanguagesSelect<true>;
-    arattai: ArattaiSelect<false> | ArattaiSelect<true>;
-    'arattai-registrations': ArattaiRegistrationsSelect<false> | ArattaiRegistrationsSelect<true>;
-    'event-dashboard': EventDashboardSelect<false> | EventDashboardSelect<true>;
-    'arattai-form-fields': ArattaiFormFieldsSelect<false> | ArattaiFormFieldsSelect<true>;
     iconOfMonth: IconOfMonthSelect<false> | IconOfMonthSelect<true>;
     'icon-month-categories': IconMonthCategoriesSelect<false> | IconMonthCategoriesSelect<true>;
     'whats-ap-chennai': WhatsApChennaiSelect<false> | WhatsApChennaiSelect<true>;
@@ -206,6 +213,10 @@ export interface Config {
     participants: ParticipantsSelect<false> | ParticipantsSelect<true>;
     'golu-dashboard-view': GoluDashboardViewSelect<false> | GoluDashboardViewSelect<true>;
     'golu-contest': GoluContestSelect<false> | GoluContestSelect<true>;
+    'registration-submissions': RegistrationSubmissionsSelect<false> | RegistrationSubmissionsSelect<true>;
+    'registration-settings': RegistrationSettingsSelect<false> | RegistrationSettingsSelect<true>;
+    'event-form-fields': EventFormFieldsSelect<false> | EventFormFieldsSelect<true>;
+    'registration-dashboard': RegistrationDashboardSelect<false> | RegistrationDashboardSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -347,196 +358,20 @@ export interface Page {
         }[]
       | null;
   };
-  layout: (
-    | {
-        heading: string;
-        description?: string | null;
-        cards: {
-          /**
-           * Maximum 15 characters allowed
-           */
-          title: string;
-          /**
-           * Maximum 100 characters allowed
-           */
-          place: string;
-          image: number | Media;
-          page?: (number | null) | Visit;
-          /**
-           * This will override the selected page link if provided.
-           */
-          customLink?: string | null;
-          id?: string | null;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'explore';
-      }
-    | {
-        /**
-         * Maximum 100 characters allowed
-         */
-        heading: string;
-        /**
-         * Maximum 500 characters allowed
-         */
-        subheading: string;
-        cards: {
-          /**
-           * Maximum 100 characters allowed
-           */
-          title: string;
-          /**
-           * Maximum 100 characters allowed
-           */
-          place?: string | null;
-          image: number | Media;
-          page?: (number | null) | Visit;
-          /**
-           * This will override the selected page link if provided.
-           */
-          customLink?: string | null;
-          id?: string | null;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'funChennai';
-      }
-    | {
-        /**
-         * Maximum 30 characters allowed
-         */
-        heading?: string | null;
-        /**
-         * Maximum 400 characters allowed
-         */
-        description?: string | null;
-        images?:
-          | {
-              image?: (number | null) | Media;
+  layout?:
+    | (
+        | {
+            heading: string;
+            description?: string | null;
+            cards: {
               /**
-               * Maximum 20 characters allowed
+               * Maximum 15 characters allowed
                */
               title: string;
               /**
-               * Maximum 50 characters allowed
+               * Maximum 100 characters allowed
                */
-              description?: string | null;
-              page?: (number | null) | Investment;
-              /**
-               * This will override the selected page link if provided.
-               */
-              customLink?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'startupChennai';
-      }
-    | {
-        /**
-         * Maximum 30 characters allowed
-         */
-        heading: string;
-        /**
-         * Maximum 400 characters allowed
-         */
-        subheading?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'chennaiInvestments';
-      }
-    | {
-        /**
-         * Maximum 100 characters allowed
-         */
-        heading?: string | null;
-        /**
-         * Maximum 400 characters allowed
-         */
-        description?: string | null;
-        /**
-         * Select whether to display videos or images in the slider
-         */
-        contentType: 'video' | 'image';
-        /**
-         * If enabled, videos will be shown as thumbnails only without autoplay/play buttons.
-         */
-        showVideoThumbnailOnly?: boolean | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'socialReelSlider';
-      }
-    | {
-        /**
-         * Short heading (max 100 characters)
-         */
-        heading?: string | null;
-        /**
-         * Main title (max 100 characters)
-         */
-        title?: string | null;
-        /**
-         * Short description (max 600 characters)
-         */
-        description?: string | null;
-        page?: (number | null) | Page;
-        /**
-         * This will override the selected page link if provided.
-         */
-        customLink?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'becameAVolunteer';
-      }
-    | {
-        /**
-         * Maximum 50 characters allowed
-         */
-        heading?: string | null;
-        /**
-         * Maximum 200 characters allowed
-         */
-        description?: string | null;
-        /**
-         * Choose the appropriate Events page from the dropdown that lists all available Pages.
-         */
-        page?: (number | null) | Page;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'eventsCalendar';
-      }
-    | {
-        slides: {
-          image: number | Media;
-          title?: string | null;
-          description?: string | null;
-          id?: string | null;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'heroSliderBlock';
-      }
-    | {
-        /**
-         * Maximum 100 characters allowed
-         */
-        title: string;
-        /**
-         * Maximum 800 characters allowed
-         */
-        description?: string | null;
-        items?:
-          | {
-              /**
-               * Maximum 200 characters allowed
-               */
-              label: string;
-              /**
-               * Maximum 800 characters allowed
-               */
-              description?: string | null;
+              place: string;
               image: number | Media;
               page?: (number | null) | Visit;
               /**
@@ -544,1576 +379,1836 @@ export interface Page {
                */
               customLink?: string | null;
               id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'visitcategory';
-      }
-    | {
-        sections: {
-          title: string;
-          description: string;
-          image: number | Media;
-          linkUrl?: string | null;
-          linkText?: string | null;
-          id?: string | null;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ZigZagContent';
-      }
-    | {
-        /**
-         * Maximum 200 characters allowed
-         */
-        sectionTitle: string;
-        /**
-         * Maximum 600 characters allowed
-         */
-        sectionDescription: string;
-        buttonText: string;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'volunteerBecameSection';
-      }
-    | {
-        /**
-         * Maximum 50 characters allowed
-         */
-        heading: string;
-        image: number | Media;
-        backgroundColor?:
-          | ('gradient-1' | 'gradient-2' | 'gradient-3' | 'gradient-4' | 'gradient-5' | 'gradient-6')
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'mainPageBanner';
-      }
-    | {
-        showMarquee?: boolean | null;
-        /**
-         * Maximum 50 characters allowed
-         */
-        marqueeText?: string | null;
-        marqueeTextSize?: ('sm' | 'lg') | null;
-        /**
-         * Maximum 50 characters allowed
-         */
-        title: string;
-        /**
-         * Maximum 400 characters allowed
-         */
-        highlightedText: string;
-        /**
-         * Maximum 800 characters allowed
-         */
-        description: string;
-        backgroundType: 'none' | 'background';
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'introTextBlock';
-      }
-    | {
-        placeholderText: string;
-        buttonText: string;
-        enableFilters?: boolean | null;
-        filters?:
-          | {
-              label: string;
-              options?:
-                | {
-                    value: string;
-                    label: string;
-                    id?: string | null;
-                  }[]
-                | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'explore';
+          }
+        | {
+            /**
+             * Maximum 100 characters allowed
+             */
+            heading: string;
+            /**
+             * Maximum 500 characters allowed
+             */
+            subheading: string;
+            cards: {
+              /**
+               * Maximum 100 characters allowed
+               */
+              title: string;
+              /**
+               * Maximum 100 characters allowed
+               */
+              place?: string | null;
+              image: number | Media;
+              page?: (number | null) | Visit;
+              /**
+               * This will override the selected page link if provided.
+               */
+              customLink?: string | null;
               id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'globalSearch';
-      }
-    | {
-        heading: string;
-        description?: string | null;
-        buttonText?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'formPopup';
-      }
-    | {
-        /**
-         * Maximum 100 characters allowed
-         */
-        heading: string;
-        /**
-         * Maximum 100 characters allowed
-         */
-        headingSpan: string;
-        /**
-         * Maximum 500 characters allowed
-         */
-        description: string;
-        foodItems: {
-          /**
-           * Maximum 100 characters allowed
-           */
-          title: string;
-          /**
-           * Maximum 500 characters allowed
-           */
-          description: string;
-          image: number | Media;
-          /**
-           * 📄 Select the Visits page to link to. This will be used in the URL.
-           */
-          page?: (number | null) | Visit;
-          /**
-           * 🔗 This will scroll to a section within the selected page. Must exactly match a title in the "featureSectionSplit" block of that page. Final URL becomes: /visits/[page]/#[FoodTitle]
-           */
-          foodSectionTitle?: string | null;
-          /**
-           * This will override the selected page link if provided.
-           */
-          customLink?: string | null;
-          id?: string | null;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'infography';
-      }
-    | {
-        techImage: number | Media;
-        /**
-         * Maximum 30 characters allowed
-         */
-        techTitle: string;
-        /**
-         * Maximum 200 characters allowed
-         */
-        techDescription: string;
-        eduImage: number | Media;
-        /**
-         * Maximum 30 characters allowed
-         */
-        eduTitle: string;
-        /**
-         * Maximum 200 characters allowed
-         */
-        eduDescription: string;
-        techLink?: {
-          url?: string | null;
-          page?: (number | null) | Page;
-        };
-        eduLink?: {
-          url?: string | null;
-          page?: (number | null) | Page;
-        };
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'twoColumnFeatureBlock';
-      }
-    | {
-        /**
-         * Maximum 50 characters allowed
-         */
-        title: string;
-        /**
-         * Maximum 200 characters allowed
-         */
-        description?: string | null;
-        tabs: {
-          /**
-           * Maximum 20 characters allowed
-           */
-          tabTitle: string;
-          image: number | Media;
-          id?: string | null;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'utilities';
-      }
-    | {
-        /**
-         * Maximum 15 characters allowed
-         */
-        heading: string;
-        /**
-         * Maximum 15 characters allowed
-         */
-        subheading?: string | null;
-        /**
-         * Maximum 200 characters allowed
-         */
-        description?: string | null;
-        cards: {
-          title: string;
-          /**
-           * Maximum 200 characters allowed
-           */
-          description?: string | null;
-          image: number | Media;
-          /**
-           * Optional external URL. If "Page Link" is also set, it will be ignored.
-           */
-          url?: string | null;
-          id?: string | null;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'contentZoneCarousel';
-      }
-    | {
-        /**
-         * Maximum 15 characters allowed
-         */
-        title: string;
-        /**
-         * Maximum 400 characters allowed
-         */
-        description?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'allevents';
-      }
-    | {
-        /**
-         * Maximum 50 characters allowed
-         */
-        heading: string;
-        imagePosition: 'left' | 'right';
-        image: number | Media;
-        /**
-         * Maximum 500 characters allowed
-         */
-        paraZeroLiveSection: string;
-        /**
-         * Maximum 500 characters allowed
-         */
-        paraoneLiveSection: string;
-        /**
-         * Maximum 500 characters allowed
-         */
-        paraTwoLiveSection: string;
-        showMarquee?: boolean | null;
-        /**
-         * Maximum 200 characters allowed
-         */
-        marqueeText?: string | null;
-        marqueeTextSize?: ('sm' | 'lg') | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'liveIntrorSection';
-      }
-    | {
-        /**
-         * Maximum 15 characters allowed
-         */
-        heading: string;
-        /**
-         * Maximum 500 characters allowed
-         */
-        description: string;
-        essentials?:
-          | {
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'funChennai';
+          }
+        | {
+            /**
+             * Maximum 30 characters allowed
+             */
+            heading?: string | null;
+            /**
+             * Maximum 400 characters allowed
+             */
+            description?: string | null;
+            images?:
+              | {
+                  image?: (number | null) | Media;
+                  /**
+                   * Maximum 20 characters allowed
+                   */
+                  title: string;
+                  /**
+                   * Maximum 50 characters allowed
+                   */
+                  description?: string | null;
+                  page?: (number | null) | Investment;
+                  /**
+                   * This will override the selected page link if provided.
+                   */
+                  customLink?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'startupChennai';
+          }
+        | {
+            /**
+             * Maximum 30 characters allowed
+             */
+            heading: string;
+            /**
+             * Maximum 400 characters allowed
+             */
+            subheading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'chennaiInvestments';
+          }
+        | {
+            /**
+             * Maximum 100 characters allowed
+             */
+            heading?: string | null;
+            /**
+             * Maximum 400 characters allowed
+             */
+            description?: string | null;
+            /**
+             * Select whether to display videos or images in the slider
+             */
+            contentType: 'video' | 'image';
+            /**
+             * If enabled, videos will be shown as thumbnails only without autoplay/play buttons.
+             */
+            showVideoThumbnailOnly?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'socialReelSlider';
+          }
+        | {
+            /**
+             * Short heading (max 100 characters)
+             */
+            heading?: string | null;
+            /**
+             * Main title (max 100 characters)
+             */
+            title?: string | null;
+            /**
+             * Short description (max 600 characters)
+             */
+            description?: string | null;
+            page?: (number | null) | Page;
+            /**
+             * This will override the selected page link if provided.
+             */
+            customLink?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'becameAVolunteer';
+          }
+        | {
+            /**
+             * Maximum 50 characters allowed
+             */
+            heading?: string | null;
+            /**
+             * Maximum 200 characters allowed
+             */
+            description?: string | null;
+            /**
+             * Choose the appropriate Events page from the dropdown that lists all available Pages.
+             */
+            page?: (number | null) | Page;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'eventsCalendar';
+          }
+        | {
+            slides: {
+              image: number | Media;
+              title?: string | null;
+              description?: string | null;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'heroSliderBlock';
+          }
+        | {
+            /**
+             * Maximum 100 characters allowed
+             */
+            title: string;
+            /**
+             * Maximum 800 characters allowed
+             */
+            description?: string | null;
+            items?:
+              | {
+                  /**
+                   * Maximum 200 characters allowed
+                   */
+                  label: string;
+                  /**
+                   * Maximum 800 characters allowed
+                   */
+                  description?: string | null;
+                  image: number | Media;
+                  page?: (number | null) | Visit;
+                  /**
+                   * This will override the selected page link if provided.
+                   */
+                  customLink?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'visitcategory';
+          }
+        | {
+            sections: {
+              title: string;
+              description: string;
+              image: number | Media;
+              linkUrl?: string | null;
+              linkText?: string | null;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ZigZagContent';
+          }
+        | {
+            /**
+             * Maximum 200 characters allowed
+             */
+            sectionTitle: string;
+            /**
+             * Maximum 600 characters allowed
+             */
+            sectionDescription: string;
+            buttonText: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'volunteerBecameSection';
+          }
+        | {
+            /**
+             * Maximum 50 characters allowed
+             */
+            heading: string;
+            image: number | Media;
+            backgroundColor?:
+              | ('gradient-1' | 'gradient-2' | 'gradient-3' | 'gradient-4' | 'gradient-5' | 'gradient-6')
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mainPageBanner';
+          }
+        | {
+            showMarquee?: boolean | null;
+            /**
+             * Maximum 50 characters allowed
+             */
+            marqueeText?: string | null;
+            marqueeTextSize?: ('sm' | 'lg') | null;
+            /**
+             * Maximum 50 characters allowed
+             */
+            title: string;
+            /**
+             * Maximum 400 characters allowed
+             */
+            highlightedText: string;
+            /**
+             * Maximum 800 characters allowed
+             */
+            description: string;
+            backgroundType: 'none' | 'background';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'introTextBlock';
+          }
+        | {
+            placeholderText: string;
+            buttonText: string;
+            enableFilters?: boolean | null;
+            filters?:
+              | {
+                  label: string;
+                  options?:
+                    | {
+                        value: string;
+                        label: string;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'globalSearch';
+          }
+        | {
+            heading: string;
+            description?: string | null;
+            buttonText?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'formPopup';
+          }
+        | {
+            /**
+             * Maximum 100 characters allowed
+             */
+            heading: string;
+            /**
+             * Maximum 100 characters allowed
+             */
+            headingSpan: string;
+            /**
+             * Maximum 500 characters allowed
+             */
+            description: string;
+            foodItems: {
+              /**
+               * Maximum 100 characters allowed
+               */
+              title: string;
               /**
                * Maximum 500 characters allowed
                */
-              text: string;
-              page?: (number | null) | Live;
-              image: number | Media;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'chennaiLifeEssentials';
-      }
-    | {
-        items: {
-          /**
-           * Maximum 30 characters allowed
-           */
-          title: string;
-          /**
-           * Maximum 30 characters allowed
-           */
-          subtitle?: string | null;
-          /**
-           * Maximum 400 characters allowed
-           */
-          description?: string | null;
-          /**
-           * Upload an SVG file only.
-           */
-          image?: (number | null) | Media;
-          link?: string | null;
-          id?: string | null;
-        }[];
-        backgroundImage?: (number | null) | Media;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'investmentCategoryList';
-      }
-    | {
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'innovateSlider';
-      }
-    | {
-        /**
-         * Maximum 100 characters allowed
-         */
-        title: string;
-        items: {
-          /**
-           * Maximum 100 characters allowed
-           */
-          label: string;
-          page?: (number | null) | Work;
-          /**
-           * This will override the selected page link if provided.
-           */
-          customLink?: string | null;
-          image: number | Media;
-          id?: string | null;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'textHoverImageSection';
-      }
-    | {
-        title?: string | null;
-        description?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'trendingChennaiSlider';
-      }
-    | {
-        heading: string;
-        subHeading: string;
-        firstColumn?:
-          | {
-              highlight: string;
-              content: string;
-              id?: string | null;
-            }[]
-          | null;
-        secondColumn?:
-          | {
-              highlight: string;
-              content: string;
-              id?: string | null;
-            }[]
-          | null;
-        buttonText?: string | null;
-        buttonLink?: string | null;
-        icon?: (number | null) | Media;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'secondSection';
-      }
-    | {
-        enablePopup?: boolean | null;
-        isGlobal?: boolean | null;
-        /**
-         * Choose pages where popup should appear
-         */
-        selectedPages?: (number | Page)[] | null;
-        popupImage: number | Media;
-        redirectLink?: string | null;
-        openInNewTab?: boolean | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'popupBanner';
-      }
-    | {
-        title?: string | null;
-        description?: string | null;
-        IPLimage: number | Media;
-        pointsTable?:
-          | {
-              teamName: string;
-              teamLogo: number | Media;
-              played?: number | null;
-              won?: number | null;
-              loss?: number | null;
-              noResult?: number | null;
-              netRunRate?: string | null;
-              points?: number | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'cricketScoreBlock';
-      }
-    | {
-        title: string;
-        /**
-         * Supports HTML tags like <strong> or <br /> if styling adjustments are needed.
-         */
-        description: string;
-        metaItems?:
-          | {
-              icon: number | Media;
-              label: string;
-              value: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ConclaveSuperChennaiBlock';
-      }
-    | {
-        /**
-         * This text will repeat and scroll dynamically in the background layer.
-         */
-        backgroundTickerText?: string | null;
-        image: number | Media;
-        title: string;
-        paragraphs?:
-          | {
-              /**
-               * Supports HTML tags like <strong> or <br /> to make text bold.
-               */
-              text: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ConclaveAboutBlock';
-      }
-    | {
-        sectionHeading: string;
-        /**
-         * How many items should display before clicking the "Read More" trigger.
-         */
-        initialVisibleRows?: number | null;
-        agendaItems?:
-          | {
-              displayId: string;
-              startTime: string;
-              endTime: string;
-              title: string;
-              speakers?:
-                | {
-                    name: string;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ConclaveAgendaBlock';
-      }
-    | {
-        sectionHeading: string;
-        speakers?:
-          | {
-              name: string;
-              designation: string;
-              image: number | Media;
-              /**
-               * This profile text shows up inside the animation modal when clicked.
-               */
               description: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ConclaveSpeakersBlock';
-      }
-    | {
-        sectionHeading: string;
-        sectionSubheading: string;
-        pillars?:
-          | {
-              icon: number | Media;
-              title: string;
-              paragraphs?:
-                | {
-                    /**
-                     * Supports HTML tags like <strong> or <br /> to bold phrases.
-                     */
-                    text: string;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ConclaveFivePillarsBlock';
-      }
-    | {
-        backgroundImage: number | Media;
-        logoImage: number | Media;
-        dateText: string;
-        timeText: string;
-        /**
-         * e.g., ITC Welcome Hotel, Chennai. Leave blank if not needed.
-         */
-        venueText?: string | null;
-        enableRegisterButton?: boolean | null;
-        buttonText?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ConclaveCtaBlock';
-      }
-    | {
-        sectionHeading: string;
-        partners?:
-          | {
               image: number | Media;
               /**
-               * Image to show in popup or detailed view.
+               * 📄 Select the Visits page to link to. This will be used in the URL.
                */
-              description?: (number | null) | Media;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ConclavePartnersBlock';
-      }
-    | {
-        marqueeText: string;
-        sectionTitle: string;
-        sectionDescription?: string | null;
-        featuredEvent: {
-          linkUrl?: string | null;
-          image: number | Media;
-          dateNumber?: string | null;
-          dayName?: string | null;
-          title?: string | null;
-          description?: string | null;
-          tag?: string | null;
-        };
-        galleryItems?:
-          | {
-              image: number | Media;
-              title?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ConclaveGalleryBlock';
-      }
-    | {
-        bannerImage: number | Media;
-        /**
-         * If left empty, the desktop image will be used on mobile screens as fallback.
-         */
-        mobileBannerImage?: (number | null) | Media;
-        title?: string | null;
-        smallTitleText?: string | null;
-        /**
-         * Leave empty if the banner should not be clickable.
-         */
-        bannerLink?: string | null;
-        /**
-         * Check this box to open the link in a new tab. Unchecked opens in the same tab.
-         */
-        openInNewTab?: boolean | null;
-        breadcrumbs?:
-          | {
-              label: string;
-              url: string;
+              page?: (number | null) | Visit;
               /**
-               * Optional small tag inside breadcrumb link e.g. "s" for FAQ<small>s</small>
+               * 🔗 This will scroll to a section within the selected page. Must exactly match a title in the "featureSectionSplit" block of that page. Final URL becomes: /visits/[page]/#[FoodTitle]
                */
-              smallText?: string | null;
+              foodSectionTitle?: string | null;
+              /**
+               * This will override the selected page link if provided.
+               */
+              customLink?: string | null;
               id?: string | null;
-            }[]
-          | null;
-        enableSearch?: boolean | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'InnerPageHeroBannerBlock';
-      }
-    | {
-        title: string;
-        smallTitleText?: string | null;
-        description?: string | null;
-        faqList?:
-          | {
-              question: string;
-              answer: string;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'infography';
+          }
+        | {
+            techImage: number | Media;
+            /**
+             * Maximum 30 characters allowed
+             */
+            techTitle: string;
+            /**
+             * Maximum 200 characters allowed
+             */
+            techDescription: string;
+            eduImage: number | Media;
+            /**
+             * Maximum 30 characters allowed
+             */
+            eduTitle: string;
+            /**
+             * Maximum 200 characters allowed
+             */
+            eduDescription: string;
+            techLink?: {
+              url?: string | null;
+              page?: (number | null) | Page;
+            };
+            eduLink?: {
+              url?: string | null;
+              page?: (number | null) | Page;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'twoColumnFeatureBlock';
+          }
+        | {
+            /**
+             * Maximum 50 characters allowed
+             */
+            title: string;
+            /**
+             * Maximum 200 characters allowed
+             */
+            description?: string | null;
+            tabs: {
+              /**
+               * Maximum 20 characters allowed
+               */
+              tabTitle: string;
+              image: number | Media;
               id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'FaqSectionBlock';
-      }
-    | {
-        title: string;
-        paragraphs?:
-          | {
-              text: string;
-              id?: string | null;
-            }[]
-          | null;
-        marqueeText: string;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'AboutIntroBlock';
-      }
-    | {
-        heading?: string | null;
-        subheading?: string | null;
-        image?: (number | null) | Media;
-        columns?:
-          | {
-              paragraphs?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'AboutWelcomeSuperChennaiBlockNew';
-      }
-    | {
-        cards?:
-          | {
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'utilities';
+          }
+        | {
+            /**
+             * Maximum 15 characters allowed
+             */
+            heading: string;
+            /**
+             * Maximum 15 characters allowed
+             */
+            subheading?: string | null;
+            /**
+             * Maximum 200 characters allowed
+             */
+            description?: string | null;
+            cards: {
               title: string;
-              description: string;
-              icon: number | Media;
+              /**
+               * Maximum 200 characters allowed
+               */
+              description?: string | null;
+              image: number | Media;
+              /**
+               * Optional external URL. If "Page Link" is also set, it will be ignored.
+               */
+              url?: string | null;
               id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'VisionMissionBlock';
-      }
-    | {
-        title: string;
-        image: number | Media;
-        paragraph1?: string | null;
-        paragraph2?: string | null;
-        highlightText?: string | null;
-        points?:
-          | {
-              text: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'AboutFoundationsBlock';
-      }
-    | {
-        sectionId?: string | null;
-        mainHeader?: string | null;
-        subHeader?: string | null;
-        paragraph1?: string | null;
-        paragraph2?: string | null;
-        tagline?: string | null;
-        footerHeading?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'AboutNammaChennaiBlock';
-      }
-    | {
-        heading?: string | null;
-        subheading?: string | null;
-        description?: string | null;
-        tabs?:
-          | {
-              tabPrefix?: string | null;
-              tabTitle?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contentZoneCarousel';
+          }
+        | {
+            /**
+             * Maximum 15 characters allowed
+             */
+            title: string;
+            /**
+             * Maximum 400 characters allowed
+             */
+            description?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'allevents';
+          }
+        | {
+            /**
+             * Maximum 50 characters allowed
+             */
+            heading: string;
+            imagePosition: 'left' | 'right';
+            image: number | Media;
+            /**
+             * Maximum 500 characters allowed
+             */
+            paraZeroLiveSection: string;
+            /**
+             * Maximum 500 characters allowed
+             */
+            paraoneLiveSection: string;
+            /**
+             * Maximum 500 characters allowed
+             */
+            paraTwoLiveSection: string;
+            showMarquee?: boolean | null;
+            /**
+             * Maximum 200 characters allowed
+             */
+            marqueeText?: string | null;
+            marqueeTextSize?: ('sm' | 'lg') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'liveIntrorSection';
+          }
+        | {
+            /**
+             * Maximum 15 characters allowed
+             */
+            heading: string;
+            /**
+             * Maximum 500 characters allowed
+             */
+            description: string;
+            essentials?:
+              | {
+                  /**
+                   * Maximum 500 characters allowed
+                   */
+                  text: string;
+                  page?: (number | null) | Live;
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'chennaiLifeEssentials';
+          }
+        | {
+            items: {
+              /**
+               * Maximum 30 characters allowed
+               */
+              title: string;
+              /**
+               * Maximum 30 characters allowed
+               */
+              subtitle?: string | null;
+              /**
+               * Maximum 400 characters allowed
+               */
+              description?: string | null;
+              /**
+               * Upload an SVG file only.
+               */
               image?: (number | null) | Media;
-              points?: string | null;
+              link?: string | null;
               id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'AboutWhyChennaiBlock';
-      }
-    | {
-        tenantInfoSections?:
-          | {
-              title: string;
-              iconImage: number | Media;
-              imgAlt?: string | null;
-              points?:
-                | {
-                    text: string;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'InvestPageBorderSection';
-      }
-    | {
-        tabs?:
-          | {
-              tabTitle: string;
-              icon: number | Media;
-              heading: string;
-              description: string;
-              buttonText?: string | null;
-              buttonLink: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'InvestPageTabBlock';
-      }
-    | {
-        slides?:
-          | {
-              title: string;
-              category?: string | null;
-              description: string;
-              image: number | Media;
-              imgAlt?: string | null;
-              link: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'InvestPageSliderBlock';
-      }
-    | {
-        slides?:
-          | {
-              title: string;
-              content: string;
-              image: number | Media;
-              imgAlt?: string | null;
-              link: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'InnovatePageSliderBlock';
-      }
-    | {
-        mainImage: number | Media;
-        imgAlt?: string | null;
-        /**
-         * Choose whether the main image appears on the Left or Right side.
-         */
-        imagePosition?: ('left' | 'right') | null;
-        infoData?:
-          | {
-              title: string;
-              desc: string;
-              icon: number | Media;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'InnovateInfoSectionBlock';
-      }
-    | {
-        sectionTitle?: string | null;
-        mainImage: number | Media;
-        contentBlocks?:
-          | {
-              type?: ('paragraph' | 'list') | null;
-              paragraphText?: string | null;
-              listItems?:
-                | {
-                    itemText?: string | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ImagewithContent';
-      }
-    | {
-        mainTitle?: string | null;
-        paragraphBlocks?:
-          | {
-              text?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        cards?:
-          | {
-              cardTitle: string;
-              bulletPoints?:
-                | {
-                    pointText?: string | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ImageWithoutContentBlock';
-      }
-    | {
-        mainTitle?: string | null;
-        subTitle?: string | null;
-        headers?:
-          | {
-              title: string;
-              id?: string | null;
-            }[]
-          | null;
-        rows?:
-          | {
-              columns?:
-                | {
-                    text?: string | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'TableSectionBlock';
-      }
-    | {
-        mainTitle?: string | null;
-        subTitle?: string | null;
-        slides?:
-          | {
-              title: string;
-              link: string;
-              image: number | Media;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'InnerPageSliderBlock';
-      }
-    | {
-        heading: string;
-        images: (number | Media)[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'GallerySliderWithPopupBlock';
-      }
-    | {
-        title?: string | null;
-        description?: string | null;
-        image?: (number | null) | Media;
-        imageAlt?: string | null;
-        themePattern?: ('pattern-a' | 'pattern-b') | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'LImgRSecBlock';
-      }
-    | {
-        benefitSections?:
-          | {
-              sectionTitleLine1?: string | null;
-              sectionTitleLine2?: string | null;
-              sectionDesc?: string | null;
-              label?: string | null;
-              image: number | Media;
-              benefits?:
-                | {
-                    title: string;
-                    para?: string | null;
-                    imgs?: (number | null) | Media;
-                    linkUrl?: string | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'BenefitSectionsBlock';
-      }
-    | {
-        backgroundWatermarkText?: string | null;
-        title: string;
-        paragraphs?:
-          | {
-              text: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'IntroPinkTextWithContentBlock';
-      }
-    | {
-        sections?:
-          | {
-              sectionTitle: string;
-              sectionDesc?: string | null;
-              image: number | Media;
-              imgAlt?: string | null;
-              tenantSections?:
-                | {
-                    points?:
-                      | {
-                          title: string;
-                          para?: string | null;
-                          imgs?: (number | null) | Media;
-                          imgAlt?: string | null;
-                          link?: string | null;
-                          id?: string | null;
-                        }[]
-                      | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'VisitImageListBlock';
-      }
-    | {
-        mainTitle?: string | null;
-        networkData?:
-          | {
-              category: string;
-              places?:
-                | {
-                    name: string;
-                    desc?: string | null;
-                    locations?:
-                      | {
-                          name: string;
-                          link?: string | null;
-                          id?: string | null;
-                        }[]
-                      | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'WorkNetworkSectionBlock';
-      }
-    | {
-        sections?:
-          | {
-              sectionTitle: string;
-              sectionDesc?: string | null;
-              image: number | Media;
-              imgAlt?: string | null;
-              points?:
-                | {
-                    title: string;
-                    desc?: string | null;
-                    para?:
-                      | {
-                          point: string;
-                          id?: string | null;
-                        }[]
-                      | null;
-                    imgs?: (number | null) | Media;
-                    imgAlt?: string | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'WorkPageImageSectionBlock';
-      }
-    | {
-        mainTitle?: string | null;
-        categories?:
-          | {
-              category: string;
-              categoryParaGraph?: string | null;
-              places?:
-                | {
-                    name: string;
-                    desc?: string | null;
-                    locations?:
-                      | {
-                          name: string;
-                          link?: string | null;
-                          id?: string | null;
-                        }[]
-                      | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'HealthCareHospitalsBlock';
-      }
-    | {
-        imgSecs?:
-          | {
-              sectionTitle: string;
-              sectionDesc?: string | null;
-              image: number | Media;
-              imageAlt?: string | null;
-              tntSecs?:
-                | {
-                    points?:
-                      | {
-                          title: string;
-                          para?: string | null;
-                          imgs?: (number | null) | Media;
-                          altTitle?: string | null;
-                          link?: string | null;
-                          id?: string | null;
-                        }[]
-                      | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        dtlSecs?:
-          | {
-              title?: string | null;
-              points?:
-                | {
-                    name: string;
-                    description?: string | null;
-                    subDescription?: string | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'chnLivBlock';
-      }
-    | {
-        sections?:
-          | {
-              sectionTitle: string;
-              sectionDesc?: string | null;
-              image: number | Media;
-              imgAlt?: string | null;
-              tenants?:
-                | {
-                    points?:
-                      | {
-                          title: string;
-                          para?: string | null;
-                          imgs?: (number | null) | Media;
-                          imgAlt?: string | null;
-                          link?: string | null;
-                          id?: string | null;
-                        }[]
-                      | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'thingstodoPage';
-      }
-    | {
-        sections?:
-          | {
-              sectionTitle: string;
-              sectionDesc?: string | null;
-              image: number | Media;
-              imgAlt?: string | null;
-              benefits?:
-                | {
-                    title: string;
-                    para?: string | null;
-                    imgs?: (number | null) | Media;
-                    imgAlt?: string | null;
-                    link?: string | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'chennaiNeighbourhoodBlock';
-      }
-    | {
-        sections?:
-          | {
-              title: string;
-              title1?: string | null;
-              description: string;
-              image: number | Media;
-              imgAlt?: string | null;
-              buttonText?: string | null;
-              buttonLink?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'qualityOfLifeBlock';
-      }
-    | {
-        sections?:
-          | {
-              sectionTitle: string;
-              sectionDesc?: string | null;
-              image: number | Media;
-              imgAlt?: string | null;
-              tenants?:
-                | {
-                    points?:
-                      | {
-                          title: string;
-                          imgs?: (number | null) | Media;
-                          imgAlt?: string | null;
-                          link?: string | null;
-                          listItems?:
-                            | {
-                                boldText?: string | null;
-                                text?: string | null;
-                                id?: string | null;
-                              }[]
-                            | null;
-                          id?: string | null;
-                        }[]
-                      | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'visitWellnessBlock';
-      }
-    | {
-        title?: string | null;
-        description?: string | null;
-        logo?: (number | null) | Media;
-        logoAlt?: string | null;
-        addressLines?:
-          | {
-              line?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        email?: string | null;
-        mapLink?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'contactBlock';
-      }
-    | {
-        tabs?:
-          | {
-              tabLabel: string;
-              tabIcon?: (number | null) | Media;
-              id?: string | null;
-            }[]
-          | null;
-        allApps?:
-          | {
-              company: string;
-              appDescription?: string | null;
-              appImage?: (number | null) | Media;
-              appImageAlt?: string | null;
+            }[];
+            backgroundImage?: (number | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'investmentCategoryList';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'innovateSlider';
+          }
+        | {
+            /**
+             * Maximum 100 characters allowed
+             */
+            title: string;
+            items: {
               /**
-               * Enter the exact category tab name created above. Example: Travel, Food, Sports.
+               * Maximum 100 characters allowed
                */
-              assignedTabs?:
-                | {
-                    assignedTabName: string;
-                    id?: string | null;
-                  }[]
-                | null;
-              features?:
-                | {
-                    featureItem?: string | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              services?:
-                | {
-                    serviceItem?: string | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              websiteLink?: string | null;
-              androidLink?: string | null;
-              iosLink?: string | null;
+              label: string;
+              page?: (number | null) | Work;
+              /**
+               * This will override the selected page link if provided.
+               */
+              customLink?: string | null;
+              image: number | Media;
               id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'chennaiAppsBlock';
-      }
-    | {
-        regions?:
-          | {
-              regionName: string;
-              heroImage?: (number | null) | Media;
-              categories?:
-                | {
-                    categoryName: string;
-                    categoryDesc?: string | null;
-                    places?:
-                      | {
-                          name: string;
-                          desc?: string | null;
-                          locations?:
-                            | {
-                                name: string;
-                                link?: string | null;
-                                id?: string | null;
-                              }[]
-                            | null;
-                          id?: string | null;
-                        }[]
-                      | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'placesSectionBlock';
-      }
-    | {
-        mainTabs?:
-          | {
-              tabTitle: string;
-              regions?:
-                | {
-                    regionName: string;
-                    heroImage?: (number | null) | Media;
-                    contentLayout?:
-                      | (
-                          | {
-                              sectionTitle: string;
-                              image: number | Media;
-                              imgAlt?: string | null;
-                              id?: string | null;
-                              blockName?: string | null;
-                              blockType: 'imageTitleBlock';
-                            }
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'textHoverImageSection';
+          }
+        | {
+            title?: string | null;
+            description?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'trendingChennaiSlider';
+          }
+        | {
+            heading: string;
+            subHeading: string;
+            firstColumn?:
+              | {
+                  highlight: string;
+                  content: string;
+                  id?: string | null;
+                }[]
+              | null;
+            secondColumn?:
+              | {
+                  highlight: string;
+                  content: string;
+                  id?: string | null;
+                }[]
+              | null;
+            buttonText?: string | null;
+            buttonLink?: string | null;
+            icon?: (number | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'secondSection';
+          }
+        | {
+            enablePopup?: boolean | null;
+            isGlobal?: boolean | null;
+            /**
+             * Choose pages where popup should appear
+             */
+            selectedPages?: (number | Page)[] | null;
+            popupImage: number | Media;
+            redirectLink?: string | null;
+            openInNewTab?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'popupBanner';
+          }
+        | {
+            title?: string | null;
+            description?: string | null;
+            IPLimage: number | Media;
+            pointsTable?:
+              | {
+                  teamName: string;
+                  teamLogo: number | Media;
+                  played?: number | null;
+                  won?: number | null;
+                  loss?: number | null;
+                  noResult?: number | null;
+                  netRunRate?: string | null;
+                  points?: number | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cricketScoreBlock';
+          }
+        | {
+            title: string;
+            /**
+             * Supports HTML tags like <strong> or <br /> if styling adjustments are needed.
+             */
+            description: string;
+            metaItems?:
+              | {
+                  icon: number | Media;
+                  label: string;
+                  value: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ConclaveSuperChennaiBlock';
+          }
+        | {
+            /**
+             * This text will repeat and scroll dynamically in the background layer.
+             */
+            backgroundTickerText?: string | null;
+            image: number | Media;
+            title: string;
+            paragraphs?:
+              | {
+                  /**
+                   * Supports HTML tags like <strong> or <br /> to make text bold.
+                   */
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ConclaveAboutBlock';
+          }
+        | {
+            sectionHeading: string;
+            /**
+             * How many items should display before clicking the "Read More" trigger.
+             */
+            initialVisibleRows?: number | null;
+            agendaItems?:
+              | {
+                  displayId: string;
+                  startTime: string;
+                  endTime: string;
+                  title: string;
+                  speakers?:
+                    | {
+                        name: string;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ConclaveAgendaBlock';
+          }
+        | {
+            sectionHeading: string;
+            speakers?:
+              | {
+                  name: string;
+                  designation: string;
+                  image: number | Media;
+                  /**
+                   * This profile text shows up inside the animation modal when clicked.
+                   */
+                  description: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ConclaveSpeakersBlock';
+          }
+        | {
+            sectionHeading: string;
+            sectionSubheading: string;
+            pillars?:
+              | {
+                  icon: number | Media;
+                  title: string;
+                  paragraphs?:
+                    | {
+                        /**
+                         * Supports HTML tags like <strong> or <br /> to bold phrases.
+                         */
+                        text: string;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ConclaveFivePillarsBlock';
+          }
+        | {
+            backgroundImage: number | Media;
+            logoImage: number | Media;
+            dateText: string;
+            timeText: string;
+            /**
+             * e.g., ITC Welcome Hotel, Chennai. Leave blank if not needed.
+             */
+            venueText?: string | null;
+            enableRegisterButton?: boolean | null;
+            buttonText?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ConclaveCtaBlock';
+          }
+        | {
+            sectionHeading: string;
+            partners?:
+              | {
+                  image: number | Media;
+                  /**
+                   * Image to show in popup or detailed view.
+                   */
+                  description?: (number | null) | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ConclavePartnersBlock';
+          }
+        | {
+            marqueeText: string;
+            sectionTitle: string;
+            sectionDescription?: string | null;
+            featuredEvent: {
+              linkUrl?: string | null;
+              image: number | Media;
+              dateNumber?: string | null;
+              dayName?: string | null;
+              title?: string | null;
+              description?: string | null;
+              tag?: string | null;
+            };
+            galleryItems?:
+              | {
+                  image: number | Media;
+                  title?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ConclaveGalleryBlock';
+          }
+        | {
+            bannerImage: number | Media;
+            /**
+             * If left empty, the desktop image will be used on mobile screens as fallback.
+             */
+            mobileBannerImage?: (number | null) | Media;
+            title?: string | null;
+            smallTitleText?: string | null;
+            /**
+             * Leave empty if the banner should not be clickable.
+             */
+            bannerLink?: string | null;
+            /**
+             * Check this box to open the link in a new tab. Unchecked opens in the same tab.
+             */
+            openInNewTab?: boolean | null;
+            breadcrumbs?:
+              | {
+                  label: string;
+                  url: string;
+                  /**
+                   * Optional small tag inside breadcrumb link e.g. "s" for FAQ<small>s</small>
+                   */
+                  smallText?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            enableSearch?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'InnerPageHeroBannerBlock';
+          }
+        | {
+            title: string;
+            smallTitleText?: string | null;
+            description?: string | null;
+            faqList?:
+              | {
+                  question: string;
+                  answer: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'FaqSectionBlock';
+          }
+        | {
+            title: string;
+            paragraphs?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            marqueeText: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'AboutIntroBlock';
+          }
+        | {
+            heading?: string | null;
+            subheading?: string | null;
+            image?: (number | null) | Media;
+            columns?:
+              | {
+                  paragraphs?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'AboutWelcomeSuperChennaiBlockNew';
+          }
+        | {
+            cards?:
+              | {
+                  title: string;
+                  description: string;
+                  icon: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'VisionMissionBlock';
+          }
+        | {
+            title: string;
+            image: number | Media;
+            paragraph1?: string | null;
+            paragraph2?: string | null;
+            highlightText?: string | null;
+            points?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'AboutFoundationsBlock';
+          }
+        | {
+            sectionId?: string | null;
+            mainHeader?: string | null;
+            subHeader?: string | null;
+            paragraph1?: string | null;
+            paragraph2?: string | null;
+            tagline?: string | null;
+            footerHeading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'AboutNammaChennaiBlock';
+          }
+        | {
+            heading?: string | null;
+            subheading?: string | null;
+            description?: string | null;
+            tabs?:
+              | {
+                  tabPrefix?: string | null;
+                  tabTitle?: string | null;
+                  image?: (number | null) | Media;
+                  points?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'AboutWhyChennaiBlock';
+          }
+        | {
+            tenantInfoSections?:
+              | {
+                  title: string;
+                  iconImage: number | Media;
+                  imgAlt?: string | null;
+                  points?:
+                    | {
+                        text: string;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'InvestPageBorderSection';
+          }
+        | {
+            tabs?:
+              | {
+                  tabTitle: string;
+                  icon: number | Media;
+                  heading: string;
+                  description: string;
+                  buttonText?: string | null;
+                  buttonLink: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'InvestPageTabBlock';
+          }
+        | {
+            slides?:
+              | {
+                  title: string;
+                  category?: string | null;
+                  description: string;
+                  image: number | Media;
+                  imgAlt?: string | null;
+                  link: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'InvestPageSliderBlock';
+          }
+        | {
+            slides?:
+              | {
+                  title: string;
+                  content: string;
+                  image: number | Media;
+                  imgAlt?: string | null;
+                  link: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'InnovatePageSliderBlock';
+          }
+        | {
+            mainImage: number | Media;
+            imgAlt?: string | null;
+            /**
+             * Choose whether the main image appears on the Left or Right side.
+             */
+            imagePosition?: ('left' | 'right') | null;
+            infoData?:
+              | {
+                  title: string;
+                  desc: string;
+                  icon: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'InnovateInfoSectionBlock';
+          }
+        | {
+            sectionTitle?: string | null;
+            mainImage: number | Media;
+            contentBlocks?:
+              | {
+                  type?: ('paragraph' | 'list') | null;
+                  paragraphText?: string | null;
+                  listItems?:
+                    | {
+                        itemText?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ImagewithContent';
+          }
+        | {
+            mainTitle?: string | null;
+            paragraphBlocks?:
+              | {
+                  text?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            cards?:
+              | {
+                  cardTitle: string;
+                  bulletPoints?:
+                    | {
+                        pointText?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ImageWithoutContentBlock';
+          }
+        | {
+            mainTitle?: string | null;
+            subTitle?: string | null;
+            headers?:
+              | {
+                  title: string;
+                  id?: string | null;
+                }[]
+              | null;
+            rows?:
+              | {
+                  columns?:
+                    | {
+                        text?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'TableSectionBlock';
+          }
+        | {
+            mainTitle?: string | null;
+            subTitle?: string | null;
+            slides?:
+              | {
+                  title: string;
+                  link: string;
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'InnerPageSliderBlock';
+          }
+        | {
+            heading: string;
+            images: (number | Media)[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'GallerySliderWithPopupBlock';
+          }
+        | {
+            title?: string | null;
+            description?: string | null;
+            image?: (number | null) | Media;
+            imageAlt?: string | null;
+            themePattern?: ('pattern-a' | 'pattern-b') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'LImgRSecBlock';
+          }
+        | {
+            benefitSections?:
+              | {
+                  sectionTitleLine1?: string | null;
+                  sectionTitleLine2?: string | null;
+                  sectionDesc?: string | null;
+                  label?: string | null;
+                  image: number | Media;
+                  benefits?:
+                    | {
+                        title: string;
+                        para?: string | null;
+                        imgs?: (number | null) | Media;
+                        linkUrl?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'BenefitSectionsBlock';
+          }
+        | {
+            backgroundWatermarkText?: string | null;
+            title: string;
+            paragraphs?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'IntroPinkTextWithContentBlock';
+          }
+        | {
+            sections?:
+              | {
+                  sectionTitle: string;
+                  sectionDesc?: string | null;
+                  image: number | Media;
+                  imgAlt?: string | null;
+                  tenantSections?:
+                    | {
+                        points?:
                           | {
                               title: string;
-                              icon?: (number | null) | Media;
-                              /**
-                               * Supports HTML tags like <strong>bold text</strong> and <br/> for line breaks.
-                               */
-                              description?: string | null;
-                              points?:
+                              para?: string | null;
+                              imgs?: (number | null) | Media;
+                              imgAlt?: string | null;
+                              link?: string | null;
+                              id?: string | null;
+                            }[]
+                          | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'VisitImageListBlock';
+          }
+        | {
+            mainTitle?: string | null;
+            networkData?:
+              | {
+                  category: string;
+                  places?:
+                    | {
+                        name: string;
+                        desc?: string | null;
+                        locations?:
+                          | {
+                              name: string;
+                              link?: string | null;
+                              id?: string | null;
+                            }[]
+                          | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'WorkNetworkSectionBlock';
+          }
+        | {
+            sections?:
+              | {
+                  sectionTitle: string;
+                  sectionDesc?: string | null;
+                  image: number | Media;
+                  imgAlt?: string | null;
+                  points?:
+                    | {
+                        title: string;
+                        desc?: string | null;
+                        para?:
+                          | {
+                              point: string;
+                              id?: string | null;
+                            }[]
+                          | null;
+                        imgs?: (number | null) | Media;
+                        imgAlt?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'WorkPageImageSectionBlock';
+          }
+        | {
+            mainTitle?: string | null;
+            categories?:
+              | {
+                  category: string;
+                  categoryParaGraph?: string | null;
+                  places?:
+                    | {
+                        name: string;
+                        desc?: string | null;
+                        locations?:
+                          | {
+                              name: string;
+                              link?: string | null;
+                              id?: string | null;
+                            }[]
+                          | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'HealthCareHospitalsBlock';
+          }
+        | {
+            imgSecs?:
+              | {
+                  sectionTitle: string;
+                  sectionDesc?: string | null;
+                  image: number | Media;
+                  imageAlt?: string | null;
+                  tntSecs?:
+                    | {
+                        points?:
+                          | {
+                              title: string;
+                              para?: string | null;
+                              imgs?: (number | null) | Media;
+                              altTitle?: string | null;
+                              link?: string | null;
+                              id?: string | null;
+                            }[]
+                          | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            dtlSecs?:
+              | {
+                  title?: string | null;
+                  points?:
+                    | {
+                        name: string;
+                        description?: string | null;
+                        subDescription?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'chnLivBlock';
+          }
+        | {
+            sections?:
+              | {
+                  sectionTitle: string;
+                  sectionDesc?: string | null;
+                  image: number | Media;
+                  imgAlt?: string | null;
+                  tenants?:
+                    | {
+                        points?:
+                          | {
+                              title: string;
+                              para?: string | null;
+                              imgs?: (number | null) | Media;
+                              imgAlt?: string | null;
+                              link?: string | null;
+                              id?: string | null;
+                            }[]
+                          | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'thingstodoPage';
+          }
+        | {
+            sections?:
+              | {
+                  sectionTitle: string;
+                  sectionDesc?: string | null;
+                  image: number | Media;
+                  imgAlt?: string | null;
+                  benefits?:
+                    | {
+                        title: string;
+                        para?: string | null;
+                        imgs?: (number | null) | Media;
+                        imgAlt?: string | null;
+                        link?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'chennaiNeighbourhoodBlock';
+          }
+        | {
+            sections?:
+              | {
+                  title: string;
+                  title1?: string | null;
+                  description: string;
+                  image: number | Media;
+                  imgAlt?: string | null;
+                  buttonText?: string | null;
+                  buttonLink?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'qualityOfLifeBlock';
+          }
+        | {
+            sections?:
+              | {
+                  sectionTitle: string;
+                  sectionDesc?: string | null;
+                  image: number | Media;
+                  imgAlt?: string | null;
+                  tenants?:
+                    | {
+                        points?:
+                          | {
+                              title: string;
+                              imgs?: (number | null) | Media;
+                              imgAlt?: string | null;
+                              link?: string | null;
+                              listItems?:
                                 | {
-                                    /**
-                                     * Supports HTML tags like <strong>bold text</strong> and <br/> for line breaks.
-                                     */
-                                    point?: string | null;
+                                    boldText?: string | null;
+                                    text?: string | null;
                                     id?: string | null;
                                   }[]
                                 | null;
                               id?: string | null;
-                              blockName?: string | null;
-                              blockType: 'infoSectionBlock';
-                            }
+                            }[]
+                          | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'visitWellnessBlock';
+          }
+        | {
+            title?: string | null;
+            description?: string | null;
+            logo?: (number | null) | Media;
+            logoAlt?: string | null;
+            addressLines?:
+              | {
+                  line?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            email?: string | null;
+            mapLink?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contactBlock';
+          }
+        | {
+            tabs?:
+              | {
+                  tabLabel: string;
+                  tabIcon?: (number | null) | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            allApps?:
+              | {
+                  company: string;
+                  appDescription?: string | null;
+                  appImage?: (number | null) | Media;
+                  appImageAlt?: string | null;
+                  /**
+                   * Enter the exact category tab name created above. Example: Travel, Food, Sports.
+                   */
+                  assignedTabs?:
+                    | {
+                        assignedTabName: string;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  features?:
+                    | {
+                        featureItem?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  services?:
+                    | {
+                        serviceItem?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  websiteLink?: string | null;
+                  androidLink?: string | null;
+                  iosLink?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'chennaiAppsBlock';
+          }
+        | {
+            regions?:
+              | {
+                  regionName: string;
+                  heroImage?: (number | null) | Media;
+                  categories?:
+                    | {
+                        categoryName: string;
+                        categoryDesc?: string | null;
+                        places?:
                           | {
-                              tableTitle: string;
-                              headers?:
-                                | {
-                                    headerName?: string | null;
-                                    id?: string | null;
-                                  }[]
-                                | null;
-                              rows?:
-                                | {
-                                    cells?:
-                                      | {
-                                          value?: string | null;
-                                          id?: string | null;
-                                        }[]
-                                      | null;
-                                    id?: string | null;
-                                  }[]
-                                | null;
-                              id?: string | null;
-                              blockName?: string | null;
-                              blockType: 'tableBlock';
-                            }
-                          | {
-                              categoryName: string;
-                              categoryDesc?: string | null;
-                              items?:
+                              name: string;
+                              desc?: string | null;
+                              locations?:
                                 | {
                                     name: string;
-                                    desc?: string | null;
-                                    locations?:
-                                      | {
-                                          name: string;
-                                          link?: string | null;
-                                          id?: string | null;
-                                        }[]
-                                      | null;
+                                    link?: string | null;
                                     id?: string | null;
                                   }[]
                                 | null;
                               id?: string | null;
-                              blockName?: string | null;
-                              blockType: 'categoryBlock';
-                            }
-                        )[]
-                      | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'llpBlock';
-      }
-    | {
-        categories?:
-          | {
-              categoryTabLabel: string;
-              categoryHeadingTitle: string;
-              categorySummaryText: string;
-              investCards2026?:
-                | {
-                    cardTitle: string;
-                    cardDescription: string;
-                    cardMedia: number | Media;
-                    cardMediaAltText?: string | null;
-                    id?: string | null;
-                  }[]
-                | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ChenzInvest2026Block';
-      }
-    | {
-        eventsCards2026?:
-          | {
-              title: string;
-              linkUrl: string;
-              cardMedia: number | Media;
-              altText?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'EventsList2026Block';
-      }
-    | {
-        title: string;
-        description: string;
-        buttonText: string;
-        pdfFile: number | Media;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'InfraBoom2026Block';
-      }
-    | {
-        topHeaderTitle: string;
-        mainHeading: string;
-        paragraph1?: string | null;
-        subHeading?: string | null;
-        paragraph2?: string | null;
-        highlightText?: string | null;
-        buttonText?: string | null;
-        sliderImages?:
-          | {
-              image: number | Media;
-              altText?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ManifestoSectionBlock';
-      }
-    | {
-        sectionHeading: string;
-        tvcCards?:
-          | {
-              company: string;
-              eventsCalendarTitle: string;
-              image: number | Media;
-              link: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'TvCommercials2026Block';
-      }
-    | {
-        sectionTitle: string;
-        sectionDescription?: string | null;
-        newsArticle?:
-          | {
-              Company: string;
-              EventsCalendarTitle: string;
-              image: number | Media;
-              link: string;
-              id?: string | null;
-            }[]
-          | null;
-        newsPhotos?:
-          | {
-              Company: string;
-              EventsCalendarTitle: string;
-              title?: string | null;
-              image: number | Media;
-              image1: number | Media;
-              description?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        youtubeChannel?:
-          | {
-              Company: string;
-              EventsCalendarTitle: string;
-              title?: string | null;
-              image: number | Media;
-              link: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'MediaCoverageBlockMainPage';
-      }
-    | {
-        featuredImage: number | Media;
-        title: string;
-        subtitle?: string | null;
-        paragraphs?:
-          | {
-              text: string;
-              id?: string | null;
-            }[]
-          | null;
-        quoteText?: string | null;
-        features?:
-          | {
-              title: string;
-              iconType?: ('music' | 'train' | 'clock' | 'location' | 'star') | null;
-              customIcon?: (number | null) | Media;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'MetroMadrasBlock';
-      }
-    | {
-        sectionTitle: string;
-        details?:
-          | {
-              value: string;
-              label: string;
-              iconType?: ('calendar' | 'clock' | 'location' | 'ticket' | 'users') | null;
-              customIcon?: (number | null) | Media;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'MetroTheDetailsBlock';
-      }
-    | {
-        leftTitle: string;
-        highlights?:
-          | {
-              text: string;
-              id?: string | null;
-            }[]
-          | null;
-        checkSvgCode?: string | null;
-        rightTitle: string;
-        whoCanJoinParagraph1?: string | null;
-        whoCanJoinParagraph2?: string | null;
-        enableButton?: boolean | null;
-        buttonText?: string | null;
-        buttonTargetId?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'MetroExperienceBlock';
-      }
-    | {
-        sectionTitle: string;
-        guidelines?:
-          | {
-              text: string;
-              id?: string | null;
-            }[]
-          | null;
-        checkSvgCode?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'MetroGuidelinesBlock';
-      }
-    | {
-        sectionId: string;
-        featuredImage: number | Media;
-        status: 'closed' | 'open';
-        badgeText?: string | null;
-        title: string;
-        description?: string | null;
-        infoBoxTitle?: string | null;
-        infoBoxDescription?: string | null;
-        buttonText?: string | null;
-        statusSvgCode?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'MetroRegistrationBlock';
-      }
-  )[];
+                            }[]
+                          | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'placesSectionBlock';
+          }
+        | {
+            mainTabs?:
+              | {
+                  tabTitle: string;
+                  regions?:
+                    | {
+                        regionName: string;
+                        heroImage?: (number | null) | Media;
+                        contentLayout?:
+                          | (
+                              | {
+                                  sectionTitle: string;
+                                  image: number | Media;
+                                  imgAlt?: string | null;
+                                  id?: string | null;
+                                  blockName?: string | null;
+                                  blockType: 'imageTitleBlock';
+                                }
+                              | {
+                                  title: string;
+                                  icon?: (number | null) | Media;
+                                  /**
+                                   * Supports HTML tags like <strong>bold text</strong> and <br/> for line breaks.
+                                   */
+                                  description?: string | null;
+                                  points?:
+                                    | {
+                                        /**
+                                         * Supports HTML tags like <strong>bold text</strong> and <br/> for line breaks.
+                                         */
+                                        point?: string | null;
+                                        id?: string | null;
+                                      }[]
+                                    | null;
+                                  id?: string | null;
+                                  blockName?: string | null;
+                                  blockType: 'infoSectionBlock';
+                                }
+                              | {
+                                  tableTitle: string;
+                                  headers?:
+                                    | {
+                                        headerName?: string | null;
+                                        id?: string | null;
+                                      }[]
+                                    | null;
+                                  rows?:
+                                    | {
+                                        cells?:
+                                          | {
+                                              value?: string | null;
+                                              id?: string | null;
+                                            }[]
+                                          | null;
+                                        id?: string | null;
+                                      }[]
+                                    | null;
+                                  id?: string | null;
+                                  blockName?: string | null;
+                                  blockType: 'tableBlock';
+                                }
+                              | {
+                                  categoryName: string;
+                                  categoryDesc?: string | null;
+                                  items?:
+                                    | {
+                                        name: string;
+                                        desc?: string | null;
+                                        locations?:
+                                          | {
+                                              name: string;
+                                              link?: string | null;
+                                              id?: string | null;
+                                            }[]
+                                          | null;
+                                        id?: string | null;
+                                      }[]
+                                    | null;
+                                  id?: string | null;
+                                  blockName?: string | null;
+                                  blockType: 'categoryBlock';
+                                }
+                            )[]
+                          | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'llpBlock';
+          }
+        | {
+            categories?:
+              | {
+                  categoryTabLabel: string;
+                  categoryHeadingTitle: string;
+                  categorySummaryText: string;
+                  investCards2026?:
+                    | {
+                        cardTitle: string;
+                        cardDescription: string;
+                        cardMedia: number | Media;
+                        cardMediaAltText?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ChenzInvest2026Block';
+          }
+        | {
+            eventsCards2026?:
+              | {
+                  title: string;
+                  linkUrl: string;
+                  cardMedia: number | Media;
+                  altText?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'EventsList2026Block';
+          }
+        | {
+            title: string;
+            description: string;
+            buttonText: string;
+            pdfFile: number | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'InfraBoom2026Block';
+          }
+        | {
+            topHeaderTitle: string;
+            mainHeading: string;
+            paragraph1?: string | null;
+            subHeading?: string | null;
+            paragraph2?: string | null;
+            highlightText?: string | null;
+            buttonText?: string | null;
+            sliderImages?:
+              | {
+                  image: number | Media;
+                  altText?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ManifestoSectionBlock';
+          }
+        | {
+            sectionHeading: string;
+            tvcCards?:
+              | {
+                  company: string;
+                  eventsCalendarTitle: string;
+                  image: number | Media;
+                  link: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'TvCommercials2026Block';
+          }
+        | {
+            sectionTitle: string;
+            sectionDescription?: string | null;
+            newsArticle?:
+              | {
+                  Company: string;
+                  EventsCalendarTitle: string;
+                  image: number | Media;
+                  link: string;
+                  id?: string | null;
+                }[]
+              | null;
+            newsPhotos?:
+              | {
+                  Company: string;
+                  EventsCalendarTitle: string;
+                  title?: string | null;
+                  image: number | Media;
+                  image1: number | Media;
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            youtubeChannel?:
+              | {
+                  Company: string;
+                  EventsCalendarTitle: string;
+                  title?: string | null;
+                  image: number | Media;
+                  link: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'MediaCoverageBlockMainPage';
+          }
+        | {
+            featuredImage: number | Media;
+            title: string;
+            subtitle?: string | null;
+            paragraphs?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            quoteText?: string | null;
+            features?:
+              | {
+                  title: string;
+                  iconType?: ('music' | 'train' | 'clock' | 'location' | 'star') | null;
+                  customIcon?: (number | null) | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'MetroMadrasBlock';
+          }
+        | {
+            sectionTitle: string;
+            details?:
+              | {
+                  value: string;
+                  label: string;
+                  iconType?: ('calendar' | 'clock' | 'location' | 'ticket' | 'users') | null;
+                  customIcon?: (number | null) | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'MetroTheDetailsBlock';
+          }
+        | {
+            leftTitle: string;
+            highlights?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            checkSvgCode?: string | null;
+            rightTitle: string;
+            whoCanJoinParagraph1?: string | null;
+            whoCanJoinParagraph2?: string | null;
+            enableButton?: boolean | null;
+            buttonText?: string | null;
+            buttonTargetId?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'MetroExperienceBlock';
+          }
+        | {
+            sectionTitle: string;
+            guidelines?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            checkSvgCode?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'MetroGuidelinesBlock';
+          }
+        | {
+            sectionId: string;
+            featuredImage: number | Media;
+            status: 'closed' | 'open';
+            badgeText?: string | null;
+            title: string;
+            description?: string | null;
+            infoBoxTitle?: string | null;
+            infoBoxDescription?: string | null;
+            buttonText?: string | null;
+            statusSvgCode?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'MetroRegistrationBlock';
+          }
+        | {
+            announcementText?: string | null;
+            locationSubtitle?: string | null;
+            topBadge?: string | null;
+            mainHeading?: string | null;
+            description?: string | null;
+            dateText?: string | null;
+            locationText?: string | null;
+            primaryCtaText?: string | null;
+            primaryCtaUrl?: string | null;
+            secondaryCtaText?: string | null;
+            secondaryCtaUrl?: string | null;
+            cardBadge?: string | null;
+            nationsText?: string | null;
+            stat1Number?: string | null;
+            stat1Label?: string | null;
+            stat2Number?: string | null;
+            stat2Label?: string | null;
+            venueBoxTitle?: string | null;
+            venueBoxSubtitle?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'KiteFestivalHeroBlock';
+          }
+        | {
+            featuredImage: number | Media;
+            tagText: string;
+            mainHeading: string;
+            paragraph1?: string | null;
+            paragraph2?: string | null;
+            paragraph3?: string | null;
+            boxTitle?: string | null;
+            boxDescription?: string | null;
+            boxSvgCode?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'KiteFestivalAbout';
+          }
+        | {
+            tagText: string;
+            mainHeading: string;
+            description?: string | null;
+            highlightsList?:
+              | {
+                  title: string;
+                  desc: string;
+                  svgCode: string;
+                  id?: string | null;
+                }[]
+              | null;
+            bannerTitle?: string | null;
+            bannerDescription?: string | null;
+            badgeText?: string | null;
+            badgeSvgCode?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'KiteFestivalHighlights';
+          }
+        | {
+            tagText: string;
+            mainHeading: string;
+            description?: string | null;
+            faqsList?: KiteFestivalNewFAQItem;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'KiteFestivalNewFaq';
+          }
+      )[]
+    | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   meta?: {
     title?: string | null;
     /**
@@ -4924,206 +5019,6 @@ export interface IplCategory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "arattai".
- */
-export interface Arattai {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  mobileImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  Arattai: {
-    title: string;
-    shortDescription?: string | null;
-    speakerName?: string | null;
-    speakerDesignation?: string | null;
-    speakerImage?: (number | null) | Media;
-    eventDetails: {
-      eventDate: string;
-      registrationDeadline?: string | null;
-      venue?: string | null;
-      city?: string | null;
-      googleMapLink?: string | null;
-      eventMode?: ('offline' | 'online' | 'hybrid') | null;
-    };
-    registrationSettings?: {
-      isRegistrationOpen?: boolean | null;
-      enableOTP?: boolean | null;
-      maxRegistrations?: number | null;
-      showOrganisationField?: boolean | null;
-      thankYouMessage?: string | null;
-    };
-    customFields?:
-      | {
-          label: string;
-          fieldName: string;
-          fieldType: 'text' | 'email' | 'number' | 'textarea' | 'select';
-          required?: boolean | null;
-          placeholder?: string | null;
-          options?:
-            | {
-                label?: string | null;
-                value?: string | null;
-                id?: string | null;
-              }[]
-            | null;
-          id?: string | null;
-        }[]
-      | null;
-    emailSettings?: {
-      adminEmail?: string | null;
-      fromEmail?: string | null;
-      userConfirmationSubject?: string | null;
-      adminNotificationSubject?: string | null;
-    };
-  };
-  relatedevents?: (number | Event)[] | null;
-  categories?: (number | Category)[] | null;
-  formSettings?: {
-    regSettings?: {
-      isRegistrationOpen?: boolean | null;
-      enableOTP?: boolean | null;
-      maxRegistrations?: number | null;
-      showOrganisationField?: boolean | null;
-      thankYouMessage?: string | null;
-    };
-    customFields?: (number | ArattaiFormField)[] | null;
-  };
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-    /**
-     * Paste valid JSON-LD schema (Event schema for SEO)
-     */
-    schema?:
-      | {
-          [k: string]: unknown;
-        }
-      | unknown[]
-      | string
-      | number
-      | boolean
-      | null;
-    seo?: {
-      title?: string | null;
-      description?: string | null;
-      keywords?:
-        | {
-            keyword?: string | null;
-            id?: string | null;
-          }[]
-        | null;
-      canonicalURL?: string | null;
-      ogImage?: (number | null) | Media;
-      structuredData?:
-        | {
-            [k: string]: unknown;
-          }
-        | unknown[]
-        | string
-        | number
-        | boolean
-        | null;
-    };
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "arattai-form-fields".
- */
-export interface ArattaiFormField {
-  id: number;
-  label: string;
-  name: string;
-  type?: ('text' | 'email' | 'number' | 'textarea' | 'select' | 'radio' | 'checkbox' | 'file') | null;
-  placeholder?: string | null;
-  required?: boolean | null;
-  options?:
-    | {
-        label?: string | null;
-        value?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "arattai-registrations".
- */
-export interface ArattaiRegistration {
-  id: number;
-  arattai: number | Arattai;
-  status?: ('pending' | 'confirmed' | 'rejected') | null;
-  name?: string | null;
-  email?: string | null;
-  phone?: string | null;
-  company?: string | null;
-  /**
-   * Dynamic submitted form values
-   */
-  values?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  thankYouMailSent?: boolean | null;
-  confirmedAt?: string | null;
-  /**
-   * This message will be included in confirmation mail.
-   */
-  adminMessage?: string | null;
-  mailResponse?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "event-dashboard".
- */
-export interface EventDashboard {
-  id: number;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "iconOfMonth".
  */
 export interface IconOfMonth {
@@ -5589,6 +5484,85 @@ export interface GoluContest {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-submissions".
+ */
+export interface RegistrationSubmission {
+  id: number;
+  title: string;
+  eventName?: string | null;
+  eventId?: string | null;
+  eventSlug?: string | null;
+  registrationSettings: number | RegistrationSetting;
+  values:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  attachments?:
+    | {
+        file: number | Media;
+        fieldName: string;
+        id?: string | null;
+      }[]
+    | null;
+  status?: ('pending' | 'approved' | 'rejected') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-settings".
+ */
+export interface RegistrationSetting {
+  id: number;
+  name: string;
+  isRegistrationOpen?: boolean | null;
+  enableOTP?: boolean | null;
+  /**
+   * Leave empty for unlimited registrations.
+   */
+  maxRegistrations?: number | null;
+  showOrganisationField?: boolean | null;
+  thankYouMessage?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "event-form-fields".
+ */
+export interface EventFormField {
+  id: number;
+  label: string;
+  name: string;
+  type?: ('text' | 'email' | 'number' | 'textarea' | 'select' | 'radio' | 'checkbox' | 'file') | null;
+  placeholder?: string | null;
+  required?: boolean | null;
+  options?:
+    | {
+        label?: string | null;
+        value?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-dashboard".
+ */
+export interface RegistrationDashboard {
+  id: number;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -6137,22 +6111,6 @@ export interface PayloadLockedDocument {
         value: number | IplLanguage;
       } | null)
     | ({
-        relationTo: 'arattai';
-        value: number | Arattai;
-      } | null)
-    | ({
-        relationTo: 'arattai-registrations';
-        value: number | ArattaiRegistration;
-      } | null)
-    | ({
-        relationTo: 'event-dashboard';
-        value: number | EventDashboard;
-      } | null)
-    | ({
-        relationTo: 'arattai-form-fields';
-        value: number | ArattaiFormField;
-      } | null)
-    | ({
         relationTo: 'iconOfMonth';
         value: number | IconOfMonth;
       } | null)
@@ -6187,6 +6145,22 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'golu-contest';
         value: number | GoluContest;
+      } | null)
+    | ({
+        relationTo: 'registration-submissions';
+        value: number | RegistrationSubmission;
+      } | null)
+    | ({
+        relationTo: 'registration-settings';
+        value: number | RegistrationSetting;
+      } | null)
+    | ({
+        relationTo: 'event-form-fields';
+        value: number | EventFormField;
+      } | null)
+    | ({
+        relationTo: 'registration-dashboard';
+        value: number | RegistrationDashboard;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -7895,7 +7869,79 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        KiteFestivalHeroBlock?:
+          | T
+          | {
+              announcementText?: T;
+              locationSubtitle?: T;
+              topBadge?: T;
+              mainHeading?: T;
+              description?: T;
+              dateText?: T;
+              locationText?: T;
+              primaryCtaText?: T;
+              primaryCtaUrl?: T;
+              secondaryCtaText?: T;
+              secondaryCtaUrl?: T;
+              cardBadge?: T;
+              nationsText?: T;
+              stat1Number?: T;
+              stat1Label?: T;
+              stat2Number?: T;
+              stat2Label?: T;
+              venueBoxTitle?: T;
+              venueBoxSubtitle?: T;
+              id?: T;
+              blockName?: T;
+            };
+        KiteFestivalAbout?:
+          | T
+          | {
+              featuredImage?: T;
+              tagText?: T;
+              mainHeading?: T;
+              paragraph1?: T;
+              paragraph2?: T;
+              paragraph3?: T;
+              boxTitle?: T;
+              boxDescription?: T;
+              boxSvgCode?: T;
+              id?: T;
+              blockName?: T;
+            };
+        KiteFestivalHighlights?:
+          | T
+          | {
+              tagText?: T;
+              mainHeading?: T;
+              description?: T;
+              highlightsList?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    svgCode?: T;
+                    id?: T;
+                  };
+              bannerTitle?: T;
+              bannerDescription?: T;
+              badgeText?: T;
+              badgeSvgCode?: T;
+              id?: T;
+              blockName?: T;
+            };
+        KiteFestivalNewFaq?:
+          | T
+          | {
+              tagText?: T;
+              mainHeading?: T;
+              description?: T;
+              faqsList?: T | KiteFestivalNewFAQItemSelect<T>;
+              id?: T;
+              blockName?: T;
+            };
       };
+  content?: T;
   meta?:
     | T
     | {
@@ -7909,6 +7955,15 @@ export interface PagesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "KiteFestivalNewFAQItem_select".
+ */
+export interface KiteFestivalNewFAQItemSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
+  id?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -9699,168 +9754,6 @@ export interface IplLanguagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "arattai_select".
- */
-export interface ArattaiSelect<T extends boolean = true> {
-  title?: T;
-  heroImage?: T;
-  mobileImage?: T;
-  content?: T;
-  Arattai?:
-    | T
-    | {
-        title?: T;
-        shortDescription?: T;
-        speakerName?: T;
-        speakerDesignation?: T;
-        speakerImage?: T;
-        eventDetails?:
-          | T
-          | {
-              eventDate?: T;
-              registrationDeadline?: T;
-              venue?: T;
-              city?: T;
-              googleMapLink?: T;
-              eventMode?: T;
-            };
-        registrationSettings?:
-          | T
-          | {
-              isRegistrationOpen?: T;
-              enableOTP?: T;
-              maxRegistrations?: T;
-              showOrganisationField?: T;
-              thankYouMessage?: T;
-            };
-        customFields?:
-          | T
-          | {
-              label?: T;
-              fieldName?: T;
-              fieldType?: T;
-              required?: T;
-              placeholder?: T;
-              options?:
-                | T
-                | {
-                    label?: T;
-                    value?: T;
-                    id?: T;
-                  };
-              id?: T;
-            };
-        emailSettings?:
-          | T
-          | {
-              adminEmail?: T;
-              fromEmail?: T;
-              userConfirmationSubject?: T;
-              adminNotificationSubject?: T;
-            };
-      };
-  relatedevents?: T;
-  categories?: T;
-  formSettings?:
-    | T
-    | {
-        regSettings?:
-          | T
-          | {
-              isRegistrationOpen?: T;
-              enableOTP?: T;
-              maxRegistrations?: T;
-              showOrganisationField?: T;
-              thankYouMessage?: T;
-            };
-        customFields?: T;
-      };
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
-        schema?: T;
-        seo?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              keywords?:
-                | T
-                | {
-                    keyword?: T;
-                    id?: T;
-                  };
-              canonicalURL?: T;
-              ogImage?: T;
-              structuredData?: T;
-            };
-      };
-  publishedAt?: T;
-  authors?: T;
-  populatedAuthors?:
-    | T
-    | {
-        id?: T;
-        name?: T;
-      };
-  slug?: T;
-  slugLock?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "arattai-registrations_select".
- */
-export interface ArattaiRegistrationsSelect<T extends boolean = true> {
-  arattai?: T;
-  status?: T;
-  name?: T;
-  email?: T;
-  phone?: T;
-  company?: T;
-  values?: T;
-  thankYouMailSent?: T;
-  confirmedAt?: T;
-  adminMessage?: T;
-  mailResponse?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "event-dashboard_select".
- */
-export interface EventDashboardSelect<T extends boolean = true> {
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "arattai-form-fields_select".
- */
-export interface ArattaiFormFieldsSelect<T extends boolean = true> {
-  label?: T;
-  name?: T;
-  type?: T;
-  placeholder?: T;
-  required?: T;
-  options?:
-    | T
-    | {
-        label?: T;
-        value?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "iconOfMonth_select".
  */
 export interface IconOfMonthSelect<T extends boolean = true> {
@@ -10100,6 +9993,70 @@ export interface GoluContestSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-submissions_select".
+ */
+export interface RegistrationSubmissionsSelect<T extends boolean = true> {
+  title?: T;
+  eventName?: T;
+  eventId?: T;
+  eventSlug?: T;
+  registrationSettings?: T;
+  values?: T;
+  attachments?:
+    | T
+    | {
+        file?: T;
+        fieldName?: T;
+        id?: T;
+      };
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-settings_select".
+ */
+export interface RegistrationSettingsSelect<T extends boolean = true> {
+  name?: T;
+  isRegistrationOpen?: T;
+  enableOTP?: T;
+  maxRegistrations?: T;
+  showOrganisationField?: T;
+  thankYouMessage?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "event-form-fields_select".
+ */
+export interface EventFormFieldsSelect<T extends boolean = true> {
+  label?: T;
+  name?: T;
+  type?: T;
+  placeholder?: T;
+  required?: T;
+  options?:
+    | T
+    | {
+        label?: T;
+        value?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-dashboard_select".
+ */
+export interface RegistrationDashboardSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -10979,10 +10936,6 @@ export interface TaskSchedulePublish {
           value: number | CricketScore;
         } | null)
       | ({
-          relationTo: 'arattai';
-          value: number | Arattai;
-        } | null)
-      | ({
           relationTo: 'iconOfMonth';
           value: number | IconOfMonth;
         } | null)
@@ -10998,6 +10951,25 @@ export interface TaskSchedulePublish {
     user?: (number | null) | User;
   };
   output?: unknown;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock".
+ */
+export interface VideoBlock {
+  source: 'youtube' | 'instagram' | 'mp4';
+  /**
+   * Paste YouTube / Instagram / mp4 URL
+   */
+  url: string;
+  autoplay?: boolean | null;
+  /**
+   * Optional: Add a cover image for Instagram posts
+   */
+  thumbnail?: (number | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'videoBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -11052,25 +11024,6 @@ export interface MediaBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "VideoBlock".
- */
-export interface VideoBlock {
-  source: 'youtube' | 'instagram' | 'mp4';
-  /**
-   * Paste YouTube / Instagram / mp4 URL
-   */
-  url: string;
-  autoplay?: boolean | null;
-  /**
-   * Optional: Add a cover image for Instagram posts
-   */
-  thumbnail?: (number | null) | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'videoBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

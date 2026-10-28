@@ -9,6 +9,9 @@ export const ManifestoSectionBlock: Block = {
   admin: {
     group: 'Manifesto Page',
   },
+
+  imageURL: '/images/sections-image/manifestoinyourhands.jpg',
+
   fields: [
     {
       name: 'topHeaderTitle',
