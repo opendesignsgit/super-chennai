@@ -3,8 +3,8 @@ import { Block } from 'payload'
 export const InnerPageSliderBlock: Block = {
   slug: 'InnerPageSliderBlock',
   labels: {
-    singular: 'Inner Page Slider Block',
-    plural: 'Inner Page Slider Blocks',
+    singular: ' Slider Section',
+    plural: ' Slider Sections',
   },
 
   admin: {

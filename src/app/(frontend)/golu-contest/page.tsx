@@ -23,16 +23,16 @@ export default async function GoluLandingPage() {
     return typeof imageField === 'object' ? imageField?.url || '' : ''
   }
 
-  const desktopUrl = getImageUrl(landingData?.desktopImage )
+  const desktopUrl = getImageUrl(landingData?.desktopImage)
   const mobileUrl = getImageUrl(landingData?.mobileImage)
 
   return (
-    <div className="min-h-screen bg-stone-50 pb-20">
+    <div className="min-h-screen bg-stone-50 pb-20 golupaggggeee">
       {/* =========================================================
          BANNER SECTION (Responsive Desktop & Mobile Images)
       ========================================================= */}
       {(desktopUrl || mobileUrl) && (
-        <div className="relative w-full h-[280px] sm:h-[400px] md:h-[450px] overflow-hidden bg-stone-900">
+        <div className="accaodomationBannerSection golummainpagee relative overflow-hidden cursor-pointer">
           {desktopUrl && (
             <img
               src={desktopUrl}
@@ -50,25 +50,23 @@ export default async function GoluLandingPage() {
           )}
 
           {/* Optional Overlay Title */}
-          <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4">
+          {/* <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4">
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-wide drop-shadow-md">
               {landingData?.title}
             </h1>
-          </div>
+          </div> */}
         </div>
       )}
 
       {/* =========================================================
          LEXICAL CONTENT RENDERER WITH BLOCKS
       ========================================================= */}
-      <div className="max-w-4xl mx-auto px-6 py-10">
+      <div className="" id="poppinsfamilyybody">
         <LexicalRenderer content={landingData?.content} contest={landingData} />
       </div>
     </div>
   )
 }
-
-
 
 // // 'use client'
 

@@ -6,6 +6,10 @@ export const InnovatePageSliderBlock: Block = {
     singular: 'Innovate Slider Section',
     plural: 'Innovate Slider Sections',
   },
+
+  admin: {
+    group: 'Innovate Page',
+  },
   imageURL: '/images/sections-image/innovate-slider.jpg',
   imageAltText: 'Innovate Slider Section Preview',
   fields: [

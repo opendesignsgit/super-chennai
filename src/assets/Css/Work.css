@@ -1,3 +1,358 @@
+/* .workMainContainer {
+  overflow: hidden;
+
+}
+
+.volunteerSectionBanner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.VolunteerMainContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 15%;
+}
+
+.WorkBgSection::before {
+  background: linear-gradient(90deg,
+      rgba(19, 50, 132, 1) 10%,
+      rgba(90, 66, 161, 1) 40%,
+      rgba(57, 8, 121, 1) 90%);
+}
+
+@keyframes animateGradient {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+.VolunteerBannerImage {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item button {
+  color: #fff;
+}
+
+.navbarContents {
+  border-top: 1px solid #679a91;
+  border-bottom: 1px solid #679a91;
+}
+
+
+
+.volunteeerMainContent {}
+
+.workIntro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 0 12%;
+}
+
+.workIntro h3 {
+
+  font-family: NewAmsterdam;
+  color: #995098;
+  font-size: 68px;
+  line-height: 56px;
+}
+
+.workIntro h1 {
+
+  font-family: NewAmsterdam;
+  color: #995098;
+  font-size: 68px;
+  line-height: 56px;
+}
+
+.workIntro p {
+  font-family: "29LT Bukra Regular";
+  color: #000;
+  margin-top: 20px;
+  width: fit-content;
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: clamp(24px, 2vw, 26px);
+}
+
+.detailIntro .workIntro {
+  padding-bottom: 50px;
+  padding-bottom: 30px;
+}
+
+.workIntroParaSection {
+  margin-top: 35px;
+  position: relative;
+  padding-bottom: 100px;
+  padding-top: 60px;
+}
+
+.VolunteeerTextBackground {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  white-space: nowrap;
+  width: 200%;
+
+  z-index: 0;
+  opacity: 0.025;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation: scrollText 50s linear infinite;
+}
+
+.scroll-left {
+  animation-name: scrollLeftVolunteer;
+}
+
+.scroll-right {
+  animation-name: scrollRightVolunteer;
+}
+
+@keyframes scrollLeftVolunteer {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRightVolunteer {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+
+
+.workImageSection {
+  background: #2a7b9b;
+  background: linear-gradient(90deg,
+      rgba(19, 50, 132, 1) 10%,
+      rgba(90, 66, 161, 1) 50%,
+      rgba(57, 8, 121, 1) 90%);
+  padding-top: 125px;
+  margin-bottom: 100px;
+  padding-bottom: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.workImageSection h4 {
+  position: absolute;
+  top: 30%;
+  font-size: 230px;
+  color: #0e1633;
+  pointer-events: none;
+  text-transform: uppercase;
+  opacity: 0.1;
+  line-height: 1;
+  font-family: "29LT Bukra SmBd";
+}
+
+.workimgIn {
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+  margin: 0 auto;
+  gap: 0;
+  min-height: 650px;
+}
+
+.hoverRightimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.workimgIn li {
+  margin: 0 0 25px;
+  position: relative;
+}
+
+.workimgIn li a {
+  font-size: 45px;
+  display: block;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  line-height: 1;
+}
+
+.workimgIn li a:hover {
+  font-size: 80px;
+  letter-spacing: -1px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.workimgIn li.active a {
+  font-size: 70px;
+  letter-spacing: -1px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.workimgIn li.active a::before {
+  width: 10%;
+  transition: all 0.5s ease;
+}
+
+.workimgIn li a::before {
+  content: "";
+  position: absolute;
+  transition: all 0.5s ease;
+  letter-spacing: -1px;
+  background: #fff;
+  opacity: 0.2;
+  width: 0%;
+  height: 1px;
+  right: 0;
+  top: 50%;
+}
+
+.workimgIn li a:hover::before {
+  width: 10%;
+  transition: all 0.5s ease;
+}
+
+
+
+#tooltip {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding: 4px 8px;
+  pointer-events: none;
+  background: transparent;
+  transition: opacity 0.2s ease;
+}
+
+#tooltip button {
+  background: rgba(38, 22, 125, 0.7);
+  color: white;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+
+@media (max-width: 1600px) and (min-width: 1000px) {
+  .workimgIn li.active a {
+    font-size: 50px;
+  }
+
+  .workimgIn li a {
+    font-size: 35px;
+  }
+
+  .workimgIn li a:hover {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .hoverRightimg img {
+    height: 80%;
+    position: relative;
+    top: -70px;
+  }
+
+  .workImageSection {
+    padding-bottom: 23px;
+  }
+}
+
+@media (max-width: 768px) {
+  .workIntro h3 {
+    font-size: 36px;
+    line-height: 30px;
+  }
+
+  .workIntro h1 {
+    font-size: 36px;
+    line-height: 30px;
+  }
+
+  .workIntroParaSection {
+    padding-bottom: 0px;
+    padding-top: 0;
+  }
+
+  .mobileCardsWork {
+    background: linear-gradient(90deg,
+        rgba(19, 50, 132, 1) 10%,
+        rgba(90, 66, 161, 1) 50%,
+        rgba(57, 8, 121, 1) 90%);
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 8px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .CardTitleWork {
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+
+  .CardLinkWork {
+    font-size: 14px;
+    color: #fff;
+    text-transform: none;
+  }
+
+  .mobileCardsWorkMainContainer {}
+}
+
+
+
+.cmssectionss .imgcontent {
+  padding-top: 0;
+}
+
+
+.visitIntroParaSection.detailIntro.paddingbottommmm {
+  padding-bottom: 0 !important;
+}
+
+
+.foodlistsec.wellnessss .clcboxItemss:after {
+  background: none
+}
+
+
+.learninglinkpading {
+  padding-top: 0 !important;
+}
+
+.bgggg .mb-6 {
+  margin-bottom: 0;
+} */
+
+
 /* / Banner Voluteer / */
 
 .workMainContainer {
@@ -15,6 +370,7 @@
   display: flex;
   justify-content: center;
   padding-top: 15%;
+  padding-top: 12%;
 }
 
 .WorkBgSection::before {
@@ -88,7 +444,7 @@
   color: #000;
   margin-top: 20px;
   width: fit-content;
-  font-size: clamp(15px, 1.5vw, 18px);
+  font-size: clamp(15px, 1.5vw, 16px);
   line-height: clamp(24px, 2vw, 26px);
 }
 
@@ -342,7 +698,9 @@
         rgba(19, 50, 132, 1) 10%,
         rgba(90, 66, 161, 1) 50%,
         rgba(57, 8, 121, 1) 90%);
-    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 8px 0 rgba(0, 0, 0, 0.05);
+    box-shadow:
+      0 8px 8px 0 rgba(0, 0, 0, 0.2),
+      0 8px 8px 0 rgba(0, 0, 0, 0.05);
   }
 
   .CardTitleWork {
@@ -363,27 +721,400 @@
   }
 }
 
+/* golupage-css */
+/* golupage-css */
 
-
-.cmssectionss .imgcontent {
-  padding-top: 0;
+#poppinsfamilyybody p {
+  font-family: "Poppins" !important;
 }
 
-
-.visitIntroParaSection.detailIntro.paddingbottommmm {
-  padding-bottom: 0 !important;
+#poppinsfamilyybody h1,
+#poppinsfamilyybody h2,
+#poppinsfamilyybody h3,
+#poppinsfamilyybody h4,
+#poppinsfamilyybody h5,
+#poppinsfamilyybody h6 {
+  font-family: "Poppins" !important;
+  line-height: 105%;
 }
 
-
-.foodlistsec.wellnessss .clcboxItemss:after {
-  background: none
+#poppinsfamilyybody .bebasfamily {
+  font-family: "Bebas Neue", sans-serif !important;
 }
 
-
-.learninglinkpading {
-  padding-top: 0 !important;
+.golupaggggeee h3 {
+  font-size: 18px;
+  font-family: 'Poppins';
 }
 
-.bgggg .mb-6{
-  margin-bottom: 0;
+.golupaggggeee p {
+  font-size: 16px;
 }
+
+.golupaggggeee span {
+  font-size: 16px;
+}
+
+.golupaggggeee .numberfontt {
+  font-size: 33px;
+  line-height: 100%;
+  font-weight: 700;
+  letter-spacing: 0px;
+  margin-right: 10px;
+  text-decoration: 2px underline;
+  text-underline-offset: 10px;
+}
+
+.highlightedtextsectionpara {
+  padding-top: 20px;
+  display: block;
+}
+
+.golunewform {
+  width: 410px;
+}
+
+.formflexgolou {
+  display: flex;
+  justify-content: center;
+}
+
+.heighgolli {
+  /* height: 400px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #e600768c #ffe4ef;
+  padding-right: 30px; */
+}
+
+.golufirstsectionheight {
+  height: 350px;
+  overflow-y: scroll;
+  scrollbar-width: thin !important;
+  scrollbar-color: #e600768c #ffe4ef;
+  padding-right: 10px;
+}
+
+.goluufirstsectionmainn {
+  padding-right: 20px;
+}
+
+.heighgolli .parafirstsectionn:first-child {
+  padding-top: 20px;
+}
+
+.golufirstsectionheight .parafirstsectionn:last-child {
+  padding-bottom: 20px;
+}
+
+.backgoungoloimage {
+  background-image: url("/public/images/golu/global-look.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.paragolorr {
+  line-height: 135%;
+}
+
+.widthmax {
+  width: 100%;
+  max-width: 100%;
+}
+
+.paragaraphcolosection {
+  text-align: left;
+  padding-left: 35px;
+  padding-right: 0px;
+}
+
+.headigggggfont.uppercase.font-bold {
+  font-size: 26px;
+}
+
+.subheadinggfonrs.mb-3.font-bold {
+  font-size: 20px;
+}
+
+#poppinsfamilyybody input::placeholder {
+  font-family: "Poppins" !important;
+}
+
+#poppinsfamilyybody input {
+  font-family: "Poppins" !important;
+}
+
+.goluufirstsectionmainn {
+  position: relative;
+}
+
+/* .goluufirstsectionmainn::before {
+  content: "";
+  position: absolute;
+  background-image: url("/images/golu/golu-gif.gif");
+  width: 350px;
+  height: 420px;
+  top: 0;
+  left: -312px;
+  background-size: cover;
+} */
+
+/* marqueee-section */
+
+/* Container section styling */
+.golupaggggeee .marquee-section {
+  padding: 15px 0;
+  overflow: hidden;
+  background: #fff;
+  margin-top: 15px;
+  border-top: 1px solid #8f368654;
+  border-bottom: 1px solid #8f368654;
+}
+
+/* Flex wrapper for continuous animation */
+.golupaggggeee .marquee-container {
+  display: flex;
+  width: max-content;
+  animation: goluScrollMarquee 25s linear infinite;
+}
+
+/* Pause on hover */
+.golupaggggeee .marquee-container:hover {
+  animation-play-state: paused;
+}
+
+/* Individual content loop block */
+.golupaggggeee .marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-right: 24px;
+}
+
+/* Marquee Item Structure */
+.golupaggggeee .marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Gold Text Styling */
+.golupaggggeee .marquee-text {
+  color: #4b1f8a;
+  font-size: 25px;
+  line-height: 25px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  font-family: "Poppins";
+  font-weight: 400;
+}
+
+/* Gold Icon Styling */
+.golupaggggeee .marquee-icon {
+  font-size: 1.4rem;
+  filter: sepia(1) saturate(5) hue-rotate(5deg) brightness(1.2);
+  display: flex;
+  align-items: center;
+}
+
+/* Separator Dot */
+.golupaggggeee .marquee-dot {
+  color: #8f3686;
+  font-size: 30px;
+  line-height: 30px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  font-family: "Poppins";
+  font-weight: 500;
+}
+
+.golupaggggeee .marquee-item img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Continuous Infinite Scroll Animation */
+@keyframes goluScrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.golugifiageee {
+  width: 240px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.golu-form {
+  background-image: url(/images/golu/form-golu-bg1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
+}
+
+.golu-form1 {
+  background-image: url(/images/golu/form-golu-bg2.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
+}
+
+/* marqueee-section */
+
+@media (max-width: 800px) {
+  .paragaraphcolosection {
+    text-align: left;
+    padding-left: 0;
+    padding-right: 0px;
+  }
+
+  .golupaggggeee p {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .headigggggfont.uppercase.font-bold {
+    font-size: 20px;
+  }
+
+  .subheadinggfonrs.mb-3.font-bold {
+    font-size: 16px;
+    margin-bottom: -5px;
+  }
+
+  .golufirstsectionheight {
+    height: auto;
+  }
+
+  .golupaggggeee span {
+    font-size: 14px;
+  }
+
+  .highlightedtextsectionpara {
+    padding-top: 10px;
+  }
+
+  /* .withautomaxgolu {
+    max-width: 100%;
+  }
+
+  .textgolulefttt {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+  }
+  .textgolulefttt .leading-none,
+  .textgolulefttt h3 {
+    font-size: 25px;
+    font-weight: 600;
+    margin-top: 0;
+    line-height: 25px;
+  } */
+
+  .flowwsectiongloww {
+    display: flex;
+    column-gap: 35px;
+    overflow-x: scroll;
+    height: 135px;
+    padding-left: 5%;
+    margin-top: -10px;
+  }
+
+  .firstflowwsectiongloww {
+    flex-shrink: 0;
+    width: 85%;
+    align-items: flex-start;
+  }
+
+  .withautomaxgolu {
+    max-width: 100%;
+    line-height: 120%;
+    width: 100%;
+  }
+
+  .golupaggggeee {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .golupaggggeee h3 {
+    font-size: 16px;
+  }
+
+  .golumaincon {
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .golumaincon .flex-1 {
+    margin-top: 12px;
+  }
+
+  .golumaincon .flex-1 .paragolorr {
+    margin-top: 7px;
+  }
+
+  .heighgolli .mt-4.ml-14 {
+    margin-left: 0;
+  }
+
+  .formflexgolou {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .backgoungoloimage {
+    background-position: left;
+    background-color: #611c95;
+    background-image: none;
+  }
+
+  .accaodomationBannerSection.golummainpagee img {
+    height: auto;
+  }
+
+  .aroooewwglow {
+    font-size: 35px;
+    line-height: 25px;
+  }
+
+  .tetxcentermobile {
+    text-align: center !important;
+  }
+
+  .paddinggglefttftt {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .paddingtwenty {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* .heighgolli {
+    display: flex;
+    overflow-x: scroll;
+    gap: 20px;
+    justify-content: flex-start;
+  }
+
+  .heighgolli .group.parafirstsectionn {
+    flex-shrink: 0;
+    width: 70%;
+  } */
+
+  .readytocreatesection img {
+    height: auto;
+    width: 73px;
+    margin: 10px 0;
+  }
+}
+
+/* golupage-css */

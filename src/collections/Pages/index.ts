@@ -114,6 +114,20 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 import { VideoBlock } from '@/blocks/VideoBlock/config'
+import { NammaStoriesVideosBlock } from '@/blocks/InnerPage/SharedBlocks/NammaStoriesVideos/config'
+import { EventClosedNoticeBlock } from '@/blocks/InnerPage/SharedBlocks/SummerClipsPhtography/SummerClipsEventsClosed/config'
+import { NammaStoriesNewsArticleBlock } from '@/blocks/InnerPage/SharedBlocks/NammaStoriesTabSection/config'
+import { CarRallyBlock } from '@/blocks/InnerPage/CarRallyPage/config'
+import { NammaStoriesGenZStageBlock } from '@/blocks/GenzContentCreatorPage/ChennaiThisYourStage/config'
+import { WhyJoinSuperChennaiBlock } from '@/blocks/GenzContentCreatorPage/WhyJoinSuperChennaiBlock/config'
+import { HowToJoinTimelineBlock } from '@/blocks/GenzContentCreatorPage/HowToJoinTimelineBlock/config'
+import { ContactSalesFormBlock } from '@/blocks/GenzContentCreatorPage/ContactSalesFormGenz/config'
+import { SuperChennaiQuizBlock } from '@/blocks/InnerPage/Chennai-Quiz/config'
+import { MediaHighlightsGalleryBlock } from '@/blocks/InnerPage/SharedBlocks/ContestMediaHighlightsGalleryBlock/config'
+import { AIArtChallengeBlock } from '@/blocks/InnerPage/SharedBlocks/AIArtChallengeBlock/config'
+import { LetsTalkChennaiBlock } from '@/blocks/InnerPage/SharedBlocks/LetsTalkChennai/config'
+import { BecomeAVolunteerBlock } from '@/blocks/InnerPage/SharedBlocks/BecomeAVolunteer/config'
+import { LiveDetailImageBlock } from '@/blocks/InnerPage/SharedBlocks/LiveDetailImageBlock/config'
 // import { KiteFestivalFAQBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalFAQSection/config'
 // import { ChennaiAppsBlock } from '@/blocks/InnerPage/ChennaiApps/config'
 
@@ -187,23 +201,22 @@ export const Pages: CollectionConfig<'pages'> = {
                 // RESUSABLE BLOCK NEW #####################
                 mainPageBannerBlock,
                 IntroTextBlock,
-                GlobalSearchBlock,
-                FormPopup,
+
                 Infography,
                 TwoColumnFeatureBlock,
                 Utilities,
                 ContentZoneCarousel,
                 // SpotlightGallery,
-                AllEvents,
+                // AllEvents,
                 liveIntrorSection,
                 ChennaiLifeEssentialSection,
                 investmentCategoryListBlock,
-                innovateSlider,
+                // innovateSlider,
                 TextHoverImageSection,
                 // TRENDINGCHENNAI@#########
                 TrendingChennaiSlider,
                 SecondSectionBlock,
-                PopupBannerBlock,
+
                 CricketScoreBlock,
                 // Conclave Pages
                 ConclaveSuperChennaiBlock,
@@ -272,7 +285,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 PlacesSectionBlock,
                 LearningLivePageBlock,
                 ChenzInvest2026Block,
-                EventsList2026Block,
+
                 // Manifesto Page
                 InfraBoom2026Block,
                 ManifestoSectionBlock,
@@ -295,7 +308,27 @@ export const Pages: CollectionConfig<'pages'> = {
                 KiteFestivalNewFaqBlock,
                 // EventRegistrationFormBlock
 
-                //------------------Kite Festival Page
+                EventsList2026Block,
+                NammaStoriesVideosBlock,
+                NammaStoriesNewsArticleBlock,
+                EventClosedNoticeBlock,
+                CarRallyBlock,
+                NammaStoriesGenZStageBlock,
+                WhyJoinSuperChennaiBlock,
+                HowToJoinTimelineBlock,
+                ContactSalesFormBlock,
+                SuperChennaiQuizBlock,
+                MediaHighlightsGalleryBlock,
+                AIArtChallengeBlock,
+
+                //------------------Kite Festival
+
+                GlobalSearchBlock,
+                PopupBannerBlock,
+                FormPopup,
+                LetsTalkChennaiBlock,
+                BecomeAVolunteerBlock,
+                LiveDetailImageBlock,
               ],
               // required: true,
               admin: {
@@ -330,23 +363,22 @@ export const Pages: CollectionConfig<'pages'> = {
                         // RESUSABLE BLOCK NEW #####################
                         mainPageBannerBlock,
                         IntroTextBlock,
-                        GlobalSearchBlock,
-                        FormPopup,
+
                         Infography,
                         TwoColumnFeatureBlock,
                         Utilities,
                         ContentZoneCarousel,
                         // SpotlightGallery,
-                        AllEvents,
+                        // AllEvents,
                         liveIntrorSection,
                         ChennaiLifeEssentialSection,
                         investmentCategoryListBlock,
-                        innovateSlider,
+                        // innovateSlider,
                         TextHoverImageSection,
                         // TRENDINGCHENNAI@#########
                         TrendingChennaiSlider,
                         SecondSectionBlock,
-                        PopupBannerBlock,
+
                         CricketScoreBlock,
                         // Conclave Pages
                         ConclaveSuperChennaiBlock,
@@ -415,7 +447,7 @@ export const Pages: CollectionConfig<'pages'> = {
                         PlacesSectionBlock,
                         LearningLivePageBlock,
                         ChenzInvest2026Block,
-                        EventsList2026Block,
+
                         // Manifesto Page
                         InfraBoom2026Block,
                         ManifestoSectionBlock,
@@ -436,6 +468,35 @@ export const Pages: CollectionConfig<'pages'> = {
                         KiteFestivalAboutBlock,
                         KiteFestivalHighlightsBlock,
                         KiteFestivalNewFaqBlock,
+
+                        // contest-sections
+
+                        EventsList2026Block,
+
+                        NammaStoriesVideosBlock,
+                        NammaStoriesNewsArticleBlock,
+                        EventClosedNoticeBlock,
+
+                        CarRallyBlock,
+                        NammaStoriesGenZStageBlock,
+
+                        WhyJoinSuperChennaiBlock,
+                        HowToJoinTimelineBlock,
+                        ContactSalesFormBlock,
+                        SuperChennaiQuizBlock,
+                        MediaHighlightsGalleryBlock,
+
+                        AIArtChallengeBlock,
+
+                        GlobalSearchBlock,
+                        PopupBannerBlock,
+                        FormPopup,
+
+                        LetsTalkChennaiBlock,
+                        BecomeAVolunteerBlock,
+                        LiveDetailImageBlock,
+
+                        // contest-sections
                       ],
                     }),
                     FixedToolbarFeature(),

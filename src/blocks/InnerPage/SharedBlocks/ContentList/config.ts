@@ -4,12 +4,13 @@ export const EventsList2026Block: Block = {
   slug: 'EventsList2026Block',
   dbName: 'ev_lst_2026', // 👈 Block level dbName IS VALID
   labels: {
-    singular: 'Events List 2026 Section',
-    plural: 'Events List 2026 Sections',
+    singular: 'Contest Main Page',
+    plural: 'Contest Main Page',
   },
   admin: {
-    group: '2026 Blocks',
+    group: 'Super Chennai Contest',
   },
+  imageURL: '/images/sections-image/contest-mainpage.jpg',
   fields: [
     {
       name: 'eventsCards2026',

@@ -6,6 +6,10 @@ export const InnovateInfoSectionBlock: Block = {
     singular: 'Info Image Section',
     plural: 'Info Image Sections',
   },
+  admin: {
+    group: 'Common Blocks',
+  },
+
   imageURL: '/images/sections-image/info-section.jpg',
   fields: [
     {

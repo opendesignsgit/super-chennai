@@ -52,7 +52,7 @@ export default function GoluWhyCornerBlockComponent({
   const mainMediaUrl = getMediaUrl(media?.src)
 
   return (
-    <section className="max-w-7xl mx-auto my-8 p-6 md:p-10 bg-white rounded-3xl border border-gray-100 shadow-sm font-sans">
+    <section className="max-w-7xl mx-auto my-8 p-6 md:p-10 bg-white rounded-3xl border border-gray-100 shadow-sm font-sans poppinsfamilyyy golupaggggeee ">
       <div className="flex items-center justify-center space-x-3 mb-10">
         <span className="text-pink-500 text-lg">
           {decorImageUrl ? (
@@ -67,7 +67,7 @@ export default function GoluWhyCornerBlockComponent({
             <img className="w-14" src="/images/golu/golu-second.png" alt="" />
           )}
         </span>
-        <h2 className="text-xl md:text-2xl font-black text-indigo-950 uppercase text-center">
+        <h2 className="text-xl md:text-2xl font-black font-bold uppercase text-center bg-gradient-to-r from-[#4B1F8A] to-[#F82763] bg-clip-text text-transparent">
           {headerTitle}
         </h2>
         <span className="text-pink-500 text-lg">
@@ -88,10 +88,9 @@ export default function GoluWhyCornerBlockComponent({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div className="lg:col-span-5 w-full h-[320px] md:h-[460px] bg-gray-100 rounded-2xl border border-gray-200 flex flex-col items-center justify-center text-gray-400 relative overflow-hidden">
           {mainMediaUrl ? (
-            <Image
+            <img
               src={mainMediaUrl}
               alt={media?.altText || 'Why Super Chennai Corner'}
-              fill
               className="h-[100%] w-full object-cover"
             />
           ) : (

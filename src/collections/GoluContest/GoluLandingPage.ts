@@ -25,6 +25,10 @@ import { GoluFirstSectionBlock } from './blocks/GoluIntroSection/config'
 import { GoluWhyCornerBlock } from './blocks/GoluWhySuperChennai/config'
 import { GoluHowItWorksBlock } from './blocks/GoluHowItWorksBlock/config'
 import { GoluJudgingBlock } from './blocks/GoluJudgingBlock/config'
+import { GoluPrizesBlock } from './blocks/GoluPrizesBlock/config'
+import { GoluBrandLogoBlock } from './blocks/GoluBrandLogoBlock/config'
+import { GoluMarqueeTickerBlock } from './blocks/GoluMarqueeTickerBlock/config'
+import { EventClosedNoticeBlock } from '@/blocks/InnerPage/SharedBlocks/SummerClipsPhtography/SummerClipsEventsClosed/config'
 
 export const GoluLandingPage: GlobalConfig = {
   slug: 'goluLandingPage',
@@ -73,15 +77,18 @@ export const GoluLandingPage: GlobalConfig = {
                   BlocksFeature({
                     blocks: [
                       GoluFormBlock,
+                      GoluMarqueeTickerBlock,
                       GoluContestBlock,
                       GoluFirstSectionBlock,
+                      GoluBrandLogoBlock,
                       GoluWhyCornerBlock,
                       GoluCreateBlock,
                       GoluCtaBannerBlock,
                       GoluHeroBannerBlock,
                       GoluHowItWorksBlock,
-                      GoluJudgingBlock
-                      
+                      GoluJudgingBlock,
+                      GoluPrizesBlock,
+                      EventClosedNoticeBlock,
                     ],
                   }),
                   FixedToolbarFeature(),
