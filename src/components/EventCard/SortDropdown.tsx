@@ -12,7 +12,7 @@ const SortBy = () => {
     const params = new URLSearchParams(searchParams.toString())
     params.set('sort', v)
 
-    router.push(`/events?${params}`)
+    router.push(`/chennai-events?${params}`)
   }
 
   return (

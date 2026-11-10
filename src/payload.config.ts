@@ -130,7 +130,7 @@ export default buildConfig({
       connectionTimeoutMillis: 120000, 
       idleTimeoutMillis: 120000, 
     },
-    // push: false,
+    push: false,
   }),
 
   collections: [
