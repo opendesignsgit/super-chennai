@@ -80,13 +80,27 @@ export default function GoluJudgingBlockComponent(props: Props) {
   const stages = fields.stages && fields.stages.length > 0 ? fields.stages : defaultStages
 
   // Helper function to extract media URL safely
+  // const getMediaUrl = (imgField: MediaType | number | string | null | undefined) => {
+  //   if (typeof imgField === 'object' && imgField !== null && 'url' in imgField) {
+  //     return (imgField as MediaType).url || null
+  //   }
+  //   if (typeof imgField === 'string') {
+  //     return imgField
+  //   }
+  //   return null
+  // }
+
   const getMediaUrl = (imgField: MediaType | number | string | null | undefined) => {
     if (typeof imgField === 'object' && imgField !== null && 'url' in imgField) {
-      return (imgField as MediaType).url || null
+      return imgField.url || null
     }
+
     if (typeof imgField === 'string') {
-      return imgField
+      return imgField.startsWith('/images/golu/')
+        ? imgField.replace('/images/golu/', '/api/media/file/')
+        : imgField
     }
+
     return null
   }
 
@@ -95,7 +109,7 @@ export default function GoluJudgingBlockComponent(props: Props) {
       {/* Header Section */}
       <div className="flex items-center justify-center gap-4 mb-8">
         <span className="h-[2px] w-12 md:w-20 bg-pink-500"></span>
-        <h2 className="text-xl md:text-3xl font-bold text-indigo-950 text-center uppercase">
+        <h2 className="text-xl md:text-3xl font-bold text-center uppercase bg-gradient-to-r from-[#4B1F8A] to-[#F82763] bg-clip-text text-transparent">
           {headerTitle}
         </h2>
         <span className="h-[2px] w-12 md:w-20 bg-pink-500"></span>
@@ -105,9 +119,10 @@ export default function GoluJudgingBlockComponent(props: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
         {stages.map((stage, index) => {
           const iconUrl = getMediaUrl(stage.icon)
+          console.log('Resolved iconUrl Test:', iconUrl)
 
           return (
-            <div key={stage.id || index} className="relative pt-6">
+            <div key={stage.id || index} className="relative pt-6 poppinsfamilyyy">
               {/* Badge */}
               <div
                 className={`absolute top-2 left-1/2 -translate-x-1/2 z-10 font-bold text-xs px-6 py-1.5 rounded-full uppercase shadow-sm text-[15px] ${
@@ -140,11 +155,11 @@ export default function GoluJudgingBlockComponent(props: Props) {
                       )}
                     </div>
                     <div>
-                      <h3 className="text-xl md:text-2xl font-black text-indigo-950 uppercase font-bold">
+                      <h3 className="text-xl md:text-2xl font-black uppercase font-bold headigggggfont bg-gradient-to-r from-[#4B1F8A] to-[#F82763] bg-clip-text text-transparent">
                         {stage.title}
                       </h3>
                       {stage.subtitle && (
-                        <p className="text-xs md:text-sm font-black text-black uppercase mt-1 mb-3 font-bold">
+                        <p className="text-xs md:text-sm font-black text-black uppercase mt-1 mb-3 font-bold subheadinggfonrs">
                           {stage.subtitle}
                         </p>
                       )}

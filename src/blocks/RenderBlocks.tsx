@@ -102,6 +102,20 @@ import { VisitBanner } from './PageBanners/VisitBanner/Component'
 import PopupBanner from './Popup/component'
 import { VideoBlockComponent } from './VideoBlock/Component'
 import Banner from './InnerPage/SharedBlocks/Banners/Components'
+import NammaStoriesVideosComponent from './InnerPage/SharedBlocks/NammaStoriesVideos/component'
+import EventClosedNoticeComponent from './InnerPage/SharedBlocks/SummerClipsPhtography/SummerClipsEventsClosed/component'
+import NammaStoriesNewsArticleSection from './InnerPage/SharedBlocks/NammaStoriesTabSection/component'
+import CarRallyComponent from './InnerPage/CarRallyPage/component'
+import NammaStoriesGenZStageSection from './GenzContentCreatorPage/ChennaiThisYourStage/component'
+import WhyJoinSuperChennaiSection from './GenzContentCreatorPage/WhyJoinSuperChennaiBlock/component'
+import HowToJoinTimelineSection from './GenzContentCreatorPage/HowToJoinTimelineBlock/component'
+import ContactSalesFormSection from './GenzContentCreatorPage/ContactSalesFormGenz/component'
+import SuperChennaiQuizSection from './InnerPage/Chennai-Quiz/component'
+import MediaHighlightsGallerySection from './InnerPage/SharedBlocks/ContestMediaHighlightsGalleryBlock/component'
+import AIArtChallengeSection from './InnerPage/SharedBlocks/AIArtChallengeBlock/component'
+import LetsTalkChennaiSection from './InnerPage/SharedBlocks/LetsTalkChennai/component'
+import BecomeAVolunteerSection from './InnerPage/SharedBlocks/BecomeAVolunteer/component'
+import LiveDetailImageSectionComponent from './InnerPage/SharedBlocks/LiveDetailImageBlock/component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -213,6 +227,20 @@ const blockComponents: {
   KiteFestivalNewFaq: KiteFestivalNewFaqComponent,
   EventRegistrationFormBlock: EventRegistrationBlockComponent,
   // KiteFestivalFAQBlock: KiteFestivalFAQComponent,
+  NammaStoriesVideosBlockssss: NammaStoriesVideosComponent,
+  EventClosedNoticeBlock: EventClosedNoticeComponent,
+  NammaStoriesNewsArticleSection: NammaStoriesNewsArticleSection,
+  CarRallyBlock: CarRallyComponent,
+  NammaStoriesGenZStageBlock: NammaStoriesGenZStageSection,
+  WhyJoinSuperChennaiBlock: WhyJoinSuperChennaiSection,
+  HowToJoinTimelineBlock: HowToJoinTimelineSection,
+  ContactSalesFormBlock: ContactSalesFormSection,
+  SuperChennaiQuizBlock: SuperChennaiQuizSection,
+  MediaHighlightsGalleryBlock: MediaHighlightsGallerySection,
+  AIArtChallengeBlock: AIArtChallengeSection,
+  LetsTalkChennaiBlock: LetsTalkChennaiSection,
+  BecomeAVolunteerBlock: BecomeAVolunteerSection,
+  liveDetailImg: LiveDetailImageSectionComponent,
 }
 
 export const RenderBlocks: React.FC<{
