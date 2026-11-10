@@ -6,6 +6,10 @@ export const FormPopup: Block = {
     singular: 'Form Popup',
     plural: 'Form Popups',
   },
+
+  admin: {
+    group: 'Global Components',
+  },
   fields: [
     {
       name: 'heading',

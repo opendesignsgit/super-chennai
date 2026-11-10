@@ -441,7 +441,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={item.platform}
+              className={`${item.platform} border-0`}
             >
               <img
                 src={item.icon?.url ?? `/media/${item.icon?.filename}`}
@@ -451,6 +451,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                 style={{
                   objectFit: 'contain',
                 }}
+                className="!border-0"
               />
             </a>
           ))}

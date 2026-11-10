@@ -92,7 +92,10 @@ import HeroSliderBlock from '@/blocks/PageBanners/Home/Component'
 import { VisitBanner } from '@/blocks/PageBanners/VisitBanner/Component'
 import GoluCtaBannerBlockComponent from '@/collections/GoluContest/blocks/GoluCtaBanner/component'
 import GoluHeroBannerBlockComponent from '@/collections/GoluContest/blocks/GoluHeroBanner/component'
-import { default as GoluCreateBlockComponent, default as GoluHowItWorksBlockComponent } from '@/collections/GoluContest/blocks/GoluHowItWorks/component'
+import {
+  default as GoluCreateBlockComponent,
+  default as GoluHowItWorksBlockComponent,
+} from '@/collections/GoluContest/blocks/GoluHowItWorks/component'
 import GoluFirstSectionBlockComponent from '@/collections/GoluContest/blocks/GoluIntroSection/Component'
 import GoluJudgingBlockComponent from '@/collections/GoluContest/blocks/GoluJudgingBlock/component'
 import GoluWhyCornerBlockComponent from '@/collections/GoluContest/blocks/GoluWhySuperChennai/Component'
@@ -104,6 +107,21 @@ import CodeBlock from './blocks/CodeBlock'
 import ImageBlock from './blocks/ImageBlock'
 import MediaBlock from './blocks/MediaBlock'
 import VideoBlock from './blocks/VideoBlock'
+import NammaStoriesVideosComponent from '@/blocks/InnerPage/SharedBlocks/NammaStoriesVideos/component'
+import NammaStoriesNewsArticleSection from '@/blocks/InnerPage/SharedBlocks/NammaStoriesTabSection/component'
+import NammaStoriesGenZStageSection from '@/blocks/GenzContentCreatorPage/ChennaiThisYourStage/component'
+import WhyJoinSuperChennaiSection from '@/blocks/GenzContentCreatorPage/WhyJoinSuperChennaiBlock/component'
+import HowToJoinTimelineSection from '@/blocks/GenzContentCreatorPage/HowToJoinTimelineBlock/component'
+import ContactSalesFormSection from '@/blocks/GenzContentCreatorPage/ContactSalesFormGenz/component'
+import SuperChennaiQuizSection from '@/blocks/InnerPage/Chennai-Quiz/component'
+import MediaHighlightsGallerySection from '@/blocks/InnerPage/SharedBlocks/ContestMediaHighlightsGalleryBlock/component'
+import AIArtChallengeSection from '@/blocks/InnerPage/SharedBlocks/AIArtChallengeBlock/component'
+import LetsTalkChennaiSection from '@/blocks/InnerPage/SharedBlocks/LetsTalkChennai/component'
+import BecomeAVolunteerSection from '@/blocks/InnerPage/SharedBlocks/BecomeAVolunteer/component'
+import GoluPrizesBlockComponent from '@/collections/GoluContest/blocks/GoluPrizesBlock/component'
+import { GoluBrandLogoSection } from '@/collections/GoluContest/blocks/GoluBrandLogoBlock/component'
+import GoluMarqueeTickerBlockComponent from '@/collections/GoluContest/blocks/GoluMarqueeTickerBlock/component'
+import EventClosedNoticeComponent from '@/blocks/InnerPage/SharedBlocks/SummerClipsPhtography/SummerClipsEventsClosed/component'
 
 export function renderNode(node: any, idx: number, arattaiData?: any): React.ReactNode {
   /* ------------------------------------------------
@@ -279,6 +297,22 @@ export function renderNode(node: any, idx: number, arattaiData?: any): React.Rea
 
       if (blockType === 'goluJudging') {
         return <GoluJudgingBlockComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'goluPrizes') {
+        return <GoluPrizesBlockComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'goluBrandLogoBlock') {
+        return <GoluBrandLogoSection key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'goluMarqueeTicker') {
+        return <GoluMarqueeTickerBlockComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'EventClosedNoticeBlock') {
+        return <EventClosedNoticeComponent key={idx} {...node.fields} />
       }
 
       if (blockType === 'formBlock') {
@@ -549,7 +583,6 @@ export function renderNode(node: any, idx: number, arattaiData?: any): React.Rea
         return <InnerPageSliderComponent key={idx} {...node.fields} />
       }
 
-     
       if (blockType === 'GallerySliderWithPopupBlock') {
         return <GallerySliderWithPopupComponent key={idx} {...node.fields} />
       }
@@ -686,6 +719,50 @@ export function renderNode(node: any, idx: number, arattaiData?: any): React.Rea
 
       if (blockType === 'KiteFestivalNewFaq') {
         return <KiteFestivalNewFaqComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'NammaStoriesVideosBlockssss') {
+        return <NammaStoriesVideosComponent key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'NammaStoriesNewsArticleBlock') {
+        return <NammaStoriesNewsArticleSection key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'NammaStoriesGenZStageBlock') {
+        return <NammaStoriesGenZStageSection key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'WhyJoinSuperChennaiBlock') {
+        return <WhyJoinSuperChennaiSection key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'HowToJoinTimelineBlock') {
+        return <HowToJoinTimelineSection key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'ContactSalesFormBlock') {
+        return <ContactSalesFormSection key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'SuperChennaiQuizBlock') {
+        return <SuperChennaiQuizSection key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'MediaHighlightsGalleryBlock') {
+        return <MediaHighlightsGallerySection key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'AIArtChallengeBlock') {
+        return <AIArtChallengeSection key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'LetsTalkChennaiBlock') {
+        return <LetsTalkChennaiSection key={idx} {...node.fields} />
+      }
+
+      if (blockType === 'BecomeAVolunteerBlock') {
+        return <BecomeAVolunteerSection key={idx} {...node.fields} />
       }
 
       return null

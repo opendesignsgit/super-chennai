@@ -9,6 +9,9 @@ export const VisitImageListSectionBlock: Block = {
     singular: 'Visit Image List Section 1',
     plural: 'Visit Image List Sections 1',
   },
+  admin: {
+    group: 'Common Blocks',
+  },
   fields: [
     {
       name: 'sections',

@@ -6,6 +6,9 @@ export const ImagewithContent: Block = {
     singular: 'Image with Content',
     plural: 'Image with Contents',
   },
+  admin: {
+    group: 'Common Blocks',
+  },
   imageURL: '/images/sections-image/ImagewithContent.jpg',
   imageAltText: 'Image with Content Section Preview',
   fields: [

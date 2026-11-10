@@ -627,35 +627,6 @@ export interface Page {
             blockType: 'introTextBlock';
           }
         | {
-            placeholderText: string;
-            buttonText: string;
-            enableFilters?: boolean | null;
-            filters?:
-              | {
-                  label: string;
-                  options?:
-                    | {
-                        value: string;
-                        label: string;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'globalSearch';
-          }
-        | {
-            heading: string;
-            description?: string | null;
-            buttonText?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'formPopup';
-          }
-        | {
             /**
              * Maximum 100 characters allowed
              */
@@ -780,19 +751,6 @@ export interface Page {
           }
         | {
             /**
-             * Maximum 15 characters allowed
-             */
-            title: string;
-            /**
-             * Maximum 400 characters allowed
-             */
-            description?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'allevents';
-          }
-        | {
-            /**
              * Maximum 50 characters allowed
              */
             heading: string;
@@ -871,11 +829,6 @@ export interface Page {
             blockType: 'investmentCategoryList';
           }
         | {
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'innovateSlider';
-          }
-        | {
             /**
              * Maximum 100 characters allowed
              */
@@ -927,20 +880,6 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'secondSection';
-          }
-        | {
-            enablePopup?: boolean | null;
-            isGlobal?: boolean | null;
-            /**
-             * Choose pages where popup should appear
-             */
-            selectedPages?: (number | Page)[] | null;
-            popupImage: number | Media;
-            redirectLink?: string | null;
-            openInNewTab?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'popupBanner';
           }
         | {
             title?: string | null;
@@ -1947,20 +1886,6 @@ export interface Page {
             blockType: 'ChenzInvest2026Block';
           }
         | {
-            eventsCards2026?:
-              | {
-                  title: string;
-                  linkUrl: string;
-                  cardMedia: number | Media;
-                  altText?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'EventsList2026Block';
-          }
-        | {
             title: string;
             description: string;
             buttonText: string;
@@ -2191,6 +2116,339 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'KiteFestivalNewFaq';
+          }
+        | {
+            eventsCards2026?:
+              | {
+                  title: string;
+                  linkUrl: string;
+                  cardMedia: number | Media;
+                  altText?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'EventsList2026Block';
+          }
+        | {
+            contestTitle?: string | null;
+            winnerThumbnail?: (number | null) | Media;
+            runnerUp1Thumbnail?: (number | null) | Media;
+            runnerUp2Thumbnail?: (number | null) | Media;
+            nomineesTitle?: string | null;
+            videosList?:
+              | {
+                  title: string;
+                  thumbnail: number | Media;
+                  iframeLink: string;
+                  directorName: string;
+                  directorMail?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'NammaStoriesVideosBlockssss';
+          }
+        | {
+            sectionTitle: string;
+            sectionSubtitle?: string | null;
+            ePaperItems?:
+              | {
+                  company?: string | null;
+                  title: string;
+                  thumbnail: number | Media;
+                  popupImage: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            newsArticlesItems?:
+              | {
+                  company?: string | null;
+                  title: string;
+                  content?: string | null;
+                  thumbnail: number | Media;
+                  externalLink: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'NammaStoriesNewsArticleSection';
+          }
+        | {
+            badgeText: string;
+            title: string;
+            description: string;
+            buttonText?: string | null;
+            buttonLink?: string | null;
+            bgDecorationImage?: (number | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'EventClosedNoticeBlock';
+          }
+        | {
+            eventTitle: string;
+            bannerImage: number | Media;
+            categoryLabel?: string | null;
+            aboutDateHighlight?: string | null;
+            aboutContent?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            sidebarDetails?: {
+              dateLabel?: string | null;
+              timeLabel?: string | null;
+              durationLabel?: string | null;
+              capacityLabel?: string | null;
+              priceLabel?: string | null;
+              locationLabel?: string | null;
+              showBookNow?: boolean | null;
+              bookNowLink?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'CarRallyBlock';
+          }
+        | {
+            mainTitle: string;
+            columnOneParagraphs?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            columnTwoParagraphs?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'NammaStoriesGenZStageBlock';
+          }
+        | {
+            mainTitle: string;
+            sectionDescription?: string | null;
+            benefitsCards?:
+              | {
+                  cardIcon: number | Media;
+                  cardTitle: string;
+                  cardText: string;
+                  themeColor?: ('blue' | 'pink') | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'WhyJoinSuperChennaiBlock';
+          }
+        | {
+            sectionTitle: string;
+            steps?:
+              | {
+                  stepNumber: string;
+                  stepIcon: number | Media;
+                  stepDescription: string;
+                  themeColor?: ('blue' | 'pink') | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'HowToJoinTimelineBlock';
+          }
+        | {
+            mainTitle: string;
+            subtext?: string | null;
+            heroImage: number | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ContactSalesFormBlock';
+          }
+        | {
+            eventTitle: string;
+            bannerImage: number | Media;
+            aboutContent?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            poweredByLogo?: (number | null) | Media;
+            sidebarDetails?: {
+              dateLabel?: string | null;
+              timeLabel?: string | null;
+              locationLabel?: string | null;
+              hostLabel?: string | null;
+              teamsLabel?: string | null;
+              feeLabel?: string | null;
+              registerRoute?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'SuperChennaiQuizBlock';
+          }
+        | {
+            sectionTitle: string;
+            tickerText?: string | null;
+            galleryItems?:
+              | {
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'MediaHighlightsGalleryBlock';
+          }
+        | {
+            mainTitle: string;
+            introParagraphs?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            challengeBox?: {
+              heading?: string | null;
+              description?: string | null;
+            };
+            dealBox?: {
+              heading?: string | null;
+              dealItems?:
+                | {
+                    itemText: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              contactEmail?: string | null;
+            };
+            payoffBox?: {
+              heading?: string | null;
+              payoffItems?:
+                | {
+                    itemText: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              closingParagraphs?:
+                | {
+                    text: string;
+                    id?: string | null;
+                  }[]
+                | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'AIArtChallengeBlock';
+          }
+        | {
+            placeholderText: string;
+            buttonText: string;
+            enableFilters?: boolean | null;
+            filters?:
+              | {
+                  label: string;
+                  options?:
+                    | {
+                        value: string;
+                        label: string;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'globalSearch';
+          }
+        | {
+            enablePopup?: boolean | null;
+            isGlobal?: boolean | null;
+            /**
+             * Choose pages where popup should appear
+             */
+            selectedPages?: (number | Page)[] | null;
+            popupImage: number | Media;
+            redirectLink?: string | null;
+            openInNewTab?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'popupBanner';
+          }
+        | {
+            heading: string;
+            description?: string | null;
+            buttonText?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'formPopup';
+          }
+        | {
+            mainTitleLine1: string;
+            mainTitleLine2: string;
+            description: string;
+            tagline?: string | null;
+            buttonText?: string | null;
+            buttonLink?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'LetsTalkChennaiBlock';
+          }
+        | {
+            mainTitle: string;
+            mainDescription?: string | null;
+            volunteerSections?:
+              | {
+                  title: string;
+                  description: string;
+                  image: number | Media;
+                  linkText?: string | null;
+                  linkUrl?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'BecomeAVolunteerBlock';
+          }
+        | {
+            sectionTitle: string;
+            points: {
+              title: string;
+              desc?: string | null;
+              imgs: number | Media;
+              para?: string | null;
+              location?: string | null;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'liveDetailImg';
           }
       )[]
     | null;
@@ -6443,37 +6701,6 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        globalSearch?:
-          | T
-          | {
-              placeholderText?: T;
-              buttonText?: T;
-              enableFilters?: T;
-              filters?:
-                | T
-                | {
-                    label?: T;
-                    options?:
-                      | T
-                      | {
-                          value?: T;
-                          label?: T;
-                          id?: T;
-                        };
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        formPopup?:
-          | T
-          | {
-              heading?: T;
-              description?: T;
-              buttonText?: T;
-              id?: T;
-              blockName?: T;
-            };
         infography?:
           | T
           | {
@@ -6551,14 +6778,6 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        allevents?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              id?: T;
-              blockName?: T;
-            };
         liveIntrorSection?:
           | T
           | {
@@ -6604,12 +6823,6 @@ export interface PagesSelect<T extends boolean = true> {
                     id?: T;
                   };
               backgroundImage?: T;
-              id?: T;
-              blockName?: T;
-            };
-        innovateSlider?:
-          | T
-          | {
               id?: T;
               blockName?: T;
             };
@@ -6659,18 +6872,6 @@ export interface PagesSelect<T extends boolean = true> {
               buttonText?: T;
               buttonLink?: T;
               icon?: T;
-              id?: T;
-              blockName?: T;
-            };
-        popupBanner?:
-          | T
-          | {
-              enablePopup?: T;
-              isGlobal?: T;
-              selectedPages?: T;
-              popupImage?: T;
-              redirectLink?: T;
-              openInNewTab?: T;
               id?: T;
               blockName?: T;
             };
@@ -7680,21 +7881,6 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        EventsList2026Block?:
-          | T
-          | {
-              eventsCards2026?:
-                | T
-                | {
-                    title?: T;
-                    linkUrl?: T;
-                    cardMedia?: T;
-                    altText?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
         InfraBoom2026Block?:
           | T
           | {
@@ -7937,6 +8123,338 @@ export interface PagesSelect<T extends boolean = true> {
               mainHeading?: T;
               description?: T;
               faqsList?: T | KiteFestivalNewFAQItemSelect<T>;
+              id?: T;
+              blockName?: T;
+            };
+        EventsList2026Block?:
+          | T
+          | {
+              eventsCards2026?:
+                | T
+                | {
+                    title?: T;
+                    linkUrl?: T;
+                    cardMedia?: T;
+                    altText?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        NammaStoriesVideosBlockssss?:
+          | T
+          | {
+              contestTitle?: T;
+              winnerThumbnail?: T;
+              runnerUp1Thumbnail?: T;
+              runnerUp2Thumbnail?: T;
+              nomineesTitle?: T;
+              videosList?:
+                | T
+                | {
+                    title?: T;
+                    thumbnail?: T;
+                    iframeLink?: T;
+                    directorName?: T;
+                    directorMail?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        NammaStoriesNewsArticleSection?:
+          | T
+          | {
+              sectionTitle?: T;
+              sectionSubtitle?: T;
+              ePaperItems?:
+                | T
+                | {
+                    company?: T;
+                    title?: T;
+                    thumbnail?: T;
+                    popupImage?: T;
+                    id?: T;
+                  };
+              newsArticlesItems?:
+                | T
+                | {
+                    company?: T;
+                    title?: T;
+                    content?: T;
+                    thumbnail?: T;
+                    externalLink?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        EventClosedNoticeBlock?:
+          | T
+          | {
+              badgeText?: T;
+              title?: T;
+              description?: T;
+              buttonText?: T;
+              buttonLink?: T;
+              bgDecorationImage?: T;
+              id?: T;
+              blockName?: T;
+            };
+        CarRallyBlock?:
+          | T
+          | {
+              eventTitle?: T;
+              bannerImage?: T;
+              categoryLabel?: T;
+              aboutDateHighlight?: T;
+              aboutContent?: T;
+              sidebarDetails?:
+                | T
+                | {
+                    dateLabel?: T;
+                    timeLabel?: T;
+                    durationLabel?: T;
+                    capacityLabel?: T;
+                    priceLabel?: T;
+                    locationLabel?: T;
+                    showBookNow?: T;
+                    bookNowLink?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        NammaStoriesGenZStageBlock?:
+          | T
+          | {
+              mainTitle?: T;
+              columnOneParagraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              columnTwoParagraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        WhyJoinSuperChennaiBlock?:
+          | T
+          | {
+              mainTitle?: T;
+              sectionDescription?: T;
+              benefitsCards?:
+                | T
+                | {
+                    cardIcon?: T;
+                    cardTitle?: T;
+                    cardText?: T;
+                    themeColor?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        HowToJoinTimelineBlock?:
+          | T
+          | {
+              sectionTitle?: T;
+              steps?:
+                | T
+                | {
+                    stepNumber?: T;
+                    stepIcon?: T;
+                    stepDescription?: T;
+                    themeColor?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        ContactSalesFormBlock?:
+          | T
+          | {
+              mainTitle?: T;
+              subtext?: T;
+              heroImage?: T;
+              id?: T;
+              blockName?: T;
+            };
+        SuperChennaiQuizBlock?:
+          | T
+          | {
+              eventTitle?: T;
+              bannerImage?: T;
+              aboutContent?: T;
+              poweredByLogo?: T;
+              sidebarDetails?:
+                | T
+                | {
+                    dateLabel?: T;
+                    timeLabel?: T;
+                    locationLabel?: T;
+                    hostLabel?: T;
+                    teamsLabel?: T;
+                    feeLabel?: T;
+                    registerRoute?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        MediaHighlightsGalleryBlock?:
+          | T
+          | {
+              sectionTitle?: T;
+              tickerText?: T;
+              galleryItems?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        AIArtChallengeBlock?:
+          | T
+          | {
+              mainTitle?: T;
+              introParagraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              challengeBox?:
+                | T
+                | {
+                    heading?: T;
+                    description?: T;
+                  };
+              dealBox?:
+                | T
+                | {
+                    heading?: T;
+                    dealItems?:
+                      | T
+                      | {
+                          itemText?: T;
+                          id?: T;
+                        };
+                    contactEmail?: T;
+                  };
+              payoffBox?:
+                | T
+                | {
+                    heading?: T;
+                    payoffItems?:
+                      | T
+                      | {
+                          itemText?: T;
+                          id?: T;
+                        };
+                    closingParagraphs?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        globalSearch?:
+          | T
+          | {
+              placeholderText?: T;
+              buttonText?: T;
+              enableFilters?: T;
+              filters?:
+                | T
+                | {
+                    label?: T;
+                    options?:
+                      | T
+                      | {
+                          value?: T;
+                          label?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        popupBanner?:
+          | T
+          | {
+              enablePopup?: T;
+              isGlobal?: T;
+              selectedPages?: T;
+              popupImage?: T;
+              redirectLink?: T;
+              openInNewTab?: T;
+              id?: T;
+              blockName?: T;
+            };
+        formPopup?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              buttonText?: T;
+              id?: T;
+              blockName?: T;
+            };
+        LetsTalkChennaiBlock?:
+          | T
+          | {
+              mainTitleLine1?: T;
+              mainTitleLine2?: T;
+              description?: T;
+              tagline?: T;
+              buttonText?: T;
+              buttonLink?: T;
+              id?: T;
+              blockName?: T;
+            };
+        BecomeAVolunteerBlock?:
+          | T
+          | {
+              mainTitle?: T;
+              mainDescription?: T;
+              volunteerSections?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    linkText?: T;
+                    linkUrl?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        liveDetailImg?:
+          | T
+          | {
+              sectionTitle?: T;
+              points?:
+                | T
+                | {
+                    title?: T;
+                    desc?: T;
+                    imgs?: T;
+                    para?: T;
+                    location?: T;
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };

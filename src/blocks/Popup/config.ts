@@ -9,8 +9,10 @@ export const PopupBannerBlock: Block = {
   },
 
   admin: {
-    group: 'Global Sections',
+    group: 'Global Components',
   },
+
+  imageURL: '/images/sections-image/popupimaagee.jpg',
 
   fields: [
     // ENABLE / DISABLE #####################################
@@ -38,8 +40,7 @@ export const PopupBannerBlock: Block = {
       required: false,
       admin: {
         condition: (_, siblingData) => !siblingData?.isGlobal,
-        description:
-          'Choose pages where popup should appear',
+        description: 'Choose pages where popup should appear',
       },
     },
 

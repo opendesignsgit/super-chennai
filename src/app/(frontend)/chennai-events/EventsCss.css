@@ -93,6 +93,7 @@
   margin: 11px 10px;
 }
 
+
 .evntechnolg {
   font-family: "29LT Bukra SmBd";
   font-size: 12px;
@@ -805,7 +806,7 @@ textarea {
   bottom: -31px;
   left: 32%;
   color: #fff;
-  background-image: url("/public/images/first-runner.jpg");
+  background-image: url("/images/first-runner.jpg");
   border-radius: 50px;
 }
 
@@ -825,7 +826,7 @@ textarea {
   bottom: -31px;
   left: 32%;
   color: #fff;
-  background-image: url("/public//images/second-runner.jpg");
+  background-image: url("/images/second-runner.jpg");
   border-radius: 50px;
 }
 

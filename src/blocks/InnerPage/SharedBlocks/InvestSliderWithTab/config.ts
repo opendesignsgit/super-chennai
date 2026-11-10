@@ -81,8 +81,10 @@ export const ChenzInvest2026Block: Block = {
     plural: 'Chenz Invest 2026 Sections',
   },
   admin: {
-    group: '2026 Blocks',
+    group: 'Invest Page',
   },
+
+  imageURL: '/images/sections-image/InvestTabSection.jpg',
   fields: [
     {
       name: 'categories',

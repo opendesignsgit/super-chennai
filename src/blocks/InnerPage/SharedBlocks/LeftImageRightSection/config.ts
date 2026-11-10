@@ -8,6 +8,10 @@ export const LeftImageRightSectionBlock: Block = {
     singular: 'Left Image Right Section',
     plural: 'Left Image Right Sections',
   },
+
+  admin: {
+    group: 'Common Blocks',
+  },
   imageURL: '/images/sections-image/ConclaveAgendaBlock.jpg',
   fields: [
     {

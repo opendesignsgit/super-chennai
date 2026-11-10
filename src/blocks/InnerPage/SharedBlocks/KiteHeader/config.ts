@@ -10,6 +10,8 @@ export const KiteFestivalHeroBlock: Block = {
   admin: {
     group: 'Kite Festival Page',
   },
+
+  imageURL: '/images/sections-image/kitebannnerrr.jpg',
   fields: [
     // Announcement Bar Fields
     {

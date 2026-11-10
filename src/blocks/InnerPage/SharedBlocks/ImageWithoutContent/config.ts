@@ -56,6 +56,9 @@ export const ImageWithoutContentBlock: Block = {
   },
   imageURL: '/images/sections-image/ImagewithoutContent.jpg',
   imageAltText: 'Tech Puzzle Section Preview',
+  admin: {
+    group: 'Common Blocks',
+  },
   fields: [
     {
       name: 'mainTitle',

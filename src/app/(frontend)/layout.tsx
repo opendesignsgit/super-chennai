@@ -72,6 +72,8 @@ import '@/assets/Css/Properties/SortBy.css'
 import '@/assets/Css/ViewMore.css'
 import '@/assets/Css/ritch-text.css'
 import '@/assets/Css/singealone.css'
+import '@/assets/Css/GenzVideo.css'
+import '@/assets/Css/app.css'
 
 import { Preloader } from '@/components/Loader/Preloader'
 
