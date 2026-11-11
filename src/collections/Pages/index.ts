@@ -128,6 +128,8 @@ import { AIArtChallengeBlock } from '@/blocks/InnerPage/SharedBlocks/AIArtChalle
 import { LetsTalkChennaiBlock } from '@/blocks/InnerPage/SharedBlocks/LetsTalkChennai/config'
 import { BecomeAVolunteerBlock } from '@/blocks/InnerPage/SharedBlocks/BecomeAVolunteer/config'
 import { LiveDetailImageBlock } from '@/blocks/InnerPage/SharedBlocks/LiveDetailImageBlock/config'
+import { ArrataiGalleryBlock } from '@/blocks/InnerPage/ArticleImageCarosel/config'
+import { ArrataiContent } from '@/blocks/InnerPage/ArattaiContent/config'
 // import { KiteFestivalFAQBlock } from '@/blocks/InnerPage/SharedBlocks/KiteFestivalFAQSection/config'
 // import { ChennaiAppsBlock } from '@/blocks/InnerPage/ChennaiApps/config'
 
@@ -320,6 +322,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 SuperChennaiQuizBlock,
                 MediaHighlightsGalleryBlock,
                 AIArtChallengeBlock,
+                ArrataiContent,
+                ArrataiGalleryBlock,
 
                 //------------------Kite Festival
 
@@ -468,6 +472,8 @@ export const Pages: CollectionConfig<'pages'> = {
                         KiteFestivalAboutBlock,
                         KiteFestivalHighlightsBlock,
                         KiteFestivalNewFaqBlock,
+                        ArrataiContent,
+                        ArrataiGalleryBlock,
 
                         // contest-sections
 

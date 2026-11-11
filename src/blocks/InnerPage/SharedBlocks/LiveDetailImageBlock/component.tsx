@@ -219,18 +219,14 @@ export default function LiveDetailImageSectionComponent(props: Props) {
               }
 
               return (
-                <div
-                  key={item.id || j}
-                  className="clcboxItemss flex flex-col md:flex-wrap md:flex-row mb-8 gap-4 border-b pb-6 last:border-b-0"
-                >
+                <div key={item.id || j} className="clcboxItemss flex mb-4">
                   {/* Attraction Image */}
-                  <div className="clcboxIImg relative w-full md:w-48 h-48 md:h-36 shrink-0 bg-gray-100 rounded-lg overflow-hidden">
+                  <div className="clcboxIImg">
                     {imageUrl ? (
-                      <Image
+                      <img
                         src={imageUrl}
                         alt={item.title || 'Attraction image'}
-                        fill
-                        className="object-cover"
+                        // className="object-cover"
                       />
                     ) : (
                       <div className="flex items-center justify-center h-full text-xs text-gray-400">
@@ -240,7 +236,7 @@ export default function LiveDetailImageSectionComponent(props: Props) {
                   </div>
 
                   {/* Attraction Details */}
-                  <div className="clcboxICont flex-1">
+                  <div className="clcboxICont">
                     {item.title && (
                       <h3 className="text-lg font-bold text-gray-900 mb-1">{item.title}</h3>
                     )}
