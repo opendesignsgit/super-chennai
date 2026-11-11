@@ -1,72 +1,3 @@
-// 'use client'
-
-// import { useRouter, useSearchParams } from 'next/navigation'
-
-// type Category = {
-//   id: string | number
-//   title: string
-// }
-
-// type Props = {
-//   categories: Category[]
-// }
-
-// const FilterTopbar = ({ categories }: Props) => {
-//   const router = useRouter()
-//   const searchParams = useSearchParams()
-
-//   const selected = searchParams.get('category')?.split(',') || []
-
-//   const toggleCategory = (id: string) => {
-//     let updated = [...selected]
-
-//     if (updated.includes(id)) {
-//       updated = updated.filter((c) => c !== id)
-//     } else {
-//       updated.push(id)
-//     }
-
-//     const params = new URLSearchParams(searchParams.toString())
-
-//     if (updated.length) {
-//       params.set('category', updated.join(','))
-//     } else {
-//       params.delete('category')
-//     }
-
-//     router.push(`/events?${params.toString()}`)
-//   }
-
-//   return (
-//     <div
-//       className="
-//           container max-w-7xl mx-auto flex gap-3 px-2
-//           overflow-x-auto whitespace-nowrap
-//           md:overflow-x-auto whitespace-nowrap
-//           snap-x snap-mandatory
-//           [scrollbar-width:none]
-//           [&::-webkit-scrollbar]:hidden
-//         "
-//     >
-//       {categories.map((cat: Category) => {
-//         const active = selected.includes(String(cat.id))
-
-//         return (
-//           <button
-//             key={cat.id}
-//             onClick={() => toggleCategory(String(cat.id))}
-//             className={`px-4 py-2 rounded-full border ${active ? 'bg-pink-600 text-white' : ''}`}
-//           >
-//             {cat.title}
-//           </button>
-//         )
-//       })}
-//     </div>
-//   )
-// }
-
-// export default
-
 'use client'
 
 import { useState } from 'react'
@@ -93,8 +24,6 @@ const FilterTopbar = ({ categories, initialVisible = 6, activeColor = '#a44294' 
 
   const toggleCategory = (id: string) => {
     let updated = [...selected]
-
-    // All category
     if (id === 'All') {
       updated = []
     } else {
@@ -113,7 +42,7 @@ const FilterTopbar = ({ categories, initialVisible = 6, activeColor = '#a44294' 
       params.delete('category')
     }
 
-    router.push(`/events?${params.toString()}`)
+    router.push(`/chennai-events?${params.toString()}`)
   }
 
   if (!Array.isArray(categories) || categories.length === 0) {
