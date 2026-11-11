@@ -47,6 +47,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/events-in-chennai/:slug',
+        destination: '/chennai-events/:slug',
+      },
+    ]
+  },
   reactStrictMode: true,
   redirects,
 }

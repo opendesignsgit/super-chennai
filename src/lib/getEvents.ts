@@ -117,7 +117,7 @@ export const getEvents = async (
     depth: 2,
     where,
     sort,
-    limit: 12,
+    limit: 1200,
   })
 
   return events
