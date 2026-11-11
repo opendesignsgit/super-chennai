@@ -66,8 +66,11 @@ export const LiveDetailImageBlock: Block = {
     plural: 'Live Detail Image Section Blocks',
   },
   admin: {
-    group: 'Icon of the Month',
+    group: 'Common Blocks',
   },
+
+  imageURL: '/images/sections-image/livedetailnewsection.jpg',
+
   fields: [
     {
       name: 'sectionTitle',

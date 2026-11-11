@@ -116,6 +116,8 @@ import AIArtChallengeSection from './InnerPage/SharedBlocks/AIArtChallengeBlock/
 import LetsTalkChennaiSection from './InnerPage/SharedBlocks/LetsTalkChennai/component'
 import BecomeAVolunteerSection from './InnerPage/SharedBlocks/BecomeAVolunteer/component'
 import LiveDetailImageSectionComponent from './InnerPage/SharedBlocks/LiveDetailImageBlock/component'
+import ArrataiGalleryBlockComponent from './InnerPage/ArticleImageCarosel/component'
+import ArrataiContentComponent from './InnerPage/ArattaiContent/component'
 
 const blockComponents: {
   [key: string]: React.FC<any>
@@ -241,6 +243,8 @@ const blockComponents: {
   LetsTalkChennaiBlock: LetsTalkChennaiSection,
   BecomeAVolunteerBlock: BecomeAVolunteerSection,
   liveDetailImg: LiveDetailImageSectionComponent,
+  arrataiGallery: ArrataiGalleryBlockComponent,
+  arrataiContent: ArrataiContentComponent,
 }
 
 export const RenderBlocks: React.FC<{
