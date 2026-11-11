@@ -36,7 +36,7 @@ export default function WhyJoinSuperChennaiSection(props: WhyJoinProps) {
             <span className="sc-text-pink text-pink-500">CHENNAI?</span>
           </h2>
           <p className="sc-description text-gray-600 text-lg leading-relaxed">
-            We're creating a fresh digital movement powered by Gen Z creators who{' '}
+            We&lsquo;re creating a fresh digital movement powered by Gen Z creators who{' '}
             <strong className="text-gray-900">genuinely live the city.</strong> Whether you love
             street culture, fashion, cinema, hidden places, memes, or storytelling - this platform
             is for you.
